@@ -1,0 +1,66 @@
+using System.Collections.Frozen;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Spotted.Core;
+
+namespace Spotted.Models;
+
+[JsonConverter(typeof(ModelConverter<NarratorObject, NarratorObjectFromRaw>))]
+public sealed record class NarratorObject : ModelBase
+{
+    /// <summary>
+    /// The name of the Narrator.
+    /// </summary>
+    public string? Name
+    {
+        get { return ModelBase.GetNullableClass<string>(this.RawData, "name"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "name", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Name;
+    }
+
+    public NarratorObject() { }
+
+    public NarratorObject(NarratorObject narratorObject)
+        : base(narratorObject) { }
+
+    public NarratorObject(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = [.. rawData];
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    NarratorObject(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = [.. rawData];
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="NarratorObjectFromRaw.FromRawUnchecked"/>
+    public static NarratorObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class NarratorObjectFromRaw : IFromRaw<NarratorObject>
+{
+    /// <inheritdoc/>
+    public NarratorObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        NarratorObject.FromRawUnchecked(rawData);
+}
