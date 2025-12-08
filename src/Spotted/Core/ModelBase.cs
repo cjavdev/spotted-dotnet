@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Exceptions;
 using Spotted.Models;
+using Spotted.Models.AudioAnalysis;
 using Albums = Spotted.Models.Albums;
 using Artists = Spotted.Models.Artists;
 using Audiobooks = Spotted.Models.Audiobooks;
@@ -71,6 +72,7 @@ public abstract record class ModelBase
             new ApiEnumConverter<string, Browse::ReleaseDatePrecision>(),
             new ApiEnumConverter<string, AudioFeatures::Type>(),
             new ApiEnumConverter<string, AudioFeatures::AudioFeatureType>(),
+            new ApiEnumConverter<double, Mode>(),
         },
     };
 

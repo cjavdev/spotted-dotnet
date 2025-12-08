@@ -163,6 +163,18 @@ public sealed class SpottedClient : ISpottedClient
         get { return _audioFeatures.Value; }
     }
 
+    readonly Lazy<IAudioAnalysisService> _audioAnalysis;
+    public IAudioAnalysisService AudioAnalysis
+    {
+        get { return _audioAnalysis.Value; }
+    }
+
+    readonly Lazy<IRecommendationService> _recommendations;
+    public IRecommendationService Recommendations
+    {
+        get { return _recommendations.Value; }
+    }
+
     readonly Lazy<IMarketService> _markets;
     public IMarketService Markets
     {
@@ -374,6 +386,8 @@ public sealed class SpottedClient : ISpottedClient
         _users = new(() => new UserService(this));
         _browse = new(() => new BrowseService(this));
         _audioFeatures = new(() => new AudioFeatureService(this));
+        _audioAnalysis = new(() => new AudioAnalysisService(this));
+        _recommendations = new(() => new RecommendationService(this));
         _markets = new(() => new MarketService(this));
     }
 

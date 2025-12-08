@@ -112,6 +112,10 @@ public interface ISpottedClient
 
     IAudioFeatureService AudioFeatures { get; }
 
+    IAudioAnalysisService AudioAnalysis { get; }
+
+    IRecommendationService Recommendations { get; }
+
     IMarketService Markets { get; }
 
     /// <summary>
