@@ -2,6 +2,15 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Exceptions;
 using Spotted.Models;
+using Albums = Spotted.Models.Albums;
+using Artists = Spotted.Models.Artists;
+using Audiobooks = Spotted.Models.Audiobooks;
+using AudioFeatures = Spotted.Models.AudioFeatures;
+using Browse = Spotted.Models.Browse;
+using Chapters = Spotted.Models.Chapters;
+using Following = Spotted.Models.Me.Following;
+using Search = Spotted.Models.Search;
+using Users = Spotted.Models.Users;
 
 namespace Spotted.Core;
 
@@ -40,6 +49,28 @@ public abstract record class ModelBase
             new ApiEnumConverter<string, AlbumType>(),
             new ApiEnumConverter<string, AlbumReleaseDatePrecision>(),
             new ApiEnumConverter<string, TrackObjectType>(),
+            new ApiEnumConverter<string, Albums::AlbumType>(),
+            new ApiEnumConverter<string, Albums::ReleaseDatePrecision>(),
+            new ApiEnumConverter<string, Albums::AlbumAlbumType>(),
+            new ApiEnumConverter<string, Albums::AlbumReleaseDatePrecision>(),
+            new ApiEnumConverter<string, Artists::AlbumGroup>(),
+            new ApiEnumConverter<string, Artists::AlbumType>(),
+            new ApiEnumConverter<string, Artists::ReleaseDatePrecision>(),
+            new ApiEnumConverter<string, Audiobooks::ReleaseDatePrecision>(),
+            new ApiEnumConverter<string, global::Spotted.Models.Me.Albums.AlbumType>(),
+            new ApiEnumConverter<string, global::Spotted.Models.Me.Albums.ReleaseDatePrecision>(),
+            new ApiEnumConverter<string, Following::Type>(),
+            new ApiEnumConverter<string, Chapters::ReleaseDatePrecision>(),
+            new ApiEnumConverter<string, Chapters::ChapterReleaseDatePrecision>(),
+            new ApiEnumConverter<string, Search::AlbumType>(),
+            new ApiEnumConverter<string, Search::ReleaseDatePrecision>(),
+            new ApiEnumConverter<string, Search::Type>(),
+            new ApiEnumConverter<string, Search::IncludeExternal>(),
+            new ApiEnumConverter<string, Users::Type>(),
+            new ApiEnumConverter<string, Browse::AlbumType>(),
+            new ApiEnumConverter<string, Browse::ReleaseDatePrecision>(),
+            new ApiEnumConverter<string, AudioFeatures::Type>(),
+            new ApiEnumConverter<string, AudioFeatures::AudioFeatureType>(),
         },
     };
 

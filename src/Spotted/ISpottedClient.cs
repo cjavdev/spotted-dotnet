@@ -86,6 +86,32 @@ public interface ISpottedClient
     /// </summary>
     ISpottedClient WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
+    IAlbumService Albums { get; }
+
+    IArtistService Artists { get; }
+
+    IShowService Shows { get; }
+
+    IEpisodeService Episodes { get; }
+
+    IAudiobookService Audiobooks { get; }
+
+    IMeService Me { get; }
+
+    IChapterService Chapters { get; }
+
+    ITrackService Tracks { get; }
+
+    ISearchService Search { get; }
+
+    IPlaylistService Playlists { get; }
+
+    IUserService Users { get; }
+
+    IBrowseService Browse { get; }
+
+    IAudioFeatureService AudioFeatures { get; }
+
     IMarketService Markets { get; }
 
     /// <summary>
