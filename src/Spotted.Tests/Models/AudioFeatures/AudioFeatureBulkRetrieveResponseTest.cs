@@ -17,24 +17,24 @@ public class AudioFeatureBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "2takcwOaAZWiXQijPHIx7B",
-                    Acousticness = 0.00242,
+                    Acousticness = 0.00242f,
                     AnalysisURL =
                         "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-                    Danceability = 0.585,
+                    Danceability = 0.585f,
                     DurationMs = 237040,
-                    Energy = 0.842,
-                    Instrumentalness = 0.00686,
+                    Energy = 0.842f,
+                    Instrumentalness = 0.00686f,
                     Key = 9,
-                    Liveness = 0.0866,
-                    Loudness = -5.883,
+                    Liveness = 0.0866f,
+                    Loudness = -5.883f,
                     Mode = 0,
-                    Speechiness = 0.0556,
-                    Tempo = 118.211,
+                    Speechiness = 0.0556f,
+                    Tempo = 118.211f,
                     TimeSignature = 4,
                     TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
                     Type = AudioFeatureType.AudioFeatures,
                     Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-                    Valence = 0.428,
+                    Valence = 0.428f,
                 },
             ],
         };
@@ -44,23 +44,23 @@ public class AudioFeatureBulkRetrieveResponseTest : TestBase
             new()
             {
                 ID = "2takcwOaAZWiXQijPHIx7B",
-                Acousticness = 0.00242,
+                Acousticness = 0.00242f,
                 AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-                Danceability = 0.585,
+                Danceability = 0.585f,
                 DurationMs = 237040,
-                Energy = 0.842,
-                Instrumentalness = 0.00686,
+                Energy = 0.842f,
+                Instrumentalness = 0.00686f,
                 Key = 9,
-                Liveness = 0.0866,
-                Loudness = -5.883,
+                Liveness = 0.0866f,
+                Loudness = -5.883f,
                 Mode = 0,
-                Speechiness = 0.0556,
-                Tempo = 118.211,
+                Speechiness = 0.0556f,
+                Tempo = 118.211f,
                 TimeSignature = 4,
                 TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
                 Type = AudioFeatureType.AudioFeatures,
                 Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-                Valence = 0.428,
+                Valence = 0.428f,
             },
         ];
 
@@ -81,24 +81,24 @@ public class AudioFeatureBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "2takcwOaAZWiXQijPHIx7B",
-                    Acousticness = 0.00242,
+                    Acousticness = 0.00242f,
                     AnalysisURL =
                         "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-                    Danceability = 0.585,
+                    Danceability = 0.585f,
                     DurationMs = 237040,
-                    Energy = 0.842,
-                    Instrumentalness = 0.00686,
+                    Energy = 0.842f,
+                    Instrumentalness = 0.00686f,
                     Key = 9,
-                    Liveness = 0.0866,
-                    Loudness = -5.883,
+                    Liveness = 0.0866f,
+                    Loudness = -5.883f,
                     Mode = 0,
-                    Speechiness = 0.0556,
-                    Tempo = 118.211,
+                    Speechiness = 0.0556f,
+                    Tempo = 118.211f,
                     TimeSignature = 4,
                     TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
                     Type = AudioFeatureType.AudioFeatures,
                     Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-                    Valence = 0.428,
+                    Valence = 0.428f,
                 },
             ],
         };
@@ -119,24 +119,24 @@ public class AudioFeatureBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "2takcwOaAZWiXQijPHIx7B",
-                    Acousticness = 0.00242,
+                    Acousticness = 0.00242f,
                     AnalysisURL =
                         "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-                    Danceability = 0.585,
+                    Danceability = 0.585f,
                     DurationMs = 237040,
-                    Energy = 0.842,
-                    Instrumentalness = 0.00686,
+                    Energy = 0.842f,
+                    Instrumentalness = 0.00686f,
                     Key = 9,
-                    Liveness = 0.0866,
-                    Loudness = -5.883,
+                    Liveness = 0.0866f,
+                    Loudness = -5.883f,
                     Mode = 0,
-                    Speechiness = 0.0556,
-                    Tempo = 118.211,
+                    Speechiness = 0.0556f,
+                    Tempo = 118.211f,
                     TimeSignature = 4,
                     TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
                     Type = AudioFeatureType.AudioFeatures,
                     Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-                    Valence = 0.428,
+                    Valence = 0.428f,
                 },
             ],
         };
@@ -150,23 +150,23 @@ public class AudioFeatureBulkRetrieveResponseTest : TestBase
             new()
             {
                 ID = "2takcwOaAZWiXQijPHIx7B",
-                Acousticness = 0.00242,
+                Acousticness = 0.00242f,
                 AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-                Danceability = 0.585,
+                Danceability = 0.585f,
                 DurationMs = 237040,
-                Energy = 0.842,
-                Instrumentalness = 0.00686,
+                Energy = 0.842f,
+                Instrumentalness = 0.00686f,
                 Key = 9,
-                Liveness = 0.0866,
-                Loudness = -5.883,
+                Liveness = 0.0866f,
+                Loudness = -5.883f,
                 Mode = 0,
-                Speechiness = 0.0556,
-                Tempo = 118.211,
+                Speechiness = 0.0556f,
+                Tempo = 118.211f,
                 TimeSignature = 4,
                 TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
                 Type = AudioFeatureType.AudioFeatures,
                 Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-                Valence = 0.428,
+                Valence = 0.428f,
             },
         ];
 
@@ -187,24 +187,24 @@ public class AudioFeatureBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "2takcwOaAZWiXQijPHIx7B",
-                    Acousticness = 0.00242,
+                    Acousticness = 0.00242f,
                     AnalysisURL =
                         "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-                    Danceability = 0.585,
+                    Danceability = 0.585f,
                     DurationMs = 237040,
-                    Energy = 0.842,
-                    Instrumentalness = 0.00686,
+                    Energy = 0.842f,
+                    Instrumentalness = 0.00686f,
                     Key = 9,
-                    Liveness = 0.0866,
-                    Loudness = -5.883,
+                    Liveness = 0.0866f,
+                    Loudness = -5.883f,
                     Mode = 0,
-                    Speechiness = 0.0556,
-                    Tempo = 118.211,
+                    Speechiness = 0.0556f,
+                    Tempo = 118.211f,
                     TimeSignature = 4,
                     TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
                     Type = AudioFeatureType.AudioFeatures,
                     Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-                    Valence = 0.428,
+                    Valence = 0.428f,
                 },
             ],
         };
@@ -221,44 +221,44 @@ public class AudioFeatureTest : TestBase
         var model = new AudioFeature
         {
             ID = "2takcwOaAZWiXQijPHIx7B",
-            Acousticness = 0.00242,
+            Acousticness = 0.00242f,
             AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-            Danceability = 0.585,
+            Danceability = 0.585f,
             DurationMs = 237040,
-            Energy = 0.842,
-            Instrumentalness = 0.00686,
+            Energy = 0.842f,
+            Instrumentalness = 0.00686f,
             Key = 9,
-            Liveness = 0.0866,
-            Loudness = -5.883,
+            Liveness = 0.0866f,
+            Loudness = -5.883f,
             Mode = 0,
-            Speechiness = 0.0556,
-            Tempo = 118.211,
+            Speechiness = 0.0556f,
+            Tempo = 118.211f,
             TimeSignature = 4,
             TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
             Type = AudioFeatureType.AudioFeatures,
             Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-            Valence = 0.428,
+            Valence = 0.428f,
         };
 
         string expectedID = "2takcwOaAZWiXQijPHIx7B";
-        float expectedAcousticness = 0.00242;
+        float expectedAcousticness = 0.00242f;
         string expectedAnalysisURL =
             "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n";
-        float expectedDanceability = 0.585;
+        float expectedDanceability = 0.585f;
         long expectedDurationMs = 237040;
-        float expectedEnergy = 0.842;
-        float expectedInstrumentalness = 0.00686;
+        float expectedEnergy = 0.842f;
+        float expectedInstrumentalness = 0.00686f;
         long expectedKey = 9;
-        float expectedLiveness = 0.0866;
-        float expectedLoudness = -5.883;
+        float expectedLiveness = 0.0866f;
+        float expectedLoudness = -5.883f;
         long expectedMode = 0;
-        float expectedSpeechiness = 0.0556;
-        float expectedTempo = 118.211;
+        float expectedSpeechiness = 0.0556f;
+        float expectedTempo = 118.211f;
         long expectedTimeSignature = 4;
         string expectedTrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n";
         ApiEnum<string, AudioFeatureType> expectedType = AudioFeatureType.AudioFeatures;
         string expectedUri = "spotify:track:2takcwOaAZWiXQijPHIx7B";
-        float expectedValence = 0.428;
+        float expectedValence = 0.428f;
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAcousticness, model.Acousticness);
@@ -286,23 +286,23 @@ public class AudioFeatureTest : TestBase
         var model = new AudioFeature
         {
             ID = "2takcwOaAZWiXQijPHIx7B",
-            Acousticness = 0.00242,
+            Acousticness = 0.00242f,
             AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-            Danceability = 0.585,
+            Danceability = 0.585f,
             DurationMs = 237040,
-            Energy = 0.842,
-            Instrumentalness = 0.00686,
+            Energy = 0.842f,
+            Instrumentalness = 0.00686f,
             Key = 9,
-            Liveness = 0.0866,
-            Loudness = -5.883,
+            Liveness = 0.0866f,
+            Loudness = -5.883f,
             Mode = 0,
-            Speechiness = 0.0556,
-            Tempo = 118.211,
+            Speechiness = 0.0556f,
+            Tempo = 118.211f,
             TimeSignature = 4,
             TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
             Type = AudioFeatureType.AudioFeatures,
             Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-            Valence = 0.428,
+            Valence = 0.428f,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -317,23 +317,23 @@ public class AudioFeatureTest : TestBase
         var model = new AudioFeature
         {
             ID = "2takcwOaAZWiXQijPHIx7B",
-            Acousticness = 0.00242,
+            Acousticness = 0.00242f,
             AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-            Danceability = 0.585,
+            Danceability = 0.585f,
             DurationMs = 237040,
-            Energy = 0.842,
-            Instrumentalness = 0.00686,
+            Energy = 0.842f,
+            Instrumentalness = 0.00686f,
             Key = 9,
-            Liveness = 0.0866,
-            Loudness = -5.883,
+            Liveness = 0.0866f,
+            Loudness = -5.883f,
             Mode = 0,
-            Speechiness = 0.0556,
-            Tempo = 118.211,
+            Speechiness = 0.0556f,
+            Tempo = 118.211f,
             TimeSignature = 4,
             TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
             Type = AudioFeatureType.AudioFeatures,
             Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-            Valence = 0.428,
+            Valence = 0.428f,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -341,24 +341,24 @@ public class AudioFeatureTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "2takcwOaAZWiXQijPHIx7B";
-        float expectedAcousticness = 0.00242;
+        float expectedAcousticness = 0.00242f;
         string expectedAnalysisURL =
             "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n";
-        float expectedDanceability = 0.585;
+        float expectedDanceability = 0.585f;
         long expectedDurationMs = 237040;
-        float expectedEnergy = 0.842;
-        float expectedInstrumentalness = 0.00686;
+        float expectedEnergy = 0.842f;
+        float expectedInstrumentalness = 0.00686f;
         long expectedKey = 9;
-        float expectedLiveness = 0.0866;
-        float expectedLoudness = -5.883;
+        float expectedLiveness = 0.0866f;
+        float expectedLoudness = -5.883f;
         long expectedMode = 0;
-        float expectedSpeechiness = 0.0556;
-        float expectedTempo = 118.211;
+        float expectedSpeechiness = 0.0556f;
+        float expectedTempo = 118.211f;
         long expectedTimeSignature = 4;
         string expectedTrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n";
         ApiEnum<string, AudioFeatureType> expectedType = AudioFeatureType.AudioFeatures;
         string expectedUri = "spotify:track:2takcwOaAZWiXQijPHIx7B";
-        float expectedValence = 0.428;
+        float expectedValence = 0.428f;
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAcousticness, deserialized.Acousticness);
@@ -386,23 +386,23 @@ public class AudioFeatureTest : TestBase
         var model = new AudioFeature
         {
             ID = "2takcwOaAZWiXQijPHIx7B",
-            Acousticness = 0.00242,
+            Acousticness = 0.00242f,
             AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
-            Danceability = 0.585,
+            Danceability = 0.585f,
             DurationMs = 237040,
-            Energy = 0.842,
-            Instrumentalness = 0.00686,
+            Energy = 0.842f,
+            Instrumentalness = 0.00686f,
             Key = 9,
-            Liveness = 0.0866,
-            Loudness = -5.883,
+            Liveness = 0.0866f,
+            Loudness = -5.883f,
             Mode = 0,
-            Speechiness = 0.0556,
-            Tempo = 118.211,
+            Speechiness = 0.0556f,
+            Tempo = 118.211f,
             TimeSignature = 4,
             TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
             Type = AudioFeatureType.AudioFeatures,
             Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
-            Valence = 0.428,
+            Valence = 0.428f,
         };
 
         model.Validate();
