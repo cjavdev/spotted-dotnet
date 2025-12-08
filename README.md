@@ -32,15 +32,15 @@ See the [`examples`](examples) directory for complete and runnable examples.
 ```csharp
 using System;
 using Spotted;
-using Spotted.Models.Markets;
+using Spotted.Models.Albums;
 
 SpottedClient client = new();
 
-MarketListParams parameters = new();
+AlbumRetrieveParams parameters = new() { ID = "4aawyAB9vmqN3uQ7FjRGTy" };
 
-var markets = await client.Markets.List(parameters);
+var album = await client.Albums.Retrieve(parameters);
 
-Console.WriteLine(markets);
+Console.WriteLine(album);
 ```
 
 ## Client configuration
@@ -84,7 +84,7 @@ To temporarily use a modified client configuration, while reusing the same conne
 ```csharp
 using System;
 
-var markets = await client
+var album = await client
     .WithOptions(options =>
         options with
         {
@@ -92,9 +92,9 @@ var markets = await client
             Timeout = TimeSpan.FromSeconds(42),
         }
     )
-    .Markets.List(parameters);
+    .Albums.Retrieve(parameters);
 
-Console.WriteLine(markets);
+Console.WriteLine(album);
 ```
 
 Using a [`with` expression](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/with-expression) makes it easy to construct the modified options.
@@ -105,7 +105,39 @@ The `WithOptions` method does not affect the original client or service.
 
 To send a request to the Spotted API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a C# class.
 
-For example, `client.Markets.List` should be called with an instance of `MarketListParams`, and it will return an instance of `Task<MarketListResponse>`.
+For example, `client.Albums.Retrieve` should be called with an instance of `AlbumRetrieveParams`, and it will return an instance of `Task<AlbumRetrieveResponse>`.
+
+## Binary responses
+
+The SDK defines methods that return binary responses, which are used for API responses that shouldn't necessarily be parsed, like non-JSON data.
+
+These methods return `HttpResponse`:
+
+```csharp
+using System;
+using Spotted.Models.Playlists.Images;
+
+ImageUpdateParams parameters = new()
+{
+    PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+    Body = "a value",
+};
+
+var image = await client.Playlists.Images.Update(parameters);
+
+Console.WriteLine(image);
+```
+
+To save the response content to a file, or any [`Stream`](https://learn.microsoft.com/en-us/dotnet/api/system.io.stream?view=net-9.0), use the [`CopyToAsync`](<https://learn.microsoft.com/en-us/dotnet/api/system.io.stream.copytoasync?view=net-9.0#system-io-stream-copytoasync(system-io-stream)>) method:
+
+```csharp
+using System.IO;
+
+using var response = await client.Playlists.Images.Update(parameters);
+using var contentStream = await response.ReadAsStream();
+using var fileStream = File.Open(path, FileMode.OpenOrCreate);
+await contentStream.CopyToAsync(fileStream); // Or any other Stream
+```
 
 ## Error handling
 
@@ -163,13 +195,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var markets = await client
+var album = await client
     .WithOptions(options =>
         options with { MaxRetries = 3 }
     )
-    .Markets.List(parameters);
+    .Albums.Retrieve(parameters);
 
-Console.WriteLine(markets);
+Console.WriteLine(album);
 ```
 
 ### Timeouts
@@ -190,13 +222,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var markets = await client
+var album = await client
     .WithOptions(options =>
         options with { Timeout = TimeSpan.FromSeconds(42) }
     )
-    .Markets.List(parameters);
+    .Albums.Retrieve(parameters);
 
-Console.WriteLine(markets);
+Console.WriteLine(album);
 ```
 
 ## Undocumented API functionality
@@ -212,8 +244,8 @@ By default, the SDK will not throw an exception in this case. It will throw `Spo
 If you would prefer to check that the response is completely well-typed upfront, then either call `Validate`:
 
 ```csharp
-var markets = client.Markets.List();
-markets.Validate();
+var album = client.Albums.Retrieve(parameters);
+album.Validate();
 ```
 
 Or configure the client using the `ResponseValidation` option:
@@ -229,13 +261,13 @@ Or configure a single method call using [`WithOptions`](#modifying-configuration
 ```csharp
 using System;
 
-var markets = await client
+var album = await client
     .WithOptions(options =>
         options with { ResponseValidation = true }
     )
-    .Markets.List(parameters);
+    .Albums.Retrieve(parameters);
 
-Console.WriteLine(markets);
+Console.WriteLine(album);
 ```
 
 ## Semantic versioning

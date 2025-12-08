@@ -85,6 +85,84 @@ public sealed class SpottedClient : ISpottedClient
         return new SpottedClient(modifier(this._options));
     }
 
+    readonly Lazy<IAlbumService> _albums;
+    public IAlbumService Albums
+    {
+        get { return _albums.Value; }
+    }
+
+    readonly Lazy<IArtistService> _artists;
+    public IArtistService Artists
+    {
+        get { return _artists.Value; }
+    }
+
+    readonly Lazy<IShowService> _shows;
+    public IShowService Shows
+    {
+        get { return _shows.Value; }
+    }
+
+    readonly Lazy<IEpisodeService> _episodes;
+    public IEpisodeService Episodes
+    {
+        get { return _episodes.Value; }
+    }
+
+    readonly Lazy<IAudiobookService> _audiobooks;
+    public IAudiobookService Audiobooks
+    {
+        get { return _audiobooks.Value; }
+    }
+
+    readonly Lazy<IMeService> _me;
+    public IMeService Me
+    {
+        get { return _me.Value; }
+    }
+
+    readonly Lazy<IChapterService> _chapters;
+    public IChapterService Chapters
+    {
+        get { return _chapters.Value; }
+    }
+
+    readonly Lazy<ITrackService> _tracks;
+    public ITrackService Tracks
+    {
+        get { return _tracks.Value; }
+    }
+
+    readonly Lazy<ISearchService> _search;
+    public ISearchService Search
+    {
+        get { return _search.Value; }
+    }
+
+    readonly Lazy<IPlaylistService> _playlists;
+    public IPlaylistService Playlists
+    {
+        get { return _playlists.Value; }
+    }
+
+    readonly Lazy<IUserService> _users;
+    public IUserService Users
+    {
+        get { return _users.Value; }
+    }
+
+    readonly Lazy<IBrowseService> _browse;
+    public IBrowseService Browse
+    {
+        get { return _browse.Value; }
+    }
+
+    readonly Lazy<IAudioFeatureService> _audioFeatures;
+    public IAudioFeatureService AudioFeatures
+    {
+        get { return _audioFeatures.Value; }
+    }
+
     readonly Lazy<IMarketService> _markets;
     public IMarketService Markets
     {
@@ -283,6 +361,19 @@ public sealed class SpottedClient : ISpottedClient
     {
         _options = new();
 
+        _albums = new(() => new AlbumService(this));
+        _artists = new(() => new ArtistService(this));
+        _shows = new(() => new ShowService(this));
+        _episodes = new(() => new EpisodeService(this));
+        _audiobooks = new(() => new AudiobookService(this));
+        _me = new(() => new MeService(this));
+        _chapters = new(() => new ChapterService(this));
+        _tracks = new(() => new TrackService(this));
+        _search = new(() => new SearchService(this));
+        _playlists = new(() => new PlaylistService(this));
+        _users = new(() => new UserService(this));
+        _browse = new(() => new BrowseService(this));
+        _audioFeatures = new(() => new AudioFeatureService(this));
         _markets = new(() => new MarketService(this));
     }
 

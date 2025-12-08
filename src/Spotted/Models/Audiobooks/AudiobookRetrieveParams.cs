@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Frozen;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Net.Http;
+using System.Text.Json;
+using Spotted.Core;
+
+namespace Spotted.Models.Audiobooks;
+
+/// <summary>
+/// Get Spotify catalog information for a single audiobook. Audiobooks are only available
+/// within the US, UK, Canada, Ireland, New Zealand and Australia markets.
+/// </summary>
+public sealed record class AudiobookRetrieveParams : ParamsBase
+{
+    public string? ID { get; init; }
+
+    /// <summary>
+    /// An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    ///   If a country code is specified, only content that is available in that market
+    /// will be returned.<br/>   If a valid user access token is specified in the
+    /// request header, the country associated with   the user account will take
+    /// priority over this parameter.<br/>   _**Note**: If neither market or user
+    /// country are provided, the content is considered unavailable for the client._<br/>
+    ///   Users can view the country that is associated with their account in the
+    /// [account settings](https://www.spotify.com/account/overview/).
+    /// </summary>
+    public string? Market
+    {
+        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "market"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawQueryData, "market", value);
+        }
+    }
+
+    public AudiobookRetrieveParams() { }
+
+    public AudiobookRetrieveParams(AudiobookRetrieveParams audiobookRetrieveParams)
+        : base(audiobookRetrieveParams) { }
+
+    public AudiobookRetrieveParams(
+        IReadOnlyDictionary<string, JsonElement> rawHeaderData,
+        IReadOnlyDictionary<string, JsonElement> rawQueryData
+    )
+    {
+        this._rawHeaderData = [.. rawHeaderData];
+        this._rawQueryData = [.. rawQueryData];
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    AudiobookRetrieveParams(
+        FrozenDictionary<string, JsonElement> rawHeaderData,
+        FrozenDictionary<string, JsonElement> rawQueryData
+    )
+    {
+        this._rawHeaderData = [.. rawHeaderData];
+        this._rawQueryData = [.. rawQueryData];
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    public static AudiobookRetrieveParams FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawHeaderData,
+        IReadOnlyDictionary<string, JsonElement> rawQueryData
+    )
+    {
+        return new(
+            FrozenDictionary.ToFrozenDictionary(rawHeaderData),
+            FrozenDictionary.ToFrozenDictionary(rawQueryData)
+        );
+    }
+
+    public override Uri Url(ClientOptions options)
+    {
+        return new UriBuilder(
+            options.BaseUrl.ToString().TrimEnd('/') + string.Format("/audiobooks/{0}", this.ID)
+        )
+        {
+            Query = this.QueryString(options),
+        }.Uri;
+    }
+
+    internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
+    {
+        ParamsBase.AddDefaultHeaders(request, options);
+        foreach (var item in this.RawHeaderData)
+        {
+            ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
+        }
+    }
+}
