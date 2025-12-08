@@ -1,0 +1,724 @@
+using System.Collections.Frozen;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Spotted.Core;
+using Spotted.Exceptions;
+using System = System;
+
+namespace Spotted.Models.Me.Player;
+
+[JsonConverter(
+    typeof(ModelConverter<
+        PlayerGetCurrentlyPlayingResponse,
+        PlayerGetCurrentlyPlayingResponseFromRaw
+    >)
+)]
+public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
+{
+    /// <summary>
+    /// Allows to update the user interface based on which playback actions are available
+    /// within the current context.
+    /// </summary>
+    public Actions? Actions
+    {
+        get { return ModelBase.GetNullableClass<Actions>(this.RawData, "actions"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "actions", value);
+        }
+    }
+
+    /// <summary>
+    /// A Context Object. Can be `null`.
+    /// </summary>
+    public ContextObject? Context
+    {
+        get { return ModelBase.GetNullableClass<ContextObject>(this.RawData, "context"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "context", value);
+        }
+    }
+
+    /// <summary>
+    /// The object type of the currently playing item. Can be one of `track`, `episode`,
+    /// `ad` or `unknown`.
+    /// </summary>
+    public string? CurrentlyPlayingType
+    {
+        get { return ModelBase.GetNullableClass<string>(this.RawData, "currently_playing_type"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "currently_playing_type", value);
+        }
+    }
+
+    /// <summary>
+    /// If something is currently playing, return `true`.
+    /// </summary>
+    public bool? IsPlaying
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "is_playing"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "is_playing", value);
+        }
+    }
+
+    /// <summary>
+    /// The currently playing track or episode. Can be `null`.
+    /// </summary>
+    public Item? Item
+    {
+        get { return ModelBase.GetNullableClass<Item>(this.RawData, "item"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "item", value);
+        }
+    }
+
+    /// <summary>
+    /// Progress into the currently playing track or episode. Can be `null`.
+    /// </summary>
+    public long? ProgressMs
+    {
+        get { return ModelBase.GetNullableStruct<long>(this.RawData, "progress_ms"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "progress_ms", value);
+        }
+    }
+
+    /// <summary>
+    /// Unix Millisecond Timestamp when data was fetched
+    /// </summary>
+    public long? Timestamp
+    {
+        get { return ModelBase.GetNullableStruct<long>(this.RawData, "timestamp"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "timestamp", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        this.Actions?.Validate();
+        this.Context?.Validate();
+        _ = this.CurrentlyPlayingType;
+        _ = this.IsPlaying;
+        this.Item?.Validate();
+        _ = this.ProgressMs;
+        _ = this.Timestamp;
+    }
+
+    public PlayerGetCurrentlyPlayingResponse() { }
+
+    public PlayerGetCurrentlyPlayingResponse(
+        PlayerGetCurrentlyPlayingResponse playerGetCurrentlyPlayingResponse
+    )
+        : base(playerGetCurrentlyPlayingResponse) { }
+
+    public PlayerGetCurrentlyPlayingResponse(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = [.. rawData];
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    PlayerGetCurrentlyPlayingResponse(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = [.. rawData];
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="PlayerGetCurrentlyPlayingResponseFromRaw.FromRawUnchecked"/>
+    public static PlayerGetCurrentlyPlayingResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    )
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class PlayerGetCurrentlyPlayingResponseFromRaw : IFromRaw<PlayerGetCurrentlyPlayingResponse>
+{
+    /// <inheritdoc/>
+    public PlayerGetCurrentlyPlayingResponse FromRawUnchecked(
+        IReadOnlyDictionary<string, JsonElement> rawData
+    ) => PlayerGetCurrentlyPlayingResponse.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// Allows to update the user interface based on which playback actions are available
+/// within the current context.
+/// </summary>
+[JsonConverter(typeof(ModelConverter<Actions, ActionsFromRaw>))]
+public sealed record class Actions : ModelBase
+{
+    /// <summary>
+    /// Interrupting playback. Optional field.
+    /// </summary>
+    public bool? InterruptingPlayback
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "interrupting_playback"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "interrupting_playback", value);
+        }
+    }
+
+    /// <summary>
+    /// Pausing. Optional field.
+    /// </summary>
+    public bool? Pausing
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "pausing"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "pausing", value);
+        }
+    }
+
+    /// <summary>
+    /// Resuming. Optional field.
+    /// </summary>
+    public bool? Resuming
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "resuming"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "resuming", value);
+        }
+    }
+
+    /// <summary>
+    /// Seeking playback location. Optional field.
+    /// </summary>
+    public bool? Seeking
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "seeking"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "seeking", value);
+        }
+    }
+
+    /// <summary>
+    /// Skipping to the next context. Optional field.
+    /// </summary>
+    public bool? SkippingNext
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "skipping_next"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "skipping_next", value);
+        }
+    }
+
+    /// <summary>
+    /// Skipping to the previous context. Optional field.
+    /// </summary>
+    public bool? SkippingPrev
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "skipping_prev"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "skipping_prev", value);
+        }
+    }
+
+    /// <summary>
+    /// Toggling repeat context flag. Optional field.
+    /// </summary>
+    public bool? TogglingRepeatContext
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "toggling_repeat_context"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "toggling_repeat_context", value);
+        }
+    }
+
+    /// <summary>
+    /// Toggling repeat track flag. Optional field.
+    /// </summary>
+    public bool? TogglingRepeatTrack
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "toggling_repeat_track"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "toggling_repeat_track", value);
+        }
+    }
+
+    /// <summary>
+    /// Toggling shuffle flag. Optional field.
+    /// </summary>
+    public bool? TogglingShuffle
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "toggling_shuffle"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "toggling_shuffle", value);
+        }
+    }
+
+    /// <summary>
+    /// Transfering playback between devices. Optional field.
+    /// </summary>
+    public bool? TransferringPlayback
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "transferring_playback"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "transferring_playback", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.InterruptingPlayback;
+        _ = this.Pausing;
+        _ = this.Resuming;
+        _ = this.Seeking;
+        _ = this.SkippingNext;
+        _ = this.SkippingPrev;
+        _ = this.TogglingRepeatContext;
+        _ = this.TogglingRepeatTrack;
+        _ = this.TogglingShuffle;
+        _ = this.TransferringPlayback;
+    }
+
+    public Actions() { }
+
+    public Actions(Actions actions)
+        : base(actions) { }
+
+    public Actions(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = [.. rawData];
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Actions(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = [.. rawData];
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ActionsFromRaw.FromRawUnchecked"/>
+    public static Actions FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class ActionsFromRaw : IFromRaw<Actions>
+{
+    /// <inheritdoc/>
+    public Actions FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Actions.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// The currently playing track or episode. Can be `null`.
+/// </summary>
+[JsonConverter(typeof(ItemConverter))]
+public record class Item
+{
+    public object? Value { get; } = null;
+
+    JsonElement? _json = null;
+
+    public JsonElement Json
+    {
+        get { return this._json ??= JsonSerializer.SerializeToElement(this.Value); }
+    }
+
+    public string? ID
+    {
+        get { return Match<string?>(trackObject: (x) => x.ID, episodeObject: (x) => x.ID); }
+    }
+
+    public long? DurationMs
+    {
+        get
+        {
+            return Match<long?>(
+                trackObject: (x) => x.DurationMs,
+                episodeObject: (x) => x.DurationMs
+            );
+        }
+    }
+
+    public bool? Explicit
+    {
+        get
+        {
+            return Match<bool?>(trackObject: (x) => x.Explicit, episodeObject: (x) => x.Explicit);
+        }
+    }
+
+    public ExternalURLObject? ExternalURLs
+    {
+        get
+        {
+            return Match<ExternalURLObject?>(
+                trackObject: (x) => x.ExternalURLs,
+                episodeObject: (x) => x.ExternalURLs
+            );
+        }
+    }
+
+    public string? Href
+    {
+        get { return Match<string?>(trackObject: (x) => x.Href, episodeObject: (x) => x.Href); }
+    }
+
+    public bool? IsPlayable
+    {
+        get
+        {
+            return Match<bool?>(
+                trackObject: (x) => x.IsPlayable,
+                episodeObject: (x) => x.IsPlayable
+            );
+        }
+    }
+
+    public string? Name
+    {
+        get { return Match<string?>(trackObject: (x) => x.Name, episodeObject: (x) => x.Name); }
+    }
+
+    public string? Uri
+    {
+        get { return Match<string?>(trackObject: (x) => x.Uri, episodeObject: (x) => x.Uri); }
+    }
+
+    public Item(TrackObject value, JsonElement? json = null)
+    {
+        this.Value = value;
+        this._json = json;
+    }
+
+    public Item(EpisodeObject value, JsonElement? json = null)
+    {
+        this.Value = value;
+        this._json = json;
+    }
+
+    public Item(JsonElement json)
+    {
+        this._json = json;
+    }
+
+    /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="TrackObject"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickTrackObject(out var value)) {
+    ///     // `value` is of type `TrackObject`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickTrackObject([NotNullWhen(true)] out TrackObject? value)
+    {
+        value = this.Value as TrackObject;
+        return value != null;
+    }
+
+    /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="EpisodeObject"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickEpisodeObject(out var value)) {
+    ///     // `value` is of type `EpisodeObject`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickEpisodeObject([NotNullWhen(true)] out EpisodeObject? value)
+    {
+        value = this.Value as EpisodeObject;
+        return value != null;
+    }
+
+    /// <summary>
+    /// Calls the function parameter corresponding to the variant the instance was constructed with.
+    ///
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match">
+    /// if you need your function parameters to return something.</para>
+    ///
+    /// <exception cref="SpottedInvalidDataException">
+    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+    /// that doesn't match any variant's expected shape).
+    /// </exception>
+    ///
+    /// <example>
+    /// <code>
+    /// instance.Switch(
+    ///     (TrackObject value) => {...},
+    ///     (EpisodeObject value) => {...}
+    /// );
+    /// </code>
+    /// </example>
+    /// </summary>
+    public void Switch(
+        System::Action<TrackObject> trackObject,
+        System::Action<EpisodeObject> episodeObject
+    )
+    {
+        switch (this.Value)
+        {
+            case TrackObject value:
+                trackObject(value);
+                break;
+            case EpisodeObject value:
+                episodeObject(value);
+                break;
+            default:
+                throw new SpottedInvalidDataException("Data did not match any variant of Item");
+        }
+    }
+
+    /// <summary>
+    /// Calls the function parameter corresponding to the variant the instance was constructed with and
+    /// returns its result.
+    ///
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch">
+    /// if you don't need your function parameters to return a value.</para>
+    ///
+    /// <exception cref="SpottedInvalidDataException">
+    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+    /// that doesn't match any variant's expected shape).
+    /// </exception>
+    ///
+    /// <example>
+    /// <code>
+    /// var result = instance.Match(
+    ///     (TrackObject value) => {...},
+    ///     (EpisodeObject value) => {...}
+    /// );
+    /// </code>
+    /// </example>
+    /// </summary>
+    public T Match<T>(
+        System::Func<TrackObject, T> trackObject,
+        System::Func<EpisodeObject, T> episodeObject
+    )
+    {
+        return this.Value switch
+        {
+            TrackObject value => trackObject(value),
+            EpisodeObject value => episodeObject(value),
+            _ => throw new SpottedInvalidDataException("Data did not match any variant of Item"),
+        };
+    }
+
+    public static implicit operator Item(TrackObject value) => new(value);
+
+    public static implicit operator Item(EpisodeObject value) => new(value);
+
+    /// <summary>
+    /// Validates that the instance was constructed with a known variant and that this variant is valid
+    /// (based on its own <c>Validate</c> method).
+    ///
+    /// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
+    ///
+    /// <exception cref="SpottedInvalidDataException">
+    /// Thrown when the instance does not pass validation.
+    /// </exception>
+    /// </summary>
+    public void Validate()
+    {
+        if (this.Value == null)
+        {
+            throw new SpottedInvalidDataException("Data did not match any variant of Item");
+        }
+    }
+
+    public virtual bool Equals(Item? other)
+    {
+        return other != null && JsonElement.DeepEquals(this.Json, other.Json);
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
+    }
+}
+
+sealed class ItemConverter : JsonConverter<Item>
+{
+    public override Item? Read(
+        ref Utf8JsonReader reader,
+        System::Type typeToConvert,
+        JsonSerializerOptions options
+    )
+    {
+        var json = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+        string? type;
+        try
+        {
+            type = json.GetProperty("type").GetString();
+        }
+        catch
+        {
+            type = null;
+        }
+
+        switch (type)
+        {
+            case "track":
+            {
+                try
+                {
+                    var deserialized = JsonSerializer.Deserialize<TrackObject>(json, options);
+                    if (deserialized != null)
+                    {
+                        deserialized.Validate();
+                        return new(deserialized, json);
+                    }
+                }
+                catch (System::Exception e)
+                    when (e is JsonException || e is SpottedInvalidDataException)
+                {
+                    // ignore
+                }
+
+                return new(json);
+            }
+            case "episode":
+            {
+                try
+                {
+                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(json, options);
+                    if (deserialized != null)
+                    {
+                        deserialized.Validate();
+                        return new(deserialized, json);
+                    }
+                }
+                catch (System::Exception e)
+                    when (e is JsonException || e is SpottedInvalidDataException)
+                {
+                    // ignore
+                }
+
+                return new(json);
+            }
+            default:
+            {
+                return new Item(json);
+            }
+        }
+    }
+
+    public override void Write(Utf8JsonWriter writer, Item value, JsonSerializerOptions options)
+    {
+        JsonSerializer.Serialize(writer, value.Json, options);
+    }
+}
