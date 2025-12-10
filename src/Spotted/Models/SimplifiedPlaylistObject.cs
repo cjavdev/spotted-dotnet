@@ -157,9 +157,9 @@ public sealed record class SimplifiedPlaylistObject : ModelBase
     /// playlist status is not relevant. For more about public/private status, see
     /// [Working with Playlists](/documentation/web-api/concepts/playlists)
     /// </summary>
-    public bool? Public
+    public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "public"); }
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -167,7 +167,7 @@ public sealed record class SimplifiedPlaylistObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "public", value);
+            ModelBase.Set(this._rawData, "published", value);
         }
     }
 
@@ -258,7 +258,7 @@ public sealed record class SimplifiedPlaylistObject : ModelBase
         }
         _ = this.Name;
         this.Owner?.Validate();
-        _ = this.Public;
+        _ = this.Published;
         _ = this.SnapshotID;
         this.Tracks?.Validate();
         _ = this.Type;
