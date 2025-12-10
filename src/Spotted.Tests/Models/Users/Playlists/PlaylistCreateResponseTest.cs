@@ -39,7 +39,6 @@ public class PlaylistCreateResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -176,7 +175,6 @@ public class PlaylistCreateResponseTest : TestBase
             Uri = "uri",
             DisplayName = "display_name",
         };
-        bool expectedPublic = true;
         string expectedSnapshotID = "snapshot_id";
         PlaylistCreateResponseTracks expectedTracks = new()
         {
@@ -300,7 +298,6 @@ public class PlaylistCreateResponseTest : TestBase
         }
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOwner, model.Owner);
-        Assert.Equal(expectedPublic, model.Public);
         Assert.Equal(expectedSnapshotID, model.SnapshotID);
         Assert.Equal(expectedTracks, model.Tracks);
         Assert.Equal(expectedType, model.Type);
@@ -337,7 +334,6 @@ public class PlaylistCreateResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -485,7 +481,6 @@ public class PlaylistCreateResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -626,7 +621,6 @@ public class PlaylistCreateResponseTest : TestBase
             Uri = "uri",
             DisplayName = "display_name",
         };
-        bool expectedPublic = true;
         string expectedSnapshotID = "snapshot_id";
         PlaylistCreateResponseTracks expectedTracks = new()
         {
@@ -750,7 +744,6 @@ public class PlaylistCreateResponseTest : TestBase
         }
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOwner, deserialized.Owner);
-        Assert.Equal(expectedPublic, deserialized.Public);
         Assert.Equal(expectedSnapshotID, deserialized.SnapshotID);
         Assert.Equal(expectedTracks, deserialized.Tracks);
         Assert.Equal(expectedType, deserialized.Type);
@@ -787,7 +780,6 @@ public class PlaylistCreateResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -923,8 +915,6 @@ public class PlaylistCreateResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Owner);
         Assert.False(model.RawData.ContainsKey("owner"));
-        Assert.Null(model.Public);
-        Assert.False(model.RawData.ContainsKey("public"));
         Assert.Null(model.SnapshotID);
         Assert.False(model.RawData.ContainsKey("snapshot_id"));
         Assert.Null(model.Tracks);
@@ -959,7 +949,6 @@ public class PlaylistCreateResponseTest : TestBase
             Images = null,
             Name = null,
             Owner = null,
-            Public = null,
             SnapshotID = null,
             Tracks = null,
             Type = null,
@@ -982,8 +971,6 @@ public class PlaylistCreateResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Owner);
         Assert.False(model.RawData.ContainsKey("owner"));
-        Assert.Null(model.Public);
-        Assert.False(model.RawData.ContainsKey("public"));
         Assert.Null(model.SnapshotID);
         Assert.False(model.RawData.ContainsKey("snapshot_id"));
         Assert.Null(model.Tracks);
@@ -1010,7 +997,6 @@ public class PlaylistCreateResponseTest : TestBase
             Images = null,
             Name = null,
             Owner = null,
-            Public = null,
             SnapshotID = null,
             Tracks = null,
             Type = null,
@@ -1049,7 +1035,6 @@ public class PlaylistCreateResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -1194,7 +1179,6 @@ public class PlaylistCreateResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -1338,7 +1322,6 @@ public class PlaylistCreateResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -1485,7 +1468,6 @@ public class PlaylistCreateResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
