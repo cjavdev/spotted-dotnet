@@ -167,26 +167,6 @@ public sealed record class PlaylistRetrieveResponse : ModelBase
     }
 
     /// <summary>
-    /// The playlist's public/private status (if it is added to the user's profile):
-    /// `true` the playlist is public, `false` the playlist is private, `null` the
-    /// playlist status is not relevant. For more about public/private status, see
-    /// [Working with Playlists](/documentation/web-api/concepts/playlists)
-    /// </summary>
-    public bool? Public
-    {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "public"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            ModelBase.Set(this._rawData, "public", value);
-        }
-    }
-
-    /// <summary>
     /// The version identifier for the current playlist. Can be supplied in other
     /// requests to target a specific playlist version
     /// </summary>
@@ -277,7 +257,6 @@ public sealed record class PlaylistRetrieveResponse : ModelBase
         }
         _ = this.Name;
         this.Owner?.Validate();
-        _ = this.Public;
         _ = this.SnapshotID;
         this.Tracks?.Validate();
         _ = this.Type;
