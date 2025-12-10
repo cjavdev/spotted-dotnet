@@ -39,7 +39,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -176,7 +176,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Uri = "uri",
             DisplayName = "display_name",
         };
-        bool expectedPublished = true;
+        bool expectedPublic = true;
         string expectedSnapshotID = "snapshot_id";
         PlaylistRetrieveResponseTracks expectedTracks = new()
         {
@@ -300,7 +300,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         }
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOwner, model.Owner);
-        Assert.Equal(expectedPublished, model.Published);
+        Assert.Equal(expectedPublic, model.Public);
         Assert.Equal(expectedSnapshotID, model.SnapshotID);
         Assert.Equal(expectedTracks, model.Tracks);
         Assert.Equal(expectedType, model.Type);
@@ -337,7 +337,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -485,7 +485,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -626,7 +626,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Uri = "uri",
             DisplayName = "display_name",
         };
-        bool expectedPublished = true;
+        bool expectedPublic = true;
         string expectedSnapshotID = "snapshot_id";
         PlaylistRetrieveResponseTracks expectedTracks = new()
         {
@@ -750,7 +750,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         }
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOwner, deserialized.Owner);
-        Assert.Equal(expectedPublished, deserialized.Published);
+        Assert.Equal(expectedPublic, deserialized.Public);
         Assert.Equal(expectedSnapshotID, deserialized.SnapshotID);
         Assert.Equal(expectedTracks, deserialized.Tracks);
         Assert.Equal(expectedType, deserialized.Type);
@@ -787,7 +787,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -923,8 +923,8 @@ public class PlaylistRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Owner);
         Assert.False(model.RawData.ContainsKey("owner"));
-        Assert.Null(model.Published);
-        Assert.False(model.RawData.ContainsKey("published"));
+        Assert.Null(model.Public);
+        Assert.False(model.RawData.ContainsKey("public"));
         Assert.Null(model.SnapshotID);
         Assert.False(model.RawData.ContainsKey("snapshot_id"));
         Assert.Null(model.Tracks);
@@ -959,7 +959,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Images = null,
             Name = null,
             Owner = null,
-            Published = null,
+            Public = null,
             SnapshotID = null,
             Tracks = null,
             Type = null,
@@ -982,8 +982,8 @@ public class PlaylistRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Owner);
         Assert.False(model.RawData.ContainsKey("owner"));
-        Assert.Null(model.Published);
-        Assert.False(model.RawData.ContainsKey("published"));
+        Assert.Null(model.Public);
+        Assert.False(model.RawData.ContainsKey("public"));
         Assert.Null(model.SnapshotID);
         Assert.False(model.RawData.ContainsKey("snapshot_id"));
         Assert.Null(model.Tracks);
@@ -1010,7 +1010,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Images = null,
             Name = null,
             Owner = null,
-            Published = null,
+            Public = null,
             SnapshotID = null,
             Tracks = null,
             Type = null,
@@ -1049,7 +1049,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -1194,7 +1194,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -1338,7 +1338,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {
@@ -1485,7 +1485,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new()
             {

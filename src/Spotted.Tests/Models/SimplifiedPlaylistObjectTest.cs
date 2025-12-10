@@ -36,7 +36,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new() { Href = "href", Total = 0 },
             Type = "type",
@@ -67,7 +67,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Uri = "uri",
             DisplayName = "display_name",
         };
-        bool expectedPublished = true;
+        bool expectedPublic = true;
         string expectedSnapshotID = "snapshot_id";
         PlaylistTracksRefObject expectedTracks = new() { Href = "href", Total = 0 };
         string expectedType = "type";
@@ -85,7 +85,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         }
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOwner, model.Owner);
-        Assert.Equal(expectedPublished, model.Published);
+        Assert.Equal(expectedPublic, model.Public);
         Assert.Equal(expectedSnapshotID, model.SnapshotID);
         Assert.Equal(expectedTracks, model.Tracks);
         Assert.Equal(expectedType, model.Type);
@@ -121,7 +121,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new() { Href = "href", Total = 0 },
             Type = "type",
@@ -163,7 +163,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new() { Href = "href", Total = 0 },
             Type = "type",
@@ -198,7 +198,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Uri = "uri",
             DisplayName = "display_name",
         };
-        bool expectedPublished = true;
+        bool expectedPublic = true;
         string expectedSnapshotID = "snapshot_id";
         PlaylistTracksRefObject expectedTracks = new() { Href = "href", Total = 0 };
         string expectedType = "type";
@@ -216,7 +216,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         }
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOwner, deserialized.Owner);
-        Assert.Equal(expectedPublished, deserialized.Published);
+        Assert.Equal(expectedPublic, deserialized.Public);
         Assert.Equal(expectedSnapshotID, deserialized.SnapshotID);
         Assert.Equal(expectedTracks, deserialized.Tracks);
         Assert.Equal(expectedType, deserialized.Type);
@@ -252,7 +252,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
                 Uri = "uri",
                 DisplayName = "display_name",
             },
-            Published = true,
+            Public = true,
             SnapshotID = "snapshot_id",
             Tracks = new() { Href = "href", Total = 0 },
             Type = "type",
@@ -283,8 +283,8 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Owner);
         Assert.False(model.RawData.ContainsKey("owner"));
-        Assert.Null(model.Published);
-        Assert.False(model.RawData.ContainsKey("published"));
+        Assert.Null(model.Public);
+        Assert.False(model.RawData.ContainsKey("public"));
         Assert.Null(model.SnapshotID);
         Assert.False(model.RawData.ContainsKey("snapshot_id"));
         Assert.Null(model.Tracks);
@@ -317,7 +317,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Images = null,
             Name = null,
             Owner = null,
-            Published = null,
+            Public = null,
             SnapshotID = null,
             Tracks = null,
             Type = null,
@@ -340,8 +340,8 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Owner);
         Assert.False(model.RawData.ContainsKey("owner"));
-        Assert.Null(model.Published);
-        Assert.False(model.RawData.ContainsKey("published"));
+        Assert.Null(model.Public);
+        Assert.False(model.RawData.ContainsKey("public"));
         Assert.Null(model.SnapshotID);
         Assert.False(model.RawData.ContainsKey("snapshot_id"));
         Assert.Null(model.Tracks);
@@ -366,7 +366,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Images = null,
             Name = null,
             Owner = null,
-            Published = null,
+            Public = null,
             SnapshotID = null,
             Tracks = null,
             Type = null,
