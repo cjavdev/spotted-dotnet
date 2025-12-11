@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Spotted.Core;
+using Spotted.Exceptions;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
@@ -173,5 +174,59 @@ public class SimplifiedArtistObjectTest : TestBase
         };
 
         model.Validate();
+    }
+}
+
+public class SimplifiedArtistObjectTypeTest : TestBase
+{
+    [Theory]
+    [InlineData(SimplifiedArtistObjectType.Artist)]
+    public void Validation_Works(SimplifiedArtistObjectType rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, SimplifiedArtistObjectType> value = rawValue;
+        value.Validate();
+    }
+
+    [Fact]
+    public void InvalidEnumValidationThrows_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, SimplifiedArtistObjectType>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
+    }
+
+    [Theory]
+    [InlineData(SimplifiedArtistObjectType.Artist)]
+    public void SerializationRoundtrip_Works(SimplifiedArtistObjectType rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, SimplifiedArtistObjectType> value = rawValue;
+
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, SimplifiedArtistObjectType>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InvalidEnumSerializationRoundtrip_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, SimplifiedArtistObjectType>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, SimplifiedArtistObjectType>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
     }
 }

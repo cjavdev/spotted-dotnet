@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Core;
+using Spotted.Exceptions;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
@@ -462,5 +463,65 @@ public class SimplifiedEpisodeObjectTest : TestBase
         };
 
         model.Validate();
+    }
+}
+
+public class SimplifiedEpisodeObjectReleaseDatePrecisionTest : TestBase
+{
+    [Theory]
+    [InlineData(SimplifiedEpisodeObjectReleaseDatePrecision.Year)]
+    [InlineData(SimplifiedEpisodeObjectReleaseDatePrecision.Month)]
+    [InlineData(SimplifiedEpisodeObjectReleaseDatePrecision.Day)]
+    public void Validation_Works(SimplifiedEpisodeObjectReleaseDatePrecision rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision> value = rawValue;
+        value.Validate();
+    }
+
+    [Fact]
+    public void InvalidEnumValidationThrows_Works()
+    {
+        var value = JsonSerializer.Deserialize<
+            ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>
+        >(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
+    }
+
+    [Theory]
+    [InlineData(SimplifiedEpisodeObjectReleaseDatePrecision.Year)]
+    [InlineData(SimplifiedEpisodeObjectReleaseDatePrecision.Month)]
+    [InlineData(SimplifiedEpisodeObjectReleaseDatePrecision.Day)]
+    public void SerializationRoundtrip_Works(SimplifiedEpisodeObjectReleaseDatePrecision rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision> value = rawValue;
+
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<
+            ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>
+        >(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InvalidEnumSerializationRoundtrip_Works()
+    {
+        var value = JsonSerializer.Deserialize<
+            ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>
+        >(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<
+            ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>
+        >(json, ModelBase.SerializerOptions);
+
+        Assert.Equal(value, deserialized);
     }
 }
