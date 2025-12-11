@@ -347,6 +347,7 @@ public record class Track
         {
             throw new SpottedInvalidDataException("Data did not match any variant of Track");
         }
+        this.Switch((object1) => object1.Validate(), (episodeObject) => episodeObject.Validate());
     }
 
     public virtual bool Equals(Track? other)

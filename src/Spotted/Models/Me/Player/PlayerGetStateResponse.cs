@@ -705,6 +705,10 @@ public record class PlayerGetStateResponseItem
                 "Data did not match any variant of PlayerGetStateResponseItem"
             );
         }
+        this.Switch(
+            (trackObject) => trackObject.Validate(),
+            (episodeObject) => episodeObject.Validate()
+        );
     }
 
     public virtual bool Equals(PlayerGetStateResponseItem? other)
