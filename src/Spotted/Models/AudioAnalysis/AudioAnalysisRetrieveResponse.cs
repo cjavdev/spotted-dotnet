@@ -669,9 +669,9 @@ sealed class ModeConverter : JsonConverter<Mode>
     {
         return JsonSerializer.Deserialize<double>(ref reader, options) switch
         {
-            -1.0 => Mode.ModeNoResult,
-            0.0 => Mode.ModeMinor,
-            1.0 => Mode.ModeMajor,
+            -1 => Mode.ModeNoResult,
+            0 => Mode.ModeMinor,
+            1 => Mode.ModeMajor,
             _ => (Mode)(-1),
         };
     }
@@ -682,9 +682,9 @@ sealed class ModeConverter : JsonConverter<Mode>
             writer,
             value switch
             {
-                Mode.ModeNoResult => -1.0,
-                Mode.ModeMinor => 0.0,
-                Mode.ModeMajor => 1.0,
+                Mode.ModeNoResult => -1,
+                Mode.ModeMinor => 0,
+                Mode.ModeMajor => 1,
                 _ => throw new SpottedInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
