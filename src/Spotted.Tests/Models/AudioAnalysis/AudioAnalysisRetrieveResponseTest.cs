@@ -95,7 +95,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 EndOfFadeIn = 0,
                 Key = 9,
                 KeyConfidence = 0.408,
-                Loudness = -5.883,
+                Loudness = -5.883f,
                 Mode = 0,
                 ModeConfidence = 0.485,
                 NumSamples = 4585515,
@@ -106,7 +106,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 StartOfFadeOut = 201.13705,
                 SynchVersion = 1,
                 Synchstring = "synchstring",
-                Tempo = 118.211,
+                Tempo = 118.211f,
                 TempoConfidence = 0.73,
                 TimeSignature = 4,
                 TimeSignatureConfidence = 0.994,
@@ -196,7 +196,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             EndOfFadeIn = 0,
             Key = 9,
             KeyConfidence = 0.408,
-            Loudness = -5.883,
+            Loudness = -5.883f,
             Mode = 0,
             ModeConfidence = 0.485,
             NumSamples = 4585515,
@@ -207,7 +207,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             StartOfFadeOut = 201.13705,
             SynchVersion = 1,
             Synchstring = "synchstring",
-            Tempo = 118.211,
+            Tempo = 118.211f,
             TempoConfidence = 0.73,
             TimeSignature = 4,
             TimeSignatureConfidence = 0.994,
@@ -330,7 +330,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 EndOfFadeIn = 0,
                 Key = 9,
                 KeyConfidence = 0.408,
-                Loudness = -5.883,
+                Loudness = -5.883f,
                 Mode = 0,
                 ModeConfidence = 0.485,
                 NumSamples = 4585515,
@@ -341,7 +341,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 StartOfFadeOut = 201.13705,
                 SynchVersion = 1,
                 Synchstring = "synchstring",
-                Tempo = 118.211,
+                Tempo = 118.211f,
                 TempoConfidence = 0.73,
                 TimeSignature = 4,
                 TimeSignatureConfidence = 0.994,
@@ -442,7 +442,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 EndOfFadeIn = 0,
                 Key = 9,
                 KeyConfidence = 0.408,
-                Loudness = -5.883,
+                Loudness = -5.883f,
                 Mode = 0,
                 ModeConfidence = 0.485,
                 NumSamples = 4585515,
@@ -453,7 +453,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 StartOfFadeOut = 201.13705,
                 SynchVersion = 1,
                 Synchstring = "synchstring",
-                Tempo = 118.211,
+                Tempo = 118.211f,
                 TempoConfidence = 0.73,
                 TimeSignature = 4,
                 TimeSignatureConfidence = 0.994,
@@ -547,7 +547,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             EndOfFadeIn = 0,
             Key = 9,
             KeyConfidence = 0.408,
-            Loudness = -5.883,
+            Loudness = -5.883f,
             Mode = 0,
             ModeConfidence = 0.485,
             NumSamples = 4585515,
@@ -558,7 +558,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             StartOfFadeOut = 201.13705,
             SynchVersion = 1,
             Synchstring = "synchstring",
-            Tempo = 118.211,
+            Tempo = 118.211f,
             TempoConfidence = 0.73,
             TimeSignature = 4,
             TimeSignatureConfidence = 0.994,
@@ -681,7 +681,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 EndOfFadeIn = 0,
                 Key = 9,
                 KeyConfidence = 0.408,
-                Loudness = -5.883,
+                Loudness = -5.883f,
                 Mode = 0,
                 ModeConfidence = 0.485,
                 NumSamples = 4585515,
@@ -692,7 +692,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 StartOfFadeOut = 201.13705,
                 SynchVersion = 1,
                 Synchstring = "synchstring",
-                Tempo = 118.211,
+                Tempo = 118.211f,
                 TempoConfidence = 0.73,
                 TimeSignature = 4,
                 TimeSignatureConfidence = 0.994,
@@ -1523,7 +1523,7 @@ public class TrackTest : TestBase
             EndOfFadeIn = 0,
             Key = 9,
             KeyConfidence = 0.408,
-            Loudness = -5.883,
+            Loudness = -5.883f,
             Mode = 0,
             ModeConfidence = 0.485,
             NumSamples = 4585515,
@@ -1534,7 +1534,7 @@ public class TrackTest : TestBase
             StartOfFadeOut = 201.13705,
             SynchVersion = 1,
             Synchstring = "synchstring",
-            Tempo = 118.211,
+            Tempo = 118.211f,
             TempoConfidence = 0.73,
             TimeSignature = 4,
             TimeSignatureConfidence = 0.994,
@@ -1551,7 +1551,7 @@ public class TrackTest : TestBase
         double expectedEndOfFadeIn = 0;
         long expectedKey = 9;
         double expectedKeyConfidence = 0.408;
-        float expectedLoudness = -5.883;
+        float expectedLoudness = -5.883f;
         long expectedMode = 0;
         double expectedModeConfidence = 0.485;
         long expectedNumSamples = 4585515;
@@ -1562,7 +1562,7 @@ public class TrackTest : TestBase
         double expectedStartOfFadeOut = 201.13705;
         double expectedSynchVersion = 1;
         string expectedSynchstring = "synchstring";
-        float expectedTempo = 118.211;
+        float expectedTempo = 118.211f;
         double expectedTempoConfidence = 0.73;
         long expectedTimeSignature = 4;
         double expectedTimeSignatureConfidence = 0.994;
@@ -1611,7 +1611,7 @@ public class TrackTest : TestBase
             EndOfFadeIn = 0,
             Key = 9,
             KeyConfidence = 0.408,
-            Loudness = -5.883,
+            Loudness = -5.883f,
             Mode = 0,
             ModeConfidence = 0.485,
             NumSamples = 4585515,
@@ -1622,7 +1622,7 @@ public class TrackTest : TestBase
             StartOfFadeOut = 201.13705,
             SynchVersion = 1,
             Synchstring = "synchstring",
-            Tempo = 118.211,
+            Tempo = 118.211f,
             TempoConfidence = 0.73,
             TimeSignature = 4,
             TimeSignatureConfidence = 0.994,
@@ -1650,7 +1650,7 @@ public class TrackTest : TestBase
             EndOfFadeIn = 0,
             Key = 9,
             KeyConfidence = 0.408,
-            Loudness = -5.883,
+            Loudness = -5.883f,
             Mode = 0,
             ModeConfidence = 0.485,
             NumSamples = 4585515,
@@ -1661,7 +1661,7 @@ public class TrackTest : TestBase
             StartOfFadeOut = 201.13705,
             SynchVersion = 1,
             Synchstring = "synchstring",
-            Tempo = 118.211,
+            Tempo = 118.211f,
             TempoConfidence = 0.73,
             TimeSignature = 4,
             TimeSignatureConfidence = 0.994,
@@ -1682,7 +1682,7 @@ public class TrackTest : TestBase
         double expectedEndOfFadeIn = 0;
         long expectedKey = 9;
         double expectedKeyConfidence = 0.408;
-        float expectedLoudness = -5.883;
+        float expectedLoudness = -5.883f;
         long expectedMode = 0;
         double expectedModeConfidence = 0.485;
         long expectedNumSamples = 4585515;
@@ -1693,7 +1693,7 @@ public class TrackTest : TestBase
         double expectedStartOfFadeOut = 201.13705;
         double expectedSynchVersion = 1;
         string expectedSynchstring = "synchstring";
-        float expectedTempo = 118.211;
+        float expectedTempo = 118.211f;
         double expectedTempoConfidence = 0.73;
         long expectedTimeSignature = 4;
         double expectedTimeSignatureConfidence = 0.994;
@@ -1742,7 +1742,7 @@ public class TrackTest : TestBase
             EndOfFadeIn = 0,
             Key = 9,
             KeyConfidence = 0.408,
-            Loudness = -5.883,
+            Loudness = -5.883f,
             Mode = 0,
             ModeConfidence = 0.485,
             NumSamples = 4585515,
@@ -1753,7 +1753,7 @@ public class TrackTest : TestBase
             StartOfFadeOut = 201.13705,
             SynchVersion = 1,
             Synchstring = "synchstring",
-            Tempo = 118.211,
+            Tempo = 118.211f,
             TempoConfidence = 0.73,
             TimeSignature = 4,
             TimeSignatureConfidence = 0.994,
