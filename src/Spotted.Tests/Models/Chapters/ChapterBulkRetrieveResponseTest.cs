@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Core;
+using Spotted.Exceptions;
 using Spotted.Models;
 using Spotted.Models.Chapters;
 
@@ -1227,5 +1228,63 @@ public class ChapterTest : TestBase
         };
 
         model.Validate();
+    }
+}
+
+public class ChapterReleaseDatePrecisionTest : TestBase
+{
+    [Theory]
+    [InlineData(ChapterReleaseDatePrecision.Year)]
+    [InlineData(ChapterReleaseDatePrecision.Month)]
+    [InlineData(ChapterReleaseDatePrecision.Day)]
+    public void Validation_Works(ChapterReleaseDatePrecision rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, ChapterReleaseDatePrecision> value = rawValue;
+        value.Validate();
+    }
+
+    [Fact]
+    public void InvalidEnumValidationThrows_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, ChapterReleaseDatePrecision>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
+    }
+
+    [Theory]
+    [InlineData(ChapterReleaseDatePrecision.Year)]
+    [InlineData(ChapterReleaseDatePrecision.Month)]
+    [InlineData(ChapterReleaseDatePrecision.Day)]
+    public void SerializationRoundtrip_Works(ChapterReleaseDatePrecision rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, ChapterReleaseDatePrecision> value = rawValue;
+
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, ChapterReleaseDatePrecision>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InvalidEnumSerializationRoundtrip_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, ChapterReleaseDatePrecision>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, ChapterReleaseDatePrecision>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
     }
 }

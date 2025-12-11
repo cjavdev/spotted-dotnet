@@ -295,7 +295,8 @@ public sealed record class SimplifiedChapterObject : ModelBase
     }
 
 #pragma warning disable CS8618
-    [System::Obsolete("Required properties are deprecated: audio_preview_url"), SetsRequiredMembers]
+    [System::Obsolete("Required properties are deprecated: audio_preview_url")]
+    [SetsRequiredMembers]
     SimplifiedChapterObject(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = [.. rawData];

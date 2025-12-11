@@ -304,7 +304,8 @@ public sealed record class EpisodeObject : ModelBase
     }
 
 #pragma warning disable CS8618
-    [System::Obsolete("Required properties are deprecated: audio_preview_url"), SetsRequiredMembers]
+    [System::Obsolete("Required properties are deprecated: audio_preview_url")]
+    [SetsRequiredMembers]
     EpisodeObject(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = [.. rawData];
