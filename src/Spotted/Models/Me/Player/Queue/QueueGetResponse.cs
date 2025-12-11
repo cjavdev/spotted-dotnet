@@ -329,6 +329,10 @@ public record class CurrentlyPlaying
                 "Data did not match any variant of CurrentlyPlaying"
             );
         }
+        this.Switch(
+            (trackObject) => trackObject.Validate(),
+            (episodeObject) => episodeObject.Validate()
+        );
     }
 
     public virtual bool Equals(CurrentlyPlaying? other)
@@ -648,6 +652,10 @@ public record class QueueGetResponseQueue
                 "Data did not match any variant of QueueGetResponseQueue"
             );
         }
+        this.Switch(
+            (trackObject) => trackObject.Validate(),
+            (episodeObject) => episodeObject.Validate()
+        );
     }
 
     public virtual bool Equals(QueueGetResponseQueue? other)

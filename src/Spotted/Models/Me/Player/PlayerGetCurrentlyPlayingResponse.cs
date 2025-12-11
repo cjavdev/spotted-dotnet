@@ -638,6 +638,10 @@ public record class Item
         {
             throw new SpottedInvalidDataException("Data did not match any variant of Item");
         }
+        this.Switch(
+            (trackObject) => trackObject.Validate(),
+            (episodeObject) => episodeObject.Validate()
+        );
     }
 
     public virtual bool Equals(Item? other)
