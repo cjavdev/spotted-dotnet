@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Core;
+using Spotted.Exceptions;
 using Spotted.Models.Albums;
 using Models = Spotted.Models;
 
@@ -1513,6 +1514,122 @@ public class AlbumTest : TestBase
         };
 
         model.Validate();
+    }
+}
+
+public class AlbumAlbumTypeTest : TestBase
+{
+    [Theory]
+    [InlineData(AlbumAlbumType.Album)]
+    [InlineData(AlbumAlbumType.Single)]
+    [InlineData(AlbumAlbumType.Compilation)]
+    public void Validation_Works(AlbumAlbumType rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, AlbumAlbumType> value = rawValue;
+        value.Validate();
+    }
+
+    [Fact]
+    public void InvalidEnumValidationThrows_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumAlbumType>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
+    }
+
+    [Theory]
+    [InlineData(AlbumAlbumType.Album)]
+    [InlineData(AlbumAlbumType.Single)]
+    [InlineData(AlbumAlbumType.Compilation)]
+    public void SerializationRoundtrip_Works(AlbumAlbumType rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, AlbumAlbumType> value = rawValue;
+
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, AlbumAlbumType>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InvalidEnumSerializationRoundtrip_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumAlbumType>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, AlbumAlbumType>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+}
+
+public class AlbumReleaseDatePrecisionTest : TestBase
+{
+    [Theory]
+    [InlineData(AlbumReleaseDatePrecision.Year)]
+    [InlineData(AlbumReleaseDatePrecision.Month)]
+    [InlineData(AlbumReleaseDatePrecision.Day)]
+    public void Validation_Works(AlbumReleaseDatePrecision rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, AlbumReleaseDatePrecision> value = rawValue;
+        value.Validate();
+    }
+
+    [Fact]
+    public void InvalidEnumValidationThrows_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumReleaseDatePrecision>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
+    }
+
+    [Theory]
+    [InlineData(AlbumReleaseDatePrecision.Year)]
+    [InlineData(AlbumReleaseDatePrecision.Month)]
+    [InlineData(AlbumReleaseDatePrecision.Day)]
+    public void SerializationRoundtrip_Works(AlbumReleaseDatePrecision rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, AlbumReleaseDatePrecision> value = rawValue;
+
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, AlbumReleaseDatePrecision>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InvalidEnumSerializationRoundtrip_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumReleaseDatePrecision>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, AlbumReleaseDatePrecision>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
     }
 }
 

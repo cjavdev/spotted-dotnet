@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Core;
+using Spotted.Exceptions;
 using Spotted.Models.AudioAnalysis;
 
 namespace Spotted.Tests.Models.AudioAnalysis;
@@ -1216,6 +1217,64 @@ public class SectionTest : TestBase
         };
 
         model.Validate();
+    }
+}
+
+public class ModeTest : TestBase
+{
+    [Theory]
+    [InlineData(Mode.ModeNoResult)]
+    [InlineData(Mode.ModeMinor)]
+    [InlineData(Mode.ModeMajor)]
+    public void Validation_Works(Mode rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<double, Mode> value = rawValue;
+        value.Validate();
+    }
+
+    [Fact]
+    public void InvalidEnumValidationThrows_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<double, Mode>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
+    }
+
+    [Theory]
+    [InlineData(Mode.ModeNoResult)]
+    [InlineData(Mode.ModeMinor)]
+    [InlineData(Mode.ModeMajor)]
+    public void SerializationRoundtrip_Works(Mode rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<double, Mode> value = rawValue;
+
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<double, Mode>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InvalidEnumSerializationRoundtrip_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<double, Mode>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<double, Mode>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
     }
 }
 

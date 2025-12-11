@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Core;
+using Spotted.Exceptions;
 using Spotted.Models.AudioFeatures;
 
 namespace Spotted.Tests.Models.AudioFeatures;
@@ -550,5 +551,59 @@ public class AudioFeatureTest : TestBase
         };
 
         model.Validate();
+    }
+}
+
+public class AudioFeatureTypeTest : TestBase
+{
+    [Theory]
+    [InlineData(AudioFeatureType.AudioFeatures)]
+    public void Validation_Works(AudioFeatureType rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, AudioFeatureType> value = rawValue;
+        value.Validate();
+    }
+
+    [Fact]
+    public void InvalidEnumValidationThrows_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, AudioFeatureType>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
+    }
+
+    [Theory]
+    [InlineData(AudioFeatureType.AudioFeatures)]
+    public void SerializationRoundtrip_Works(AudioFeatureType rawValue)
+    {
+        // force implicit conversion because Theory can't do that for us
+        ApiEnum<string, AudioFeatureType> value = rawValue;
+
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, AudioFeatureType>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
+    }
+
+    [Fact]
+    public void InvalidEnumSerializationRoundtrip_Works()
+    {
+        var value = JsonSerializer.Deserialize<ApiEnum<string, AudioFeatureType>>(
+            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            ModelBase.SerializerOptions
+        );
+        string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, AudioFeatureType>>(
+            json,
+            ModelBase.SerializerOptions
+        );
+
+        Assert.Equal(value, deserialized);
     }
 }
