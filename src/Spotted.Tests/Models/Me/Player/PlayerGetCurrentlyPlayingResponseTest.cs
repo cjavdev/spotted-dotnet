@@ -1006,7 +1006,7 @@ public class ItemTest : TestBase
     public void track_objectValidation_Works()
     {
         Item value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -1095,7 +1095,7 @@ public class ItemTest : TestBase
     public void episode_objectValidation_Works()
     {
         Item value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
@@ -1164,7 +1164,7 @@ public class ItemTest : TestBase
     public void track_objectSerializationRoundtrip_Works()
     {
         Item value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -1256,7 +1256,7 @@ public class ItemTest : TestBase
     public void episode_objectSerializationRoundtrip_Works()
     {
         Item value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =

@@ -1109,7 +1109,7 @@ public class CurrentlyPlayingTest : TestBase
     public void track_objectValidation_Works()
     {
         CurrentlyPlaying value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -1198,7 +1198,7 @@ public class CurrentlyPlayingTest : TestBase
     public void episode_objectValidation_Works()
     {
         CurrentlyPlaying value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
@@ -1267,7 +1267,7 @@ public class CurrentlyPlayingTest : TestBase
     public void track_objectSerializationRoundtrip_Works()
     {
         CurrentlyPlaying value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -1359,7 +1359,7 @@ public class CurrentlyPlayingTest : TestBase
     public void episode_objectSerializationRoundtrip_Works()
     {
         CurrentlyPlaying value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
@@ -1434,7 +1434,7 @@ public class QueueGetResponseQueueTest : TestBase
     public void track_objectValidation_Works()
     {
         QueueGetResponseQueue value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -1523,7 +1523,7 @@ public class QueueGetResponseQueueTest : TestBase
     public void episode_objectValidation_Works()
     {
         QueueGetResponseQueue value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
@@ -1592,7 +1592,7 @@ public class QueueGetResponseQueueTest : TestBase
     public void track_objectSerializationRoundtrip_Works()
     {
         QueueGetResponseQueue value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -1684,7 +1684,7 @@ public class QueueGetResponseQueueTest : TestBase
     public void episode_objectSerializationRoundtrip_Works()
     {
         QueueGetResponseQueue value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
