@@ -1108,7 +1108,7 @@ public class PlayerGetStateResponseItemTest : TestBase
     public void track_objectValidation_Works()
     {
         PlayerGetStateResponseItem value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -1197,7 +1197,7 @@ public class PlayerGetStateResponseItemTest : TestBase
     public void episode_objectValidation_Works()
     {
         PlayerGetStateResponseItem value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
@@ -1266,7 +1266,7 @@ public class PlayerGetStateResponseItemTest : TestBase
     public void track_objectSerializationRoundtrip_Works()
     {
         PlayerGetStateResponseItem value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -1358,7 +1358,7 @@ public class PlayerGetStateResponseItemTest : TestBase
     public void episode_objectSerializationRoundtrip_Works()
     {
         PlayerGetStateResponseItem value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
