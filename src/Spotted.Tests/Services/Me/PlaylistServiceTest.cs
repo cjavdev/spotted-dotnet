@@ -7,7 +7,10 @@ public class PlaylistServiceTest : TestBase
     [Fact(Skip = "Prism tests are disabled")]
     public async Task List_Works()
     {
-        var page = await this.client.Me.Playlists.List();
+        var page = await this.client.Me.Playlists.List(
+            new(),
+            TestContext.Current.CancellationToken
+        );
         page.Validate();
     }
 }

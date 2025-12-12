@@ -7,7 +7,11 @@ public class UserServiceTest : TestBase
     [Fact(Skip = "Prism tests are disabled")]
     public async Task RetrieveProfile_Works()
     {
-        var response = await this.client.Users.RetrieveProfile("smedjan");
+        var response = await this.client.Users.RetrieveProfile(
+            "smedjan",
+            new(),
+            TestContext.Current.CancellationToken
+        );
         response.Validate();
     }
 }
