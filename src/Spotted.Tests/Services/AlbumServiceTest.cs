@@ -7,7 +7,11 @@ public class AlbumServiceTest : TestBase
     [Fact(Skip = "Prism tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var album = await this.client.Albums.Retrieve("4aawyAB9vmqN3uQ7FjRGTy");
+        var album = await this.client.Albums.Retrieve(
+            "4aawyAB9vmqN3uQ7FjRGTy",
+            new(),
+            TestContext.Current.CancellationToken
+        );
         album.Validate();
     }
 
@@ -15,7 +19,8 @@ public class AlbumServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Albums.BulkRetrieve(
-            new() { IDs = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc" }
+            new() { IDs = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc" },
+            TestContext.Current.CancellationToken
         );
         response.Validate();
     }
@@ -23,7 +28,11 @@ public class AlbumServiceTest : TestBase
     [Fact(Skip = "Prism tests are disabled")]
     public async Task ListTracks_Works()
     {
-        var page = await this.client.Albums.ListTracks("4aawyAB9vmqN3uQ7FjRGTy");
+        var page = await this.client.Albums.ListTracks(
+            "4aawyAB9vmqN3uQ7FjRGTy",
+            new(),
+            TestContext.Current.CancellationToken
+        );
         page.Validate();
     }
 }
