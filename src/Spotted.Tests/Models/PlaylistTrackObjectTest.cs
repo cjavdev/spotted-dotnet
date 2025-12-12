@@ -672,7 +672,7 @@ public class TrackTest : TestBase
     public void objectValidation_Works()
     {
         Track value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -761,7 +761,7 @@ public class TrackTest : TestBase
     public void episode_objectValidation_Works()
     {
         Track value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
@@ -830,7 +830,7 @@ public class TrackTest : TestBase
     public void objectSerializationRoundtrip_Works()
     {
         Track value = new(
-            new()
+            new TrackObject()
             {
                 ID = "id",
                 Album = new()
@@ -922,7 +922,7 @@ public class TrackTest : TestBase
     public void episode_objectSerializationRoundtrip_Works()
     {
         Track value = new(
-            new()
+            new EpisodeObject()
             {
                 ID = "5Xt5DXGzch68nYYamXrNxZ",
                 AudioPreviewURL =
