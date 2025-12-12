@@ -345,6 +345,7 @@ public class QueueGetResponseTest : TestBase
         ];
 
         Assert.Equal(expectedCurrentlyPlaying, model.CurrentlyPlaying);
+        Assert.NotNull(model.Queue);
         Assert.Equal(expectedQueue.Count, model.Queue.Count);
         for (int i = 0; i < expectedQueue.Count; i++)
         {
@@ -872,6 +873,7 @@ public class QueueGetResponseTest : TestBase
         ];
 
         Assert.Equal(expectedCurrentlyPlaying, deserialized.CurrentlyPlaying);
+        Assert.NotNull(deserialized.Queue);
         Assert.Equal(expectedQueue.Count, deserialized.Queue.Count);
         for (int i = 0; i < expectedQueue.Count; i++)
         {

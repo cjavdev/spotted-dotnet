@@ -2352,6 +2352,7 @@ public class SearchQueryResponseAlbumsTest : TestBase
         Assert.Equal(expectedOffset, model.Offset);
         Assert.Equal(expectedPrevious, model.Previous);
         Assert.Equal(expectedTotal, model.Total);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -2524,6 +2525,7 @@ public class SearchQueryResponseAlbumsTest : TestBase
         Assert.Equal(expectedOffset, deserialized.Offset);
         Assert.Equal(expectedPrevious, deserialized.Previous);
         Assert.Equal(expectedTotal, deserialized.Total);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -3328,6 +3330,7 @@ public class SearchQueryResponseArtistsTest : TestBase
         Assert.Equal(expectedOffset, model.Offset);
         Assert.Equal(expectedPrevious, model.Previous);
         Assert.Equal(expectedTotal, model.Total);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -3458,6 +3461,7 @@ public class SearchQueryResponseArtistsTest : TestBase
         Assert.Equal(expectedOffset, deserialized.Offset);
         Assert.Equal(expectedPrevious, deserialized.Previous);
         Assert.Equal(expectedTotal, deserialized.Total);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -3672,6 +3676,7 @@ public class SearchQueryResponseAudiobooksTest : TestBase
         Assert.Equal(expectedOffset, model.Offset);
         Assert.Equal(expectedPrevious, model.Previous);
         Assert.Equal(expectedTotal, model.Total);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -3826,6 +3831,7 @@ public class SearchQueryResponseAudiobooksTest : TestBase
         Assert.Equal(expectedOffset, deserialized.Offset);
         Assert.Equal(expectedPrevious, deserialized.Previous);
         Assert.Equal(expectedTotal, deserialized.Total);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -4057,6 +4063,7 @@ public class SearchQueryResponseEpisodesTest : TestBase
         Assert.Equal(expectedOffset, model.Offset);
         Assert.Equal(expectedPrevious, model.Previous);
         Assert.Equal(expectedTotal, model.Total);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -4225,6 +4232,7 @@ public class SearchQueryResponseEpisodesTest : TestBase
         Assert.Equal(expectedOffset, deserialized.Offset);
         Assert.Equal(expectedPrevious, deserialized.Previous);
         Assert.Equal(expectedTotal, deserialized.Total);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -4448,6 +4456,7 @@ public class SearchQueryResponseShowsTest : TestBase
         Assert.Equal(expectedOffset, model.Offset);
         Assert.Equal(expectedPrevious, model.Previous);
         Assert.Equal(expectedTotal, model.Total);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -4596,6 +4605,7 @@ public class SearchQueryResponseShowsTest : TestBase
         Assert.Equal(expectedOffset, deserialized.Offset);
         Assert.Equal(expectedPrevious, deserialized.Previous);
         Assert.Equal(expectedTotal, deserialized.Total);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -4919,6 +4929,7 @@ public class SearchQueryResponseTracksTest : TestBase
         Assert.Equal(expectedOffset, model.Offset);
         Assert.Equal(expectedPrevious, model.Previous);
         Assert.Equal(expectedTotal, model.Total);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -5227,6 +5238,7 @@ public class SearchQueryResponseTracksTest : TestBase
         Assert.Equal(expectedOffset, deserialized.Offset);
         Assert.Equal(expectedPrevious, deserialized.Previous);
         Assert.Equal(expectedTotal, deserialized.Total);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {

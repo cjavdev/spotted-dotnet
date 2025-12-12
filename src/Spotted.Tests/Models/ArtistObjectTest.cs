@@ -55,12 +55,14 @@ public class ArtistObjectTest : TestBase
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedExternalURLs, model.ExternalURLs);
         Assert.Equal(expectedFollowers, model.Followers);
+        Assert.NotNull(model.Genres);
         Assert.Equal(expectedGenres.Count, model.Genres.Count);
         for (int i = 0; i < expectedGenres.Count; i++)
         {
             Assert.Equal(expectedGenres[i], model.Genres[i]);
         }
         Assert.Equal(expectedHref, model.Href);
+        Assert.NotNull(model.Images);
         Assert.Equal(expectedImages.Count, model.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {
@@ -154,12 +156,14 @@ public class ArtistObjectTest : TestBase
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
         Assert.Equal(expectedFollowers, deserialized.Followers);
+        Assert.NotNull(deserialized.Genres);
         Assert.Equal(expectedGenres.Count, deserialized.Genres.Count);
         for (int i = 0; i < expectedGenres.Count; i++)
         {
             Assert.Equal(expectedGenres[i], deserialized.Genres[i]);
         }
         Assert.Equal(expectedHref, deserialized.Href);
+        Assert.NotNull(deserialized.Images);
         Assert.Equal(expectedImages.Count, deserialized.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {

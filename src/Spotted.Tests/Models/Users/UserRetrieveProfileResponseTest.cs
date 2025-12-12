@@ -54,6 +54,7 @@ public class UserRetrieveProfileResponseTest : TestBase
         Assert.Equal(expectedExternalURLs, model.ExternalURLs);
         Assert.Equal(expectedFollowers, model.Followers);
         Assert.Equal(expectedHref, model.Href);
+        Assert.NotNull(model.Images);
         Assert.Equal(expectedImages.Count, model.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {
@@ -141,6 +142,7 @@ public class UserRetrieveProfileResponseTest : TestBase
         Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
         Assert.Equal(expectedFollowers, deserialized.Followers);
         Assert.Equal(expectedHref, deserialized.Href);
+        Assert.NotNull(deserialized.Images);
         Assert.Equal(expectedImages.Count, deserialized.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {

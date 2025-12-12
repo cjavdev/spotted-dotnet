@@ -628,6 +628,7 @@ public class ChapterTest : TestBase
         Assert.Equal(expectedReleaseDatePrecision, model.ReleaseDatePrecision);
         Assert.True(JsonElement.DeepEquals(expectedType, model.Type));
         Assert.Equal(expectedUri, model.Uri);
+        Assert.NotNull(model.AvailableMarkets);
         Assert.Equal(expectedAvailableMarkets.Count, model.AvailableMarkets.Count);
         for (int i = 0; i < expectedAvailableMarkets.Count; i++)
         {
@@ -868,6 +869,7 @@ public class ChapterTest : TestBase
         Assert.Equal(expectedReleaseDatePrecision, deserialized.ReleaseDatePrecision);
         Assert.True(JsonElement.DeepEquals(expectedType, deserialized.Type));
         Assert.Equal(expectedUri, deserialized.Uri);
+        Assert.NotNull(deserialized.AvailableMarkets);
         Assert.Equal(expectedAvailableMarkets.Count, deserialized.AvailableMarkets.Count);
         for (int i = 0; i < expectedAvailableMarkets.Count; i++)
         {
