@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.1 (2025-12-12)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/cjavdev/spotted-dotnet/compare/v0.3.0...v0.3.1)
+
+### Bug Fixes
+
+* **internal:** add nullability checks for tests ([35f0e7c](https://github.com/cjavdev/spotted-dotnet/commit/35f0e7c10e8c088c7a64018a1bc63f1101aeed2c))
+
+
+### Chores
+
+* **client:** improve union validation ([685acc5](https://github.com/cjavdev/spotted-dotnet/commit/685acc508de6f767f6ce29fc2f412bba1f1e6540))
+* **internal:** add union tests ([41a69d6](https://github.com/cjavdev/spotted-dotnet/commit/41a69d6820533cb9bc9498d3aad820dcbd14db92))
+* **internal:** codegen related update ([b65f903](https://github.com/cjavdev/spotted-dotnet/commit/b65f903b4c840be0b5e9f11699b7431cf73ffa73))
+
 ## 0.3.0 (2025-12-11)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.2.0...v0.3.0)
