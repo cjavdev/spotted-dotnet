@@ -78,6 +78,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.Equal(expectedDescription, model.Description);
         Assert.Equal(expectedExternalURLs, model.ExternalURLs);
         Assert.Equal(expectedHref, model.Href);
+        Assert.NotNull(model.Images);
         Assert.Equal(expectedImages.Count, model.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {
@@ -209,6 +210,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.Equal(expectedDescription, deserialized.Description);
         Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
         Assert.Equal(expectedHref, deserialized.Href);
+        Assert.NotNull(deserialized.Images);
         Assert.Equal(expectedImages.Count, deserialized.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {

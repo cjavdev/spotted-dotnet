@@ -214,27 +214,32 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             WindowSeconds = 0,
         };
 
+        Assert.NotNull(model.Bars);
         Assert.Equal(expectedBars.Count, model.Bars.Count);
         for (int i = 0; i < expectedBars.Count; i++)
         {
             Assert.Equal(expectedBars[i], model.Bars[i]);
         }
+        Assert.NotNull(model.Beats);
         Assert.Equal(expectedBeats.Count, model.Beats.Count);
         for (int i = 0; i < expectedBeats.Count; i++)
         {
             Assert.Equal(expectedBeats[i], model.Beats[i]);
         }
         Assert.Equal(expectedMeta, model.Meta);
+        Assert.NotNull(model.Sections);
         Assert.Equal(expectedSections.Count, model.Sections.Count);
         for (int i = 0; i < expectedSections.Count; i++)
         {
             Assert.Equal(expectedSections[i], model.Sections[i]);
         }
+        Assert.NotNull(model.Segments);
         Assert.Equal(expectedSegments.Count, model.Segments.Count);
         for (int i = 0; i < expectedSegments.Count; i++)
         {
             Assert.Equal(expectedSegments[i], model.Segments[i]);
         }
+        Assert.NotNull(model.Tatums);
         Assert.Equal(expectedTatums.Count, model.Tatums.Count);
         for (int i = 0; i < expectedTatums.Count; i++)
         {
@@ -565,27 +570,32 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             WindowSeconds = 0,
         };
 
+        Assert.NotNull(deserialized.Bars);
         Assert.Equal(expectedBars.Count, deserialized.Bars.Count);
         for (int i = 0; i < expectedBars.Count; i++)
         {
             Assert.Equal(expectedBars[i], deserialized.Bars[i]);
         }
+        Assert.NotNull(deserialized.Beats);
         Assert.Equal(expectedBeats.Count, deserialized.Beats.Count);
         for (int i = 0; i < expectedBeats.Count; i++)
         {
             Assert.Equal(expectedBeats[i], deserialized.Beats[i]);
         }
         Assert.Equal(expectedMeta, deserialized.Meta);
+        Assert.NotNull(deserialized.Sections);
         Assert.Equal(expectedSections.Count, deserialized.Sections.Count);
         for (int i = 0; i < expectedSections.Count; i++)
         {
             Assert.Equal(expectedSections[i], deserialized.Sections[i]);
         }
+        Assert.NotNull(deserialized.Segments);
         Assert.Equal(expectedSegments.Count, deserialized.Segments.Count);
         for (int i = 0; i < expectedSegments.Count; i++)
         {
             Assert.Equal(expectedSegments[i], deserialized.Segments[i]);
         }
+        Assert.NotNull(deserialized.Tatums);
         Assert.Equal(expectedTatums.Count, deserialized.Tatums.Count);
         for (int i = 0; i < expectedTatums.Count; i++)
         {
@@ -1312,12 +1322,14 @@ public class SegmentTest : TestBase
         Assert.Equal(expectedLoudnessMax, model.LoudnessMax);
         Assert.Equal(expectedLoudnessMaxTime, model.LoudnessMaxTime);
         Assert.Equal(expectedLoudnessStart, model.LoudnessStart);
+        Assert.NotNull(model.Pitches);
         Assert.Equal(expectedPitches.Count, model.Pitches.Count);
         for (int i = 0; i < expectedPitches.Count; i++)
         {
             Assert.Equal(expectedPitches[i], model.Pitches[i]);
         }
         Assert.Equal(expectedStart, model.Start);
+        Assert.NotNull(model.Timbre);
         Assert.Equal(expectedTimbre.Count, model.Timbre.Count);
         for (int i = 0; i < expectedTimbre.Count; i++)
         {
@@ -1383,12 +1395,14 @@ public class SegmentTest : TestBase
         Assert.Equal(expectedLoudnessMax, deserialized.LoudnessMax);
         Assert.Equal(expectedLoudnessMaxTime, deserialized.LoudnessMaxTime);
         Assert.Equal(expectedLoudnessStart, deserialized.LoudnessStart);
+        Assert.NotNull(deserialized.Pitches);
         Assert.Equal(expectedPitches.Count, deserialized.Pitches.Count);
         for (int i = 0; i < expectedPitches.Count; i++)
         {
             Assert.Equal(expectedPitches[i], deserialized.Pitches[i]);
         }
         Assert.Equal(expectedStart, deserialized.Start);
+        Assert.NotNull(deserialized.Timbre);
         Assert.Equal(expectedTimbre.Count, deserialized.Timbre.Count);
         for (int i = 0; i < expectedTimbre.Count; i++)
         {

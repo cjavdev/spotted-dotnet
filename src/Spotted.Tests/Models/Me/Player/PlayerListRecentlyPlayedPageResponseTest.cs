@@ -218,6 +218,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
 
         Assert.Equal(expectedCursors, model.Cursors);
         Assert.Equal(expectedHref, model.Href);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -555,6 +556,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
 
         Assert.Equal(expectedCursors, deserialized.Cursors);
         Assert.Equal(expectedHref, deserialized.Href);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
