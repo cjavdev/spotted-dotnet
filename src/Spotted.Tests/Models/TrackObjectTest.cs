@@ -172,11 +172,13 @@ public class TrackObjectTest : TestBase
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAlbum, model.Album);
+        Assert.NotNull(model.Artists);
         Assert.Equal(expectedArtists.Count, model.Artists.Count);
         for (int i = 0; i < expectedArtists.Count; i++)
         {
             Assert.Equal(expectedArtists[i], model.Artists[i]);
         }
+        Assert.NotNull(model.AvailableMarkets);
         Assert.Equal(expectedAvailableMarkets.Count, model.AvailableMarkets.Count);
         for (int i = 0; i < expectedAvailableMarkets.Count; i++)
         {
@@ -458,11 +460,13 @@ public class TrackObjectTest : TestBase
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAlbum, deserialized.Album);
+        Assert.NotNull(deserialized.Artists);
         Assert.Equal(expectedArtists.Count, deserialized.Artists.Count);
         for (int i = 0; i < expectedArtists.Count; i++)
         {
             Assert.Equal(expectedArtists[i], deserialized.Artists[i]);
         }
+        Assert.NotNull(deserialized.AvailableMarkets);
         Assert.Equal(expectedAvailableMarkets.Count, deserialized.AvailableMarkets.Count);
         for (int i = 0; i < expectedAvailableMarkets.Count; i++)
         {

@@ -293,6 +293,7 @@ public class PlaylistCreateResponseTest : TestBase
         Assert.Equal(expectedExternalURLs, model.ExternalURLs);
         Assert.Equal(expectedFollowers, model.Followers);
         Assert.Equal(expectedHref, model.Href);
+        Assert.NotNull(model.Images);
         Assert.Equal(expectedImages.Count, model.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {
@@ -743,6 +744,7 @@ public class PlaylistCreateResponseTest : TestBase
         Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
         Assert.Equal(expectedFollowers, deserialized.Followers);
         Assert.Equal(expectedHref, deserialized.Href);
+        Assert.NotNull(deserialized.Images);
         Assert.Equal(expectedImages.Count, deserialized.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {
@@ -2141,6 +2143,7 @@ public class PlaylistCreateResponseTracksTest : TestBase
         Assert.Equal(expectedOffset, model.Offset);
         Assert.Equal(expectedPrevious, model.Previous);
         Assert.Equal(expectedTotal, model.Total);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -2488,6 +2491,7 @@ public class PlaylistCreateResponseTracksTest : TestBase
         Assert.Equal(expectedOffset, deserialized.Offset);
         Assert.Equal(expectedPrevious, deserialized.Previous);
         Assert.Equal(expectedTotal, deserialized.Total);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {

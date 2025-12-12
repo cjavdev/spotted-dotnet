@@ -226,17 +226,20 @@ public class AlbumRetrieveResponseTest : TestBase
         Assert.Equal(expectedTotalTracks, model.TotalTracks);
         Assert.True(JsonElement.DeepEquals(expectedType, model.Type));
         Assert.Equal(expectedUri, model.Uri);
+        Assert.NotNull(model.Artists);
         Assert.Equal(expectedArtists.Count, model.Artists.Count);
         for (int i = 0; i < expectedArtists.Count; i++)
         {
             Assert.Equal(expectedArtists[i], model.Artists[i]);
         }
+        Assert.NotNull(model.Copyrights);
         Assert.Equal(expectedCopyrights.Count, model.Copyrights.Count);
         for (int i = 0; i < expectedCopyrights.Count; i++)
         {
             Assert.Equal(expectedCopyrights[i], model.Copyrights[i]);
         }
         Assert.Equal(expectedExternalIDs, model.ExternalIDs);
+        Assert.NotNull(model.Genres);
         Assert.Equal(expectedGenres.Count, model.Genres.Count);
         for (int i = 0; i < expectedGenres.Count; i++)
         {
@@ -574,17 +577,20 @@ public class AlbumRetrieveResponseTest : TestBase
         Assert.Equal(expectedTotalTracks, deserialized.TotalTracks);
         Assert.True(JsonElement.DeepEquals(expectedType, deserialized.Type));
         Assert.Equal(expectedUri, deserialized.Uri);
+        Assert.NotNull(deserialized.Artists);
         Assert.Equal(expectedArtists.Count, deserialized.Artists.Count);
         for (int i = 0; i < expectedArtists.Count; i++)
         {
             Assert.Equal(expectedArtists[i], deserialized.Artists[i]);
         }
+        Assert.NotNull(deserialized.Copyrights);
         Assert.Equal(expectedCopyrights.Count, deserialized.Copyrights.Count);
         for (int i = 0; i < expectedCopyrights.Count; i++)
         {
             Assert.Equal(expectedCopyrights[i], deserialized.Copyrights[i]);
         }
         Assert.Equal(expectedExternalIDs, deserialized.ExternalIDs);
+        Assert.NotNull(deserialized.Genres);
         Assert.Equal(expectedGenres.Count, deserialized.Genres.Count);
         for (int i = 0; i < expectedGenres.Count; i++)
         {
@@ -1091,6 +1097,7 @@ public class AlbumRetrieveResponseTracksTest : TestBase
         Assert.Equal(expectedOffset, model.Offset);
         Assert.Equal(expectedPrevious, model.Previous);
         Assert.Equal(expectedTotal, model.Total);
+        Assert.NotNull(model.Items);
         Assert.Equal(expectedItems.Count, model.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {
@@ -1270,6 +1277,7 @@ public class AlbumRetrieveResponseTracksTest : TestBase
         Assert.Equal(expectedOffset, deserialized.Offset);
         Assert.Equal(expectedPrevious, deserialized.Previous);
         Assert.Equal(expectedTotal, deserialized.Total);
+        Assert.NotNull(deserialized.Items);
         Assert.Equal(expectedItems.Count, deserialized.Items.Count);
         for (int i = 0; i < expectedItems.Count; i++)
         {

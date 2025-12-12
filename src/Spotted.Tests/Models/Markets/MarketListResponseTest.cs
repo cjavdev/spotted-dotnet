@@ -13,6 +13,7 @@ public class MarketListResponseTest : TestBase
 
         List<string> expectedMarkets = ["CA", "BR", "IT"];
 
+        Assert.NotNull(model.Markets);
         Assert.Equal(expectedMarkets.Count, model.Markets.Count);
         for (int i = 0; i < expectedMarkets.Count; i++)
         {
@@ -42,6 +43,7 @@ public class MarketListResponseTest : TestBase
 
         List<string> expectedMarkets = ["CA", "BR", "IT"];
 
+        Assert.NotNull(deserialized.Markets);
         Assert.Equal(expectedMarkets.Count, deserialized.Markets.Count);
         for (int i = 0; i < expectedMarkets.Count; i++)
         {
