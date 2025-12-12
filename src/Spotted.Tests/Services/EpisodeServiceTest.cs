@@ -7,7 +7,11 @@ public class EpisodeServiceTest : TestBase
     [Fact(Skip = "Prism tests are disabled")]
     public async Task Retrieve_Works()
     {
-        var episodeObject = await this.client.Episodes.Retrieve("512ojhOuo1ktJprKbVcKyQ");
+        var episodeObject = await this.client.Episodes.Retrieve(
+            "512ojhOuo1ktJprKbVcKyQ",
+            new(),
+            TestContext.Current.CancellationToken
+        );
         episodeObject.Validate();
     }
 
@@ -15,7 +19,8 @@ public class EpisodeServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Episodes.BulkRetrieve(
-            new() { IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf" }
+            new() { IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf" },
+            TestContext.Current.CancellationToken
         );
         response.Validate();
     }

@@ -9,7 +9,8 @@ public class SearchServiceTest : TestBase
     public async Task Query_Works()
     {
         var response = await this.client.Search.Query(
-            new() { Q = "remaster%20track:Doxy%20artist:Miles%20Davis", Type = [Type.Album] }
+            new() { Q = "remaster%20track:Doxy%20artist:Miles%20Davis", Type = [Type.Album] },
+            TestContext.Current.CancellationToken
         );
         response.Validate();
     }
