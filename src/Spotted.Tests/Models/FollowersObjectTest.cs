@@ -8,19 +8,31 @@ public class FollowersObjectTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new FollowersObject { Href = "href", Total = 0 };
+        var model = new FollowersObject
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
 
         string expectedHref = "href";
+        bool expectedPublished = true;
         long expectedTotal = 0;
 
         Assert.Equal(expectedHref, model.Href);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedTotal, model.Total);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new FollowersObject { Href = "href", Total = 0 };
+        var model = new FollowersObject
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<FollowersObject>(json);
@@ -31,23 +43,35 @@ public class FollowersObjectTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new FollowersObject { Href = "href", Total = 0 };
+        var model = new FollowersObject
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<FollowersObject>(json);
         Assert.NotNull(deserialized);
 
         string expectedHref = "href";
+        bool expectedPublished = true;
         long expectedTotal = 0;
 
         Assert.Equal(expectedHref, deserialized.Href);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedTotal, deserialized.Total);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new FollowersObject { Href = "href", Total = 0 };
+        var model = new FollowersObject
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
 
         model.Validate();
     }
@@ -57,6 +81,8 @@ public class FollowersObjectTest : TestBase
     {
         var model = new FollowersObject { Href = "href" };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Total);
         Assert.False(model.RawData.ContainsKey("total"));
     }
@@ -77,9 +103,12 @@ public class FollowersObjectTest : TestBase
             Href = "href",
 
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Total = null,
         };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Total);
         Assert.False(model.RawData.ContainsKey("total"));
     }
@@ -92,6 +121,7 @@ public class FollowersObjectTest : TestBase
             Href = "href",
 
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Total = null,
         };
 
@@ -101,7 +131,7 @@ public class FollowersObjectTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new FollowersObject { Total = 0 };
+        var model = new FollowersObject { Published = true, Total = 0 };
 
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -110,7 +140,7 @@ public class FollowersObjectTest : TestBase
     [Fact]
     public void OptionalNullablePropertiesUnsetValidation_Works()
     {
-        var model = new FollowersObject { Total = 0 };
+        var model = new FollowersObject { Published = true, Total = 0 };
 
         model.Validate();
     }
@@ -120,6 +150,7 @@ public class FollowersObjectTest : TestBase
     {
         var model = new FollowersObject
         {
+            Published = true,
             Total = 0,
 
             Href = null,
@@ -134,6 +165,7 @@ public class FollowersObjectTest : TestBase
     {
         var model = new FollowersObject
         {
+            Published = true,
             Total = 0,
 
             Href = null,

@@ -140,6 +140,26 @@ public sealed record class PlayerGetStateResponse : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// off, track, context
     /// </summary>
     public string? RepeatState
@@ -201,6 +221,7 @@ public sealed record class PlayerGetStateResponse : ModelBase
         _ = this.IsPlaying;
         this.Item?.Validate();
         _ = this.ProgressMs;
+        _ = this.Published;
         _ = this.RepeatState;
         _ = this.ShuffleState;
         _ = this.Timestamp;
@@ -281,6 +302,26 @@ public sealed record class PlayerGetStateResponseActions : ModelBase
             }
 
             ModelBase.Set(this._rawData, "pausing", value);
+        }
+    }
+
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
         }
     }
 
@@ -425,6 +466,7 @@ public sealed record class PlayerGetStateResponseActions : ModelBase
     {
         _ = this.InterruptingPlayback;
         _ = this.Pausing;
+        _ = this.Published;
         _ = this.Resuming;
         _ = this.Seeking;
         _ = this.SkippingNext;
@@ -541,6 +583,14 @@ public record class PlayerGetStateResponseItem
     public string? Name
     {
         get { return Match<string?>(trackObject: (x) => x.Name, episodeObject: (x) => x.Name); }
+    }
+
+    public bool? Published
+    {
+        get
+        {
+            return Match<bool?>(trackObject: (x) => x.Published, episodeObject: (x) => x.Published);
+        }
     }
 
     public string? Uri

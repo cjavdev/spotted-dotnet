@@ -248,6 +248,26 @@ public sealed record class SearchQueryResponseAlbums : ModelBase
         }
     }
 
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -261,6 +281,7 @@ public sealed record class SearchQueryResponseAlbums : ModelBase
         {
             item.Validate();
         }
+        _ = this.Published;
     }
 
     public SearchQueryResponseAlbums() { }
@@ -442,6 +463,26 @@ public sealed record class Item : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// Included in the response when a content restriction is applied.
     /// </summary>
     public AlbumRestrictionObject? Restrictions
@@ -488,6 +529,7 @@ public sealed record class Item : ModelBase
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
         _ = this.Uri;
+        _ = this.Published;
         this.Restrictions?.Validate();
     }
 
@@ -702,6 +744,26 @@ public sealed record class SearchQueryResponseArtists : ModelBase
         }
     }
 
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -715,6 +777,7 @@ public sealed record class SearchQueryResponseArtists : ModelBase
         {
             item.Validate();
         }
+        _ = this.Published;
     }
 
     public SearchQueryResponseArtists() { }
@@ -825,6 +888,26 @@ public sealed record class SearchQueryResponseAudiobooks : ModelBase
         }
     }
 
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -838,6 +921,7 @@ public sealed record class SearchQueryResponseAudiobooks : ModelBase
         {
             item.Validate();
         }
+        _ = this.Published;
     }
 
     public SearchQueryResponseAudiobooks() { }
@@ -953,6 +1037,26 @@ public sealed record class SearchQueryResponseEpisodes : ModelBase
         }
     }
 
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -966,6 +1070,7 @@ public sealed record class SearchQueryResponseEpisodes : ModelBase
         {
             item.Validate();
         }
+        _ = this.Published;
     }
 
     public SearchQueryResponseEpisodes() { }
@@ -1074,6 +1179,26 @@ public sealed record class SearchQueryResponseShows : ModelBase
         }
     }
 
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -1087,6 +1212,7 @@ public sealed record class SearchQueryResponseShows : ModelBase
         {
             item.Validate();
         }
+        _ = this.Published;
     }
 
     public SearchQueryResponseShows() { }
@@ -1195,6 +1321,26 @@ public sealed record class SearchQueryResponseTracks : ModelBase
         }
     }
 
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -1208,6 +1354,7 @@ public sealed record class SearchQueryResponseTracks : ModelBase
         {
             item.Validate();
         }
+        _ = this.Published;
     }
 
     public SearchQueryResponseTracks() { }

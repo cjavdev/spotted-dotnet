@@ -292,6 +292,26 @@ public sealed record class AudioFeature : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// Speechiness detects the presence of spoken words in a track. The more exclusively
     /// speech-like the recording (e.g. talk show, audio book, poetry), the closer
     /// to 1.0 the attribute value. Values above 0.66 describe tracks that are probably
@@ -443,6 +463,7 @@ public sealed record class AudioFeature : ModelBase
         _ = this.Liveness;
         _ = this.Loudness;
         _ = this.Mode;
+        _ = this.Published;
         _ = this.Speechiness;
         _ = this.Tempo;
         _ = this.TimeSignature;

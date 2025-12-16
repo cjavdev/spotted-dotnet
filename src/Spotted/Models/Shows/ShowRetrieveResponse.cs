@@ -169,6 +169,26 @@ public sealed record class ShowRetrieveResponse : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// The episodes of the show.
     /// </summary>
     public required IntersectionMember1Episodes Episodes
@@ -200,6 +220,7 @@ public sealed record class ShowRetrieveResponse : ModelBase
             TotalEpisodes = showRetrieveResponse.TotalEpisodes,
             Type = showRetrieveResponse.Type,
             Uri = showRetrieveResponse.Uri,
+            Published = showRetrieveResponse.Published,
         };
 
     /// <inheritdoc/>
@@ -231,6 +252,7 @@ public sealed record class ShowRetrieveResponse : ModelBase
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
         _ = this.Uri;
+        _ = this.Published;
         this.Episodes.Validate();
     }
 
@@ -421,6 +443,26 @@ public sealed record class IntersectionMember1Episodes : ModelBase
         }
     }
 
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
@@ -434,6 +476,7 @@ public sealed record class IntersectionMember1Episodes : ModelBase
         {
             item.Validate();
         }
+        _ = this.Published;
     }
 
     public IntersectionMember1Episodes() { }

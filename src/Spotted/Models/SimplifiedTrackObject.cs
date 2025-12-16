@@ -242,6 +242,26 @@ public sealed record class SimplifiedTrackObject : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// Included in the response when a content restriction is applied.
     /// </summary>
     public TrackRestrictionObject? Restrictions
@@ -333,6 +353,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
         this.LinkedFrom?.Validate();
         _ = this.Name;
         _ = this.PreviewURL;
+        _ = this.Published;
         this.Restrictions?.Validate();
         _ = this.TrackNumber;
         _ = this.Type;

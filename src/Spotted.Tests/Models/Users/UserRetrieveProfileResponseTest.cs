@@ -16,8 +16,13 @@ public class UserRetrieveProfileResponseTest : TestBase
         {
             ID = "id",
             DisplayName = "display_name",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -26,16 +31,27 @@ public class UserRetrieveProfileResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
+            Published = true,
             Type = Type.User,
             Uri = "uri",
         };
 
         string expectedID = "id";
         string expectedDisplayName = "display_name";
-        Models::ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
-        Models::FollowersObject expectedFollowers = new() { Href = "href", Total = 0 };
+        Models::ExternalURLObject expectedExternalURLs = new()
+        {
+            Published = true,
+            Spotify = "spotify",
+        };
+        Models::FollowersObject expectedFollowers = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         string expectedHref = "href";
         List<Models::ImageObject> expectedImages =
         [
@@ -44,8 +60,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
+        bool expectedPublished = true;
         ApiEnum<string, Type> expectedType = Type.User;
         string expectedUri = "uri";
 
@@ -60,6 +78,7 @@ public class UserRetrieveProfileResponseTest : TestBase
         {
             Assert.Equal(expectedImages[i], model.Images[i]);
         }
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedUri, model.Uri);
     }
@@ -71,8 +90,13 @@ public class UserRetrieveProfileResponseTest : TestBase
         {
             ID = "id",
             DisplayName = "display_name",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -81,8 +105,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
+            Published = true,
             Type = Type.User,
             Uri = "uri",
         };
@@ -100,8 +126,13 @@ public class UserRetrieveProfileResponseTest : TestBase
         {
             ID = "id",
             DisplayName = "display_name",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -110,8 +141,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
+            Published = true,
             Type = Type.User,
             Uri = "uri",
         };
@@ -122,8 +155,17 @@ public class UserRetrieveProfileResponseTest : TestBase
 
         string expectedID = "id";
         string expectedDisplayName = "display_name";
-        Models::ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
-        Models::FollowersObject expectedFollowers = new() { Href = "href", Total = 0 };
+        Models::ExternalURLObject expectedExternalURLs = new()
+        {
+            Published = true,
+            Spotify = "spotify",
+        };
+        Models::FollowersObject expectedFollowers = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         string expectedHref = "href";
         List<Models::ImageObject> expectedImages =
         [
@@ -132,8 +174,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
+        bool expectedPublished = true;
         ApiEnum<string, Type> expectedType = Type.User;
         string expectedUri = "uri";
 
@@ -148,6 +192,7 @@ public class UserRetrieveProfileResponseTest : TestBase
         {
             Assert.Equal(expectedImages[i], deserialized.Images[i]);
         }
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedUri, deserialized.Uri);
     }
@@ -159,8 +204,13 @@ public class UserRetrieveProfileResponseTest : TestBase
         {
             ID = "id",
             DisplayName = "display_name",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -169,8 +219,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
+            Published = true,
             Type = Type.User,
             Uri = "uri",
         };
@@ -193,6 +245,8 @@ public class UserRetrieveProfileResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("href"));
         Assert.Null(model.Images);
         Assert.False(model.RawData.ContainsKey("images"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -220,6 +274,7 @@ public class UserRetrieveProfileResponseTest : TestBase
             Followers = null,
             Href = null,
             Images = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -234,6 +289,8 @@ public class UserRetrieveProfileResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("href"));
         Assert.Null(model.Images);
         Assert.False(model.RawData.ContainsKey("images"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -253,6 +310,7 @@ public class UserRetrieveProfileResponseTest : TestBase
             Followers = null,
             Href = null,
             Images = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -266,8 +324,13 @@ public class UserRetrieveProfileResponseTest : TestBase
         var model = new UserRetrieveProfileResponse
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -276,8 +339,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
+            Published = true,
             Type = Type.User,
             Uri = "uri",
         };
@@ -292,8 +357,13 @@ public class UserRetrieveProfileResponseTest : TestBase
         var model = new UserRetrieveProfileResponse
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -302,8 +372,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
+            Published = true,
             Type = Type.User,
             Uri = "uri",
         };
@@ -317,8 +389,13 @@ public class UserRetrieveProfileResponseTest : TestBase
         var model = new UserRetrieveProfileResponse
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -327,8 +404,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
+            Published = true,
             Type = Type.User,
             Uri = "uri",
 
@@ -345,8 +424,13 @@ public class UserRetrieveProfileResponseTest : TestBase
         var model = new UserRetrieveProfileResponse
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -355,8 +439,10 @@ public class UserRetrieveProfileResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
+            Published = true,
             Type = Type.User,
             Uri = "uri",
 

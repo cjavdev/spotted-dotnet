@@ -15,6 +15,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
             VolumePercent = 59,
@@ -25,6 +26,7 @@ public class DeviceObjectTest : TestBase
         bool expectedIsPrivateSession = true;
         bool expectedIsRestricted = true;
         string expectedName = "Kitchen speaker";
+        bool expectedPublished = true;
         bool expectedSupportsVolume = true;
         string expectedType = "computer";
         long expectedVolumePercent = 59;
@@ -34,6 +36,7 @@ public class DeviceObjectTest : TestBase
         Assert.Equal(expectedIsPrivateSession, model.IsPrivateSession);
         Assert.Equal(expectedIsRestricted, model.IsRestricted);
         Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedSupportsVolume, model.SupportsVolume);
         Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedVolumePercent, model.VolumePercent);
@@ -49,6 +52,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
             VolumePercent = 59,
@@ -70,6 +74,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
             VolumePercent = 59,
@@ -84,6 +89,7 @@ public class DeviceObjectTest : TestBase
         bool expectedIsPrivateSession = true;
         bool expectedIsRestricted = true;
         string expectedName = "Kitchen speaker";
+        bool expectedPublished = true;
         bool expectedSupportsVolume = true;
         string expectedType = "computer";
         long expectedVolumePercent = 59;
@@ -93,6 +99,7 @@ public class DeviceObjectTest : TestBase
         Assert.Equal(expectedIsPrivateSession, deserialized.IsPrivateSession);
         Assert.Equal(expectedIsRestricted, deserialized.IsRestricted);
         Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedSupportsVolume, deserialized.SupportsVolume);
         Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedVolumePercent, deserialized.VolumePercent);
@@ -108,6 +115,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
             VolumePercent = 59,
@@ -129,6 +137,8 @@ public class DeviceObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("is_restricted"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.SupportsVolume);
         Assert.False(model.RawData.ContainsKey("supports_volume"));
         Assert.Null(model.Type);
@@ -156,6 +166,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = null,
             IsRestricted = null,
             Name = null,
+            Published = null,
             SupportsVolume = null,
             Type = null,
         };
@@ -168,6 +179,8 @@ public class DeviceObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("is_restricted"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.SupportsVolume);
         Assert.False(model.RawData.ContainsKey("supports_volume"));
         Assert.Null(model.Type);
@@ -187,6 +200,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = null,
             IsRestricted = null,
             Name = null,
+            Published = null,
             SupportsVolume = null,
             Type = null,
         };
@@ -203,6 +217,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
         };
@@ -222,6 +237,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
         };
@@ -238,6 +254,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
 
@@ -260,6 +277,7 @@ public class DeviceObjectTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
 

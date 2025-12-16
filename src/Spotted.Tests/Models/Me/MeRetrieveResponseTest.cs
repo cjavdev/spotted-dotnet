@@ -16,9 +16,19 @@ public class MeRetrieveResponseTest : TestBase
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
-            ExplicitContent = new() { FilterEnabled = true, FilterLocked = true },
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExplicitContent = new()
+            {
+                FilterEnabled = true,
+                FilterLocked = true,
+                Published = true,
+            },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -27,9 +37,11 @@ public class MeRetrieveResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Product = "product",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
@@ -42,9 +54,15 @@ public class MeRetrieveResponseTest : TestBase
         {
             FilterEnabled = true,
             FilterLocked = true,
+            Published = true,
         };
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
-        FollowersObject expectedFollowers = new() { Href = "href", Total = 0 };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        FollowersObject expectedFollowers = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         string expectedHref = "href";
         List<ImageObject> expectedImages =
         [
@@ -53,9 +71,11 @@ public class MeRetrieveResponseTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedProduct = "product";
+        bool expectedPublished = true;
         string expectedType = "type";
         string expectedUri = "uri";
 
@@ -74,6 +94,7 @@ public class MeRetrieveResponseTest : TestBase
             Assert.Equal(expectedImages[i], model.Images[i]);
         }
         Assert.Equal(expectedProduct, model.Product);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedUri, model.Uri);
     }
@@ -87,9 +108,19 @@ public class MeRetrieveResponseTest : TestBase
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
-            ExplicitContent = new() { FilterEnabled = true, FilterLocked = true },
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExplicitContent = new()
+            {
+                FilterEnabled = true,
+                FilterLocked = true,
+                Published = true,
+            },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -98,9 +129,11 @@ public class MeRetrieveResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Product = "product",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
@@ -120,9 +153,19 @@ public class MeRetrieveResponseTest : TestBase
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
-            ExplicitContent = new() { FilterEnabled = true, FilterLocked = true },
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExplicitContent = new()
+            {
+                FilterEnabled = true,
+                FilterLocked = true,
+                Published = true,
+            },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -131,9 +174,11 @@ public class MeRetrieveResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Product = "product",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
@@ -150,9 +195,15 @@ public class MeRetrieveResponseTest : TestBase
         {
             FilterEnabled = true,
             FilterLocked = true,
+            Published = true,
         };
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
-        FollowersObject expectedFollowers = new() { Href = "href", Total = 0 };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        FollowersObject expectedFollowers = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         string expectedHref = "href";
         List<ImageObject> expectedImages =
         [
@@ -161,9 +212,11 @@ public class MeRetrieveResponseTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedProduct = "product";
+        bool expectedPublished = true;
         string expectedType = "type";
         string expectedUri = "uri";
 
@@ -182,6 +235,7 @@ public class MeRetrieveResponseTest : TestBase
             Assert.Equal(expectedImages[i], deserialized.Images[i]);
         }
         Assert.Equal(expectedProduct, deserialized.Product);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedUri, deserialized.Uri);
     }
@@ -195,9 +249,19 @@ public class MeRetrieveResponseTest : TestBase
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
-            ExplicitContent = new() { FilterEnabled = true, FilterLocked = true },
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExplicitContent = new()
+            {
+                FilterEnabled = true,
+                FilterLocked = true,
+                Published = true,
+            },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Href = "href",
             Images =
             [
@@ -206,9 +270,11 @@ public class MeRetrieveResponseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Product = "product",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
@@ -241,6 +307,8 @@ public class MeRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("images"));
         Assert.Null(model.Product);
         Assert.False(model.RawData.ContainsKey("product"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -271,6 +339,7 @@ public class MeRetrieveResponseTest : TestBase
             Href = null,
             Images = null,
             Product = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -295,6 +364,8 @@ public class MeRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("images"));
         Assert.Null(model.Product);
         Assert.False(model.RawData.ContainsKey("product"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -317,6 +388,7 @@ public class MeRetrieveResponseTest : TestBase
             Href = null,
             Images = null,
             Product = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -330,19 +402,31 @@ public class ExplicitContentTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new ExplicitContent { FilterEnabled = true, FilterLocked = true };
+        var model = new ExplicitContent
+        {
+            FilterEnabled = true,
+            FilterLocked = true,
+            Published = true,
+        };
 
         bool expectedFilterEnabled = true;
         bool expectedFilterLocked = true;
+        bool expectedPublished = true;
 
         Assert.Equal(expectedFilterEnabled, model.FilterEnabled);
         Assert.Equal(expectedFilterLocked, model.FilterLocked);
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new ExplicitContent { FilterEnabled = true, FilterLocked = true };
+        var model = new ExplicitContent
+        {
+            FilterEnabled = true,
+            FilterLocked = true,
+            Published = true,
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<ExplicitContent>(json);
@@ -353,7 +437,12 @@ public class ExplicitContentTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new ExplicitContent { FilterEnabled = true, FilterLocked = true };
+        var model = new ExplicitContent
+        {
+            FilterEnabled = true,
+            FilterLocked = true,
+            Published = true,
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<ExplicitContent>(json);
@@ -361,15 +450,22 @@ public class ExplicitContentTest : TestBase
 
         bool expectedFilterEnabled = true;
         bool expectedFilterLocked = true;
+        bool expectedPublished = true;
 
         Assert.Equal(expectedFilterEnabled, deserialized.FilterEnabled);
         Assert.Equal(expectedFilterLocked, deserialized.FilterLocked);
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new ExplicitContent { FilterEnabled = true, FilterLocked = true };
+        var model = new ExplicitContent
+        {
+            FilterEnabled = true,
+            FilterLocked = true,
+            Published = true,
+        };
 
         model.Validate();
     }
@@ -383,6 +479,8 @@ public class ExplicitContentTest : TestBase
         Assert.False(model.RawData.ContainsKey("filter_enabled"));
         Assert.Null(model.FilterLocked);
         Assert.False(model.RawData.ContainsKey("filter_locked"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -401,12 +499,15 @@ public class ExplicitContentTest : TestBase
             // Null should be interpreted as omitted for these properties
             FilterEnabled = null,
             FilterLocked = null,
+            Published = null,
         };
 
         Assert.Null(model.FilterEnabled);
         Assert.False(model.RawData.ContainsKey("filter_enabled"));
         Assert.Null(model.FilterLocked);
         Assert.False(model.RawData.ContainsKey("filter_locked"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -417,6 +518,7 @@ public class ExplicitContentTest : TestBase
             // Null should be interpreted as omitted for these properties
             FilterEnabled = null,
             FilterLocked = null,
+            Published = null,
         };
 
         model.Validate();

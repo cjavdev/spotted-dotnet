@@ -34,11 +34,14 @@ public class CategoryListResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "EQUAL",
+                        Published = true,
                     },
                 ],
+                Published = true,
             },
         };
 
@@ -64,11 +67,14 @@ public class CategoryListResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "EQUAL",
+                    Published = true,
                 },
             ],
+            Published = true,
         };
 
         Assert.Equal(expectedCategories, model.Categories);
@@ -101,11 +107,14 @@ public class CategoryListResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "EQUAL",
+                        Published = true,
                     },
                 ],
+                Published = true,
             },
         };
 
@@ -142,11 +151,14 @@ public class CategoryListResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "EQUAL",
+                        Published = true,
                     },
                 ],
+                Published = true,
             },
         };
 
@@ -176,11 +188,14 @@ public class CategoryListResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "EQUAL",
+                    Published = true,
                 },
             ],
+            Published = true,
         };
 
         Assert.Equal(expectedCategories, deserialized.Categories);
@@ -213,11 +228,14 @@ public class CategoryListResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "EQUAL",
+                        Published = true,
                     },
                 ],
+                Published = true,
             },
         };
 
@@ -252,11 +270,14 @@ public class CategoryListResponseCategoriesTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "EQUAL",
+                    Published = true,
                 },
             ],
+            Published = true,
         };
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -278,11 +299,14 @@ public class CategoryListResponseCategoriesTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "EQUAL",
+                Published = true,
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedLimit, model.Limit);
@@ -296,6 +320,7 @@ public class CategoryListResponseCategoriesTest : TestBase
         {
             Assert.Equal(expectedItems[i], model.Items[i]);
         }
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -323,11 +348,14 @@ public class CategoryListResponseCategoriesTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "EQUAL",
+                    Published = true,
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -361,11 +389,14 @@ public class CategoryListResponseCategoriesTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "EQUAL",
+                    Published = true,
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -391,11 +422,14 @@ public class CategoryListResponseCategoriesTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "EQUAL",
+                Published = true,
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedLimit, deserialized.Limit);
@@ -409,6 +443,7 @@ public class CategoryListResponseCategoriesTest : TestBase
         {
             Assert.Equal(expectedItems[i], deserialized.Items[i]);
         }
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -436,11 +471,14 @@ public class CategoryListResponseCategoriesTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "EQUAL",
+                    Published = true,
                 },
             ],
+            Published = true,
         };
 
         model.Validate();
@@ -461,6 +499,8 @@ public class CategoryListResponseCategoriesTest : TestBase
 
         Assert.Null(model.Items);
         Assert.False(model.RawData.ContainsKey("items"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -493,10 +533,13 @@ public class CategoryListResponseCategoriesTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Items = null,
+            Published = null,
         };
 
         Assert.Null(model.Items);
         Assert.False(model.RawData.ContainsKey("items"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -513,6 +556,7 @@ public class CategoryListResponseCategoriesTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Items = null,
+            Published = null,
         };
 
         model.Validate();
@@ -535,9 +579,11 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "EQUAL",
+            Published = true,
         };
 
         string expectedID = "equal";
@@ -549,9 +595,11 @@ public class ItemTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedName = "EQUAL";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedHref, model.Href);
@@ -561,6 +609,7 @@ public class ItemTest : TestBase
             Assert.Equal(expectedIcons[i], model.Icons[i]);
         }
         Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -577,9 +626,11 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "EQUAL",
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -602,9 +653,11 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "EQUAL",
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -620,9 +673,11 @@ public class ItemTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedName = "EQUAL";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedHref, deserialized.Href);
@@ -632,6 +687,7 @@ public class ItemTest : TestBase
             Assert.Equal(expectedIcons[i], deserialized.Icons[i]);
         }
         Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -648,9 +704,111 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "EQUAL",
+            Published = true,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new Item
+        {
+            ID = "equal",
+            Href = "href",
+            Icons =
+            [
+                new()
+                {
+                    Height = 300,
+                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Name = "EQUAL",
+        };
+
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new Item
+        {
+            ID = "equal",
+            Href = "href",
+            Icons =
+            [
+                new()
+                {
+                    Height = 300,
+                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Name = "EQUAL",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new Item
+        {
+            ID = "equal",
+            Href = "href",
+            Icons =
+            [
+                new()
+                {
+                    Height = 300,
+                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Name = "EQUAL",
+
+            // Null should be interpreted as omitted for these properties
+            Published = null,
+        };
+
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new Item
+        {
+            ID = "equal",
+            Href = "href",
+            Icons =
+            [
+                new()
+                {
+                    Height = 300,
+                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Name = "EQUAL",
+
+            // Null should be interpreted as omitted for these properties
+            Published = null,
         };
 
         model.Validate();

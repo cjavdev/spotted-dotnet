@@ -24,12 +24,20 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                     Audiobook = new()
                     {
                         ID = "id",
-                        Authors = [new() { Name = "name" }],
+                        Authors = [new() { Name = "name", Published = true }],
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -40,23 +48,25 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Languages = ["string"],
                         MediaType = "media_type",
                         Name = "name",
-                        Narrators = [new() { Name = "name" }],
+                        Narrators = [new() { Name = "name", Published = true }],
                         Publisher = "publisher",
                         TotalChapters = 0,
                         Uri = "uri",
                         Edition = "Unabridged",
+                        Published = true,
                     },
                     ChapterNumber = 1,
                     Description =
                         "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -68,6 +78,7 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsPlayable = true,
@@ -78,8 +89,14 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                     ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     AvailableMarkets = ["string"],
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
         };
@@ -94,12 +111,20 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                 Audiobook = new()
                 {
                     ID = "id",
-                    Authors = [new() { Name = "name" }],
+                    Authors = [new() { Name = "name", Published = true }],
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -110,23 +135,25 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Languages = ["string"],
                     MediaType = "media_type",
                     Name = "name",
-                    Narrators = [new() { Name = "name" }],
+                    Narrators = [new() { Name = "name", Published = true }],
                     Publisher = "publisher",
                     TotalChapters = 0,
                     Uri = "uri",
                     Edition = "Unabridged",
+                    Published = true,
                 },
                 ChapterNumber = 1,
                 Description =
                     "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
                 DurationMs = 1686230,
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                 HTMLDescription =
                     "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -137,6 +164,7 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsPlayable = true,
@@ -146,8 +174,14 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                 ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
                 Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                 AvailableMarkets = ["string"],
-                Restrictions = new() { Reason = "reason" },
-                ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                ResumePoint = new()
+                {
+                    FullyPlayed = true,
+                    Published = true,
+                    ResumePositionMs = 0,
+                },
             },
         ];
 
@@ -173,12 +207,20 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                     Audiobook = new()
                     {
                         ID = "id",
-                        Authors = [new() { Name = "name" }],
+                        Authors = [new() { Name = "name", Published = true }],
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -189,23 +231,25 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Languages = ["string"],
                         MediaType = "media_type",
                         Name = "name",
-                        Narrators = [new() { Name = "name" }],
+                        Narrators = [new() { Name = "name", Published = true }],
                         Publisher = "publisher",
                         TotalChapters = 0,
                         Uri = "uri",
                         Edition = "Unabridged",
+                        Published = true,
                     },
                     ChapterNumber = 1,
                     Description =
                         "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -217,6 +261,7 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsPlayable = true,
@@ -227,8 +272,14 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                     ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     AvailableMarkets = ["string"],
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
         };
@@ -254,12 +305,20 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                     Audiobook = new()
                     {
                         ID = "id",
-                        Authors = [new() { Name = "name" }],
+                        Authors = [new() { Name = "name", Published = true }],
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -270,23 +329,25 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Languages = ["string"],
                         MediaType = "media_type",
                         Name = "name",
-                        Narrators = [new() { Name = "name" }],
+                        Narrators = [new() { Name = "name", Published = true }],
                         Publisher = "publisher",
                         TotalChapters = 0,
                         Uri = "uri",
                         Edition = "Unabridged",
+                        Published = true,
                     },
                     ChapterNumber = 1,
                     Description =
                         "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -298,6 +359,7 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsPlayable = true,
@@ -308,8 +370,14 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                     ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     AvailableMarkets = ["string"],
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
         };
@@ -328,12 +396,20 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                 Audiobook = new()
                 {
                     ID = "id",
-                    Authors = [new() { Name = "name" }],
+                    Authors = [new() { Name = "name", Published = true }],
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -344,23 +420,25 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Languages = ["string"],
                     MediaType = "media_type",
                     Name = "name",
-                    Narrators = [new() { Name = "name" }],
+                    Narrators = [new() { Name = "name", Published = true }],
                     Publisher = "publisher",
                     TotalChapters = 0,
                     Uri = "uri",
                     Edition = "Unabridged",
+                    Published = true,
                 },
                 ChapterNumber = 1,
                 Description =
                     "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
                 DurationMs = 1686230,
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                 HTMLDescription =
                     "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -371,6 +449,7 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsPlayable = true,
@@ -380,8 +459,14 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                 ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
                 Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                 AvailableMarkets = ["string"],
-                Restrictions = new() { Reason = "reason" },
-                ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                ResumePoint = new()
+                {
+                    FullyPlayed = true,
+                    Published = true,
+                    ResumePositionMs = 0,
+                },
             },
         ];
 
@@ -407,12 +492,20 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                     Audiobook = new()
                     {
                         ID = "id",
-                        Authors = [new() { Name = "name" }],
+                        Authors = [new() { Name = "name", Published = true }],
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -423,23 +516,25 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Languages = ["string"],
                         MediaType = "media_type",
                         Name = "name",
-                        Narrators = [new() { Name = "name" }],
+                        Narrators = [new() { Name = "name", Published = true }],
                         Publisher = "publisher",
                         TotalChapters = 0,
                         Uri = "uri",
                         Edition = "Unabridged",
+                        Published = true,
                     },
                     ChapterNumber = 1,
                     Description =
                         "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -451,6 +546,7 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsPlayable = true,
@@ -461,8 +557,14 @@ public class ChapterBulkRetrieveResponseTest : TestBase
                     ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     AvailableMarkets = ["string"],
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
         };
@@ -484,12 +586,20 @@ public class ChapterTest : TestBase
             Audiobook = new()
             {
                 ID = "id",
-                Authors = [new() { Name = "name" }],
+                Authors = [new() { Name = "name", Published = true }],
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -499,23 +609,25 @@ public class ChapterTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Languages = ["string"],
                 MediaType = "media_type",
                 Name = "name",
-                Narrators = [new() { Name = "name" }],
+                Narrators = [new() { Name = "name", Published = true }],
                 Publisher = "publisher",
                 TotalChapters = 0,
                 Uri = "uri",
                 Edition = "Unabridged",
+                Published = true,
             },
             ChapterNumber = 1,
             Description =
                 "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -526,6 +638,7 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsPlayable = true,
@@ -535,8 +648,14 @@ public class ChapterTest : TestBase
             ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
             AvailableMarkets = ["string"],
-            Restrictions = new() { Reason = "reason" },
-            ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
         };
 
         string expectedID = "5Xt5DXGzch68nYYamXrNxZ";
@@ -545,12 +664,20 @@ public class ChapterTest : TestBase
         AudiobookBase expectedAudiobook = new()
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -560,23 +687,25 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
             Edition = "Unabridged",
+            Published = true,
         };
         long expectedChapterNumber = 1;
         string expectedDescription =
             "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n";
         long expectedDurationMs = 1686230;
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ";
         string expectedHTMLDescription =
             "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n";
@@ -587,6 +716,7 @@ public class ChapterTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         bool expectedIsPlayable = true;
@@ -599,8 +729,18 @@ public class ChapterTest : TestBase
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         List<string> expectedAvailableMarkets = ["string"];
-        ChapterRestrictionObject expectedRestrictions = new() { Reason = "reason" };
-        ResumePointObject expectedResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 };
+        bool expectedPublished = true;
+        ChapterRestrictionObject expectedRestrictions = new()
+        {
+            Published = true,
+            Reason = "reason",
+        };
+        ResumePointObject expectedResumePoint = new()
+        {
+            FullyPlayed = true,
+            Published = true,
+            ResumePositionMs = 0,
+        };
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAudioPreviewURL, model.AudioPreviewURL);
@@ -634,6 +774,7 @@ public class ChapterTest : TestBase
         {
             Assert.Equal(expectedAvailableMarkets[i], model.AvailableMarkets[i]);
         }
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedRestrictions, model.Restrictions);
         Assert.Equal(expectedResumePoint, model.ResumePoint);
     }
@@ -649,12 +790,20 @@ public class ChapterTest : TestBase
             Audiobook = new()
             {
                 ID = "id",
-                Authors = [new() { Name = "name" }],
+                Authors = [new() { Name = "name", Published = true }],
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -664,23 +813,25 @@ public class ChapterTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Languages = ["string"],
                 MediaType = "media_type",
                 Name = "name",
-                Narrators = [new() { Name = "name" }],
+                Narrators = [new() { Name = "name", Published = true }],
                 Publisher = "publisher",
                 TotalChapters = 0,
                 Uri = "uri",
                 Edition = "Unabridged",
+                Published = true,
             },
             ChapterNumber = 1,
             Description =
                 "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -691,6 +842,7 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsPlayable = true,
@@ -700,8 +852,14 @@ public class ChapterTest : TestBase
             ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
             AvailableMarkets = ["string"],
-            Restrictions = new() { Reason = "reason" },
-            ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -721,12 +879,20 @@ public class ChapterTest : TestBase
             Audiobook = new()
             {
                 ID = "id",
-                Authors = [new() { Name = "name" }],
+                Authors = [new() { Name = "name", Published = true }],
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -736,23 +902,25 @@ public class ChapterTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Languages = ["string"],
                 MediaType = "media_type",
                 Name = "name",
-                Narrators = [new() { Name = "name" }],
+                Narrators = [new() { Name = "name", Published = true }],
                 Publisher = "publisher",
                 TotalChapters = 0,
                 Uri = "uri",
                 Edition = "Unabridged",
+                Published = true,
             },
             ChapterNumber = 1,
             Description =
                 "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -763,6 +931,7 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsPlayable = true,
@@ -772,8 +941,14 @@ public class ChapterTest : TestBase
             ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
             AvailableMarkets = ["string"],
-            Restrictions = new() { Reason = "reason" },
-            ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -786,12 +961,20 @@ public class ChapterTest : TestBase
         AudiobookBase expectedAudiobook = new()
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -801,23 +984,25 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
             Edition = "Unabridged",
+            Published = true,
         };
         long expectedChapterNumber = 1;
         string expectedDescription =
             "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n";
         long expectedDurationMs = 1686230;
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ";
         string expectedHTMLDescription =
             "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n";
@@ -828,6 +1013,7 @@ public class ChapterTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         bool expectedIsPlayable = true;
@@ -840,8 +1026,18 @@ public class ChapterTest : TestBase
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         List<string> expectedAvailableMarkets = ["string"];
-        ChapterRestrictionObject expectedRestrictions = new() { Reason = "reason" };
-        ResumePointObject expectedResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 };
+        bool expectedPublished = true;
+        ChapterRestrictionObject expectedRestrictions = new()
+        {
+            Published = true,
+            Reason = "reason",
+        };
+        ResumePointObject expectedResumePoint = new()
+        {
+            FullyPlayed = true,
+            Published = true,
+            ResumePositionMs = 0,
+        };
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAudioPreviewURL, deserialized.AudioPreviewURL);
@@ -875,6 +1071,7 @@ public class ChapterTest : TestBase
         {
             Assert.Equal(expectedAvailableMarkets[i], deserialized.AvailableMarkets[i]);
         }
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedRestrictions, deserialized.Restrictions);
         Assert.Equal(expectedResumePoint, deserialized.ResumePoint);
     }
@@ -890,12 +1087,20 @@ public class ChapterTest : TestBase
             Audiobook = new()
             {
                 ID = "id",
-                Authors = [new() { Name = "name" }],
+                Authors = [new() { Name = "name", Published = true }],
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -905,23 +1110,25 @@ public class ChapterTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Languages = ["string"],
                 MediaType = "media_type",
                 Name = "name",
-                Narrators = [new() { Name = "name" }],
+                Narrators = [new() { Name = "name", Published = true }],
                 Publisher = "publisher",
                 TotalChapters = 0,
                 Uri = "uri",
                 Edition = "Unabridged",
+                Published = true,
             },
             ChapterNumber = 1,
             Description =
                 "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -932,6 +1139,7 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsPlayable = true,
@@ -941,8 +1149,14 @@ public class ChapterTest : TestBase
             ReleaseDatePrecision = ChapterReleaseDatePrecision.Day,
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
             AvailableMarkets = ["string"],
-            Restrictions = new() { Reason = "reason" },
-            ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
         };
 
         model.Validate();
@@ -959,12 +1173,20 @@ public class ChapterTest : TestBase
             Audiobook = new()
             {
                 ID = "id",
-                Authors = [new() { Name = "name" }],
+                Authors = [new() { Name = "name", Published = true }],
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -974,23 +1196,25 @@ public class ChapterTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Languages = ["string"],
                 MediaType = "media_type",
                 Name = "name",
-                Narrators = [new() { Name = "name" }],
+                Narrators = [new() { Name = "name", Published = true }],
                 Publisher = "publisher",
                 TotalChapters = 0,
                 Uri = "uri",
                 Edition = "Unabridged",
+                Published = true,
             },
             ChapterNumber = 1,
             Description =
                 "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -1001,6 +1225,7 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsPlayable = true,
@@ -1013,6 +1238,8 @@ public class ChapterTest : TestBase
 
         Assert.Null(model.AvailableMarkets);
         Assert.False(model.RawData.ContainsKey("available_markets"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Restrictions);
         Assert.False(model.RawData.ContainsKey("restrictions"));
         Assert.Null(model.ResumePoint);
@@ -1030,12 +1257,20 @@ public class ChapterTest : TestBase
             Audiobook = new()
             {
                 ID = "id",
-                Authors = [new() { Name = "name" }],
+                Authors = [new() { Name = "name", Published = true }],
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -1045,23 +1280,25 @@ public class ChapterTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Languages = ["string"],
                 MediaType = "media_type",
                 Name = "name",
-                Narrators = [new() { Name = "name" }],
+                Narrators = [new() { Name = "name", Published = true }],
                 Publisher = "publisher",
                 TotalChapters = 0,
                 Uri = "uri",
                 Edition = "Unabridged",
+                Published = true,
             },
             ChapterNumber = 1,
             Description =
                 "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -1072,6 +1309,7 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsPlayable = true,
@@ -1096,12 +1334,20 @@ public class ChapterTest : TestBase
             Audiobook = new()
             {
                 ID = "id",
-                Authors = [new() { Name = "name" }],
+                Authors = [new() { Name = "name", Published = true }],
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -1111,23 +1357,25 @@ public class ChapterTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Languages = ["string"],
                 MediaType = "media_type",
                 Name = "name",
-                Narrators = [new() { Name = "name" }],
+                Narrators = [new() { Name = "name", Published = true }],
                 Publisher = "publisher",
                 TotalChapters = 0,
                 Uri = "uri",
                 Edition = "Unabridged",
+                Published = true,
             },
             ChapterNumber = 1,
             Description =
                 "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -1138,6 +1386,7 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsPlayable = true,
@@ -1149,12 +1398,15 @@ public class ChapterTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             AvailableMarkets = null,
+            Published = null,
             Restrictions = null,
             ResumePoint = null,
         };
 
         Assert.Null(model.AvailableMarkets);
         Assert.False(model.RawData.ContainsKey("available_markets"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Restrictions);
         Assert.False(model.RawData.ContainsKey("restrictions"));
         Assert.Null(model.ResumePoint);
@@ -1172,12 +1424,20 @@ public class ChapterTest : TestBase
             Audiobook = new()
             {
                 ID = "id",
-                Authors = [new() { Name = "name" }],
+                Authors = [new() { Name = "name", Published = true }],
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -1187,23 +1447,25 @@ public class ChapterTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Languages = ["string"],
                 MediaType = "media_type",
                 Name = "name",
-                Narrators = [new() { Name = "name" }],
+                Narrators = [new() { Name = "name", Published = true }],
                 Publisher = "publisher",
                 TotalChapters = 0,
                 Uri = "uri",
                 Edition = "Unabridged",
+                Published = true,
             },
             ChapterNumber = 1,
             Description =
                 "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
@@ -1214,6 +1476,7 @@ public class ChapterTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsPlayable = true,
@@ -1225,6 +1488,7 @@ public class ChapterTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             AvailableMarkets = null,
+            Published = null,
             Restrictions = null,
             ResumePoint = null,
         };

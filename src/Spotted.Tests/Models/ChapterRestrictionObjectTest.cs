@@ -8,17 +8,19 @@ public class ChapterRestrictionObjectTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new ChapterRestrictionObject { Reason = "reason" };
+        var model = new ChapterRestrictionObject { Published = true, Reason = "reason" };
 
+        bool expectedPublished = true;
         string expectedReason = "reason";
 
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedReason, model.Reason);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new ChapterRestrictionObject { Reason = "reason" };
+        var model = new ChapterRestrictionObject { Published = true, Reason = "reason" };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<ChapterRestrictionObject>(json);
@@ -29,21 +31,23 @@ public class ChapterRestrictionObjectTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new ChapterRestrictionObject { Reason = "reason" };
+        var model = new ChapterRestrictionObject { Published = true, Reason = "reason" };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<ChapterRestrictionObject>(json);
         Assert.NotNull(deserialized);
 
+        bool expectedPublished = true;
         string expectedReason = "reason";
 
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedReason, deserialized.Reason);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new ChapterRestrictionObject { Reason = "reason" };
+        var model = new ChapterRestrictionObject { Published = true, Reason = "reason" };
 
         model.Validate();
     }
@@ -53,6 +57,8 @@ public class ChapterRestrictionObjectTest : TestBase
     {
         var model = new ChapterRestrictionObject { };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
     }
@@ -71,9 +77,12 @@ public class ChapterRestrictionObjectTest : TestBase
         var model = new ChapterRestrictionObject
         {
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Reason = null,
         };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
     }
@@ -84,6 +93,7 @@ public class ChapterRestrictionObjectTest : TestBase
         var model = new ChapterRestrictionObject
         {
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Reason = null,
         };
 

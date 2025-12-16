@@ -15,7 +15,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -24,21 +24,28 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = PlaylistUserObjectType.User,
                 Uri = "uri",
                 DisplayName = "display_name",
             },
             Published = true,
             SnapshotID = "snapshot_id",
-            Tracks = new() { Href = "href", Total = 0 },
+            Tracks = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Type = "type",
             Uri = "uri",
         };
@@ -46,7 +53,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         string expectedID = "id";
         bool expectedCollaborative = true;
         string expectedDescription = "description";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         List<ImageObject> expectedImages =
         [
@@ -55,21 +62,28 @@ public class SimplifiedPlaylistObjectTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedName = "name";
         Owner expectedOwner = new()
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
             DisplayName = "display_name",
         };
         bool expectedPublished = true;
         string expectedSnapshotID = "snapshot_id";
-        PlaylistTracksRefObject expectedTracks = new() { Href = "href", Total = 0 };
+        PlaylistTracksRefObject expectedTracks = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         string expectedType = "type";
         string expectedUri = "uri";
 
@@ -101,7 +115,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -110,21 +124,28 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = PlaylistUserObjectType.User,
                 Uri = "uri",
                 DisplayName = "display_name",
             },
             Published = true,
             SnapshotID = "snapshot_id",
-            Tracks = new() { Href = "href", Total = 0 },
+            Tracks = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Type = "type",
             Uri = "uri",
         };
@@ -143,7 +164,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -152,21 +173,28 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = PlaylistUserObjectType.User,
                 Uri = "uri",
                 DisplayName = "display_name",
             },
             Published = true,
             SnapshotID = "snapshot_id",
-            Tracks = new() { Href = "href", Total = 0 },
+            Tracks = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Type = "type",
             Uri = "uri",
         };
@@ -178,7 +206,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         string expectedID = "id";
         bool expectedCollaborative = true;
         string expectedDescription = "description";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         List<ImageObject> expectedImages =
         [
@@ -187,21 +215,28 @@ public class SimplifiedPlaylistObjectTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedName = "name";
         Owner expectedOwner = new()
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
             DisplayName = "display_name",
         };
         bool expectedPublished = true;
         string expectedSnapshotID = "snapshot_id";
-        PlaylistTracksRefObject expectedTracks = new() { Href = "href", Total = 0 };
+        PlaylistTracksRefObject expectedTracks = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         string expectedType = "type";
         string expectedUri = "uri";
 
@@ -233,7 +268,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -242,21 +277,28 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = PlaylistUserObjectType.User,
                 Uri = "uri",
                 DisplayName = "display_name",
             },
             Published = true,
             SnapshotID = "snapshot_id",
-            Tracks = new() { Href = "href", Total = 0 },
+            Tracks = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Type = "type",
             Uri = "uri",
         };
@@ -387,16 +429,18 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
             DisplayName = "display_name",
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
+        bool expectedPublished = true;
         ApiEnum<string, PlaylistUserObjectType> expectedType = PlaylistUserObjectType.User;
         string expectedUri = "uri";
         string expectedDisplayName = "display_name";
@@ -404,6 +448,7 @@ public class OwnerTest : TestBase
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedExternalURLs, model.ExternalURLs);
         Assert.Equal(expectedHref, model.Href);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedUri, model.Uri);
         Assert.Equal(expectedDisplayName, model.DisplayName);
@@ -415,8 +460,9 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
             DisplayName = "display_name",
@@ -434,8 +480,9 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
             DisplayName = "display_name",
@@ -446,8 +493,9 @@ public class OwnerTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
+        bool expectedPublished = true;
         ApiEnum<string, PlaylistUserObjectType> expectedType = PlaylistUserObjectType.User;
         string expectedUri = "uri";
         string expectedDisplayName = "display_name";
@@ -455,6 +503,7 @@ public class OwnerTest : TestBase
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
         Assert.Equal(expectedHref, deserialized.Href);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedUri, deserialized.Uri);
         Assert.Equal(expectedDisplayName, deserialized.DisplayName);
@@ -466,8 +515,9 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
             DisplayName = "display_name",
@@ -487,6 +537,8 @@ public class OwnerTest : TestBase
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -512,6 +564,7 @@ public class OwnerTest : TestBase
             ID = null,
             ExternalURLs = null,
             Href = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -522,6 +575,8 @@ public class OwnerTest : TestBase
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -539,6 +594,7 @@ public class OwnerTest : TestBase
             ID = null,
             ExternalURLs = null,
             Href = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -552,8 +608,9 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
         };
@@ -568,8 +625,9 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
         };
@@ -583,8 +641,9 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
 
@@ -601,8 +660,9 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
 

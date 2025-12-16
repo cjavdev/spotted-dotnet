@@ -12,15 +12,18 @@ public class ExternalIDObjectTest : TestBase
         {
             Ean = "ean",
             Isrc = "isrc",
+            Published = true,
             Upc = "upc",
         };
 
         string expectedEan = "ean";
         string expectedIsrc = "isrc";
+        bool expectedPublished = true;
         string expectedUpc = "upc";
 
         Assert.Equal(expectedEan, model.Ean);
         Assert.Equal(expectedIsrc, model.Isrc);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedUpc, model.Upc);
     }
 
@@ -31,6 +34,7 @@ public class ExternalIDObjectTest : TestBase
         {
             Ean = "ean",
             Isrc = "isrc",
+            Published = true,
             Upc = "upc",
         };
 
@@ -47,6 +51,7 @@ public class ExternalIDObjectTest : TestBase
         {
             Ean = "ean",
             Isrc = "isrc",
+            Published = true,
             Upc = "upc",
         };
 
@@ -56,10 +61,12 @@ public class ExternalIDObjectTest : TestBase
 
         string expectedEan = "ean";
         string expectedIsrc = "isrc";
+        bool expectedPublished = true;
         string expectedUpc = "upc";
 
         Assert.Equal(expectedEan, deserialized.Ean);
         Assert.Equal(expectedIsrc, deserialized.Isrc);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedUpc, deserialized.Upc);
     }
 
@@ -70,6 +77,7 @@ public class ExternalIDObjectTest : TestBase
         {
             Ean = "ean",
             Isrc = "isrc",
+            Published = true,
             Upc = "upc",
         };
 
@@ -85,6 +93,8 @@ public class ExternalIDObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("ean"));
         Assert.Null(model.Isrc);
         Assert.False(model.RawData.ContainsKey("isrc"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Upc);
         Assert.False(model.RawData.ContainsKey("upc"));
     }
@@ -105,6 +115,7 @@ public class ExternalIDObjectTest : TestBase
             // Null should be interpreted as omitted for these properties
             Ean = null,
             Isrc = null,
+            Published = null,
             Upc = null,
         };
 
@@ -112,6 +123,8 @@ public class ExternalIDObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("ean"));
         Assert.Null(model.Isrc);
         Assert.False(model.RawData.ContainsKey("isrc"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Upc);
         Assert.False(model.RawData.ContainsKey("upc"));
     }
@@ -124,6 +137,7 @@ public class ExternalIDObjectTest : TestBase
             // Null should be interpreted as omitted for these properties
             Ean = null,
             Isrc = null,
+            Published = null,
             Upc = null,
         };
 
