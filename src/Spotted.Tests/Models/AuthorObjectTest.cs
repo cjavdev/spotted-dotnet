@@ -8,17 +8,19 @@ public class AuthorObjectTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new AuthorObject { Name = "name" };
+        var model = new AuthorObject { Name = "name", Published = true };
 
         string expectedName = "name";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new AuthorObject { Name = "name" };
+        var model = new AuthorObject { Name = "name", Published = true };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<AuthorObject>(json);
@@ -29,21 +31,23 @@ public class AuthorObjectTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new AuthorObject { Name = "name" };
+        var model = new AuthorObject { Name = "name", Published = true };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<AuthorObject>(json);
         Assert.NotNull(deserialized);
 
         string expectedName = "name";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new AuthorObject { Name = "name" };
+        var model = new AuthorObject { Name = "name", Published = true };
 
         model.Validate();
     }
@@ -55,6 +59,8 @@ public class AuthorObjectTest : TestBase
 
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -72,10 +78,13 @@ public class AuthorObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             Name = null,
+            Published = null,
         };
 
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -85,6 +94,7 @@ public class AuthorObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             Name = null,
+            Published = null,
         };
 
         model.Validate();

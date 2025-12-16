@@ -17,8 +17,13 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -29,10 +34,12 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Type.Artist,
                     Uri = "uri",
                 },
@@ -44,8 +51,13 @@ public class ArtistBulkRetrieveResponseTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
-                Followers = new() { Href = "href", Total = 0 },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                Followers = new()
+                {
+                    Href = "href",
+                    Published = true,
+                    Total = 0,
+                },
                 Genres = ["Prog rock", "Grunge"],
                 Href = "href",
                 Images =
@@ -55,10 +67,12 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
                 Popularity = 0,
+                Published = true,
                 Type = Type.Artist,
                 Uri = "uri",
             },
@@ -81,8 +95,13 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -93,10 +112,12 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Type.Artist,
                     Uri = "uri",
                 },
@@ -119,8 +140,13 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -131,10 +157,12 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Type.Artist,
                     Uri = "uri",
                 },
@@ -150,8 +178,13 @@ public class ArtistBulkRetrieveResponseTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
-                Followers = new() { Href = "href", Total = 0 },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                Followers = new()
+                {
+                    Href = "href",
+                    Published = true,
+                    Total = 0,
+                },
                 Genres = ["Prog rock", "Grunge"],
                 Href = "href",
                 Images =
@@ -161,10 +194,12 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
                 Popularity = 0,
+                Published = true,
                 Type = Type.Artist,
                 Uri = "uri",
             },
@@ -187,8 +222,13 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -199,10 +239,12 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Type.Artist,
                     Uri = "uri",
                 },

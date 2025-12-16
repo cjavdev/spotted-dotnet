@@ -13,17 +13,19 @@ public class SimplifiedArtistObjectTest : TestBase
         var model = new SimplifiedArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Name = "name",
+            Published = true,
             Type = SimplifiedArtistObjectType.Artist,
             Uri = "uri",
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         string expectedName = "name";
+        bool expectedPublished = true;
         ApiEnum<string, SimplifiedArtistObjectType> expectedType =
             SimplifiedArtistObjectType.Artist;
         string expectedUri = "uri";
@@ -32,6 +34,7 @@ public class SimplifiedArtistObjectTest : TestBase
         Assert.Equal(expectedExternalURLs, model.ExternalURLs);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedName, model.Name);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedUri, model.Uri);
     }
@@ -42,9 +45,10 @@ public class SimplifiedArtistObjectTest : TestBase
         var model = new SimplifiedArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Name = "name",
+            Published = true,
             Type = SimplifiedArtistObjectType.Artist,
             Uri = "uri",
         };
@@ -61,9 +65,10 @@ public class SimplifiedArtistObjectTest : TestBase
         var model = new SimplifiedArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Name = "name",
+            Published = true,
             Type = SimplifiedArtistObjectType.Artist,
             Uri = "uri",
         };
@@ -73,9 +78,10 @@ public class SimplifiedArtistObjectTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         string expectedName = "name";
+        bool expectedPublished = true;
         ApiEnum<string, SimplifiedArtistObjectType> expectedType =
             SimplifiedArtistObjectType.Artist;
         string expectedUri = "uri";
@@ -84,6 +90,7 @@ public class SimplifiedArtistObjectTest : TestBase
         Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedName, deserialized.Name);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedUri, deserialized.Uri);
     }
@@ -94,9 +101,10 @@ public class SimplifiedArtistObjectTest : TestBase
         var model = new SimplifiedArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Name = "name",
+            Published = true,
             Type = SimplifiedArtistObjectType.Artist,
             Uri = "uri",
         };
@@ -117,6 +125,8 @@ public class SimplifiedArtistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("href"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -141,6 +151,7 @@ public class SimplifiedArtistObjectTest : TestBase
             ExternalURLs = null,
             Href = null,
             Name = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -153,6 +164,8 @@ public class SimplifiedArtistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("href"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -169,6 +182,7 @@ public class SimplifiedArtistObjectTest : TestBase
             ExternalURLs = null,
             Href = null,
             Name = null,
+            Published = null,
             Type = null,
             Uri = null,
         };

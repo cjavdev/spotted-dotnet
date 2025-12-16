@@ -33,15 +33,16 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = Models::SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -51,6 +52,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -58,9 +60,11 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         ReleaseDatePrecision = ReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Models::Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                     },
                 ],
+                Published = true,
             },
         };
 
@@ -83,15 +87,16 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -101,6 +106,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -108,9 +114,11 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                     ReleaseDatePrecision = ReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Models::Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
             ],
+            Published = true,
         };
 
         Assert.Equal(expectedAlbums, model.Albums);
@@ -140,15 +148,16 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = Models::SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -158,6 +167,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -165,9 +175,11 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         ReleaseDatePrecision = ReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Models::Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                     },
                 ],
+                Published = true,
             },
         };
 
@@ -201,15 +213,16 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = Models::SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -219,6 +232,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -226,9 +240,11 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         ReleaseDatePrecision = ReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Models::Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                     },
                 ],
+                Published = true,
             },
         };
 
@@ -255,15 +271,16 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -273,6 +290,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -280,9 +298,11 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                     ReleaseDatePrecision = ReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Models::Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
             ],
+            Published = true,
         };
 
         Assert.Equal(expectedAlbums, deserialized.Albums);
@@ -312,15 +332,16 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = Models::SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -330,6 +351,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -337,9 +359,11 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         ReleaseDatePrecision = ReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Models::Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                     },
                 ],
+                Published = true,
             },
         };
 
@@ -371,15 +395,16 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -389,6 +414,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -396,9 +422,11 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     ReleaseDatePrecision = ReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Models::Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
             ],
+            Published = true,
         };
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -418,15 +446,16 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
@@ -435,6 +464,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
@@ -442,9 +472,11 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                 ReleaseDatePrecision = ReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                Restrictions = new() { Reason = Models::Reason.Market },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = Models::Reason.Market },
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedLimit, model.Limit);
@@ -458,6 +490,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
         {
             Assert.Equal(expectedItems[i], model.Items[i]);
         }
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -482,15 +515,16 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -500,6 +534,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -507,9 +542,11 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     ReleaseDatePrecision = ReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Models::Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -540,15 +577,16 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -558,6 +596,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -565,9 +604,11 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     ReleaseDatePrecision = ReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Models::Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -591,15 +632,16 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
@@ -608,6 +650,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
@@ -615,9 +658,11 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                 ReleaseDatePrecision = ReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                Restrictions = new() { Reason = Models::Reason.Market },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = Models::Reason.Market },
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedLimit, deserialized.Limit);
@@ -631,6 +676,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
         {
             Assert.Equal(expectedItems[i], deserialized.Items[i]);
         }
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -655,15 +701,16 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -673,6 +720,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -680,9 +728,11 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     ReleaseDatePrecision = ReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Models::Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
             ],
+            Published = true,
         };
 
         model.Validate();
@@ -703,6 +753,8 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
 
         Assert.Null(model.Items);
         Assert.False(model.RawData.ContainsKey("items"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -735,10 +787,13 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Items = null,
+            Published = null,
         };
 
         Assert.Null(model.Items);
         Assert.False(model.RawData.ContainsKey("items"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -755,6 +810,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Items = null,
+            Published = null,
         };
 
         model.Validate();
@@ -775,15 +831,16 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -792,6 +849,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
@@ -799,7 +857,8 @@ public class ItemTest : TestBase
             ReleaseDatePrecision = ReleaseDatePrecision.Year,
             TotalTracks = 9,
             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-            Restrictions = new() { Reason = Models::Reason.Market },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = Models::Reason.Market },
         };
 
         string expectedID = "2up3OPMp9Tb4dAKM2erWXQ";
@@ -809,15 +868,20 @@ public class ItemTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
+                Published = true,
                 Type = Models::SimplifiedArtistObjectType.Artist,
                 Uri = "uri",
             },
         ];
         List<string> expectedAvailableMarkets = ["CA", "BR", "IT"];
-        Models::ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        Models::ExternalURLObject expectedExternalURLs = new()
+        {
+            Published = true,
+            Spotify = "spotify",
+        };
         string expectedHref = "href";
         List<Models::ImageObject> expectedImages =
         [
@@ -826,6 +890,7 @@ public class ItemTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedName = "name";
@@ -835,8 +900,10 @@ public class ItemTest : TestBase
         long expectedTotalTracks = 9;
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"album\"");
         string expectedUri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ";
+        bool expectedPublished = true;
         Models::AlbumRestrictionObject expectedRestrictions = new()
         {
+            Published = true,
             Reason = Models::Reason.Market,
         };
 
@@ -865,6 +932,7 @@ public class ItemTest : TestBase
         Assert.Equal(expectedTotalTracks, model.TotalTracks);
         Assert.True(JsonElement.DeepEquals(expectedType, model.Type));
         Assert.Equal(expectedUri, model.Uri);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedRestrictions, model.Restrictions);
     }
 
@@ -880,15 +948,16 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -897,6 +966,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
@@ -904,7 +974,8 @@ public class ItemTest : TestBase
             ReleaseDatePrecision = ReleaseDatePrecision.Year,
             TotalTracks = 9,
             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-            Restrictions = new() { Reason = Models::Reason.Market },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = Models::Reason.Market },
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -925,15 +996,16 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -942,6 +1014,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
@@ -949,7 +1022,8 @@ public class ItemTest : TestBase
             ReleaseDatePrecision = ReleaseDatePrecision.Year,
             TotalTracks = 9,
             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-            Restrictions = new() { Reason = Models::Reason.Market },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = Models::Reason.Market },
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -963,15 +1037,20 @@ public class ItemTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
+                Published = true,
                 Type = Models::SimplifiedArtistObjectType.Artist,
                 Uri = "uri",
             },
         ];
         List<string> expectedAvailableMarkets = ["CA", "BR", "IT"];
-        Models::ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        Models::ExternalURLObject expectedExternalURLs = new()
+        {
+            Published = true,
+            Spotify = "spotify",
+        };
         string expectedHref = "href";
         List<Models::ImageObject> expectedImages =
         [
@@ -980,6 +1059,7 @@ public class ItemTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedName = "name";
@@ -989,8 +1069,10 @@ public class ItemTest : TestBase
         long expectedTotalTracks = 9;
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"album\"");
         string expectedUri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ";
+        bool expectedPublished = true;
         Models::AlbumRestrictionObject expectedRestrictions = new()
         {
+            Published = true,
             Reason = Models::Reason.Market,
         };
 
@@ -1019,6 +1101,7 @@ public class ItemTest : TestBase
         Assert.Equal(expectedTotalTracks, deserialized.TotalTracks);
         Assert.True(JsonElement.DeepEquals(expectedType, deserialized.Type));
         Assert.Equal(expectedUri, deserialized.Uri);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedRestrictions, deserialized.Restrictions);
     }
 
@@ -1034,15 +1117,16 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -1051,6 +1135,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
@@ -1058,7 +1143,8 @@ public class ItemTest : TestBase
             ReleaseDatePrecision = ReleaseDatePrecision.Year,
             TotalTracks = 9,
             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-            Restrictions = new() { Reason = Models::Reason.Market },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = Models::Reason.Market },
         };
 
         model.Validate();
@@ -1076,15 +1162,16 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -1093,6 +1180,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
@@ -1102,6 +1190,8 @@ public class ItemTest : TestBase
             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
         };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Restrictions);
         Assert.False(model.RawData.ContainsKey("restrictions"));
     }
@@ -1118,15 +1208,16 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -1135,6 +1226,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
@@ -1159,15 +1251,16 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -1176,6 +1269,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
@@ -1185,9 +1279,12 @@ public class ItemTest : TestBase
             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
 
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Restrictions = null,
         };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Restrictions);
         Assert.False(model.RawData.ContainsKey("restrictions"));
     }
@@ -1204,15 +1301,16 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
@@ -1221,6 +1319,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
@@ -1230,6 +1329,7 @@ public class ItemTest : TestBase
             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
 
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Restrictions = null,
         };
 

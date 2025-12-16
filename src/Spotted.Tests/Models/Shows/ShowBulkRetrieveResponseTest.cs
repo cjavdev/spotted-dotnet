@@ -18,10 +18,18 @@ public class ShowBulkRetrieveResponseTest : TestBase
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -32,6 +40,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -41,6 +50,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
             ],
         };
@@ -51,10 +61,18 @@ public class ShowBulkRetrieveResponseTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -64,6 +82,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -73,6 +92,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
         ];
 
@@ -94,10 +114,18 @@ public class ShowBulkRetrieveResponseTest : TestBase
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -108,6 +136,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -117,6 +146,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
             ],
         };
@@ -138,10 +168,18 @@ public class ShowBulkRetrieveResponseTest : TestBase
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -152,6 +190,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -161,6 +200,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
             ],
         };
@@ -175,10 +215,18 @@ public class ShowBulkRetrieveResponseTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -188,6 +236,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -197,6 +246,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
         ];
 
@@ -218,10 +268,18 @@ public class ShowBulkRetrieveResponseTest : TestBase
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -232,6 +290,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -241,6 +300,7 @@ public class ShowBulkRetrieveResponseTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
             ],
         };

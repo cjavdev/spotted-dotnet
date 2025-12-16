@@ -24,14 +24,23 @@ public class ShowListPageResponseTest : TestBase
                 new()
                 {
                     AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Published = true,
                     Show = new()
                     {
                         ID = "id",
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -42,6 +51,7 @@ public class ShowListPageResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         IsExternallyHosted = true,
@@ -51,9 +61,11 @@ public class ShowListPageResponseTest : TestBase
                         Publisher = "publisher",
                         TotalEpisodes = 0,
                         Uri = "uri",
+                        Published = true,
                     },
                 },
             ],
+            Published = true,
         };
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -67,14 +79,23 @@ public class ShowListPageResponseTest : TestBase
             new()
             {
                 AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Published = true,
                 Show = new()
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -85,6 +106,7 @@ public class ShowListPageResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -94,9 +116,11 @@ public class ShowListPageResponseTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedLimit, model.Limit);
@@ -110,6 +134,7 @@ public class ShowListPageResponseTest : TestBase
         {
             Assert.Equal(expectedItems[i], model.Items[i]);
         }
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -128,14 +153,23 @@ public class ShowListPageResponseTest : TestBase
                 new()
                 {
                     AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Published = true,
                     Show = new()
                     {
                         ID = "id",
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -146,6 +180,7 @@ public class ShowListPageResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         IsExternallyHosted = true,
@@ -155,9 +190,11 @@ public class ShowListPageResponseTest : TestBase
                         Publisher = "publisher",
                         TotalEpisodes = 0,
                         Uri = "uri",
+                        Published = true,
                     },
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -182,14 +219,23 @@ public class ShowListPageResponseTest : TestBase
                 new()
                 {
                     AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Published = true,
                     Show = new()
                     {
                         ID = "id",
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -200,6 +246,7 @@ public class ShowListPageResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         IsExternallyHosted = true,
@@ -209,9 +256,11 @@ public class ShowListPageResponseTest : TestBase
                         Publisher = "publisher",
                         TotalEpisodes = 0,
                         Uri = "uri",
+                        Published = true,
                     },
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -229,14 +278,23 @@ public class ShowListPageResponseTest : TestBase
             new()
             {
                 AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Published = true,
                 Show = new()
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -247,6 +305,7 @@ public class ShowListPageResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -256,9 +315,11 @@ public class ShowListPageResponseTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedLimit, deserialized.Limit);
@@ -272,6 +333,7 @@ public class ShowListPageResponseTest : TestBase
         {
             Assert.Equal(expectedItems[i], deserialized.Items[i]);
         }
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -290,14 +352,23 @@ public class ShowListPageResponseTest : TestBase
                 new()
                 {
                     AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Published = true,
                     Show = new()
                     {
                         ID = "id",
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -308,6 +379,7 @@ public class ShowListPageResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         IsExternallyHosted = true,
@@ -317,9 +389,11 @@ public class ShowListPageResponseTest : TestBase
                         Publisher = "publisher",
                         TotalEpisodes = 0,
                         Uri = "uri",
+                        Published = true,
                     },
                 },
             ],
+            Published = true,
         };
 
         model.Validate();
@@ -340,6 +414,8 @@ public class ShowListPageResponseTest : TestBase
 
         Assert.Null(model.Items);
         Assert.False(model.RawData.ContainsKey("items"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -372,10 +448,13 @@ public class ShowListPageResponseTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Items = null,
+            Published = null,
         };
 
         Assert.Null(model.Items);
         Assert.False(model.RawData.ContainsKey("items"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -392,6 +471,7 @@ public class ShowListPageResponseTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Items = null,
+            Published = null,
         };
 
         model.Validate();
@@ -406,14 +486,23 @@ public class ItemTest : TestBase
         var model = new Item
         {
             AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Published = true,
             Show = new()
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -423,6 +512,7 @@ public class ItemTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -432,18 +522,28 @@ public class ItemTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
         };
 
         DateTimeOffset expectedAddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        bool expectedPublished = true;
         ShowBase expectedShow = new()
         {
             ID = "id",
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -453,6 +553,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -462,9 +563,11 @@ public class ItemTest : TestBase
             Publisher = "publisher",
             TotalEpisodes = 0,
             Uri = "uri",
+            Published = true,
         };
 
         Assert.Equal(expectedAddedAt, model.AddedAt);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedShow, model.Show);
     }
 
@@ -474,14 +577,23 @@ public class ItemTest : TestBase
         var model = new Item
         {
             AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Published = true,
             Show = new()
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -491,6 +603,7 @@ public class ItemTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -500,6 +613,7 @@ public class ItemTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
         };
 
@@ -515,14 +629,23 @@ public class ItemTest : TestBase
         var model = new Item
         {
             AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Published = true,
             Show = new()
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -532,6 +655,7 @@ public class ItemTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -541,6 +665,7 @@ public class ItemTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
         };
 
@@ -549,14 +674,23 @@ public class ItemTest : TestBase
         Assert.NotNull(deserialized);
 
         DateTimeOffset expectedAddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        bool expectedPublished = true;
         ShowBase expectedShow = new()
         {
             ID = "id",
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -566,6 +700,7 @@ public class ItemTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -575,9 +710,11 @@ public class ItemTest : TestBase
             Publisher = "publisher",
             TotalEpisodes = 0,
             Uri = "uri",
+            Published = true,
         };
 
         Assert.Equal(expectedAddedAt, deserialized.AddedAt);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedShow, deserialized.Show);
     }
 
@@ -587,14 +724,23 @@ public class ItemTest : TestBase
         var model = new Item
         {
             AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Published = true,
             Show = new()
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -604,6 +750,7 @@ public class ItemTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -613,6 +760,7 @@ public class ItemTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
         };
 
@@ -626,6 +774,8 @@ public class ItemTest : TestBase
 
         Assert.Null(model.AddedAt);
         Assert.False(model.RawData.ContainsKey("added_at"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Show);
         Assert.False(model.RawData.ContainsKey("show"));
     }
@@ -645,11 +795,14 @@ public class ItemTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             AddedAt = null,
+            Published = null,
             Show = null,
         };
 
         Assert.Null(model.AddedAt);
         Assert.False(model.RawData.ContainsKey("added_at"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Show);
         Assert.False(model.RawData.ContainsKey("show"));
     }
@@ -661,6 +814,7 @@ public class ItemTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             AddedAt = null,
+            Published = null,
             Show = null,
         };
 

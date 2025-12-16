@@ -17,9 +17,10 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -28,21 +29,23 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
             PreviewURL = "preview_url",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = "type",
             Uri = "uri",
@@ -54,9 +57,10 @@ public class SimplifiedTrackObjectTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
+                Published = true,
                 Type = SimplifiedArtistObjectType.Artist,
                 Uri = "uri",
             },
@@ -65,21 +69,23 @@ public class SimplifiedTrackObjectTest : TestBase
         long expectedDiscNumber = 0;
         long expectedDurationMs = 0;
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedIsLocal = true;
         bool expectedIsPlayable = true;
         LinkedTrackObject expectedLinkedFrom = new()
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
         string expectedName = "name";
         string expectedPreviewURL = "preview_url";
-        TrackRestrictionObject expectedRestrictions = new() { Reason = "reason" };
+        bool expectedPublished = true;
+        TrackRestrictionObject expectedRestrictions = new() { Published = true, Reason = "reason" };
         long expectedTrackNumber = 0;
         string expectedType = "type";
         string expectedUri = "uri";
@@ -107,6 +113,7 @@ public class SimplifiedTrackObjectTest : TestBase
         Assert.Equal(expectedLinkedFrom, model.LinkedFrom);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedPreviewURL, model.PreviewURL);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedRestrictions, model.Restrictions);
         Assert.Equal(expectedTrackNumber, model.TrackNumber);
         Assert.Equal(expectedType, model.Type);
@@ -124,9 +131,10 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -135,21 +143,23 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
             PreviewURL = "preview_url",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = "type",
             Uri = "uri",
@@ -172,9 +182,10 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -183,21 +194,23 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
             PreviewURL = "preview_url",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = "type",
             Uri = "uri",
@@ -213,9 +226,10 @@ public class SimplifiedTrackObjectTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
+                Published = true,
                 Type = SimplifiedArtistObjectType.Artist,
                 Uri = "uri",
             },
@@ -224,21 +238,23 @@ public class SimplifiedTrackObjectTest : TestBase
         long expectedDiscNumber = 0;
         long expectedDurationMs = 0;
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedIsLocal = true;
         bool expectedIsPlayable = true;
         LinkedTrackObject expectedLinkedFrom = new()
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
         string expectedName = "name";
         string expectedPreviewURL = "preview_url";
-        TrackRestrictionObject expectedRestrictions = new() { Reason = "reason" };
+        bool expectedPublished = true;
+        TrackRestrictionObject expectedRestrictions = new() { Published = true, Reason = "reason" };
         long expectedTrackNumber = 0;
         string expectedType = "type";
         string expectedUri = "uri";
@@ -266,6 +282,7 @@ public class SimplifiedTrackObjectTest : TestBase
         Assert.Equal(expectedLinkedFrom, deserialized.LinkedFrom);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedPreviewURL, deserialized.PreviewURL);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedRestrictions, deserialized.Restrictions);
         Assert.Equal(expectedTrackNumber, deserialized.TrackNumber);
         Assert.Equal(expectedType, deserialized.Type);
@@ -283,9 +300,10 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -294,21 +312,23 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
             PreviewURL = "preview_url",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = "type",
             Uri = "uri",
@@ -346,6 +366,8 @@ public class SimplifiedTrackObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("linked_from"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Restrictions);
         Assert.False(model.RawData.ContainsKey("restrictions"));
         Assert.Null(model.TrackNumber);
@@ -384,6 +406,7 @@ public class SimplifiedTrackObjectTest : TestBase
             IsPlayable = null,
             LinkedFrom = null,
             Name = null,
+            Published = null,
             Restrictions = null,
             TrackNumber = null,
             Type = null,
@@ -414,6 +437,8 @@ public class SimplifiedTrackObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("linked_from"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Restrictions);
         Assert.False(model.RawData.ContainsKey("restrictions"));
         Assert.Null(model.TrackNumber);
@@ -444,6 +469,7 @@ public class SimplifiedTrackObjectTest : TestBase
             IsPlayable = null,
             LinkedFrom = null,
             Name = null,
+            Published = null,
             Restrictions = null,
             TrackNumber = null,
             Type = null,
@@ -464,9 +490,10 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -475,20 +502,22 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = "type",
             Uri = "uri",
@@ -509,9 +538,10 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -520,20 +550,22 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = "type",
             Uri = "uri",
@@ -553,9 +585,10 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -564,20 +597,22 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = "type",
             Uri = "uri",
@@ -600,9 +635,10 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -611,20 +647,22 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = "type",
             Uri = "uri",

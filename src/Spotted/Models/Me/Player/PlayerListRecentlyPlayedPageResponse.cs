@@ -105,6 +105,26 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// The total number of items available to return.
     /// </summary>
     public long? Total
@@ -132,6 +152,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
         }
         _ = this.Limit;
         _ = this.Next;
+        _ = this.Published;
         _ = this.Total;
     }
 
@@ -212,11 +233,32 @@ public sealed record class Cursors : ModelBase
         }
     }
 
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
     /// <inheritdoc/>
     public override void Validate()
     {
         _ = this.After;
         _ = this.Before;
+        _ = this.Published;
     }
 
     public Cursors() { }
@@ -294,6 +336,26 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// The track the user listened to.
     /// </summary>
     public TrackObject? Track
@@ -315,6 +377,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
     {
         this.Context?.Validate();
         _ = this.PlayedAt;
+        _ = this.Published;
         this.Track?.Validate();
     }
 

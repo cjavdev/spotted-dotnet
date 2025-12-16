@@ -152,10 +152,10 @@ public sealed record class SimplifiedPlaylistObject : ModelBase
     }
 
     /// <summary>
-    /// The playlist's public/private status (if it is added to the user's profile):
-    /// `true` the playlist is public, `false` the playlist is private, `null` the
-    /// playlist status is not relevant. For more about public/private status, see
-    /// [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
     /// </summary>
     public bool? Published
     {
@@ -356,6 +356,26 @@ public sealed record class Owner : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// The object type.
     /// </summary>
     public ApiEnum<string, PlaylistUserObjectType>? Type
@@ -411,6 +431,7 @@ public sealed record class Owner : ModelBase
             ID = owner.ID,
             ExternalURLs = owner.ExternalURLs,
             Href = owner.Href,
+            Published = owner.Published,
             Type = owner.Type,
             Uri = owner.Uri,
         };
@@ -421,6 +442,7 @@ public sealed record class Owner : ModelBase
         _ = this.ID;
         this.ExternalURLs?.Validate();
         _ = this.Href;
+        _ = this.Published;
         this.Type?.Validate();
         _ = this.Uri;
         _ = this.DisplayName;

@@ -27,7 +27,7 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                         ID = "id",
                         Collaborative = true,
                         Description = "description",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -37,26 +37,35 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
                         Owner = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
+                            Published = true,
                             Type = PlaylistUserObjectType.User,
                             Uri = "uri",
                             DisplayName = "display_name",
                         },
                         Published = true,
                         SnapshotID = "snapshot_id",
-                        Tracks = new() { Href = "href", Total = 0 },
+                        Tracks = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
                         Type = "type",
                         Uri = "uri",
                     },
                 ],
+                Published = true,
             },
+            Published = true,
         };
 
         string expectedMessage = "Popular Playlists";
@@ -75,7 +84,7 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                     ID = "id",
                     Collaborative = true,
                     Description = "description",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -85,29 +94,39 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Owner = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = PlaylistUserObjectType.User,
                         Uri = "uri",
                         DisplayName = "display_name",
                     },
                     Published = true,
                     SnapshotID = "snapshot_id",
-                    Tracks = new() { Href = "href", Total = 0 },
+                    Tracks = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Type = "type",
                     Uri = "uri",
                 },
             ],
+            Published = true,
         };
+        bool expectedPublished = true;
 
         Assert.Equal(expectedMessage, model.Message);
         Assert.Equal(expectedPlaylists, model.Playlists);
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -131,7 +150,7 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                         ID = "id",
                         Collaborative = true,
                         Description = "description",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -141,26 +160,35 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
                         Owner = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
+                            Published = true,
                             Type = PlaylistUserObjectType.User,
                             Uri = "uri",
                             DisplayName = "display_name",
                         },
                         Published = true,
                         SnapshotID = "snapshot_id",
-                        Tracks = new() { Href = "href", Total = 0 },
+                        Tracks = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
                         Type = "type",
                         Uri = "uri",
                     },
                 ],
+                Published = true,
             },
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -190,7 +218,7 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                         ID = "id",
                         Collaborative = true,
                         Description = "description",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -200,26 +228,35 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
                         Owner = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
+                            Published = true,
                             Type = PlaylistUserObjectType.User,
                             Uri = "uri",
                             DisplayName = "display_name",
                         },
                         Published = true,
                         SnapshotID = "snapshot_id",
-                        Tracks = new() { Href = "href", Total = 0 },
+                        Tracks = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
                         Type = "type",
                         Uri = "uri",
                     },
                 ],
+                Published = true,
             },
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -242,7 +279,7 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                     ID = "id",
                     Collaborative = true,
                     Description = "description",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -252,29 +289,39 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Owner = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = PlaylistUserObjectType.User,
                         Uri = "uri",
                         DisplayName = "display_name",
                     },
                     Published = true,
                     SnapshotID = "snapshot_id",
-                    Tracks = new() { Href = "href", Total = 0 },
+                    Tracks = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Type = "type",
                     Uri = "uri",
                 },
             ],
+            Published = true,
         };
+        bool expectedPublished = true;
 
         Assert.Equal(expectedMessage, deserialized.Message);
         Assert.Equal(expectedPlaylists, deserialized.Playlists);
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -298,7 +345,7 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                         ID = "id",
                         Collaborative = true,
                         Description = "description",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -308,26 +355,35 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
                         Owner = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
+                            Published = true,
                             Type = PlaylistUserObjectType.User,
                             Uri = "uri",
                             DisplayName = "display_name",
                         },
                         Published = true,
                         SnapshotID = "snapshot_id",
-                        Tracks = new() { Href = "href", Total = 0 },
+                        Tracks = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
                         Type = "type",
                         Uri = "uri",
                     },
                 ],
+                Published = true,
             },
+            Published = true,
         };
 
         model.Validate();
@@ -342,6 +398,8 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("message"));
         Assert.Null(model.Playlists);
         Assert.False(model.RawData.ContainsKey("playlists"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -360,12 +418,15 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
             // Null should be interpreted as omitted for these properties
             Message = null,
             Playlists = null,
+            Published = null,
         };
 
         Assert.Null(model.Message);
         Assert.False(model.RawData.ContainsKey("message"));
         Assert.Null(model.Playlists);
         Assert.False(model.RawData.ContainsKey("playlists"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -376,6 +437,7 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
             // Null should be interpreted as omitted for these properties
             Message = null,
             Playlists = null,
+            Published = null,
         };
 
         model.Validate();

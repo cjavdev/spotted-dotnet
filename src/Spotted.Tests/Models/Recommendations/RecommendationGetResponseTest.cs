@@ -21,6 +21,7 @@ public class RecommendationGetResponseTest : TestBase
                     AfterRelinkingSize = 0,
                     Href = "href",
                     InitialPoolSize = 0,
+                    Published = true,
                     Type = "type",
                 },
             ],
@@ -38,15 +39,16 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -56,6 +58,7 @@ public class RecommendationGetResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -63,16 +66,18 @@ public class RecommendationGetResponseTest : TestBase
                         ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
                     },
                     Artists =
                     [
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
@@ -85,29 +90,33 @@ public class RecommendationGetResponseTest : TestBase
                     {
                         Ean = "ean",
                         Isrc = "isrc",
+                        Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
                     Popularity = 0,
                     PreviewURL = "preview_url",
-                    Restrictions = new() { Reason = "reason" },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
                     Type = TrackObjectType.Track,
                     Uri = "uri",
                 },
             ],
+            Published = true,
         };
 
         List<Seed> expectedSeeds =
@@ -119,6 +128,7 @@ public class RecommendationGetResponseTest : TestBase
                 AfterRelinkingSize = 0,
                 Href = "href",
                 InitialPoolSize = 0,
+                Published = true,
                 Type = "type",
             },
         ];
@@ -136,15 +146,16 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -154,6 +165,7 @@ public class RecommendationGetResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -161,16 +173,18 @@ public class RecommendationGetResponseTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -183,29 +197,33 @@ public class RecommendationGetResponseTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedSeeds.Count, model.Seeds.Count);
         for (int i = 0; i < expectedSeeds.Count; i++)
@@ -217,6 +235,7 @@ public class RecommendationGetResponseTest : TestBase
         {
             Assert.Equal(expectedTracks[i], model.Tracks[i]);
         }
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -233,6 +252,7 @@ public class RecommendationGetResponseTest : TestBase
                     AfterRelinkingSize = 0,
                     Href = "href",
                     InitialPoolSize = 0,
+                    Published = true,
                     Type = "type",
                 },
             ],
@@ -250,15 +270,16 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -268,6 +289,7 @@ public class RecommendationGetResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -275,16 +297,18 @@ public class RecommendationGetResponseTest : TestBase
                         ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
                     },
                     Artists =
                     [
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
@@ -297,29 +321,33 @@ public class RecommendationGetResponseTest : TestBase
                     {
                         Ean = "ean",
                         Isrc = "isrc",
+                        Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
                     Popularity = 0,
                     PreviewURL = "preview_url",
-                    Restrictions = new() { Reason = "reason" },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
                     Type = TrackObjectType.Track,
                     Uri = "uri",
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -342,6 +370,7 @@ public class RecommendationGetResponseTest : TestBase
                     AfterRelinkingSize = 0,
                     Href = "href",
                     InitialPoolSize = 0,
+                    Published = true,
                     Type = "type",
                 },
             ],
@@ -359,15 +388,16 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -377,6 +407,7 @@ public class RecommendationGetResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -384,16 +415,18 @@ public class RecommendationGetResponseTest : TestBase
                         ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
                     },
                     Artists =
                     [
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
@@ -406,29 +439,33 @@ public class RecommendationGetResponseTest : TestBase
                     {
                         Ean = "ean",
                         Isrc = "isrc",
+                        Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
                     Popularity = 0,
                     PreviewURL = "preview_url",
-                    Restrictions = new() { Reason = "reason" },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
                     Type = TrackObjectType.Track,
                     Uri = "uri",
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -444,6 +481,7 @@ public class RecommendationGetResponseTest : TestBase
                 AfterRelinkingSize = 0,
                 Href = "href",
                 InitialPoolSize = 0,
+                Published = true,
                 Type = "type",
             },
         ];
@@ -461,15 +499,16 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -479,6 +518,7 @@ public class RecommendationGetResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -486,16 +526,18 @@ public class RecommendationGetResponseTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -508,29 +550,33 @@ public class RecommendationGetResponseTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedSeeds.Count, deserialized.Seeds.Count);
         for (int i = 0; i < expectedSeeds.Count; i++)
@@ -542,6 +588,7 @@ public class RecommendationGetResponseTest : TestBase
         {
             Assert.Equal(expectedTracks[i], deserialized.Tracks[i]);
         }
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -558,6 +605,7 @@ public class RecommendationGetResponseTest : TestBase
                     AfterRelinkingSize = 0,
                     Href = "href",
                     InitialPoolSize = 0,
+                    Published = true,
                     Type = "type",
                 },
             ],
@@ -575,15 +623,16 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -593,6 +642,7 @@ public class RecommendationGetResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -600,16 +650,18 @@ public class RecommendationGetResponseTest : TestBase
                         ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
                     },
                     Artists =
                     [
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
@@ -622,29 +674,497 @@ public class RecommendationGetResponseTest : TestBase
                     {
                         Ean = "ean",
                         Isrc = "isrc",
+                        Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
                     Popularity = 0,
                     PreviewURL = "preview_url",
-                    Restrictions = new() { Reason = "reason" },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
                     Type = TrackObjectType.Track,
                     Uri = "uri",
                 },
             ],
+            Published = true,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new RecommendationGetResponse
+        {
+            Seeds =
+            [
+                new()
+                {
+                    ID = "id",
+                    AfterFilteringSize = 0,
+                    AfterRelinkingSize = 0,
+                    Href = "href",
+                    InitialPoolSize = 0,
+                    Published = true,
+                    Type = "type",
+                },
+            ],
+            Tracks =
+            [
+                new()
+                {
+                    ID = "id",
+                    Album = new()
+                    {
+                        ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                        AlbumType = AlbumType.Compilation,
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["CA", "BR", "IT"],
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Images =
+                        [
+                            new()
+                            {
+                                Height = 300,
+                                URL =
+                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                Width = 300,
+                                Published = true,
+                            },
+                        ],
+                        Name = "name",
+                        ReleaseDate = "1981-12",
+                        ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                        TotalTracks = 9,
+                        Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
+                    },
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["string"],
+                    DiscNumber = 0,
+                    DurationMs = 0,
+                    Explicit = true,
+                    ExternalIDs = new()
+                    {
+                        Ean = "ean",
+                        Isrc = "isrc",
+                        Published = true,
+                        Upc = "upc",
+                    },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    IsLocal = true,
+                    IsPlayable = true,
+                    LinkedFrom = new()
+                    {
+                        ID = "id",
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = "type",
+                        Uri = "uri",
+                    },
+                    Name = "name",
+                    Popularity = 0,
+                    PreviewURL = "preview_url",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    TrackNumber = 0,
+                    Type = TrackObjectType.Track,
+                    Uri = "uri",
+                },
+            ],
+        };
+
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new RecommendationGetResponse
+        {
+            Seeds =
+            [
+                new()
+                {
+                    ID = "id",
+                    AfterFilteringSize = 0,
+                    AfterRelinkingSize = 0,
+                    Href = "href",
+                    InitialPoolSize = 0,
+                    Published = true,
+                    Type = "type",
+                },
+            ],
+            Tracks =
+            [
+                new()
+                {
+                    ID = "id",
+                    Album = new()
+                    {
+                        ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                        AlbumType = AlbumType.Compilation,
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["CA", "BR", "IT"],
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Images =
+                        [
+                            new()
+                            {
+                                Height = 300,
+                                URL =
+                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                Width = 300,
+                                Published = true,
+                            },
+                        ],
+                        Name = "name",
+                        ReleaseDate = "1981-12",
+                        ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                        TotalTracks = 9,
+                        Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
+                    },
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["string"],
+                    DiscNumber = 0,
+                    DurationMs = 0,
+                    Explicit = true,
+                    ExternalIDs = new()
+                    {
+                        Ean = "ean",
+                        Isrc = "isrc",
+                        Published = true,
+                        Upc = "upc",
+                    },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    IsLocal = true,
+                    IsPlayable = true,
+                    LinkedFrom = new()
+                    {
+                        ID = "id",
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = "type",
+                        Uri = "uri",
+                    },
+                    Name = "name",
+                    Popularity = 0,
+                    PreviewURL = "preview_url",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    TrackNumber = 0,
+                    Type = TrackObjectType.Track,
+                    Uri = "uri",
+                },
+            ],
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new RecommendationGetResponse
+        {
+            Seeds =
+            [
+                new()
+                {
+                    ID = "id",
+                    AfterFilteringSize = 0,
+                    AfterRelinkingSize = 0,
+                    Href = "href",
+                    InitialPoolSize = 0,
+                    Published = true,
+                    Type = "type",
+                },
+            ],
+            Tracks =
+            [
+                new()
+                {
+                    ID = "id",
+                    Album = new()
+                    {
+                        ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                        AlbumType = AlbumType.Compilation,
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["CA", "BR", "IT"],
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Images =
+                        [
+                            new()
+                            {
+                                Height = 300,
+                                URL =
+                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                Width = 300,
+                                Published = true,
+                            },
+                        ],
+                        Name = "name",
+                        ReleaseDate = "1981-12",
+                        ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                        TotalTracks = 9,
+                        Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
+                    },
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["string"],
+                    DiscNumber = 0,
+                    DurationMs = 0,
+                    Explicit = true,
+                    ExternalIDs = new()
+                    {
+                        Ean = "ean",
+                        Isrc = "isrc",
+                        Published = true,
+                        Upc = "upc",
+                    },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    IsLocal = true,
+                    IsPlayable = true,
+                    LinkedFrom = new()
+                    {
+                        ID = "id",
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = "type",
+                        Uri = "uri",
+                    },
+                    Name = "name",
+                    Popularity = 0,
+                    PreviewURL = "preview_url",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    TrackNumber = 0,
+                    Type = TrackObjectType.Track,
+                    Uri = "uri",
+                },
+            ],
+
+            // Null should be interpreted as omitted for these properties
+            Published = null,
+        };
+
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new RecommendationGetResponse
+        {
+            Seeds =
+            [
+                new()
+                {
+                    ID = "id",
+                    AfterFilteringSize = 0,
+                    AfterRelinkingSize = 0,
+                    Href = "href",
+                    InitialPoolSize = 0,
+                    Published = true,
+                    Type = "type",
+                },
+            ],
+            Tracks =
+            [
+                new()
+                {
+                    ID = "id",
+                    Album = new()
+                    {
+                        ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                        AlbumType = AlbumType.Compilation,
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["CA", "BR", "IT"],
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Images =
+                        [
+                            new()
+                            {
+                                Height = 300,
+                                URL =
+                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                Width = 300,
+                                Published = true,
+                            },
+                        ],
+                        Name = "name",
+                        ReleaseDate = "1981-12",
+                        ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                        TotalTracks = 9,
+                        Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
+                    },
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["string"],
+                    DiscNumber = 0,
+                    DurationMs = 0,
+                    Explicit = true,
+                    ExternalIDs = new()
+                    {
+                        Ean = "ean",
+                        Isrc = "isrc",
+                        Published = true,
+                        Upc = "upc",
+                    },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    IsLocal = true,
+                    IsPlayable = true,
+                    LinkedFrom = new()
+                    {
+                        ID = "id",
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = "type",
+                        Uri = "uri",
+                    },
+                    Name = "name",
+                    Popularity = 0,
+                    PreviewURL = "preview_url",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    TrackNumber = 0,
+                    Type = TrackObjectType.Track,
+                    Uri = "uri",
+                },
+            ],
+
+            // Null should be interpreted as omitted for these properties
+            Published = null,
         };
 
         model.Validate();
@@ -663,6 +1183,7 @@ public class SeedTest : TestBase
             AfterRelinkingSize = 0,
             Href = "href",
             InitialPoolSize = 0,
+            Published = true,
             Type = "type",
         };
 
@@ -671,6 +1192,7 @@ public class SeedTest : TestBase
         long expectedAfterRelinkingSize = 0;
         string expectedHref = "href";
         long expectedInitialPoolSize = 0;
+        bool expectedPublished = true;
         string expectedType = "type";
 
         Assert.Equal(expectedID, model.ID);
@@ -678,6 +1200,7 @@ public class SeedTest : TestBase
         Assert.Equal(expectedAfterRelinkingSize, model.AfterRelinkingSize);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedInitialPoolSize, model.InitialPoolSize);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
     }
 
@@ -691,6 +1214,7 @@ public class SeedTest : TestBase
             AfterRelinkingSize = 0,
             Href = "href",
             InitialPoolSize = 0,
+            Published = true,
             Type = "type",
         };
 
@@ -710,6 +1234,7 @@ public class SeedTest : TestBase
             AfterRelinkingSize = 0,
             Href = "href",
             InitialPoolSize = 0,
+            Published = true,
             Type = "type",
         };
 
@@ -722,6 +1247,7 @@ public class SeedTest : TestBase
         long expectedAfterRelinkingSize = 0;
         string expectedHref = "href";
         long expectedInitialPoolSize = 0;
+        bool expectedPublished = true;
         string expectedType = "type";
 
         Assert.Equal(expectedID, deserialized.ID);
@@ -729,6 +1255,7 @@ public class SeedTest : TestBase
         Assert.Equal(expectedAfterRelinkingSize, deserialized.AfterRelinkingSize);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedInitialPoolSize, deserialized.InitialPoolSize);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
     }
 
@@ -742,6 +1269,7 @@ public class SeedTest : TestBase
             AfterRelinkingSize = 0,
             Href = "href",
             InitialPoolSize = 0,
+            Published = true,
             Type = "type",
         };
 
@@ -763,6 +1291,8 @@ public class SeedTest : TestBase
         Assert.False(model.RawData.ContainsKey("href"));
         Assert.Null(model.InitialPoolSize);
         Assert.False(model.RawData.ContainsKey("initialPoolSize"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
     }
@@ -786,6 +1316,7 @@ public class SeedTest : TestBase
             AfterRelinkingSize = null,
             Href = null,
             InitialPoolSize = null,
+            Published = null,
             Type = null,
         };
 
@@ -799,6 +1330,8 @@ public class SeedTest : TestBase
         Assert.False(model.RawData.ContainsKey("href"));
         Assert.Null(model.InitialPoolSize);
         Assert.False(model.RawData.ContainsKey("initialPoolSize"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
     }
@@ -814,6 +1347,7 @@ public class SeedTest : TestBase
             AfterRelinkingSize = null,
             Href = null,
             InitialPoolSize = null,
+            Published = null,
             Type = null,
         };
 

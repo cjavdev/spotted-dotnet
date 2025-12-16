@@ -14,15 +14,25 @@ public class FollowingBulkRetrieveResponseTest : TestBase
         {
             Artists = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                    Published = true,
+                },
                 Href = "href",
                 Items =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
-                        Followers = new() { Href = "href", Total = 0 },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Followers = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
                         Genres = ["Prog rock", "Grunge"],
                         Href = "href",
                         Images =
@@ -33,31 +43,44 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
                         Popularity = 0,
+                        Published = true,
                         Type = Models::Type.Artist,
                         Uri = "uri",
                     },
                 ],
                 Limit = 0,
                 Next = "next",
+                Published = true,
                 Total = 0,
             },
         };
 
         FollowingBulkRetrieveResponseArtists expectedArtists = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -68,16 +91,19 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Models::Type.Artist,
                     Uri = "uri",
                 },
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
@@ -91,15 +117,25 @@ public class FollowingBulkRetrieveResponseTest : TestBase
         {
             Artists = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                    Published = true,
+                },
                 Href = "href",
                 Items =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
-                        Followers = new() { Href = "href", Total = 0 },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Followers = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
                         Genres = ["Prog rock", "Grunge"],
                         Href = "href",
                         Images =
@@ -110,16 +146,19 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
                         Popularity = 0,
+                        Published = true,
                         Type = Models::Type.Artist,
                         Uri = "uri",
                     },
                 ],
                 Limit = 0,
                 Next = "next",
+                Published = true,
                 Total = 0,
             },
         };
@@ -137,15 +176,25 @@ public class FollowingBulkRetrieveResponseTest : TestBase
         {
             Artists = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                    Published = true,
+                },
                 Href = "href",
                 Items =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
-                        Followers = new() { Href = "href", Total = 0 },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Followers = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
                         Genres = ["Prog rock", "Grunge"],
                         Href = "href",
                         Images =
@@ -156,16 +205,19 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
                         Popularity = 0,
+                        Published = true,
                         Type = Models::Type.Artist,
                         Uri = "uri",
                     },
                 ],
                 Limit = 0,
                 Next = "next",
+                Published = true,
                 Total = 0,
             },
         };
@@ -176,15 +228,25 @@ public class FollowingBulkRetrieveResponseTest : TestBase
 
         FollowingBulkRetrieveResponseArtists expectedArtists = new()
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -195,16 +257,19 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Models::Type.Artist,
                     Uri = "uri",
                 },
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
@@ -218,15 +283,25 @@ public class FollowingBulkRetrieveResponseTest : TestBase
         {
             Artists = new()
             {
-                Cursors = new() { After = "after", Before = "before" },
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                    Published = true,
+                },
                 Href = "href",
                 Items =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
-                        Followers = new() { Href = "href", Total = 0 },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        Followers = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
                         Genres = ["Prog rock", "Grunge"],
                         Href = "href",
                         Images =
@@ -237,16 +312,19 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
                         Popularity = 0,
+                        Published = true,
                         Type = Models::Type.Artist,
                         Uri = "uri",
                     },
                 ],
                 Limit = 0,
                 Next = "next",
+                Published = true,
                 Total = 0,
             },
         };
@@ -262,15 +340,25 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
     {
         var model = new FollowingBulkRetrieveResponseArtists
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -281,28 +369,41 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Models::Type.Artist,
                     Uri = "uri",
                 },
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
-        Cursors expectedCursors = new() { After = "after", Before = "before" };
+        Cursors expectedCursors = new()
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
         string expectedHref = "href";
         List<Models::ArtistObject> expectedItems =
         [
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
-                Followers = new() { Href = "href", Total = 0 },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                Followers = new()
+                {
+                    Href = "href",
+                    Published = true,
+                    Total = 0,
+                },
                 Genres = ["Prog rock", "Grunge"],
                 Href = "href",
                 Images =
@@ -312,16 +413,19 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
                 Popularity = 0,
+                Published = true,
                 Type = Models::Type.Artist,
                 Uri = "uri",
             },
         ];
         long expectedLimit = 0;
         string expectedNext = "next";
+        bool expectedPublished = true;
         long expectedTotal = 0;
 
         Assert.Equal(expectedCursors, model.Cursors);
@@ -334,6 +438,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
         }
         Assert.Equal(expectedLimit, model.Limit);
         Assert.Equal(expectedNext, model.Next);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedTotal, model.Total);
     }
 
@@ -342,15 +447,25 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
     {
         var model = new FollowingBulkRetrieveResponseArtists
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -361,16 +476,19 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Models::Type.Artist,
                     Uri = "uri",
                 },
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
@@ -385,15 +503,25 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
     {
         var model = new FollowingBulkRetrieveResponseArtists
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -404,16 +532,19 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Models::Type.Artist,
                     Uri = "uri",
                 },
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
@@ -421,15 +552,25 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
         var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponseArtists>(json);
         Assert.NotNull(deserialized);
 
-        Cursors expectedCursors = new() { After = "after", Before = "before" };
+        Cursors expectedCursors = new()
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
         string expectedHref = "href";
         List<Models::ArtistObject> expectedItems =
         [
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
-                Followers = new() { Href = "href", Total = 0 },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                Followers = new()
+                {
+                    Href = "href",
+                    Published = true,
+                    Total = 0,
+                },
                 Genres = ["Prog rock", "Grunge"],
                 Href = "href",
                 Images =
@@ -439,16 +580,19 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
                 Popularity = 0,
+                Published = true,
                 Type = Models::Type.Artist,
                 Uri = "uri",
             },
         ];
         long expectedLimit = 0;
         string expectedNext = "next";
+        bool expectedPublished = true;
         long expectedTotal = 0;
 
         Assert.Equal(expectedCursors, deserialized.Cursors);
@@ -461,6 +605,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
         }
         Assert.Equal(expectedLimit, deserialized.Limit);
         Assert.Equal(expectedNext, deserialized.Next);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedTotal, deserialized.Total);
     }
 
@@ -469,15 +614,25 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
     {
         var model = new FollowingBulkRetrieveResponseArtists
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
-                    Followers = new() { Href = "href", Total = 0 },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Genres = ["Prog rock", "Grunge"],
                     Href = "href",
                     Images =
@@ -488,16 +643,19 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
                     Popularity = 0,
+                    Published = true,
                     Type = Models::Type.Artist,
                     Uri = "uri",
                 },
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
@@ -519,6 +677,8 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
         Assert.False(model.RawData.ContainsKey("limit"));
         Assert.Null(model.Next);
         Assert.False(model.RawData.ContainsKey("next"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Total);
         Assert.False(model.RawData.ContainsKey("total"));
     }
@@ -542,6 +702,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
             Items = null,
             Limit = null,
             Next = null,
+            Published = null,
             Total = null,
         };
 
@@ -555,6 +716,8 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
         Assert.False(model.RawData.ContainsKey("limit"));
         Assert.Null(model.Next);
         Assert.False(model.RawData.ContainsKey("next"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Total);
         Assert.False(model.RawData.ContainsKey("total"));
     }
@@ -570,6 +733,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
             Items = null,
             Limit = null,
             Next = null,
+            Published = null,
             Total = null,
         };
 
@@ -582,19 +746,31 @@ public class CursorsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
 
         string expectedAfter = "after";
         string expectedBefore = "before";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedAfter, model.After);
         Assert.Equal(expectedBefore, model.Before);
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<Cursors>(json);
@@ -605,7 +781,12 @@ public class CursorsTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<Cursors>(json);
@@ -613,15 +794,22 @@ public class CursorsTest : TestBase
 
         string expectedAfter = "after";
         string expectedBefore = "before";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedAfter, deserialized.After);
         Assert.Equal(expectedBefore, deserialized.Before);
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
 
         model.Validate();
     }
@@ -635,6 +823,8 @@ public class CursorsTest : TestBase
         Assert.False(model.RawData.ContainsKey("after"));
         Assert.Null(model.Before);
         Assert.False(model.RawData.ContainsKey("before"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -653,12 +843,15 @@ public class CursorsTest : TestBase
             // Null should be interpreted as omitted for these properties
             After = null,
             Before = null,
+            Published = null,
         };
 
         Assert.Null(model.After);
         Assert.False(model.RawData.ContainsKey("after"));
         Assert.Null(model.Before);
         Assert.False(model.RawData.ContainsKey("before"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -669,6 +862,7 @@ public class CursorsTest : TestBase
             // Null should be interpreted as omitted for these properties
             After = null,
             Before = null,
+            Published = null,
         };
 
         model.Validate();

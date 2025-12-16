@@ -66,6 +66,26 @@ public sealed record class AudioAnalysisRetrieveResponse : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// Sections are defined by large variations in rhythm or timbre, e.g. chorus,
     /// verse, bridge, guitar solo, etc. Each section contains its own descriptions
     /// of tempo, key, mode, time_signature, and loudness.
@@ -151,6 +171,7 @@ public sealed record class AudioAnalysisRetrieveResponse : ModelBase
             item.Validate();
         }
         this.Meta?.Validate();
+        _ = this.Published;
         foreach (var item in this.Sections ?? [])
         {
             item.Validate();
@@ -501,6 +522,26 @@ public sealed record class Section : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// The starting point (in seconds) of the section.
     /// </summary>
     public double? Start
@@ -605,6 +646,7 @@ public sealed record class Section : ModelBase
         _ = this.Loudness;
         this.Mode?.Validate();
         _ = this.ModeConfidence;
+        _ = this.Published;
         _ = this.Start;
         _ = this.Tempo;
         _ = this.TempoConfidence;
@@ -836,6 +878,26 @@ public sealed record class Segment : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// The starting point (in seconds) of the segment.
     /// </summary>
     public double? Start
@@ -897,6 +959,7 @@ public sealed record class Segment : ModelBase
         _ = this.LoudnessMaxTime;
         _ = this.LoudnessStart;
         _ = this.Pitches;
+        _ = this.Published;
         _ = this.Start;
         _ = this.Timbre;
     }

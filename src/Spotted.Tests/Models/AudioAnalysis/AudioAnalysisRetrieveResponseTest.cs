@@ -19,6 +19,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -28,6 +29,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -41,6 +43,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 StatusCode = 0,
                 Timestamp = 1495193577,
             },
+            Published = true,
             Sections =
             [
                 new()
@@ -52,6 +55,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                     Loudness = -14.938,
                     Mode = Mode.ModeNoResult,
                     ModeConfidence = 0.471,
+                    Published = true,
                     Start = 0,
                     Tempo = 113.178,
                     TempoConfidence = 0.647,
@@ -70,6 +74,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                     LoudnessMaxTime = 0.07305,
                     LoudnessStart = -23.053,
                     Pitches = [0.212, 0.141, 0.294],
+                    Published = true,
                     Start = 0.70154,
                     Timbre = [42.115, 64.373, -0.233],
                 },
@@ -80,6 +85,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -120,6 +126,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             {
                 Confidence = 0.925,
                 Duration = 2.18749,
+                Published = true,
                 Start = 0.49567,
             },
         ];
@@ -129,6 +136,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             {
                 Confidence = 0.925,
                 Duration = 2.18749,
+                Published = true,
                 Start = 0.49567,
             },
         ];
@@ -142,6 +150,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             StatusCode = 0,
             Timestamp = 1495193577,
         };
+        bool expectedPublished = true;
         List<Section> expectedSections =
         [
             new()
@@ -153,6 +162,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 Loudness = -14.938,
                 Mode = Mode.ModeNoResult,
                 ModeConfidence = 0.471,
+                Published = true,
                 Start = 0,
                 Tempo = 113.178,
                 TempoConfidence = 0.647,
@@ -171,6 +181,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 LoudnessMaxTime = 0.07305,
                 LoudnessStart = -23.053,
                 Pitches = [0.212, 0.141, 0.294],
+                Published = true,
                 Start = 0.70154,
                 Timbre = [42.115, 64.373, -0.233],
             },
@@ -181,6 +192,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             {
                 Confidence = 0.925,
                 Duration = 2.18749,
+                Published = true,
                 Start = 0.49567,
             },
         ];
@@ -227,6 +239,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             Assert.Equal(expectedBeats[i], model.Beats[i]);
         }
         Assert.Equal(expectedMeta, model.Meta);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.NotNull(model.Sections);
         Assert.Equal(expectedSections.Count, model.Sections.Count);
         for (int i = 0; i < expectedSections.Count; i++)
@@ -259,6 +272,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -268,6 +282,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -281,6 +296,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 StatusCode = 0,
                 Timestamp = 1495193577,
             },
+            Published = true,
             Sections =
             [
                 new()
@@ -292,6 +308,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                     Loudness = -14.938,
                     Mode = Mode.ModeNoResult,
                     ModeConfidence = 0.471,
+                    Published = true,
                     Start = 0,
                     Tempo = 113.178,
                     TempoConfidence = 0.647,
@@ -310,6 +327,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                     LoudnessMaxTime = 0.07305,
                     LoudnessStart = -23.053,
                     Pitches = [0.212, 0.141, 0.294],
+                    Published = true,
                     Start = 0.70154,
                     Timbre = [42.115, 64.373, -0.233],
                 },
@@ -320,6 +338,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -371,6 +390,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -380,6 +400,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -393,6 +414,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 StatusCode = 0,
                 Timestamp = 1495193577,
             },
+            Published = true,
             Sections =
             [
                 new()
@@ -404,6 +426,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                     Loudness = -14.938,
                     Mode = Mode.ModeNoResult,
                     ModeConfidence = 0.471,
+                    Published = true,
                     Start = 0,
                     Tempo = 113.178,
                     TempoConfidence = 0.647,
@@ -422,6 +445,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                     LoudnessMaxTime = 0.07305,
                     LoudnessStart = -23.053,
                     Pitches = [0.212, 0.141, 0.294],
+                    Published = true,
                     Start = 0.70154,
                     Timbre = [42.115, 64.373, -0.233],
                 },
@@ -432,6 +456,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -476,6 +501,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             {
                 Confidence = 0.925,
                 Duration = 2.18749,
+                Published = true,
                 Start = 0.49567,
             },
         ];
@@ -485,6 +511,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             {
                 Confidence = 0.925,
                 Duration = 2.18749,
+                Published = true,
                 Start = 0.49567,
             },
         ];
@@ -498,6 +525,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             StatusCode = 0,
             Timestamp = 1495193577,
         };
+        bool expectedPublished = true;
         List<Section> expectedSections =
         [
             new()
@@ -509,6 +537,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 Loudness = -14.938,
                 Mode = Mode.ModeNoResult,
                 ModeConfidence = 0.471,
+                Published = true,
                 Start = 0,
                 Tempo = 113.178,
                 TempoConfidence = 0.647,
@@ -527,6 +556,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 LoudnessMaxTime = 0.07305,
                 LoudnessStart = -23.053,
                 Pitches = [0.212, 0.141, 0.294],
+                Published = true,
                 Start = 0.70154,
                 Timbre = [42.115, 64.373, -0.233],
             },
@@ -537,6 +567,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             {
                 Confidence = 0.925,
                 Duration = 2.18749,
+                Published = true,
                 Start = 0.49567,
             },
         ];
@@ -583,6 +614,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             Assert.Equal(expectedBeats[i], deserialized.Beats[i]);
         }
         Assert.Equal(expectedMeta, deserialized.Meta);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.NotNull(deserialized.Sections);
         Assert.Equal(expectedSections.Count, deserialized.Sections.Count);
         for (int i = 0; i < expectedSections.Count; i++)
@@ -615,6 +647,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -624,6 +657,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -637,6 +671,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 StatusCode = 0,
                 Timestamp = 1495193577,
             },
+            Published = true,
             Sections =
             [
                 new()
@@ -648,6 +683,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                     Loudness = -14.938,
                     Mode = Mode.ModeNoResult,
                     ModeConfidence = 0.471,
+                    Published = true,
                     Start = 0,
                     Tempo = 113.178,
                     TempoConfidence = 0.647,
@@ -666,6 +702,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                     LoudnessMaxTime = 0.07305,
                     LoudnessStart = -23.053,
                     Pitches = [0.212, 0.141, 0.294],
+                    Published = true,
                     Start = 0.70154,
                     Timbre = [42.115, 64.373, -0.233],
                 },
@@ -676,6 +713,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
                 {
                     Confidence = 0.925,
                     Duration = 2.18749,
+                    Published = true,
                     Start = 0.49567,
                 },
             ],
@@ -724,6 +762,8 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("beats"));
         Assert.Null(model.Meta);
         Assert.False(model.RawData.ContainsKey("meta"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Sections);
         Assert.False(model.RawData.ContainsKey("sections"));
         Assert.Null(model.Segments);
@@ -751,6 +791,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             Bars = null,
             Beats = null,
             Meta = null,
+            Published = null,
             Sections = null,
             Segments = null,
             Tatums = null,
@@ -763,6 +804,8 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("beats"));
         Assert.Null(model.Meta);
         Assert.False(model.RawData.ContainsKey("meta"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Sections);
         Assert.False(model.RawData.ContainsKey("sections"));
         Assert.Null(model.Segments);
@@ -782,6 +825,7 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             Bars = null,
             Beats = null,
             Meta = null,
+            Published = null,
             Sections = null,
             Segments = null,
             Tatums = null,
@@ -990,6 +1034,7 @@ public class SectionTest : TestBase
             Loudness = -14.938,
             Mode = Mode.ModeNoResult,
             ModeConfidence = 0.471,
+            Published = true,
             Start = 0,
             Tempo = 113.178,
             TempoConfidence = 0.647,
@@ -1004,6 +1049,7 @@ public class SectionTest : TestBase
         double expectedLoudness = -14.938;
         ApiEnum<double, Mode> expectedMode = Mode.ModeNoResult;
         double expectedModeConfidence = 0.471;
+        bool expectedPublished = true;
         double expectedStart = 0;
         double expectedTempo = 113.178;
         double expectedTempoConfidence = 0.647;
@@ -1017,6 +1063,7 @@ public class SectionTest : TestBase
         Assert.Equal(expectedLoudness, model.Loudness);
         Assert.Equal(expectedMode, model.Mode);
         Assert.Equal(expectedModeConfidence, model.ModeConfidence);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedStart, model.Start);
         Assert.Equal(expectedTempo, model.Tempo);
         Assert.Equal(expectedTempoConfidence, model.TempoConfidence);
@@ -1036,6 +1083,7 @@ public class SectionTest : TestBase
             Loudness = -14.938,
             Mode = Mode.ModeNoResult,
             ModeConfidence = 0.471,
+            Published = true,
             Start = 0,
             Tempo = 113.178,
             TempoConfidence = 0.647,
@@ -1061,6 +1109,7 @@ public class SectionTest : TestBase
             Loudness = -14.938,
             Mode = Mode.ModeNoResult,
             ModeConfidence = 0.471,
+            Published = true,
             Start = 0,
             Tempo = 113.178,
             TempoConfidence = 0.647,
@@ -1079,6 +1128,7 @@ public class SectionTest : TestBase
         double expectedLoudness = -14.938;
         ApiEnum<double, Mode> expectedMode = Mode.ModeNoResult;
         double expectedModeConfidence = 0.471;
+        bool expectedPublished = true;
         double expectedStart = 0;
         double expectedTempo = 113.178;
         double expectedTempoConfidence = 0.647;
@@ -1092,6 +1142,7 @@ public class SectionTest : TestBase
         Assert.Equal(expectedLoudness, deserialized.Loudness);
         Assert.Equal(expectedMode, deserialized.Mode);
         Assert.Equal(expectedModeConfidence, deserialized.ModeConfidence);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedStart, deserialized.Start);
         Assert.Equal(expectedTempo, deserialized.Tempo);
         Assert.Equal(expectedTempoConfidence, deserialized.TempoConfidence);
@@ -1111,6 +1162,7 @@ public class SectionTest : TestBase
             Loudness = -14.938,
             Mode = Mode.ModeNoResult,
             ModeConfidence = 0.471,
+            Published = true,
             Start = 0,
             Tempo = 113.178,
             TempoConfidence = 0.647,
@@ -1140,6 +1192,8 @@ public class SectionTest : TestBase
         Assert.False(model.RawData.ContainsKey("mode"));
         Assert.Null(model.ModeConfidence);
         Assert.False(model.RawData.ContainsKey("mode_confidence"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Start);
         Assert.False(model.RawData.ContainsKey("start"));
         Assert.Null(model.Tempo);
@@ -1173,6 +1227,7 @@ public class SectionTest : TestBase
             Loudness = null,
             Mode = null,
             ModeConfidence = null,
+            Published = null,
             Start = null,
             Tempo = null,
             TempoConfidence = null,
@@ -1194,6 +1249,8 @@ public class SectionTest : TestBase
         Assert.False(model.RawData.ContainsKey("mode"));
         Assert.Null(model.ModeConfidence);
         Assert.False(model.RawData.ContainsKey("mode_confidence"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Start);
         Assert.False(model.RawData.ContainsKey("start"));
         Assert.Null(model.Tempo);
@@ -1219,6 +1276,7 @@ public class SectionTest : TestBase
             Loudness = null,
             Mode = null,
             ModeConfidence = null,
+            Published = null,
             Start = null,
             Tempo = null,
             TempoConfidence = null,
@@ -1302,6 +1360,7 @@ public class SegmentTest : TestBase
             LoudnessMaxTime = 0.07305,
             LoudnessStart = -23.053,
             Pitches = [0.212, 0.141, 0.294],
+            Published = true,
             Start = 0.70154,
             Timbre = [42.115, 64.373, -0.233],
         };
@@ -1313,6 +1372,7 @@ public class SegmentTest : TestBase
         double expectedLoudnessMaxTime = 0.07305;
         double expectedLoudnessStart = -23.053;
         List<double> expectedPitches = [0.212, 0.141, 0.294];
+        bool expectedPublished = true;
         double expectedStart = 0.70154;
         List<double> expectedTimbre = [42.115, 64.373, -0.233];
 
@@ -1328,6 +1388,7 @@ public class SegmentTest : TestBase
         {
             Assert.Equal(expectedPitches[i], model.Pitches[i]);
         }
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedStart, model.Start);
         Assert.NotNull(model.Timbre);
         Assert.Equal(expectedTimbre.Count, model.Timbre.Count);
@@ -1349,6 +1410,7 @@ public class SegmentTest : TestBase
             LoudnessMaxTime = 0.07305,
             LoudnessStart = -23.053,
             Pitches = [0.212, 0.141, 0.294],
+            Published = true,
             Start = 0.70154,
             Timbre = [42.115, 64.373, -0.233],
         };
@@ -1371,6 +1433,7 @@ public class SegmentTest : TestBase
             LoudnessMaxTime = 0.07305,
             LoudnessStart = -23.053,
             Pitches = [0.212, 0.141, 0.294],
+            Published = true,
             Start = 0.70154,
             Timbre = [42.115, 64.373, -0.233],
         };
@@ -1386,6 +1449,7 @@ public class SegmentTest : TestBase
         double expectedLoudnessMaxTime = 0.07305;
         double expectedLoudnessStart = -23.053;
         List<double> expectedPitches = [0.212, 0.141, 0.294];
+        bool expectedPublished = true;
         double expectedStart = 0.70154;
         List<double> expectedTimbre = [42.115, 64.373, -0.233];
 
@@ -1401,6 +1465,7 @@ public class SegmentTest : TestBase
         {
             Assert.Equal(expectedPitches[i], deserialized.Pitches[i]);
         }
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedStart, deserialized.Start);
         Assert.NotNull(deserialized.Timbre);
         Assert.Equal(expectedTimbre.Count, deserialized.Timbre.Count);
@@ -1422,6 +1487,7 @@ public class SegmentTest : TestBase
             LoudnessMaxTime = 0.07305,
             LoudnessStart = -23.053,
             Pitches = [0.212, 0.141, 0.294],
+            Published = true,
             Start = 0.70154,
             Timbre = [42.115, 64.373, -0.233],
         };
@@ -1448,6 +1514,8 @@ public class SegmentTest : TestBase
         Assert.False(model.RawData.ContainsKey("loudness_start"));
         Assert.Null(model.Pitches);
         Assert.False(model.RawData.ContainsKey("pitches"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Start);
         Assert.False(model.RawData.ContainsKey("start"));
         Assert.Null(model.Timbre);
@@ -1475,6 +1543,7 @@ public class SegmentTest : TestBase
             LoudnessMaxTime = null,
             LoudnessStart = null,
             Pitches = null,
+            Published = null,
             Start = null,
             Timbre = null,
         };
@@ -1493,6 +1562,8 @@ public class SegmentTest : TestBase
         Assert.False(model.RawData.ContainsKey("loudness_start"));
         Assert.Null(model.Pitches);
         Assert.False(model.RawData.ContainsKey("pitches"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Start);
         Assert.False(model.RawData.ContainsKey("start"));
         Assert.Null(model.Timbre);
@@ -1512,6 +1583,7 @@ public class SegmentTest : TestBase
             LoudnessMaxTime = null,
             LoudnessStart = null,
             Pitches = null,
+            Published = null,
             Start = null,
             Timbre = null,
         };

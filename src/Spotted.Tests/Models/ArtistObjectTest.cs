@@ -14,8 +14,13 @@ public class ArtistObjectTest : TestBase
         var model = new ArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Genres = ["Prog rock", "Grunge"],
             Href = "href",
             Images =
@@ -25,17 +30,24 @@ public class ArtistObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
             Popularity = 0,
+            Published = true,
             Type = Type.Artist,
             Uri = "uri",
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
-        FollowersObject expectedFollowers = new() { Href = "href", Total = 0 };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        FollowersObject expectedFollowers = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         List<string> expectedGenres = ["Prog rock", "Grunge"];
         string expectedHref = "href";
         List<ImageObject> expectedImages =
@@ -45,10 +57,12 @@ public class ArtistObjectTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedName = "name";
         long expectedPopularity = 0;
+        bool expectedPublished = true;
         ApiEnum<string, Type> expectedType = Type.Artist;
         string expectedUri = "uri";
 
@@ -70,6 +84,7 @@ public class ArtistObjectTest : TestBase
         }
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedPopularity, model.Popularity);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedUri, model.Uri);
     }
@@ -80,8 +95,13 @@ public class ArtistObjectTest : TestBase
         var model = new ArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Genres = ["Prog rock", "Grunge"],
             Href = "href",
             Images =
@@ -91,10 +111,12 @@ public class ArtistObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
             Popularity = 0,
+            Published = true,
             Type = Type.Artist,
             Uri = "uri",
         };
@@ -111,8 +133,13 @@ public class ArtistObjectTest : TestBase
         var model = new ArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Genres = ["Prog rock", "Grunge"],
             Href = "href",
             Images =
@@ -122,10 +149,12 @@ public class ArtistObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
             Popularity = 0,
+            Published = true,
             Type = Type.Artist,
             Uri = "uri",
         };
@@ -135,8 +164,13 @@ public class ArtistObjectTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
-        FollowersObject expectedFollowers = new() { Href = "href", Total = 0 };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        FollowersObject expectedFollowers = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         List<string> expectedGenres = ["Prog rock", "Grunge"];
         string expectedHref = "href";
         List<ImageObject> expectedImages =
@@ -146,10 +180,12 @@ public class ArtistObjectTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         string expectedName = "name";
         long expectedPopularity = 0;
+        bool expectedPublished = true;
         ApiEnum<string, Type> expectedType = Type.Artist;
         string expectedUri = "uri";
 
@@ -171,6 +207,7 @@ public class ArtistObjectTest : TestBase
         }
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedPopularity, deserialized.Popularity);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedUri, deserialized.Uri);
     }
@@ -181,8 +218,13 @@ public class ArtistObjectTest : TestBase
         var model = new ArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
-            Followers = new() { Href = "href", Total = 0 },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Genres = ["Prog rock", "Grunge"],
             Href = "href",
             Images =
@@ -192,10 +234,12 @@ public class ArtistObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Name = "name",
             Popularity = 0,
+            Published = true,
             Type = Type.Artist,
             Uri = "uri",
         };
@@ -224,6 +268,8 @@ public class ArtistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Popularity);
         Assert.False(model.RawData.ContainsKey("popularity"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -252,6 +298,7 @@ public class ArtistObjectTest : TestBase
             Images = null,
             Name = null,
             Popularity = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -272,6 +319,8 @@ public class ArtistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Popularity);
         Assert.False(model.RawData.ContainsKey("popularity"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -292,6 +341,7 @@ public class ArtistObjectTest : TestBase
             Images = null,
             Name = null,
             Popularity = null,
+            Published = null,
             Type = null,
             Uri = null,
         };

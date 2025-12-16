@@ -10,17 +10,19 @@ public class AlbumRestrictionObjectTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new AlbumRestrictionObject { Reason = Reason.Market };
+        var model = new AlbumRestrictionObject { Published = true, Reason = Reason.Market };
 
+        bool expectedPublished = true;
         ApiEnum<string, Reason> expectedReason = Reason.Market;
 
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedReason, model.Reason);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new AlbumRestrictionObject { Reason = Reason.Market };
+        var model = new AlbumRestrictionObject { Published = true, Reason = Reason.Market };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<AlbumRestrictionObject>(json);
@@ -31,21 +33,23 @@ public class AlbumRestrictionObjectTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new AlbumRestrictionObject { Reason = Reason.Market };
+        var model = new AlbumRestrictionObject { Published = true, Reason = Reason.Market };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<AlbumRestrictionObject>(json);
         Assert.NotNull(deserialized);
 
+        bool expectedPublished = true;
         ApiEnum<string, Reason> expectedReason = Reason.Market;
 
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedReason, deserialized.Reason);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new AlbumRestrictionObject { Reason = Reason.Market };
+        var model = new AlbumRestrictionObject { Published = true, Reason = Reason.Market };
 
         model.Validate();
     }
@@ -55,6 +59,8 @@ public class AlbumRestrictionObjectTest : TestBase
     {
         var model = new AlbumRestrictionObject { };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
     }
@@ -73,9 +79,12 @@ public class AlbumRestrictionObjectTest : TestBase
         var model = new AlbumRestrictionObject
         {
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Reason = null,
         };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Reason);
         Assert.False(model.RawData.ContainsKey("reason"));
     }
@@ -86,6 +95,7 @@ public class AlbumRestrictionObjectTest : TestBase
         var model = new AlbumRestrictionObject
         {
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Reason = null,
         };
 
