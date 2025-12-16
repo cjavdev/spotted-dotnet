@@ -45,6 +45,26 @@ public sealed record class TrackAddParams : ParamsBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawBodyData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids)
     /// to add. For example: `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M",
     /// "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`<br/>A maximum of 100 items can
