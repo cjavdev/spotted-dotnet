@@ -42,6 +42,26 @@ public sealed record class TrackRemoveParams : ParamsBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawBodyData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// The playlist's snapshot ID against which you want to make the changes. The
     /// API will validate that the specified items exist and in the specified positions
     /// and make the changes, even if more recent changes have been made to the playlist.
