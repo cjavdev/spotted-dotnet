@@ -23,25 +23,6 @@ public sealed record class FollowerFollowParams : ParamsBase
     public string? PlaylistID { get; init; }
 
     /// <summary>
-    /// Defaults to `true`. If `true` the playlist will be included in user's public
-    /// playlists (added to profile), if `false` it will remain private. For more
-    /// about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
-    /// </summary>
-    public bool? Public
-    {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "public"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            ModelBase.Set(this._rawBodyData, "public", value);
-        }
-    }
-
-    /// <summary>
     /// The playlist's public/private status (if it should be added to the user's
     /// profile or not): `true` the playlist will be public, `false` the playlist
     /// will be private, `null` the playlist status is not relevant. For more about
