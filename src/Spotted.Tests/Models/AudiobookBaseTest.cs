@@ -12,12 +12,20 @@ public class AudiobookBaseTest : TestBase
         var model = new AudiobookBase
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -27,25 +35,35 @@ public class AudiobookBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
             Edition = "Unabridged",
+            Published = true,
         };
 
         string expectedID = "id";
-        List<AuthorObject> expectedAuthors = [new() { Name = "name" }];
+        List<AuthorObject> expectedAuthors = [new() { Name = "name", Published = true }];
         List<string> expectedAvailableMarkets = ["string"];
-        List<CopyrightObject> expectedCopyrights = [new() { Text = "text", Type = "type" }];
+        List<CopyrightObject> expectedCopyrights =
+        [
+            new()
+            {
+                Published = true,
+                Text = "text",
+                Type = "type",
+            },
+        ];
         string expectedDescription = "description";
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         string expectedHTMLDescription = "html_description";
         List<ImageObject> expectedImages =
@@ -55,17 +73,19 @@ public class AudiobookBaseTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         List<string> expectedLanguages = ["string"];
         string expectedMediaType = "media_type";
         string expectedName = "name";
-        List<NarratorObject> expectedNarrators = [new() { Name = "name" }];
+        List<NarratorObject> expectedNarrators = [new() { Name = "name", Published = true }];
         string expectedPublisher = "publisher";
         long expectedTotalChapters = 0;
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"audiobook\"");
         string expectedUri = "uri";
         string expectedEdition = "Unabridged";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAuthors.Count, model.Authors.Count);
@@ -110,6 +130,7 @@ public class AudiobookBaseTest : TestBase
         Assert.True(JsonElement.DeepEquals(expectedType, model.Type));
         Assert.Equal(expectedUri, model.Uri);
         Assert.Equal(expectedEdition, model.Edition);
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -118,12 +139,20 @@ public class AudiobookBaseTest : TestBase
         var model = new AudiobookBase
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -133,16 +162,18 @@ public class AudiobookBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
             Edition = "Unabridged",
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -157,12 +188,20 @@ public class AudiobookBaseTest : TestBase
         var model = new AudiobookBase
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -172,16 +211,18 @@ public class AudiobookBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
             Edition = "Unabridged",
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -189,12 +230,20 @@ public class AudiobookBaseTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        List<AuthorObject> expectedAuthors = [new() { Name = "name" }];
+        List<AuthorObject> expectedAuthors = [new() { Name = "name", Published = true }];
         List<string> expectedAvailableMarkets = ["string"];
-        List<CopyrightObject> expectedCopyrights = [new() { Text = "text", Type = "type" }];
+        List<CopyrightObject> expectedCopyrights =
+        [
+            new()
+            {
+                Published = true,
+                Text = "text",
+                Type = "type",
+            },
+        ];
         string expectedDescription = "description";
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         string expectedHTMLDescription = "html_description";
         List<ImageObject> expectedImages =
@@ -204,17 +253,19 @@ public class AudiobookBaseTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         List<string> expectedLanguages = ["string"];
         string expectedMediaType = "media_type";
         string expectedName = "name";
-        List<NarratorObject> expectedNarrators = [new() { Name = "name" }];
+        List<NarratorObject> expectedNarrators = [new() { Name = "name", Published = true }];
         string expectedPublisher = "publisher";
         long expectedTotalChapters = 0;
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"audiobook\"");
         string expectedUri = "uri";
         string expectedEdition = "Unabridged";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAuthors.Count, deserialized.Authors.Count);
@@ -259,6 +310,7 @@ public class AudiobookBaseTest : TestBase
         Assert.True(JsonElement.DeepEquals(expectedType, deserialized.Type));
         Assert.Equal(expectedUri, deserialized.Uri);
         Assert.Equal(expectedEdition, deserialized.Edition);
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -267,12 +319,20 @@ public class AudiobookBaseTest : TestBase
         var model = new AudiobookBase
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -282,16 +342,18 @@ public class AudiobookBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
             Edition = "Unabridged",
+            Published = true,
         };
 
         model.Validate();
@@ -303,12 +365,20 @@ public class AudiobookBaseTest : TestBase
         var model = new AudiobookBase
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -318,12 +388,13 @@ public class AudiobookBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
@@ -331,6 +402,8 @@ public class AudiobookBaseTest : TestBase
 
         Assert.Null(model.Edition);
         Assert.False(model.RawData.ContainsKey("edition"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -339,12 +412,20 @@ public class AudiobookBaseTest : TestBase
         var model = new AudiobookBase
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -354,12 +435,13 @@ public class AudiobookBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
@@ -374,12 +456,20 @@ public class AudiobookBaseTest : TestBase
         var model = new AudiobookBase
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -389,22 +479,26 @@ public class AudiobookBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
 
             // Null should be interpreted as omitted for these properties
             Edition = null,
+            Published = null,
         };
 
         Assert.Null(model.Edition);
         Assert.False(model.RawData.ContainsKey("edition"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -413,12 +507,20 @@ public class AudiobookBaseTest : TestBase
         var model = new AudiobookBase
         {
             ID = "id",
-            Authors = [new() { Name = "name" }],
+            Authors = [new() { Name = "name", Published = true }],
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -428,18 +530,20 @@ public class AudiobookBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             Languages = ["string"],
             MediaType = "media_type",
             Name = "name",
-            Narrators = [new() { Name = "name" }],
+            Narrators = [new() { Name = "name", Published = true }],
             Publisher = "publisher",
             TotalChapters = 0,
             Uri = "uri",
 
             // Null should be interpreted as omitted for these properties
             Edition = null,
+            Published = null,
         };
 
         model.Validate();

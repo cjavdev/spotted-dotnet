@@ -20,7 +20,7 @@ public class EpisodeObjectTest : TestBase
                 "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -31,6 +31,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -43,10 +44,18 @@ public class EpisodeObjectTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -56,6 +65,7 @@ public class EpisodeObjectTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -65,11 +75,18 @@ public class EpisodeObjectTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
             Language = "en",
-            Restrictions = new() { Reason = "reason" },
-            ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
         };
 
         string expectedID = "5Xt5DXGzch68nYYamXrNxZ";
@@ -79,7 +96,7 @@ public class EpisodeObjectTest : TestBase
             "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n";
         long expectedDurationMs = 1686230;
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ";
         string expectedHTMLDescription =
             "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n";
@@ -90,6 +107,7 @@ public class EpisodeObjectTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         bool expectedIsExternallyHosted = true;
@@ -104,10 +122,18 @@ public class EpisodeObjectTest : TestBase
         {
             ID = "id",
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -117,6 +143,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -126,12 +153,23 @@ public class EpisodeObjectTest : TestBase
             Publisher = "publisher",
             TotalEpisodes = 0,
             Uri = "uri",
+            Published = true,
         };
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         string expectedLanguage = "en";
-        EpisodeRestrictionObject expectedRestrictions = new() { Reason = "reason" };
-        ResumePointObject expectedResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 };
+        bool expectedPublished = true;
+        EpisodeRestrictionObject expectedRestrictions = new()
+        {
+            Published = true,
+            Reason = "reason",
+        };
+        ResumePointObject expectedResumePoint = new()
+        {
+            FullyPlayed = true,
+            Published = true,
+            ResumePositionMs = 0,
+        };
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAudioPreviewURL, model.AudioPreviewURL);
@@ -160,6 +198,7 @@ public class EpisodeObjectTest : TestBase
         Assert.True(JsonElement.DeepEquals(expectedType, model.Type));
         Assert.Equal(expectedUri, model.Uri);
         Assert.Equal(expectedLanguage, model.Language);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedRestrictions, model.Restrictions);
         Assert.Equal(expectedResumePoint, model.ResumePoint);
     }
@@ -176,7 +215,7 @@ public class EpisodeObjectTest : TestBase
                 "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -187,6 +226,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -199,10 +239,18 @@ public class EpisodeObjectTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -212,6 +260,7 @@ public class EpisodeObjectTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -221,11 +270,18 @@ public class EpisodeObjectTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
             Language = "en",
-            Restrictions = new() { Reason = "reason" },
-            ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -246,7 +302,7 @@ public class EpisodeObjectTest : TestBase
                 "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -257,6 +313,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -269,10 +326,18 @@ public class EpisodeObjectTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -282,6 +347,7 @@ public class EpisodeObjectTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -291,11 +357,18 @@ public class EpisodeObjectTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
             Language = "en",
-            Restrictions = new() { Reason = "reason" },
-            ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -309,7 +382,7 @@ public class EpisodeObjectTest : TestBase
             "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n";
         long expectedDurationMs = 1686230;
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ";
         string expectedHTMLDescription =
             "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n";
@@ -320,6 +393,7 @@ public class EpisodeObjectTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         bool expectedIsExternallyHosted = true;
@@ -334,10 +408,18 @@ public class EpisodeObjectTest : TestBase
         {
             ID = "id",
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -347,6 +429,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -356,12 +439,23 @@ public class EpisodeObjectTest : TestBase
             Publisher = "publisher",
             TotalEpisodes = 0,
             Uri = "uri",
+            Published = true,
         };
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         string expectedLanguage = "en";
-        EpisodeRestrictionObject expectedRestrictions = new() { Reason = "reason" };
-        ResumePointObject expectedResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 };
+        bool expectedPublished = true;
+        EpisodeRestrictionObject expectedRestrictions = new()
+        {
+            Published = true,
+            Reason = "reason",
+        };
+        ResumePointObject expectedResumePoint = new()
+        {
+            FullyPlayed = true,
+            Published = true,
+            ResumePositionMs = 0,
+        };
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAudioPreviewURL, deserialized.AudioPreviewURL);
@@ -390,6 +484,7 @@ public class EpisodeObjectTest : TestBase
         Assert.True(JsonElement.DeepEquals(expectedType, deserialized.Type));
         Assert.Equal(expectedUri, deserialized.Uri);
         Assert.Equal(expectedLanguage, deserialized.Language);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedRestrictions, deserialized.Restrictions);
         Assert.Equal(expectedResumePoint, deserialized.ResumePoint);
     }
@@ -406,7 +501,7 @@ public class EpisodeObjectTest : TestBase
                 "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -417,6 +512,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -429,10 +525,18 @@ public class EpisodeObjectTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -442,6 +546,7 @@ public class EpisodeObjectTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -451,11 +556,18 @@ public class EpisodeObjectTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
             Language = "en",
-            Restrictions = new() { Reason = "reason" },
-            ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
         };
 
         model.Validate();
@@ -473,7 +585,7 @@ public class EpisodeObjectTest : TestBase
                 "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -484,6 +596,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -496,10 +609,18 @@ public class EpisodeObjectTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -509,6 +630,7 @@ public class EpisodeObjectTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -518,12 +640,15 @@ public class EpisodeObjectTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
         };
 
         Assert.Null(model.Language);
         Assert.False(model.RawData.ContainsKey("language"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Restrictions);
         Assert.False(model.RawData.ContainsKey("restrictions"));
         Assert.Null(model.ResumePoint);
@@ -542,7 +667,7 @@ public class EpisodeObjectTest : TestBase
                 "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -553,6 +678,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -565,10 +691,18 @@ public class EpisodeObjectTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -578,6 +712,7 @@ public class EpisodeObjectTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -587,6 +722,7 @@ public class EpisodeObjectTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
         };
@@ -606,7 +742,7 @@ public class EpisodeObjectTest : TestBase
                 "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -617,6 +753,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -629,10 +766,18 @@ public class EpisodeObjectTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -642,6 +787,7 @@ public class EpisodeObjectTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -651,17 +797,21 @@ public class EpisodeObjectTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
 
             // Null should be interpreted as omitted for these properties
             Language = null,
+            Published = null,
             Restrictions = null,
             ResumePoint = null,
         };
 
         Assert.Null(model.Language);
         Assert.False(model.RawData.ContainsKey("language"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Restrictions);
         Assert.False(model.RawData.ContainsKey("restrictions"));
         Assert.Null(model.ResumePoint);
@@ -680,7 +830,7 @@ public class EpisodeObjectTest : TestBase
                 "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
             DurationMs = 1686230,
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
             HTMLDescription =
                 "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -691,6 +841,7 @@ public class EpisodeObjectTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -703,10 +854,18 @@ public class EpisodeObjectTest : TestBase
             {
                 ID = "id",
                 AvailableMarkets = ["string"],
-                Copyrights = [new() { Text = "text", Type = "type" }],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 HTMLDescription = "html_description",
                 Images =
@@ -716,6 +875,7 @@ public class EpisodeObjectTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -725,11 +885,13 @@ public class EpisodeObjectTest : TestBase
                 Publisher = "publisher",
                 TotalEpisodes = 0,
                 Uri = "uri",
+                Published = true,
             },
             Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
 
             // Null should be interpreted as omitted for these properties
             Language = null,
+            Published = null,
             Restrictions = null,
             ResumePoint = null,
         };

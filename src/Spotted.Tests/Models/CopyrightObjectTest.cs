@@ -8,11 +8,18 @@ public class CopyrightObjectTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new CopyrightObject { Text = "text", Type = "type" };
+        var model = new CopyrightObject
+        {
+            Published = true,
+            Text = "text",
+            Type = "type",
+        };
 
+        bool expectedPublished = true;
         string expectedText = "text";
         string expectedType = "type";
 
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedText, model.Text);
         Assert.Equal(expectedType, model.Type);
     }
@@ -20,7 +27,12 @@ public class CopyrightObjectTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new CopyrightObject { Text = "text", Type = "type" };
+        var model = new CopyrightObject
+        {
+            Published = true,
+            Text = "text",
+            Type = "type",
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<CopyrightObject>(json);
@@ -31,15 +43,22 @@ public class CopyrightObjectTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new CopyrightObject { Text = "text", Type = "type" };
+        var model = new CopyrightObject
+        {
+            Published = true,
+            Text = "text",
+            Type = "type",
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<CopyrightObject>(json);
         Assert.NotNull(deserialized);
 
+        bool expectedPublished = true;
         string expectedText = "text";
         string expectedType = "type";
 
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedText, deserialized.Text);
         Assert.Equal(expectedType, deserialized.Type);
     }
@@ -47,7 +66,12 @@ public class CopyrightObjectTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new CopyrightObject { Text = "text", Type = "type" };
+        var model = new CopyrightObject
+        {
+            Published = true,
+            Text = "text",
+            Type = "type",
+        };
 
         model.Validate();
     }
@@ -57,6 +81,8 @@ public class CopyrightObjectTest : TestBase
     {
         var model = new CopyrightObject { };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Text);
         Assert.False(model.RawData.ContainsKey("text"));
         Assert.Null(model.Type);
@@ -77,10 +103,13 @@ public class CopyrightObjectTest : TestBase
         var model = new CopyrightObject
         {
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Text = null,
             Type = null,
         };
 
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Text);
         Assert.False(model.RawData.ContainsKey("text"));
         Assert.Null(model.Type);
@@ -93,6 +122,7 @@ public class CopyrightObjectTest : TestBase
         var model = new CopyrightObject
         {
             // Null should be interpreted as omitted for these properties
+            Published = null,
             Text = null,
             Type = null,
         };

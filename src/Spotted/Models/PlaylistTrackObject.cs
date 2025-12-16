@@ -70,6 +70,26 @@ public sealed record class PlaylistTrackObject : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// Information about the track or episode.
     /// </summary>
     public Track? Track
@@ -92,6 +112,7 @@ public sealed record class PlaylistTrackObject : ModelBase
         _ = this.AddedAt;
         this.AddedBy?.Validate();
         _ = this.IsLocal;
+        _ = this.Published;
         this.Track?.Validate();
     }
 
@@ -189,6 +210,11 @@ public record class Track
     public string? Name
     {
         get { return Match<string?>(object1: (x) => x.Name, episodeObject: (x) => x.Name); }
+    }
+
+    public bool? Published
+    {
+        get { return Match<bool?>(object1: (x) => x.Published, episodeObject: (x) => x.Published); }
     }
 
     public string? Uri

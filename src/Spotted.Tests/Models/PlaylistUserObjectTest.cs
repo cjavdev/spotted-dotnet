@@ -13,21 +13,24 @@ public class PlaylistUserObjectTest : TestBase
         var model = new PlaylistUserObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
+        bool expectedPublished = true;
         ApiEnum<string, PlaylistUserObjectType> expectedType = PlaylistUserObjectType.User;
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedExternalURLs, model.ExternalURLs);
         Assert.Equal(expectedHref, model.Href);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
         Assert.Equal(expectedUri, model.Uri);
     }
@@ -38,8 +41,9 @@ public class PlaylistUserObjectTest : TestBase
         var model = new PlaylistUserObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
         };
@@ -56,8 +60,9 @@ public class PlaylistUserObjectTest : TestBase
         var model = new PlaylistUserObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
         };
@@ -67,14 +72,16 @@ public class PlaylistUserObjectTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
+        bool expectedPublished = true;
         ApiEnum<string, PlaylistUserObjectType> expectedType = PlaylistUserObjectType.User;
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
         Assert.Equal(expectedHref, deserialized.Href);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
         Assert.Equal(expectedUri, deserialized.Uri);
     }
@@ -85,8 +92,9 @@ public class PlaylistUserObjectTest : TestBase
         var model = new PlaylistUserObject
         {
             ID = "id",
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
         };
@@ -105,6 +113,8 @@ public class PlaylistUserObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -128,6 +138,7 @@ public class PlaylistUserObjectTest : TestBase
             ID = null,
             ExternalURLs = null,
             Href = null,
+            Published = null,
             Type = null,
             Uri = null,
         };
@@ -138,6 +149,8 @@ public class PlaylistUserObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Type);
         Assert.False(model.RawData.ContainsKey("type"));
         Assert.Null(model.Uri);
@@ -153,6 +166,7 @@ public class PlaylistUserObjectTest : TestBase
             ID = null,
             ExternalURLs = null,
             Href = null,
+            Published = null,
             Type = null,
             Uri = null,
         };

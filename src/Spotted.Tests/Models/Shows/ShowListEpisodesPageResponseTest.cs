@@ -29,7 +29,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                         "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -41,6 +41,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -52,10 +53,17 @@ public class ShowListEpisodesPageResponseTest : TestBase
                     ReleaseDatePrecision = SimplifiedEpisodeObjectReleaseDatePrecision.Day,
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     Language = "en",
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
+            Published = true,
         };
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -75,7 +83,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                     "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                 DurationMs = 1686230,
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                 HTMLDescription =
                     "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -86,6 +94,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -96,10 +105,17 @@ public class ShowListEpisodesPageResponseTest : TestBase
                 ReleaseDatePrecision = SimplifiedEpisodeObjectReleaseDatePrecision.Day,
                 Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                 Language = "en",
-                Restrictions = new() { Reason = "reason" },
-                ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                ResumePoint = new()
+                {
+                    FullyPlayed = true,
+                    Published = true,
+                    ResumePositionMs = 0,
+                },
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedLimit, model.Limit);
@@ -113,6 +129,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
         {
             Assert.Equal(expectedItems[i], model.Items[i]);
         }
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -137,7 +154,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                         "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -149,6 +166,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -160,10 +178,17 @@ public class ShowListEpisodesPageResponseTest : TestBase
                     ReleaseDatePrecision = SimplifiedEpisodeObjectReleaseDatePrecision.Day,
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     Language = "en",
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -194,7 +219,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                         "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -206,6 +231,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -217,10 +243,17 @@ public class ShowListEpisodesPageResponseTest : TestBase
                     ReleaseDatePrecision = SimplifiedEpisodeObjectReleaseDatePrecision.Day,
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     Language = "en",
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -244,7 +277,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                     "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                 DurationMs = 1686230,
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                 HTMLDescription =
                     "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -255,6 +288,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -265,10 +299,17 @@ public class ShowListEpisodesPageResponseTest : TestBase
                 ReleaseDatePrecision = SimplifiedEpisodeObjectReleaseDatePrecision.Day,
                 Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                 Language = "en",
-                Restrictions = new() { Reason = "reason" },
-                ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                ResumePoint = new()
+                {
+                    FullyPlayed = true,
+                    Published = true,
+                    ResumePositionMs = 0,
+                },
             },
         ];
+        bool expectedPublished = true;
 
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedLimit, deserialized.Limit);
@@ -282,6 +323,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
         {
             Assert.Equal(expectedItems[i], deserialized.Items[i]);
         }
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -306,7 +348,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                         "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -318,6 +360,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -329,10 +372,17 @@ public class ShowListEpisodesPageResponseTest : TestBase
                     ReleaseDatePrecision = SimplifiedEpisodeObjectReleaseDatePrecision.Day,
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     Language = "en",
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
+            Published = true,
         };
 
         model.Validate();
@@ -353,6 +403,8 @@ public class ShowListEpisodesPageResponseTest : TestBase
 
         Assert.Null(model.Items);
         Assert.False(model.RawData.ContainsKey("items"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -385,10 +437,13 @@ public class ShowListEpisodesPageResponseTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Items = null,
+            Published = null,
         };
 
         Assert.Null(model.Items);
         Assert.False(model.RawData.ContainsKey("items"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -405,6 +460,7 @@ public class ShowListEpisodesPageResponseTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             Items = null,
+            Published = null,
         };
 
         model.Validate();

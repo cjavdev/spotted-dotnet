@@ -23,7 +23,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -35,6 +35,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -48,10 +49,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                     {
                         ID = "id",
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -62,6 +71,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         IsExternallyHosted = true,
@@ -71,11 +81,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         Publisher = "publisher",
                         TotalEpisodes = 0,
                         Uri = "uri",
+                        Published = true,
                     },
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     Language = "en",
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
         };
@@ -91,7 +108,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                     "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                 DurationMs = 1686230,
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                 HTMLDescription =
                     "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -102,6 +119,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -114,10 +132,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -128,6 +154,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -137,11 +164,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
                 Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                 Language = "en",
-                Restrictions = new() { Reason = "reason" },
-                ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                ResumePoint = new()
+                {
+                    FullyPlayed = true,
+                    Published = true,
+                    ResumePositionMs = 0,
+                },
             },
         ];
 
@@ -168,7 +202,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -180,6 +214,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -193,10 +228,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                     {
                         ID = "id",
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -207,6 +250,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         IsExternallyHosted = true,
@@ -216,11 +260,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         Publisher = "publisher",
                         TotalEpisodes = 0,
                         Uri = "uri",
+                        Published = true,
                     },
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     Language = "en",
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
         };
@@ -247,7 +298,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -259,6 +310,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -272,10 +324,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                     {
                         ID = "id",
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -286,6 +346,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         IsExternallyHosted = true,
@@ -295,11 +356,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         Publisher = "publisher",
                         TotalEpisodes = 0,
                         Uri = "uri",
+                        Published = true,
                     },
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     Language = "en",
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
         };
@@ -319,7 +387,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                     "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                 DurationMs = 1686230,
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                 HTMLDescription =
                     "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -330,6 +398,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -342,10 +411,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -356,6 +433,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -365,11 +443,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
                 Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                 Language = "en",
-                Restrictions = new() { Reason = "reason" },
-                ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                ResumePoint = new()
+                {
+                    FullyPlayed = true,
+                    Published = true,
+                    ResumePositionMs = 0,
+                },
             },
         ];
 
@@ -396,7 +481,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                     DurationMs = 1686230,
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                     HTMLDescription =
                         "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -408,6 +493,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -421,10 +507,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                     {
                         ID = "id",
                         AvailableMarkets = ["string"],
-                        Copyrights = [new() { Text = "text", Type = "type" }],
+                        Copyrights =
+                        [
+                            new()
+                            {
+                                Published = true,
+                                Text = "text",
+                                Type = "type",
+                            },
+                        ],
                         Description = "description",
                         Explicit = true,
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         HTMLDescription = "html_description",
                         Images =
@@ -435,6 +529,7 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         IsExternallyHosted = true,
@@ -444,11 +539,18 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
                         Publisher = "publisher",
                         TotalEpisodes = 0,
                         Uri = "uri",
+                        Published = true,
                     },
                     Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                     Language = "en",
-                    Restrictions = new() { Reason = "reason" },
-                    ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    ResumePoint = new()
+                    {
+                        FullyPlayed = true,
+                        Published = true,
+                        ResumePositionMs = 0,
+                    },
                 },
             ],
         };

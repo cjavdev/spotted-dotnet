@@ -13,7 +13,12 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
     {
         var model = new PlayerListRecentlyPlayedPageResponse
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
@@ -21,12 +26,14 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                 {
                     Context = new()
                     {
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Published = true,
                     Track = new()
                     {
                         ID = "id",
@@ -39,15 +46,16 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Spotify = "spotify" },
+                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
+                                    Published = true,
                                     Type = SimplifiedArtistObjectType.Artist,
                                     Uri = "uri",
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
@@ -57,6 +65,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                     URL =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
+                                    Published = true,
                                 },
                             ],
                             Name = "name",
@@ -64,16 +73,18 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                             ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                             TotalTracks = 9,
                             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                            Restrictions = new() { Reason = Reason.Market },
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
                         },
                         Artists =
                         [
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
@@ -86,24 +97,27 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                         {
                             Ean = "ean",
                             Isrc = "isrc",
+                            Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
+                            Published = true,
                             Type = "type",
                             Uri = "uri",
                         },
                         Name = "name",
                         Popularity = 0,
                         PreviewURL = "preview_url",
-                        Restrictions = new() { Reason = "reason" },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
                         Type = TrackObjectType.Track,
                         Uri = "uri",
@@ -112,10 +126,16 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
-        Cursors expectedCursors = new() { After = "after", Before = "before" };
+        Cursors expectedCursors = new()
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
         string expectedHref = "href";
         List<PlayerListRecentlyPlayedPageResponseItem> expectedItems =
         [
@@ -123,12 +143,14 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             {
                 Context = new()
                 {
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Published = true,
                 Track = new()
                 {
                     ID = "id",
@@ -141,15 +163,16 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -159,6 +182,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -166,16 +190,18 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                         ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
                     },
                     Artists =
                     [
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
@@ -188,24 +214,27 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                     {
                         Ean = "ean",
                         Isrc = "isrc",
+                        Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
                     Popularity = 0,
                     PreviewURL = "preview_url",
-                    Restrictions = new() { Reason = "reason" },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
                     Type = TrackObjectType.Track,
                     Uri = "uri",
@@ -214,6 +243,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
         ];
         long expectedLimit = 0;
         string expectedNext = "next";
+        bool expectedPublished = true;
         long expectedTotal = 0;
 
         Assert.Equal(expectedCursors, model.Cursors);
@@ -226,6 +256,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
         }
         Assert.Equal(expectedLimit, model.Limit);
         Assert.Equal(expectedNext, model.Next);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedTotal, model.Total);
     }
 
@@ -234,7 +265,12 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
     {
         var model = new PlayerListRecentlyPlayedPageResponse
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
@@ -242,12 +278,14 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                 {
                     Context = new()
                     {
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Published = true,
                     Track = new()
                     {
                         ID = "id",
@@ -260,15 +298,16 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Spotify = "spotify" },
+                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
+                                    Published = true,
                                     Type = SimplifiedArtistObjectType.Artist,
                                     Uri = "uri",
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
@@ -278,6 +317,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                     URL =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
+                                    Published = true,
                                 },
                             ],
                             Name = "name",
@@ -285,16 +325,18 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                             ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                             TotalTracks = 9,
                             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                            Restrictions = new() { Reason = Reason.Market },
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
                         },
                         Artists =
                         [
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
@@ -307,24 +349,27 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                         {
                             Ean = "ean",
                             Isrc = "isrc",
+                            Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
+                            Published = true,
                             Type = "type",
                             Uri = "uri",
                         },
                         Name = "name",
                         Popularity = 0,
                         PreviewURL = "preview_url",
-                        Restrictions = new() { Reason = "reason" },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
                         Type = TrackObjectType.Track,
                         Uri = "uri",
@@ -333,6 +378,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
@@ -347,7 +393,12 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
     {
         var model = new PlayerListRecentlyPlayedPageResponse
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
@@ -355,12 +406,14 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                 {
                     Context = new()
                     {
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Published = true,
                     Track = new()
                     {
                         ID = "id",
@@ -373,15 +426,16 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Spotify = "spotify" },
+                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
+                                    Published = true,
                                     Type = SimplifiedArtistObjectType.Artist,
                                     Uri = "uri",
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
@@ -391,6 +445,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                     URL =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
+                                    Published = true,
                                 },
                             ],
                             Name = "name",
@@ -398,16 +453,18 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                             ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                             TotalTracks = 9,
                             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                            Restrictions = new() { Reason = Reason.Market },
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
                         },
                         Artists =
                         [
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
@@ -420,24 +477,27 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                         {
                             Ean = "ean",
                             Isrc = "isrc",
+                            Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
+                            Published = true,
                             Type = "type",
                             Uri = "uri",
                         },
                         Name = "name",
                         Popularity = 0,
                         PreviewURL = "preview_url",
-                        Restrictions = new() { Reason = "reason" },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
                         Type = TrackObjectType.Track,
                         Uri = "uri",
@@ -446,6 +506,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
@@ -453,7 +514,12 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
         var deserialized = JsonSerializer.Deserialize<PlayerListRecentlyPlayedPageResponse>(json);
         Assert.NotNull(deserialized);
 
-        Cursors expectedCursors = new() { After = "after", Before = "before" };
+        Cursors expectedCursors = new()
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
         string expectedHref = "href";
         List<PlayerListRecentlyPlayedPageResponseItem> expectedItems =
         [
@@ -461,12 +527,14 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             {
                 Context = new()
                 {
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                Published = true,
                 Track = new()
                 {
                     ID = "id",
@@ -479,15 +547,16 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
@@ -497,6 +566,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                 URL =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
+                                Published = true,
                             },
                         ],
                         Name = "name",
@@ -504,16 +574,18 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                         ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                         TotalTracks = 9,
                         Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                        Restrictions = new() { Reason = Reason.Market },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
                     },
                     Artists =
                     [
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
@@ -526,24 +598,27 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                     {
                         Ean = "ean",
                         Isrc = "isrc",
+                        Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
                     Popularity = 0,
                     PreviewURL = "preview_url",
-                    Restrictions = new() { Reason = "reason" },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
                     Type = TrackObjectType.Track,
                     Uri = "uri",
@@ -552,6 +627,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
         ];
         long expectedLimit = 0;
         string expectedNext = "next";
+        bool expectedPublished = true;
         long expectedTotal = 0;
 
         Assert.Equal(expectedCursors, deserialized.Cursors);
@@ -564,6 +640,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
         }
         Assert.Equal(expectedLimit, deserialized.Limit);
         Assert.Equal(expectedNext, deserialized.Next);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedTotal, deserialized.Total);
     }
 
@@ -572,7 +649,12 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
     {
         var model = new PlayerListRecentlyPlayedPageResponse
         {
-            Cursors = new() { After = "after", Before = "before" },
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
             Href = "href",
             Items =
             [
@@ -580,12 +662,14 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                 {
                     Context = new()
                     {
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
+                        Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    Published = true,
                     Track = new()
                     {
                         ID = "id",
@@ -598,15 +682,16 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Spotify = "spotify" },
+                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
+                                    Published = true,
                                     Type = SimplifiedArtistObjectType.Artist,
                                     Uri = "uri",
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
@@ -616,6 +701,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                                     URL =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
+                                    Published = true,
                                 },
                             ],
                             Name = "name",
@@ -623,16 +709,18 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                             ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                             TotalTracks = 9,
                             Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                            Restrictions = new() { Reason = Reason.Market },
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
                         },
                         Artists =
                         [
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Spotify = "spotify" },
+                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
+                                Published = true,
                                 Type = SimplifiedArtistObjectType.Artist,
                                 Uri = "uri",
                             },
@@ -645,24 +733,27 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
                         {
                             Ean = "ean",
                             Isrc = "isrc",
+                            Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
+                            Published = true,
                             Type = "type",
                             Uri = "uri",
                         },
                         Name = "name",
                         Popularity = 0,
                         PreviewURL = "preview_url",
-                        Restrictions = new() { Reason = "reason" },
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
                         Type = TrackObjectType.Track,
                         Uri = "uri",
@@ -671,6 +762,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             ],
             Limit = 0,
             Next = "next",
+            Published = true,
             Total = 0,
         };
 
@@ -692,6 +784,8 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("limit"));
         Assert.Null(model.Next);
         Assert.False(model.RawData.ContainsKey("next"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Total);
         Assert.False(model.RawData.ContainsKey("total"));
     }
@@ -715,6 +809,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             Items = null,
             Limit = null,
             Next = null,
+            Published = null,
             Total = null,
         };
 
@@ -728,6 +823,8 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("limit"));
         Assert.Null(model.Next);
         Assert.False(model.RawData.ContainsKey("next"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Total);
         Assert.False(model.RawData.ContainsKey("total"));
     }
@@ -743,6 +840,7 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             Items = null,
             Limit = null,
             Next = null,
+            Published = null,
             Total = null,
         };
 
@@ -755,19 +853,31 @@ public class CursorsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
 
         string expectedAfter = "after";
         string expectedBefore = "before";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedAfter, model.After);
         Assert.Equal(expectedBefore, model.Before);
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<Cursors>(json);
@@ -778,7 +888,12 @@ public class CursorsTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
 
         string json = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<Cursors>(json);
@@ -786,15 +901,22 @@ public class CursorsTest : TestBase
 
         string expectedAfter = "after";
         string expectedBefore = "before";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedAfter, deserialized.After);
         Assert.Equal(expectedBefore, deserialized.Before);
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
     public void Validation_Works()
     {
-        var model = new Cursors { After = "after", Before = "before" };
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
 
         model.Validate();
     }
@@ -808,6 +930,8 @@ public class CursorsTest : TestBase
         Assert.False(model.RawData.ContainsKey("after"));
         Assert.Null(model.Before);
         Assert.False(model.RawData.ContainsKey("before"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -826,12 +950,15 @@ public class CursorsTest : TestBase
             // Null should be interpreted as omitted for these properties
             After = null,
             Before = null,
+            Published = null,
         };
 
         Assert.Null(model.After);
         Assert.False(model.RawData.ContainsKey("after"));
         Assert.Null(model.Before);
         Assert.False(model.RawData.ContainsKey("before"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
     }
 
     [Fact]
@@ -842,6 +969,7 @@ public class CursorsTest : TestBase
             // Null should be interpreted as omitted for these properties
             After = null,
             Before = null,
+            Published = null,
         };
 
         model.Validate();
@@ -857,12 +985,14 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
         {
             Context = new()
             {
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Published = true,
             Track = new()
             {
                 ID = "id",
@@ -875,15 +1005,16 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -893,6 +1024,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -900,16 +1032,18 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -922,24 +1056,27 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
@@ -948,12 +1085,14 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
 
         ContextObject expectedContext = new()
         {
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
         DateTimeOffset expectedPlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        bool expectedPublished = true;
         TrackObject expectedTrack = new()
         {
             ID = "id",
@@ -966,15 +1105,16 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
@@ -983,6 +1123,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
@@ -990,16 +1131,18 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                 ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                Restrictions = new() { Reason = Reason.Market },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = Reason.Market },
             },
             Artists =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -1012,24 +1155,27 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
             {
                 Ean = "ean",
                 Isrc = "isrc",
+                Published = true,
                 Upc = "upc",
             },
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
             Popularity = 0,
             PreviewURL = "preview_url",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = TrackObjectType.Track,
             Uri = "uri",
@@ -1037,6 +1183,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
 
         Assert.Equal(expectedContext, model.Context);
         Assert.Equal(expectedPlayedAt, model.PlayedAt);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedTrack, model.Track);
     }
 
@@ -1047,12 +1194,14 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
         {
             Context = new()
             {
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Published = true,
             Track = new()
             {
                 ID = "id",
@@ -1065,15 +1214,16 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -1083,6 +1233,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -1090,16 +1241,18 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -1112,24 +1265,27 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
@@ -1151,12 +1307,14 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
         {
             Context = new()
             {
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Published = true,
             Track = new()
             {
                 ID = "id",
@@ -1169,15 +1327,16 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -1187,6 +1346,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -1194,16 +1354,18 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -1216,24 +1378,27 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
@@ -1248,12 +1413,14 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
 
         ContextObject expectedContext = new()
         {
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
         DateTimeOffset expectedPlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
+        bool expectedPublished = true;
         TrackObject expectedTrack = new()
         {
             ID = "id",
@@ -1266,15 +1433,16 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
@@ -1283,6 +1451,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
@@ -1290,16 +1459,18 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                 ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                Restrictions = new() { Reason = Reason.Market },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = Reason.Market },
             },
             Artists =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -1312,24 +1483,27 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
             {
                 Ean = "ean",
                 Isrc = "isrc",
+                Published = true,
                 Upc = "upc",
             },
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
             Popularity = 0,
             PreviewURL = "preview_url",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = TrackObjectType.Track,
             Uri = "uri",
@@ -1337,6 +1511,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
 
         Assert.Equal(expectedContext, deserialized.Context);
         Assert.Equal(expectedPlayedAt, deserialized.PlayedAt);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedTrack, deserialized.Track);
     }
 
@@ -1347,12 +1522,14 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
         {
             Context = new()
             {
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             PlayedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+            Published = true,
             Track = new()
             {
                 ID = "id",
@@ -1365,15 +1542,16 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -1383,6 +1561,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -1390,16 +1569,18 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -1412,24 +1593,27 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
@@ -1448,6 +1632,8 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
         Assert.False(model.RawData.ContainsKey("context"));
         Assert.Null(model.PlayedAt);
         Assert.False(model.RawData.ContainsKey("played_at"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Track);
         Assert.False(model.RawData.ContainsKey("track"));
     }
@@ -1468,6 +1654,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
             // Null should be interpreted as omitted for these properties
             Context = null,
             PlayedAt = null,
+            Published = null,
             Track = null,
         };
 
@@ -1475,6 +1662,8 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
         Assert.False(model.RawData.ContainsKey("context"));
         Assert.Null(model.PlayedAt);
         Assert.False(model.RawData.ContainsKey("played_at"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Track);
         Assert.False(model.RawData.ContainsKey("track"));
     }
@@ -1487,6 +1676,7 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
             // Null should be interpreted as omitted for these properties
             Context = null,
             PlayedAt = null,
+            Published = null,
             Track = null,
         };
 

@@ -15,6 +15,7 @@ public class PlayerGetStateResponseTest : TestBase
             {
                 InterruptingPlayback = true,
                 Pausing = true,
+                Published = true,
                 Resuming = true,
                 Seeking = true,
                 SkippingNext = true,
@@ -26,8 +27,9 @@ public class PlayerGetStateResponseTest : TestBase
             },
             Context = new()
             {
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
@@ -39,6 +41,7 @@ public class PlayerGetStateResponseTest : TestBase
                 IsPrivateSession = true,
                 IsRestricted = true,
                 Name = "Kitchen speaker",
+                Published = true,
                 SupportsVolume = true,
                 Type = "computer",
                 VolumePercent = 59,
@@ -56,15 +59,16 @@ public class PlayerGetStateResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -74,6 +78,7 @@ public class PlayerGetStateResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -81,16 +86,18 @@ public class PlayerGetStateResponseTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -103,29 +110,33 @@ public class PlayerGetStateResponseTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
+            Published = true,
             RepeatState = "repeat_state",
             ShuffleState = true,
             Timestamp = 0,
@@ -135,6 +146,7 @@ public class PlayerGetStateResponseTest : TestBase
         {
             InterruptingPlayback = true,
             Pausing = true,
+            Published = true,
             Resuming = true,
             Seeking = true,
             SkippingNext = true,
@@ -146,8 +158,9 @@ public class PlayerGetStateResponseTest : TestBase
         };
         ContextObject expectedContext = new()
         {
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
@@ -159,6 +172,7 @@ public class PlayerGetStateResponseTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
             VolumePercent = 59,
@@ -176,15 +190,16 @@ public class PlayerGetStateResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
@@ -193,6 +208,7 @@ public class PlayerGetStateResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
@@ -200,16 +216,18 @@ public class PlayerGetStateResponseTest : TestBase
                 ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                Restrictions = new() { Reason = Reason.Market },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = Reason.Market },
             },
             Artists =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -222,29 +240,33 @@ public class PlayerGetStateResponseTest : TestBase
             {
                 Ean = "ean",
                 Isrc = "isrc",
+                Published = true,
                 Upc = "upc",
             },
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
             Popularity = 0,
             PreviewURL = "preview_url",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = TrackObjectType.Track,
             Uri = "uri",
         };
         long expectedProgressMs = 0;
+        bool expectedPublished = true;
         string expectedRepeatState = "repeat_state";
         bool expectedShuffleState = true;
         long expectedTimestamp = 0;
@@ -256,6 +278,7 @@ public class PlayerGetStateResponseTest : TestBase
         Assert.Equal(expectedIsPlaying, model.IsPlaying);
         Assert.Equal(expectedItem, model.Item);
         Assert.Equal(expectedProgressMs, model.ProgressMs);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedRepeatState, model.RepeatState);
         Assert.Equal(expectedShuffleState, model.ShuffleState);
         Assert.Equal(expectedTimestamp, model.Timestamp);
@@ -270,6 +293,7 @@ public class PlayerGetStateResponseTest : TestBase
             {
                 InterruptingPlayback = true,
                 Pausing = true,
+                Published = true,
                 Resuming = true,
                 Seeking = true,
                 SkippingNext = true,
@@ -281,8 +305,9 @@ public class PlayerGetStateResponseTest : TestBase
             },
             Context = new()
             {
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
@@ -294,6 +319,7 @@ public class PlayerGetStateResponseTest : TestBase
                 IsPrivateSession = true,
                 IsRestricted = true,
                 Name = "Kitchen speaker",
+                Published = true,
                 SupportsVolume = true,
                 Type = "computer",
                 VolumePercent = 59,
@@ -311,15 +337,16 @@ public class PlayerGetStateResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -329,6 +356,7 @@ public class PlayerGetStateResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -336,16 +364,18 @@ public class PlayerGetStateResponseTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -358,29 +388,33 @@ public class PlayerGetStateResponseTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
+            Published = true,
             RepeatState = "repeat_state",
             ShuffleState = true,
             Timestamp = 0,
@@ -401,6 +435,7 @@ public class PlayerGetStateResponseTest : TestBase
             {
                 InterruptingPlayback = true,
                 Pausing = true,
+                Published = true,
                 Resuming = true,
                 Seeking = true,
                 SkippingNext = true,
@@ -412,8 +447,9 @@ public class PlayerGetStateResponseTest : TestBase
             },
             Context = new()
             {
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
@@ -425,6 +461,7 @@ public class PlayerGetStateResponseTest : TestBase
                 IsPrivateSession = true,
                 IsRestricted = true,
                 Name = "Kitchen speaker",
+                Published = true,
                 SupportsVolume = true,
                 Type = "computer",
                 VolumePercent = 59,
@@ -442,15 +479,16 @@ public class PlayerGetStateResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -460,6 +498,7 @@ public class PlayerGetStateResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -467,16 +506,18 @@ public class PlayerGetStateResponseTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -489,29 +530,33 @@ public class PlayerGetStateResponseTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
+            Published = true,
             RepeatState = "repeat_state",
             ShuffleState = true,
             Timestamp = 0,
@@ -525,6 +570,7 @@ public class PlayerGetStateResponseTest : TestBase
         {
             InterruptingPlayback = true,
             Pausing = true,
+            Published = true,
             Resuming = true,
             Seeking = true,
             SkippingNext = true,
@@ -536,8 +582,9 @@ public class PlayerGetStateResponseTest : TestBase
         };
         ContextObject expectedContext = new()
         {
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
+            Published = true,
             Type = "type",
             Uri = "uri",
         };
@@ -549,6 +596,7 @@ public class PlayerGetStateResponseTest : TestBase
             IsPrivateSession = true,
             IsRestricted = true,
             Name = "Kitchen speaker",
+            Published = true,
             SupportsVolume = true,
             Type = "computer",
             VolumePercent = 59,
@@ -566,15 +614,16 @@ public class PlayerGetStateResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
@@ -583,6 +632,7 @@ public class PlayerGetStateResponseTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 Name = "name",
@@ -590,16 +640,18 @@ public class PlayerGetStateResponseTest : TestBase
                 ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                Restrictions = new() { Reason = Reason.Market },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = Reason.Market },
             },
             Artists =
             [
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
+                    Published = true,
                     Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
@@ -612,29 +664,33 @@ public class PlayerGetStateResponseTest : TestBase
             {
                 Ean = "ean",
                 Isrc = "isrc",
+                Published = true,
                 Upc = "upc",
             },
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
             Popularity = 0,
             PreviewURL = "preview_url",
-            Restrictions = new() { Reason = "reason" },
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
             Type = TrackObjectType.Track,
             Uri = "uri",
         };
         long expectedProgressMs = 0;
+        bool expectedPublished = true;
         string expectedRepeatState = "repeat_state";
         bool expectedShuffleState = true;
         long expectedTimestamp = 0;
@@ -646,6 +702,7 @@ public class PlayerGetStateResponseTest : TestBase
         Assert.Equal(expectedIsPlaying, deserialized.IsPlaying);
         Assert.Equal(expectedItem, deserialized.Item);
         Assert.Equal(expectedProgressMs, deserialized.ProgressMs);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedRepeatState, deserialized.RepeatState);
         Assert.Equal(expectedShuffleState, deserialized.ShuffleState);
         Assert.Equal(expectedTimestamp, deserialized.Timestamp);
@@ -660,6 +717,7 @@ public class PlayerGetStateResponseTest : TestBase
             {
                 InterruptingPlayback = true,
                 Pausing = true,
+                Published = true,
                 Resuming = true,
                 Seeking = true,
                 SkippingNext = true,
@@ -671,8 +729,9 @@ public class PlayerGetStateResponseTest : TestBase
             },
             Context = new()
             {
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
+                Published = true,
                 Type = "type",
                 Uri = "uri",
             },
@@ -684,6 +743,7 @@ public class PlayerGetStateResponseTest : TestBase
                 IsPrivateSession = true,
                 IsRestricted = true,
                 Name = "Kitchen speaker",
+                Published = true,
                 SupportsVolume = true,
                 Type = "computer",
                 VolumePercent = 59,
@@ -701,15 +761,16 @@ public class PlayerGetStateResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -719,6 +780,7 @@ public class PlayerGetStateResponseTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -726,16 +788,18 @@ public class PlayerGetStateResponseTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -748,29 +812,33 @@ public class PlayerGetStateResponseTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
+            Published = true,
             RepeatState = "repeat_state",
             ShuffleState = true,
             Timestamp = 0,
@@ -798,6 +866,8 @@ public class PlayerGetStateResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("item"));
         Assert.Null(model.ProgressMs);
         Assert.False(model.RawData.ContainsKey("progress_ms"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.RepeatState);
         Assert.False(model.RawData.ContainsKey("repeat_state"));
         Assert.Null(model.ShuffleState);
@@ -827,6 +897,7 @@ public class PlayerGetStateResponseTest : TestBase
             IsPlaying = null,
             Item = null,
             ProgressMs = null,
+            Published = null,
             RepeatState = null,
             ShuffleState = null,
             Timestamp = null,
@@ -846,6 +917,8 @@ public class PlayerGetStateResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("item"));
         Assert.Null(model.ProgressMs);
         Assert.False(model.RawData.ContainsKey("progress_ms"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.RepeatState);
         Assert.False(model.RawData.ContainsKey("repeat_state"));
         Assert.Null(model.ShuffleState);
@@ -867,6 +940,7 @@ public class PlayerGetStateResponseTest : TestBase
             IsPlaying = null,
             Item = null,
             ProgressMs = null,
+            Published = null,
             RepeatState = null,
             ShuffleState = null,
             Timestamp = null,
@@ -885,6 +959,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
         {
             InterruptingPlayback = true,
             Pausing = true,
+            Published = true,
             Resuming = true,
             Seeking = true,
             SkippingNext = true,
@@ -897,6 +972,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
 
         bool expectedInterruptingPlayback = true;
         bool expectedPausing = true;
+        bool expectedPublished = true;
         bool expectedResuming = true;
         bool expectedSeeking = true;
         bool expectedSkippingNext = true;
@@ -908,6 +984,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
 
         Assert.Equal(expectedInterruptingPlayback, model.InterruptingPlayback);
         Assert.Equal(expectedPausing, model.Pausing);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedResuming, model.Resuming);
         Assert.Equal(expectedSeeking, model.Seeking);
         Assert.Equal(expectedSkippingNext, model.SkippingNext);
@@ -925,6 +1002,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
         {
             InterruptingPlayback = true,
             Pausing = true,
+            Published = true,
             Resuming = true,
             Seeking = true,
             SkippingNext = true,
@@ -948,6 +1026,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
         {
             InterruptingPlayback = true,
             Pausing = true,
+            Published = true,
             Resuming = true,
             Seeking = true,
             SkippingNext = true,
@@ -964,6 +1043,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
 
         bool expectedInterruptingPlayback = true;
         bool expectedPausing = true;
+        bool expectedPublished = true;
         bool expectedResuming = true;
         bool expectedSeeking = true;
         bool expectedSkippingNext = true;
@@ -975,6 +1055,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
 
         Assert.Equal(expectedInterruptingPlayback, deserialized.InterruptingPlayback);
         Assert.Equal(expectedPausing, deserialized.Pausing);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedResuming, deserialized.Resuming);
         Assert.Equal(expectedSeeking, deserialized.Seeking);
         Assert.Equal(expectedSkippingNext, deserialized.SkippingNext);
@@ -992,6 +1073,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
         {
             InterruptingPlayback = true,
             Pausing = true,
+            Published = true,
             Resuming = true,
             Seeking = true,
             SkippingNext = true,
@@ -1014,6 +1096,8 @@ public class PlayerGetStateResponseActionsTest : TestBase
         Assert.False(model.RawData.ContainsKey("interrupting_playback"));
         Assert.Null(model.Pausing);
         Assert.False(model.RawData.ContainsKey("pausing"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Resuming);
         Assert.False(model.RawData.ContainsKey("resuming"));
         Assert.Null(model.Seeking);
@@ -1048,6 +1132,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
             // Null should be interpreted as omitted for these properties
             InterruptingPlayback = null,
             Pausing = null,
+            Published = null,
             Resuming = null,
             Seeking = null,
             SkippingNext = null,
@@ -1062,6 +1147,8 @@ public class PlayerGetStateResponseActionsTest : TestBase
         Assert.False(model.RawData.ContainsKey("interrupting_playback"));
         Assert.Null(model.Pausing);
         Assert.False(model.RawData.ContainsKey("pausing"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Resuming);
         Assert.False(model.RawData.ContainsKey("resuming"));
         Assert.Null(model.Seeking);
@@ -1088,6 +1175,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
             // Null should be interpreted as omitted for these properties
             InterruptingPlayback = null,
             Pausing = null,
+            Published = null,
             Resuming = null,
             Seeking = null,
             SkippingNext = null,
@@ -1120,15 +1208,16 @@ public class PlayerGetStateResponseItemTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -1138,6 +1227,7 @@ public class PlayerGetStateResponseItemTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -1145,16 +1235,18 @@ public class PlayerGetStateResponseItemTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -1167,24 +1259,27 @@ public class PlayerGetStateResponseItemTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
@@ -1206,7 +1301,7 @@ public class PlayerGetStateResponseItemTest : TestBase
                     "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                 DurationMs = 1686230,
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                 HTMLDescription =
                     "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -1217,6 +1312,7 @@ public class PlayerGetStateResponseItemTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -1229,10 +1325,18 @@ public class PlayerGetStateResponseItemTest : TestBase
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -1243,6 +1347,7 @@ public class PlayerGetStateResponseItemTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -1252,11 +1357,18 @@ public class PlayerGetStateResponseItemTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
                 Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                 Language = "en",
-                Restrictions = new() { Reason = "reason" },
-                ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                ResumePoint = new()
+                {
+                    FullyPlayed = true,
+                    Published = true,
+                    ResumePositionMs = 0,
+                },
             }
         );
         value.Validate();
@@ -1278,15 +1390,16 @@ public class PlayerGetStateResponseItemTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Spotify = "spotify" },
+                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
+                            Published = true,
                             Type = SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
@@ -1296,6 +1409,7 @@ public class PlayerGetStateResponseItemTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     Name = "name",
@@ -1303,16 +1417,18 @@ public class PlayerGetStateResponseItemTest : TestBase
                     ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Restrictions = new() { Reason = Reason.Market },
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
                 },
                 Artists =
                 [
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Spotify = "spotify" },
+                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
+                        Published = true,
                         Type = SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
@@ -1325,24 +1441,27 @@ public class PlayerGetStateResponseItemTest : TestBase
                 {
                     Ean = "ean",
                     Isrc = "isrc",
+                    Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
                 Popularity = 0,
                 PreviewURL = "preview_url",
-                Restrictions = new() { Reason = "reason" },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
                 Type = TrackObjectType.Track,
                 Uri = "uri",
@@ -1367,7 +1486,7 @@ public class PlayerGetStateResponseItemTest : TestBase
                     "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
                 DurationMs = 1686230,
                 Explicit = true,
-                ExternalURLs = new() { Spotify = "spotify" },
+                ExternalURLs = new() { Published = true, Spotify = "spotify" },
                 Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
                 HTMLDescription =
                     "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
@@ -1378,6 +1497,7 @@ public class PlayerGetStateResponseItemTest : TestBase
                         Height = 300,
                         URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
+                        Published = true,
                     },
                 ],
                 IsExternallyHosted = true,
@@ -1390,10 +1510,18 @@ public class PlayerGetStateResponseItemTest : TestBase
                 {
                     ID = "id",
                     AvailableMarkets = ["string"],
-                    Copyrights = [new() { Text = "text", Type = "type" }],
+                    Copyrights =
+                    [
+                        new()
+                        {
+                            Published = true,
+                            Text = "text",
+                            Type = "type",
+                        },
+                    ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Spotify = "spotify" },
+                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     HTMLDescription = "html_description",
                     Images =
@@ -1404,6 +1532,7 @@ public class PlayerGetStateResponseItemTest : TestBase
                             URL =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
+                            Published = true,
                         },
                     ],
                     IsExternallyHosted = true,
@@ -1413,11 +1542,18 @@ public class PlayerGetStateResponseItemTest : TestBase
                     Publisher = "publisher",
                     TotalEpisodes = 0,
                     Uri = "uri",
+                    Published = true,
                 },
                 Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
                 Language = "en",
-                Restrictions = new() { Reason = "reason" },
-                ResumePoint = new() { FullyPlayed = true, ResumePositionMs = 0 },
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                ResumePoint = new()
+                {
+                    FullyPlayed = true,
+                    Published = true,
+                    ResumePositionMs = 0,
+                },
             }
         );
         string json = JsonSerializer.Serialize(value);

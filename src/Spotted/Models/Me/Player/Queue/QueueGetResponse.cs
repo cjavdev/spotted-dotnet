@@ -33,6 +33,26 @@ public sealed record class QueueGetResponse : ModelBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// The tracks or episodes in the queue. Can be empty.
     /// </summary>
     public IReadOnlyList<QueueGetResponseQueue>? Queue
@@ -56,6 +76,7 @@ public sealed record class QueueGetResponse : ModelBase
     public override void Validate()
     {
         this.CurrentlyPlaying?.Validate();
+        _ = this.Published;
         foreach (var item in this.Queue ?? [])
         {
             item.Validate();
@@ -165,6 +186,14 @@ public record class CurrentlyPlaying
     public string? Name
     {
         get { return Match<string?>(trackObject: (x) => x.Name, episodeObject: (x) => x.Name); }
+    }
+
+    public bool? Published
+    {
+        get
+        {
+            return Match<bool?>(trackObject: (x) => x.Published, episodeObject: (x) => x.Published);
+        }
     }
 
     public string? Uri
@@ -488,6 +517,14 @@ public record class QueueGetResponseQueue
     public string? Name
     {
         get { return Match<string?>(trackObject: (x) => x.Name, episodeObject: (x) => x.Name); }
+    }
+
+    public bool? Published
+    {
+        get
+        {
+            return Match<bool?>(trackObject: (x) => x.Published, episodeObject: (x) => x.Published);
+        }
     }
 
     public string? Uri

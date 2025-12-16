@@ -23,6 +23,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             Liveness = 0.0866f,
             Loudness = -5.883f,
             Mode = 0,
+            Published = true,
             Speechiness = 0.0556f,
             Tempo = 118.211f,
             TimeSignature = 4,
@@ -44,6 +45,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         float expectedLiveness = 0.0866f;
         float expectedLoudness = -5.883f;
         long expectedMode = 0;
+        bool expectedPublished = true;
         float expectedSpeechiness = 0.0556f;
         float expectedTempo = 118.211f;
         long expectedTimeSignature = 4;
@@ -63,6 +65,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         Assert.Equal(expectedLiveness, model.Liveness);
         Assert.Equal(expectedLoudness, model.Loudness);
         Assert.Equal(expectedMode, model.Mode);
+        Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedSpeechiness, model.Speechiness);
         Assert.Equal(expectedTempo, model.Tempo);
         Assert.Equal(expectedTimeSignature, model.TimeSignature);
@@ -88,6 +91,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             Liveness = 0.0866f,
             Loudness = -5.883f,
             Mode = 0,
+            Published = true,
             Speechiness = 0.0556f,
             Tempo = 118.211f,
             TimeSignature = 4,
@@ -119,6 +123,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             Liveness = 0.0866f,
             Loudness = -5.883f,
             Mode = 0,
+            Published = true,
             Speechiness = 0.0556f,
             Tempo = 118.211f,
             TimeSignature = 4,
@@ -144,6 +149,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         float expectedLiveness = 0.0866f;
         float expectedLoudness = -5.883f;
         long expectedMode = 0;
+        bool expectedPublished = true;
         float expectedSpeechiness = 0.0556f;
         float expectedTempo = 118.211f;
         long expectedTimeSignature = 4;
@@ -163,6 +169,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         Assert.Equal(expectedLiveness, deserialized.Liveness);
         Assert.Equal(expectedLoudness, deserialized.Loudness);
         Assert.Equal(expectedMode, deserialized.Mode);
+        Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedSpeechiness, deserialized.Speechiness);
         Assert.Equal(expectedTempo, deserialized.Tempo);
         Assert.Equal(expectedTimeSignature, deserialized.TimeSignature);
@@ -188,6 +195,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             Liveness = 0.0866f,
             Loudness = -5.883f,
             Mode = 0,
+            Published = true,
             Speechiness = 0.0556f,
             Tempo = 118.211f,
             TimeSignature = 4,
@@ -227,6 +235,8 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("loudness"));
         Assert.Null(model.Mode);
         Assert.False(model.RawData.ContainsKey("mode"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Speechiness);
         Assert.False(model.RawData.ContainsKey("speechiness"));
         Assert.Null(model.Tempo);
@@ -268,6 +278,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             Liveness = null,
             Loudness = null,
             Mode = null,
+            Published = null,
             Speechiness = null,
             Tempo = null,
             TimeSignature = null,
@@ -299,6 +310,8 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("loudness"));
         Assert.Null(model.Mode);
         Assert.False(model.RawData.ContainsKey("mode"));
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
         Assert.Null(model.Speechiness);
         Assert.False(model.RawData.ContainsKey("speechiness"));
         Assert.Null(model.Tempo);
@@ -332,6 +345,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             Liveness = null,
             Loudness = null,
             Mode = null,
+            Published = null,
             Speechiness = null,
             Tempo = null,
             TimeSignature = null,

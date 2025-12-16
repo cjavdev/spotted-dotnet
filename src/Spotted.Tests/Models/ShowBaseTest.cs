@@ -13,10 +13,18 @@ public class ShowBaseTest : TestBase
         {
             ID = "id",
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -26,6 +34,7 @@ public class ShowBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -35,14 +44,23 @@ public class ShowBaseTest : TestBase
             Publisher = "publisher",
             TotalEpisodes = 0,
             Uri = "uri",
+            Published = true,
         };
 
         string expectedID = "id";
         List<string> expectedAvailableMarkets = ["string"];
-        List<CopyrightObject> expectedCopyrights = [new() { Text = "text", Type = "type" }];
+        List<CopyrightObject> expectedCopyrights =
+        [
+            new()
+            {
+                Published = true,
+                Text = "text",
+                Type = "type",
+            },
+        ];
         string expectedDescription = "description";
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         string expectedHTMLDescription = "html_description";
         List<ImageObject> expectedImages =
@@ -52,6 +70,7 @@ public class ShowBaseTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         bool expectedIsExternallyHosted = true;
@@ -62,6 +81,7 @@ public class ShowBaseTest : TestBase
         long expectedTotalEpisodes = 0;
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"show\"");
         string expectedUri = "uri";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAvailableMarkets.Count, model.AvailableMarkets.Count);
@@ -96,6 +116,7 @@ public class ShowBaseTest : TestBase
         Assert.Equal(expectedTotalEpisodes, model.TotalEpisodes);
         Assert.True(JsonElement.DeepEquals(expectedType, model.Type));
         Assert.Equal(expectedUri, model.Uri);
+        Assert.Equal(expectedPublished, model.Published);
     }
 
     [Fact]
@@ -105,10 +126,18 @@ public class ShowBaseTest : TestBase
         {
             ID = "id",
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -118,6 +147,7 @@ public class ShowBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -127,6 +157,7 @@ public class ShowBaseTest : TestBase
             Publisher = "publisher",
             TotalEpisodes = 0,
             Uri = "uri",
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -142,10 +173,18 @@ public class ShowBaseTest : TestBase
         {
             ID = "id",
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -155,6 +194,7 @@ public class ShowBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -164,6 +204,7 @@ public class ShowBaseTest : TestBase
             Publisher = "publisher",
             TotalEpisodes = 0,
             Uri = "uri",
+            Published = true,
         };
 
         string json = JsonSerializer.Serialize(model);
@@ -172,10 +213,18 @@ public class ShowBaseTest : TestBase
 
         string expectedID = "id";
         List<string> expectedAvailableMarkets = ["string"];
-        List<CopyrightObject> expectedCopyrights = [new() { Text = "text", Type = "type" }];
+        List<CopyrightObject> expectedCopyrights =
+        [
+            new()
+            {
+                Published = true,
+                Text = "text",
+                Type = "type",
+            },
+        ];
         string expectedDescription = "description";
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Spotify = "spotify" };
+        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         string expectedHTMLDescription = "html_description";
         List<ImageObject> expectedImages =
@@ -185,6 +234,7 @@ public class ShowBaseTest : TestBase
                 Height = 300,
                 URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
+                Published = true,
             },
         ];
         bool expectedIsExternallyHosted = true;
@@ -195,6 +245,7 @@ public class ShowBaseTest : TestBase
         long expectedTotalEpisodes = 0;
         JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"show\"");
         string expectedUri = "uri";
+        bool expectedPublished = true;
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAvailableMarkets.Count, deserialized.AvailableMarkets.Count);
@@ -229,6 +280,7 @@ public class ShowBaseTest : TestBase
         Assert.Equal(expectedTotalEpisodes, deserialized.TotalEpisodes);
         Assert.True(JsonElement.DeepEquals(expectedType, deserialized.Type));
         Assert.Equal(expectedUri, deserialized.Uri);
+        Assert.Equal(expectedPublished, deserialized.Published);
     }
 
     [Fact]
@@ -238,10 +290,18 @@ public class ShowBaseTest : TestBase
         {
             ID = "id",
             AvailableMarkets = ["string"],
-            Copyrights = [new() { Text = "text", Type = "type" }],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Spotify = "spotify" },
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             HTMLDescription = "html_description",
             Images =
@@ -251,6 +311,7 @@ public class ShowBaseTest : TestBase
                     Height = 300,
                     URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
+                    Published = true,
                 },
             ],
             IsExternallyHosted = true,
@@ -260,6 +321,187 @@ public class ShowBaseTest : TestBase
             Publisher = "publisher",
             TotalEpisodes = 0,
             Uri = "uri",
+            Published = true,
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
+    {
+        var model = new ShowBase
+        {
+            ID = "id",
+            AvailableMarkets = ["string"],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
+            Description = "description",
+            Explicit = true,
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            HTMLDescription = "html_description",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            IsExternallyHosted = true,
+            Languages = ["string"],
+            MediaType = "media_type",
+            Name = "name",
+            Publisher = "publisher",
+            TotalEpisodes = 0,
+            Uri = "uri",
+        };
+
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesUnsetValidation_Works()
+    {
+        var model = new ShowBase
+        {
+            ID = "id",
+            AvailableMarkets = ["string"],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
+            Description = "description",
+            Explicit = true,
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            HTMLDescription = "html_description",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            IsExternallyHosted = true,
+            Languages = ["string"],
+            MediaType = "media_type",
+            Name = "name",
+            Publisher = "publisher",
+            TotalEpisodes = 0,
+            Uri = "uri",
+        };
+
+        model.Validate();
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
+    {
+        var model = new ShowBase
+        {
+            ID = "id",
+            AvailableMarkets = ["string"],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
+            Description = "description",
+            Explicit = true,
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            HTMLDescription = "html_description",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            IsExternallyHosted = true,
+            Languages = ["string"],
+            MediaType = "media_type",
+            Name = "name",
+            Publisher = "publisher",
+            TotalEpisodes = 0,
+            Uri = "uri",
+
+            // Null should be interpreted as omitted for these properties
+            Published = null,
+        };
+
+        Assert.Null(model.Published);
+        Assert.False(model.RawData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void OptionalNonNullablePropertiesSetToNullValidation_Works()
+    {
+        var model = new ShowBase
+        {
+            ID = "id",
+            AvailableMarkets = ["string"],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
+            Description = "description",
+            Explicit = true,
+            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            HTMLDescription = "html_description",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            IsExternallyHosted = true,
+            Languages = ["string"],
+            MediaType = "media_type",
+            Name = "name",
+            Publisher = "publisher",
+            TotalEpisodes = 0,
+            Uri = "uri",
+
+            // Null should be interpreted as omitted for these properties
+            Published = null,
         };
 
         model.Validate();
