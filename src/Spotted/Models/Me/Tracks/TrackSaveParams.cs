@@ -35,6 +35,26 @@ public sealed record class TrackSaveParams : ParamsBase
     }
 
     /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            ModelBase.Set(this._rawBodyData, "published", value);
+        }
+    }
+
+    /// <summary>
     /// A JSON array of objects containing track IDs with their corresponding timestamps.
     /// Each object must include a track ID and an `added_at` timestamp. This allows
     /// you to specify when tracks were added to maintain a specific chronological
