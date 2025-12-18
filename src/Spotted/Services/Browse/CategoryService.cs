@@ -66,7 +66,7 @@ public sealed class CategoryService : ICategoryService
     }
 
     /// <inheritdoc/>
-    public async Task<CategoryListResponse> List(
+    public async Task<CategoryListPageResponse> List(
         CategoryListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -81,14 +81,14 @@ public sealed class CategoryService : ICategoryService
         using var response = await this
             ._client.Execute(request, cancellationToken)
             .ConfigureAwait(false);
-        var categories = await response
-            .Deserialize<CategoryListResponse>(cancellationToken)
+        var page = await response
+            .Deserialize<CategoryListPageResponse>(cancellationToken)
             .ConfigureAwait(false);
         if (this._client.ResponseValidation)
         {
-            categories.Validate();
+            page.Validate();
         }
-        return categories;
+        return page;
     }
 
     /// <inheritdoc/>
