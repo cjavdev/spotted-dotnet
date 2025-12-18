@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0 (2025-12-18)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** manual updates ([63a8e45](https://github.com/cjavdev/spotted-dotnet/commit/63a8e45822865e84390ad4f0dc9655428b849c17))
+* **client:** add multipart form data support ([eeb5016](https://github.com/cjavdev/spotted-dotnet/commit/eeb50166e2aa99b6d9473d92ca2b4ff90869cff3))
+
+
+### Documentation
+
+* add contributing.md ([c0da39c](https://github.com/cjavdev/spotted-dotnet/commit/c0da39c381a6ee34aea7cd9a4de2e5c17b9d1a2c))
+
 ## 0.4.0 (2025-12-18)
 
 Full Changelog: [v0.3.1...v0.4.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.3.1...v0.4.0)
