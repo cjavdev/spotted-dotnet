@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.4.0 (2025-12-18)
+
+Full Changelog: [v0.3.1...v0.4.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.3.1...v0.4.0)
+
+### Features
+
+* **api:** manual updates ([c232bb4](https://github.com/cjavdev/spotted-dotnet/commit/c232bb4926c1399eda57f9a8f678c941238c5810))
+* **api:** manual updates ([cff2ed2](https://github.com/cjavdev/spotted-dotnet/commit/cff2ed273866a76ae5f7c549c5107d885121f3fc))
+* **api:** manual updates ([320a6ed](https://github.com/cjavdev/spotted-dotnet/commit/320a6edfaafc24b43c333586419e4a8aad0fb18d))
+* **client:** add EnvironmentUrl ([9bbc451](https://github.com/cjavdev/spotted-dotnet/commit/9bbc4516af6b050b180c79d9b13271f687a752ad))
+
+
+### Chores
+
+* **client:** improve object instantiation ([e7030a7](https://github.com/cjavdev/spotted-dotnet/commit/e7030a7daa9914c974d885b020cb3c848021e086))
+* **client:** update test dependencies ([342fdd4](https://github.com/cjavdev/spotted-dotnet/commit/342fdd47993765b7e85ded77bc2f75dd07e18074))
+* **internal:** use `Random.Shared` in newer .NET versions ([4cb035f](https://github.com/cjavdev/spotted-dotnet/commit/4cb035f661c8c5303d72cf6f4304e869fd6561fa))
+
 ## 0.3.1 (2025-12-12)
 
 Full Changelog: [v0.3.0...v0.3.1](https://github.com/cjavdev/spotted-dotnet/compare/v0.3.0...v0.3.1)
