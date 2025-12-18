@@ -373,6 +373,8 @@ public sealed class SpottedClient : ISpottedClient
         return e is IOException || e is SpottedIOException;
     }
 
+    public void Dispose() => this.HttpClient.Dispose();
+
     public SpottedClient()
     {
         _options = new();

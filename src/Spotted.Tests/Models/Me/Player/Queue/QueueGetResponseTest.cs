@@ -1206,7 +1206,7 @@ public class QueueGetResponseTest : TestBase
 public class CurrentlyPlayingTest : TestBase
 {
     [Fact]
-    public void track_objectValidation_Works()
+    public void TrackObjectValidationWorks()
     {
         CurrentlyPlaying value = new(
             new TrackObject()
@@ -1302,7 +1302,7 @@ public class CurrentlyPlayingTest : TestBase
     }
 
     [Fact]
-    public void episode_objectValidation_Works()
+    public void EpisodeObjectValidationWorks()
     {
         CurrentlyPlaying value = new(
             new EpisodeObject()
@@ -1388,7 +1388,7 @@ public class CurrentlyPlayingTest : TestBase
     }
 
     [Fact]
-    public void track_objectSerializationRoundtrip_Works()
+    public void TrackObjectSerializationRoundtripWorks()
     {
         CurrentlyPlaying value = new(
             new TrackObject()
@@ -1487,7 +1487,7 @@ public class CurrentlyPlayingTest : TestBase
     }
 
     [Fact]
-    public void episode_objectSerializationRoundtrip_Works()
+    public void EpisodeObjectSerializationRoundtripWorks()
     {
         CurrentlyPlaying value = new(
             new EpisodeObject()
@@ -1579,7 +1579,7 @@ public class CurrentlyPlayingTest : TestBase
 public class QueueGetResponseQueueTest : TestBase
 {
     [Fact]
-    public void track_objectValidation_Works()
+    public void TrackObjectValidationWorks()
     {
         QueueGetResponseQueue value = new(
             new TrackObject()
@@ -1675,7 +1675,7 @@ public class QueueGetResponseQueueTest : TestBase
     }
 
     [Fact]
-    public void episode_objectValidation_Works()
+    public void EpisodeObjectValidationWorks()
     {
         QueueGetResponseQueue value = new(
             new EpisodeObject()
@@ -1761,7 +1761,7 @@ public class QueueGetResponseQueueTest : TestBase
     }
 
     [Fact]
-    public void track_objectSerializationRoundtrip_Works()
+    public void TrackObjectSerializationRoundtripWorks()
     {
         QueueGetResponseQueue value = new(
             new TrackObject()
@@ -1860,7 +1860,7 @@ public class QueueGetResponseQueueTest : TestBase
     }
 
     [Fact]
-    public void episode_objectSerializationRoundtrip_Works()
+    public void EpisodeObjectSerializationRoundtripWorks()
     {
         QueueGetResponseQueue value = new(
             new EpisodeObject()
