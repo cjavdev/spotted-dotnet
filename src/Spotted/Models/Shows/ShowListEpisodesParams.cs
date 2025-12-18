@@ -22,7 +22,7 @@ public sealed record class ShowListEpisodesParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
         init
         {
             if (value == null)
@@ -30,7 +30,7 @@ public sealed record class ShowListEpisodesParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "limit", value);
+            JsonModel.Set(this._rawQueryData, "limit", value);
         }
     }
 
@@ -46,7 +46,7 @@ public sealed record class ShowListEpisodesParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
         init
         {
             if (value == null)
@@ -54,7 +54,7 @@ public sealed record class ShowListEpisodesParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "market", value);
+            JsonModel.Set(this._rawQueryData, "market", value);
         }
     }
 
@@ -64,7 +64,7 @@ public sealed record class ShowListEpisodesParams : ParamsBase
     /// </summary>
     public long? Offset
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "offset"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "offset"); }
         init
         {
             if (value == null)
@@ -72,7 +72,7 @@ public sealed record class ShowListEpisodesParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "offset", value);
+            JsonModel.Set(this._rawQueryData, "offset", value);
         }
     }
 
@@ -102,7 +102,7 @@ public sealed record class ShowListEpisodesParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static ShowListEpisodesParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

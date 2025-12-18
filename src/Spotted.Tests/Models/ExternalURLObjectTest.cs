@@ -33,8 +33,8 @@ public class ExternalURLObjectTest : TestBase
     {
         var model = new ExternalURLObject { Published = true, Spotify = "spotify" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExternalURLObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ExternalURLObject>(element);
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;

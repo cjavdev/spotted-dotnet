@@ -406,8 +406,8 @@ public class TrackBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TrackBulkRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<TrackBulkRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         List<TrackObject> expectedTracks =

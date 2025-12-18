@@ -10,12 +10,12 @@ using System = System;
 namespace Spotted.Models.Me.Player;
 
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         PlayerGetCurrentlyPlayingResponse,
         PlayerGetCurrentlyPlayingResponseFromRaw
     >)
 )]
-public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
+public sealed record class PlayerGetCurrentlyPlayingResponse : JsonModel
 {
     /// <summary>
     /// Allows to update the user interface based on which playback actions are available
@@ -23,7 +23,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     /// </summary>
     public Actions? Actions
     {
-        get { return ModelBase.GetNullableClass<Actions>(this.RawData, "actions"); }
+        get { return JsonModel.GetNullableClass<Actions>(this.RawData, "actions"); }
         init
         {
             if (value == null)
@@ -31,7 +31,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "actions", value);
+            JsonModel.Set(this._rawData, "actions", value);
         }
     }
 
@@ -40,7 +40,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     /// </summary>
     public ContextObject? Context
     {
-        get { return ModelBase.GetNullableClass<ContextObject>(this.RawData, "context"); }
+        get { return JsonModel.GetNullableClass<ContextObject>(this.RawData, "context"); }
         init
         {
             if (value == null)
@@ -48,7 +48,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "context", value);
+            JsonModel.Set(this._rawData, "context", value);
         }
     }
 
@@ -58,7 +58,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     /// </summary>
     public string? CurrentlyPlayingType
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "currently_playing_type"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "currently_playing_type"); }
         init
         {
             if (value == null)
@@ -66,7 +66,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "currently_playing_type", value);
+            JsonModel.Set(this._rawData, "currently_playing_type", value);
         }
     }
 
@@ -75,7 +75,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     /// </summary>
     public bool? IsPlaying
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "is_playing"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_playing"); }
         init
         {
             if (value == null)
@@ -83,7 +83,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "is_playing", value);
+            JsonModel.Set(this._rawData, "is_playing", value);
         }
     }
 
@@ -92,7 +92,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     /// </summary>
     public Item? Item
     {
-        get { return ModelBase.GetNullableClass<Item>(this.RawData, "item"); }
+        get { return JsonModel.GetNullableClass<Item>(this.RawData, "item"); }
         init
         {
             if (value == null)
@@ -100,7 +100,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "item", value);
+            JsonModel.Set(this._rawData, "item", value);
         }
     }
 
@@ -109,7 +109,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     /// </summary>
     public long? ProgressMs
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "progress_ms"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "progress_ms"); }
         init
         {
             if (value == null)
@@ -117,7 +117,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "progress_ms", value);
+            JsonModel.Set(this._rawData, "progress_ms", value);
         }
     }
 
@@ -129,7 +129,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -137,7 +137,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -146,7 +146,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     /// </summary>
     public long? Timestamp
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "timestamp"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "timestamp"); }
         init
         {
             if (value == null)
@@ -154,7 +154,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "timestamp", value);
+            JsonModel.Set(this._rawData, "timestamp", value);
         }
     }
 
@@ -200,7 +200,7 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : ModelBase
     }
 }
 
-class PlayerGetCurrentlyPlayingResponseFromRaw : IFromRaw<PlayerGetCurrentlyPlayingResponse>
+class PlayerGetCurrentlyPlayingResponseFromRaw : IFromRawJson<PlayerGetCurrentlyPlayingResponse>
 {
     /// <inheritdoc/>
     public PlayerGetCurrentlyPlayingResponse FromRawUnchecked(
@@ -212,15 +212,15 @@ class PlayerGetCurrentlyPlayingResponseFromRaw : IFromRaw<PlayerGetCurrentlyPlay
 /// Allows to update the user interface based on which playback actions are available
 /// within the current context.
 /// </summary>
-[JsonConverter(typeof(ModelConverter<Actions, ActionsFromRaw>))]
-public sealed record class Actions : ModelBase
+[JsonConverter(typeof(JsonModelConverter<Actions, ActionsFromRaw>))]
+public sealed record class Actions : JsonModel
 {
     /// <summary>
     /// Interrupting playback. Optional field.
     /// </summary>
     public bool? InterruptingPlayback
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "interrupting_playback"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "interrupting_playback"); }
         init
         {
             if (value == null)
@@ -228,7 +228,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "interrupting_playback", value);
+            JsonModel.Set(this._rawData, "interrupting_playback", value);
         }
     }
 
@@ -237,7 +237,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? Pausing
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "pausing"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "pausing"); }
         init
         {
             if (value == null)
@@ -245,7 +245,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "pausing", value);
+            JsonModel.Set(this._rawData, "pausing", value);
         }
     }
 
@@ -257,7 +257,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -265,7 +265,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -274,7 +274,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? Resuming
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "resuming"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "resuming"); }
         init
         {
             if (value == null)
@@ -282,7 +282,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "resuming", value);
+            JsonModel.Set(this._rawData, "resuming", value);
         }
     }
 
@@ -291,7 +291,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? Seeking
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "seeking"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "seeking"); }
         init
         {
             if (value == null)
@@ -299,7 +299,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "seeking", value);
+            JsonModel.Set(this._rawData, "seeking", value);
         }
     }
 
@@ -308,7 +308,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? SkippingNext
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "skipping_next"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "skipping_next"); }
         init
         {
             if (value == null)
@@ -316,7 +316,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "skipping_next", value);
+            JsonModel.Set(this._rawData, "skipping_next", value);
         }
     }
 
@@ -325,7 +325,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? SkippingPrev
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "skipping_prev"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "skipping_prev"); }
         init
         {
             if (value == null)
@@ -333,7 +333,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "skipping_prev", value);
+            JsonModel.Set(this._rawData, "skipping_prev", value);
         }
     }
 
@@ -342,7 +342,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? TogglingRepeatContext
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "toggling_repeat_context"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "toggling_repeat_context"); }
         init
         {
             if (value == null)
@@ -350,7 +350,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "toggling_repeat_context", value);
+            JsonModel.Set(this._rawData, "toggling_repeat_context", value);
         }
     }
 
@@ -359,7 +359,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? TogglingRepeatTrack
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "toggling_repeat_track"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "toggling_repeat_track"); }
         init
         {
             if (value == null)
@@ -367,7 +367,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "toggling_repeat_track", value);
+            JsonModel.Set(this._rawData, "toggling_repeat_track", value);
         }
     }
 
@@ -376,7 +376,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? TogglingShuffle
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "toggling_shuffle"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "toggling_shuffle"); }
         init
         {
             if (value == null)
@@ -384,7 +384,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "toggling_shuffle", value);
+            JsonModel.Set(this._rawData, "toggling_shuffle", value);
         }
     }
 
@@ -393,7 +393,7 @@ public sealed record class Actions : ModelBase
     /// </summary>
     public bool? TransferringPlayback
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "transferring_playback"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "transferring_playback"); }
         init
         {
             if (value == null)
@@ -401,7 +401,7 @@ public sealed record class Actions : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "transferring_playback", value);
+            JsonModel.Set(this._rawData, "transferring_playback", value);
         }
     }
 
@@ -446,7 +446,7 @@ public sealed record class Actions : ModelBase
     }
 }
 
-class ActionsFromRaw : IFromRaw<Actions>
+class ActionsFromRaw : IFromRawJson<Actions>
 {
     /// <inheritdoc/>
     public Actions FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
@@ -461,11 +461,11 @@ public record class Item
 {
     public object? Value { get; } = null;
 
-    JsonElement? _json = null;
+    JsonElement? _element = null;
 
     public JsonElement Json
     {
-        get { return this._json ??= JsonSerializer.SerializeToElement(this.Value); }
+        get { return this._element ??= JsonSerializer.SerializeToElement(this.Value); }
     }
 
     public string? ID
@@ -537,21 +537,21 @@ public record class Item
         get { return Match<string?>(trackObject: (x) => x.Uri, episodeObject: (x) => x.Uri); }
     }
 
-    public Item(TrackObject value, JsonElement? json = null)
+    public Item(TrackObject value, JsonElement? element = null)
     {
         this.Value = value;
-        this._json = json;
+        this._element = element;
     }
 
-    public Item(EpisodeObject value, JsonElement? json = null)
+    public Item(EpisodeObject value, JsonElement? element = null)
     {
         this.Value = value;
-        this._json = json;
+        this._element = element;
     }
 
-    public Item(JsonElement json)
+    public Item(JsonElement element)
     {
-        this._json = json;
+        this._element = element;
     }
 
     /// <summary>
@@ -713,11 +713,11 @@ sealed class ItemConverter : JsonConverter<Item>
         JsonSerializerOptions options
     )
     {
-        var json = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+        var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
         string? type;
         try
         {
-            type = json.GetProperty("type").GetString();
+            type = element.GetProperty("type").GetString();
         }
         catch
         {
@@ -730,11 +730,11 @@ sealed class ItemConverter : JsonConverter<Item>
             {
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<TrackObject>(json, options);
+                    var deserialized = JsonSerializer.Deserialize<TrackObject>(element, options);
                     if (deserialized != null)
                     {
                         deserialized.Validate();
-                        return new(deserialized, json);
+                        return new(deserialized, element);
                     }
                 }
                 catch (System::Exception e)
@@ -743,17 +743,17 @@ sealed class ItemConverter : JsonConverter<Item>
                     // ignore
                 }
 
-                return new(json);
+                return new(element);
             }
             case "episode":
             {
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(json, options);
+                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(element, options);
                     if (deserialized != null)
                     {
                         deserialized.Validate();
-                        return new(deserialized, json);
+                        return new(deserialized, element);
                     }
                 }
                 catch (System::Exception e)
@@ -762,11 +762,11 @@ sealed class ItemConverter : JsonConverter<Item>
                     // ignore
                 }
 
-                return new(json);
+                return new(element);
             }
             default:
             {
-                return new Item(json);
+                return new Item(element);
             }
         }
     }

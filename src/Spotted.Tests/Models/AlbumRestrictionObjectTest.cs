@@ -35,8 +35,8 @@ public class AlbumRestrictionObjectTest : TestBase
     {
         var model = new AlbumRestrictionObject { Published = true, Reason = Reason.Market };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AlbumRestrictionObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AlbumRestrictionObject>(element);
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;

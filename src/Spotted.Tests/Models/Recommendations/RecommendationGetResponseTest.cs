@@ -468,8 +468,8 @@ public class RecommendationGetResponseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<RecommendationGetResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<RecommendationGetResponse>(element);
         Assert.NotNull(deserialized);
 
         List<Seed> expectedSeeds =
@@ -1238,8 +1238,8 @@ public class SeedTest : TestBase
             Type = "type",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Seed>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Seed>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

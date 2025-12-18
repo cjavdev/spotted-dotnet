@@ -20,8 +20,8 @@ public sealed record class QueueAddParams : ParamsBase
     /// </summary>
     public required string Uri
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawQueryData, "uri"); }
-        init { ModelBase.Set(this._rawQueryData, "uri", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "uri"); }
+        init { JsonModel.Set(this._rawQueryData, "uri", value); }
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public sealed record class QueueAddParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "device_id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "device_id"); }
         init
         {
             if (value == null)
@@ -38,7 +38,7 @@ public sealed record class QueueAddParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "device_id", value);
+            JsonModel.Set(this._rawQueryData, "device_id", value);
         }
     }
 
@@ -68,7 +68,7 @@ public sealed record class QueueAddParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static QueueAddParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

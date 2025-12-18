@@ -7,8 +7,8 @@ using Spotted.Core;
 
 namespace Spotted.Models.Me;
 
-[JsonConverter(typeof(ModelConverter<MeRetrieveResponse, MeRetrieveResponseFromRaw>))]
-public sealed record class MeRetrieveResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<MeRetrieveResponse, MeRetrieveResponseFromRaw>))]
+public sealed record class MeRetrieveResponse : JsonModel
 {
     /// <summary>
     /// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for
@@ -16,7 +16,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public string? ID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
         init
         {
             if (value == null)
@@ -24,7 +24,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "id", value);
+            JsonModel.Set(this._rawData, "id", value);
         }
     }
 
@@ -36,7 +36,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public string? Country
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "country"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "country"); }
         init
         {
             if (value == null)
@@ -44,7 +44,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "country", value);
+            JsonModel.Set(this._rawData, "country", value);
         }
     }
 
@@ -53,7 +53,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public string? DisplayName
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "display_name"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "display_name"); }
         init
         {
             if (value == null)
@@ -61,7 +61,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "display_name", value);
+            JsonModel.Set(this._rawData, "display_name", value);
         }
     }
 
@@ -74,7 +74,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public string? Email
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "email"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "email"); }
         init
         {
             if (value == null)
@@ -82,7 +82,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "email", value);
+            JsonModel.Set(this._rawData, "email", value);
         }
     }
 
@@ -95,7 +95,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<ExplicitContent>(this.RawData, "explicit_content");
+            return JsonModel.GetNullableClass<ExplicitContent>(this.RawData, "explicit_content");
         }
         init
         {
@@ -104,7 +104,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "explicit_content", value);
+            JsonModel.Set(this._rawData, "explicit_content", value);
         }
     }
 
@@ -113,7 +113,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public ExternalURLObject? ExternalURLs
     {
-        get { return ModelBase.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -121,7 +121,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "external_urls", value);
+            JsonModel.Set(this._rawData, "external_urls", value);
         }
     }
 
@@ -130,7 +130,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public FollowersObject? Followers
     {
-        get { return ModelBase.GetNullableClass<FollowersObject>(this.RawData, "followers"); }
+        get { return JsonModel.GetNullableClass<FollowersObject>(this.RawData, "followers"); }
         init
         {
             if (value == null)
@@ -138,7 +138,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "followers", value);
+            JsonModel.Set(this._rawData, "followers", value);
         }
     }
 
@@ -147,7 +147,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
         init
         {
             if (value == null)
@@ -155,7 +155,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "href", value);
+            JsonModel.Set(this._rawData, "href", value);
         }
     }
 
@@ -164,7 +164,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public IReadOnlyList<ImageObject>? Images
     {
-        get { return ModelBase.GetNullableClass<List<ImageObject>>(this.RawData, "images"); }
+        get { return JsonModel.GetNullableClass<List<ImageObject>>(this.RawData, "images"); }
         init
         {
             if (value == null)
@@ -172,7 +172,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "images", value);
+            JsonModel.Set(this._rawData, "images", value);
         }
     }
 
@@ -184,7 +184,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public string? Product
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "product"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "product"); }
         init
         {
             if (value == null)
@@ -192,7 +192,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "product", value);
+            JsonModel.Set(this._rawData, "product", value);
         }
     }
 
@@ -204,7 +204,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -212,7 +212,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -221,7 +221,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public string? Type
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "type"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
         init
         {
             if (value == null)
@@ -229,7 +229,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -239,7 +239,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     /// </summary>
     public string? Uri
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
         init
         {
             if (value == null)
@@ -247,7 +247,7 @@ public sealed record class MeRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "uri", value);
+            JsonModel.Set(this._rawData, "uri", value);
         }
     }
 
@@ -299,7 +299,7 @@ public sealed record class MeRetrieveResponse : ModelBase
     }
 }
 
-class MeRetrieveResponseFromRaw : IFromRaw<MeRetrieveResponse>
+class MeRetrieveResponseFromRaw : IFromRawJson<MeRetrieveResponse>
 {
     /// <inheritdoc/>
     public MeRetrieveResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
@@ -311,15 +311,15 @@ class MeRetrieveResponseFromRaw : IFromRaw<MeRetrieveResponse>
 /// current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
 /// scope._
 /// </summary>
-[JsonConverter(typeof(ModelConverter<ExplicitContent, ExplicitContentFromRaw>))]
-public sealed record class ExplicitContent : ModelBase
+[JsonConverter(typeof(JsonModelConverter<ExplicitContent, ExplicitContentFromRaw>))]
+public sealed record class ExplicitContent : JsonModel
 {
     /// <summary>
     /// When `true`, indicates that explicit content should not be played.
     /// </summary>
     public bool? FilterEnabled
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "filter_enabled"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "filter_enabled"); }
         init
         {
             if (value == null)
@@ -327,7 +327,7 @@ public sealed record class ExplicitContent : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "filter_enabled", value);
+            JsonModel.Set(this._rawData, "filter_enabled", value);
         }
     }
 
@@ -337,7 +337,7 @@ public sealed record class ExplicitContent : ModelBase
     /// </summary>
     public bool? FilterLocked
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "filter_locked"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "filter_locked"); }
         init
         {
             if (value == null)
@@ -345,7 +345,7 @@ public sealed record class ExplicitContent : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "filter_locked", value);
+            JsonModel.Set(this._rawData, "filter_locked", value);
         }
     }
 
@@ -357,7 +357,7 @@ public sealed record class ExplicitContent : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -365,7 +365,7 @@ public sealed record class ExplicitContent : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -402,7 +402,7 @@ public sealed record class ExplicitContent : ModelBase
     }
 }
 
-class ExplicitContentFromRaw : IFromRaw<ExplicitContent>
+class ExplicitContentFromRaw : IFromRawJson<ExplicitContent>
 {
     /// <inheritdoc/>
     public ExplicitContent FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

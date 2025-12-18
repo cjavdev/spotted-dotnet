@@ -55,8 +55,8 @@ public class TimeIntervalObjectTest : TestBase
             Start = 0.49567,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TimeIntervalObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<TimeIntervalObject>(element);
         Assert.NotNull(deserialized);
 
         double expectedConfidence = 0.925;

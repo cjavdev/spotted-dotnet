@@ -55,8 +55,8 @@ public class ExternalIDObjectTest : TestBase
             Upc = "upc",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExternalIDObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ExternalIDObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedEan = "ean";

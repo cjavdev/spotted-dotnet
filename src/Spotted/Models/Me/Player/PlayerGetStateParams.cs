@@ -24,7 +24,7 @@ public sealed record class PlayerGetStateParams : ParamsBase
     /// </summary>
     public string? AdditionalTypes
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "additional_types"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "additional_types"); }
         init
         {
             if (value == null)
@@ -32,7 +32,7 @@ public sealed record class PlayerGetStateParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "additional_types", value);
+            JsonModel.Set(this._rawQueryData, "additional_types", value);
         }
     }
 
@@ -48,7 +48,7 @@ public sealed record class PlayerGetStateParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
         init
         {
             if (value == null)
@@ -56,7 +56,7 @@ public sealed record class PlayerGetStateParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "market", value);
+            JsonModel.Set(this._rawQueryData, "market", value);
         }
     }
 
@@ -86,7 +86,7 @@ public sealed record class PlayerGetStateParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static PlayerGetStateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

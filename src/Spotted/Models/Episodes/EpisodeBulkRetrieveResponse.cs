@@ -8,14 +8,14 @@ using Spotted.Core;
 namespace Spotted.Models.Episodes;
 
 [JsonConverter(
-    typeof(ModelConverter<EpisodeBulkRetrieveResponse, EpisodeBulkRetrieveResponseFromRaw>)
+    typeof(JsonModelConverter<EpisodeBulkRetrieveResponse, EpisodeBulkRetrieveResponseFromRaw>)
 )]
-public sealed record class EpisodeBulkRetrieveResponse : ModelBase
+public sealed record class EpisodeBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<EpisodeObject> Episodes
     {
-        get { return ModelBase.GetNotNullClass<List<EpisodeObject>>(this.RawData, "episodes"); }
-        init { ModelBase.Set(this._rawData, "episodes", value); }
+        get { return JsonModel.GetNotNullClass<List<EpisodeObject>>(this.RawData, "episodes"); }
+        init { JsonModel.Set(this._rawData, "episodes", value); }
     }
 
     /// <inheritdoc/>
@@ -61,7 +61,7 @@ public sealed record class EpisodeBulkRetrieveResponse : ModelBase
     }
 }
 
-class EpisodeBulkRetrieveResponseFromRaw : IFromRaw<EpisodeBulkRetrieveResponse>
+class EpisodeBulkRetrieveResponseFromRaw : IFromRawJson<EpisodeBulkRetrieveResponse>
 {
     /// <inheritdoc/>
     public EpisodeBulkRetrieveResponse FromRawUnchecked(

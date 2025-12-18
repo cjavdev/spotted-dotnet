@@ -7,8 +7,8 @@ using Spotted.Core;
 
 namespace Spotted.Models.Me.Player;
 
-[JsonConverter(typeof(ModelConverter<DeviceObject, DeviceObjectFromRaw>))]
-public sealed record class DeviceObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<DeviceObject, DeviceObjectFromRaw>))]
+public sealed record class DeviceObject : JsonModel
 {
     /// <summary>
     /// The device ID. This ID is unique and persistent to some extent. However, this
@@ -17,8 +17,8 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public string? ID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "id"); }
-        init { ModelBase.Set(this._rawData, "id", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
+        init { JsonModel.Set(this._rawData, "id", value); }
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public bool? IsActive
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "is_active"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_active"); }
         init
         {
             if (value == null)
@@ -34,7 +34,7 @@ public sealed record class DeviceObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "is_active", value);
+            JsonModel.Set(this._rawData, "is_active", value);
         }
     }
 
@@ -43,7 +43,7 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public bool? IsPrivateSession
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "is_private_session"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_private_session"); }
         init
         {
             if (value == null)
@@ -51,7 +51,7 @@ public sealed record class DeviceObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "is_private_session", value);
+            JsonModel.Set(this._rawData, "is_private_session", value);
         }
     }
 
@@ -61,7 +61,7 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public bool? IsRestricted
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "is_restricted"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_restricted"); }
         init
         {
             if (value == null)
@@ -69,7 +69,7 @@ public sealed record class DeviceObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "is_restricted", value);
+            JsonModel.Set(this._rawData, "is_restricted", value);
         }
     }
 
@@ -80,7 +80,7 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public string? Name
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "name"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "name"); }
         init
         {
             if (value == null)
@@ -88,7 +88,7 @@ public sealed record class DeviceObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "name", value);
+            JsonModel.Set(this._rawData, "name", value);
         }
     }
 
@@ -100,7 +100,7 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -108,7 +108,7 @@ public sealed record class DeviceObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -117,7 +117,7 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public bool? SupportsVolume
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "supports_volume"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "supports_volume"); }
         init
         {
             if (value == null)
@@ -125,7 +125,7 @@ public sealed record class DeviceObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "supports_volume", value);
+            JsonModel.Set(this._rawData, "supports_volume", value);
         }
     }
 
@@ -134,7 +134,7 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public string? Type
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "type"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
         init
         {
             if (value == null)
@@ -142,7 +142,7 @@ public sealed record class DeviceObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -151,8 +151,8 @@ public sealed record class DeviceObject : ModelBase
     /// </summary>
     public long? VolumePercent
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "volume_percent"); }
-        init { ModelBase.Set(this._rawData, "volume_percent", value); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "volume_percent"); }
+        init { JsonModel.Set(this._rawData, "volume_percent", value); }
     }
 
     /// <inheritdoc/>
@@ -194,7 +194,7 @@ public sealed record class DeviceObject : ModelBase
     }
 }
 
-class DeviceObjectFromRaw : IFromRaw<DeviceObject>
+class DeviceObjectFromRaw : IFromRawJson<DeviceObject>
 {
     /// <inheritdoc/>
     public DeviceObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

@@ -225,8 +225,8 @@ public class AudiobookBaseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AudiobookBase>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AudiobookBase>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

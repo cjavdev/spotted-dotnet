@@ -510,8 +510,10 @@ public class PlayerListRecentlyPlayedPageResponseTest : TestBase
             Total = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlayerListRecentlyPlayedPageResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlayerListRecentlyPlayedPageResponse>(
+            element
+        );
         Assert.NotNull(deserialized);
 
         Cursors expectedCursors = new()
@@ -895,8 +897,8 @@ public class CursorsTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Cursors>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Cursors>(element);
         Assert.NotNull(deserialized);
 
         string expectedAfter = "after";
@@ -1405,9 +1407,9 @@ public class PlayerListRecentlyPlayedPageResponseItemTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
+        string element = JsonSerializer.Serialize(model);
         var deserialized = JsonSerializer.Deserialize<PlayerListRecentlyPlayedPageResponseItem>(
-            json
+            element
         );
         Assert.NotNull(deserialized);
 

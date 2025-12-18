@@ -33,8 +33,8 @@ public class AuthorObjectTest : TestBase
     {
         var model = new AuthorObject { Name = "name", Published = true };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AuthorObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AuthorObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedName = "name";

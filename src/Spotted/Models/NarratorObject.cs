@@ -7,15 +7,15 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<NarratorObject, NarratorObjectFromRaw>))]
-public sealed record class NarratorObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<NarratorObject, NarratorObjectFromRaw>))]
+public sealed record class NarratorObject : JsonModel
 {
     /// <summary>
     /// The name of the Narrator.
     /// </summary>
     public string? Name
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "name"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "name"); }
         init
         {
             if (value == null)
@@ -23,7 +23,7 @@ public sealed record class NarratorObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "name", value);
+            JsonModel.Set(this._rawData, "name", value);
         }
     }
 
@@ -35,7 +35,7 @@ public sealed record class NarratorObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -43,7 +43,7 @@ public sealed record class NarratorObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -79,7 +79,7 @@ public sealed record class NarratorObject : ModelBase
     }
 }
 
-class NarratorObjectFromRaw : IFromRaw<NarratorObject>
+class NarratorObjectFromRaw : IFromRawJson<NarratorObject>
 {
     /// <inheritdoc/>
     public NarratorObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

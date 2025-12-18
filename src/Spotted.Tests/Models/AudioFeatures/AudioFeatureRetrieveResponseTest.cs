@@ -133,8 +133,8 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             Valence = 0.428f,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AudioFeatureRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AudioFeatureRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "2takcwOaAZWiXQijPHIx7B";

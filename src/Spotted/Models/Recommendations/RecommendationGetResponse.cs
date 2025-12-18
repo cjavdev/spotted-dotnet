@@ -7,16 +7,18 @@ using Spotted.Core;
 
 namespace Spotted.Models.Recommendations;
 
-[JsonConverter(typeof(ModelConverter<RecommendationGetResponse, RecommendationGetResponseFromRaw>))]
-public sealed record class RecommendationGetResponse : ModelBase
+[JsonConverter(
+    typeof(JsonModelConverter<RecommendationGetResponse, RecommendationGetResponseFromRaw>)
+)]
+public sealed record class RecommendationGetResponse : JsonModel
 {
     /// <summary>
     /// An array of recommendation seed objects.
     /// </summary>
     public required IReadOnlyList<Seed> Seeds
     {
-        get { return ModelBase.GetNotNullClass<List<Seed>>(this.RawData, "seeds"); }
-        init { ModelBase.Set(this._rawData, "seeds", value); }
+        get { return JsonModel.GetNotNullClass<List<Seed>>(this.RawData, "seeds"); }
+        init { JsonModel.Set(this._rawData, "seeds", value); }
     }
 
     /// <summary>
@@ -24,8 +26,8 @@ public sealed record class RecommendationGetResponse : ModelBase
     /// </summary>
     public required IReadOnlyList<TrackObject> Tracks
     {
-        get { return ModelBase.GetNotNullClass<List<TrackObject>>(this.RawData, "tracks"); }
-        init { ModelBase.Set(this._rawData, "tracks", value); }
+        get { return JsonModel.GetNotNullClass<List<TrackObject>>(this.RawData, "tracks"); }
+        init { JsonModel.Set(this._rawData, "tracks", value); }
     }
 
     /// <summary>
@@ -36,7 +38,7 @@ public sealed record class RecommendationGetResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -44,7 +46,7 @@ public sealed record class RecommendationGetResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -89,7 +91,7 @@ public sealed record class RecommendationGetResponse : ModelBase
     }
 }
 
-class RecommendationGetResponseFromRaw : IFromRaw<RecommendationGetResponse>
+class RecommendationGetResponseFromRaw : IFromRawJson<RecommendationGetResponse>
 {
     /// <inheritdoc/>
     public RecommendationGetResponse FromRawUnchecked(
@@ -97,8 +99,8 @@ class RecommendationGetResponseFromRaw : IFromRaw<RecommendationGetResponse>
     ) => RecommendationGetResponse.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(ModelConverter<Seed, SeedFromRaw>))]
-public sealed record class Seed : ModelBase
+[JsonConverter(typeof(JsonModelConverter<Seed, SeedFromRaw>))]
+public sealed record class Seed : JsonModel
 {
     /// <summary>
     /// The id used to select this seed. This will be the same as the string used
@@ -106,7 +108,7 @@ public sealed record class Seed : ModelBase
     /// </summary>
     public string? ID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
         init
         {
             if (value == null)
@@ -114,7 +116,7 @@ public sealed record class Seed : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "id", value);
+            JsonModel.Set(this._rawData, "id", value);
         }
     }
 
@@ -124,7 +126,7 @@ public sealed record class Seed : ModelBase
     /// </summary>
     public long? AfterFilteringSize
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "afterFilteringSize"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "afterFilteringSize"); }
         init
         {
             if (value == null)
@@ -132,7 +134,7 @@ public sealed record class Seed : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "afterFilteringSize", value);
+            JsonModel.Set(this._rawData, "afterFilteringSize", value);
         }
     }
 
@@ -141,7 +143,7 @@ public sealed record class Seed : ModelBase
     /// </summary>
     public long? AfterRelinkingSize
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "afterRelinkingSize"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "afterRelinkingSize"); }
         init
         {
             if (value == null)
@@ -149,7 +151,7 @@ public sealed record class Seed : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "afterRelinkingSize", value);
+            JsonModel.Set(this._rawData, "afterRelinkingSize", value);
         }
     }
 
@@ -160,7 +162,7 @@ public sealed record class Seed : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
         init
         {
             if (value == null)
@@ -168,7 +170,7 @@ public sealed record class Seed : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "href", value);
+            JsonModel.Set(this._rawData, "href", value);
         }
     }
 
@@ -177,7 +179,7 @@ public sealed record class Seed : ModelBase
     /// </summary>
     public long? InitialPoolSize
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "initialPoolSize"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "initialPoolSize"); }
         init
         {
             if (value == null)
@@ -185,7 +187,7 @@ public sealed record class Seed : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "initialPoolSize", value);
+            JsonModel.Set(this._rawData, "initialPoolSize", value);
         }
     }
 
@@ -197,7 +199,7 @@ public sealed record class Seed : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -205,7 +207,7 @@ public sealed record class Seed : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -214,7 +216,7 @@ public sealed record class Seed : ModelBase
     /// </summary>
     public string? Type
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "type"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
         init
         {
             if (value == null)
@@ -222,7 +224,7 @@ public sealed record class Seed : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -263,7 +265,7 @@ public sealed record class Seed : ModelBase
     }
 }
 
-class SeedFromRaw : IFromRaw<Seed>
+class SeedFromRaw : IFromRawJson<Seed>
 {
     /// <inheritdoc/>
     public Seed FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

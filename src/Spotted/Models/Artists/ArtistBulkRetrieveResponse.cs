@@ -8,14 +8,14 @@ using Spotted.Core;
 namespace Spotted.Models.Artists;
 
 [JsonConverter(
-    typeof(ModelConverter<ArtistBulkRetrieveResponse, ArtistBulkRetrieveResponseFromRaw>)
+    typeof(JsonModelConverter<ArtistBulkRetrieveResponse, ArtistBulkRetrieveResponseFromRaw>)
 )]
-public sealed record class ArtistBulkRetrieveResponse : ModelBase
+public sealed record class ArtistBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<ArtistObject> Artists
     {
-        get { return ModelBase.GetNotNullClass<List<ArtistObject>>(this.RawData, "artists"); }
-        init { ModelBase.Set(this._rawData, "artists", value); }
+        get { return JsonModel.GetNotNullClass<List<ArtistObject>>(this.RawData, "artists"); }
+        init { JsonModel.Set(this._rawData, "artists", value); }
     }
 
     /// <inheritdoc/>
@@ -61,7 +61,7 @@ public sealed record class ArtistBulkRetrieveResponse : ModelBase
     }
 }
 
-class ArtistBulkRetrieveResponseFromRaw : IFromRaw<ArtistBulkRetrieveResponse>
+class ArtistBulkRetrieveResponseFromRaw : IFromRawJson<ArtistBulkRetrieveResponse>
 {
     /// <inheritdoc/>
     public ArtistBulkRetrieveResponse FromRawUnchecked(

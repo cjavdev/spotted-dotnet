@@ -7,13 +7,15 @@ using Spotted.Core;
 
 namespace Spotted.Models.Me.Player;
 
-[JsonConverter(typeof(ModelConverter<PlayerGetDevicesResponse, PlayerGetDevicesResponseFromRaw>))]
-public sealed record class PlayerGetDevicesResponse : ModelBase
+[JsonConverter(
+    typeof(JsonModelConverter<PlayerGetDevicesResponse, PlayerGetDevicesResponseFromRaw>)
+)]
+public sealed record class PlayerGetDevicesResponse : JsonModel
 {
     public required IReadOnlyList<DeviceObject> Devices
     {
-        get { return ModelBase.GetNotNullClass<List<DeviceObject>>(this.RawData, "devices"); }
-        init { ModelBase.Set(this._rawData, "devices", value); }
+        get { return JsonModel.GetNotNullClass<List<DeviceObject>>(this.RawData, "devices"); }
+        init { JsonModel.Set(this._rawData, "devices", value); }
     }
 
     /// <inheritdoc/>
@@ -59,7 +61,7 @@ public sealed record class PlayerGetDevicesResponse : ModelBase
     }
 }
 
-class PlayerGetDevicesResponseFromRaw : IFromRaw<PlayerGetDevicesResponse>
+class PlayerGetDevicesResponseFromRaw : IFromRawJson<PlayerGetDevicesResponse>
 {
     /// <inheritdoc/>
     public PlayerGetDevicesResponse FromRawUnchecked(

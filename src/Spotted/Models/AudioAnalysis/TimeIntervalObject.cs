@@ -7,15 +7,15 @@ using Spotted.Core;
 
 namespace Spotted.Models.AudioAnalysis;
 
-[JsonConverter(typeof(ModelConverter<TimeIntervalObject, TimeIntervalObjectFromRaw>))]
-public sealed record class TimeIntervalObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<TimeIntervalObject, TimeIntervalObjectFromRaw>))]
+public sealed record class TimeIntervalObject : JsonModel
 {
     /// <summary>
     /// The confidence, from 0.0 to 1.0, of the reliability of the interval.
     /// </summary>
     public double? Confidence
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawData, "confidence"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawData, "confidence"); }
         init
         {
             if (value == null)
@@ -23,7 +23,7 @@ public sealed record class TimeIntervalObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "confidence", value);
+            JsonModel.Set(this._rawData, "confidence", value);
         }
     }
 
@@ -32,7 +32,7 @@ public sealed record class TimeIntervalObject : ModelBase
     /// </summary>
     public double? Duration
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawData, "duration"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawData, "duration"); }
         init
         {
             if (value == null)
@@ -40,7 +40,7 @@ public sealed record class TimeIntervalObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "duration", value);
+            JsonModel.Set(this._rawData, "duration", value);
         }
     }
 
@@ -52,7 +52,7 @@ public sealed record class TimeIntervalObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -60,7 +60,7 @@ public sealed record class TimeIntervalObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -69,7 +69,7 @@ public sealed record class TimeIntervalObject : ModelBase
     /// </summary>
     public double? Start
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawData, "start"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawData, "start"); }
         init
         {
             if (value == null)
@@ -77,7 +77,7 @@ public sealed record class TimeIntervalObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "start", value);
+            JsonModel.Set(this._rawData, "start", value);
         }
     }
 
@@ -117,7 +117,7 @@ public sealed record class TimeIntervalObject : ModelBase
     }
 }
 
-class TimeIntervalObjectFromRaw : IFromRaw<TimeIntervalObject>
+class TimeIntervalObjectFromRaw : IFromRawJson<TimeIntervalObject>
 {
     /// <inheritdoc/>
     public TimeIntervalObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

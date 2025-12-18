@@ -46,9 +46,9 @@ public class RecommendationListAvailableGenreSeedsResponseTest : TestBase
             Genres = ["alternative", "samba"],
         };
 
-        string json = JsonSerializer.Serialize(model);
+        string element = JsonSerializer.Serialize(model);
         var deserialized =
-            JsonSerializer.Deserialize<RecommendationListAvailableGenreSeedsResponse>(json);
+            JsonSerializer.Deserialize<RecommendationListAvailableGenreSeedsResponse>(element);
         Assert.NotNull(deserialized);
 
         List<string> expectedGenres = ["alternative", "samba"];

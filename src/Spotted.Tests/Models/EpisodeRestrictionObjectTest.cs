@@ -33,8 +33,8 @@ public class EpisodeRestrictionObjectTest : TestBase
     {
         var model = new EpisodeRestrictionObject { Published = true, Reason = "reason" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<EpisodeRestrictionObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<EpisodeRestrictionObject>(element);
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;

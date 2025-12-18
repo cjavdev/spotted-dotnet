@@ -698,8 +698,8 @@ public class PlaylistCreateResponseTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlaylistCreateResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlaylistCreateResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -1927,8 +1927,8 @@ public class OwnerTest : TestBase
             DisplayName = "display_name",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Owner>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Owner>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -2145,8 +2145,8 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1 { DisplayName = "display_name" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(element);
         Assert.NotNull(deserialized);
 
         string expectedDisplayName = "display_name";
@@ -2706,8 +2706,8 @@ public class PlaylistCreateResponseTracksTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlaylistCreateResponseTracks>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlaylistCreateResponseTracks>(element);
         Assert.NotNull(deserialized);
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";

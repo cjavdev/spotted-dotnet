@@ -102,8 +102,8 @@ public class CategoryRetrieveResponseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CategoryRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<CategoryRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "equal";

@@ -8,8 +8,8 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<SimplifiedTrackObject, SimplifiedTrackObjectFromRaw>))]
-public sealed record class SimplifiedTrackObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<SimplifiedTrackObject, SimplifiedTrackObjectFromRaw>))]
+public sealed record class SimplifiedTrackObject : JsonModel
 {
     /// <summary>
     /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -17,7 +17,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public string? ID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
         init
         {
             if (value == null)
@@ -25,7 +25,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "id", value);
+            JsonModel.Set(this._rawData, "id", value);
         }
     }
 
@@ -37,7 +37,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<List<SimplifiedArtistObject>>(
+            return JsonModel.GetNullableClass<List<SimplifiedArtistObject>>(
                 this.RawData,
                 "artists"
             );
@@ -49,7 +49,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "artists", value);
+            JsonModel.Set(this._rawData, "artists", value);
         }
     }
 
@@ -59,7 +59,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public IReadOnlyList<string>? AvailableMarkets
     {
-        get { return ModelBase.GetNullableClass<List<string>>(this.RawData, "available_markets"); }
+        get { return JsonModel.GetNullableClass<List<string>>(this.RawData, "available_markets"); }
         init
         {
             if (value == null)
@@ -67,7 +67,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "available_markets", value);
+            JsonModel.Set(this._rawData, "available_markets", value);
         }
     }
 
@@ -76,7 +76,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public long? DiscNumber
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "disc_number"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "disc_number"); }
         init
         {
             if (value == null)
@@ -84,7 +84,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "disc_number", value);
+            JsonModel.Set(this._rawData, "disc_number", value);
         }
     }
 
@@ -93,7 +93,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public long? DurationMs
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "duration_ms"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "duration_ms"); }
         init
         {
             if (value == null)
@@ -101,7 +101,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "duration_ms", value);
+            JsonModel.Set(this._rawData, "duration_ms", value);
         }
     }
 
@@ -111,7 +111,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public bool? Explicit
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "explicit"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "explicit"); }
         init
         {
             if (value == null)
@@ -119,7 +119,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "explicit", value);
+            JsonModel.Set(this._rawData, "explicit", value);
         }
     }
 
@@ -128,7 +128,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public ExternalURLObject? ExternalURLs
     {
-        get { return ModelBase.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -136,7 +136,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "external_urls", value);
+            JsonModel.Set(this._rawData, "external_urls", value);
         }
     }
 
@@ -145,7 +145,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
         init
         {
             if (value == null)
@@ -153,7 +153,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "href", value);
+            JsonModel.Set(this._rawData, "href", value);
         }
     }
 
@@ -162,7 +162,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public bool? IsLocal
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "is_local"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_local"); }
         init
         {
             if (value == null)
@@ -170,7 +170,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "is_local", value);
+            JsonModel.Set(this._rawData, "is_local", value);
         }
     }
 
@@ -181,7 +181,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public bool? IsPlayable
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "is_playable"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_playable"); }
         init
         {
             if (value == null)
@@ -189,7 +189,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "is_playable", value);
+            JsonModel.Set(this._rawData, "is_playable", value);
         }
     }
 
@@ -202,7 +202,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public LinkedTrackObject? LinkedFrom
     {
-        get { return ModelBase.GetNullableClass<LinkedTrackObject>(this.RawData, "linked_from"); }
+        get { return JsonModel.GetNullableClass<LinkedTrackObject>(this.RawData, "linked_from"); }
         init
         {
             if (value == null)
@@ -210,7 +210,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "linked_from", value);
+            JsonModel.Set(this._rawData, "linked_from", value);
         }
     }
 
@@ -219,7 +219,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public string? Name
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "name"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "name"); }
         init
         {
             if (value == null)
@@ -227,7 +227,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "name", value);
+            JsonModel.Set(this._rawData, "name", value);
         }
     }
 
@@ -237,8 +237,8 @@ public sealed record class SimplifiedTrackObject : ModelBase
     [Obsolete("deprecated")]
     public string? PreviewURL
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "preview_url"); }
-        init { ModelBase.Set(this._rawData, "preview_url", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "preview_url"); }
+        init { JsonModel.Set(this._rawData, "preview_url", value); }
     }
 
     /// <summary>
@@ -249,7 +249,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -257,7 +257,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -268,7 +268,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<TrackRestrictionObject>(this.RawData, "restrictions");
+            return JsonModel.GetNullableClass<TrackRestrictionObject>(this.RawData, "restrictions");
         }
         init
         {
@@ -277,7 +277,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "restrictions", value);
+            JsonModel.Set(this._rawData, "restrictions", value);
         }
     }
 
@@ -287,7 +287,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public long? TrackNumber
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "track_number"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "track_number"); }
         init
         {
             if (value == null)
@@ -295,7 +295,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "track_number", value);
+            JsonModel.Set(this._rawData, "track_number", value);
         }
     }
 
@@ -304,7 +304,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public string? Type
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "type"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
         init
         {
             if (value == null)
@@ -312,7 +312,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -322,7 +322,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     /// </summary>
     public string? Uri
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
         init
         {
             if (value == null)
@@ -330,7 +330,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "uri", value);
+            JsonModel.Set(this._rawData, "uri", value);
         }
     }
 
@@ -387,7 +387,7 @@ public sealed record class SimplifiedTrackObject : ModelBase
     }
 }
 
-class SimplifiedTrackObjectFromRaw : IFromRaw<SimplifiedTrackObject>
+class SimplifiedTrackObjectFromRaw : IFromRawJson<SimplifiedTrackObject>
 {
     /// <inheritdoc/>
     public SimplifiedTrackObject FromRawUnchecked(

@@ -7,15 +7,15 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<ExternalIDObject, ExternalIDObjectFromRaw>))]
-public sealed record class ExternalIDObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<ExternalIDObject, ExternalIDObjectFromRaw>))]
+public sealed record class ExternalIDObject : JsonModel
 {
     /// <summary>
     /// [International Article Number](http://en.wikipedia.org/wiki/International_Article_Number_%28EAN%29)
     /// </summary>
     public string? Ean
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "ean"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "ean"); }
         init
         {
             if (value == null)
@@ -23,7 +23,7 @@ public sealed record class ExternalIDObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "ean", value);
+            JsonModel.Set(this._rawData, "ean", value);
         }
     }
 
@@ -32,7 +32,7 @@ public sealed record class ExternalIDObject : ModelBase
     /// </summary>
     public string? Isrc
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "isrc"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "isrc"); }
         init
         {
             if (value == null)
@@ -40,7 +40,7 @@ public sealed record class ExternalIDObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "isrc", value);
+            JsonModel.Set(this._rawData, "isrc", value);
         }
     }
 
@@ -52,7 +52,7 @@ public sealed record class ExternalIDObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -60,7 +60,7 @@ public sealed record class ExternalIDObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -69,7 +69,7 @@ public sealed record class ExternalIDObject : ModelBase
     /// </summary>
     public string? Upc
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "upc"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "upc"); }
         init
         {
             if (value == null)
@@ -77,7 +77,7 @@ public sealed record class ExternalIDObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "upc", value);
+            JsonModel.Set(this._rawData, "upc", value);
         }
     }
 
@@ -117,7 +117,7 @@ public sealed record class ExternalIDObject : ModelBase
     }
 }
 
-class ExternalIDObjectFromRaw : IFromRaw<ExternalIDObject>
+class ExternalIDObjectFromRaw : IFromRawJson<ExternalIDObject>
 {
     /// <inheritdoc/>
     public ExternalIDObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

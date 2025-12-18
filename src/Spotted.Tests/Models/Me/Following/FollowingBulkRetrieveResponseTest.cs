@@ -222,8 +222,8 @@ public class FollowingBulkRetrieveResponseTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         FollowingBulkRetrieveResponseArtists expectedArtists = new()
@@ -548,8 +548,10 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
             Total = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponseArtists>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponseArtists>(
+            element
+        );
         Assert.NotNull(deserialized);
 
         Cursors expectedCursors = new()
@@ -788,8 +790,8 @@ public class CursorsTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Cursors>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Cursors>(element);
         Assert.NotNull(deserialized);
 
         string expectedAfter = "after";

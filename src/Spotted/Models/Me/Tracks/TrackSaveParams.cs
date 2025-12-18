@@ -30,8 +30,8 @@ public sealed record class TrackSaveParams : ParamsBase
     /// </summary>
     public required IReadOnlyList<string> IDs
     {
-        get { return ModelBase.GetNotNullClass<List<string>>(this.RawBodyData, "ids"); }
-        init { ModelBase.Set(this._rawBodyData, "ids", value); }
+        get { return JsonModel.GetNotNullClass<List<string>>(this.RawBodyData, "ids"); }
+        init { JsonModel.Set(this._rawBodyData, "ids", value); }
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public sealed record class TrackSaveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
         init
         {
             if (value == null)
@@ -50,7 +50,7 @@ public sealed record class TrackSaveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "published", value);
+            JsonModel.Set(this._rawBodyData, "published", value);
         }
     }
 
@@ -67,7 +67,7 @@ public sealed record class TrackSaveParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNullableClass<List<TimestampedID>>(
+            return JsonModel.GetNullableClass<List<TimestampedID>>(
                 this.RawBodyData,
                 "timestamped_ids"
             );
@@ -79,7 +79,7 @@ public sealed record class TrackSaveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "timestamped_ids", value);
+            JsonModel.Set(this._rawBodyData, "timestamped_ids", value);
         }
     }
 
@@ -116,7 +116,7 @@ public sealed record class TrackSaveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static TrackSaveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -138,9 +138,13 @@ public sealed record class TrackSaveParams : ParamsBase
         }.Uri;
     }
 
-    internal override StringContent? BodyContent()
+    internal override HttpContent? BodyContent()
     {
-        return new(JsonSerializer.Serialize(this.RawBodyData), Encoding.UTF8, "application/json");
+        return new StringContent(
+            JsonSerializer.Serialize(this.RawBodyData),
+            Encoding.UTF8,
+            "application/json"
+        );
     }
 
     internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
@@ -153,8 +157,8 @@ public sealed record class TrackSaveParams : ParamsBase
     }
 }
 
-[JsonConverter(typeof(ModelConverter<TimestampedID, TimestampedIDFromRaw>))]
-public sealed record class TimestampedID : ModelBase
+[JsonConverter(typeof(JsonModelConverter<TimestampedID, TimestampedIDFromRaw>))]
+public sealed record class TimestampedID : JsonModel
 {
     /// <summary>
     /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -162,8 +166,8 @@ public sealed record class TimestampedID : ModelBase
     /// </summary>
     public required string ID
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "id"); }
-        init { ModelBase.Set(this._rawData, "id", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
+        init { JsonModel.Set(this._rawData, "id", value); }
     }
 
     /// <summary>
@@ -175,8 +179,8 @@ public sealed record class TimestampedID : ModelBase
     /// </summary>
     public required DateTimeOffset AddedAt
     {
-        get { return ModelBase.GetNotNullStruct<DateTimeOffset>(this.RawData, "added_at"); }
-        init { ModelBase.Set(this._rawData, "added_at", value); }
+        get { return JsonModel.GetNotNullStruct<DateTimeOffset>(this.RawData, "added_at"); }
+        init { JsonModel.Set(this._rawData, "added_at", value); }
     }
 
     /// <inheritdoc/>
@@ -211,7 +215,7 @@ public sealed record class TimestampedID : ModelBase
     }
 }
 
-class TimestampedIDFromRaw : IFromRaw<TimestampedID>
+class TimestampedIDFromRaw : IFromRawJson<TimestampedID>
 {
     /// <inheritdoc/>
     public TimestampedID FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

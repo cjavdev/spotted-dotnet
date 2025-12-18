@@ -30,7 +30,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     /// </summary>
     public bool? Collaborative
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "collaborative"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "collaborative"); }
         init
         {
             if (value == null)
@@ -38,7 +38,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "collaborative", value);
+            JsonModel.Set(this._rawBodyData, "collaborative", value);
         }
     }
 
@@ -48,7 +48,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     /// </summary>
     public string? Description
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawBodyData, "description"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawBodyData, "description"); }
         init
         {
             if (value == null)
@@ -56,7 +56,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "description", value);
+            JsonModel.Set(this._rawBodyData, "description", value);
         }
     }
 
@@ -65,7 +65,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     /// </summary>
     public string? Name
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawBodyData, "name"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawBodyData, "name"); }
         init
         {
             if (value == null)
@@ -73,7 +73,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "name", value);
+            JsonModel.Set(this._rawBodyData, "name", value);
         }
     }
 
@@ -85,7 +85,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
         init
         {
             if (value == null)
@@ -93,7 +93,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "published", value);
+            JsonModel.Set(this._rawBodyData, "published", value);
         }
     }
 
@@ -130,7 +130,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static PlaylistUpdateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -155,9 +155,13 @@ public sealed record class PlaylistUpdateParams : ParamsBase
         }.Uri;
     }
 
-    internal override StringContent? BodyContent()
+    internal override HttpContent? BodyContent()
     {
-        return new(JsonSerializer.Serialize(this.RawBodyData), Encoding.UTF8, "application/json");
+        return new StringContent(
+            JsonSerializer.Serialize(this.RawBodyData),
+            Encoding.UTF8,
+            "application/json"
+        );
     }
 
     internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)

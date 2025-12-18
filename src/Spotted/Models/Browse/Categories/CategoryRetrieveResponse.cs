@@ -7,8 +7,10 @@ using Spotted.Core;
 
 namespace Spotted.Models.Browse.Categories;
 
-[JsonConverter(typeof(ModelConverter<CategoryRetrieveResponse, CategoryRetrieveResponseFromRaw>))]
-public sealed record class CategoryRetrieveResponse : ModelBase
+[JsonConverter(
+    typeof(JsonModelConverter<CategoryRetrieveResponse, CategoryRetrieveResponseFromRaw>)
+)]
+public sealed record class CategoryRetrieveResponse : JsonModel
 {
     /// <summary>
     /// The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids)
@@ -16,8 +18,8 @@ public sealed record class CategoryRetrieveResponse : ModelBase
     /// </summary>
     public required string ID
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "id"); }
-        init { ModelBase.Set(this._rawData, "id", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
+        init { JsonModel.Set(this._rawData, "id", value); }
     }
 
     /// <summary>
@@ -25,8 +27,8 @@ public sealed record class CategoryRetrieveResponse : ModelBase
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -34,8 +36,8 @@ public sealed record class CategoryRetrieveResponse : ModelBase
     /// </summary>
     public required IReadOnlyList<ImageObject> Icons
     {
-        get { return ModelBase.GetNotNullClass<List<ImageObject>>(this.RawData, "icons"); }
-        init { ModelBase.Set(this._rawData, "icons", value); }
+        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "icons"); }
+        init { JsonModel.Set(this._rawData, "icons", value); }
     }
 
     /// <summary>
@@ -43,8 +45,8 @@ public sealed record class CategoryRetrieveResponse : ModelBase
     /// </summary>
     public required string Name
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "name"); }
-        init { ModelBase.Set(this._rawData, "name", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
+        init { JsonModel.Set(this._rawData, "name", value); }
     }
 
     /// <summary>
@@ -55,7 +57,7 @@ public sealed record class CategoryRetrieveResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -63,7 +65,7 @@ public sealed record class CategoryRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -107,7 +109,7 @@ public sealed record class CategoryRetrieveResponse : ModelBase
     }
 }
 
-class CategoryRetrieveResponseFromRaw : IFromRaw<CategoryRetrieveResponse>
+class CategoryRetrieveResponseFromRaw : IFromRawJson<CategoryRetrieveResponse>
 {
     /// <inheritdoc/>
     public CategoryRetrieveResponse FromRawUnchecked(

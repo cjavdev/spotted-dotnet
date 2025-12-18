@@ -183,8 +183,8 @@ public class MeRetrieveResponseTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<MeRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<MeRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -444,8 +444,8 @@ public class ExplicitContentTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExplicitContent>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ExplicitContent>(element);
         Assert.NotNull(deserialized);
 
         bool expectedFilterEnabled = true;

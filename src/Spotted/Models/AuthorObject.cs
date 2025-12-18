@@ -7,15 +7,15 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<AuthorObject, AuthorObjectFromRaw>))]
-public sealed record class AuthorObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<AuthorObject, AuthorObjectFromRaw>))]
+public sealed record class AuthorObject : JsonModel
 {
     /// <summary>
     /// The name of the author.
     /// </summary>
     public string? Name
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "name"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "name"); }
         init
         {
             if (value == null)
@@ -23,7 +23,7 @@ public sealed record class AuthorObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "name", value);
+            JsonModel.Set(this._rawData, "name", value);
         }
     }
 
@@ -35,7 +35,7 @@ public sealed record class AuthorObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -43,7 +43,7 @@ public sealed record class AuthorObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -79,7 +79,7 @@ public sealed record class AuthorObject : ModelBase
     }
 }
 
-class AuthorObjectFromRaw : IFromRaw<AuthorObject>
+class AuthorObjectFromRaw : IFromRawJson<AuthorObject>
 {
     /// <inheritdoc/>
     public AuthorObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

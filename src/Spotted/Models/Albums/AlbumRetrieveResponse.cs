@@ -9,8 +9,8 @@ using System = System;
 
 namespace Spotted.Models.Albums;
 
-[JsonConverter(typeof(ModelConverter<AlbumRetrieveResponse, AlbumRetrieveResponseFromRaw>))]
-public sealed record class AlbumRetrieveResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<AlbumRetrieveResponse, AlbumRetrieveResponseFromRaw>))]
+public sealed record class AlbumRetrieveResponse : JsonModel
 {
     /// <summary>
     /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -18,8 +18,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required string ID
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "id"); }
-        init { ModelBase.Set(this._rawData, "id", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
+        init { JsonModel.Set(this._rawData, "id", value); }
     }
 
     /// <summary>
@@ -29,11 +29,11 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNotNullClass<
+            return JsonModel.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Albums.AlbumType>
             >(this.RawData, "album_type");
         }
-        init { ModelBase.Set(this._rawData, "album_type", value); }
+        init { JsonModel.Set(this._rawData, "album_type", value); }
     }
 
     /// <summary>
@@ -44,8 +44,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required IReadOnlyList<string> AvailableMarkets
     {
-        get { return ModelBase.GetNotNullClass<List<string>>(this.RawData, "available_markets"); }
-        init { ModelBase.Set(this._rawData, "available_markets", value); }
+        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "available_markets"); }
+        init { JsonModel.Set(this._rawData, "available_markets", value); }
     }
 
     /// <summary>
@@ -53,8 +53,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required ExternalURLObject ExternalURLs
     {
-        get { return ModelBase.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
-        init { ModelBase.Set(this._rawData, "external_urls", value); }
+        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        init { JsonModel.Set(this._rawData, "external_urls", value); }
     }
 
     /// <summary>
@@ -62,8 +62,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -71,8 +71,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return ModelBase.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
-        init { ModelBase.Set(this._rawData, "images", value); }
+        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
+        init { JsonModel.Set(this._rawData, "images", value); }
     }
 
     /// <summary>
@@ -81,8 +81,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required string Name
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "name"); }
-        init { ModelBase.Set(this._rawData, "name", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
+        init { JsonModel.Set(this._rawData, "name", value); }
     }
 
     /// <summary>
@@ -90,8 +90,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required string ReleaseDate
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "release_date"); }
-        init { ModelBase.Set(this._rawData, "release_date", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "release_date"); }
+        init { JsonModel.Set(this._rawData, "release_date", value); }
     }
 
     /// <summary>
@@ -104,11 +104,11 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNotNullClass<
+            return JsonModel.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Albums.ReleaseDatePrecision>
             >(this.RawData, "release_date_precision");
         }
-        init { ModelBase.Set(this._rawData, "release_date_precision", value); }
+        init { JsonModel.Set(this._rawData, "release_date_precision", value); }
     }
 
     /// <summary>
@@ -116,8 +116,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required long TotalTracks
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "total_tracks"); }
-        init { ModelBase.Set(this._rawData, "total_tracks", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total_tracks"); }
+        init { JsonModel.Set(this._rawData, "total_tracks", value); }
     }
 
     /// <summary>
@@ -125,8 +125,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public JsonElement Type
     {
-        get { return ModelBase.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
-        init { ModelBase.Set(this._rawData, "type", value); }
+        get { return JsonModel.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
+        init { JsonModel.Set(this._rawData, "type", value); }
     }
 
     /// <summary>
@@ -135,8 +135,8 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public required string Uri
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "uri"); }
-        init { ModelBase.Set(this._rawData, "uri", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "uri"); }
+        init { JsonModel.Set(this._rawData, "uri", value); }
     }
 
     /// <summary>
@@ -147,7 +147,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<List<SimplifiedArtistObject>>(
+            return JsonModel.GetNullableClass<List<SimplifiedArtistObject>>(
                 this.RawData,
                 "artists"
             );
@@ -159,7 +159,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "artists", value);
+            JsonModel.Set(this._rawData, "artists", value);
         }
     }
 
@@ -170,7 +170,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<List<CopyrightObject>>(this.RawData, "copyrights");
+            return JsonModel.GetNullableClass<List<CopyrightObject>>(this.RawData, "copyrights");
         }
         init
         {
@@ -179,7 +179,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "copyrights", value);
+            JsonModel.Set(this._rawData, "copyrights", value);
         }
     }
 
@@ -188,7 +188,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public ExternalIDObject? ExternalIDs
     {
-        get { return ModelBase.GetNullableClass<ExternalIDObject>(this.RawData, "external_ids"); }
+        get { return JsonModel.GetNullableClass<ExternalIDObject>(this.RawData, "external_ids"); }
         init
         {
             if (value == null)
@@ -196,7 +196,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "external_ids", value);
+            JsonModel.Set(this._rawData, "external_ids", value);
         }
     }
 
@@ -206,7 +206,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     [System::Obsolete("deprecated")]
     public IReadOnlyList<string>? Genres
     {
-        get { return ModelBase.GetNullableClass<List<string>>(this.RawData, "genres"); }
+        get { return JsonModel.GetNullableClass<List<string>>(this.RawData, "genres"); }
         init
         {
             if (value == null)
@@ -214,7 +214,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "genres", value);
+            JsonModel.Set(this._rawData, "genres", value);
         }
     }
 
@@ -223,7 +223,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public string? Label
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "label"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "label"); }
         init
         {
             if (value == null)
@@ -231,7 +231,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "label", value);
+            JsonModel.Set(this._rawData, "label", value);
         }
     }
 
@@ -241,7 +241,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public long? Popularity
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "popularity"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "popularity"); }
         init
         {
             if (value == null)
@@ -249,7 +249,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "popularity", value);
+            JsonModel.Set(this._rawData, "popularity", value);
         }
     }
 
@@ -261,7 +261,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -269,7 +269,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -280,7 +280,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<AlbumRestrictionObject>(this.RawData, "restrictions");
+            return JsonModel.GetNullableClass<AlbumRestrictionObject>(this.RawData, "restrictions");
         }
         init
         {
@@ -289,7 +289,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "restrictions", value);
+            JsonModel.Set(this._rawData, "restrictions", value);
         }
     }
 
@@ -300,7 +300,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<AlbumRetrieveResponseTracks>(this.RawData, "tracks");
+            return JsonModel.GetNullableClass<AlbumRetrieveResponseTracks>(this.RawData, "tracks");
         }
         init
         {
@@ -309,7 +309,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "tracks", value);
+            JsonModel.Set(this._rawData, "tracks", value);
         }
     }
 
@@ -385,7 +385,7 @@ public sealed record class AlbumRetrieveResponse : ModelBase
     }
 }
 
-class AlbumRetrieveResponseFromRaw : IFromRaw<AlbumRetrieveResponse>
+class AlbumRetrieveResponseFromRaw : IFromRawJson<AlbumRetrieveResponse>
 {
     /// <inheritdoc/>
     public AlbumRetrieveResponse FromRawUnchecked(
@@ -498,17 +498,17 @@ sealed class ReleaseDatePrecisionConverter
 /// The tracks of the album.
 /// </summary>
 [JsonConverter(
-    typeof(ModelConverter<AlbumRetrieveResponseTracks, AlbumRetrieveResponseTracksFromRaw>)
+    typeof(JsonModelConverter<AlbumRetrieveResponseTracks, AlbumRetrieveResponseTracksFromRaw>)
 )]
-public sealed record class AlbumRetrieveResponseTracks : ModelBase
+public sealed record class AlbumRetrieveResponseTracks : JsonModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -516,8 +516,8 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
     /// </summary>
     public required long Limit
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "limit"); }
-        init { ModelBase.Set(this._rawData, "limit", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "limit"); }
+        init { JsonModel.Set(this._rawData, "limit", value); }
     }
 
     /// <summary>
@@ -525,8 +525,8 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
     /// </summary>
     public required string? Next
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "next"); }
-        init { ModelBase.Set(this._rawData, "next", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
+        init { JsonModel.Set(this._rawData, "next", value); }
     }
 
     /// <summary>
@@ -534,8 +534,8 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
     /// </summary>
     public required long Offset
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "offset"); }
-        init { ModelBase.Set(this._rawData, "offset", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "offset"); }
+        init { JsonModel.Set(this._rawData, "offset", value); }
     }
 
     /// <summary>
@@ -543,8 +543,8 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
     /// </summary>
     public required string? Previous
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "previous"); }
-        init { ModelBase.Set(this._rawData, "previous", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "previous"); }
+        init { JsonModel.Set(this._rawData, "previous", value); }
     }
 
     /// <summary>
@@ -552,15 +552,15 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
     /// </summary>
     public required long Total
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "total"); }
-        init { ModelBase.Set(this._rawData, "total", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total"); }
+        init { JsonModel.Set(this._rawData, "total", value); }
     }
 
     public IReadOnlyList<SimplifiedTrackObject>? Items
     {
         get
         {
-            return ModelBase.GetNullableClass<List<SimplifiedTrackObject>>(this.RawData, "items");
+            return JsonModel.GetNullableClass<List<SimplifiedTrackObject>>(this.RawData, "items");
         }
         init
         {
@@ -569,7 +569,7 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "items", value);
+            JsonModel.Set(this._rawData, "items", value);
         }
     }
 
@@ -581,7 +581,7 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -589,7 +589,7 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -636,7 +636,7 @@ public sealed record class AlbumRetrieveResponseTracks : ModelBase
     }
 }
 
-class AlbumRetrieveResponseTracksFromRaw : IFromRaw<AlbumRetrieveResponseTracks>
+class AlbumRetrieveResponseTracksFromRaw : IFromRawJson<AlbumRetrieveResponseTracks>
 {
     /// <inheritdoc/>
     public AlbumRetrieveResponseTracks FromRawUnchecked(

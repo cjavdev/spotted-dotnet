@@ -222,8 +222,8 @@ public class SimplifiedEpisodeObjectTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedEpisodeObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedEpisodeObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "5Xt5DXGzch68nYYamXrNxZ";

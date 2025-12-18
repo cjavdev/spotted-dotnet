@@ -33,8 +33,8 @@ public class TrackRestrictionObjectTest : TestBase
     {
         var model = new TrackRestrictionObject { Published = true, Reason = "reason" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TrackRestrictionObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<TrackRestrictionObject>(element);
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;

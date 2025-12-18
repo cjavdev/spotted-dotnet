@@ -33,8 +33,8 @@ public class NarratorObjectTest : TestBase
     {
         var model = new NarratorObject { Name = "name", Published = true };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<NarratorObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<NarratorObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedName = "name";

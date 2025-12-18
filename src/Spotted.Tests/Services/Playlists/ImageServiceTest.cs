@@ -1,3 +1,4 @@
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Spotted.Tests.Services.Playlists;
@@ -9,7 +10,7 @@ public class ImageServiceTest : TestBase
     {
         await this.client.Playlists.Images.Update(
             "3cEYpjA9oz9GiPac4AsH4n",
-            "a value",
+            Encoding.UTF8.GetBytes("text"),
             new(),
             TestContext.Current.CancellationToken
         );

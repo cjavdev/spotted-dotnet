@@ -46,8 +46,8 @@ public class TimestampedIDTest : TestBase
             AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TimestampedID>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<TimestampedID>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

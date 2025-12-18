@@ -50,8 +50,8 @@ public class ResumePointObjectTest : TestBase
             ResumePositionMs = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ResumePointObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ResumePointObject>(element);
         Assert.NotNull(deserialized);
 
         bool expectedFullyPlayed = true;
