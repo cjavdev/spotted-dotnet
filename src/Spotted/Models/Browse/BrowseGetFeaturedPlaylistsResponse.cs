@@ -8,19 +8,19 @@ using Spotted.Core;
 namespace Spotted.Models.Browse;
 
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         BrowseGetFeaturedPlaylistsResponse,
         BrowseGetFeaturedPlaylistsResponseFromRaw
     >)
 )]
-public sealed record class BrowseGetFeaturedPlaylistsResponse : ModelBase
+public sealed record class BrowseGetFeaturedPlaylistsResponse : JsonModel
 {
     /// <summary>
     /// The localized message of a playlist.
     /// </summary>
     public string? Message
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "message"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "message"); }
         init
         {
             if (value == null)
@@ -28,13 +28,13 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "message", value);
+            JsonModel.Set(this._rawData, "message", value);
         }
     }
 
     public PagingPlaylistObject? Playlists
     {
-        get { return ModelBase.GetNullableClass<PagingPlaylistObject>(this.RawData, "playlists"); }
+        get { return JsonModel.GetNullableClass<PagingPlaylistObject>(this.RawData, "playlists"); }
         init
         {
             if (value == null)
@@ -42,7 +42,7 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "playlists", value);
+            JsonModel.Set(this._rawData, "playlists", value);
         }
     }
 
@@ -54,7 +54,7 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -62,7 +62,7 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -103,7 +103,7 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : ModelBase
     }
 }
 
-class BrowseGetFeaturedPlaylistsResponseFromRaw : IFromRaw<BrowseGetFeaturedPlaylistsResponse>
+class BrowseGetFeaturedPlaylistsResponseFromRaw : IFromRawJson<BrowseGetFeaturedPlaylistsResponse>
 {
     /// <inheritdoc/>
     public BrowseGetFeaturedPlaylistsResponse FromRawUnchecked(

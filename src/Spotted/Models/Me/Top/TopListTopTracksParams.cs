@@ -19,7 +19,7 @@ public sealed record class TopListTopTracksParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
         init
         {
             if (value == null)
@@ -27,7 +27,7 @@ public sealed record class TopListTopTracksParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "limit", value);
+            JsonModel.Set(this._rawQueryData, "limit", value);
         }
     }
 
@@ -37,7 +37,7 @@ public sealed record class TopListTopTracksParams : ParamsBase
     /// </summary>
     public long? Offset
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "offset"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "offset"); }
         init
         {
             if (value == null)
@@ -45,7 +45,7 @@ public sealed record class TopListTopTracksParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "offset", value);
+            JsonModel.Set(this._rawQueryData, "offset", value);
         }
     }
 
@@ -57,7 +57,7 @@ public sealed record class TopListTopTracksParams : ParamsBase
     /// </summary>
     public string? TimeRange
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "time_range"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "time_range"); }
         init
         {
             if (value == null)
@@ -65,7 +65,7 @@ public sealed record class TopListTopTracksParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "time_range", value);
+            JsonModel.Set(this._rawQueryData, "time_range", value);
         }
     }
 
@@ -95,7 +95,7 @@ public sealed record class TopListTopTracksParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static TopListTopTracksParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

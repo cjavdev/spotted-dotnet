@@ -8,17 +8,17 @@ using Spotted.Core;
 namespace Spotted.Models.Me.Top;
 
 [JsonConverter(
-    typeof(ModelConverter<TopListTopArtistsPageResponse, TopListTopArtistsPageResponseFromRaw>)
+    typeof(JsonModelConverter<TopListTopArtistsPageResponse, TopListTopArtistsPageResponseFromRaw>)
 )]
-public sealed record class TopListTopArtistsPageResponse : ModelBase
+public sealed record class TopListTopArtistsPageResponse : JsonModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -26,8 +26,8 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
     /// </summary>
     public required long Limit
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "limit"); }
-        init { ModelBase.Set(this._rawData, "limit", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "limit"); }
+        init { JsonModel.Set(this._rawData, "limit", value); }
     }
 
     /// <summary>
@@ -35,8 +35,8 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
     /// </summary>
     public required string? Next
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "next"); }
-        init { ModelBase.Set(this._rawData, "next", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
+        init { JsonModel.Set(this._rawData, "next", value); }
     }
 
     /// <summary>
@@ -44,8 +44,8 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
     /// </summary>
     public required long Offset
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "offset"); }
-        init { ModelBase.Set(this._rawData, "offset", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "offset"); }
+        init { JsonModel.Set(this._rawData, "offset", value); }
     }
 
     /// <summary>
@@ -53,8 +53,8 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
     /// </summary>
     public required string? Previous
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "previous"); }
-        init { ModelBase.Set(this._rawData, "previous", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "previous"); }
+        init { JsonModel.Set(this._rawData, "previous", value); }
     }
 
     /// <summary>
@@ -62,13 +62,13 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
     /// </summary>
     public required long Total
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "total"); }
-        init { ModelBase.Set(this._rawData, "total", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total"); }
+        init { JsonModel.Set(this._rawData, "total", value); }
     }
 
     public IReadOnlyList<ArtistObject>? Items
     {
-        get { return ModelBase.GetNullableClass<List<ArtistObject>>(this.RawData, "items"); }
+        get { return JsonModel.GetNullableClass<List<ArtistObject>>(this.RawData, "items"); }
         init
         {
             if (value == null)
@@ -76,7 +76,7 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "items", value);
+            JsonModel.Set(this._rawData, "items", value);
         }
     }
 
@@ -88,7 +88,7 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -96,7 +96,7 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -145,7 +145,7 @@ public sealed record class TopListTopArtistsPageResponse : ModelBase
     }
 }
 
-class TopListTopArtistsPageResponseFromRaw : IFromRaw<TopListTopArtistsPageResponse>
+class TopListTopArtistsPageResponseFromRaw : IFromRawJson<TopListTopArtistsPageResponse>
 {
     /// <inheritdoc/>
     public TopListTopArtistsPageResponse FromRawUnchecked(

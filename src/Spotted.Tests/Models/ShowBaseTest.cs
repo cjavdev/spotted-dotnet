@@ -207,8 +207,8 @@ public class ShowBaseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ShowBase>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ShowBase>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

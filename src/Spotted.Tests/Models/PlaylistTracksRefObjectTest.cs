@@ -50,8 +50,8 @@ public class PlaylistTracksRefObjectTest : TestBase
             Total = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlaylistTracksRefObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlaylistTracksRefObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedHref = "href";

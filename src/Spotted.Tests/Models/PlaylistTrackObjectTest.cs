@@ -440,8 +440,8 @@ public class PlaylistTrackObjectTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlaylistTrackObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlaylistTrackObject>(element);
         Assert.NotNull(deserialized);
 
         DateTimeOffset expectedAddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z");
@@ -1005,8 +1005,8 @@ public class TrackTest : TestBase
                 Uri = "uri",
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<Track>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<Track>(element);
 
         Assert.Equal(value, deserialized);
     }
@@ -1094,8 +1094,8 @@ public class TrackTest : TestBase
                 },
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<Track>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<Track>(element);
 
         Assert.Equal(value, deserialized);
     }

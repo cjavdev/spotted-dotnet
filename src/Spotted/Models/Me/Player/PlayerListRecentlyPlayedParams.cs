@@ -20,7 +20,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? After
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "after"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "after"); }
         init
         {
             if (value == null)
@@ -28,7 +28,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "after", value);
+            JsonModel.Set(this._rawQueryData, "after", value);
         }
     }
 
@@ -38,7 +38,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? Before
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "before"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "before"); }
         init
         {
             if (value == null)
@@ -46,7 +46,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "before", value);
+            JsonModel.Set(this._rawQueryData, "before", value);
         }
     }
 
@@ -56,7 +56,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
         init
         {
             if (value == null)
@@ -64,7 +64,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "limit", value);
+            JsonModel.Set(this._rawQueryData, "limit", value);
         }
     }
 
@@ -96,7 +96,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static PlayerListRecentlyPlayedParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

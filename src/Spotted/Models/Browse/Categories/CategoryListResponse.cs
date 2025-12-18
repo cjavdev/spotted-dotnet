@@ -7,19 +7,19 @@ using Spotted.Core;
 
 namespace Spotted.Models.Browse.Categories;
 
-[JsonConverter(typeof(ModelConverter<CategoryListResponse, CategoryListResponseFromRaw>))]
-public sealed record class CategoryListResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<CategoryListResponse, CategoryListResponseFromRaw>))]
+public sealed record class CategoryListResponse : JsonModel
 {
     public required CategoryListResponseCategories Categories
     {
         get
         {
-            return ModelBase.GetNotNullClass<CategoryListResponseCategories>(
+            return JsonModel.GetNotNullClass<CategoryListResponseCategories>(
                 this.RawData,
                 "categories"
             );
         }
-        init { ModelBase.Set(this._rawData, "categories", value); }
+        init { JsonModel.Set(this._rawData, "categories", value); }
     }
 
     /// <inheritdoc/>
@@ -62,7 +62,7 @@ public sealed record class CategoryListResponse : ModelBase
     }
 }
 
-class CategoryListResponseFromRaw : IFromRaw<CategoryListResponse>
+class CategoryListResponseFromRaw : IFromRawJson<CategoryListResponse>
 {
     /// <inheritdoc/>
     public CategoryListResponse FromRawUnchecked(
@@ -71,17 +71,20 @@ class CategoryListResponseFromRaw : IFromRaw<CategoryListResponse>
 }
 
 [JsonConverter(
-    typeof(ModelConverter<CategoryListResponseCategories, CategoryListResponseCategoriesFromRaw>)
+    typeof(JsonModelConverter<
+        CategoryListResponseCategories,
+        CategoryListResponseCategoriesFromRaw
+    >)
 )]
-public sealed record class CategoryListResponseCategories : ModelBase
+public sealed record class CategoryListResponseCategories : JsonModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -89,8 +92,8 @@ public sealed record class CategoryListResponseCategories : ModelBase
     /// </summary>
     public required long Limit
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "limit"); }
-        init { ModelBase.Set(this._rawData, "limit", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "limit"); }
+        init { JsonModel.Set(this._rawData, "limit", value); }
     }
 
     /// <summary>
@@ -98,8 +101,8 @@ public sealed record class CategoryListResponseCategories : ModelBase
     /// </summary>
     public required string? Next
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "next"); }
-        init { ModelBase.Set(this._rawData, "next", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
+        init { JsonModel.Set(this._rawData, "next", value); }
     }
 
     /// <summary>
@@ -107,8 +110,8 @@ public sealed record class CategoryListResponseCategories : ModelBase
     /// </summary>
     public required long Offset
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "offset"); }
-        init { ModelBase.Set(this._rawData, "offset", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "offset"); }
+        init { JsonModel.Set(this._rawData, "offset", value); }
     }
 
     /// <summary>
@@ -116,8 +119,8 @@ public sealed record class CategoryListResponseCategories : ModelBase
     /// </summary>
     public required string? Previous
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "previous"); }
-        init { ModelBase.Set(this._rawData, "previous", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "previous"); }
+        init { JsonModel.Set(this._rawData, "previous", value); }
     }
 
     /// <summary>
@@ -125,15 +128,15 @@ public sealed record class CategoryListResponseCategories : ModelBase
     /// </summary>
     public required long Total
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "total"); }
-        init { ModelBase.Set(this._rawData, "total", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total"); }
+        init { JsonModel.Set(this._rawData, "total", value); }
     }
 
     public IReadOnlyList<global::Spotted.Models.Browse.Categories.Item>? Items
     {
         get
         {
-            return ModelBase.GetNullableClass<List<global::Spotted.Models.Browse.Categories.Item>>(
+            return JsonModel.GetNullableClass<List<global::Spotted.Models.Browse.Categories.Item>>(
                 this.RawData,
                 "items"
             );
@@ -145,7 +148,7 @@ public sealed record class CategoryListResponseCategories : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "items", value);
+            JsonModel.Set(this._rawData, "items", value);
         }
     }
 
@@ -157,7 +160,7 @@ public sealed record class CategoryListResponseCategories : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -165,7 +168,7 @@ public sealed record class CategoryListResponseCategories : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -214,7 +217,7 @@ public sealed record class CategoryListResponseCategories : ModelBase
     }
 }
 
-class CategoryListResponseCategoriesFromRaw : IFromRaw<CategoryListResponseCategories>
+class CategoryListResponseCategoriesFromRaw : IFromRawJson<CategoryListResponseCategories>
 {
     /// <inheritdoc/>
     public CategoryListResponseCategories FromRawUnchecked(
@@ -223,12 +226,12 @@ class CategoryListResponseCategoriesFromRaw : IFromRaw<CategoryListResponseCateg
 }
 
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         global::Spotted.Models.Browse.Categories.Item,
         global::Spotted.Models.Browse.Categories.ItemFromRaw
     >)
 )]
-public sealed record class Item : ModelBase
+public sealed record class Item : JsonModel
 {
     /// <summary>
     /// The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids)
@@ -236,8 +239,8 @@ public sealed record class Item : ModelBase
     /// </summary>
     public required string ID
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "id"); }
-        init { ModelBase.Set(this._rawData, "id", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
+        init { JsonModel.Set(this._rawData, "id", value); }
     }
 
     /// <summary>
@@ -245,8 +248,8 @@ public sealed record class Item : ModelBase
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -254,8 +257,8 @@ public sealed record class Item : ModelBase
     /// </summary>
     public required IReadOnlyList<ImageObject> Icons
     {
-        get { return ModelBase.GetNotNullClass<List<ImageObject>>(this.RawData, "icons"); }
-        init { ModelBase.Set(this._rawData, "icons", value); }
+        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "icons"); }
+        init { JsonModel.Set(this._rawData, "icons", value); }
     }
 
     /// <summary>
@@ -263,8 +266,8 @@ public sealed record class Item : ModelBase
     /// </summary>
     public required string Name
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "name"); }
-        init { ModelBase.Set(this._rawData, "name", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
+        init { JsonModel.Set(this._rawData, "name", value); }
     }
 
     /// <summary>
@@ -275,7 +278,7 @@ public sealed record class Item : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -283,7 +286,7 @@ public sealed record class Item : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -327,7 +330,7 @@ public sealed record class Item : ModelBase
     }
 }
 
-class ItemFromRaw : IFromRaw<global::Spotted.Models.Browse.Categories.Item>
+class ItemFromRaw : IFromRawJson<global::Spotted.Models.Browse.Categories.Item>
 {
     /// <inheritdoc/>
     public global::Spotted.Models.Browse.Categories.Item FromRawUnchecked(

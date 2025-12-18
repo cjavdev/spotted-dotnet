@@ -7,8 +7,8 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<CopyrightObject, CopyrightObjectFromRaw>))]
-public sealed record class CopyrightObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<CopyrightObject, CopyrightObjectFromRaw>))]
+public sealed record class CopyrightObject : JsonModel
 {
     /// <summary>
     /// The playlist's public/private status (if it should be added to the user's
@@ -18,7 +18,7 @@ public sealed record class CopyrightObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -26,7 +26,7 @@ public sealed record class CopyrightObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -35,7 +35,7 @@ public sealed record class CopyrightObject : ModelBase
     /// </summary>
     public string? Text
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "text"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "text"); }
         init
         {
             if (value == null)
@@ -43,7 +43,7 @@ public sealed record class CopyrightObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "text", value);
+            JsonModel.Set(this._rawData, "text", value);
         }
     }
 
@@ -53,7 +53,7 @@ public sealed record class CopyrightObject : ModelBase
     /// </summary>
     public string? Type
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "type"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
         init
         {
             if (value == null)
@@ -61,7 +61,7 @@ public sealed record class CopyrightObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -98,7 +98,7 @@ public sealed record class CopyrightObject : ModelBase
     }
 }
 
-class CopyrightObjectFromRaw : IFromRaw<CopyrightObject>
+class CopyrightObjectFromRaw : IFromRawJson<CopyrightObject>
 {
     /// <inheritdoc/>
     public CopyrightObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

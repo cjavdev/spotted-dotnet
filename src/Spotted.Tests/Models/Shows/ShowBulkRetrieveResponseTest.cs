@@ -205,8 +205,8 @@ public class ShowBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ShowBulkRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ShowBulkRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         List<ShowBase> expectedShows =

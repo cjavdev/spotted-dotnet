@@ -8,17 +8,17 @@ using Spotted.Core;
 namespace Spotted.Models.Recommendations;
 
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         RecommendationListAvailableGenreSeedsResponse,
         RecommendationListAvailableGenreSeedsResponseFromRaw
     >)
 )]
-public sealed record class RecommendationListAvailableGenreSeedsResponse : ModelBase
+public sealed record class RecommendationListAvailableGenreSeedsResponse : JsonModel
 {
     public required IReadOnlyList<string> Genres
     {
-        get { return ModelBase.GetNotNullClass<List<string>>(this.RawData, "genres"); }
-        init { ModelBase.Set(this._rawData, "genres", value); }
+        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "genres"); }
+        init { JsonModel.Set(this._rawData, "genres", value); }
     }
 
     /// <inheritdoc/>
@@ -66,7 +66,7 @@ public sealed record class RecommendationListAvailableGenreSeedsResponse : Model
 }
 
 class RecommendationListAvailableGenreSeedsResponseFromRaw
-    : IFromRaw<RecommendationListAvailableGenreSeedsResponse>
+    : IFromRawJson<RecommendationListAvailableGenreSeedsResponse>
 {
     /// <inheritdoc/>
     public RecommendationListAvailableGenreSeedsResponse FromRawUnchecked(

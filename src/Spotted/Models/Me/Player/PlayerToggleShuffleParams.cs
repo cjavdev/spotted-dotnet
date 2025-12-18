@@ -21,8 +21,8 @@ public sealed record class PlayerToggleShuffleParams : ParamsBase
     /// </summary>
     public required bool State
     {
-        get { return ModelBase.GetNotNullStruct<bool>(this.RawQueryData, "state"); }
-        init { ModelBase.Set(this._rawQueryData, "state", value); }
+        get { return JsonModel.GetNotNullStruct<bool>(this.RawQueryData, "state"); }
+        init { JsonModel.Set(this._rawQueryData, "state", value); }
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ public sealed record class PlayerToggleShuffleParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "device_id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "device_id"); }
         init
         {
             if (value == null)
@@ -39,7 +39,7 @@ public sealed record class PlayerToggleShuffleParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "device_id", value);
+            JsonModel.Set(this._rawQueryData, "device_id", value);
         }
     }
 
@@ -69,7 +69,7 @@ public sealed record class PlayerToggleShuffleParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static PlayerToggleShuffleParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

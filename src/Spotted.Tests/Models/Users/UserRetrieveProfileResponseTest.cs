@@ -149,8 +149,8 @@ public class UserRetrieveProfileResponseTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<UserRetrieveProfileResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<UserRetrieveProfileResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

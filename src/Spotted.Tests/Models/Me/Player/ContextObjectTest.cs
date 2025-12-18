@@ -61,8 +61,8 @@ public class ContextObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ContextObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ContextObject>(element);
         Assert.NotNull(deserialized);
 
         ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };

@@ -7,13 +7,13 @@ using Spotted.Core;
 
 namespace Spotted.Models.Artists;
 
-[JsonConverter(typeof(ModelConverter<ArtistTopTracksResponse, ArtistTopTracksResponseFromRaw>))]
-public sealed record class ArtistTopTracksResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<ArtistTopTracksResponse, ArtistTopTracksResponseFromRaw>))]
+public sealed record class ArtistTopTracksResponse : JsonModel
 {
     public required IReadOnlyList<TrackObject> Tracks
     {
-        get { return ModelBase.GetNotNullClass<List<TrackObject>>(this.RawData, "tracks"); }
-        init { ModelBase.Set(this._rawData, "tracks", value); }
+        get { return JsonModel.GetNotNullClass<List<TrackObject>>(this.RawData, "tracks"); }
+        init { JsonModel.Set(this._rawData, "tracks", value); }
     }
 
     /// <inheritdoc/>
@@ -59,7 +59,7 @@ public sealed record class ArtistTopTracksResponse : ModelBase
     }
 }
 
-class ArtistTopTracksResponseFromRaw : IFromRaw<ArtistTopTracksResponse>
+class ArtistTopTracksResponseFromRaw : IFromRawJson<ArtistTopTracksResponse>
 {
     /// <inheritdoc/>
     public ArtistTopTracksResponse FromRawUnchecked(

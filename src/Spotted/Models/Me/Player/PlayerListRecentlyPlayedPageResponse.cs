@@ -9,19 +9,19 @@ using Spotted.Core;
 namespace Spotted.Models.Me.Player;
 
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         PlayerListRecentlyPlayedPageResponse,
         PlayerListRecentlyPlayedPageResponseFromRaw
     >)
 )]
-public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
+public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
 {
     /// <summary>
     /// The cursors used to find the next set of items.
     /// </summary>
     public Cursors? Cursors
     {
-        get { return ModelBase.GetNullableClass<Cursors>(this.RawData, "cursors"); }
+        get { return JsonModel.GetNullableClass<Cursors>(this.RawData, "cursors"); }
         init
         {
             if (value == null)
@@ -29,7 +29,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "cursors", value);
+            JsonModel.Set(this._rawData, "cursors", value);
         }
     }
 
@@ -38,7 +38,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
         init
         {
             if (value == null)
@@ -46,7 +46,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "href", value);
+            JsonModel.Set(this._rawData, "href", value);
         }
     }
 
@@ -54,7 +54,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<List<PlayerListRecentlyPlayedPageResponseItem>>(
+            return JsonModel.GetNullableClass<List<PlayerListRecentlyPlayedPageResponseItem>>(
                 this.RawData,
                 "items"
             );
@@ -66,7 +66,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "items", value);
+            JsonModel.Set(this._rawData, "items", value);
         }
     }
 
@@ -75,7 +75,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
     /// </summary>
     public long? Limit
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "limit"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "limit"); }
         init
         {
             if (value == null)
@@ -83,7 +83,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "limit", value);
+            JsonModel.Set(this._rawData, "limit", value);
         }
     }
 
@@ -92,7 +92,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
     /// </summary>
     public string? Next
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "next"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
         init
         {
             if (value == null)
@@ -100,7 +100,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "next", value);
+            JsonModel.Set(this._rawData, "next", value);
         }
     }
 
@@ -112,7 +112,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -120,7 +120,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -129,7 +129,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
     /// </summary>
     public long? Total
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "total"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "total"); }
         init
         {
             if (value == null)
@@ -137,7 +137,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "total", value);
+            JsonModel.Set(this._rawData, "total", value);
         }
     }
 
@@ -185,7 +185,8 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : ModelBase
     }
 }
 
-class PlayerListRecentlyPlayedPageResponseFromRaw : IFromRaw<PlayerListRecentlyPlayedPageResponse>
+class PlayerListRecentlyPlayedPageResponseFromRaw
+    : IFromRawJson<PlayerListRecentlyPlayedPageResponse>
 {
     /// <inheritdoc/>
     public PlayerListRecentlyPlayedPageResponse FromRawUnchecked(
@@ -196,15 +197,15 @@ class PlayerListRecentlyPlayedPageResponseFromRaw : IFromRaw<PlayerListRecentlyP
 /// <summary>
 /// The cursors used to find the next set of items.
 /// </summary>
-[JsonConverter(typeof(ModelConverter<Cursors, CursorsFromRaw>))]
-public sealed record class Cursors : ModelBase
+[JsonConverter(typeof(JsonModelConverter<Cursors, CursorsFromRaw>))]
+public sealed record class Cursors : JsonModel
 {
     /// <summary>
     /// The cursor to use as key to find the next page of items.
     /// </summary>
     public string? After
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "after"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "after"); }
         init
         {
             if (value == null)
@@ -212,7 +213,7 @@ public sealed record class Cursors : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "after", value);
+            JsonModel.Set(this._rawData, "after", value);
         }
     }
 
@@ -221,7 +222,7 @@ public sealed record class Cursors : ModelBase
     /// </summary>
     public string? Before
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "before"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "before"); }
         init
         {
             if (value == null)
@@ -229,7 +230,7 @@ public sealed record class Cursors : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "before", value);
+            JsonModel.Set(this._rawData, "before", value);
         }
     }
 
@@ -241,7 +242,7 @@ public sealed record class Cursors : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -249,7 +250,7 @@ public sealed record class Cursors : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -286,7 +287,7 @@ public sealed record class Cursors : ModelBase
     }
 }
 
-class CursorsFromRaw : IFromRaw<Cursors>
+class CursorsFromRaw : IFromRawJson<Cursors>
 {
     /// <inheritdoc/>
     public Cursors FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
@@ -294,19 +295,19 @@ class CursorsFromRaw : IFromRaw<Cursors>
 }
 
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         PlayerListRecentlyPlayedPageResponseItem,
         PlayerListRecentlyPlayedPageResponseItemFromRaw
     >)
 )]
-public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
+public sealed record class PlayerListRecentlyPlayedPageResponseItem : JsonModel
 {
     /// <summary>
     /// The context the track was played from.
     /// </summary>
     public ContextObject? Context
     {
-        get { return ModelBase.GetNullableClass<ContextObject>(this.RawData, "context"); }
+        get { return JsonModel.GetNullableClass<ContextObject>(this.RawData, "context"); }
         init
         {
             if (value == null)
@@ -314,7 +315,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "context", value);
+            JsonModel.Set(this._rawData, "context", value);
         }
     }
 
@@ -323,7 +324,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
     /// </summary>
     public DateTimeOffset? PlayedAt
     {
-        get { return ModelBase.GetNullableStruct<DateTimeOffset>(this.RawData, "played_at"); }
+        get { return JsonModel.GetNullableStruct<DateTimeOffset>(this.RawData, "played_at"); }
         init
         {
             if (value == null)
@@ -331,7 +332,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "played_at", value);
+            JsonModel.Set(this._rawData, "played_at", value);
         }
     }
 
@@ -343,7 +344,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -351,7 +352,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -360,7 +361,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
     /// </summary>
     public TrackObject? Track
     {
-        get { return ModelBase.GetNullableClass<TrackObject>(this.RawData, "track"); }
+        get { return JsonModel.GetNullableClass<TrackObject>(this.RawData, "track"); }
         init
         {
             if (value == null)
@@ -368,7 +369,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "track", value);
+            JsonModel.Set(this._rawData, "track", value);
         }
     }
 
@@ -413,7 +414,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponseItem : ModelBase
 }
 
 class PlayerListRecentlyPlayedPageResponseItemFromRaw
-    : IFromRaw<PlayerListRecentlyPlayedPageResponseItem>
+    : IFromRawJson<PlayerListRecentlyPlayedPageResponseItem>
 {
     /// <inheritdoc/>
     public PlayerListRecentlyPlayedPageResponseItem FromRawUnchecked(

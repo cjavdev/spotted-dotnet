@@ -115,12 +115,13 @@ These methods return `HttpResponse`:
 
 ```csharp
 using System;
+using System.Text;
 using Spotted.Models.Playlists.Images;
 
 ImageUpdateParams parameters = new()
 {
     PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
-    Body = "a value",
+    Body = Encoding.UTF8.GetBytes("text"),
 };
 
 var image = await client.Playlists.Images.Update(parameters);

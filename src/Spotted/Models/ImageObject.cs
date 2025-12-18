@@ -7,16 +7,16 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<ImageObject, ImageObjectFromRaw>))]
-public sealed record class ImageObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<ImageObject, ImageObjectFromRaw>))]
+public sealed record class ImageObject : JsonModel
 {
     /// <summary>
     /// The image height in pixels.
     /// </summary>
     public required long? Height
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "height"); }
-        init { ModelBase.Set(this._rawData, "height", value); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "height"); }
+        init { JsonModel.Set(this._rawData, "height", value); }
     }
 
     /// <summary>
@@ -24,8 +24,8 @@ public sealed record class ImageObject : ModelBase
     /// </summary>
     public required string URL
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "url"); }
-        init { ModelBase.Set(this._rawData, "url", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "url"); }
+        init { JsonModel.Set(this._rawData, "url", value); }
     }
 
     /// <summary>
@@ -33,8 +33,8 @@ public sealed record class ImageObject : ModelBase
     /// </summary>
     public required long? Width
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "width"); }
-        init { ModelBase.Set(this._rawData, "width", value); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "width"); }
+        init { JsonModel.Set(this._rawData, "width", value); }
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public sealed record class ImageObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -53,7 +53,7 @@ public sealed record class ImageObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -91,7 +91,7 @@ public sealed record class ImageObject : ModelBase
     }
 }
 
-class ImageObjectFromRaw : IFromRaw<ImageObject>
+class ImageObjectFromRaw : IFromRawJson<ImageObject>
 {
     /// <inheritdoc/>
     public ImageObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

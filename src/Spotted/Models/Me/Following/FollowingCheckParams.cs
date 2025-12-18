@@ -23,8 +23,8 @@ public sealed record class FollowingCheckParams : ParamsBase
     /// </summary>
     public required string IDs
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawQueryData, "ids"); }
-        init { ModelBase.Set(this._rawQueryData, "ids", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
+        init { JsonModel.Set(this._rawQueryData, "ids", value); }
     }
 
     /// <summary>
@@ -34,11 +34,11 @@ public sealed record class FollowingCheckParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNotNullClass<
+            return JsonModel.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Me.Following.Type>
             >(this.RawQueryData, "type");
         }
-        init { ModelBase.Set(this._rawQueryData, "type", value); }
+        init { JsonModel.Set(this._rawQueryData, "type", value); }
     }
 
     public FollowingCheckParams() { }
@@ -67,7 +67,7 @@ public sealed record class FollowingCheckParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static FollowingCheckParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

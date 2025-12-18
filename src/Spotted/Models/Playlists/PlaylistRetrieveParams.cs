@@ -25,7 +25,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
     /// </summary>
     public string? AdditionalTypes
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "additional_types"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "additional_types"); }
         init
         {
             if (value == null)
@@ -33,7 +33,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "additional_types", value);
+            JsonModel.Set(this._rawQueryData, "additional_types", value);
         }
     }
 
@@ -50,7 +50,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
     /// </summary>
     public string? Fields
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "fields"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "fields"); }
         init
         {
             if (value == null)
@@ -58,7 +58,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "fields", value);
+            JsonModel.Set(this._rawQueryData, "fields", value);
         }
     }
 
@@ -74,7 +74,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
         init
         {
             if (value == null)
@@ -82,7 +82,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "market", value);
+            JsonModel.Set(this._rawQueryData, "market", value);
         }
     }
 
@@ -112,7 +112,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static PlaylistRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

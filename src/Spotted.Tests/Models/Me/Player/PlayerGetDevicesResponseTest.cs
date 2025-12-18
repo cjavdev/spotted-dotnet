@@ -101,8 +101,8 @@ public class PlayerGetDevicesResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlayerGetDevicesResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlayerGetDevicesResponse>(element);
         Assert.NotNull(deserialized);
 
         List<DeviceObject> expectedDevices =

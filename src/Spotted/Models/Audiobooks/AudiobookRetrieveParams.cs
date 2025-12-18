@@ -28,7 +28,7 @@ public sealed record class AudiobookRetrieveParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
         init
         {
             if (value == null)
@@ -36,7 +36,7 @@ public sealed record class AudiobookRetrieveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "market", value);
+            JsonModel.Set(this._rawQueryData, "market", value);
         }
     }
 
@@ -66,7 +66,7 @@ public sealed record class AudiobookRetrieveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static AudiobookRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

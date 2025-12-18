@@ -28,7 +28,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "device_id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "device_id"); }
         init
         {
             if (value == null)
@@ -36,7 +36,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "device_id", value);
+            JsonModel.Set(this._rawQueryData, "device_id", value);
         }
     }
 
@@ -46,7 +46,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public string? ContextUri
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawBodyData, "context_uri"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawBodyData, "context_uri"); }
         init
         {
             if (value == null)
@@ -54,7 +54,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "context_uri", value);
+            JsonModel.Set(this._rawBodyData, "context_uri", value);
         }
     }
 
@@ -69,7 +69,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNullableClass<Dictionary<string, JsonElement>>(
+            return JsonModel.GetNullableClass<Dictionary<string, JsonElement>>(
                 this.RawBodyData,
                 "offset"
             );
@@ -81,7 +81,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "offset", value);
+            JsonModel.Set(this._rawBodyData, "offset", value);
         }
     }
 
@@ -92,7 +92,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public long? PositionMs
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawBodyData, "position_ms"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawBodyData, "position_ms"); }
         init
         {
             if (value == null)
@@ -100,7 +100,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "position_ms", value);
+            JsonModel.Set(this._rawBodyData, "position_ms", value);
         }
     }
 
@@ -112,7 +112,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
         init
         {
             if (value == null)
@@ -120,7 +120,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "published", value);
+            JsonModel.Set(this._rawBodyData, "published", value);
         }
     }
 
@@ -130,7 +130,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public IReadOnlyList<string>? Uris
     {
-        get { return ModelBase.GetNullableClass<List<string>>(this.RawBodyData, "uris"); }
+        get { return JsonModel.GetNullableClass<List<string>>(this.RawBodyData, "uris"); }
         init
         {
             if (value == null)
@@ -138,7 +138,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "uris", value);
+            JsonModel.Set(this._rawBodyData, "uris", value);
         }
     }
 
@@ -175,7 +175,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static PlayerStartPlaybackParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -197,9 +197,13 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
         }.Uri;
     }
 
-    internal override StringContent? BodyContent()
+    internal override HttpContent? BodyContent()
     {
-        return new(JsonSerializer.Serialize(this.RawBodyData), Encoding.UTF8, "application/json");
+        return new StringContent(
+            JsonSerializer.Serialize(this.RawBodyData),
+            Encoding.UTF8,
+            "application/json"
+        );
     }
 
     internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)

@@ -31,8 +31,8 @@ public class TrackUpdateResponseTest : TestBase
     {
         var model = new TrackUpdateResponse { SnapshotID = "abc" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TrackUpdateResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<TrackUpdateResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedSnapshotID = "abc";

@@ -65,8 +65,8 @@ public class LinkedTrackObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<LinkedTrackObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<LinkedTrackObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

@@ -73,8 +73,8 @@ public class SimplifiedArtistObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedArtistObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedArtistObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

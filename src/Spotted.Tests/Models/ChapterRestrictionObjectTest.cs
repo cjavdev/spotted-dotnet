@@ -33,8 +33,8 @@ public class ChapterRestrictionObjectTest : TestBase
     {
         var model = new ChapterRestrictionObject { Published = true, Reason = "reason" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ChapterRestrictionObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ChapterRestrictionObject>(element);
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;

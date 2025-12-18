@@ -7,12 +7,12 @@ using Spotted.Core;
 
 namespace Spotted.Models.Markets;
 
-[JsonConverter(typeof(ModelConverter<MarketListResponse, MarketListResponseFromRaw>))]
-public sealed record class MarketListResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<MarketListResponse, MarketListResponseFromRaw>))]
+public sealed record class MarketListResponse : JsonModel
 {
     public IReadOnlyList<string>? Markets
     {
-        get { return ModelBase.GetNullableClass<List<string>>(this.RawData, "markets"); }
+        get { return JsonModel.GetNullableClass<List<string>>(this.RawData, "markets"); }
         init
         {
             if (value == null)
@@ -20,7 +20,7 @@ public sealed record class MarketListResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "markets", value);
+            JsonModel.Set(this._rawData, "markets", value);
         }
     }
 
@@ -57,7 +57,7 @@ public sealed record class MarketListResponse : ModelBase
     }
 }
 
-class MarketListResponseFromRaw : IFromRaw<MarketListResponse>
+class MarketListResponseFromRaw : IFromRawJson<MarketListResponse>
 {
     /// <inheritdoc/>
     public MarketListResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

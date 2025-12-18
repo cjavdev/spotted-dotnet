@@ -19,8 +19,8 @@ public sealed record class ShowCheckParams : ParamsBase
     /// </summary>
     public required string IDs
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawQueryData, "ids"); }
-        init { ModelBase.Set(this._rawQueryData, "ids", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
+        init { JsonModel.Set(this._rawQueryData, "ids", value); }
     }
 
     public ShowCheckParams() { }
@@ -49,7 +49,7 @@ public sealed record class ShowCheckParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static ShowCheckParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

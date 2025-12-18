@@ -50,8 +50,8 @@ public class CopyrightObjectTest : TestBase
             Type = "type",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CopyrightObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<CopyrightObject>(element);
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;

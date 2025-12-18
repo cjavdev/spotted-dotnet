@@ -55,8 +55,8 @@ public class ImageObjectTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ImageObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ImageObject>(element);
         Assert.NotNull(deserialized);
 
         long expectedHeight = 300;

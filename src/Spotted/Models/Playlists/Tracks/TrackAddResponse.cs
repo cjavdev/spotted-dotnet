@@ -7,12 +7,12 @@ using Spotted.Core;
 
 namespace Spotted.Models.Playlists.Tracks;
 
-[JsonConverter(typeof(ModelConverter<TrackAddResponse, TrackAddResponseFromRaw>))]
-public sealed record class TrackAddResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<TrackAddResponse, TrackAddResponseFromRaw>))]
+public sealed record class TrackAddResponse : JsonModel
 {
     public string? SnapshotID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "snapshot_id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "snapshot_id"); }
         init
         {
             if (value == null)
@@ -20,7 +20,7 @@ public sealed record class TrackAddResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "snapshot_id", value);
+            JsonModel.Set(this._rawData, "snapshot_id", value);
         }
     }
 
@@ -57,7 +57,7 @@ public sealed record class TrackAddResponse : ModelBase
     }
 }
 
-class TrackAddResponseFromRaw : IFromRaw<TrackAddResponse>
+class TrackAddResponseFromRaw : IFromRawJson<TrackAddResponse>
 {
     /// <inheritdoc/>
     public TrackAddResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

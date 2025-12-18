@@ -37,8 +37,8 @@ public class MarketListResponseTest : TestBase
     {
         var model = new MarketListResponse { Markets = ["CA", "BR", "IT"] };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<MarketListResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<MarketListResponse>(element);
         Assert.NotNull(deserialized);
 
         List<string> expectedMarkets = ["CA", "BR", "IT"];

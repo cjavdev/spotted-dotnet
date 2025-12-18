@@ -33,12 +33,12 @@ public sealed record class TrackRemoveParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNotNullClass<List<global::Spotted.Models.Playlists.Tracks.Track>>(
+            return JsonModel.GetNotNullClass<List<global::Spotted.Models.Playlists.Tracks.Track>>(
                 this.RawBodyData,
                 "tracks"
             );
         }
-        init { ModelBase.Set(this._rawBodyData, "tracks", value); }
+        init { JsonModel.Set(this._rawBodyData, "tracks", value); }
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
         init
         {
             if (value == null)
@@ -57,7 +57,7 @@ public sealed record class TrackRemoveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "published", value);
+            JsonModel.Set(this._rawBodyData, "published", value);
         }
     }
 
@@ -68,7 +68,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// </summary>
     public string? SnapshotID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawBodyData, "snapshot_id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawBodyData, "snapshot_id"); }
         init
         {
             if (value == null)
@@ -76,7 +76,7 @@ public sealed record class TrackRemoveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "snapshot_id", value);
+            JsonModel.Set(this._rawBodyData, "snapshot_id", value);
         }
     }
 
@@ -113,7 +113,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static TrackRemoveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -138,9 +138,13 @@ public sealed record class TrackRemoveParams : ParamsBase
         }.Uri;
     }
 
-    internal override StringContent? BodyContent()
+    internal override HttpContent? BodyContent()
     {
-        return new(JsonSerializer.Serialize(this.RawBodyData), Encoding.UTF8, "application/json");
+        return new StringContent(
+            JsonSerializer.Serialize(this.RawBodyData),
+            Encoding.UTF8,
+            "application/json"
+        );
     }
 
     internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)
@@ -153,15 +157,17 @@ public sealed record class TrackRemoveParams : ParamsBase
     }
 }
 
-[JsonConverter(typeof(ModelConverter<global::Spotted.Models.Playlists.Tracks.Track, TrackFromRaw>))]
-public sealed record class Track : ModelBase
+[JsonConverter(
+    typeof(JsonModelConverter<global::Spotted.Models.Playlists.Tracks.Track, TrackFromRaw>)
+)]
+public sealed record class Track : JsonModel
 {
     /// <summary>
     /// Spotify URI
     /// </summary>
     public string? Uri
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
         init
         {
             if (value == null)
@@ -169,7 +175,7 @@ public sealed record class Track : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "uri", value);
+            JsonModel.Set(this._rawData, "uri", value);
         }
     }
 
@@ -206,7 +212,7 @@ public sealed record class Track : ModelBase
     }
 }
 
-class TrackFromRaw : IFromRaw<global::Spotted.Models.Playlists.Tracks.Track>
+class TrackFromRaw : IFromRawJson<global::Spotted.Models.Playlists.Tracks.Track>
 {
     /// <inheritdoc/>
     public global::Spotted.Models.Playlists.Tracks.Track FromRawUnchecked(

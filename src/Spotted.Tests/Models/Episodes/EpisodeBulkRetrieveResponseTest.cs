@@ -372,8 +372,8 @@ public class EpisodeBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<EpisodeBulkRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<EpisodeBulkRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         List<EpisodeObject> expectedEpisodes =

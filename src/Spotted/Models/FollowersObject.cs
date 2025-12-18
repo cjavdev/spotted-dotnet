@@ -7,8 +7,8 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<FollowersObject, FollowersObjectFromRaw>))]
-public sealed record class FollowersObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<FollowersObject, FollowersObjectFromRaw>))]
+public sealed record class FollowersObject : JsonModel
 {
     /// <summary>
     /// This will always be set to null, as the Web API does not support it at the
@@ -16,8 +16,8 @@ public sealed record class FollowersObject : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ public sealed record class FollowersObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -36,7 +36,7 @@ public sealed record class FollowersObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -45,7 +45,7 @@ public sealed record class FollowersObject : ModelBase
     /// </summary>
     public long? Total
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "total"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "total"); }
         init
         {
             if (value == null)
@@ -53,7 +53,7 @@ public sealed record class FollowersObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "total", value);
+            JsonModel.Set(this._rawData, "total", value);
         }
     }
 
@@ -90,7 +90,7 @@ public sealed record class FollowersObject : ModelBase
     }
 }
 
-class FollowersObjectFromRaw : IFromRaw<FollowersObject>
+class FollowersObjectFromRaw : IFromRawJson<FollowersObject>
 {
     /// <inheritdoc/>
     public FollowersObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

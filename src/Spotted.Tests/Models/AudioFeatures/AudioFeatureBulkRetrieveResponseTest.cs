@@ -146,8 +146,8 @@ public class AudioFeatureBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AudioFeatureBulkRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AudioFeatureBulkRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         List<AudioFeature> expectedAudioFeatures =
@@ -348,8 +348,8 @@ public class AudioFeatureTest : TestBase
             Valence = 0.428f,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AudioFeature>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AudioFeature>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "2takcwOaAZWiXQijPHIx7B";

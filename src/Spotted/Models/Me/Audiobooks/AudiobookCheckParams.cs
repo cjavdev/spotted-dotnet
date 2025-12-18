@@ -21,8 +21,8 @@ public sealed record class AudiobookCheckParams : ParamsBase
     /// </summary>
     public required string IDs
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawQueryData, "ids"); }
-        init { ModelBase.Set(this._rawQueryData, "ids", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
+        init { JsonModel.Set(this._rawQueryData, "ids", value); }
     }
 
     public AudiobookCheckParams() { }
@@ -51,7 +51,7 @@ public sealed record class AudiobookCheckParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static AudiobookCheckParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

@@ -80,8 +80,8 @@ public class DeviceObjectTest : TestBase
             VolumePercent = 59,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<DeviceObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<DeviceObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

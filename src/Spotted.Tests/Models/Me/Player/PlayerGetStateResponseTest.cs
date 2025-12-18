@@ -562,8 +562,8 @@ public class PlayerGetStateResponseTest : TestBase
             Timestamp = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlayerGetStateResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlayerGetStateResponse>(element);
         Assert.NotNull(deserialized);
 
         PlayerGetStateResponseActions expectedActions = new()
@@ -1037,8 +1037,8 @@ public class PlayerGetStateResponseActionsTest : TestBase
             TransferringPlayback = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlayerGetStateResponseActions>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlayerGetStateResponseActions>(element);
         Assert.NotNull(deserialized);
 
         bool expectedInterruptingPlayback = true;
@@ -1467,8 +1467,8 @@ public class PlayerGetStateResponseItemTest : TestBase
                 Uri = "uri",
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<PlayerGetStateResponseItem>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<PlayerGetStateResponseItem>(element);
 
         Assert.Equal(value, deserialized);
     }
@@ -1556,8 +1556,8 @@ public class PlayerGetStateResponseItemTest : TestBase
                 },
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<PlayerGetStateResponseItem>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<PlayerGetStateResponseItem>(element);
 
         Assert.Equal(value, deserialized);
     }

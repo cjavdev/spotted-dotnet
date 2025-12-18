@@ -55,7 +55,7 @@ public sealed class ImageService : IImageService
     /// <inheritdoc/>
     public async Task<HttpResponse> Update(
         string playlistID,
-        string body,
+        BinaryContent body,
         ImageUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
