@@ -1193,7 +1193,7 @@ public class PlayerGetStateResponseActionsTest : TestBase
 public class PlayerGetStateResponseItemTest : TestBase
 {
     [Fact]
-    public void track_objectValidation_Works()
+    public void TrackObjectValidationWorks()
     {
         PlayerGetStateResponseItem value = new(
             new TrackObject()
@@ -1289,7 +1289,7 @@ public class PlayerGetStateResponseItemTest : TestBase
     }
 
     [Fact]
-    public void episode_objectValidation_Works()
+    public void EpisodeObjectValidationWorks()
     {
         PlayerGetStateResponseItem value = new(
             new EpisodeObject()
@@ -1375,7 +1375,7 @@ public class PlayerGetStateResponseItemTest : TestBase
     }
 
     [Fact]
-    public void track_objectSerializationRoundtrip_Works()
+    public void TrackObjectSerializationRoundtripWorks()
     {
         PlayerGetStateResponseItem value = new(
             new TrackObject()
@@ -1474,7 +1474,7 @@ public class PlayerGetStateResponseItemTest : TestBase
     }
 
     [Fact]
-    public void episode_objectSerializationRoundtrip_Works()
+    public void EpisodeObjectSerializationRoundtripWorks()
     {
         PlayerGetStateResponseItem value = new(
             new EpisodeObject()

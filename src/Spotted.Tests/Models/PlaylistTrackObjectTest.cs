@@ -731,7 +731,7 @@ public class PlaylistTrackObjectTest : TestBase
 public class TrackTest : TestBase
 {
     [Fact]
-    public void objectValidation_Works()
+    public void ObjectValidationWorks()
     {
         Track value = new(
             new TrackObject()
@@ -827,7 +827,7 @@ public class TrackTest : TestBase
     }
 
     [Fact]
-    public void episode_objectValidation_Works()
+    public void EpisodeObjectValidationWorks()
     {
         Track value = new(
             new EpisodeObject()
@@ -913,7 +913,7 @@ public class TrackTest : TestBase
     }
 
     [Fact]
-    public void objectSerializationRoundtrip_Works()
+    public void ObjectSerializationRoundtripWorks()
     {
         Track value = new(
             new TrackObject()
@@ -1012,7 +1012,7 @@ public class TrackTest : TestBase
     }
 
     [Fact]
-    public void episode_objectSerializationRoundtrip_Works()
+    public void EpisodeObjectSerializationRoundtripWorks()
     {
         Track value = new(
             new EpisodeObject()
