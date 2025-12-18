@@ -764,8 +764,8 @@ public class QueueGetResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<QueueGetResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<QueueGetResponse>(element);
         Assert.NotNull(deserialized);
 
         CurrentlyPlaying expectedCurrentlyPlaying = new TrackObject()
@@ -1480,8 +1480,8 @@ public class CurrentlyPlayingTest : TestBase
                 Uri = "uri",
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<CurrentlyPlaying>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<CurrentlyPlaying>(element);
 
         Assert.Equal(value, deserialized);
     }
@@ -1569,8 +1569,8 @@ public class CurrentlyPlayingTest : TestBase
                 },
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<CurrentlyPlaying>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<CurrentlyPlaying>(element);
 
         Assert.Equal(value, deserialized);
     }
@@ -1853,8 +1853,8 @@ public class QueueGetResponseQueueTest : TestBase
                 Uri = "uri",
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<QueueGetResponseQueue>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<QueueGetResponseQueue>(element);
 
         Assert.Equal(value, deserialized);
     }
@@ -1942,8 +1942,8 @@ public class QueueGetResponseQueueTest : TestBase
                 },
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<QueueGetResponseQueue>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<QueueGetResponseQueue>(element);
 
         Assert.Equal(value, deserialized);
     }

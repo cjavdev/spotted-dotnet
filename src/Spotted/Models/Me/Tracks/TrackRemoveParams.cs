@@ -29,7 +29,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// </summary>
     public IReadOnlyList<string>? IDs
     {
-        get { return ModelBase.GetNullableClass<List<string>>(this.RawBodyData, "ids"); }
+        get { return JsonModel.GetNullableClass<List<string>>(this.RawBodyData, "ids"); }
         init
         {
             if (value == null)
@@ -37,7 +37,7 @@ public sealed record class TrackRemoveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "ids", value);
+            JsonModel.Set(this._rawBodyData, "ids", value);
         }
     }
 
@@ -49,7 +49,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
         init
         {
             if (value == null)
@@ -57,7 +57,7 @@ public sealed record class TrackRemoveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawBodyData, "published", value);
+            JsonModel.Set(this._rawBodyData, "published", value);
         }
     }
 
@@ -94,7 +94,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static TrackRemoveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -116,9 +116,13 @@ public sealed record class TrackRemoveParams : ParamsBase
         }.Uri;
     }
 
-    internal override StringContent? BodyContent()
+    internal override HttpContent? BodyContent()
     {
-        return new(JsonSerializer.Serialize(this.RawBodyData), Encoding.UTF8, "application/json");
+        return new StringContent(
+            JsonSerializer.Serialize(this.RawBodyData),
+            Encoding.UTF8,
+            "application/json"
+        );
     }
 
     internal override void AddHeadersToRequest(HttpRequestMessage request, ClientOptions options)

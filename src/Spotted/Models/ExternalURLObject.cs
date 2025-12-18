@@ -7,8 +7,8 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<ExternalURLObject, ExternalURLObjectFromRaw>))]
-public sealed record class ExternalURLObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<ExternalURLObject, ExternalURLObjectFromRaw>))]
+public sealed record class ExternalURLObject : JsonModel
 {
     /// <summary>
     /// The playlist's public/private status (if it should be added to the user's
@@ -18,7 +18,7 @@ public sealed record class ExternalURLObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -26,7 +26,7 @@ public sealed record class ExternalURLObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -36,7 +36,7 @@ public sealed record class ExternalURLObject : ModelBase
     /// </summary>
     public string? Spotify
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "spotify"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "spotify"); }
         init
         {
             if (value == null)
@@ -44,7 +44,7 @@ public sealed record class ExternalURLObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "spotify", value);
+            JsonModel.Set(this._rawData, "spotify", value);
         }
     }
 
@@ -82,7 +82,7 @@ public sealed record class ExternalURLObject : ModelBase
     }
 }
 
-class ExternalURLObjectFromRaw : IFromRaw<ExternalURLObject>
+class ExternalURLObjectFromRaw : IFromRawJson<ExternalURLObject>
 {
     /// <inheritdoc/>
     public ExternalURLObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

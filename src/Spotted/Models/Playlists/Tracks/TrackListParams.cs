@@ -25,7 +25,7 @@ public sealed record class TrackListParams : ParamsBase
     /// </summary>
     public string? AdditionalTypes
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "additional_types"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "additional_types"); }
         init
         {
             if (value == null)
@@ -33,7 +33,7 @@ public sealed record class TrackListParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "additional_types", value);
+            JsonModel.Set(this._rawQueryData, "additional_types", value);
         }
     }
 
@@ -49,7 +49,7 @@ public sealed record class TrackListParams : ParamsBase
     /// </summary>
     public string? Fields
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "fields"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "fields"); }
         init
         {
             if (value == null)
@@ -57,7 +57,7 @@ public sealed record class TrackListParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "fields", value);
+            JsonModel.Set(this._rawQueryData, "fields", value);
         }
     }
 
@@ -67,7 +67,7 @@ public sealed record class TrackListParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
         init
         {
             if (value == null)
@@ -75,7 +75,7 @@ public sealed record class TrackListParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "limit", value);
+            JsonModel.Set(this._rawQueryData, "limit", value);
         }
     }
 
@@ -91,7 +91,7 @@ public sealed record class TrackListParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
         init
         {
             if (value == null)
@@ -99,7 +99,7 @@ public sealed record class TrackListParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "market", value);
+            JsonModel.Set(this._rawQueryData, "market", value);
         }
     }
 
@@ -109,7 +109,7 @@ public sealed record class TrackListParams : ParamsBase
     /// </summary>
     public long? Offset
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "offset"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "offset"); }
         init
         {
             if (value == null)
@@ -117,7 +117,7 @@ public sealed record class TrackListParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "offset", value);
+            JsonModel.Set(this._rawQueryData, "offset", value);
         }
     }
 
@@ -147,7 +147,7 @@ public sealed record class TrackListParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static TrackListParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

@@ -7,8 +7,8 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<PlaylistTracksRefObject, PlaylistTracksRefObjectFromRaw>))]
-public sealed record class PlaylistTracksRefObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<PlaylistTracksRefObject, PlaylistTracksRefObjectFromRaw>))]
+public sealed record class PlaylistTracksRefObject : JsonModel
 {
     /// <summary>
     /// A link to the Web API endpoint where full details of the playlist's tracks
@@ -16,7 +16,7 @@ public sealed record class PlaylistTracksRefObject : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
         init
         {
             if (value == null)
@@ -24,7 +24,7 @@ public sealed record class PlaylistTracksRefObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "href", value);
+            JsonModel.Set(this._rawData, "href", value);
         }
     }
 
@@ -36,7 +36,7 @@ public sealed record class PlaylistTracksRefObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -44,7 +44,7 @@ public sealed record class PlaylistTracksRefObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -53,7 +53,7 @@ public sealed record class PlaylistTracksRefObject : ModelBase
     /// </summary>
     public long? Total
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "total"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "total"); }
         init
         {
             if (value == null)
@@ -61,7 +61,7 @@ public sealed record class PlaylistTracksRefObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "total", value);
+            JsonModel.Set(this._rawData, "total", value);
         }
     }
 
@@ -100,7 +100,7 @@ public sealed record class PlaylistTracksRefObject : ModelBase
     }
 }
 
-class PlaylistTracksRefObjectFromRaw : IFromRaw<PlaylistTracksRefObject>
+class PlaylistTracksRefObjectFromRaw : IFromRawJson<PlaylistTracksRefObject>
 {
     /// <inheritdoc/>
     public PlaylistTracksRefObject FromRawUnchecked(

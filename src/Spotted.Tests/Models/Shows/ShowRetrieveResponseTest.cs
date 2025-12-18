@@ -436,8 +436,8 @@ public class ShowRetrieveResponseTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ShowRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ShowRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -1333,8 +1333,8 @@ public class IntersectionMember1Test : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(element);
         Assert.NotNull(deserialized);
 
         IntersectionMember1Episodes expectedEpisodes = new()
@@ -1714,8 +1714,8 @@ public class IntersectionMember1EpisodesTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<IntersectionMember1Episodes>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<IntersectionMember1Episodes>(element);
         Assert.NotNull(deserialized);
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";

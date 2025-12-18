@@ -406,8 +406,8 @@ public class ArtistTopTracksResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ArtistTopTracksResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ArtistTopTracksResponse>(element);
         Assert.NotNull(deserialized);
 
         List<Models::TrackObject> expectedTracks =

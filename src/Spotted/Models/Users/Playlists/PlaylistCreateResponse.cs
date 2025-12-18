@@ -7,8 +7,8 @@ using Spotted.Core;
 
 namespace Spotted.Models.Users.Playlists;
 
-[JsonConverter(typeof(ModelConverter<PlaylistCreateResponse, PlaylistCreateResponseFromRaw>))]
-public sealed record class PlaylistCreateResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<PlaylistCreateResponse, PlaylistCreateResponseFromRaw>))]
+public sealed record class PlaylistCreateResponse : JsonModel
 {
     /// <summary>
     /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -16,7 +16,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public string? ID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
         init
         {
             if (value == null)
@@ -24,7 +24,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "id", value);
+            JsonModel.Set(this._rawData, "id", value);
         }
     }
 
@@ -33,7 +33,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public bool? Collaborative
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "collaborative"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "collaborative"); }
         init
         {
             if (value == null)
@@ -41,7 +41,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "collaborative", value);
+            JsonModel.Set(this._rawData, "collaborative", value);
         }
     }
 
@@ -51,8 +51,8 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public string? Description
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "description"); }
-        init { ModelBase.Set(this._rawData, "description", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "description"); }
+        init { JsonModel.Set(this._rawData, "description", value); }
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public ExternalURLObject? ExternalURLs
     {
-        get { return ModelBase.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -68,7 +68,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "external_urls", value);
+            JsonModel.Set(this._rawData, "external_urls", value);
         }
     }
 
@@ -77,7 +77,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public FollowersObject? Followers
     {
-        get { return ModelBase.GetNullableClass<FollowersObject>(this.RawData, "followers"); }
+        get { return JsonModel.GetNullableClass<FollowersObject>(this.RawData, "followers"); }
         init
         {
             if (value == null)
@@ -85,7 +85,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "followers", value);
+            JsonModel.Set(this._rawData, "followers", value);
         }
     }
 
@@ -94,7 +94,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
         init
         {
             if (value == null)
@@ -102,7 +102,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "href", value);
+            JsonModel.Set(this._rawData, "href", value);
         }
     }
 
@@ -114,7 +114,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public IReadOnlyList<ImageObject>? Images
     {
-        get { return ModelBase.GetNullableClass<List<ImageObject>>(this.RawData, "images"); }
+        get { return JsonModel.GetNullableClass<List<ImageObject>>(this.RawData, "images"); }
         init
         {
             if (value == null)
@@ -122,7 +122,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "images", value);
+            JsonModel.Set(this._rawData, "images", value);
         }
     }
 
@@ -131,7 +131,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public string? Name
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "name"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "name"); }
         init
         {
             if (value == null)
@@ -139,7 +139,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "name", value);
+            JsonModel.Set(this._rawData, "name", value);
         }
     }
 
@@ -150,7 +150,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<global::Spotted.Models.Users.Playlists.Owner>(
+            return JsonModel.GetNullableClass<global::Spotted.Models.Users.Playlists.Owner>(
                 this.RawData,
                 "owner"
             );
@@ -162,7 +162,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "owner", value);
+            JsonModel.Set(this._rawData, "owner", value);
         }
     }
 
@@ -174,7 +174,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -182,7 +182,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -192,7 +192,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public string? SnapshotID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "snapshot_id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "snapshot_id"); }
         init
         {
             if (value == null)
@@ -200,7 +200,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "snapshot_id", value);
+            JsonModel.Set(this._rawData, "snapshot_id", value);
         }
     }
 
@@ -211,7 +211,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<PlaylistCreateResponseTracks>(this.RawData, "tracks");
+            return JsonModel.GetNullableClass<PlaylistCreateResponseTracks>(this.RawData, "tracks");
         }
         init
         {
@@ -220,7 +220,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "tracks", value);
+            JsonModel.Set(this._rawData, "tracks", value);
         }
     }
 
@@ -229,7 +229,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public string? Type
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "type"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
         init
         {
             if (value == null)
@@ -237,7 +237,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -247,7 +247,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     /// </summary>
     public string? Uri
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
         init
         {
             if (value == null)
@@ -255,7 +255,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "uri", value);
+            JsonModel.Set(this._rawData, "uri", value);
         }
     }
 
@@ -308,7 +308,7 @@ public sealed record class PlaylistCreateResponse : ModelBase
     }
 }
 
-class PlaylistCreateResponseFromRaw : IFromRaw<PlaylistCreateResponse>
+class PlaylistCreateResponseFromRaw : IFromRawJson<PlaylistCreateResponse>
 {
     /// <inheritdoc/>
     public PlaylistCreateResponse FromRawUnchecked(
@@ -320,12 +320,12 @@ class PlaylistCreateResponseFromRaw : IFromRaw<PlaylistCreateResponse>
 /// The user who owns the playlist
 /// </summary>
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         global::Spotted.Models.Users.Playlists.Owner,
         global::Spotted.Models.Users.Playlists.OwnerFromRaw
     >)
 )]
-public sealed record class Owner : ModelBase
+public sealed record class Owner : JsonModel
 {
     /// <summary>
     /// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for
@@ -333,7 +333,7 @@ public sealed record class Owner : ModelBase
     /// </summary>
     public string? ID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
         init
         {
             if (value == null)
@@ -341,13 +341,13 @@ public sealed record class Owner : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "id", value);
+            JsonModel.Set(this._rawData, "id", value);
         }
     }
 
     public ExternalURLObject? ExternalURLs
     {
-        get { return ModelBase.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -355,7 +355,7 @@ public sealed record class Owner : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "external_urls", value);
+            JsonModel.Set(this._rawData, "external_urls", value);
         }
     }
 
@@ -364,7 +364,7 @@ public sealed record class Owner : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
         init
         {
             if (value == null)
@@ -372,7 +372,7 @@ public sealed record class Owner : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "href", value);
+            JsonModel.Set(this._rawData, "href", value);
         }
     }
 
@@ -384,7 +384,7 @@ public sealed record class Owner : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -392,7 +392,7 @@ public sealed record class Owner : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -403,7 +403,7 @@ public sealed record class Owner : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<ApiEnum<string, PlaylistUserObjectType>>(
+            return JsonModel.GetNullableClass<ApiEnum<string, PlaylistUserObjectType>>(
                 this.RawData,
                 "type"
             );
@@ -415,7 +415,7 @@ public sealed record class Owner : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -425,7 +425,7 @@ public sealed record class Owner : ModelBase
     /// </summary>
     public string? Uri
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
         init
         {
             if (value == null)
@@ -433,7 +433,7 @@ public sealed record class Owner : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "uri", value);
+            JsonModel.Set(this._rawData, "uri", value);
         }
     }
 
@@ -442,8 +442,8 @@ public sealed record class Owner : ModelBase
     /// </summary>
     public string? DisplayName
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "display_name"); }
-        init { ModelBase.Set(this._rawData, "display_name", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "display_name"); }
+        init { JsonModel.Set(this._rawData, "display_name", value); }
     }
 
     public static implicit operator PlaylistUserObject(
@@ -498,7 +498,7 @@ public sealed record class Owner : ModelBase
     }
 }
 
-class OwnerFromRaw : IFromRaw<global::Spotted.Models.Users.Playlists.Owner>
+class OwnerFromRaw : IFromRawJson<global::Spotted.Models.Users.Playlists.Owner>
 {
     /// <inheritdoc/>
     public global::Spotted.Models.Users.Playlists.Owner FromRawUnchecked(
@@ -507,20 +507,20 @@ class OwnerFromRaw : IFromRaw<global::Spotted.Models.Users.Playlists.Owner>
 }
 
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         global::Spotted.Models.Users.Playlists.IntersectionMember1,
         global::Spotted.Models.Users.Playlists.IntersectionMember1FromRaw
     >)
 )]
-public sealed record class IntersectionMember1 : ModelBase
+public sealed record class IntersectionMember1 : JsonModel
 {
     /// <summary>
     /// The name displayed on the user's profile. `null` if not available.
     /// </summary>
     public string? DisplayName
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "display_name"); }
-        init { ModelBase.Set(this._rawData, "display_name", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "display_name"); }
+        init { JsonModel.Set(this._rawData, "display_name", value); }
     }
 
     /// <inheritdoc/>
@@ -559,7 +559,7 @@ public sealed record class IntersectionMember1 : ModelBase
 }
 
 class IntersectionMember1FromRaw
-    : IFromRaw<global::Spotted.Models.Users.Playlists.IntersectionMember1>
+    : IFromRawJson<global::Spotted.Models.Users.Playlists.IntersectionMember1>
 {
     /// <inheritdoc/>
     public global::Spotted.Models.Users.Playlists.IntersectionMember1 FromRawUnchecked(
@@ -571,17 +571,17 @@ class IntersectionMember1FromRaw
 /// The tracks of the playlist.
 /// </summary>
 [JsonConverter(
-    typeof(ModelConverter<PlaylistCreateResponseTracks, PlaylistCreateResponseTracksFromRaw>)
+    typeof(JsonModelConverter<PlaylistCreateResponseTracks, PlaylistCreateResponseTracksFromRaw>)
 )]
-public sealed record class PlaylistCreateResponseTracks : ModelBase
+public sealed record class PlaylistCreateResponseTracks : JsonModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -589,8 +589,8 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
     /// </summary>
     public required long Limit
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "limit"); }
-        init { ModelBase.Set(this._rawData, "limit", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "limit"); }
+        init { JsonModel.Set(this._rawData, "limit", value); }
     }
 
     /// <summary>
@@ -598,8 +598,8 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
     /// </summary>
     public required string? Next
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "next"); }
-        init { ModelBase.Set(this._rawData, "next", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
+        init { JsonModel.Set(this._rawData, "next", value); }
     }
 
     /// <summary>
@@ -607,8 +607,8 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
     /// </summary>
     public required long Offset
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "offset"); }
-        init { ModelBase.Set(this._rawData, "offset", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "offset"); }
+        init { JsonModel.Set(this._rawData, "offset", value); }
     }
 
     /// <summary>
@@ -616,8 +616,8 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
     /// </summary>
     public required string? Previous
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "previous"); }
-        init { ModelBase.Set(this._rawData, "previous", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "previous"); }
+        init { JsonModel.Set(this._rawData, "previous", value); }
     }
 
     /// <summary>
@@ -625,13 +625,13 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
     /// </summary>
     public required long Total
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "total"); }
-        init { ModelBase.Set(this._rawData, "total", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total"); }
+        init { JsonModel.Set(this._rawData, "total", value); }
     }
 
     public IReadOnlyList<PlaylistTrackObject>? Items
     {
-        get { return ModelBase.GetNullableClass<List<PlaylistTrackObject>>(this.RawData, "items"); }
+        get { return JsonModel.GetNullableClass<List<PlaylistTrackObject>>(this.RawData, "items"); }
         init
         {
             if (value == null)
@@ -639,7 +639,7 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "items", value);
+            JsonModel.Set(this._rawData, "items", value);
         }
     }
 
@@ -651,7 +651,7 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -659,7 +659,7 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -706,7 +706,7 @@ public sealed record class PlaylistCreateResponseTracks : ModelBase
     }
 }
 
-class PlaylistCreateResponseTracksFromRaw : IFromRaw<PlaylistCreateResponseTracks>
+class PlaylistCreateResponseTracksFromRaw : IFromRawJson<PlaylistCreateResponseTracks>
 {
     /// <inheritdoc/>
     public PlaylistCreateResponseTracks FromRawUnchecked(

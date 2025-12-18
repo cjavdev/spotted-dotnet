@@ -9,8 +9,8 @@ using System = System;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<AlbumRestrictionObject, AlbumRestrictionObjectFromRaw>))]
-public sealed record class AlbumRestrictionObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<AlbumRestrictionObject, AlbumRestrictionObjectFromRaw>))]
+public sealed record class AlbumRestrictionObject : JsonModel
 {
     /// <summary>
     /// The playlist's public/private status (if it should be added to the user's
@@ -20,7 +20,7 @@ public sealed record class AlbumRestrictionObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -28,7 +28,7 @@ public sealed record class AlbumRestrictionObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -40,7 +40,7 @@ public sealed record class AlbumRestrictionObject : ModelBase
     /// </summary>
     public ApiEnum<string, Reason>? Reason
     {
-        get { return ModelBase.GetNullableClass<ApiEnum<string, Reason>>(this.RawData, "reason"); }
+        get { return JsonModel.GetNullableClass<ApiEnum<string, Reason>>(this.RawData, "reason"); }
         init
         {
             if (value == null)
@@ -48,7 +48,7 @@ public sealed record class AlbumRestrictionObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "reason", value);
+            JsonModel.Set(this._rawData, "reason", value);
         }
     }
 
@@ -86,7 +86,7 @@ public sealed record class AlbumRestrictionObject : ModelBase
     }
 }
 
-class AlbumRestrictionObjectFromRaw : IFromRaw<AlbumRestrictionObject>
+class AlbumRestrictionObjectFromRaw : IFromRawJson<AlbumRestrictionObject>
 {
     /// <inheritdoc/>
     public AlbumRestrictionObject FromRawUnchecked(

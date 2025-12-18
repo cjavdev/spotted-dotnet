@@ -7,13 +7,15 @@ using Spotted.Core;
 
 namespace Spotted.Models.Shows;
 
-[JsonConverter(typeof(ModelConverter<ShowBulkRetrieveResponse, ShowBulkRetrieveResponseFromRaw>))]
-public sealed record class ShowBulkRetrieveResponse : ModelBase
+[JsonConverter(
+    typeof(JsonModelConverter<ShowBulkRetrieveResponse, ShowBulkRetrieveResponseFromRaw>)
+)]
+public sealed record class ShowBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<ShowBase> Shows
     {
-        get { return ModelBase.GetNotNullClass<List<ShowBase>>(this.RawData, "shows"); }
-        init { ModelBase.Set(this._rawData, "shows", value); }
+        get { return JsonModel.GetNotNullClass<List<ShowBase>>(this.RawData, "shows"); }
+        init { JsonModel.Set(this._rawData, "shows", value); }
     }
 
     /// <inheritdoc/>
@@ -59,7 +61,7 @@ public sealed record class ShowBulkRetrieveResponse : ModelBase
     }
 }
 
-class ShowBulkRetrieveResponseFromRaw : IFromRaw<ShowBulkRetrieveResponse>
+class ShowBulkRetrieveResponseFromRaw : IFromRawJson<ShowBulkRetrieveResponse>
 {
     /// <inheritdoc/>
     public ShowBulkRetrieveResponse FromRawUnchecked(

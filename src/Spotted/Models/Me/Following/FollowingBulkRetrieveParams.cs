@@ -18,8 +18,8 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public JsonElement Type
     {
-        get { return ModelBase.GetNotNullStruct<JsonElement>(this.RawQueryData, "type"); }
-        init { ModelBase.Set(this._rawQueryData, "type", value); }
+        get { return JsonModel.GetNotNullStruct<JsonElement>(this.RawQueryData, "type"); }
+        init { JsonModel.Set(this._rawQueryData, "type", value); }
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public string? After
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "after"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "after"); }
         init
         {
             if (value == null)
@@ -35,7 +35,7 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "after", value);
+            JsonModel.Set(this._rawQueryData, "after", value);
         }
     }
 
@@ -45,7 +45,7 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
         init
         {
             if (value == null)
@@ -53,7 +53,7 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "limit", value);
+            JsonModel.Set(this._rawQueryData, "limit", value);
         }
     }
 
@@ -83,7 +83,7 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static FollowingBulkRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

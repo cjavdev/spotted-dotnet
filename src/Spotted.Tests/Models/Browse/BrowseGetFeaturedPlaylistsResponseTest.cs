@@ -259,8 +259,8 @@ public class BrowseGetFeaturedPlaylistsResponseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<BrowseGetFeaturedPlaylistsResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<BrowseGetFeaturedPlaylistsResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedMessage = "Popular Playlists";

@@ -199,8 +199,8 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedPlaylistObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedPlaylistObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -488,8 +488,8 @@ public class OwnerTest : TestBase
             DisplayName = "display_name",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Owner>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Owner>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -701,8 +701,8 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1 { DisplayName = "display_name" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(element);
         Assert.NotNull(deserialized);
 
         string expectedDisplayName = "display_name";

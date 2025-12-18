@@ -259,8 +259,8 @@ public class CategoryGetPlaylistsResponseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CategoryGetPlaylistsResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<CategoryGetPlaylistsResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedMessage = "Popular Playlists";

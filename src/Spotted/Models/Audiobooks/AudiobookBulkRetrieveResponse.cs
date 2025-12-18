@@ -9,14 +9,14 @@ using Spotted.Exceptions;
 namespace Spotted.Models.Audiobooks;
 
 [JsonConverter(
-    typeof(ModelConverter<AudiobookBulkRetrieveResponse, AudiobookBulkRetrieveResponseFromRaw>)
+    typeof(JsonModelConverter<AudiobookBulkRetrieveResponse, AudiobookBulkRetrieveResponseFromRaw>)
 )]
-public sealed record class AudiobookBulkRetrieveResponse : ModelBase
+public sealed record class AudiobookBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<Audiobook> Audiobooks
     {
-        get { return ModelBase.GetNotNullClass<List<Audiobook>>(this.RawData, "audiobooks"); }
-        init { ModelBase.Set(this._rawData, "audiobooks", value); }
+        get { return JsonModel.GetNotNullClass<List<Audiobook>>(this.RawData, "audiobooks"); }
+        init { JsonModel.Set(this._rawData, "audiobooks", value); }
     }
 
     /// <inheritdoc/>
@@ -64,7 +64,7 @@ public sealed record class AudiobookBulkRetrieveResponse : ModelBase
     }
 }
 
-class AudiobookBulkRetrieveResponseFromRaw : IFromRaw<AudiobookBulkRetrieveResponse>
+class AudiobookBulkRetrieveResponseFromRaw : IFromRawJson<AudiobookBulkRetrieveResponse>
 {
     /// <inheritdoc/>
     public AudiobookBulkRetrieveResponse FromRawUnchecked(
@@ -72,8 +72,8 @@ class AudiobookBulkRetrieveResponseFromRaw : IFromRaw<AudiobookBulkRetrieveRespo
     ) => AudiobookBulkRetrieveResponse.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(ModelConverter<Audiobook, AudiobookFromRaw>))]
-public sealed record class Audiobook : ModelBase
+[JsonConverter(typeof(JsonModelConverter<Audiobook, AudiobookFromRaw>))]
+public sealed record class Audiobook : JsonModel
 {
     /// <summary>
     /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -81,8 +81,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required string ID
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "id"); }
-        init { ModelBase.Set(this._rawData, "id", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
+        init { JsonModel.Set(this._rawData, "id", value); }
     }
 
     /// <summary>
@@ -90,8 +90,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required IReadOnlyList<AuthorObject> Authors
     {
-        get { return ModelBase.GetNotNullClass<List<AuthorObject>>(this.RawData, "authors"); }
-        init { ModelBase.Set(this._rawData, "authors", value); }
+        get { return JsonModel.GetNotNullClass<List<AuthorObject>>(this.RawData, "authors"); }
+        init { JsonModel.Set(this._rawData, "authors", value); }
     }
 
     /// <summary>
@@ -101,8 +101,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required IReadOnlyList<string> AvailableMarkets
     {
-        get { return ModelBase.GetNotNullClass<List<string>>(this.RawData, "available_markets"); }
-        init { ModelBase.Set(this._rawData, "available_markets", value); }
+        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "available_markets"); }
+        init { JsonModel.Set(this._rawData, "available_markets", value); }
     }
 
     /// <summary>
@@ -110,8 +110,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required IReadOnlyList<CopyrightObject> Copyrights
     {
-        get { return ModelBase.GetNotNullClass<List<CopyrightObject>>(this.RawData, "copyrights"); }
-        init { ModelBase.Set(this._rawData, "copyrights", value); }
+        get { return JsonModel.GetNotNullClass<List<CopyrightObject>>(this.RawData, "copyrights"); }
+        init { JsonModel.Set(this._rawData, "copyrights", value); }
     }
 
     /// <summary>
@@ -120,8 +120,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required string Description
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "description"); }
-        init { ModelBase.Set(this._rawData, "description", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "description"); }
+        init { JsonModel.Set(this._rawData, "description", value); }
     }
 
     /// <summary>
@@ -130,14 +130,14 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required bool Explicit
     {
-        get { return ModelBase.GetNotNullStruct<bool>(this.RawData, "explicit"); }
-        init { ModelBase.Set(this._rawData, "explicit", value); }
+        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "explicit"); }
+        init { JsonModel.Set(this._rawData, "explicit", value); }
     }
 
     public required ExternalURLObject ExternalURLs
     {
-        get { return ModelBase.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
-        init { ModelBase.Set(this._rawData, "external_urls", value); }
+        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        init { JsonModel.Set(this._rawData, "external_urls", value); }
     }
 
     /// <summary>
@@ -145,8 +145,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -154,8 +154,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required string HTMLDescription
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "html_description"); }
-        init { ModelBase.Set(this._rawData, "html_description", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "html_description"); }
+        init { JsonModel.Set(this._rawData, "html_description", value); }
     }
 
     /// <summary>
@@ -163,8 +163,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return ModelBase.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
-        init { ModelBase.Set(this._rawData, "images", value); }
+        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
+        init { JsonModel.Set(this._rawData, "images", value); }
     }
 
     /// <summary>
@@ -173,8 +173,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required IReadOnlyList<string> Languages
     {
-        get { return ModelBase.GetNotNullClass<List<string>>(this.RawData, "languages"); }
-        init { ModelBase.Set(this._rawData, "languages", value); }
+        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "languages"); }
+        init { JsonModel.Set(this._rawData, "languages", value); }
     }
 
     /// <summary>
@@ -182,8 +182,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required string MediaType
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "media_type"); }
-        init { ModelBase.Set(this._rawData, "media_type", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "media_type"); }
+        init { JsonModel.Set(this._rawData, "media_type", value); }
     }
 
     /// <summary>
@@ -191,8 +191,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required string Name
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "name"); }
-        init { ModelBase.Set(this._rawData, "name", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
+        init { JsonModel.Set(this._rawData, "name", value); }
     }
 
     /// <summary>
@@ -200,8 +200,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required IReadOnlyList<NarratorObject> Narrators
     {
-        get { return ModelBase.GetNotNullClass<List<NarratorObject>>(this.RawData, "narrators"); }
-        init { ModelBase.Set(this._rawData, "narrators", value); }
+        get { return JsonModel.GetNotNullClass<List<NarratorObject>>(this.RawData, "narrators"); }
+        init { JsonModel.Set(this._rawData, "narrators", value); }
     }
 
     /// <summary>
@@ -209,8 +209,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required string Publisher
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "publisher"); }
-        init { ModelBase.Set(this._rawData, "publisher", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "publisher"); }
+        init { JsonModel.Set(this._rawData, "publisher", value); }
     }
 
     /// <summary>
@@ -218,8 +218,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required long TotalChapters
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "total_chapters"); }
-        init { ModelBase.Set(this._rawData, "total_chapters", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total_chapters"); }
+        init { JsonModel.Set(this._rawData, "total_chapters", value); }
     }
 
     /// <summary>
@@ -227,8 +227,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public JsonElement Type
     {
-        get { return ModelBase.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
-        init { ModelBase.Set(this._rawData, "type", value); }
+        get { return JsonModel.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
+        init { JsonModel.Set(this._rawData, "type", value); }
     }
 
     /// <summary>
@@ -237,8 +237,8 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public required string Uri
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "uri"); }
-        init { ModelBase.Set(this._rawData, "uri", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "uri"); }
+        init { JsonModel.Set(this._rawData, "uri", value); }
     }
 
     /// <summary>
@@ -246,7 +246,7 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public string? Edition
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "edition"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "edition"); }
         init
         {
             if (value == null)
@@ -254,7 +254,7 @@ public sealed record class Audiobook : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "edition", value);
+            JsonModel.Set(this._rawData, "edition", value);
         }
     }
 
@@ -266,7 +266,7 @@ public sealed record class Audiobook : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -274,7 +274,7 @@ public sealed record class Audiobook : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -285,12 +285,12 @@ public sealed record class Audiobook : ModelBase
     {
         get
         {
-            return ModelBase.GetNotNullClass<AudiobookIntersectionMember1Chapters>(
+            return JsonModel.GetNotNullClass<AudiobookIntersectionMember1Chapters>(
                 this.RawData,
                 "chapters"
             );
         }
-        init { ModelBase.Set(this._rawData, "chapters", value); }
+        init { JsonModel.Set(this._rawData, "chapters", value); }
     }
 
     public static implicit operator AudiobookBase(Audiobook audiobook) =>
@@ -394,7 +394,7 @@ public sealed record class Audiobook : ModelBase
     }
 }
 
-class AudiobookFromRaw : IFromRaw<Audiobook>
+class AudiobookFromRaw : IFromRawJson<Audiobook>
 {
     /// <inheritdoc/>
     public Audiobook FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
@@ -402,9 +402,9 @@ class AudiobookFromRaw : IFromRaw<Audiobook>
 }
 
 [JsonConverter(
-    typeof(ModelConverter<AudiobookIntersectionMember1, AudiobookIntersectionMember1FromRaw>)
+    typeof(JsonModelConverter<AudiobookIntersectionMember1, AudiobookIntersectionMember1FromRaw>)
 )]
-public sealed record class AudiobookIntersectionMember1 : ModelBase
+public sealed record class AudiobookIntersectionMember1 : JsonModel
 {
     /// <summary>
     /// The chapters of the audiobook.
@@ -413,12 +413,12 @@ public sealed record class AudiobookIntersectionMember1 : ModelBase
     {
         get
         {
-            return ModelBase.GetNotNullClass<AudiobookIntersectionMember1Chapters>(
+            return JsonModel.GetNotNullClass<AudiobookIntersectionMember1Chapters>(
                 this.RawData,
                 "chapters"
             );
         }
-        init { ModelBase.Set(this._rawData, "chapters", value); }
+        init { JsonModel.Set(this._rawData, "chapters", value); }
     }
 
     /// <inheritdoc/>
@@ -461,7 +461,7 @@ public sealed record class AudiobookIntersectionMember1 : ModelBase
     }
 }
 
-class AudiobookIntersectionMember1FromRaw : IFromRaw<AudiobookIntersectionMember1>
+class AudiobookIntersectionMember1FromRaw : IFromRawJson<AudiobookIntersectionMember1>
 {
     /// <inheritdoc/>
     public AudiobookIntersectionMember1 FromRawUnchecked(
@@ -473,20 +473,20 @@ class AudiobookIntersectionMember1FromRaw : IFromRaw<AudiobookIntersectionMember
 /// The chapters of the audiobook.
 /// </summary>
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         AudiobookIntersectionMember1Chapters,
         AudiobookIntersectionMember1ChaptersFromRaw
     >)
 )]
-public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
+public sealed record class AudiobookIntersectionMember1Chapters : JsonModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -494,8 +494,8 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
     /// </summary>
     public required long Limit
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "limit"); }
-        init { ModelBase.Set(this._rawData, "limit", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "limit"); }
+        init { JsonModel.Set(this._rawData, "limit", value); }
     }
 
     /// <summary>
@@ -503,8 +503,8 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
     /// </summary>
     public required string? Next
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "next"); }
-        init { ModelBase.Set(this._rawData, "next", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
+        init { JsonModel.Set(this._rawData, "next", value); }
     }
 
     /// <summary>
@@ -512,8 +512,8 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
     /// </summary>
     public required long Offset
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "offset"); }
-        init { ModelBase.Set(this._rawData, "offset", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "offset"); }
+        init { JsonModel.Set(this._rawData, "offset", value); }
     }
 
     /// <summary>
@@ -521,8 +521,8 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
     /// </summary>
     public required string? Previous
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "previous"); }
-        init { ModelBase.Set(this._rawData, "previous", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "previous"); }
+        init { JsonModel.Set(this._rawData, "previous", value); }
     }
 
     /// <summary>
@@ -530,15 +530,15 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
     /// </summary>
     public required long Total
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "total"); }
-        init { ModelBase.Set(this._rawData, "total", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total"); }
+        init { JsonModel.Set(this._rawData, "total", value); }
     }
 
     public IReadOnlyList<SimplifiedChapterObject>? Items
     {
         get
         {
-            return ModelBase.GetNullableClass<List<SimplifiedChapterObject>>(this.RawData, "items");
+            return JsonModel.GetNullableClass<List<SimplifiedChapterObject>>(this.RawData, "items");
         }
         init
         {
@@ -547,7 +547,7 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "items", value);
+            JsonModel.Set(this._rawData, "items", value);
         }
     }
 
@@ -559,7 +559,7 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -567,7 +567,7 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -616,7 +616,8 @@ public sealed record class AudiobookIntersectionMember1Chapters : ModelBase
     }
 }
 
-class AudiobookIntersectionMember1ChaptersFromRaw : IFromRaw<AudiobookIntersectionMember1Chapters>
+class AudiobookIntersectionMember1ChaptersFromRaw
+    : IFromRawJson<AudiobookIntersectionMember1Chapters>
 {
     /// <inheritdoc/>
     public AudiobookIntersectionMember1Chapters FromRawUnchecked(

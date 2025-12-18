@@ -50,8 +50,8 @@ public class FollowersObjectTest : TestBase
             Total = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<FollowersObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<FollowersObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedHref = "href";

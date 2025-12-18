@@ -382,8 +382,8 @@ public class ChapterBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ChapterBulkRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ChapterBulkRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         List<Chapter> expectedChapters =
@@ -951,8 +951,8 @@ public class ChapterTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Chapter>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Chapter>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "5Xt5DXGzch68nYYamXrNxZ";

@@ -33,7 +33,7 @@ public interface IImageService
     /// <inheritdoc cref="Update(ImageUpdateParams, CancellationToken)"/>
     Task<HttpResponse> Update(
         string playlistID,
-        string body,
+        BinaryContent body,
         ImageUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
     );

@@ -9,8 +9,8 @@ using System = System;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<SimplifiedEpisodeObject, SimplifiedEpisodeObjectFromRaw>))]
-public sealed record class SimplifiedEpisodeObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<SimplifiedEpisodeObject, SimplifiedEpisodeObjectFromRaw>))]
+public sealed record class SimplifiedEpisodeObject : JsonModel
 {
     /// <summary>
     /// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the
@@ -18,8 +18,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required string ID
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "id"); }
-        init { ModelBase.Set(this._rawData, "id", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
+        init { JsonModel.Set(this._rawData, "id", value); }
     }
 
     /// <summary>
@@ -28,8 +28,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     [System::Obsolete("deprecated")]
     public required string? AudioPreviewURL
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "audio_preview_url"); }
-        init { ModelBase.Set(this._rawData, "audio_preview_url", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "audio_preview_url"); }
+        init { JsonModel.Set(this._rawData, "audio_preview_url", value); }
     }
 
     /// <summary>
@@ -38,8 +38,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required string Description
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "description"); }
-        init { ModelBase.Set(this._rawData, "description", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "description"); }
+        init { JsonModel.Set(this._rawData, "description", value); }
     }
 
     /// <summary>
@@ -47,8 +47,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required long DurationMs
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "duration_ms"); }
-        init { ModelBase.Set(this._rawData, "duration_ms", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "duration_ms"); }
+        init { JsonModel.Set(this._rawData, "duration_ms", value); }
     }
 
     /// <summary>
@@ -57,8 +57,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required bool Explicit
     {
-        get { return ModelBase.GetNotNullStruct<bool>(this.RawData, "explicit"); }
-        init { ModelBase.Set(this._rawData, "explicit", value); }
+        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "explicit"); }
+        init { JsonModel.Set(this._rawData, "explicit", value); }
     }
 
     /// <summary>
@@ -66,8 +66,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required ExternalURLObject ExternalURLs
     {
-        get { return ModelBase.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
-        init { ModelBase.Set(this._rawData, "external_urls", value); }
+        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        init { JsonModel.Set(this._rawData, "external_urls", value); }
     }
 
     /// <summary>
@@ -75,8 +75,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -84,8 +84,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required string HTMLDescription
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "html_description"); }
-        init { ModelBase.Set(this._rawData, "html_description", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "html_description"); }
+        init { JsonModel.Set(this._rawData, "html_description", value); }
     }
 
     /// <summary>
@@ -93,8 +93,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return ModelBase.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
-        init { ModelBase.Set(this._rawData, "images", value); }
+        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
+        init { JsonModel.Set(this._rawData, "images", value); }
     }
 
     /// <summary>
@@ -102,8 +102,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required bool IsExternallyHosted
     {
-        get { return ModelBase.GetNotNullStruct<bool>(this.RawData, "is_externally_hosted"); }
-        init { ModelBase.Set(this._rawData, "is_externally_hosted", value); }
+        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "is_externally_hosted"); }
+        init { JsonModel.Set(this._rawData, "is_externally_hosted", value); }
     }
 
     /// <summary>
@@ -111,8 +111,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required bool IsPlayable
     {
-        get { return ModelBase.GetNotNullStruct<bool>(this.RawData, "is_playable"); }
-        init { ModelBase.Set(this._rawData, "is_playable", value); }
+        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "is_playable"); }
+        init { JsonModel.Set(this._rawData, "is_playable", value); }
     }
 
     /// <summary>
@@ -121,8 +121,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required IReadOnlyList<string> Languages
     {
-        get { return ModelBase.GetNotNullClass<List<string>>(this.RawData, "languages"); }
-        init { ModelBase.Set(this._rawData, "languages", value); }
+        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "languages"); }
+        init { JsonModel.Set(this._rawData, "languages", value); }
     }
 
     /// <summary>
@@ -130,8 +130,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required string Name
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "name"); }
-        init { ModelBase.Set(this._rawData, "name", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
+        init { JsonModel.Set(this._rawData, "name", value); }
     }
 
     /// <summary>
@@ -140,8 +140,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required string ReleaseDate
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "release_date"); }
-        init { ModelBase.Set(this._rawData, "release_date", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "release_date"); }
+        init { JsonModel.Set(this._rawData, "release_date", value); }
     }
 
     /// <summary>
@@ -154,11 +154,11 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     {
         get
         {
-            return ModelBase.GetNotNullClass<
+            return JsonModel.GetNotNullClass<
                 ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>
             >(this.RawData, "release_date_precision");
         }
-        init { ModelBase.Set(this._rawData, "release_date_precision", value); }
+        init { JsonModel.Set(this._rawData, "release_date_precision", value); }
     }
 
     /// <summary>
@@ -166,8 +166,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public JsonElement Type
     {
-        get { return ModelBase.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
-        init { ModelBase.Set(this._rawData, "type", value); }
+        get { return JsonModel.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
+        init { JsonModel.Set(this._rawData, "type", value); }
     }
 
     /// <summary>
@@ -176,8 +176,8 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public required string Uri
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "uri"); }
-        init { ModelBase.Set(this._rawData, "uri", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "uri"); }
+        init { JsonModel.Set(this._rawData, "uri", value); }
     }
 
     /// <summary>
@@ -188,7 +188,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     [System::Obsolete("deprecated")]
     public string? Language
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "language"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "language"); }
         init
         {
             if (value == null)
@@ -196,7 +196,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "language", value);
+            JsonModel.Set(this._rawData, "language", value);
         }
     }
 
@@ -208,7 +208,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -216,7 +216,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -227,7 +227,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<EpisodeRestrictionObject>(
+            return JsonModel.GetNullableClass<EpisodeRestrictionObject>(
                 this.RawData,
                 "restrictions"
             );
@@ -239,7 +239,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "restrictions", value);
+            JsonModel.Set(this._rawData, "restrictions", value);
         }
     }
 
@@ -249,7 +249,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     /// </summary>
     public ResumePointObject? ResumePoint
     {
-        get { return ModelBase.GetNullableClass<ResumePointObject>(this.RawData, "resume_point"); }
+        get { return JsonModel.GetNullableClass<ResumePointObject>(this.RawData, "resume_point"); }
         init
         {
             if (value == null)
@@ -257,7 +257,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "resume_point", value);
+            JsonModel.Set(this._rawData, "resume_point", value);
         }
     }
 
@@ -334,7 +334,7 @@ public sealed record class SimplifiedEpisodeObject : ModelBase
     }
 }
 
-class SimplifiedEpisodeObjectFromRaw : IFromRaw<SimplifiedEpisodeObject>
+class SimplifiedEpisodeObjectFromRaw : IFromRawJson<SimplifiedEpisodeObject>
 {
     /// <inheritdoc/>
     public SimplifiedEpisodeObject FromRawUnchecked(

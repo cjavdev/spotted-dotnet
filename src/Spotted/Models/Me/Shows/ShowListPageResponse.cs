@@ -8,16 +8,16 @@ using Spotted.Core;
 
 namespace Spotted.Models.Me.Shows;
 
-[JsonConverter(typeof(ModelConverter<ShowListPageResponse, ShowListPageResponseFromRaw>))]
-public sealed record class ShowListPageResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<ShowListPageResponse, ShowListPageResponseFromRaw>))]
+public sealed record class ShowListPageResponse : JsonModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request
     /// </summary>
     public required string Href
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawData, "href"); }
-        init { ModelBase.Set(this._rawData, "href", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
+        init { JsonModel.Set(this._rawData, "href", value); }
     }
 
     /// <summary>
@@ -25,8 +25,8 @@ public sealed record class ShowListPageResponse : ModelBase
     /// </summary>
     public required long Limit
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "limit"); }
-        init { ModelBase.Set(this._rawData, "limit", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "limit"); }
+        init { JsonModel.Set(this._rawData, "limit", value); }
     }
 
     /// <summary>
@@ -34,8 +34,8 @@ public sealed record class ShowListPageResponse : ModelBase
     /// </summary>
     public required string? Next
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "next"); }
-        init { ModelBase.Set(this._rawData, "next", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
+        init { JsonModel.Set(this._rawData, "next", value); }
     }
 
     /// <summary>
@@ -43,8 +43,8 @@ public sealed record class ShowListPageResponse : ModelBase
     /// </summary>
     public required long Offset
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "offset"); }
-        init { ModelBase.Set(this._rawData, "offset", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "offset"); }
+        init { JsonModel.Set(this._rawData, "offset", value); }
     }
 
     /// <summary>
@@ -52,8 +52,8 @@ public sealed record class ShowListPageResponse : ModelBase
     /// </summary>
     public required string? Previous
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "previous"); }
-        init { ModelBase.Set(this._rawData, "previous", value); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "previous"); }
+        init { JsonModel.Set(this._rawData, "previous", value); }
     }
 
     /// <summary>
@@ -61,13 +61,13 @@ public sealed record class ShowListPageResponse : ModelBase
     /// </summary>
     public required long Total
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawData, "total"); }
-        init { ModelBase.Set(this._rawData, "total", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total"); }
+        init { JsonModel.Set(this._rawData, "total", value); }
     }
 
     public IReadOnlyList<Item>? Items
     {
-        get { return ModelBase.GetNullableClass<List<Item>>(this.RawData, "items"); }
+        get { return JsonModel.GetNullableClass<List<Item>>(this.RawData, "items"); }
         init
         {
             if (value == null)
@@ -75,7 +75,7 @@ public sealed record class ShowListPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "items", value);
+            JsonModel.Set(this._rawData, "items", value);
         }
     }
 
@@ -87,7 +87,7 @@ public sealed record class ShowListPageResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -95,7 +95,7 @@ public sealed record class ShowListPageResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -142,7 +142,7 @@ public sealed record class ShowListPageResponse : ModelBase
     }
 }
 
-class ShowListPageResponseFromRaw : IFromRaw<ShowListPageResponse>
+class ShowListPageResponseFromRaw : IFromRawJson<ShowListPageResponse>
 {
     /// <inheritdoc/>
     public ShowListPageResponse FromRawUnchecked(
@@ -150,8 +150,8 @@ class ShowListPageResponseFromRaw : IFromRaw<ShowListPageResponse>
     ) => ShowListPageResponse.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(ModelConverter<Item, ItemFromRaw>))]
-public sealed record class Item : ModelBase
+[JsonConverter(typeof(JsonModelConverter<Item, ItemFromRaw>))]
+public sealed record class Item : JsonModel
 {
     /// <summary>
     /// The date and time the show was saved. Timestamps are returned in ISO 8601
@@ -162,7 +162,7 @@ public sealed record class Item : ModelBase
     /// </summary>
     public DateTimeOffset? AddedAt
     {
-        get { return ModelBase.GetNullableStruct<DateTimeOffset>(this.RawData, "added_at"); }
+        get { return JsonModel.GetNullableStruct<DateTimeOffset>(this.RawData, "added_at"); }
         init
         {
             if (value == null)
@@ -170,7 +170,7 @@ public sealed record class Item : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "added_at", value);
+            JsonModel.Set(this._rawData, "added_at", value);
         }
     }
 
@@ -182,7 +182,7 @@ public sealed record class Item : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -190,7 +190,7 @@ public sealed record class Item : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -199,7 +199,7 @@ public sealed record class Item : ModelBase
     /// </summary>
     public ShowBase? Show
     {
-        get { return ModelBase.GetNullableClass<ShowBase>(this.RawData, "show"); }
+        get { return JsonModel.GetNullableClass<ShowBase>(this.RawData, "show"); }
         init
         {
             if (value == null)
@@ -207,7 +207,7 @@ public sealed record class Item : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "show", value);
+            JsonModel.Set(this._rawData, "show", value);
         }
     }
 
@@ -244,7 +244,7 @@ public sealed record class Item : ModelBase
     }
 }
 
-class ItemFromRaw : IFromRaw<Item>
+class ItemFromRaw : IFromRawJson<Item>
 {
     /// <inheritdoc/>
     public Item FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

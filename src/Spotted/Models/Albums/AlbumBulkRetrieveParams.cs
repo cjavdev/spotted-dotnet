@@ -20,8 +20,8 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
     /// </summary>
     public required string IDs
     {
-        get { return ModelBase.GetNotNullClass<string>(this.RawQueryData, "ids"); }
-        init { ModelBase.Set(this._rawQueryData, "ids", value); }
+        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
+        init { JsonModel.Set(this._rawQueryData, "ids", value); }
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
         init
         {
             if (value == null)
@@ -44,7 +44,7 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "market", value);
+            JsonModel.Set(this._rawQueryData, "market", value);
         }
     }
 
@@ -74,7 +74,7 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static AlbumBulkRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

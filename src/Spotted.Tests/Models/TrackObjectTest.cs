@@ -405,8 +405,8 @@ public class TrackObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TrackObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<TrackObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -1365,8 +1365,8 @@ public class AlbumTest : TestBase
             Restrictions = new() { Published = true, Reason = Reason.Market },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Album>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Album>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "2up3OPMp9Tb4dAKM2erWXQ";

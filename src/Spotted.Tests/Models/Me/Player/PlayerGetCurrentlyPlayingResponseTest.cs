@@ -503,8 +503,8 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
             Timestamp = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlayerGetCurrentlyPlayingResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlayerGetCurrentlyPlayingResponse>(element);
         Assert.NotNull(deserialized);
 
         Actions expectedActions = new()
@@ -929,8 +929,8 @@ public class ActionsTest : TestBase
             TransferringPlayback = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Actions>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Actions>(element);
         Assert.NotNull(deserialized);
 
         bool expectedInterruptingPlayback = true;
@@ -1359,8 +1359,8 @@ public class ItemTest : TestBase
                 Uri = "uri",
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<Item>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<Item>(element);
 
         Assert.Equal(value, deserialized);
     }
@@ -1448,8 +1448,8 @@ public class ItemTest : TestBase
                 },
             }
         );
-        string json = JsonSerializer.Serialize(value);
-        var deserialized = JsonSerializer.Deserialize<Item>(json);
+        string element = JsonSerializer.Serialize(value);
+        var deserialized = JsonSerializer.Deserialize<Item>(element);
 
         Assert.Equal(value, deserialized);
     }

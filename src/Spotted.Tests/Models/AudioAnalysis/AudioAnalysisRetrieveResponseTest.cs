@@ -491,8 +491,8 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AudioAnalysisRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AudioAnalysisRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         List<TimeIntervalObject> expectedBars =
@@ -903,8 +903,8 @@ public class MetaTest : TestBase
             Timestamp = 1495193577,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Meta>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Meta>(element);
         Assert.NotNull(deserialized);
 
         double expectedAnalysisTime = 6.93906;
@@ -1117,8 +1117,8 @@ public class SectionTest : TestBase
             TimeSignatureConfidence = 1,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Section>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Section>(element);
         Assert.NotNull(deserialized);
 
         double expectedConfidence = 1;
@@ -1438,8 +1438,8 @@ public class SegmentTest : TestBase
             Timbre = [42.115, 64.373, -0.233],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Segment>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Segment>(element);
         Assert.NotNull(deserialized);
 
         double expectedConfidence = 0.435;
@@ -1754,8 +1754,8 @@ public class TrackTest : TestBase
             WindowSeconds = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Track>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Track>(element);
         Assert.NotNull(deserialized);
 
         long expectedAnalysisChannels = 1;

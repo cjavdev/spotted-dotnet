@@ -7,15 +7,15 @@ using Spotted.Core;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<ResumePointObject, ResumePointObjectFromRaw>))]
-public sealed record class ResumePointObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<ResumePointObject, ResumePointObjectFromRaw>))]
+public sealed record class ResumePointObject : JsonModel
 {
     /// <summary>
     /// Whether or not the episode has been fully played by the user.
     /// </summary>
     public bool? FullyPlayed
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "fully_played"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "fully_played"); }
         init
         {
             if (value == null)
@@ -23,7 +23,7 @@ public sealed record class ResumePointObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "fully_played", value);
+            JsonModel.Set(this._rawData, "fully_played", value);
         }
     }
 
@@ -35,7 +35,7 @@ public sealed record class ResumePointObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -43,7 +43,7 @@ public sealed record class ResumePointObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -52,7 +52,7 @@ public sealed record class ResumePointObject : ModelBase
     /// </summary>
     public long? ResumePositionMs
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "resume_position_ms"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "resume_position_ms"); }
         init
         {
             if (value == null)
@@ -60,7 +60,7 @@ public sealed record class ResumePointObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "resume_position_ms", value);
+            JsonModel.Set(this._rawData, "resume_position_ms", value);
         }
     }
 
@@ -99,7 +99,7 @@ public sealed record class ResumePointObject : ModelBase
     }
 }
 
-class ResumePointObjectFromRaw : IFromRaw<ResumePointObject>
+class ResumePointObjectFromRaw : IFromRawJson<ResumePointObject>
 {
     /// <inheritdoc/>
     public ResumePointObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

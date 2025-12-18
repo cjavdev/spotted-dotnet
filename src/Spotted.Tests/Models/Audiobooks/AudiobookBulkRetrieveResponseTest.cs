@@ -433,8 +433,8 @@ public class AudiobookBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AudiobookBulkRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AudiobookBulkRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         List<Audiobook> expectedAudiobooks =
@@ -1100,8 +1100,8 @@ public class AudiobookTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Audiobook>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Audiobook>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -2016,8 +2016,8 @@ public class AudiobookIntersectionMember1Test : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AudiobookIntersectionMember1>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AudiobookIntersectionMember1>(element);
         Assert.NotNull(deserialized);
 
         AudiobookIntersectionMember1Chapters expectedChapters = new()
@@ -2396,8 +2396,10 @@ public class AudiobookIntersectionMember1ChaptersTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AudiobookIntersectionMember1Chapters>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<AudiobookIntersectionMember1Chapters>(
+            element
+        );
         Assert.NotNull(deserialized);
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";

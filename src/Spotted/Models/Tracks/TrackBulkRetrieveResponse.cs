@@ -7,13 +7,15 @@ using Spotted.Core;
 
 namespace Spotted.Models.Tracks;
 
-[JsonConverter(typeof(ModelConverter<TrackBulkRetrieveResponse, TrackBulkRetrieveResponseFromRaw>))]
-public sealed record class TrackBulkRetrieveResponse : ModelBase
+[JsonConverter(
+    typeof(JsonModelConverter<TrackBulkRetrieveResponse, TrackBulkRetrieveResponseFromRaw>)
+)]
+public sealed record class TrackBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<TrackObject> Tracks
     {
-        get { return ModelBase.GetNotNullClass<List<TrackObject>>(this.RawData, "tracks"); }
-        init { ModelBase.Set(this._rawData, "tracks", value); }
+        get { return JsonModel.GetNotNullClass<List<TrackObject>>(this.RawData, "tracks"); }
+        init { JsonModel.Set(this._rawData, "tracks", value); }
     }
 
     /// <inheritdoc/>
@@ -59,7 +61,7 @@ public sealed record class TrackBulkRetrieveResponse : ModelBase
     }
 }
 
-class TrackBulkRetrieveResponseFromRaw : IFromRaw<TrackBulkRetrieveResponse>
+class TrackBulkRetrieveResponseFromRaw : IFromRawJson<TrackBulkRetrieveResponse>
 {
     /// <inheritdoc/>
     public TrackBulkRetrieveResponse FromRawUnchecked(

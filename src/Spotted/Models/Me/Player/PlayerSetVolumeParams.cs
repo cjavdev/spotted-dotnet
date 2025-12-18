@@ -20,8 +20,8 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
     /// </summary>
     public required long VolumePercent
     {
-        get { return ModelBase.GetNotNullStruct<long>(this.RawQueryData, "volume_percent"); }
-        init { ModelBase.Set(this._rawQueryData, "volume_percent", value); }
+        get { return JsonModel.GetNotNullStruct<long>(this.RawQueryData, "volume_percent"); }
+        init { JsonModel.Set(this._rawQueryData, "volume_percent", value); }
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "device_id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "device_id"); }
         init
         {
             if (value == null)
@@ -38,7 +38,7 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "device_id", value);
+            JsonModel.Set(this._rawQueryData, "device_id", value);
         }
     }
 
@@ -68,7 +68,7 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static PlayerSetVolumeParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

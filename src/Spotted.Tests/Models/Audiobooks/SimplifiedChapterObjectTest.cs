@@ -232,8 +232,8 @@ public class SimplifiedChapterObjectTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedChapterObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedChapterObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "5Xt5DXGzch68nYYamXrNxZ";

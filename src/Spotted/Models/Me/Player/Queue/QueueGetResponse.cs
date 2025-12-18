@@ -9,8 +9,8 @@ using System = System;
 
 namespace Spotted.Models.Me.Player.Queue;
 
-[JsonConverter(typeof(ModelConverter<QueueGetResponse, QueueGetResponseFromRaw>))]
-public sealed record class QueueGetResponse : ModelBase
+[JsonConverter(typeof(JsonModelConverter<QueueGetResponse, QueueGetResponseFromRaw>))]
+public sealed record class QueueGetResponse : JsonModel
 {
     /// <summary>
     /// The currently playing track or episode. Can be `null`.
@@ -19,7 +19,7 @@ public sealed record class QueueGetResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<CurrentlyPlaying>(this.RawData, "currently_playing");
+            return JsonModel.GetNullableClass<CurrentlyPlaying>(this.RawData, "currently_playing");
         }
         init
         {
@@ -28,7 +28,7 @@ public sealed record class QueueGetResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "currently_playing", value);
+            JsonModel.Set(this._rawData, "currently_playing", value);
         }
     }
 
@@ -40,7 +40,7 @@ public sealed record class QueueGetResponse : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -48,7 +48,7 @@ public sealed record class QueueGetResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -59,7 +59,7 @@ public sealed record class QueueGetResponse : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<List<QueueGetResponseQueue>>(this.RawData, "queue");
+            return JsonModel.GetNullableClass<List<QueueGetResponseQueue>>(this.RawData, "queue");
         }
         init
         {
@@ -68,7 +68,7 @@ public sealed record class QueueGetResponse : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "queue", value);
+            JsonModel.Set(this._rawData, "queue", value);
         }
     }
 
@@ -110,7 +110,7 @@ public sealed record class QueueGetResponse : ModelBase
     }
 }
 
-class QueueGetResponseFromRaw : IFromRaw<QueueGetResponse>
+class QueueGetResponseFromRaw : IFromRawJson<QueueGetResponse>
 {
     /// <inheritdoc/>
     public QueueGetResponse FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
@@ -125,11 +125,11 @@ public record class CurrentlyPlaying
 {
     public object? Value { get; } = null;
 
-    JsonElement? _json = null;
+    JsonElement? _element = null;
 
     public JsonElement Json
     {
-        get { return this._json ??= JsonSerializer.SerializeToElement(this.Value); }
+        get { return this._element ??= JsonSerializer.SerializeToElement(this.Value); }
     }
 
     public string? ID
@@ -201,21 +201,21 @@ public record class CurrentlyPlaying
         get { return Match<string?>(trackObject: (x) => x.Uri, episodeObject: (x) => x.Uri); }
     }
 
-    public CurrentlyPlaying(TrackObject value, JsonElement? json = null)
+    public CurrentlyPlaying(TrackObject value, JsonElement? element = null)
     {
         this.Value = value;
-        this._json = json;
+        this._element = element;
     }
 
-    public CurrentlyPlaying(EpisodeObject value, JsonElement? json = null)
+    public CurrentlyPlaying(EpisodeObject value, JsonElement? element = null)
     {
         this.Value = value;
-        this._json = json;
+        this._element = element;
     }
 
-    public CurrentlyPlaying(JsonElement json)
+    public CurrentlyPlaying(JsonElement element)
     {
-        this._json = json;
+        this._element = element;
     }
 
     /// <summary>
@@ -383,11 +383,11 @@ sealed class CurrentlyPlayingConverter : JsonConverter<CurrentlyPlaying>
         JsonSerializerOptions options
     )
     {
-        var json = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+        var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
         string? type;
         try
         {
-            type = json.GetProperty("type").GetString();
+            type = element.GetProperty("type").GetString();
         }
         catch
         {
@@ -400,11 +400,11 @@ sealed class CurrentlyPlayingConverter : JsonConverter<CurrentlyPlaying>
             {
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<TrackObject>(json, options);
+                    var deserialized = JsonSerializer.Deserialize<TrackObject>(element, options);
                     if (deserialized != null)
                     {
                         deserialized.Validate();
-                        return new(deserialized, json);
+                        return new(deserialized, element);
                     }
                 }
                 catch (System::Exception e)
@@ -413,17 +413,17 @@ sealed class CurrentlyPlayingConverter : JsonConverter<CurrentlyPlaying>
                     // ignore
                 }
 
-                return new(json);
+                return new(element);
             }
             case "episode":
             {
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(json, options);
+                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(element, options);
                     if (deserialized != null)
                     {
                         deserialized.Validate();
-                        return new(deserialized, json);
+                        return new(deserialized, element);
                     }
                 }
                 catch (System::Exception e)
@@ -432,11 +432,11 @@ sealed class CurrentlyPlayingConverter : JsonConverter<CurrentlyPlaying>
                     // ignore
                 }
 
-                return new(json);
+                return new(element);
             }
             default:
             {
-                return new CurrentlyPlaying(json);
+                return new CurrentlyPlaying(element);
             }
         }
     }
@@ -456,11 +456,11 @@ public record class QueueGetResponseQueue
 {
     public object? Value { get; } = null;
 
-    JsonElement? _json = null;
+    JsonElement? _element = null;
 
     public JsonElement Json
     {
-        get { return this._json ??= JsonSerializer.SerializeToElement(this.Value); }
+        get { return this._element ??= JsonSerializer.SerializeToElement(this.Value); }
     }
 
     public string? ID
@@ -532,21 +532,21 @@ public record class QueueGetResponseQueue
         get { return Match<string?>(trackObject: (x) => x.Uri, episodeObject: (x) => x.Uri); }
     }
 
-    public QueueGetResponseQueue(TrackObject value, JsonElement? json = null)
+    public QueueGetResponseQueue(TrackObject value, JsonElement? element = null)
     {
         this.Value = value;
-        this._json = json;
+        this._element = element;
     }
 
-    public QueueGetResponseQueue(EpisodeObject value, JsonElement? json = null)
+    public QueueGetResponseQueue(EpisodeObject value, JsonElement? element = null)
     {
         this.Value = value;
-        this._json = json;
+        this._element = element;
     }
 
-    public QueueGetResponseQueue(JsonElement json)
+    public QueueGetResponseQueue(JsonElement element)
     {
-        this._json = json;
+        this._element = element;
     }
 
     /// <summary>
@@ -714,11 +714,11 @@ sealed class QueueGetResponseQueueConverter : JsonConverter<QueueGetResponseQueu
         JsonSerializerOptions options
     )
     {
-        var json = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+        var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
         string? type;
         try
         {
-            type = json.GetProperty("type").GetString();
+            type = element.GetProperty("type").GetString();
         }
         catch
         {
@@ -731,11 +731,11 @@ sealed class QueueGetResponseQueueConverter : JsonConverter<QueueGetResponseQueu
             {
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<TrackObject>(json, options);
+                    var deserialized = JsonSerializer.Deserialize<TrackObject>(element, options);
                     if (deserialized != null)
                     {
                         deserialized.Validate();
-                        return new(deserialized, json);
+                        return new(deserialized, element);
                     }
                 }
                 catch (System::Exception e)
@@ -744,17 +744,17 @@ sealed class QueueGetResponseQueueConverter : JsonConverter<QueueGetResponseQueu
                     // ignore
                 }
 
-                return new(json);
+                return new(element);
             }
             case "episode":
             {
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(json, options);
+                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(element, options);
                     if (deserialized != null)
                     {
                         deserialized.Validate();
-                        return new(deserialized, json);
+                        return new(deserialized, element);
                     }
                 }
                 catch (System::Exception e)
@@ -763,11 +763,11 @@ sealed class QueueGetResponseQueueConverter : JsonConverter<QueueGetResponseQueu
                     // ignore
                 }
 
-                return new(json);
+                return new(element);
             }
             default:
             {
-                return new QueueGetResponseQueue(json);
+                return new QueueGetResponseQueue(element);
             }
         }
     }

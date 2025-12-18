@@ -21,7 +21,7 @@ public sealed record class FollowerCheckParams : ParamsBase
     /// </summary>
     public string? IDs
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "ids"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "ids"); }
         init
         {
             if (value == null)
@@ -29,7 +29,7 @@ public sealed record class FollowerCheckParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "ids", value);
+            JsonModel.Set(this._rawQueryData, "ids", value);
         }
     }
 
@@ -59,7 +59,7 @@ public sealed record class FollowerCheckParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static FollowerCheckParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

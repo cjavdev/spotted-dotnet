@@ -9,8 +9,8 @@ using System = System;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<PlaylistTrackObject, PlaylistTrackObjectFromRaw>))]
-public sealed record class PlaylistTrackObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<PlaylistTrackObject, PlaylistTrackObjectFromRaw>))]
+public sealed record class PlaylistTrackObject : JsonModel
 {
     /// <summary>
     /// The date and time the track or episode was added. _**Note**: some very old
@@ -20,7 +20,7 @@ public sealed record class PlaylistTrackObject : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableStruct<System::DateTimeOffset>(this.RawData, "added_at");
+            return JsonModel.GetNullableStruct<System::DateTimeOffset>(this.RawData, "added_at");
         }
         init
         {
@@ -29,7 +29,7 @@ public sealed record class PlaylistTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "added_at", value);
+            JsonModel.Set(this._rawData, "added_at", value);
         }
     }
 
@@ -39,7 +39,7 @@ public sealed record class PlaylistTrackObject : ModelBase
     /// </summary>
     public PlaylistUserObject? AddedBy
     {
-        get { return ModelBase.GetNullableClass<PlaylistUserObject>(this.RawData, "added_by"); }
+        get { return JsonModel.GetNullableClass<PlaylistUserObject>(this.RawData, "added_by"); }
         init
         {
             if (value == null)
@@ -47,7 +47,7 @@ public sealed record class PlaylistTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "added_by", value);
+            JsonModel.Set(this._rawData, "added_by", value);
         }
     }
 
@@ -57,7 +57,7 @@ public sealed record class PlaylistTrackObject : ModelBase
     /// </summary>
     public bool? IsLocal
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "is_local"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_local"); }
         init
         {
             if (value == null)
@@ -65,7 +65,7 @@ public sealed record class PlaylistTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "is_local", value);
+            JsonModel.Set(this._rawData, "is_local", value);
         }
     }
 
@@ -77,7 +77,7 @@ public sealed record class PlaylistTrackObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -85,7 +85,7 @@ public sealed record class PlaylistTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -94,7 +94,7 @@ public sealed record class PlaylistTrackObject : ModelBase
     /// </summary>
     public Track? Track
     {
-        get { return ModelBase.GetNullableClass<Track>(this.RawData, "track"); }
+        get { return JsonModel.GetNullableClass<Track>(this.RawData, "track"); }
         init
         {
             if (value == null)
@@ -102,7 +102,7 @@ public sealed record class PlaylistTrackObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "track", value);
+            JsonModel.Set(this._rawData, "track", value);
         }
     }
 
@@ -143,7 +143,7 @@ public sealed record class PlaylistTrackObject : ModelBase
     }
 }
 
-class PlaylistTrackObjectFromRaw : IFromRaw<PlaylistTrackObject>
+class PlaylistTrackObjectFromRaw : IFromRawJson<PlaylistTrackObject>
 {
     /// <inheritdoc/>
     public PlaylistTrackObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
@@ -158,11 +158,11 @@ public record class Track
 {
     public object? Value { get; } = null;
 
-    JsonElement? _json = null;
+    JsonElement? _element = null;
 
     public JsonElement Json
     {
-        get { return this._json ??= JsonSerializer.SerializeToElement(this.Value); }
+        get { return this._element ??= JsonSerializer.SerializeToElement(this.Value); }
     }
 
     public string? ID
@@ -222,21 +222,21 @@ public record class Track
         get { return Match<string?>(object1: (x) => x.Uri, episodeObject: (x) => x.Uri); }
     }
 
-    public Track(TrackObject value, JsonElement? json = null)
+    public Track(TrackObject value, JsonElement? element = null)
     {
         this.Value = value;
-        this._json = json;
+        this._element = element;
     }
 
-    public Track(EpisodeObject value, JsonElement? json = null)
+    public Track(EpisodeObject value, JsonElement? element = null)
     {
         this.Value = value;
-        this._json = json;
+        this._element = element;
     }
 
-    public Track(JsonElement json)
+    public Track(JsonElement element)
     {
-        this._json = json;
+        this._element = element;
     }
 
     /// <summary>
@@ -395,11 +395,11 @@ sealed class TrackConverter : JsonConverter<Track>
         JsonSerializerOptions options
     )
     {
-        var json = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+        var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
         string? type;
         try
         {
-            type = json.GetProperty("type").GetString();
+            type = element.GetProperty("type").GetString();
         }
         catch
         {
@@ -412,11 +412,11 @@ sealed class TrackConverter : JsonConverter<Track>
             {
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<TrackObject>(json, options);
+                    var deserialized = JsonSerializer.Deserialize<TrackObject>(element, options);
                     if (deserialized != null)
                     {
                         deserialized.Validate();
-                        return new(deserialized, json);
+                        return new(deserialized, element);
                     }
                 }
                 catch (System::Exception e)
@@ -425,17 +425,17 @@ sealed class TrackConverter : JsonConverter<Track>
                     // ignore
                 }
 
-                return new(json);
+                return new(element);
             }
             case "episode":
             {
                 try
                 {
-                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(json, options);
+                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(element, options);
                     if (deserialized != null)
                     {
                         deserialized.Validate();
-                        return new(deserialized, json);
+                        return new(deserialized, element);
                     }
                 }
                 catch (System::Exception e)
@@ -444,11 +444,11 @@ sealed class TrackConverter : JsonConverter<Track>
                     // ignore
                 }
 
-                return new(json);
+                return new(element);
             }
             default:
             {
-                return new Track(json);
+                return new Track(element);
             }
         }
     }

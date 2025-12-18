@@ -67,8 +67,8 @@ public class PlaylistUserObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlaylistUserObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<PlaylistUserObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

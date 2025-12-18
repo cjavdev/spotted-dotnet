@@ -169,8 +169,8 @@ public class ArtistBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ArtistBulkRetrieveResponse>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<ArtistBulkRetrieveResponse>(element);
         Assert.NotNull(deserialized);
 
         List<ArtistObject> expectedArtists =

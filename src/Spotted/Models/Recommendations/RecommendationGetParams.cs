@@ -29,7 +29,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
         init
         {
             if (value == null)
@@ -37,7 +37,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "limit", value);
+            JsonModel.Set(this._rawQueryData, "limit", value);
         }
     }
 
@@ -53,7 +53,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
         init
         {
             if (value == null)
@@ -61,7 +61,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "market", value);
+            JsonModel.Set(this._rawQueryData, "market", value);
         }
     }
 
@@ -73,7 +73,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxAcousticness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_acousticness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_acousticness"); }
         init
         {
             if (value == null)
@@ -81,7 +81,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_acousticness", value);
+            JsonModel.Set(this._rawQueryData, "max_acousticness", value);
         }
     }
 
@@ -93,7 +93,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxDanceability
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_danceability"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_danceability"); }
         init
         {
             if (value == null)
@@ -101,7 +101,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_danceability", value);
+            JsonModel.Set(this._rawQueryData, "max_danceability", value);
         }
     }
 
@@ -113,7 +113,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxDurationMs
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "max_duration_ms"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "max_duration_ms"); }
         init
         {
             if (value == null)
@@ -121,7 +121,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_duration_ms", value);
+            JsonModel.Set(this._rawQueryData, "max_duration_ms", value);
         }
     }
 
@@ -133,7 +133,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxEnergy
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_energy"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_energy"); }
         init
         {
             if (value == null)
@@ -141,7 +141,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_energy", value);
+            JsonModel.Set(this._rawQueryData, "max_energy", value);
         }
     }
 
@@ -155,7 +155,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_instrumentalness");
+            return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_instrumentalness");
         }
         init
         {
@@ -164,7 +164,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_instrumentalness", value);
+            JsonModel.Set(this._rawQueryData, "max_instrumentalness", value);
         }
     }
 
@@ -176,7 +176,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxKey
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "max_key"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "max_key"); }
         init
         {
             if (value == null)
@@ -184,7 +184,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_key", value);
+            JsonModel.Set(this._rawQueryData, "max_key", value);
         }
     }
 
@@ -196,7 +196,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxLiveness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_liveness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_liveness"); }
         init
         {
             if (value == null)
@@ -204,7 +204,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_liveness", value);
+            JsonModel.Set(this._rawQueryData, "max_liveness", value);
         }
     }
 
@@ -216,7 +216,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxLoudness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_loudness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_loudness"); }
         init
         {
             if (value == null)
@@ -224,7 +224,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_loudness", value);
+            JsonModel.Set(this._rawQueryData, "max_loudness", value);
         }
     }
 
@@ -236,7 +236,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxMode
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "max_mode"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "max_mode"); }
         init
         {
             if (value == null)
@@ -244,7 +244,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_mode", value);
+            JsonModel.Set(this._rawQueryData, "max_mode", value);
         }
     }
 
@@ -256,7 +256,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxPopularity
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "max_popularity"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "max_popularity"); }
         init
         {
             if (value == null)
@@ -264,7 +264,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_popularity", value);
+            JsonModel.Set(this._rawQueryData, "max_popularity", value);
         }
     }
 
@@ -276,7 +276,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxSpeechiness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_speechiness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_speechiness"); }
         init
         {
             if (value == null)
@@ -284,7 +284,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_speechiness", value);
+            JsonModel.Set(this._rawQueryData, "max_speechiness", value);
         }
     }
 
@@ -296,7 +296,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxTempo
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_tempo"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_tempo"); }
         init
         {
             if (value == null)
@@ -304,7 +304,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_tempo", value);
+            JsonModel.Set(this._rawQueryData, "max_tempo", value);
         }
     }
 
@@ -316,7 +316,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxTimeSignature
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "max_time_signature"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "max_time_signature"); }
         init
         {
             if (value == null)
@@ -324,7 +324,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_time_signature", value);
+            JsonModel.Set(this._rawQueryData, "max_time_signature", value);
         }
     }
 
@@ -336,7 +336,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxValence
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "max_valence"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "max_valence"); }
         init
         {
             if (value == null)
@@ -344,7 +344,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "max_valence", value);
+            JsonModel.Set(this._rawQueryData, "max_valence", value);
         }
     }
 
@@ -356,7 +356,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinAcousticness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_acousticness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_acousticness"); }
         init
         {
             if (value == null)
@@ -364,7 +364,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_acousticness", value);
+            JsonModel.Set(this._rawQueryData, "min_acousticness", value);
         }
     }
 
@@ -376,7 +376,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinDanceability
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_danceability"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_danceability"); }
         init
         {
             if (value == null)
@@ -384,7 +384,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_danceability", value);
+            JsonModel.Set(this._rawQueryData, "min_danceability", value);
         }
     }
 
@@ -396,7 +396,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinDurationMs
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "min_duration_ms"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "min_duration_ms"); }
         init
         {
             if (value == null)
@@ -404,7 +404,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_duration_ms", value);
+            JsonModel.Set(this._rawQueryData, "min_duration_ms", value);
         }
     }
 
@@ -416,7 +416,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinEnergy
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_energy"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_energy"); }
         init
         {
             if (value == null)
@@ -424,7 +424,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_energy", value);
+            JsonModel.Set(this._rawQueryData, "min_energy", value);
         }
     }
 
@@ -438,7 +438,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_instrumentalness");
+            return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_instrumentalness");
         }
         init
         {
@@ -447,7 +447,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_instrumentalness", value);
+            JsonModel.Set(this._rawQueryData, "min_instrumentalness", value);
         }
     }
 
@@ -459,7 +459,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinKey
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "min_key"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "min_key"); }
         init
         {
             if (value == null)
@@ -467,7 +467,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_key", value);
+            JsonModel.Set(this._rawQueryData, "min_key", value);
         }
     }
 
@@ -479,7 +479,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinLiveness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_liveness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_liveness"); }
         init
         {
             if (value == null)
@@ -487,7 +487,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_liveness", value);
+            JsonModel.Set(this._rawQueryData, "min_liveness", value);
         }
     }
 
@@ -499,7 +499,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinLoudness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_loudness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_loudness"); }
         init
         {
             if (value == null)
@@ -507,7 +507,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_loudness", value);
+            JsonModel.Set(this._rawQueryData, "min_loudness", value);
         }
     }
 
@@ -519,7 +519,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinMode
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "min_mode"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "min_mode"); }
         init
         {
             if (value == null)
@@ -527,7 +527,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_mode", value);
+            JsonModel.Set(this._rawQueryData, "min_mode", value);
         }
     }
 
@@ -539,7 +539,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinPopularity
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "min_popularity"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "min_popularity"); }
         init
         {
             if (value == null)
@@ -547,7 +547,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_popularity", value);
+            JsonModel.Set(this._rawQueryData, "min_popularity", value);
         }
     }
 
@@ -559,7 +559,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinSpeechiness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_speechiness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_speechiness"); }
         init
         {
             if (value == null)
@@ -567,7 +567,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_speechiness", value);
+            JsonModel.Set(this._rawQueryData, "min_speechiness", value);
         }
     }
 
@@ -579,7 +579,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinTempo
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_tempo"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_tempo"); }
         init
         {
             if (value == null)
@@ -587,7 +587,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_tempo", value);
+            JsonModel.Set(this._rawQueryData, "min_tempo", value);
         }
     }
 
@@ -599,7 +599,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinTimeSignature
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "min_time_signature"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "min_time_signature"); }
         init
         {
             if (value == null)
@@ -607,7 +607,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_time_signature", value);
+            JsonModel.Set(this._rawQueryData, "min_time_signature", value);
         }
     }
 
@@ -619,7 +619,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinValence
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "min_valence"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "min_valence"); }
         init
         {
             if (value == null)
@@ -627,7 +627,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "min_valence", value);
+            JsonModel.Set(this._rawQueryData, "min_valence", value);
         }
     }
 
@@ -639,7 +639,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public string? SeedArtists
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "seed_artists"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "seed_artists"); }
         init
         {
             if (value == null)
@@ -647,7 +647,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "seed_artists", value);
+            JsonModel.Set(this._rawQueryData, "seed_artists", value);
         }
     }
 
@@ -659,7 +659,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public string? SeedGenres
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "seed_genres"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "seed_genres"); }
         init
         {
             if (value == null)
@@ -667,7 +667,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "seed_genres", value);
+            JsonModel.Set(this._rawQueryData, "seed_genres", value);
         }
     }
 
@@ -679,7 +679,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public string? SeedTracks
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawQueryData, "seed_tracks"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "seed_tracks"); }
         init
         {
             if (value == null)
@@ -687,7 +687,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "seed_tracks", value);
+            JsonModel.Set(this._rawQueryData, "seed_tracks", value);
         }
     }
 
@@ -701,7 +701,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNullableStruct<double>(this.RawQueryData, "target_acousticness");
+            return JsonModel.GetNullableStruct<double>(this.RawQueryData, "target_acousticness");
         }
         init
         {
@@ -710,7 +710,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_acousticness", value);
+            JsonModel.Set(this._rawQueryData, "target_acousticness", value);
         }
     }
 
@@ -724,7 +724,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNullableStruct<double>(this.RawQueryData, "target_danceability");
+            return JsonModel.GetNullableStruct<double>(this.RawQueryData, "target_danceability");
         }
         init
         {
@@ -733,7 +733,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_danceability", value);
+            JsonModel.Set(this._rawQueryData, "target_danceability", value);
         }
     }
 
@@ -742,7 +742,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetDurationMs
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "target_duration_ms"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "target_duration_ms"); }
         init
         {
             if (value == null)
@@ -750,7 +750,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_duration_ms", value);
+            JsonModel.Set(this._rawQueryData, "target_duration_ms", value);
         }
     }
 
@@ -762,7 +762,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetEnergy
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "target_energy"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "target_energy"); }
         init
         {
             if (value == null)
@@ -770,7 +770,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_energy", value);
+            JsonModel.Set(this._rawQueryData, "target_energy", value);
         }
     }
 
@@ -784,7 +784,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNullableStruct<double>(
+            return JsonModel.GetNullableStruct<double>(
                 this.RawQueryData,
                 "target_instrumentalness"
             );
@@ -796,7 +796,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_instrumentalness", value);
+            JsonModel.Set(this._rawQueryData, "target_instrumentalness", value);
         }
     }
 
@@ -808,7 +808,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetKey
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "target_key"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "target_key"); }
         init
         {
             if (value == null)
@@ -816,7 +816,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_key", value);
+            JsonModel.Set(this._rawQueryData, "target_key", value);
         }
     }
 
@@ -828,7 +828,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetLiveness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "target_liveness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "target_liveness"); }
         init
         {
             if (value == null)
@@ -836,7 +836,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_liveness", value);
+            JsonModel.Set(this._rawQueryData, "target_liveness", value);
         }
     }
 
@@ -848,7 +848,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetLoudness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "target_loudness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "target_loudness"); }
         init
         {
             if (value == null)
@@ -856,7 +856,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_loudness", value);
+            JsonModel.Set(this._rawQueryData, "target_loudness", value);
         }
     }
 
@@ -868,7 +868,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetMode
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "target_mode"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "target_mode"); }
         init
         {
             if (value == null)
@@ -876,7 +876,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_mode", value);
+            JsonModel.Set(this._rawQueryData, "target_mode", value);
         }
     }
 
@@ -888,7 +888,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetPopularity
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawQueryData, "target_popularity"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "target_popularity"); }
         init
         {
             if (value == null)
@@ -896,7 +896,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_popularity", value);
+            JsonModel.Set(this._rawQueryData, "target_popularity", value);
         }
     }
 
@@ -908,7 +908,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetSpeechiness
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "target_speechiness"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "target_speechiness"); }
         init
         {
             if (value == null)
@@ -916,7 +916,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_speechiness", value);
+            JsonModel.Set(this._rawQueryData, "target_speechiness", value);
         }
     }
 
@@ -925,7 +925,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetTempo
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "target_tempo"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "target_tempo"); }
         init
         {
             if (value == null)
@@ -933,7 +933,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_tempo", value);
+            JsonModel.Set(this._rawQueryData, "target_tempo", value);
         }
     }
 
@@ -947,7 +947,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     {
         get
         {
-            return ModelBase.GetNullableStruct<long>(this.RawQueryData, "target_time_signature");
+            return JsonModel.GetNullableStruct<long>(this.RawQueryData, "target_time_signature");
         }
         init
         {
@@ -956,7 +956,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_time_signature", value);
+            JsonModel.Set(this._rawQueryData, "target_time_signature", value);
         }
     }
 
@@ -968,7 +968,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetValence
     {
-        get { return ModelBase.GetNullableStruct<double>(this.RawQueryData, "target_valence"); }
+        get { return JsonModel.GetNullableStruct<double>(this.RawQueryData, "target_valence"); }
         init
         {
             if (value == null)
@@ -976,7 +976,7 @@ public sealed record class RecommendationGetParams : ParamsBase
                 return;
             }
 
-            ModelBase.Set(this._rawQueryData, "target_valence", value);
+            JsonModel.Set(this._rawQueryData, "target_valence", value);
         }
     }
 
@@ -1006,7 +1006,7 @@ public sealed record class RecommendationGetParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRaw.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
     public static RecommendationGetParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

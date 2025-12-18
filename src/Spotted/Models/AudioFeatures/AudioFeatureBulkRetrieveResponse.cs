@@ -10,20 +10,20 @@ using System = System;
 namespace Spotted.Models.AudioFeatures;
 
 [JsonConverter(
-    typeof(ModelConverter<
+    typeof(JsonModelConverter<
         AudioFeatureBulkRetrieveResponse,
         AudioFeatureBulkRetrieveResponseFromRaw
     >)
 )]
-public sealed record class AudioFeatureBulkRetrieveResponse : ModelBase
+public sealed record class AudioFeatureBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<AudioFeature> AudioFeatures
     {
         get
         {
-            return ModelBase.GetNotNullClass<List<AudioFeature>>(this.RawData, "audio_features");
+            return JsonModel.GetNotNullClass<List<AudioFeature>>(this.RawData, "audio_features");
         }
-        init { ModelBase.Set(this._rawData, "audio_features", value); }
+        init { JsonModel.Set(this._rawData, "audio_features", value); }
     }
 
     /// <inheritdoc/>
@@ -71,7 +71,7 @@ public sealed record class AudioFeatureBulkRetrieveResponse : ModelBase
     }
 }
 
-class AudioFeatureBulkRetrieveResponseFromRaw : IFromRaw<AudioFeatureBulkRetrieveResponse>
+class AudioFeatureBulkRetrieveResponseFromRaw : IFromRawJson<AudioFeatureBulkRetrieveResponse>
 {
     /// <inheritdoc/>
     public AudioFeatureBulkRetrieveResponse FromRawUnchecked(
@@ -79,15 +79,15 @@ class AudioFeatureBulkRetrieveResponseFromRaw : IFromRaw<AudioFeatureBulkRetriev
     ) => AudioFeatureBulkRetrieveResponse.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(typeof(ModelConverter<AudioFeature, AudioFeatureFromRaw>))]
-public sealed record class AudioFeature : ModelBase
+[JsonConverter(typeof(JsonModelConverter<AudioFeature, AudioFeatureFromRaw>))]
+public sealed record class AudioFeature : JsonModel
 {
     /// <summary>
     /// The Spotify ID for the track.
     /// </summary>
     public string? ID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
         init
         {
             if (value == null)
@@ -95,7 +95,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "id", value);
+            JsonModel.Set(this._rawData, "id", value);
         }
     }
 
@@ -105,7 +105,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Acousticness
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "acousticness"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "acousticness"); }
         init
         {
             if (value == null)
@@ -113,7 +113,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "acousticness", value);
+            JsonModel.Set(this._rawData, "acousticness", value);
         }
     }
 
@@ -123,7 +123,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public string? AnalysisURL
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "analysis_url"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "analysis_url"); }
         init
         {
             if (value == null)
@@ -131,7 +131,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "analysis_url", value);
+            JsonModel.Set(this._rawData, "analysis_url", value);
         }
     }
 
@@ -142,7 +142,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Danceability
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "danceability"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "danceability"); }
         init
         {
             if (value == null)
@@ -150,7 +150,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "danceability", value);
+            JsonModel.Set(this._rawData, "danceability", value);
         }
     }
 
@@ -159,7 +159,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public long? DurationMs
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "duration_ms"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "duration_ms"); }
         init
         {
             if (value == null)
@@ -167,7 +167,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "duration_ms", value);
+            JsonModel.Set(this._rawData, "duration_ms", value);
         }
     }
 
@@ -180,7 +180,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Energy
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "energy"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "energy"); }
         init
         {
             if (value == null)
@@ -188,7 +188,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "energy", value);
+            JsonModel.Set(this._rawData, "energy", value);
         }
     }
 
@@ -201,7 +201,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Instrumentalness
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "instrumentalness"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "instrumentalness"); }
         init
         {
             if (value == null)
@@ -209,7 +209,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "instrumentalness", value);
+            JsonModel.Set(this._rawData, "instrumentalness", value);
         }
     }
 
@@ -220,7 +220,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public long? Key
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "key"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "key"); }
         init
         {
             if (value == null)
@@ -228,7 +228,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "key", value);
+            JsonModel.Set(this._rawData, "key", value);
         }
     }
 
@@ -239,7 +239,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Liveness
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "liveness"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "liveness"); }
         init
         {
             if (value == null)
@@ -247,7 +247,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "liveness", value);
+            JsonModel.Set(this._rawData, "liveness", value);
         }
     }
 
@@ -260,7 +260,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Loudness
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "loudness"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "loudness"); }
         init
         {
             if (value == null)
@@ -268,7 +268,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "loudness", value);
+            JsonModel.Set(this._rawData, "loudness", value);
         }
     }
 
@@ -279,7 +279,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public long? Mode
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "mode"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "mode"); }
         init
         {
             if (value == null)
@@ -287,7 +287,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "mode", value);
+            JsonModel.Set(this._rawData, "mode", value);
         }
     }
 
@@ -299,7 +299,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -307,7 +307,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -322,7 +322,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Speechiness
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "speechiness"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "speechiness"); }
         init
         {
             if (value == null)
@@ -330,7 +330,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "speechiness", value);
+            JsonModel.Set(this._rawData, "speechiness", value);
         }
     }
 
@@ -341,7 +341,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Tempo
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "tempo"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "tempo"); }
         init
         {
             if (value == null)
@@ -349,7 +349,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "tempo", value);
+            JsonModel.Set(this._rawData, "tempo", value);
         }
     }
 
@@ -360,7 +360,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public long? TimeSignature
     {
-        get { return ModelBase.GetNullableStruct<long>(this.RawData, "time_signature"); }
+        get { return JsonModel.GetNullableStruct<long>(this.RawData, "time_signature"); }
         init
         {
             if (value == null)
@@ -368,7 +368,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "time_signature", value);
+            JsonModel.Set(this._rawData, "time_signature", value);
         }
     }
 
@@ -377,7 +377,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public string? TrackHref
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "track_href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "track_href"); }
         init
         {
             if (value == null)
@@ -385,7 +385,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "track_href", value);
+            JsonModel.Set(this._rawData, "track_href", value);
         }
     }
 
@@ -396,7 +396,7 @@ public sealed record class AudioFeature : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<ApiEnum<string, AudioFeatureType>>(
+            return JsonModel.GetNullableClass<ApiEnum<string, AudioFeatureType>>(
                 this.RawData,
                 "type"
             );
@@ -408,7 +408,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -417,7 +417,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public string? Uri
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
         init
         {
             if (value == null)
@@ -425,7 +425,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "uri", value);
+            JsonModel.Set(this._rawData, "uri", value);
         }
     }
 
@@ -437,7 +437,7 @@ public sealed record class AudioFeature : ModelBase
     /// </summary>
     public float? Valence
     {
-        get { return ModelBase.GetNullableStruct<float>(this.RawData, "valence"); }
+        get { return JsonModel.GetNullableStruct<float>(this.RawData, "valence"); }
         init
         {
             if (value == null)
@@ -445,7 +445,7 @@ public sealed record class AudioFeature : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "valence", value);
+            JsonModel.Set(this._rawData, "valence", value);
         }
     }
 
@@ -498,7 +498,7 @@ public sealed record class AudioFeature : ModelBase
     }
 }
 
-class AudioFeatureFromRaw : IFromRaw<AudioFeature>
+class AudioFeatureFromRaw : IFromRawJson<AudioFeature>
 {
     /// <inheritdoc/>
     public AudioFeature FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

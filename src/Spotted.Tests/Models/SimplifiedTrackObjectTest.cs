@@ -216,8 +216,8 @@ public class SimplifiedTrackObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedTrackObject>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedTrackObject>(element);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

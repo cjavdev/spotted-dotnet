@@ -9,8 +9,8 @@ using System = System;
 
 namespace Spotted.Models;
 
-[JsonConverter(typeof(ModelConverter<PlaylistUserObject, PlaylistUserObjectFromRaw>))]
-public sealed record class PlaylistUserObject : ModelBase
+[JsonConverter(typeof(JsonModelConverter<PlaylistUserObject, PlaylistUserObjectFromRaw>))]
+public sealed record class PlaylistUserObject : JsonModel
 {
     /// <summary>
     /// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for
@@ -18,7 +18,7 @@ public sealed record class PlaylistUserObject : ModelBase
     /// </summary>
     public string? ID
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "id"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
         init
         {
             if (value == null)
@@ -26,7 +26,7 @@ public sealed record class PlaylistUserObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "id", value);
+            JsonModel.Set(this._rawData, "id", value);
         }
     }
 
@@ -35,7 +35,7 @@ public sealed record class PlaylistUserObject : ModelBase
     /// </summary>
     public ExternalURLObject? ExternalURLs
     {
-        get { return ModelBase.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -43,7 +43,7 @@ public sealed record class PlaylistUserObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "external_urls", value);
+            JsonModel.Set(this._rawData, "external_urls", value);
         }
     }
 
@@ -52,7 +52,7 @@ public sealed record class PlaylistUserObject : ModelBase
     /// </summary>
     public string? Href
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "href"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
         init
         {
             if (value == null)
@@ -60,7 +60,7 @@ public sealed record class PlaylistUserObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "href", value);
+            JsonModel.Set(this._rawData, "href", value);
         }
     }
 
@@ -72,7 +72,7 @@ public sealed record class PlaylistUserObject : ModelBase
     /// </summary>
     public bool? Published
     {
-        get { return ModelBase.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
         init
         {
             if (value == null)
@@ -80,7 +80,7 @@ public sealed record class PlaylistUserObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "published", value);
+            JsonModel.Set(this._rawData, "published", value);
         }
     }
 
@@ -91,7 +91,7 @@ public sealed record class PlaylistUserObject : ModelBase
     {
         get
         {
-            return ModelBase.GetNullableClass<ApiEnum<string, PlaylistUserObjectType>>(
+            return JsonModel.GetNullableClass<ApiEnum<string, PlaylistUserObjectType>>(
                 this.RawData,
                 "type"
             );
@@ -103,7 +103,7 @@ public sealed record class PlaylistUserObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "type", value);
+            JsonModel.Set(this._rawData, "type", value);
         }
     }
 
@@ -113,7 +113,7 @@ public sealed record class PlaylistUserObject : ModelBase
     /// </summary>
     public string? Uri
     {
-        get { return ModelBase.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
         init
         {
             if (value == null)
@@ -121,7 +121,7 @@ public sealed record class PlaylistUserObject : ModelBase
                 return;
             }
 
-            ModelBase.Set(this._rawData, "uri", value);
+            JsonModel.Set(this._rawData, "uri", value);
         }
     }
 
@@ -163,7 +163,7 @@ public sealed record class PlaylistUserObject : ModelBase
     }
 }
 
-class PlaylistUserObjectFromRaw : IFromRaw<PlaylistUserObject>
+class PlaylistUserObjectFromRaw : IFromRawJson<PlaylistUserObject>
 {
     /// <inheritdoc/>
     public PlaylistUserObject FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>

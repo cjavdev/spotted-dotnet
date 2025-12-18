@@ -31,8 +31,8 @@ public class TrackTest : TestBase
     {
         var model = new Track { Uri = "uri" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Track>(json);
+        string element = JsonSerializer.Serialize(model);
+        var deserialized = JsonSerializer.Deserialize<Track>(element);
         Assert.NotNull(deserialized);
 
         string expectedUri = "uri";
