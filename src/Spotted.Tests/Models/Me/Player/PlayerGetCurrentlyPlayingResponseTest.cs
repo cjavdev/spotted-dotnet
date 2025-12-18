@@ -1085,7 +1085,7 @@ public class ActionsTest : TestBase
 public class ItemTest : TestBase
 {
     [Fact]
-    public void track_objectValidation_Works()
+    public void TrackObjectValidationWorks()
     {
         Item value = new(
             new TrackObject()
@@ -1181,7 +1181,7 @@ public class ItemTest : TestBase
     }
 
     [Fact]
-    public void episode_objectValidation_Works()
+    public void EpisodeObjectValidationWorks()
     {
         Item value = new(
             new EpisodeObject()
@@ -1267,7 +1267,7 @@ public class ItemTest : TestBase
     }
 
     [Fact]
-    public void track_objectSerializationRoundtrip_Works()
+    public void TrackObjectSerializationRoundtripWorks()
     {
         Item value = new(
             new TrackObject()
@@ -1366,7 +1366,7 @@ public class ItemTest : TestBase
     }
 
     [Fact]
-    public void episode_objectSerializationRoundtrip_Works()
+    public void EpisodeObjectSerializationRoundtripWorks()
     {
         Item value = new(
             new EpisodeObject()
