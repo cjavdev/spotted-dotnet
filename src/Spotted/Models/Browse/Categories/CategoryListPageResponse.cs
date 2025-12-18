@@ -7,76 +7,10 @@ using Spotted.Core;
 
 namespace Spotted.Models.Browse.Categories;
 
-[JsonConverter(typeof(JsonModelConverter<CategoryListResponse, CategoryListResponseFromRaw>))]
-public sealed record class CategoryListResponse : JsonModel
-{
-    public required CategoryListResponseCategories Categories
-    {
-        get
-        {
-            return JsonModel.GetNotNullClass<CategoryListResponseCategories>(
-                this.RawData,
-                "categories"
-            );
-        }
-        init { JsonModel.Set(this._rawData, "categories", value); }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        this.Categories.Validate();
-    }
-
-    public CategoryListResponse() { }
-
-    public CategoryListResponse(CategoryListResponse categoryListResponse)
-        : base(categoryListResponse) { }
-
-    public CategoryListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = [.. rawData];
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    CategoryListResponse(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = [.. rawData];
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="CategoryListResponseFromRaw.FromRawUnchecked"/>
-    public static CategoryListResponse FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-
-    [SetsRequiredMembers]
-    public CategoryListResponse(CategoryListResponseCategories categories)
-        : this()
-    {
-        this.Categories = categories;
-    }
-}
-
-class CategoryListResponseFromRaw : IFromRawJson<CategoryListResponse>
-{
-    /// <inheritdoc/>
-    public CategoryListResponse FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => CategoryListResponse.FromRawUnchecked(rawData);
-}
-
 [JsonConverter(
-    typeof(JsonModelConverter<
-        CategoryListResponseCategories,
-        CategoryListResponseCategoriesFromRaw
-    >)
+    typeof(JsonModelConverter<CategoryListPageResponse, CategoryListPageResponseFromRaw>)
 )]
-public sealed record class CategoryListResponseCategories : JsonModel
+public sealed record class CategoryListPageResponse : JsonModel
 {
     /// <summary>
     /// A link to the Web API endpoint returning the full result of the request
@@ -188,28 +122,26 @@ public sealed record class CategoryListResponseCategories : JsonModel
         _ = this.Published;
     }
 
-    public CategoryListResponseCategories() { }
+    public CategoryListPageResponse() { }
 
-    public CategoryListResponseCategories(
-        CategoryListResponseCategories categoryListResponseCategories
-    )
-        : base(categoryListResponseCategories) { }
+    public CategoryListPageResponse(CategoryListPageResponse categoryListPageResponse)
+        : base(categoryListPageResponse) { }
 
-    public CategoryListResponseCategories(IReadOnlyDictionary<string, JsonElement> rawData)
+    public CategoryListPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = [.. rawData];
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    CategoryListResponseCategories(FrozenDictionary<string, JsonElement> rawData)
+    CategoryListPageResponse(FrozenDictionary<string, JsonElement> rawData)
     {
         this._rawData = [.. rawData];
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="CategoryListResponseCategoriesFromRaw.FromRawUnchecked"/>
-    public static CategoryListResponseCategories FromRawUnchecked(
+    /// <inheritdoc cref="CategoryListPageResponseFromRaw.FromRawUnchecked"/>
+    public static CategoryListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -217,12 +149,12 @@ public sealed record class CategoryListResponseCategories : JsonModel
     }
 }
 
-class CategoryListResponseCategoriesFromRaw : IFromRawJson<CategoryListResponseCategories>
+class CategoryListPageResponseFromRaw : IFromRawJson<CategoryListPageResponse>
 {
     /// <inheritdoc/>
-    public CategoryListResponseCategories FromRawUnchecked(
+    public CategoryListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
-    ) => CategoryListResponseCategories.FromRawUnchecked(rawData);
+    ) => CategoryListPageResponse.FromRawUnchecked(rawData);
 }
 
 [JsonConverter(

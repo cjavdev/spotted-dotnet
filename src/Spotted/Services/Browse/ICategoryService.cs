@@ -40,7 +40,7 @@ public interface ICategoryService
     /// Get a list of categories used to tag items in Spotify (on, for example, the
     /// Spotify player’s “Browse” tab).
     /// </summary>
-    Task<CategoryListResponse> List(
+    Task<CategoryListPageResponse> List(
         CategoryListParams? parameters = null,
         CancellationToken cancellationToken = default
     );

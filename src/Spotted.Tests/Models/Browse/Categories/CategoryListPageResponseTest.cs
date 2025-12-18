@@ -5,250 +5,12 @@ using Spotted.Models.Browse.Categories;
 
 namespace Spotted.Tests.Models.Browse.Categories;
 
-public class CategoryListResponseTest : TestBase
+public class CategoryListPageResponseTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new CategoryListResponse
-        {
-            Categories = new()
-            {
-                Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
-                Limit = 20,
-                Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-                Offset = 0,
-                Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-                Total = 4,
-                Items =
-                [
-                    new()
-                    {
-                        ID = "equal",
-                        Href = "href",
-                        Icons =
-                        [
-                            new()
-                            {
-                                Height = 300,
-                                URL =
-                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                                Width = 300,
-                                Published = true,
-                            },
-                        ],
-                        Name = "EQUAL",
-                        Published = true,
-                    },
-                ],
-                Published = true,
-            },
-        };
-
-        CategoryListResponseCategories expectedCategories = new()
-        {
-            Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
-            Limit = 20,
-            Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-            Offset = 0,
-            Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-            Total = 4,
-            Items =
-            [
-                new()
-                {
-                    ID = "equal",
-                    Href = "href",
-                    Icons =
-                    [
-                        new()
-                        {
-                            Height = 300,
-                            URL =
-                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                            Width = 300,
-                            Published = true,
-                        },
-                    ],
-                    Name = "EQUAL",
-                    Published = true,
-                },
-            ],
-            Published = true,
-        };
-
-        Assert.Equal(expectedCategories, model.Categories);
-    }
-
-    [Fact]
-    public void SerializationRoundtrip_Works()
-    {
-        var model = new CategoryListResponse
-        {
-            Categories = new()
-            {
-                Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
-                Limit = 20,
-                Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-                Offset = 0,
-                Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-                Total = 4,
-                Items =
-                [
-                    new()
-                    {
-                        ID = "equal",
-                        Href = "href",
-                        Icons =
-                        [
-                            new()
-                            {
-                                Height = 300,
-                                URL =
-                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                                Width = 300,
-                                Published = true,
-                            },
-                        ],
-                        Name = "EQUAL",
-                        Published = true,
-                    },
-                ],
-                Published = true,
-            },
-        };
-
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CategoryListResponse>(json);
-
-        Assert.Equal(model, deserialized);
-    }
-
-    [Fact]
-    public void FieldRoundtripThroughSerialization_Works()
-    {
-        var model = new CategoryListResponse
-        {
-            Categories = new()
-            {
-                Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
-                Limit = 20,
-                Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-                Offset = 0,
-                Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-                Total = 4,
-                Items =
-                [
-                    new()
-                    {
-                        ID = "equal",
-                        Href = "href",
-                        Icons =
-                        [
-                            new()
-                            {
-                                Height = 300,
-                                URL =
-                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                                Width = 300,
-                                Published = true,
-                            },
-                        ],
-                        Name = "EQUAL",
-                        Published = true,
-                    },
-                ],
-                Published = true,
-            },
-        };
-
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CategoryListResponse>(element);
-        Assert.NotNull(deserialized);
-
-        CategoryListResponseCategories expectedCategories = new()
-        {
-            Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
-            Limit = 20,
-            Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-            Offset = 0,
-            Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-            Total = 4,
-            Items =
-            [
-                new()
-                {
-                    ID = "equal",
-                    Href = "href",
-                    Icons =
-                    [
-                        new()
-                        {
-                            Height = 300,
-                            URL =
-                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                            Width = 300,
-                            Published = true,
-                        },
-                    ],
-                    Name = "EQUAL",
-                    Published = true,
-                },
-            ],
-            Published = true,
-        };
-
-        Assert.Equal(expectedCategories, deserialized.Categories);
-    }
-
-    [Fact]
-    public void Validation_Works()
-    {
-        var model = new CategoryListResponse
-        {
-            Categories = new()
-            {
-                Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
-                Limit = 20,
-                Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-                Offset = 0,
-                Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
-                Total = 4,
-                Items =
-                [
-                    new()
-                    {
-                        ID = "equal",
-                        Href = "href",
-                        Icons =
-                        [
-                            new()
-                            {
-                                Height = 300,
-                                URL =
-                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                                Width = 300,
-                                Published = true,
-                            },
-                        ],
-                        Name = "EQUAL",
-                        Published = true,
-                    },
-                ],
-                Published = true,
-            },
-        };
-
-        model.Validate();
-    }
-}
-
-public class CategoryListResponseCategoriesTest : TestBase
-{
-    [Fact]
-    public void FieldRoundtrip_Works()
-    {
-        var model = new CategoryListResponseCategories
+        var model = new CategoryListPageResponse
         {
             Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
             Limit = 20,
@@ -326,7 +88,7 @@ public class CategoryListResponseCategoriesTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new CategoryListResponseCategories
+        var model = new CategoryListPageResponse
         {
             Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
             Limit = 20,
@@ -359,7 +121,7 @@ public class CategoryListResponseCategoriesTest : TestBase
         };
 
         string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CategoryListResponseCategories>(json);
+        var deserialized = JsonSerializer.Deserialize<CategoryListPageResponse>(json);
 
         Assert.Equal(model, deserialized);
     }
@@ -367,7 +129,7 @@ public class CategoryListResponseCategoriesTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new CategoryListResponseCategories
+        var model = new CategoryListPageResponse
         {
             Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
             Limit = 20,
@@ -400,7 +162,7 @@ public class CategoryListResponseCategoriesTest : TestBase
         };
 
         string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CategoryListResponseCategories>(element);
+        var deserialized = JsonSerializer.Deserialize<CategoryListPageResponse>(element);
         Assert.NotNull(deserialized);
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -449,7 +211,7 @@ public class CategoryListResponseCategoriesTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new CategoryListResponseCategories
+        var model = new CategoryListPageResponse
         {
             Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
             Limit = 20,
@@ -487,7 +249,7 @@ public class CategoryListResponseCategoriesTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new CategoryListResponseCategories
+        var model = new CategoryListPageResponse
         {
             Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
             Limit = 20,
@@ -506,7 +268,7 @@ public class CategoryListResponseCategoriesTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new CategoryListResponseCategories
+        var model = new CategoryListPageResponse
         {
             Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
             Limit = 20,
@@ -522,7 +284,7 @@ public class CategoryListResponseCategoriesTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new CategoryListResponseCategories
+        var model = new CategoryListPageResponse
         {
             Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
             Limit = 20,
@@ -545,7 +307,7 @@ public class CategoryListResponseCategoriesTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new CategoryListResponseCategories
+        var model = new CategoryListPageResponse
         {
             Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
             Limit = 20,
