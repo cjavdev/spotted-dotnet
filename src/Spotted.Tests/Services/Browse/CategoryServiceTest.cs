@@ -18,11 +18,11 @@ public class CategoryServiceTest : TestBase
     [Fact(Skip = "Prism tests are disabled")]
     public async Task List_Works()
     {
-        var categories = await this.client.Browse.Categories.List(
+        var page = await this.client.Browse.Categories.List(
             new(),
             TestContext.Current.CancellationToken
         );
-        categories.Validate();
+        page.Validate();
     }
 
     [Fact(Skip = "Prism tests are disabled")]
