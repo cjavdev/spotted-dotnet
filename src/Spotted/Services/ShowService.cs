@@ -90,7 +90,7 @@ public sealed class ShowService : IShowService
     }
 
     /// <inheritdoc/>
-    public async Task<ShowListEpisodesPageResponse> ListEpisodes(
+    public async Task<ShowListEpisodesPage> ListEpisodes(
         ShowListEpisodesParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -115,11 +115,11 @@ public sealed class ShowService : IShowService
         {
             page.Validate();
         }
-        return page;
+        return new ShowListEpisodesPage(this, parameters, page);
     }
 
     /// <inheritdoc/>
-    public async Task<ShowListEpisodesPageResponse> ListEpisodes(
+    public async Task<ShowListEpisodesPage> ListEpisodes(
         string id,
         ShowListEpisodesParams? parameters = null,
         CancellationToken cancellationToken = default

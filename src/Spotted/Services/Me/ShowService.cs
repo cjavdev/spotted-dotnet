@@ -27,7 +27,7 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
     }
 
     /// <inheritdoc/>
-    public async Task<ShowListPageResponse> List(
+    public async Task<ShowListPage> List(
         ShowListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -49,7 +49,7 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
         {
             page.Validate();
         }
-        return page;
+        return new ShowListPage(this, parameters, page);
     }
 
     /// <inheritdoc/>

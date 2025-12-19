@@ -70,7 +70,7 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
     }
 
     /// <inheritdoc/>
-    public async Task<TrackListPageResponse> List(
+    public async Task<TrackListPage> List(
         TrackListParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -95,11 +95,11 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
         {
             page.Validate();
         }
-        return page;
+        return new TrackListPage(this, parameters, page);
     }
 
     /// <inheritdoc/>
-    public async Task<TrackListPageResponse> List(
+    public async Task<TrackListPage> List(
         string playlistID,
         TrackListParams? parameters = null,
         CancellationToken cancellationToken = default

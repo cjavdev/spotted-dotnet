@@ -66,14 +66,11 @@ public sealed record class CategoryListPageResponse : JsonModel
         init { JsonModel.Set(this._rawData, "total", value); }
     }
 
-    public IReadOnlyList<global::Spotted.Models.Browse.Categories.Item>? Items
+    public IReadOnlyList<CategoryListResponse>? Items
     {
         get
         {
-            return JsonModel.GetNullableClass<List<global::Spotted.Models.Browse.Categories.Item>>(
-                this.RawData,
-                "items"
-            );
+            return JsonModel.GetNullableClass<List<CategoryListResponse>>(this.RawData, "items");
         }
         init
         {
@@ -155,117 +152,4 @@ class CategoryListPageResponseFromRaw : IFromRawJson<CategoryListPageResponse>
     public CategoryListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     ) => CategoryListPageResponse.FromRawUnchecked(rawData);
-}
-
-[JsonConverter(
-    typeof(JsonModelConverter<
-        global::Spotted.Models.Browse.Categories.Item,
-        global::Spotted.Models.Browse.Categories.ItemFromRaw
-    >)
-)]
-public sealed record class Item : JsonModel
-{
-    /// <summary>
-    /// The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids)
-    /// of the category.
-    /// </summary>
-    public required string ID
-    {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
-        init { JsonModel.Set(this._rawData, "id", value); }
-    }
-
-    /// <summary>
-    /// A link to the Web API endpoint returning full details of the category.
-    /// </summary>
-    public required string Href
-    {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
-        init { JsonModel.Set(this._rawData, "href", value); }
-    }
-
-    /// <summary>
-    /// The category icon, in various sizes.
-    /// </summary>
-    public required IReadOnlyList<ImageObject> Icons
-    {
-        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "icons"); }
-        init { JsonModel.Set(this._rawData, "icons", value); }
-    }
-
-    /// <summary>
-    /// The name of the category.
-    /// </summary>
-    public required string Name
-    {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
-        init { JsonModel.Set(this._rawData, "name", value); }
-    }
-
-    /// <summary>
-    /// The playlist's public/private status (if it should be added to the user's
-    /// profile or not): `true` the playlist will be public, `false` the playlist
-    /// will be private, `null` the playlist status is not relevant. For more about
-    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
-    /// </summary>
-    public bool? Published
-    {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            JsonModel.Set(this._rawData, "published", value);
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.ID;
-        _ = this.Href;
-        foreach (var item in this.Icons)
-        {
-            item.Validate();
-        }
-        _ = this.Name;
-        _ = this.Published;
-    }
-
-    public Item() { }
-
-    public Item(global::Spotted.Models.Browse.Categories.Item item)
-        : base(item) { }
-
-    public Item(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = [.. rawData];
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Item(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = [.. rawData];
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="global::Spotted.Models.Browse.Categories.ItemFromRaw.FromRawUnchecked"/>
-    public static global::Spotted.Models.Browse.Categories.Item FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ItemFromRaw : IFromRawJson<global::Spotted.Models.Browse.Categories.Item>
-{
-    /// <inheritdoc/>
-    public global::Spotted.Models.Browse.Categories.Item FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Spotted.Models.Browse.Categories.Item.FromRawUnchecked(rawData);
 }

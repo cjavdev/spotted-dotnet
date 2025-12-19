@@ -90,7 +90,7 @@ public sealed class AlbumService : IAlbumService
     }
 
     /// <inheritdoc/>
-    public async Task<AlbumListTracksPageResponse> ListTracks(
+    public async Task<AlbumListTracksPage> ListTracks(
         AlbumListTracksParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -115,11 +115,11 @@ public sealed class AlbumService : IAlbumService
         {
             page.Validate();
         }
-        return page;
+        return new AlbumListTracksPage(this, parameters, page);
     }
 
     /// <inheritdoc/>
-    public async Task<AlbumListTracksPageResponse> ListTracks(
+    public async Task<AlbumListTracksPage> ListTracks(
         string id,
         AlbumListTracksParams? parameters = null,
         CancellationToken cancellationToken = default

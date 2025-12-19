@@ -29,7 +29,7 @@ public interface IEpisodeService
     /// share any feedback that you have, or issues that you discover, in our [developer
     /// community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
     /// </summary>
-    Task<EpisodeListPageResponse> List(
+    Task<EpisodeListPage> List(
         EpisodeListParams? parameters = null,
         CancellationToken cancellationToken = default
     );

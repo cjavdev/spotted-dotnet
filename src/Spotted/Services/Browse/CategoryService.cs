@@ -66,7 +66,7 @@ public sealed class CategoryService : ICategoryService
     }
 
     /// <inheritdoc/>
-    public async Task<CategoryListPageResponse> List(
+    public async Task<CategoryListPage> List(
         CategoryListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -88,7 +88,7 @@ public sealed class CategoryService : ICategoryService
         {
             page.Validate();
         }
-        return page;
+        return new CategoryListPage(this, parameters, page);
     }
 
     /// <inheritdoc/>

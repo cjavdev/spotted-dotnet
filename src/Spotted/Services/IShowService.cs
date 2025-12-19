@@ -48,13 +48,13 @@ public interface IShowService
     /// Get Spotify catalog information about an show’s episodes. Optional parameters
     /// can be used to limit the number of episodes returned.
     /// </summary>
-    Task<ShowListEpisodesPageResponse> ListEpisodes(
+    Task<ShowListEpisodesPage> ListEpisodes(
         ShowListEpisodesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListEpisodes(ShowListEpisodesParams, CancellationToken)"/>
-    Task<ShowListEpisodesPageResponse> ListEpisodes(
+    Task<ShowListEpisodesPage> ListEpisodes(
         string id,
         ShowListEpisodesParams? parameters = null,
         CancellationToken cancellationToken = default

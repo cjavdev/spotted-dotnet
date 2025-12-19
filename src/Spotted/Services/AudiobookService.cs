@@ -90,7 +90,7 @@ public sealed class AudiobookService : IAudiobookService
     }
 
     /// <inheritdoc/>
-    public async Task<AudiobookListChaptersPageResponse> ListChapters(
+    public async Task<AudiobookListChaptersPage> ListChapters(
         AudiobookListChaptersParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -115,11 +115,11 @@ public sealed class AudiobookService : IAudiobookService
         {
             page.Validate();
         }
-        return page;
+        return new AudiobookListChaptersPage(this, parameters, page);
     }
 
     /// <inheritdoc/>
-    public async Task<AudiobookListChaptersPageResponse> ListChapters(
+    public async Task<AudiobookListChaptersPage> ListChapters(
         string id,
         AudiobookListChaptersParams? parameters = null,
         CancellationToken cancellationToken = default

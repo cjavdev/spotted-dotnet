@@ -48,13 +48,13 @@ public interface IAlbumService
     /// Get Spotify catalog information about an album’s tracks. Optional parameters
     /// can be used to limit the number of tracks returned.
     /// </summary>
-    Task<AlbumListTracksPageResponse> ListTracks(
+    Task<AlbumListTracksPage> ListTracks(
         AlbumListTracksParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListTracks(AlbumListTracksParams, CancellationToken)"/>
-    Task<AlbumListTracksPageResponse> ListTracks(
+    Task<AlbumListTracksPage> ListTracks(
         string id,
         AlbumListTracksParams? parameters = null,
         CancellationToken cancellationToken = default

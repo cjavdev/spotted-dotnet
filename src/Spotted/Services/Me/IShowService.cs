@@ -27,7 +27,7 @@ public interface IShowService
     /// Get a list of shows saved in the current Spotify user's library. Optional
     /// parameters can be used to limit the number of shows returned.
     /// </summary>
-    Task<ShowListPageResponse> List(
+    Task<ShowListPage> List(
         ShowListParams? parameters = null,
         CancellationToken cancellationToken = default
     );

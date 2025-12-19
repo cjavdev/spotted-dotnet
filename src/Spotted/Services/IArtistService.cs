@@ -49,13 +49,13 @@ public interface IArtistService
     /// <summary>
     /// Get Spotify catalog information about an artist's albums.
     /// </summary>
-    Task<ArtistListAlbumsPageResponse> ListAlbums(
+    Task<ArtistListAlbumsPage> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>
-    Task<ArtistListAlbumsPageResponse> ListAlbums(
+    Task<ArtistListAlbumsPage> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
         CancellationToken cancellationToken = default

@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Spotted.Core;
-using Spotted.Models;
 using Spotted.Models.Users.Playlists;
 
 namespace Spotted.Services.Users;
@@ -43,13 +42,13 @@ public interface IPlaylistService
     /// <summary>
     /// Get a list of the playlists owned or followed by a Spotify user.
     /// </summary>
-    Task<PagingPlaylistObject> List(
+    Task<PlaylistListPage> List(
         PlaylistListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(PlaylistListParams, CancellationToken)"/>
-    Task<PagingPlaylistObject> List(
+    Task<PlaylistListPage> List(
         string userID,
         PlaylistListParams? parameters = null,
         CancellationToken cancellationToken = default

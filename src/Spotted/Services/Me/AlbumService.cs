@@ -27,7 +27,7 @@ public sealed class AlbumService : global::Spotted.Services.Me.IAlbumService
     }
 
     /// <inheritdoc/>
-    public async Task<AlbumListPageResponse> List(
+    public async Task<AlbumListPage> List(
         AlbumListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -49,7 +49,7 @@ public sealed class AlbumService : global::Spotted.Services.Me.IAlbumService
         {
             page.Validate();
         }
-        return page;
+        return new AlbumListPage(this, parameters, page);
     }
 
     /// <inheritdoc/>
