@@ -51,13 +51,13 @@ public interface IAudiobookService
     /// are only available within the US, UK, Canada, Ireland, New Zealand and Australia
     /// markets.
     /// </summary>
-    Task<AudiobookListChaptersPageResponse> ListChapters(
+    Task<AudiobookListChaptersPage> ListChapters(
         AudiobookListChaptersParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListChapters(AudiobookListChaptersParams, CancellationToken)"/>
-    Task<AudiobookListChaptersPageResponse> ListChapters(
+    Task<AudiobookListChaptersPage> ListChapters(
         string id,
         AudiobookListChaptersParams? parameters = null,
         CancellationToken cancellationToken = default

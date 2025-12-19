@@ -27,7 +27,7 @@ public interface ITrackService
     /// Get a list of the songs saved in the current Spotify user's 'Your Music'
     /// library.
     /// </summary>
-    Task<TrackListPageResponse> List(
+    Task<TrackListPage> List(
         TrackListParams? parameters = null,
         CancellationToken cancellationToken = default
     );

@@ -23,7 +23,7 @@ public interface ITopService
     /// <summary>
     /// Get the current user's top artists based on calculated affinity.
     /// </summary>
-    Task<TopListTopArtistsPageResponse> ListTopArtists(
+    Task<TopListTopArtistsPage> ListTopArtists(
         TopListTopArtistsParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -31,7 +31,7 @@ public interface ITopService
     /// <summary>
     /// Get the current user's top tracks based on calculated affinity.
     /// </summary>
-    Task<TopListTopTracksPageResponse> ListTopTracks(
+    Task<TopListTopTracksPage> ListTopTracks(
         TopListTopTracksParams? parameters = null,
         CancellationToken cancellationToken = default
     );

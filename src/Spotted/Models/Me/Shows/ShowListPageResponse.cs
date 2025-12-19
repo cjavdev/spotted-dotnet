@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -65,9 +64,9 @@ public sealed record class ShowListPageResponse : JsonModel
         init { JsonModel.Set(this._rawData, "total", value); }
     }
 
-    public IReadOnlyList<Item>? Items
+    public IReadOnlyList<ShowListResponse>? Items
     {
-        get { return JsonModel.GetNullableClass<List<Item>>(this.RawData, "items"); }
+        get { return JsonModel.GetNullableClass<List<ShowListResponse>>(this.RawData, "items"); }
         init
         {
             if (value == null)
@@ -148,105 +147,4 @@ class ShowListPageResponseFromRaw : IFromRawJson<ShowListPageResponse>
     public ShowListPageResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     ) => ShowListPageResponse.FromRawUnchecked(rawData);
-}
-
-[JsonConverter(typeof(JsonModelConverter<Item, ItemFromRaw>))]
-public sealed record class Item : JsonModel
-{
-    /// <summary>
-    /// The date and time the show was saved. Timestamps are returned in ISO 8601
-    /// format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.
-    /// If the time is imprecise (for example, the date/time of an album release),
-    /// an additional field indicates the precision; see for example, release_date
-    /// in an album object.
-    /// </summary>
-    public DateTimeOffset? AddedAt
-    {
-        get { return JsonModel.GetNullableStruct<DateTimeOffset>(this.RawData, "added_at"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            JsonModel.Set(this._rawData, "added_at", value);
-        }
-    }
-
-    /// <summary>
-    /// The playlist's public/private status (if it should be added to the user's
-    /// profile or not): `true` the playlist will be public, `false` the playlist
-    /// will be private, `null` the playlist status is not relevant. For more about
-    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
-    /// </summary>
-    public bool? Published
-    {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            JsonModel.Set(this._rawData, "published", value);
-        }
-    }
-
-    /// <summary>
-    /// Information about the show.
-    /// </summary>
-    public ShowBase? Show
-    {
-        get { return JsonModel.GetNullableClass<ShowBase>(this.RawData, "show"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            JsonModel.Set(this._rawData, "show", value);
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        _ = this.AddedAt;
-        _ = this.Published;
-        this.Show?.Validate();
-    }
-
-    public Item() { }
-
-    public Item(Item item)
-        : base(item) { }
-
-    public Item(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = [.. rawData];
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    Item(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = [.. rawData];
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="ItemFromRaw.FromRawUnchecked"/>
-    public static Item FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class ItemFromRaw : IFromRawJson<Item>
-{
-    /// <inheritdoc/>
-    public Item FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
-        Item.FromRawUnchecked(rawData);
 }

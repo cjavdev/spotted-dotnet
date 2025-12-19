@@ -27,7 +27,7 @@ public sealed class EpisodeService : global::Spotted.Services.Me.IEpisodeService
     }
 
     /// <inheritdoc/>
-    public async Task<EpisodeListPageResponse> List(
+    public async Task<EpisodeListPage> List(
         EpisodeListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -49,7 +49,7 @@ public sealed class EpisodeService : global::Spotted.Services.Me.IEpisodeService
         {
             page.Validate();
         }
-        return page;
+        return new EpisodeListPage(this, parameters, page);
     }
 
     /// <inheritdoc/>

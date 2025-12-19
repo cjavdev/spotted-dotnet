@@ -53,7 +53,7 @@ public interface IPlayerService
     /// Get tracks from the current user's recently played tracks. _**Note**: Currently
     /// doesn't support podcast episodes._
     /// </summary>
-    Task<PlayerListRecentlyPlayedPageResponse> ListRecentlyPlayed(
+    Task<PlayerListRecentlyPlayedPage> ListRecentlyPlayed(
         PlayerListRecentlyPlayedParams? parameters = null,
         CancellationToken cancellationToken = default
     );

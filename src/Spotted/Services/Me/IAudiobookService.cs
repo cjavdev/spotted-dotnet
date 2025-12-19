@@ -27,7 +27,7 @@ public interface IAudiobookService
     /// Get a list of the audiobooks saved in the current Spotify user's 'Your Music'
     /// library.
     /// </summary>
-    Task<AudiobookListPageResponse> List(
+    Task<AudiobookListPage> List(
         AudiobookListParams? parameters = null,
         CancellationToken cancellationToken = default
     );

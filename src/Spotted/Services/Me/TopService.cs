@@ -24,7 +24,7 @@ public sealed class TopService : ITopService
     }
 
     /// <inheritdoc/>
-    public async Task<TopListTopArtistsPageResponse> ListTopArtists(
+    public async Task<TopListTopArtistsPage> ListTopArtists(
         TopListTopArtistsParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -46,11 +46,11 @@ public sealed class TopService : ITopService
         {
             page.Validate();
         }
-        return page;
+        return new TopListTopArtistsPage(this, parameters, page);
     }
 
     /// <inheritdoc/>
-    public async Task<TopListTopTracksPageResponse> ListTopTracks(
+    public async Task<TopListTopTracksPage> ListTopTracks(
         TopListTopTracksParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -72,6 +72,6 @@ public sealed class TopService : ITopService
         {
             page.Validate();
         }
-        return page;
+        return new TopListTopTracksPage(this, parameters, page);
     }
 }

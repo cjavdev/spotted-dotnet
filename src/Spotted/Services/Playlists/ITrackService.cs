@@ -48,13 +48,13 @@ public interface ITrackService
     /// <summary>
     /// Get full details of the items of a playlist owned by a Spotify user.
     /// </summary>
-    Task<TrackListPageResponse> List(
+    Task<TrackListPage> List(
         TrackListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(TrackListParams, CancellationToken)"/>
-    Task<TrackListPageResponse> List(
+    Task<TrackListPage> List(
         string playlistID,
         TrackListParams? parameters = null,
         CancellationToken cancellationToken = default

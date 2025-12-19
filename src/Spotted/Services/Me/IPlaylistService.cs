@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Spotted.Core;
-using Spotted.Models;
 using Spotted.Models.Me.Playlists;
 
 namespace Spotted.Services.Me;
@@ -26,7 +25,7 @@ public interface IPlaylistService
     /// <summary>
     /// Get a list of the playlists owned or followed by the current Spotify user.
     /// </summary>
-    Task<PagingPlaylistObject> List(
+    Task<PlaylistListPage> List(
         PlaylistListParams? parameters = null,
         CancellationToken cancellationToken = default
     );

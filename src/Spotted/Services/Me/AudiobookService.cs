@@ -27,7 +27,7 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
     }
 
     /// <inheritdoc/>
-    public async Task<AudiobookListPageResponse> List(
+    public async Task<AudiobookListPage> List(
         AudiobookListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -49,7 +49,7 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
         {
             page.Validate();
         }
-        return page;
+        return new AudiobookListPage(this, parameters, page);
     }
 
     /// <inheritdoc/>

@@ -27,7 +27,7 @@ public sealed class PlaylistService : global::Spotted.Services.Me.IPlaylistServi
     }
 
     /// <inheritdoc/>
-    public async Task<PagingPlaylistObject> List(
+    public async Task<PlaylistListPage> List(
         PlaylistListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -49,6 +49,6 @@ public sealed class PlaylistService : global::Spotted.Services.Me.IPlaylistServi
         {
             page.Validate();
         }
-        return page;
+        return new PlaylistListPage(this, parameters, page);
     }
 }

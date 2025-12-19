@@ -110,7 +110,7 @@ public sealed class PlayerService : IPlayerService
     }
 
     /// <inheritdoc/>
-    public async Task<PlayerListRecentlyPlayedPageResponse> ListRecentlyPlayed(
+    public async Task<PlayerListRecentlyPlayedPage> ListRecentlyPlayed(
         PlayerListRecentlyPlayedParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -132,7 +132,7 @@ public sealed class PlayerService : IPlayerService
         {
             page.Validate();
         }
-        return page;
+        return new PlayerListRecentlyPlayedPage(this, parameters, page);
     }
 
     /// <inheritdoc/>

@@ -91,7 +91,7 @@ public sealed class ArtistService : IArtistService
     }
 
     /// <inheritdoc/>
-    public async Task<ArtistListAlbumsPageResponse> ListAlbums(
+    public async Task<ArtistListAlbumsPage> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -116,11 +116,11 @@ public sealed class ArtistService : IArtistService
         {
             page.Validate();
         }
-        return page;
+        return new ArtistListAlbumsPage(this, parameters, page);
     }
 
     /// <inheritdoc/>
-    public async Task<ArtistListAlbumsPageResponse> ListAlbums(
+    public async Task<ArtistListAlbumsPage> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
         CancellationToken cancellationToken = default

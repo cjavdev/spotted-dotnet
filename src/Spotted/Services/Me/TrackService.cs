@@ -27,7 +27,7 @@ public sealed class TrackService : global::Spotted.Services.Me.ITrackService
     }
 
     /// <inheritdoc/>
-    public async Task<TrackListPageResponse> List(
+    public async Task<TrackListPage> List(
         TrackListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -49,7 +49,7 @@ public sealed class TrackService : global::Spotted.Services.Me.ITrackService
         {
             page.Validate();
         }
-        return page;
+        return new TrackListPage(this, parameters, page);
     }
 
     /// <inheritdoc/>
