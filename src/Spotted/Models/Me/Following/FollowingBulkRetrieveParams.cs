@@ -57,7 +57,10 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
         }
     }
 
-    public FollowingBulkRetrieveParams() { }
+    public FollowingBulkRetrieveParams()
+    {
+        this.Type = JsonSerializer.Deserialize<JsonElement>("\"artist\"");
+    }
 
     public FollowingBulkRetrieveParams(FollowingBulkRetrieveParams followingBulkRetrieveParams)
         : base(followingBulkRetrieveParams) { }

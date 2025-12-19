@@ -1,9 +1,89 @@
+using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Core;
 using Spotted.Exceptions;
 using Spotted.Models.Search;
 
 namespace Spotted.Tests.Models.Search;
+
+public class SearchQueryParamsTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var parameters = new SearchQueryParams
+        {
+            Q = "remaster%20track:Doxy%20artist:Miles%20Davis",
+            Type = [Type.Album],
+            IncludeExternal = IncludeExternal.Audio,
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        string expectedQ = "remaster%20track:Doxy%20artist:Miles%20Davis";
+        List<ApiEnum<string, Type>> expectedType = [Type.Album];
+        ApiEnum<string, IncludeExternal> expectedIncludeExternal = IncludeExternal.Audio;
+        long expectedLimit = 10;
+        string expectedMarket = "ES";
+        long expectedOffset = 5;
+
+        Assert.Equal(expectedQ, parameters.Q);
+        Assert.Equal(expectedType.Count, parameters.Type.Count);
+        for (int i = 0; i < expectedType.Count; i++)
+        {
+            Assert.Equal(expectedType[i], parameters.Type[i]);
+        }
+        Assert.Equal(expectedIncludeExternal, parameters.IncludeExternal);
+        Assert.Equal(expectedLimit, parameters.Limit);
+        Assert.Equal(expectedMarket, parameters.Market);
+        Assert.Equal(expectedOffset, parameters.Offset);
+    }
+
+    [Fact]
+    public void OptionalNonNullableParamsUnsetAreNotSet_Works()
+    {
+        var parameters = new SearchQueryParams
+        {
+            Q = "remaster%20track:Doxy%20artist:Miles%20Davis",
+            Type = [Type.Album],
+        };
+
+        Assert.Null(parameters.IncludeExternal);
+        Assert.False(parameters.RawQueryData.ContainsKey("include_external"));
+        Assert.Null(parameters.Limit);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
+        Assert.Null(parameters.Market);
+        Assert.False(parameters.RawQueryData.ContainsKey("market"));
+        Assert.Null(parameters.Offset);
+        Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+
+    [Fact]
+    public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
+    {
+        var parameters = new SearchQueryParams
+        {
+            Q = "remaster%20track:Doxy%20artist:Miles%20Davis",
+            Type = [Type.Album],
+
+            // Null should be interpreted as omitted for these properties
+            IncludeExternal = null,
+            Limit = null,
+            Market = null,
+            Offset = null,
+        };
+
+        Assert.Null(parameters.IncludeExternal);
+        Assert.False(parameters.RawQueryData.ContainsKey("include_external"));
+        Assert.Null(parameters.Limit);
+        Assert.False(parameters.RawQueryData.ContainsKey("limit"));
+        Assert.Null(parameters.Market);
+        Assert.False(parameters.RawQueryData.ContainsKey("market"));
+        Assert.Null(parameters.Offset);
+        Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+}
 
 public class TypeTest : TestBase
 {
