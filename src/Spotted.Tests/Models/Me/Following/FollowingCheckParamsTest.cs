@@ -5,6 +5,25 @@ using Spotted.Models.Me.Following;
 
 namespace Spotted.Tests.Models.Me.Following;
 
+public class FollowingCheckParamsTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var parameters = new FollowingCheckParams
+        {
+            IDs = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
+            Type = Type.Artist,
+        };
+
+        string expectedIDs = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6";
+        ApiEnum<string, Type> expectedType = Type.Artist;
+
+        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedType, parameters.Type);
+    }
+}
+
 public class TypeTest : TestBase
 {
     [Theory]

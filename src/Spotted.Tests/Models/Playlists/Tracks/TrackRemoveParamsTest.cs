@@ -1,7 +1,71 @@
+using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Models.Playlists.Tracks;
 
 namespace Spotted.Tests.Models.Playlists.Tracks;
+
+public class TrackRemoveParamsTest : TestBase
+{
+    [Fact]
+    public void FieldRoundtrip_Works()
+    {
+        var parameters = new TrackRemoveParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Tracks = [new() { Uri = "uri" }],
+            Published = true,
+            SnapshotID = "snapshot_id",
+        };
+
+        string expectedPlaylistID = "3cEYpjA9oz9GiPac4AsH4n";
+        List<Track> expectedTracks = [new() { Uri = "uri" }];
+        bool expectedPublished = true;
+        string expectedSnapshotID = "snapshot_id";
+
+        Assert.Equal(expectedPlaylistID, parameters.PlaylistID);
+        Assert.Equal(expectedTracks.Count, parameters.Tracks.Count);
+        for (int i = 0; i < expectedTracks.Count; i++)
+        {
+            Assert.Equal(expectedTracks[i], parameters.Tracks[i]);
+        }
+        Assert.Equal(expectedPublished, parameters.Published);
+        Assert.Equal(expectedSnapshotID, parameters.SnapshotID);
+    }
+
+    [Fact]
+    public void OptionalNonNullableParamsUnsetAreNotSet_Works()
+    {
+        var parameters = new TrackRemoveParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Tracks = [new() { Uri = "uri" }],
+        };
+
+        Assert.Null(parameters.Published);
+        Assert.False(parameters.RawBodyData.ContainsKey("published"));
+        Assert.Null(parameters.SnapshotID);
+        Assert.False(parameters.RawBodyData.ContainsKey("snapshot_id"));
+    }
+
+    [Fact]
+    public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
+    {
+        var parameters = new TrackRemoveParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Tracks = [new() { Uri = "uri" }],
+
+            // Null should be interpreted as omitted for these properties
+            Published = null,
+            SnapshotID = null,
+        };
+
+        Assert.Null(parameters.Published);
+        Assert.False(parameters.RawBodyData.ContainsKey("published"));
+        Assert.Null(parameters.SnapshotID);
+        Assert.False(parameters.RawBodyData.ContainsKey("snapshot_id"));
+    }
+}
 
 public class TrackTest : TestBase
 {
