@@ -29,6 +29,8 @@ public class TypeTest : TestBase
             JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
@@ -89,6 +91,8 @@ public class IncludeExternalTest : TestBase
             JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
