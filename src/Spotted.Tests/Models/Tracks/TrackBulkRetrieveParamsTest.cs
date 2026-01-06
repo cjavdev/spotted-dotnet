@@ -10,14 +10,14 @@ public class TrackBulkRetrieveParamsTest : TestBase
     {
         var parameters = new TrackBulkRetrieveParams
         {
-            IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+            Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
             Market = "ES",
         };
 
-        string expectedIDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B";
+        string expectedIds = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B";
         string expectedMarket = "ES";
 
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
         Assert.Equal(expectedMarket, parameters.Market);
     }
 
@@ -26,7 +26,7 @@ public class TrackBulkRetrieveParamsTest : TestBase
     {
         var parameters = new TrackBulkRetrieveParams
         {
-            IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+            Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
         };
 
         Assert.Null(parameters.Market);
@@ -38,7 +38,7 @@ public class TrackBulkRetrieveParamsTest : TestBase
     {
         var parameters = new TrackBulkRetrieveParams
         {
-            IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+            Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
 
             // Null should be interpreted as omitted for these properties
             Market = null,
@@ -53,7 +53,7 @@ public class TrackBulkRetrieveParamsTest : TestBase
     {
         TrackBulkRetrieveParams parameters = new()
         {
-            IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+            Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
             Market = "ES",
         };
 

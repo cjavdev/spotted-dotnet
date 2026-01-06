@@ -11,14 +11,14 @@ public class FollowerCheckParamsTest : TestBase
         var parameters = new FollowerCheckParams
         {
             PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
-            IDs = "jmperezperez",
+            Ids = "jmperezperez",
         };
 
         string expectedPlaylistID = "3cEYpjA9oz9GiPac4AsH4n";
-        string expectedIDs = "jmperezperez";
+        string expectedIds = "jmperezperez";
 
         Assert.Equal(expectedPlaylistID, parameters.PlaylistID);
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
     }
 
     [Fact]
@@ -26,7 +26,7 @@ public class FollowerCheckParamsTest : TestBase
     {
         var parameters = new FollowerCheckParams { PlaylistID = "3cEYpjA9oz9GiPac4AsH4n" };
 
-        Assert.Null(parameters.IDs);
+        Assert.Null(parameters.Ids);
         Assert.False(parameters.RawQueryData.ContainsKey("ids"));
     }
 
@@ -38,10 +38,10 @@ public class FollowerCheckParamsTest : TestBase
             PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
 
             // Null should be interpreted as omitted for these properties
-            IDs = null,
+            Ids = null,
         };
 
-        Assert.Null(parameters.IDs);
+        Assert.Null(parameters.Ids);
         Assert.False(parameters.RawQueryData.ContainsKey("ids"));
     }
 
@@ -51,7 +51,7 @@ public class FollowerCheckParamsTest : TestBase
         FollowerCheckParams parameters = new()
         {
             PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
-            IDs = "jmperezperez",
+            Ids = "jmperezperez",
         };
 
         var url = parameters.Url(

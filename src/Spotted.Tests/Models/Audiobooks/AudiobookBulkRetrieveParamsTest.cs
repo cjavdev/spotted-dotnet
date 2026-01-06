@@ -10,14 +10,14 @@ public class AudiobookBulkRetrieveParamsTest : TestBase
     {
         var parameters = new AudiobookBulkRetrieveParams
         {
-            IDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
+            Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
             Market = "ES",
         };
 
-        string expectedIDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe";
+        string expectedIds = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe";
         string expectedMarket = "ES";
 
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
         Assert.Equal(expectedMarket, parameters.Market);
     }
 
@@ -26,7 +26,7 @@ public class AudiobookBulkRetrieveParamsTest : TestBase
     {
         var parameters = new AudiobookBulkRetrieveParams
         {
-            IDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
+            Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
         };
 
         Assert.Null(parameters.Market);
@@ -38,7 +38,7 @@ public class AudiobookBulkRetrieveParamsTest : TestBase
     {
         var parameters = new AudiobookBulkRetrieveParams
         {
-            IDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
+            Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
 
             // Null should be interpreted as omitted for these properties
             Market = null,
@@ -53,7 +53,7 @@ public class AudiobookBulkRetrieveParamsTest : TestBase
     {
         AudiobookBulkRetrieveParams parameters = new()
         {
-            IDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
+            Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
             Market = "ES",
         };
 

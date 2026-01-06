@@ -22,7 +22,7 @@ public sealed record class ImageObject : JsonModel
     /// <summary>
     /// The source URL of the image.
     /// </summary>
-    public required string URL
+    public required string Url
     {
         get { return JsonModel.GetNotNullClass<string>(this.RawData, "url"); }
         init { JsonModel.Set(this._rawData, "url", value); }
@@ -61,7 +61,7 @@ public sealed record class ImageObject : JsonModel
     public override void Validate()
     {
         _ = this.Height;
-        _ = this.URL;
+        _ = this.Url;
         _ = this.Width;
         _ = this.Published;
     }

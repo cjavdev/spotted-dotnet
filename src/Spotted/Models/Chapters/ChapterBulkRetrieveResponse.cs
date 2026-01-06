@@ -88,7 +88,7 @@ public sealed record class Chapter : JsonModel
     /// A URL to a 30 second preview (MP3 format) of the chapter. `null` if not available.
     /// </summary>
     [System::Obsolete("deprecated")]
-    public required string? AudioPreviewURL
+    public required string? AudioPreviewUrl
     {
         get { return JsonModel.GetNullableClass<string>(this.RawData, "audio_preview_url"); }
         init { JsonModel.Set(this._rawData, "audio_preview_url", value); }
@@ -144,9 +144,9 @@ public sealed record class Chapter : JsonModel
     /// <summary>
     /// External URLs for this chapter.
     /// </summary>
-    public required ExternalURLObject ExternalURLs
+    public required ExternalUrlObject ExternalUrls
     {
-        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNotNullClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init { JsonModel.Set(this._rawData, "external_urls", value); }
     }
 
@@ -162,7 +162,7 @@ public sealed record class Chapter : JsonModel
     /// <summary>
     /// A description of the chapter. This field may contain HTML tags.
     /// </summary>
-    public required string HTMLDescription
+    public required string HtmlDescription
     {
         get { return JsonModel.GetNotNullClass<string>(this.RawData, "html_description"); }
         init { JsonModel.Set(this._rawData, "html_description", value); }
@@ -333,15 +333,15 @@ public sealed record class Chapter : JsonModel
     public override void Validate()
     {
         _ = this.ID;
-        _ = this.AudioPreviewURL;
+        _ = this.AudioPreviewUrl;
         this.Audiobook.Validate();
         _ = this.ChapterNumber;
         _ = this.Description;
         _ = this.DurationMs;
         _ = this.Explicit;
-        this.ExternalURLs.Validate();
+        this.ExternalUrls.Validate();
         _ = this.Href;
-        _ = this.HTMLDescription;
+        _ = this.HtmlDescription;
         foreach (var item in this.Images)
         {
             item.Validate();

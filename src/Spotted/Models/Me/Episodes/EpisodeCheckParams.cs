@@ -20,7 +20,7 @@ public sealed record class EpisodeCheckParams : ParamsBase
     /// A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids)
     /// for the episodes. Maximum: 50 IDs.
     /// </summary>
-    public required string IDs
+    public required string Ids
     {
         get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
         init { JsonModel.Set(this._rawQueryData, "ids", value); }

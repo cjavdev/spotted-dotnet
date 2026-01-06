@@ -10,12 +10,12 @@ public class EpisodeCheckParamsTest : TestBase
     {
         var parameters = new EpisodeCheckParams
         {
-            IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+            Ids = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
         };
 
-        string expectedIDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf";
+        string expectedIds = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf";
 
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public class EpisodeCheckParamsTest : TestBase
     {
         EpisodeCheckParams parameters = new()
         {
-            IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+            Ids = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
         };
 
         var url = parameters.Url(

@@ -19,7 +19,7 @@ public sealed record class FollowerCheckParams : ParamsBase
     /// **Deprecated** A single item list containing current user's [Spotify Username](/documentation/web-api/concepts/spotify-uris-ids).
     /// Maximum: 1 id.
     /// </summary>
-    public string? IDs
+    public string? Ids
     {
         get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "ids"); }
         init

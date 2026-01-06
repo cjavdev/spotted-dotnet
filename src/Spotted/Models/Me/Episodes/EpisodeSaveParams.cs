@@ -28,7 +28,7 @@ public sealed record class EpisodeSaveParams : ParamsBase
     /// the `ids` parameter is present in the query string, any IDs listed here in
     /// the body will be ignored._
     /// </summary>
-    public required IReadOnlyList<string> IDs
+    public required IReadOnlyList<string> Ids
     {
         get { return JsonModel.GetNotNullClass<List<string>>(this.RawBodyData, "ids"); }
         init { JsonModel.Set(this._rawBodyData, "ids", value); }

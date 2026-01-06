@@ -44,9 +44,9 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// <summary>
     /// Known public external URLs for this user.
     /// </summary>
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -175,7 +175,7 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     {
         _ = this.ID;
         _ = this.DisplayName;
-        this.ExternalURLs?.Validate();
+        this.ExternalUrls?.Validate();
         this.Followers?.Validate();
         _ = this.Href;
         foreach (var item in this.Images ?? [])

@@ -53,7 +53,7 @@ public sealed record class AudioFeatureRetrieveResponse : JsonModel
     /// A URL to access the full audio analysis of this track. An access token is
     /// required to access this data.
     /// </summary>
-    public string? AnalysisURL
+    public string? AnalysisUrl
     {
         get { return JsonModel.GetNullableClass<string>(this.RawData, "analysis_url"); }
         init
@@ -385,7 +385,7 @@ public sealed record class AudioFeatureRetrieveResponse : JsonModel
     {
         _ = this.ID;
         _ = this.Acousticness;
-        _ = this.AnalysisURL;
+        _ = this.AnalysisUrl;
         _ = this.Danceability;
         _ = this.DurationMs;
         _ = this.Energy;

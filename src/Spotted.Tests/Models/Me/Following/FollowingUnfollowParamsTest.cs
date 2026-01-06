@@ -9,16 +9,16 @@ public class FollowingUnfollowParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new FollowingUnfollowParams { IDs = ["string"], Published = true };
+        var parameters = new FollowingUnfollowParams { Ids = ["string"], Published = true };
 
-        List<string> expectedIDs = ["string"];
+        List<string> expectedIds = ["string"];
         bool expectedPublished = true;
 
-        Assert.NotNull(parameters.IDs);
-        Assert.Equal(expectedIDs.Count, parameters.IDs.Count);
-        for (int i = 0; i < expectedIDs.Count; i++)
+        Assert.NotNull(parameters.Ids);
+        Assert.Equal(expectedIds.Count, parameters.Ids.Count);
+        for (int i = 0; i < expectedIds.Count; i++)
         {
-            Assert.Equal(expectedIDs[i], parameters.IDs[i]);
+            Assert.Equal(expectedIds[i], parameters.Ids[i]);
         }
         Assert.Equal(expectedPublished, parameters.Published);
     }
@@ -28,7 +28,7 @@ public class FollowingUnfollowParamsTest : TestBase
     {
         var parameters = new FollowingUnfollowParams { };
 
-        Assert.Null(parameters.IDs);
+        Assert.Null(parameters.Ids);
         Assert.False(parameters.RawBodyData.ContainsKey("ids"));
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
@@ -40,11 +40,11 @@ public class FollowingUnfollowParamsTest : TestBase
         var parameters = new FollowingUnfollowParams
         {
             // Null should be interpreted as omitted for these properties
-            IDs = null,
+            Ids = null,
             Published = null,
         };
 
-        Assert.Null(parameters.IDs);
+        Assert.Null(parameters.Ids);
         Assert.False(parameters.RawBodyData.ContainsKey("ids"));
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));

@@ -126,9 +126,9 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// <summary>
     /// External URLs for this track.
     /// </summary>
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -235,7 +235,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// A URL to a 30 second preview (MP3 format) of the track.
     /// </summary>
     [Obsolete("deprecated")]
-    public string? PreviewURL
+    public string? PreviewUrl
     {
         get { return JsonModel.GetNullableClass<string>(this.RawData, "preview_url"); }
         init { JsonModel.Set(this._rawData, "preview_url", value); }
@@ -346,13 +346,13 @@ public sealed record class SimplifiedTrackObject : JsonModel
         _ = this.DiscNumber;
         _ = this.DurationMs;
         _ = this.Explicit;
-        this.ExternalURLs?.Validate();
+        this.ExternalUrls?.Validate();
         _ = this.Href;
         _ = this.IsLocal;
         _ = this.IsPlayable;
         this.LinkedFrom?.Validate();
         _ = this.Name;
-        _ = this.PreviewURL;
+        _ = this.PreviewUrl;
         _ = this.Published;
         this.Restrictions?.Validate();
         _ = this.TrackNumber;

@@ -145,7 +145,7 @@ public sealed record class TrackObject : JsonModel
     /// <summary>
     /// Known external IDs for the track.
     /// </summary>
-    public ExternalIDObject? ExternalIDs
+    public ExternalIDObject? ExternalIds
     {
         get { return JsonModel.GetNullableClass<ExternalIDObject>(this.RawData, "external_ids"); }
         init
@@ -162,9 +162,9 @@ public sealed record class TrackObject : JsonModel
     /// <summary>
     /// Known external URLs for this track.
     /// </summary>
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -297,7 +297,7 @@ public sealed record class TrackObject : JsonModel
     /// A link to a 30 second preview (MP3 format) of the track. Can be `null`
     /// </summary>
     [System::Obsolete("deprecated")]
-    public string? PreviewURL
+    public string? PreviewUrl
     {
         get { return JsonModel.GetNullableClass<string>(this.RawData, "preview_url"); }
         init { JsonModel.Set(this._rawData, "preview_url", value); }
@@ -415,15 +415,15 @@ public sealed record class TrackObject : JsonModel
         _ = this.DiscNumber;
         _ = this.DurationMs;
         _ = this.Explicit;
-        this.ExternalIDs?.Validate();
-        this.ExternalURLs?.Validate();
+        this.ExternalIds?.Validate();
+        this.ExternalUrls?.Validate();
         _ = this.Href;
         _ = this.IsLocal;
         _ = this.IsPlayable;
         this.LinkedFrom?.Validate();
         _ = this.Name;
         _ = this.Popularity;
-        _ = this.PreviewURL;
+        _ = this.PreviewUrl;
         _ = this.Published;
         this.Restrictions?.Validate();
         _ = this.TrackNumber;
@@ -523,9 +523,9 @@ public sealed record class Album : JsonModel
     /// <summary>
     /// Known external URLs for this album.
     /// </summary>
-    public required ExternalURLObject ExternalURLs
+    public required ExternalUrlObject ExternalUrls
     {
-        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNotNullClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init { JsonModel.Set(this._rawData, "external_urls", value); }
     }
 
@@ -659,7 +659,7 @@ public sealed record class Album : JsonModel
             item.Validate();
         }
         _ = this.AvailableMarkets;
-        this.ExternalURLs.Validate();
+        this.ExternalUrls.Validate();
         _ = this.Href;
         foreach (var item in this.Images)
         {

@@ -60,9 +60,9 @@ public sealed record class PlaylistRetrieveResponse : JsonModel
     /// <summary>
     /// Known external URLs for this playlist.
     /// </summary>
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -270,7 +270,7 @@ public sealed record class PlaylistRetrieveResponse : JsonModel
         _ = this.ID;
         _ = this.Collaborative;
         _ = this.Description;
-        this.ExternalURLs?.Validate();
+        this.ExternalUrls?.Validate();
         this.Followers?.Validate();
         _ = this.Href;
         foreach (var item in this.Images ?? [])
@@ -350,9 +350,9 @@ public sealed record class Owner : JsonModel
         }
     }
 
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -457,7 +457,7 @@ public sealed record class Owner : JsonModel
         new()
         {
             ID = owner.ID,
-            ExternalURLs = owner.ExternalURLs,
+            ExternalUrls = owner.ExternalUrls,
             Href = owner.Href,
             Published = owner.Published,
             Type = owner.Type,
@@ -468,7 +468,7 @@ public sealed record class Owner : JsonModel
     public override void Validate()
     {
         _ = this.ID;
-        this.ExternalURLs?.Validate();
+        this.ExternalUrls?.Validate();
         _ = this.Href;
         _ = this.Published;
         this.Type?.Validate();

@@ -73,9 +73,9 @@ public sealed record class AudiobookBase : JsonModel
     /// <summary>
     /// External URLs for this audiobook.
     /// </summary>
-    public required ExternalURLObject ExternalURLs
+    public required ExternalUrlObject ExternalUrls
     {
-        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNotNullClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init { JsonModel.Set(this._rawData, "external_urls", value); }
     }
 
@@ -91,7 +91,7 @@ public sealed record class AudiobookBase : JsonModel
     /// <summary>
     /// A description of the audiobook. This field may contain HTML tags.
     /// </summary>
-    public required string HTMLDescription
+    public required string HtmlDescription
     {
         get { return JsonModel.GetNotNullClass<string>(this.RawData, "html_description"); }
         init { JsonModel.Set(this._rawData, "html_description", value); }
@@ -232,9 +232,9 @@ public sealed record class AudiobookBase : JsonModel
         }
         _ = this.Description;
         _ = this.Explicit;
-        this.ExternalURLs.Validate();
+        this.ExternalUrls.Validate();
         _ = this.Href;
-        _ = this.HTMLDescription;
+        _ = this.HtmlDescription;
         foreach (var item in this.Images)
         {
             item.Validate();

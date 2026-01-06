@@ -12,43 +12,43 @@ public class TrackSaveParamsTest : TestBase
     {
         var parameters = new TrackSaveParams
         {
-            IDs = ["string"],
+            Ids = ["string"],
             Published = true,
-            TimestampedIDs =
+            TimestampedIds =
             [
                 new() { ID = "id", AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z") },
             ],
         };
 
-        List<string> expectedIDs = ["string"];
+        List<string> expectedIds = ["string"];
         bool expectedPublished = true;
-        List<TimestampedID> expectedTimestampedIDs =
+        List<TimestampedID> expectedTimestampedIds =
         [
             new() { ID = "id", AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z") },
         ];
 
-        Assert.Equal(expectedIDs.Count, parameters.IDs.Count);
-        for (int i = 0; i < expectedIDs.Count; i++)
+        Assert.Equal(expectedIds.Count, parameters.Ids.Count);
+        for (int i = 0; i < expectedIds.Count; i++)
         {
-            Assert.Equal(expectedIDs[i], parameters.IDs[i]);
+            Assert.Equal(expectedIds[i], parameters.Ids[i]);
         }
         Assert.Equal(expectedPublished, parameters.Published);
-        Assert.NotNull(parameters.TimestampedIDs);
-        Assert.Equal(expectedTimestampedIDs.Count, parameters.TimestampedIDs.Count);
-        for (int i = 0; i < expectedTimestampedIDs.Count; i++)
+        Assert.NotNull(parameters.TimestampedIds);
+        Assert.Equal(expectedTimestampedIds.Count, parameters.TimestampedIds.Count);
+        for (int i = 0; i < expectedTimestampedIds.Count; i++)
         {
-            Assert.Equal(expectedTimestampedIDs[i], parameters.TimestampedIDs[i]);
+            Assert.Equal(expectedTimestampedIds[i], parameters.TimestampedIds[i]);
         }
     }
 
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new TrackSaveParams { IDs = ["string"] };
+        var parameters = new TrackSaveParams { Ids = ["string"] };
 
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
-        Assert.Null(parameters.TimestampedIDs);
+        Assert.Null(parameters.TimestampedIds);
         Assert.False(parameters.RawBodyData.ContainsKey("timestamped_ids"));
     }
 
@@ -57,23 +57,23 @@ public class TrackSaveParamsTest : TestBase
     {
         var parameters = new TrackSaveParams
         {
-            IDs = ["string"],
+            Ids = ["string"],
 
             // Null should be interpreted as omitted for these properties
             Published = null,
-            TimestampedIDs = null,
+            TimestampedIds = null,
         };
 
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
-        Assert.Null(parameters.TimestampedIDs);
+        Assert.Null(parameters.TimestampedIds);
         Assert.False(parameters.RawBodyData.ContainsKey("timestamped_ids"));
     }
 
     [Fact]
     public void Url_Works()
     {
-        TrackSaveParams parameters = new() { IDs = ["string"] };
+        TrackSaveParams parameters = new() { Ids = ["string"] };
 
         var url = parameters.Url(
             new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }

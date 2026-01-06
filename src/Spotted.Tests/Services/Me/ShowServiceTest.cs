@@ -15,7 +15,7 @@ public class ShowServiceTest : TestBase
     public async Task Check_Works()
     {
         await this.client.Me.Shows.Check(
-            new() { IDs = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ" },
+            new() { Ids = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ" },
             TestContext.Current.CancellationToken
         );
     }

@@ -19,7 +19,7 @@ public class EpisodeServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Episodes.BulkRetrieve(
-            new() { IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf" },
+            new() { Ids = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf" },
             TestContext.Current.CancellationToken
         );
         response.Validate();

@@ -108,7 +108,7 @@ public class PlayerServiceTest : TestBase
     public async Task Transfer_Works()
     {
         await this.client.Me.Player.Transfer(
-            new() { DeviceIDs = ["74ASZWbe4lXaubB36ztrGX"] },
+            new() { DeviceIds = ["74ASZWbe4lXaubB36ztrGX"] },
             TestContext.Current.CancellationToken
         );
     }

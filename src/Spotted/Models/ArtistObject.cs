@@ -33,9 +33,9 @@ public sealed record class ArtistObject : JsonModel
     /// <summary>
     /// Known external URLs for this artist.
     /// </summary>
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -217,7 +217,7 @@ public sealed record class ArtistObject : JsonModel
     public override void Validate()
     {
         _ = this.ID;
-        this.ExternalURLs?.Validate();
+        this.ExternalUrls?.Validate();
         this.Followers?.Validate();
         _ = this.Genres;
         _ = this.Href;

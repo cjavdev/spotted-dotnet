@@ -28,7 +28,7 @@ public sealed record class PlayerTransferParams : ParamsBase
     /// Although an array is accepted, only a single device_id is currently supported.
     /// Supplying more than one will return `400 Bad Request`_
     /// </summary>
-    public required IReadOnlyList<string> DeviceIDs
+    public required IReadOnlyList<string> DeviceIds
     {
         get { return JsonModel.GetNotNullClass<List<string>>(this.RawBodyData, "device_ids"); }
         init { JsonModel.Set(this._rawBodyData, "device_ids", value); }

@@ -183,13 +183,13 @@ public record class Track
         get { return Match<bool?>(object_: (x) => x.Explicit, episodeObject: (x) => x.Explicit); }
     }
 
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
         get
         {
-            return Match<ExternalURLObject?>(
-                object_: (x) => x.ExternalURLs,
-                episodeObject: (x) => x.ExternalURLs
+            return Match<ExternalUrlObject?>(
+                object_: (x) => x.ExternalUrls,
+                episodeObject: (x) => x.ExternalUrls
             );
         }
     }

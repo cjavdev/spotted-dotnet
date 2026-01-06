@@ -33,9 +33,9 @@ public sealed record class PlaylistUserObject : JsonModel
     /// <summary>
     /// Known public external URLs for this user.
     /// </summary>
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init
         {
             if (value == null)
@@ -129,7 +129,7 @@ public sealed record class PlaylistUserObject : JsonModel
     public override void Validate()
     {
         _ = this.ID;
-        this.ExternalURLs?.Validate();
+        this.ExternalUrls?.Validate();
         _ = this.Href;
         _ = this.Published;
         this.Type?.Validate();

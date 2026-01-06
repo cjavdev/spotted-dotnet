@@ -17,7 +17,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -30,7 +30,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -39,7 +39,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = Models::PlaylistUserObjectType.User,
@@ -64,7 +64,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         AddedBy = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = Models::PlaylistUserObjectType.User,
@@ -84,7 +84,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -97,14 +97,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     },
                                 ],
                                 AvailableMarkets = ["CA", "BR", "IT"],
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Images =
                                 [
                                     new()
                                     {
                                         Height = 300,
-                                        URL =
+                                        Url =
                                             "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                         Width = 300,
                                         Published = true,
@@ -127,7 +127,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -139,21 +139,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalIDs = new()
+                            ExternalIds = new()
                             {
                                 Ean = "ean",
                                 Isrc = "isrc",
                                 Published = true,
                                 Upc = "upc",
                             },
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
@@ -161,7 +161,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             },
                             Name = "name",
                             Popularity = 0,
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -179,7 +179,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         string expectedID = "id";
         bool expectedCollaborative = true;
         string expectedDescription = "description";
-        Models::ExternalURLObject expectedExternalURLs = new()
+        Models::ExternalUrlObject expectedExternalUrls = new()
         {
             Published = true,
             Spotify = "spotify",
@@ -196,7 +196,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -205,7 +205,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         Owner expectedOwner = new()
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -230,7 +230,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                     AddedBy = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = Models::PlaylistUserObjectType.User,
@@ -250,7 +250,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -259,14 +259,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
                                 new()
                                 {
                                     Height = 300,
-                                    URL =
+                                    Url =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
                                     Published = true,
@@ -289,7 +289,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -301,21 +301,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
                             Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
@@ -323,7 +323,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         },
                         Name = "name",
                         Popularity = 0,
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -340,7 +340,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCollaborative, model.Collaborative);
         Assert.Equal(expectedDescription, model.Description);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedFollowers, model.Followers);
         Assert.Equal(expectedHref, model.Href);
         Assert.NotNull(model.Images);
@@ -366,7 +366,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -379,7 +379,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -388,7 +388,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = Models::PlaylistUserObjectType.User,
@@ -413,7 +413,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         AddedBy = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = Models::PlaylistUserObjectType.User,
@@ -433,7 +433,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -446,14 +446,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     },
                                 ],
                                 AvailableMarkets = ["CA", "BR", "IT"],
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Images =
                                 [
                                     new()
                                     {
                                         Height = 300,
-                                        URL =
+                                        Url =
                                             "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                         Width = 300,
                                         Published = true,
@@ -476,7 +476,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -488,21 +488,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalIDs = new()
+                            ExternalIds = new()
                             {
                                 Ean = "ean",
                                 Isrc = "isrc",
                                 Published = true,
                                 Upc = "upc",
                             },
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
@@ -510,7 +510,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             },
                             Name = "name",
                             Popularity = 0,
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -539,7 +539,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -552,7 +552,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -561,7 +561,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = Models::PlaylistUserObjectType.User,
@@ -586,7 +586,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         AddedBy = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = Models::PlaylistUserObjectType.User,
@@ -606,7 +606,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -619,14 +619,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     },
                                 ],
                                 AvailableMarkets = ["CA", "BR", "IT"],
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Images =
                                 [
                                     new()
                                     {
                                         Height = 300,
-                                        URL =
+                                        Url =
                                             "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                         Width = 300,
                                         Published = true,
@@ -649,7 +649,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -661,21 +661,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalIDs = new()
+                            ExternalIds = new()
                             {
                                 Ean = "ean",
                                 Isrc = "isrc",
                                 Published = true,
                                 Upc = "upc",
                             },
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
@@ -683,7 +683,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             },
                             Name = "name",
                             Popularity = 0,
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -705,7 +705,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         string expectedID = "id";
         bool expectedCollaborative = true;
         string expectedDescription = "description";
-        Models::ExternalURLObject expectedExternalURLs = new()
+        Models::ExternalUrlObject expectedExternalUrls = new()
         {
             Published = true,
             Spotify = "spotify",
@@ -722,7 +722,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -731,7 +731,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         Owner expectedOwner = new()
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -756,7 +756,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                     AddedBy = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = Models::PlaylistUserObjectType.User,
@@ -776,7 +776,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -785,14 +785,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
                                 new()
                                 {
                                     Height = 300,
-                                    URL =
+                                    Url =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
                                     Published = true,
@@ -815,7 +815,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -827,21 +827,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
                             Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
@@ -849,7 +849,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         },
                         Name = "name",
                         Popularity = 0,
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -866,7 +866,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCollaborative, deserialized.Collaborative);
         Assert.Equal(expectedDescription, deserialized.Description);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedFollowers, deserialized.Followers);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.NotNull(deserialized.Images);
@@ -892,7 +892,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -905,7 +905,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -914,7 +914,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = Models::PlaylistUserObjectType.User,
@@ -939,7 +939,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         AddedBy = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = Models::PlaylistUserObjectType.User,
@@ -959,7 +959,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -972,14 +972,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     },
                                 ],
                                 AvailableMarkets = ["CA", "BR", "IT"],
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Images =
                                 [
                                     new()
                                     {
                                         Height = 300,
-                                        URL =
+                                        Url =
                                             "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                         Width = 300,
                                         Published = true,
@@ -1002,7 +1002,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -1014,21 +1014,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalIDs = new()
+                            ExternalIds = new()
                             {
                                 Ean = "ean",
                                 Isrc = "isrc",
                                 Published = true,
                                 Upc = "upc",
                             },
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
@@ -1036,7 +1036,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             },
                             Name = "name",
                             Popularity = 0,
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -1063,7 +1063,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("id"));
         Assert.Null(model.Collaborative);
         Assert.False(model.RawData.ContainsKey("collaborative"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Followers);
         Assert.False(model.RawData.ContainsKey("followers"));
@@ -1105,7 +1105,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             // Null should be interpreted as omitted for these properties
             ID = null,
             Collaborative = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Followers = null,
             Href = null,
             Images = null,
@@ -1122,7 +1122,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("id"));
         Assert.Null(model.Collaborative);
         Assert.False(model.RawData.ContainsKey("collaborative"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Followers);
         Assert.False(model.RawData.ContainsKey("followers"));
@@ -1156,7 +1156,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             // Null should be interpreted as omitted for these properties
             ID = null,
             Collaborative = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Followers = null,
             Href = null,
             Images = null,
@@ -1179,7 +1179,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         {
             ID = "id",
             Collaborative = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -1192,7 +1192,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1201,7 +1201,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = Models::PlaylistUserObjectType.User,
@@ -1226,7 +1226,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         AddedBy = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = Models::PlaylistUserObjectType.User,
@@ -1246,7 +1246,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -1259,14 +1259,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     },
                                 ],
                                 AvailableMarkets = ["CA", "BR", "IT"],
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Images =
                                 [
                                     new()
                                     {
                                         Height = 300,
-                                        URL =
+                                        Url =
                                             "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                         Width = 300,
                                         Published = true,
@@ -1289,7 +1289,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -1301,21 +1301,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalIDs = new()
+                            ExternalIds = new()
                             {
                                 Ean = "ean",
                                 Isrc = "isrc",
                                 Published = true,
                                 Upc = "upc",
                             },
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
@@ -1323,7 +1323,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             },
                             Name = "name",
                             Popularity = 0,
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -1349,7 +1349,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         {
             ID = "id",
             Collaborative = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -1362,7 +1362,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1371,7 +1371,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = Models::PlaylistUserObjectType.User,
@@ -1396,7 +1396,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         AddedBy = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = Models::PlaylistUserObjectType.User,
@@ -1416,7 +1416,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -1429,14 +1429,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     },
                                 ],
                                 AvailableMarkets = ["CA", "BR", "IT"],
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Images =
                                 [
                                     new()
                                     {
                                         Height = 300,
-                                        URL =
+                                        Url =
                                             "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                         Width = 300,
                                         Published = true,
@@ -1459,7 +1459,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -1471,21 +1471,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalIDs = new()
+                            ExternalIds = new()
                             {
                                 Ean = "ean",
                                 Isrc = "isrc",
                                 Published = true,
                                 Upc = "upc",
                             },
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
@@ -1493,7 +1493,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             },
                             Name = "name",
                             Popularity = 0,
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -1518,7 +1518,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         {
             ID = "id",
             Collaborative = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -1531,7 +1531,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1540,7 +1540,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = Models::PlaylistUserObjectType.User,
@@ -1565,7 +1565,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         AddedBy = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = Models::PlaylistUserObjectType.User,
@@ -1585,7 +1585,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -1598,14 +1598,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     },
                                 ],
                                 AvailableMarkets = ["CA", "BR", "IT"],
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Images =
                                 [
                                     new()
                                     {
                                         Height = 300,
-                                        URL =
+                                        Url =
                                             "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                         Width = 300,
                                         Published = true,
@@ -1628,7 +1628,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -1640,21 +1640,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalIDs = new()
+                            ExternalIds = new()
                             {
                                 Ean = "ean",
                                 Isrc = "isrc",
                                 Published = true,
                                 Upc = "upc",
                             },
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
@@ -1662,7 +1662,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             },
                             Name = "name",
                             Popularity = 0,
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -1690,7 +1690,7 @@ public class PlaylistRetrieveResponseTest : TestBase
         {
             ID = "id",
             Collaborative = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -1703,7 +1703,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1712,7 +1712,7 @@ public class PlaylistRetrieveResponseTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = Models::PlaylistUserObjectType.User,
@@ -1737,7 +1737,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                         AddedBy = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = Models::PlaylistUserObjectType.User,
@@ -1757,7 +1757,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -1770,14 +1770,14 @@ public class PlaylistRetrieveResponseTest : TestBase
                                     },
                                 ],
                                 AvailableMarkets = ["CA", "BR", "IT"],
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Images =
                                 [
                                     new()
                                     {
                                         Height = 300,
-                                        URL =
+                                        Url =
                                             "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                         Width = 300,
                                         Published = true,
@@ -1800,7 +1800,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -1812,21 +1812,21 @@ public class PlaylistRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalIDs = new()
+                            ExternalIds = new()
                             {
                                 Ean = "ean",
                                 Isrc = "isrc",
                                 Published = true,
                                 Upc = "upc",
                             },
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
@@ -1834,7 +1834,7 @@ public class PlaylistRetrieveResponseTest : TestBase
                             },
                             Name = "name",
                             Popularity = 0,
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -1863,7 +1863,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -1872,7 +1872,7 @@ public class OwnerTest : TestBase
         };
 
         string expectedID = "id";
-        Models::ExternalURLObject expectedExternalURLs = new()
+        Models::ExternalUrlObject expectedExternalUrls = new()
         {
             Published = true,
             Spotify = "spotify",
@@ -1885,7 +1885,7 @@ public class OwnerTest : TestBase
         string expectedDisplayName = "display_name";
 
         Assert.Equal(expectedID, model.ID);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
@@ -1899,7 +1899,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -1919,7 +1919,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -1932,7 +1932,7 @@ public class OwnerTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        Models::ExternalURLObject expectedExternalURLs = new()
+        Models::ExternalUrlObject expectedExternalUrls = new()
         {
             Published = true,
             Spotify = "spotify",
@@ -1945,7 +1945,7 @@ public class OwnerTest : TestBase
         string expectedDisplayName = "display_name";
 
         Assert.Equal(expectedID, deserialized.ID);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
@@ -1959,7 +1959,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -1977,7 +1977,7 @@ public class OwnerTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -2006,7 +2006,7 @@ public class OwnerTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,
@@ -2015,7 +2015,7 @@ public class OwnerTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -2036,7 +2036,7 @@ public class OwnerTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,
@@ -2052,7 +2052,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -2069,7 +2069,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -2085,7 +2085,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -2104,7 +2104,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = Models::PlaylistUserObjectType.User,
@@ -2218,7 +2218,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                     AddedBy = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = Models::PlaylistUserObjectType.User,
@@ -2238,7 +2238,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -2247,14 +2247,14 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
                                 new()
                                 {
                                     Height = 300,
-                                    URL =
+                                    Url =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
                                     Published = true,
@@ -2277,7 +2277,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -2289,21 +2289,21 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
                             Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
@@ -2311,7 +2311,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         },
                         Name = "name",
                         Popularity = 0,
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -2337,7 +2337,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                 AddedBy = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = Models::PlaylistUserObjectType.User,
@@ -2357,7 +2357,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -2366,14 +2366,14 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -2392,7 +2392,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -2404,21 +2404,21 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -2426,7 +2426,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -2471,7 +2471,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                     AddedBy = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = Models::PlaylistUserObjectType.User,
@@ -2491,7 +2491,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -2500,14 +2500,14 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
                                 new()
                                 {
                                     Height = 300,
-                                    URL =
+                                    Url =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
                                     Published = true,
@@ -2530,7 +2530,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -2542,21 +2542,21 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
                             Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
@@ -2564,7 +2564,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         },
                         Name = "name",
                         Popularity = 0,
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -2601,7 +2601,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                     AddedBy = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = Models::PlaylistUserObjectType.User,
@@ -2621,7 +2621,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -2630,14 +2630,14 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
                                 new()
                                 {
                                     Height = 300,
-                                    URL =
+                                    Url =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
                                     Published = true,
@@ -2660,7 +2660,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -2672,21 +2672,21 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
                             Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
@@ -2694,7 +2694,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         },
                         Name = "name",
                         Popularity = 0,
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -2724,7 +2724,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                 AddedBy = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = Models::PlaylistUserObjectType.User,
@@ -2744,7 +2744,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -2753,14 +2753,14 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -2779,7 +2779,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -2791,21 +2791,21 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -2813,7 +2813,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -2858,7 +2858,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                     AddedBy = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = Models::PlaylistUserObjectType.User,
@@ -2878,7 +2878,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -2887,14 +2887,14 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                                 },
                             ],
                             AvailableMarkets = ["CA", "BR", "IT"],
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Images =
                             [
                                 new()
                                 {
                                     Height = 300,
-                                    URL =
+                                    Url =
                                         "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                     Width = 300,
                                     Published = true,
@@ -2917,7 +2917,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -2929,21 +2929,21 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
                             Published = true,
                             Upc = "upc",
                         },
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
@@ -2951,7 +2951,7 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
                         },
                         Name = "name",
                         Popularity = 0,
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
