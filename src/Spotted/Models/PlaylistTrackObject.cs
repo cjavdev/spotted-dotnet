@@ -167,20 +167,20 @@ public record class Track
 
     public string? ID
     {
-        get { return Match<string?>(object1: (x) => x.ID, episodeObject: (x) => x.ID); }
+        get { return Match<string?>(object_: (x) => x.ID, episodeObject: (x) => x.ID); }
     }
 
     public long? DurationMs
     {
         get
         {
-            return Match<long?>(object1: (x) => x.DurationMs, episodeObject: (x) => x.DurationMs);
+            return Match<long?>(object_: (x) => x.DurationMs, episodeObject: (x) => x.DurationMs);
         }
     }
 
     public bool? Explicit
     {
-        get { return Match<bool?>(object1: (x) => x.Explicit, episodeObject: (x) => x.Explicit); }
+        get { return Match<bool?>(object_: (x) => x.Explicit, episodeObject: (x) => x.Explicit); }
     }
 
     public ExternalURLObject? ExternalURLs
@@ -188,7 +188,7 @@ public record class Track
         get
         {
             return Match<ExternalURLObject?>(
-                object1: (x) => x.ExternalURLs,
+                object_: (x) => x.ExternalURLs,
                 episodeObject: (x) => x.ExternalURLs
             );
         }
@@ -196,30 +196,30 @@ public record class Track
 
     public string? Href
     {
-        get { return Match<string?>(object1: (x) => x.Href, episodeObject: (x) => x.Href); }
+        get { return Match<string?>(object_: (x) => x.Href, episodeObject: (x) => x.Href); }
     }
 
     public bool? IsPlayable
     {
         get
         {
-            return Match<bool?>(object1: (x) => x.IsPlayable, episodeObject: (x) => x.IsPlayable);
+            return Match<bool?>(object_: (x) => x.IsPlayable, episodeObject: (x) => x.IsPlayable);
         }
     }
 
     public string? Name
     {
-        get { return Match<string?>(object1: (x) => x.Name, episodeObject: (x) => x.Name); }
+        get { return Match<string?>(object_: (x) => x.Name, episodeObject: (x) => x.Name); }
     }
 
     public bool? Published
     {
-        get { return Match<bool?>(object1: (x) => x.Published, episodeObject: (x) => x.Published); }
+        get { return Match<bool?>(object_: (x) => x.Published, episodeObject: (x) => x.Published); }
     }
 
     public string? Uri
     {
-        get { return Match<string?>(object1: (x) => x.Uri, episodeObject: (x) => x.Uri); }
+        get { return Match<string?>(object_: (x) => x.Uri, episodeObject: (x) => x.Uri); }
     }
 
     public Track(TrackObject value, JsonElement? element = null)
@@ -302,14 +302,14 @@ public record class Track
     /// </example>
     /// </summary>
     public void Switch(
-        System::Action<TrackObject> object1,
+        System::Action<TrackObject> object_,
         System::Action<EpisodeObject> episodeObject
     )
     {
         switch (this.Value)
         {
             case TrackObject value:
-                object1(value);
+                object_(value);
                 break;
             case EpisodeObject value:
                 episodeObject(value);
@@ -341,13 +341,13 @@ public record class Track
     /// </example>
     /// </summary>
     public T Match<T>(
-        System::Func<TrackObject, T> object1,
+        System::Func<TrackObject, T> object_,
         System::Func<EpisodeObject, T> episodeObject
     )
     {
         return this.Value switch
         {
-            TrackObject value => object1(value),
+            TrackObject value => object_(value),
             EpisodeObject value => episodeObject(value),
             _ => throw new SpottedInvalidDataException("Data did not match any variant of Track"),
         };
@@ -373,7 +373,7 @@ public record class Track
         {
             throw new SpottedInvalidDataException("Data did not match any variant of Track");
         }
-        this.Switch((object1) => object1.Validate(), (episodeObject) => episodeObject.Validate());
+        this.Switch((object_) => object_.Validate(), (episodeObject) => episodeObject.Validate());
     }
 
     public virtual bool Equals(Track? other)
