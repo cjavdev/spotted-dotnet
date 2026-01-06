@@ -33,8 +33,7 @@ public interface IShowService
     );
 
     /// <summary>
-    /// Check if one or more shows is already saved in the current Spotify user's
-    /// library.
+    /// Check if one or more shows is already saved in the current Spotify user's library.
     /// </summary>
     Task<List<bool>> Check(
         ShowCheckParams parameters,

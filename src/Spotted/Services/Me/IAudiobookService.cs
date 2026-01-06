@@ -24,8 +24,7 @@ public interface IAudiobookService
     );
 
     /// <summary>
-    /// Get a list of the audiobooks saved in the current Spotify user's 'Your Music'
-    /// library.
+    /// Get a list of the audiobooks saved in the current Spotify user's 'Your Music' library.
     /// </summary>
     Task<AudiobookListPage> List(
         AudiobookListParams? parameters = null,
@@ -33,8 +32,7 @@ public interface IAudiobookService
     );
 
     /// <summary>
-    /// Check if one or more audiobooks are already saved in the current Spotify user's
-    /// library.
+    /// Check if one or more audiobooks are already saved in the current Spotify user's library.
     /// </summary>
     Task<List<bool>> Check(
         AudiobookCheckParams parameters,

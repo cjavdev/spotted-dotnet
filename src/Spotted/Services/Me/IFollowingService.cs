@@ -39,14 +39,12 @@ public interface IFollowingService
     );
 
     /// <summary>
-    /// Add the current user as a follower of one or more artists or other Spotify
-    /// users.
+    /// Add the current user as a follower of one or more artists or other Spotify users.
     /// </summary>
     Task Follow(FollowingFollowParams parameters, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Remove the current user as a follower of one or more artists or other Spotify
-    /// users.
+    /// Remove the current user as a follower of one or more artists or other Spotify users.
     /// </summary>
     Task Unfollow(
         FollowingUnfollowParams? parameters = null,

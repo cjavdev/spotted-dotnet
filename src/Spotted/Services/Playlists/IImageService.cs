@@ -24,6 +24,8 @@ public interface IImageService
 
     /// <summary>
     /// Replace the image used to represent a specific playlist.
+    ///
+    /// <para>It's the caller's responsibility to dispose the returned response.</para>
     /// </summary>
     Task<HttpResponse> Update(
         ImageUpdateParams parameters,

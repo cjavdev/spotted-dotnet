@@ -38,8 +38,7 @@ public interface ITrackService
     );
 
     /// <summary>
-    /// Get Spotify catalog information for multiple tracks based on their Spotify
-    /// IDs.
+    /// Get Spotify catalog information for multiple tracks based on their Spotify IDs.
     /// </summary>
     Task<TrackBulkRetrieveResponse> BulkRetrieve(
         TrackBulkRetrieveParams parameters,

@@ -24,8 +24,7 @@ public interface IAlbumService
     );
 
     /// <summary>
-    /// Get a list of the albums saved in the current Spotify user's 'Your Music'
-    /// library.
+    /// Get a list of the albums saved in the current Spotify user's 'Your Music' library.
     /// </summary>
     Task<AlbumListPage> List(
         AlbumListParams? parameters = null,
