@@ -7,11 +7,11 @@
 >
 > **We'd love your feedback!** Please share any suggestions, bug reports, feature requests, or general thoughts by [filing an issue](https://www.github.com/cjavdev/spotted-dotnet/issues/new).
 
-The Unofficial Spotify SDK provides convenient access to the [Spotted REST API](https://spotted.stldocs.com) from applications written in C#.
+The Unofficial Spotify SDK provides convenient access to the [Spotted REST API](https://spotted.stldocs.com?docs) from applications written in C#.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
-The REST API documentation can be found on [spotted.stldocs.com](https://spotted.stldocs.com).
+The REST API documentation can be found on [spotted.stldocs.com](https://spotted.stldocs.com?docs).
 
 ## Installation
 
