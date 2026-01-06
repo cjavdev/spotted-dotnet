@@ -24,8 +24,7 @@ public interface ITrackService
     );
 
     /// <summary>
-    /// Get a list of the songs saved in the current Spotify user's 'Your Music'
-    /// library.
+    /// Get a list of the songs saved in the current Spotify user's 'Your Music' library.
     /// </summary>
     Task<TrackListPage> List(
         TrackListParams? parameters = null,

@@ -38,8 +38,7 @@ public interface IEpisodeService
     );
 
     /// <summary>
-    /// Get Spotify catalog information for several episodes based on their Spotify
-    /// IDs.
+    /// Get Spotify catalog information for several episodes based on their Spotify IDs.
     /// </summary>
     Task<EpisodeBulkRetrieveResponse> BulkRetrieve(
         EpisodeBulkRetrieveParams parameters,

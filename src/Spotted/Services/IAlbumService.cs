@@ -36,8 +36,7 @@ public interface IAlbumService
     );
 
     /// <summary>
-    /// Get Spotify catalog information for multiple albums identified by their Spotify
-    /// IDs.
+    /// Get Spotify catalog information for multiple albums identified by their Spotify IDs.
     /// </summary>
     Task<AlbumBulkRetrieveResponse> BulkRetrieve(
         AlbumBulkRetrieveParams parameters,

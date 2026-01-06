@@ -27,7 +27,7 @@ public interface IRecommendationService
     /// with pool size details.
     ///
     /// <para>For artists and tracks that are very new or obscure there might not
-    /// be enough data to generate a list of tracks. </para>
+    /// be enough data to generate a list of tracks.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<RecommendationGetResponse> Get(

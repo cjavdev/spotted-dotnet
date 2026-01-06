@@ -48,8 +48,7 @@ public interface IAudiobookService
 
     /// <summary>
     /// Get Spotify catalog information about an audiobook's chapters. Audiobooks
-    /// are only available within the US, UK, Canada, Ireland, New Zealand and Australia
-    /// markets.
+    /// are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
     /// </summary>
     Task<AudiobookListChaptersPage> ListChapters(
         AudiobookListChaptersParams parameters,

@@ -38,8 +38,7 @@ public interface IArtistService
     );
 
     /// <summary>
-    /// Get Spotify catalog information for several artists based on their Spotify
-    /// IDs.
+    /// Get Spotify catalog information for several artists based on their Spotify IDs.
     /// </summary>
     Task<ArtistBulkRetrieveResponse> BulkRetrieve(
         ArtistBulkRetrieveParams parameters,

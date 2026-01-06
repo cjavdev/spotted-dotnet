@@ -22,8 +22,7 @@ public interface IChapterService
 
     /// <summary>
     /// Get Spotify catalog information for a single audiobook chapter. Chapters
-    /// are only available within the US, UK, Canada, Ireland, New Zealand and Australia
-    /// markets.
+    /// are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
     /// </summary>
     Task<ChapterRetrieveResponse> Retrieve(
         ChapterRetrieveParams parameters,
