@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Spotted.Models.Me.Episodes;
 
@@ -43,5 +44,17 @@ public class EpisodeSaveParamsTest : TestBase
 
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        EpisodeSaveParams parameters = new() { IDs = ["string"] };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(new Uri("https://api.spotify.com/v1/me/episodes"), url);
     }
 }

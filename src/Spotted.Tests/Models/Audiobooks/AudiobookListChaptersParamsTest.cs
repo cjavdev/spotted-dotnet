@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Audiobooks;
 
 namespace Spotted.Tests.Models.Audiobooks;
@@ -58,5 +59,28 @@ public class AudiobookListChaptersParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
         Assert.Null(parameters.Offset);
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        AudiobookListChaptersParams parameters = new()
+        {
+            ID = "7iHfbu1YPACw6oZPAFJtqe",
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/audiobooks/7iHfbu1YPACw6oZPAFJtqe/chapters?limit=10&market=ES&offset=5"
+            ),
+            url
+        );
     }
 }

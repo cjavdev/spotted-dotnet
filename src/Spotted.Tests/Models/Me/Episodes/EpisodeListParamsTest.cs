@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Me.Episodes;
 
 namespace Spotted.Tests.Models.Me.Episodes;
@@ -53,5 +54,25 @@ public class EpisodeListParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
         Assert.Null(parameters.Offset);
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        EpisodeListParams parameters = new()
+        {
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri("https://api.spotify.com/v1/me/episodes?limit=10&market=ES&offset=5"),
+            url
+        );
     }
 }

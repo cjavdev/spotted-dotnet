@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Models.Me.Player;
@@ -97,5 +98,25 @@ public class PlayerStartPlaybackParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
         Assert.Null(parameters.Uris);
         Assert.False(parameters.RawBodyData.ContainsKey("uris"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        PlayerStartPlaybackParams parameters = new()
+        {
+            DeviceID = "0d1841b0976bae2a3a310dd74c0f3df354899bc8",
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/me/player/play?device_id=0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+            ),
+            url
+        );
     }
 }

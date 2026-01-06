@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Browse.Categories;
 
 namespace Spotted.Tests.Models.Browse.Categories;
@@ -38,5 +39,20 @@ public class CategoryRetrieveParamsTest : TestBase
 
         Assert.Null(parameters.Locale);
         Assert.False(parameters.RawQueryData.ContainsKey("locale"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        CategoryRetrieveParams parameters = new() { CategoryID = "dinner", Locale = "sv_SE" };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri("https://api.spotify.com/v1/browse/categories/dinner?locale=sv_SE"),
+            url
+        );
     }
 }

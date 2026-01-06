@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Albums;
 
 namespace Spotted.Tests.Models.Albums;
@@ -58,5 +59,28 @@ public class AlbumListTracksParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
         Assert.Null(parameters.Offset);
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        AlbumListTracksParams parameters = new()
+        {
+            ID = "4aawyAB9vmqN3uQ7FjRGTy",
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?limit=10&market=ES&offset=5"
+            ),
+            url
+        );
     }
 }

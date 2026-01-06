@@ -69,6 +69,18 @@ public class TrackSaveParamsTest : TestBase
         Assert.Null(parameters.TimestampedIDs);
         Assert.False(parameters.RawBodyData.ContainsKey("timestamped_ids"));
     }
+
+    [Fact]
+    public void Url_Works()
+    {
+        TrackSaveParams parameters = new() { IDs = ["string"] };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(new Uri("https://api.spotify.com/v1/me/tracks"), url);
+    }
 }
 
 public class TimestampedIDTest : TestBase

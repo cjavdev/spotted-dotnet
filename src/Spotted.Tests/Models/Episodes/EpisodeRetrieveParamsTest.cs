@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Episodes;
 
 namespace Spotted.Tests.Models.Episodes;
@@ -38,5 +39,20 @@ public class EpisodeRetrieveParamsTest : TestBase
 
         Assert.Null(parameters.Market);
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        EpisodeRetrieveParams parameters = new() { ID = "512ojhOuo1ktJprKbVcKyQ", Market = "ES" };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri("https://api.spotify.com/v1/episodes/512ojhOuo1ktJprKbVcKyQ?market=ES"),
+            url
+        );
     }
 }

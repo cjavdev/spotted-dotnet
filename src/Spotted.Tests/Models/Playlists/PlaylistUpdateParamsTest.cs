@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Playlists;
 
 namespace Spotted.Tests.Models.Playlists;
@@ -66,5 +67,17 @@ public class PlaylistUpdateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("name"));
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        PlaylistUpdateParams parameters = new() { PlaylistID = "3cEYpjA9oz9GiPac4AsH4n" };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(new Uri("https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n"), url);
     }
 }

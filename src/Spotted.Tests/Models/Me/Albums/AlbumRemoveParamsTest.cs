@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Spotted.Models.Me.Albums;
 
@@ -47,5 +48,17 @@ public class AlbumRemoveParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("ids"));
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        AlbumRemoveParams parameters = new();
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(new Uri("https://api.spotify.com/v1/me/albums"), url);
     }
 }

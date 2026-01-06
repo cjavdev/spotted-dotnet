@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Playlists.Followers;
 
 namespace Spotted.Tests.Models.Playlists.Followers;
@@ -42,5 +43,26 @@ public class FollowerCheckParamsTest : TestBase
 
         Assert.Null(parameters.IDs);
         Assert.False(parameters.RawQueryData.ContainsKey("ids"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        FollowerCheckParams parameters = new()
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            IDs = "jmperezperez",
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/followers/contains?ids=jmperezperez"
+            ),
+            url
+        );
     }
 }
