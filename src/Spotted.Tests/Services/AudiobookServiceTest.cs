@@ -19,7 +19,7 @@ public class AudiobookServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Audiobooks.BulkRetrieve(
-            new() { IDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe" },
+            new() { Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe" },
             TestContext.Current.CancellationToken
         );
         response.Validate();

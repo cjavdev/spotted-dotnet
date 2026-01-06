@@ -125,9 +125,9 @@ public sealed record class Album : JsonModel
     /// <summary>
     /// Known external URLs for this album.
     /// </summary>
-    public required ExternalURLObject ExternalURLs
+    public required ExternalUrlObject ExternalUrls
     {
-        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNotNullClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init { JsonModel.Set(this._rawData, "external_urls", value); }
     }
 
@@ -260,7 +260,7 @@ public sealed record class Album : JsonModel
     /// <summary>
     /// Known external IDs for the album.
     /// </summary>
-    public ExternalIDObject? ExternalIDs
+    public ExternalIDObject? ExternalIds
     {
         get { return JsonModel.GetNullableClass<ExternalIDObject>(this.RawData, "external_ids"); }
         init
@@ -390,7 +390,7 @@ public sealed record class Album : JsonModel
         _ = this.ID;
         this.AlbumType.Validate();
         _ = this.AvailableMarkets;
-        this.ExternalURLs.Validate();
+        this.ExternalUrls.Validate();
         _ = this.Href;
         foreach (var item in this.Images)
         {
@@ -415,7 +415,7 @@ public sealed record class Album : JsonModel
         {
             item.Validate();
         }
-        this.ExternalIDs?.Validate();
+        this.ExternalIds?.Validate();
         _ = this.Genres;
         _ = this.Label;
         _ = this.Popularity;

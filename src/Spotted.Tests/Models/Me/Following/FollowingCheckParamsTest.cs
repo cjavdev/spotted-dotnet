@@ -13,14 +13,14 @@ public class FollowingCheckParamsTest : TestBase
     {
         var parameters = new Following::FollowingCheckParams
         {
-            IDs = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
+            Ids = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
             Type = Following::Type.Artist,
         };
 
-        string expectedIDs = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6";
+        string expectedIds = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6";
         ApiEnum<string, Following::Type> expectedType = Following::Type.Artist;
 
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
         Assert.Equal(expectedType, parameters.Type);
     }
 
@@ -29,7 +29,7 @@ public class FollowingCheckParamsTest : TestBase
     {
         Following::FollowingCheckParams parameters = new()
         {
-            IDs = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
+            Ids = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
             Type = Following::Type.Artist,
         };
 

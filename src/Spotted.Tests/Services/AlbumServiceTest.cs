@@ -19,7 +19,7 @@ public class AlbumServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Albums.BulkRetrieve(
-            new() { IDs = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc" },
+            new() { Ids = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc" },
             TestContext.Current.CancellationToken
         );
         response.Validate();

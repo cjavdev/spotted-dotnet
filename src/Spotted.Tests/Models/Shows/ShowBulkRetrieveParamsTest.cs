@@ -10,14 +10,14 @@ public class ShowBulkRetrieveParamsTest : TestBase
     {
         var parameters = new ShowBulkRetrieveParams
         {
-            IDs = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
+            Ids = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
             Market = "ES",
         };
 
-        string expectedIDs = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ";
+        string expectedIds = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ";
         string expectedMarket = "ES";
 
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
         Assert.Equal(expectedMarket, parameters.Market);
     }
 
@@ -26,7 +26,7 @@ public class ShowBulkRetrieveParamsTest : TestBase
     {
         var parameters = new ShowBulkRetrieveParams
         {
-            IDs = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
+            Ids = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
         };
 
         Assert.Null(parameters.Market);
@@ -38,7 +38,7 @@ public class ShowBulkRetrieveParamsTest : TestBase
     {
         var parameters = new ShowBulkRetrieveParams
         {
-            IDs = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
+            Ids = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
 
             // Null should be interpreted as omitted for these properties
             Market = null,
@@ -53,7 +53,7 @@ public class ShowBulkRetrieveParamsTest : TestBase
     {
         ShowBulkRetrieveParams parameters = new()
         {
-            IDs = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
+            Ids = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
             Market = "ES",
         };
 

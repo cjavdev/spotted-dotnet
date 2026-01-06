@@ -24,15 +24,15 @@ public class ShowBaseTest : TestBase
             ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
-            HTMLDescription = "html_description",
+            HtmlDescription = "html_description",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -60,15 +60,15 @@ public class ShowBaseTest : TestBase
         ];
         string expectedDescription = "description";
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
-        string expectedHTMLDescription = "html_description";
+        string expectedHtmlDescription = "html_description";
         List<ImageObject> expectedImages =
         [
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -96,9 +96,9 @@ public class ShowBaseTest : TestBase
         }
         Assert.Equal(expectedDescription, model.Description);
         Assert.Equal(expectedExplicit, model.Explicit);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
-        Assert.Equal(expectedHTMLDescription, model.HTMLDescription);
+        Assert.Equal(expectedHtmlDescription, model.HtmlDescription);
         Assert.Equal(expectedImages.Count, model.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {
@@ -137,15 +137,15 @@ public class ShowBaseTest : TestBase
             ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
-            HTMLDescription = "html_description",
+            HtmlDescription = "html_description",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -184,15 +184,15 @@ public class ShowBaseTest : TestBase
             ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
-            HTMLDescription = "html_description",
+            HtmlDescription = "html_description",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -224,15 +224,15 @@ public class ShowBaseTest : TestBase
         ];
         string expectedDescription = "description";
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
-        string expectedHTMLDescription = "html_description";
+        string expectedHtmlDescription = "html_description";
         List<ImageObject> expectedImages =
         [
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -260,9 +260,9 @@ public class ShowBaseTest : TestBase
         }
         Assert.Equal(expectedDescription, deserialized.Description);
         Assert.Equal(expectedExplicit, deserialized.Explicit);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
-        Assert.Equal(expectedHTMLDescription, deserialized.HTMLDescription);
+        Assert.Equal(expectedHtmlDescription, deserialized.HtmlDescription);
         Assert.Equal(expectedImages.Count, deserialized.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
         {
@@ -301,15 +301,15 @@ public class ShowBaseTest : TestBase
             ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
-            HTMLDescription = "html_description",
+            HtmlDescription = "html_description",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -345,15 +345,15 @@ public class ShowBaseTest : TestBase
             ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
-            HTMLDescription = "html_description",
+            HtmlDescription = "html_description",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -389,15 +389,15 @@ public class ShowBaseTest : TestBase
             ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
-            HTMLDescription = "html_description",
+            HtmlDescription = "html_description",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -432,15 +432,15 @@ public class ShowBaseTest : TestBase
             ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
-            HTMLDescription = "html_description",
+            HtmlDescription = "html_description",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -479,15 +479,15 @@ public class ShowBaseTest : TestBase
             ],
             Description = "description",
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
-            HTMLDescription = "html_description",
+            HtmlDescription = "html_description",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },

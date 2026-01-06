@@ -10,12 +10,12 @@ public class AudioFeatureBulkRetrieveParamsTest : TestBase
     {
         var parameters = new AudioFeatureBulkRetrieveParams
         {
-            IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+            Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
         };
 
-        string expectedIDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B";
+        string expectedIds = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B";
 
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public class AudioFeatureBulkRetrieveParamsTest : TestBase
     {
         AudioFeatureBulkRetrieveParams parameters = new()
         {
-            IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+            Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
         };
 
         var url = parameters.Url(

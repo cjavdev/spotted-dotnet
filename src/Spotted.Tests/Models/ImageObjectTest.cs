@@ -11,18 +11,18 @@ public class ImageObjectTest : TestBase
         var model = new ImageObject
         {
             Height = 300,
-            URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
             Width = 300,
             Published = true,
         };
 
         long expectedHeight = 300;
-        string expectedURL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n";
+        string expectedUrl = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n";
         long expectedWidth = 300;
         bool expectedPublished = true;
 
         Assert.Equal(expectedHeight, model.Height);
-        Assert.Equal(expectedURL, model.URL);
+        Assert.Equal(expectedUrl, model.Url);
         Assert.Equal(expectedWidth, model.Width);
         Assert.Equal(expectedPublished, model.Published);
     }
@@ -33,7 +33,7 @@ public class ImageObjectTest : TestBase
         var model = new ImageObject
         {
             Height = 300,
-            URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
             Width = 300,
             Published = true,
         };
@@ -50,7 +50,7 @@ public class ImageObjectTest : TestBase
         var model = new ImageObject
         {
             Height = 300,
-            URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
             Width = 300,
             Published = true,
         };
@@ -60,12 +60,12 @@ public class ImageObjectTest : TestBase
         Assert.NotNull(deserialized);
 
         long expectedHeight = 300;
-        string expectedURL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n";
+        string expectedUrl = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n";
         long expectedWidth = 300;
         bool expectedPublished = true;
 
         Assert.Equal(expectedHeight, deserialized.Height);
-        Assert.Equal(expectedURL, deserialized.URL);
+        Assert.Equal(expectedUrl, deserialized.Url);
         Assert.Equal(expectedWidth, deserialized.Width);
         Assert.Equal(expectedPublished, deserialized.Published);
     }
@@ -76,7 +76,7 @@ public class ImageObjectTest : TestBase
         var model = new ImageObject
         {
             Height = 300,
-            URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
             Width = 300,
             Published = true,
         };
@@ -90,7 +90,7 @@ public class ImageObjectTest : TestBase
         var model = new ImageObject
         {
             Height = 300,
-            URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
             Width = 300,
         };
 
@@ -104,7 +104,7 @@ public class ImageObjectTest : TestBase
         var model = new ImageObject
         {
             Height = 300,
-            URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
             Width = 300,
         };
 
@@ -117,7 +117,7 @@ public class ImageObjectTest : TestBase
         var model = new ImageObject
         {
             Height = 300,
-            URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
             Width = 300,
 
             // Null should be interpreted as omitted for these properties
@@ -134,7 +134,7 @@ public class ImageObjectTest : TestBase
         var model = new ImageObject
         {
             Height = 300,
-            URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
             Width = 300,
 
             // Null should be interpreted as omitted for these properties

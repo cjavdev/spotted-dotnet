@@ -10,14 +10,14 @@ public class AlbumBulkRetrieveParamsTest : TestBase
     {
         var parameters = new AlbumBulkRetrieveParams
         {
-            IDs = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
+            Ids = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
             Market = "ES",
         };
 
-        string expectedIDs = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc";
+        string expectedIds = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc";
         string expectedMarket = "ES";
 
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
         Assert.Equal(expectedMarket, parameters.Market);
     }
 
@@ -26,7 +26,7 @@ public class AlbumBulkRetrieveParamsTest : TestBase
     {
         var parameters = new AlbumBulkRetrieveParams
         {
-            IDs = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
+            Ids = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
         };
 
         Assert.Null(parameters.Market);
@@ -38,7 +38,7 @@ public class AlbumBulkRetrieveParamsTest : TestBase
     {
         var parameters = new AlbumBulkRetrieveParams
         {
-            IDs = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
+            Ids = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
 
             // Null should be interpreted as omitted for these properties
             Market = null,
@@ -53,7 +53,7 @@ public class AlbumBulkRetrieveParamsTest : TestBase
     {
         AlbumBulkRetrieveParams parameters = new()
         {
-            IDs = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
+            Ids = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
             Market = "ES",
         };
 

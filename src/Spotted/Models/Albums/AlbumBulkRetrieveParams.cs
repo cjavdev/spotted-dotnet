@@ -18,7 +18,7 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
     /// A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids)
     /// for the albums. Maximum: 20 IDs.
     /// </summary>
-    public required string IDs
+    public required string Ids
     {
         get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
         init { JsonModel.Set(this._rawQueryData, "ids", value); }

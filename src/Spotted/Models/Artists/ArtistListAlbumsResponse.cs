@@ -81,9 +81,9 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// <summary>
     /// Known external URLs for this album.
     /// </summary>
-    public required ExternalURLObject ExternalURLs
+    public required ExternalUrlObject ExternalUrls
     {
-        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get { return JsonModel.GetNotNullClass<ExternalUrlObject>(this.RawData, "external_urls"); }
         init { JsonModel.Set(this._rawData, "external_urls", value); }
     }
 
@@ -220,7 +220,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
             item.Validate();
         }
         _ = this.AvailableMarkets;
-        this.ExternalURLs.Validate();
+        this.ExternalUrls.Validate();
         _ = this.Href;
         foreach (var item in this.Images)
         {

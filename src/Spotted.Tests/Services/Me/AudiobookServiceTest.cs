@@ -18,7 +18,7 @@ public class AudiobookServiceTest : TestBase
     public async Task Check_Works()
     {
         await this.client.Me.Audiobooks.Check(
-            new() { IDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe" },
+            new() { Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe" },
             TestContext.Current.CancellationToken
         );
     }
@@ -27,7 +27,7 @@ public class AudiobookServiceTest : TestBase
     public async Task Remove_Works()
     {
         await this.client.Me.Audiobooks.Remove(
-            new() { IDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe" },
+            new() { Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe" },
             TestContext.Current.CancellationToken
         );
     }
@@ -36,7 +36,7 @@ public class AudiobookServiceTest : TestBase
     public async Task Save_Works()
     {
         await this.client.Me.Audiobooks.Save(
-            new() { IDs = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe" },
+            new() { Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe" },
             TestContext.Current.CancellationToken
         );
     }

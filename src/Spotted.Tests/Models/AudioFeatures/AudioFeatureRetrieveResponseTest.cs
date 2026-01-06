@@ -14,7 +14,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         {
             ID = "2takcwOaAZWiXQijPHIx7B",
             Acousticness = 0.00242f,
-            AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
+            AnalysisUrl = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
             Danceability = 0.585f,
             DurationMs = 237040,
             Energy = 0.842f,
@@ -35,7 +35,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
 
         string expectedID = "2takcwOaAZWiXQijPHIx7B";
         float expectedAcousticness = 0.00242f;
-        string expectedAnalysisURL =
+        string expectedAnalysisUrl =
             "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n";
         float expectedDanceability = 0.585f;
         long expectedDurationMs = 237040;
@@ -56,7 +56,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
 
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedAcousticness, model.Acousticness);
-        Assert.Equal(expectedAnalysisURL, model.AnalysisURL);
+        Assert.Equal(expectedAnalysisUrl, model.AnalysisUrl);
         Assert.Equal(expectedDanceability, model.Danceability);
         Assert.Equal(expectedDurationMs, model.DurationMs);
         Assert.Equal(expectedEnergy, model.Energy);
@@ -82,7 +82,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         {
             ID = "2takcwOaAZWiXQijPHIx7B",
             Acousticness = 0.00242f,
-            AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
+            AnalysisUrl = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
             Danceability = 0.585f,
             DurationMs = 237040,
             Energy = 0.842f,
@@ -114,7 +114,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         {
             ID = "2takcwOaAZWiXQijPHIx7B",
             Acousticness = 0.00242f,
-            AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
+            AnalysisUrl = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
             Danceability = 0.585f,
             DurationMs = 237040,
             Energy = 0.842f,
@@ -139,7 +139,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
 
         string expectedID = "2takcwOaAZWiXQijPHIx7B";
         float expectedAcousticness = 0.00242f;
-        string expectedAnalysisURL =
+        string expectedAnalysisUrl =
             "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n";
         float expectedDanceability = 0.585f;
         long expectedDurationMs = 237040;
@@ -160,7 +160,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
 
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedAcousticness, deserialized.Acousticness);
-        Assert.Equal(expectedAnalysisURL, deserialized.AnalysisURL);
+        Assert.Equal(expectedAnalysisUrl, deserialized.AnalysisUrl);
         Assert.Equal(expectedDanceability, deserialized.Danceability);
         Assert.Equal(expectedDurationMs, deserialized.DurationMs);
         Assert.Equal(expectedEnergy, deserialized.Energy);
@@ -186,7 +186,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         {
             ID = "2takcwOaAZWiXQijPHIx7B",
             Acousticness = 0.00242f,
-            AnalysisURL = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
+            AnalysisUrl = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
             Danceability = 0.585f,
             DurationMs = 237040,
             Energy = 0.842f,
@@ -217,7 +217,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("id"));
         Assert.Null(model.Acousticness);
         Assert.False(model.RawData.ContainsKey("acousticness"));
-        Assert.Null(model.AnalysisURL);
+        Assert.Null(model.AnalysisUrl);
         Assert.False(model.RawData.ContainsKey("analysis_url"));
         Assert.Null(model.Danceability);
         Assert.False(model.RawData.ContainsKey("danceability"));
@@ -269,7 +269,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             // Null should be interpreted as omitted for these properties
             ID = null,
             Acousticness = null,
-            AnalysisURL = null,
+            AnalysisUrl = null,
             Danceability = null,
             DurationMs = null,
             Energy = null,
@@ -292,7 +292,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("id"));
         Assert.Null(model.Acousticness);
         Assert.False(model.RawData.ContainsKey("acousticness"));
-        Assert.Null(model.AnalysisURL);
+        Assert.Null(model.AnalysisUrl);
         Assert.False(model.RawData.ContainsKey("analysis_url"));
         Assert.Null(model.Danceability);
         Assert.False(model.RawData.ContainsKey("danceability"));
@@ -336,7 +336,7 @@ public class AudioFeatureRetrieveResponseTest : TestBase
             // Null should be interpreted as omitted for these properties
             ID = null,
             Acousticness = null,
-            AnalysisURL = null,
+            AnalysisUrl = null,
             Danceability = null,
             DurationMs = null,
             Energy = null,

@@ -13,7 +13,7 @@ public class SimplifiedArtistObjectTest : TestBase
         var model = new SimplifiedArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Name = "name",
             Published = true,
@@ -22,7 +22,7 @@ public class SimplifiedArtistObjectTest : TestBase
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         string expectedName = "name";
         bool expectedPublished = true;
@@ -31,7 +31,7 @@ public class SimplifiedArtistObjectTest : TestBase
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, model.ID);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedPublished, model.Published);
@@ -45,7 +45,7 @@ public class SimplifiedArtistObjectTest : TestBase
         var model = new SimplifiedArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Name = "name",
             Published = true,
@@ -65,7 +65,7 @@ public class SimplifiedArtistObjectTest : TestBase
         var model = new SimplifiedArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Name = "name",
             Published = true,
@@ -78,7 +78,7 @@ public class SimplifiedArtistObjectTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         string expectedName = "name";
         bool expectedPublished = true;
@@ -87,7 +87,7 @@ public class SimplifiedArtistObjectTest : TestBase
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, deserialized.ID);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedPublished, deserialized.Published);
@@ -101,7 +101,7 @@ public class SimplifiedArtistObjectTest : TestBase
         var model = new SimplifiedArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Name = "name",
             Published = true,
@@ -119,7 +119,7 @@ public class SimplifiedArtistObjectTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -148,7 +148,7 @@ public class SimplifiedArtistObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Name = null,
             Published = null,
@@ -158,7 +158,7 @@ public class SimplifiedArtistObjectTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -179,7 +179,7 @@ public class SimplifiedArtistObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Name = null,
             Published = null,

@@ -28,7 +28,7 @@ public sealed record class TrackSaveParams : ParamsBase
     /// is present in the body, any IDs listed in the query parameters (deprecated)
     /// or the `ids` field in the body will be ignored._
     /// </summary>
-    public required IReadOnlyList<string> IDs
+    public required IReadOnlyList<string> Ids
     {
         get { return JsonModel.GetNotNullClass<List<string>>(this.RawBodyData, "ids"); }
         init { JsonModel.Set(this._rawBodyData, "ids", value); }
@@ -63,7 +63,7 @@ public sealed record class TrackSaveParams : ParamsBase
     /// IDs listed in the query parameters (deprecated) or the `ids` field in the
     /// body will be ignored._
     /// </summary>
-    public IReadOnlyList<TimestampedID>? TimestampedIDs
+    public IReadOnlyList<TimestampedID>? TimestampedIds
     {
         get
         {

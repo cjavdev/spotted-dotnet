@@ -19,7 +19,7 @@ public class ChapterServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Chapters.BulkRetrieve(
-            new() { IDs = "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29" },
+            new() { Ids = "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29" },
             TestContext.Current.CancellationToken
         );
         response.Validate();

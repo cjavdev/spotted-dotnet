@@ -22,7 +22,7 @@ public class FollowingServiceTest : TestBase
         await this.client.Me.Following.Check(
             new()
             {
-                IDs = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
+                Ids = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6",
                 Type = Type.Artist,
             },
             TestContext.Current.CancellationToken
@@ -33,7 +33,7 @@ public class FollowingServiceTest : TestBase
     public async Task Follow_Works()
     {
         await this.client.Me.Following.Follow(
-            new() { IDs = ["string"] },
+            new() { Ids = ["string"] },
             TestContext.Current.CancellationToken
         );
     }

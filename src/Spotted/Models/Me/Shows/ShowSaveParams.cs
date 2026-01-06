@@ -26,7 +26,7 @@ public sealed record class ShowSaveParams : ParamsBase
     /// parameter is present in the query string, any IDs listed here in the body
     /// will be ignored.*
     /// </summary>
-    public IReadOnlyList<string>? IDs
+    public IReadOnlyList<string>? Ids
     {
         get { return JsonModel.GetNullableClass<List<string>>(this.RawBodyData, "ids"); }
         init

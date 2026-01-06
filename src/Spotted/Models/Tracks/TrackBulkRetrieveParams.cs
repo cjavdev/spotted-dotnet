@@ -18,7 +18,7 @@ public sealed record class TrackBulkRetrieveParams : ParamsBase
     /// For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum:
     /// 50 IDs.
     /// </summary>
-    public required string IDs
+    public required string Ids
     {
         get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
         init { JsonModel.Set(this._rawQueryData, "ids", value); }

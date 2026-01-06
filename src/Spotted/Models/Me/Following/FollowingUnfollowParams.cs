@@ -27,7 +27,7 @@ public sealed record class FollowingUnfollowParams : ParamsBase
     /// A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter
     /// is present in the query string, any IDs listed here in the body will be ignored._
     /// </summary>
-    public IReadOnlyList<string>? IDs
+    public IReadOnlyList<string>? Ids
     {
         get { return JsonModel.GetNullableClass<List<string>>(this.RawBodyData, "ids"); }
         init

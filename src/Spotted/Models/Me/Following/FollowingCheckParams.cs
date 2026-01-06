@@ -21,7 +21,7 @@ public sealed record class FollowingCheckParams : ParamsBase
     /// to check. For example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`.
     /// A maximum of 50 IDs can be sent in one request.
     /// </summary>
-    public required string IDs
+    public required string Ids
     {
         get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
         init { JsonModel.Set(this._rawQueryData, "ids", value); }

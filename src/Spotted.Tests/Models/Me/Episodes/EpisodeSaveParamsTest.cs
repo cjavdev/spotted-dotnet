@@ -9,15 +9,15 @@ public class EpisodeSaveParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new EpisodeSaveParams { IDs = ["string"], Published = true };
+        var parameters = new EpisodeSaveParams { Ids = ["string"], Published = true };
 
-        List<string> expectedIDs = ["string"];
+        List<string> expectedIds = ["string"];
         bool expectedPublished = true;
 
-        Assert.Equal(expectedIDs.Count, parameters.IDs.Count);
-        for (int i = 0; i < expectedIDs.Count; i++)
+        Assert.Equal(expectedIds.Count, parameters.Ids.Count);
+        for (int i = 0; i < expectedIds.Count; i++)
         {
-            Assert.Equal(expectedIDs[i], parameters.IDs[i]);
+            Assert.Equal(expectedIds[i], parameters.Ids[i]);
         }
         Assert.Equal(expectedPublished, parameters.Published);
     }
@@ -25,7 +25,7 @@ public class EpisodeSaveParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new EpisodeSaveParams { IDs = ["string"] };
+        var parameters = new EpisodeSaveParams { Ids = ["string"] };
 
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
@@ -36,7 +36,7 @@ public class EpisodeSaveParamsTest : TestBase
     {
         var parameters = new EpisodeSaveParams
         {
-            IDs = ["string"],
+            Ids = ["string"],
 
             // Null should be interpreted as omitted for these properties
             Published = null,
@@ -49,7 +49,7 @@ public class EpisodeSaveParamsTest : TestBase
     [Fact]
     public void Url_Works()
     {
-        EpisodeSaveParams parameters = new() { IDs = ["string"] };
+        EpisodeSaveParams parameters = new() { Ids = ["string"] };
 
         var url = parameters.Url(
             new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }

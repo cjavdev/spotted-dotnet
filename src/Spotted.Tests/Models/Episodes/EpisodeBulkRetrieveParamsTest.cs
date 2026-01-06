@@ -10,14 +10,14 @@ public class EpisodeBulkRetrieveParamsTest : TestBase
     {
         var parameters = new EpisodeBulkRetrieveParams
         {
-            IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+            Ids = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
             Market = "ES",
         };
 
-        string expectedIDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf";
+        string expectedIds = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf";
         string expectedMarket = "ES";
 
-        Assert.Equal(expectedIDs, parameters.IDs);
+        Assert.Equal(expectedIds, parameters.Ids);
         Assert.Equal(expectedMarket, parameters.Market);
     }
 
@@ -26,7 +26,7 @@ public class EpisodeBulkRetrieveParamsTest : TestBase
     {
         var parameters = new EpisodeBulkRetrieveParams
         {
-            IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+            Ids = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
         };
 
         Assert.Null(parameters.Market);
@@ -38,7 +38,7 @@ public class EpisodeBulkRetrieveParamsTest : TestBase
     {
         var parameters = new EpisodeBulkRetrieveParams
         {
-            IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+            Ids = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
 
             // Null should be interpreted as omitted for these properties
             Market = null,
@@ -53,7 +53,7 @@ public class EpisodeBulkRetrieveParamsTest : TestBase
     {
         EpisodeBulkRetrieveParams parameters = new()
         {
-            IDs = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+            Ids = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
             Market = "ES",
         };
 

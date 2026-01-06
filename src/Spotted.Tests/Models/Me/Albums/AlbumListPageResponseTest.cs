@@ -29,14 +29,14 @@ public class AlbumListPageResponseTest : TestBase
                         ID = "2up3OPMp9Tb4dAKM2erWXQ",
                         AlbumType = AlbumType.Compilation,
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -52,7 +52,7 @@ public class AlbumListPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -69,7 +69,7 @@ public class AlbumListPageResponseTest : TestBase
                                 Type = "type",
                             },
                         ],
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
@@ -99,7 +99,7 @@ public class AlbumListPageResponseTest : TestBase
                                         new()
                                         {
                                             ID = "id",
-                                            ExternalURLs = new()
+                                            ExternalUrls = new()
                                             {
                                                 Published = true,
                                                 Spotify = "spotify",
@@ -115,14 +115,14 @@ public class AlbumListPageResponseTest : TestBase
                                     DiscNumber = 0,
                                     DurationMs = 0,
                                     Explicit = true,
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     IsLocal = true,
                                     IsPlayable = true,
                                     LinkedFrom = new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -133,7 +133,7 @@ public class AlbumListPageResponseTest : TestBase
                                         Uri = "uri",
                                     },
                                     Name = "name",
-                                    PreviewURL = "preview_url",
+                                    PreviewUrl = "preview_url",
                                     Published = true,
                                     Restrictions = new() { Published = true, Reason = "reason" },
                                     TrackNumber = 0,
@@ -166,14 +166,14 @@ public class AlbumListPageResponseTest : TestBase
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
                     AlbumType = AlbumType.Compilation,
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -189,7 +189,7 @@ public class AlbumListPageResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -206,7 +206,7 @@ public class AlbumListPageResponseTest : TestBase
                             Type = "type",
                         },
                     ],
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
@@ -236,7 +236,7 @@ public class AlbumListPageResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -252,21 +252,21 @@ public class AlbumListPageResponseTest : TestBase
                                 DiscNumber = 0,
                                 DurationMs = 0,
                                 Explicit = true,
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 IsLocal = true,
                                 IsPlayable = true,
                                 LinkedFrom = new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Published = true,
                                     Type = "type",
                                     Uri = "uri",
                                 },
                                 Name = "name",
-                                PreviewURL = "preview_url",
+                                PreviewUrl = "preview_url",
                                 Published = true,
                                 Restrictions = new() { Published = true, Reason = "reason" },
                                 TrackNumber = 0,
@@ -318,14 +318,14 @@ public class AlbumListPageResponseTest : TestBase
                         ID = "2up3OPMp9Tb4dAKM2erWXQ",
                         AlbumType = AlbumType.Compilation,
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -341,7 +341,7 @@ public class AlbumListPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -358,7 +358,7 @@ public class AlbumListPageResponseTest : TestBase
                                 Type = "type",
                             },
                         ],
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
@@ -388,7 +388,7 @@ public class AlbumListPageResponseTest : TestBase
                                         new()
                                         {
                                             ID = "id",
-                                            ExternalURLs = new()
+                                            ExternalUrls = new()
                                             {
                                                 Published = true,
                                                 Spotify = "spotify",
@@ -404,14 +404,14 @@ public class AlbumListPageResponseTest : TestBase
                                     DiscNumber = 0,
                                     DurationMs = 0,
                                     Explicit = true,
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     IsLocal = true,
                                     IsPlayable = true,
                                     LinkedFrom = new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -422,7 +422,7 @@ public class AlbumListPageResponseTest : TestBase
                                         Uri = "uri",
                                     },
                                     Name = "name",
-                                    PreviewURL = "preview_url",
+                                    PreviewUrl = "preview_url",
                                     Published = true,
                                     Restrictions = new() { Published = true, Reason = "reason" },
                                     TrackNumber = 0,
@@ -466,14 +466,14 @@ public class AlbumListPageResponseTest : TestBase
                         ID = "2up3OPMp9Tb4dAKM2erWXQ",
                         AlbumType = AlbumType.Compilation,
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -489,7 +489,7 @@ public class AlbumListPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -506,7 +506,7 @@ public class AlbumListPageResponseTest : TestBase
                                 Type = "type",
                             },
                         ],
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
@@ -536,7 +536,7 @@ public class AlbumListPageResponseTest : TestBase
                                         new()
                                         {
                                             ID = "id",
-                                            ExternalURLs = new()
+                                            ExternalUrls = new()
                                             {
                                                 Published = true,
                                                 Spotify = "spotify",
@@ -552,14 +552,14 @@ public class AlbumListPageResponseTest : TestBase
                                     DiscNumber = 0,
                                     DurationMs = 0,
                                     Explicit = true,
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     IsLocal = true,
                                     IsPlayable = true,
                                     LinkedFrom = new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -570,7 +570,7 @@ public class AlbumListPageResponseTest : TestBase
                                         Uri = "uri",
                                     },
                                     Name = "name",
-                                    PreviewURL = "preview_url",
+                                    PreviewUrl = "preview_url",
                                     Published = true,
                                     Restrictions = new() { Published = true, Reason = "reason" },
                                     TrackNumber = 0,
@@ -607,14 +607,14 @@ public class AlbumListPageResponseTest : TestBase
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
                     AlbumType = AlbumType.Compilation,
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -630,7 +630,7 @@ public class AlbumListPageResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -647,7 +647,7 @@ public class AlbumListPageResponseTest : TestBase
                             Type = "type",
                         },
                     ],
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
@@ -677,7 +677,7 @@ public class AlbumListPageResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -693,21 +693,21 @@ public class AlbumListPageResponseTest : TestBase
                                 DiscNumber = 0,
                                 DurationMs = 0,
                                 Explicit = true,
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 IsLocal = true,
                                 IsPlayable = true,
                                 LinkedFrom = new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Published = true,
                                     Type = "type",
                                     Uri = "uri",
                                 },
                                 Name = "name",
-                                PreviewURL = "preview_url",
+                                PreviewUrl = "preview_url",
                                 Published = true,
                                 Restrictions = new() { Published = true, Reason = "reason" },
                                 TrackNumber = 0,
@@ -759,14 +759,14 @@ public class AlbumListPageResponseTest : TestBase
                         ID = "2up3OPMp9Tb4dAKM2erWXQ",
                         AlbumType = AlbumType.Compilation,
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -782,7 +782,7 @@ public class AlbumListPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -799,7 +799,7 @@ public class AlbumListPageResponseTest : TestBase
                                 Type = "type",
                             },
                         ],
-                        ExternalIDs = new()
+                        ExternalIds = new()
                         {
                             Ean = "ean",
                             Isrc = "isrc",
@@ -829,7 +829,7 @@ public class AlbumListPageResponseTest : TestBase
                                         new()
                                         {
                                             ID = "id",
-                                            ExternalURLs = new()
+                                            ExternalUrls = new()
                                             {
                                                 Published = true,
                                                 Spotify = "spotify",
@@ -845,14 +845,14 @@ public class AlbumListPageResponseTest : TestBase
                                     DiscNumber = 0,
                                     DurationMs = 0,
                                     Explicit = true,
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     IsLocal = true,
                                     IsPlayable = true,
                                     LinkedFrom = new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -863,7 +863,7 @@ public class AlbumListPageResponseTest : TestBase
                                         Uri = "uri",
                                     },
                                     Name = "name",
-                                    PreviewURL = "preview_url",
+                                    PreviewUrl = "preview_url",
                                     Published = true,
                                     Restrictions = new() { Published = true, Reason = "reason" },
                                     TrackNumber = 0,

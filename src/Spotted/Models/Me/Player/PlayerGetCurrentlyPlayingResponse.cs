@@ -492,13 +492,13 @@ public record class Item
         }
     }
 
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
         get
         {
-            return Match<ExternalURLObject?>(
-                trackObject: (x) => x.ExternalURLs,
-                episodeObject: (x) => x.ExternalURLs
+            return Match<ExternalUrlObject?>(
+                trackObject: (x) => x.ExternalUrls,
+                episodeObject: (x) => x.ExternalUrls
             );
         }
     }

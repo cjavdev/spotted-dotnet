@@ -19,7 +19,7 @@ public class TrackServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Tracks.BulkRetrieve(
-            new() { IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B" },
+            new() { Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B" },
             TestContext.Current.CancellationToken
         );
         response.Validate();
