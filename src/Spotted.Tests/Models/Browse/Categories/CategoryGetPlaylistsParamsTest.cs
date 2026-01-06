@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Browse.Categories;
 
 namespace Spotted.Tests.Models.Browse.Categories;
@@ -50,5 +51,27 @@ public class CategoryGetPlaylistsParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("limit"));
         Assert.Null(parameters.Offset);
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        CategoryGetPlaylistsParams parameters = new()
+        {
+            CategoryID = "dinner",
+            Limit = 10,
+            Offset = 5,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/browse/categories/dinner/playlists?limit=10&offset=5"
+            ),
+            url
+        );
     }
 }

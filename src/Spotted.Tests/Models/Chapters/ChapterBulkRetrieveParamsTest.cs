@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Chapters;
 
 namespace Spotted.Tests.Models.Chapters;
@@ -45,5 +46,26 @@ public class ChapterBulkRetrieveParamsTest : TestBase
 
         Assert.Null(parameters.Market);
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        ChapterBulkRetrieveParams parameters = new()
+        {
+            IDs = "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29",
+            Market = "ES",
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/chapters?ids=0IsXVP0JmcB2adSE338GkK%2c3ZXb8FKZGU0EHALYX6uCzU%2c0D5wENdkdwbqlrHoaJ9g29&market=ES"
+            ),
+            url
+        );
     }
 }

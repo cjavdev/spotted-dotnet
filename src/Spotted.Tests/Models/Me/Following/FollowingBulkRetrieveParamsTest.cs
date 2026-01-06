@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json;
 using Spotted.Models.Me.Following;
 
@@ -48,5 +49,27 @@ public class FollowingBulkRetrieveParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("after"));
         Assert.Null(parameters.Limit);
         Assert.False(parameters.RawQueryData.ContainsKey("limit"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        FollowingBulkRetrieveParams parameters = new()
+        {
+            Type = JsonSerializer.Deserialize<JsonElement>("\"artist\""),
+            After = "0I2XqVXqHScXjHhk6AYYRe",
+            Limit = 10,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/me/following?type=artist&after=0I2XqVXqHScXjHhk6AYYRe&limit=10"
+            ),
+            url
+        );
     }
 }

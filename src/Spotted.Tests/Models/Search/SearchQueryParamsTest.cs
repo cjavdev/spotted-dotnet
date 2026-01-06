@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Core;
 using Spotted.Exceptions;
-using Spotted.Models.Search;
+using Search = Spotted.Models.Search;
 
 namespace Spotted.Tests.Models.Search;
 
@@ -11,19 +12,20 @@ public class SearchQueryParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var parameters = new SearchQueryParams
+        var parameters = new Search::SearchQueryParams
         {
             Q = "remaster%20track:Doxy%20artist:Miles%20Davis",
-            Type = [Type.Album],
-            IncludeExternal = IncludeExternal.Audio,
+            Type = [Search::Type.Album],
+            IncludeExternal = Search::IncludeExternal.Audio,
             Limit = 10,
             Market = "ES",
             Offset = 5,
         };
 
         string expectedQ = "remaster%20track:Doxy%20artist:Miles%20Davis";
-        List<ApiEnum<string, Type>> expectedType = [Type.Album];
-        ApiEnum<string, IncludeExternal> expectedIncludeExternal = IncludeExternal.Audio;
+        List<ApiEnum<string, Search::Type>> expectedType = [Search::Type.Album];
+        ApiEnum<string, Search::IncludeExternal> expectedIncludeExternal =
+            Search::IncludeExternal.Audio;
         long expectedLimit = 10;
         string expectedMarket = "ES";
         long expectedOffset = 5;
@@ -43,10 +45,10 @@ public class SearchQueryParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsUnsetAreNotSet_Works()
     {
-        var parameters = new SearchQueryParams
+        var parameters = new Search::SearchQueryParams
         {
             Q = "remaster%20track:Doxy%20artist:Miles%20Davis",
-            Type = [Type.Album],
+            Type = [Search::Type.Album],
         };
 
         Assert.Null(parameters.IncludeExternal);
@@ -62,10 +64,10 @@ public class SearchQueryParamsTest : TestBase
     [Fact]
     public void OptionalNonNullableParamsSetToNullAreNotSet_Works()
     {
-        var parameters = new SearchQueryParams
+        var parameters = new Search::SearchQueryParams
         {
             Q = "remaster%20track:Doxy%20artist:Miles%20Davis",
-            Type = [Type.Album],
+            Type = [Search::Type.Album],
 
             // Null should be interpreted as omitted for these properties
             IncludeExternal = null,
@@ -83,29 +85,54 @@ public class SearchQueryParamsTest : TestBase
         Assert.Null(parameters.Offset);
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
     }
+
+    [Fact]
+    public void Url_Works()
+    {
+        Search::SearchQueryParams parameters = new()
+        {
+            Q = "remaster%20track:Doxy%20artist:Miles%20Davis",
+            Type = [Search::Type.Album],
+            IncludeExternal = Search::IncludeExternal.Audio,
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/search?q=remaster%2520track%3aDoxy%2520artist%3aMiles%2520Davis&type=album&include_external=audio&limit=10&market=ES&offset=5"
+            ),
+            url
+        );
+    }
 }
 
 public class TypeTest : TestBase
 {
     [Theory]
-    [InlineData(Type.Album)]
-    [InlineData(Type.Artist)]
-    [InlineData(Type.Playlist)]
-    [InlineData(Type.Track)]
-    [InlineData(Type.Show)]
-    [InlineData(Type.Episode)]
-    [InlineData(Type.Audiobook)]
-    public void Validation_Works(Type rawValue)
+    [InlineData(Search::Type.Album)]
+    [InlineData(Search::Type.Artist)]
+    [InlineData(Search::Type.Playlist)]
+    [InlineData(Search::Type.Track)]
+    [InlineData(Search::Type.Show)]
+    [InlineData(Search::Type.Episode)]
+    [InlineData(Search::Type.Audiobook)]
+    public void Validation_Works(Search::Type rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, Type> value = rawValue;
+        ApiEnum<string, Search::Type> value = rawValue;
         value.Validate();
     }
 
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Search::Type>>(
             JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
             ModelBase.SerializerOptions
         );
@@ -115,20 +142,20 @@ public class TypeTest : TestBase
     }
 
     [Theory]
-    [InlineData(Type.Album)]
-    [InlineData(Type.Artist)]
-    [InlineData(Type.Playlist)]
-    [InlineData(Type.Track)]
-    [InlineData(Type.Show)]
-    [InlineData(Type.Episode)]
-    [InlineData(Type.Audiobook)]
-    public void SerializationRoundtrip_Works(Type rawValue)
+    [InlineData(Search::Type.Album)]
+    [InlineData(Search::Type.Artist)]
+    [InlineData(Search::Type.Playlist)]
+    [InlineData(Search::Type.Track)]
+    [InlineData(Search::Type.Show)]
+    [InlineData(Search::Type.Episode)]
+    [InlineData(Search::Type.Audiobook)]
+    public void SerializationRoundtrip_Works(Search::Type rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, Type> value = rawValue;
+        ApiEnum<string, Search::Type> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Search::Type>>(
             json,
             ModelBase.SerializerOptions
         );
@@ -139,12 +166,12 @@ public class TypeTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Search::Type>>(
             JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Search::Type>>(
             json,
             ModelBase.SerializerOptions
         );
@@ -156,18 +183,18 @@ public class TypeTest : TestBase
 public class IncludeExternalTest : TestBase
 {
     [Theory]
-    [InlineData(IncludeExternal.Audio)]
-    public void Validation_Works(IncludeExternal rawValue)
+    [InlineData(Search::IncludeExternal.Audio)]
+    public void Validation_Works(Search::IncludeExternal rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, IncludeExternal> value = rawValue;
+        ApiEnum<string, Search::IncludeExternal> value = rawValue;
         value.Validate();
     }
 
     [Fact]
     public void InvalidEnumValidationThrows_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, IncludeExternal>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Search::IncludeExternal>>(
             JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
             ModelBase.SerializerOptions
         );
@@ -177,14 +204,14 @@ public class IncludeExternalTest : TestBase
     }
 
     [Theory]
-    [InlineData(IncludeExternal.Audio)]
-    public void SerializationRoundtrip_Works(IncludeExternal rawValue)
+    [InlineData(Search::IncludeExternal.Audio)]
+    public void SerializationRoundtrip_Works(Search::IncludeExternal rawValue)
     {
         // force implicit conversion because Theory can't do that for us
-        ApiEnum<string, IncludeExternal> value = rawValue;
+        ApiEnum<string, Search::IncludeExternal> value = rawValue;
 
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, IncludeExternal>>(
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Search::IncludeExternal>>(
             json,
             ModelBase.SerializerOptions
         );
@@ -195,12 +222,12 @@ public class IncludeExternalTest : TestBase
     [Fact]
     public void InvalidEnumSerializationRoundtrip_Works()
     {
-        var value = JsonSerializer.Deserialize<ApiEnum<string, IncludeExternal>>(
+        var value = JsonSerializer.Deserialize<ApiEnum<string, Search::IncludeExternal>>(
             JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
-        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, IncludeExternal>>(
+        var deserialized = JsonSerializer.Deserialize<ApiEnum<string, Search::IncludeExternal>>(
             json,
             ModelBase.SerializerOptions
         );

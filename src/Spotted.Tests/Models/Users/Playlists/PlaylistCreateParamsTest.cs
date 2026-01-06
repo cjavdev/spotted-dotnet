@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Users.Playlists;
 
 namespace Spotted.Tests.Models.Users.Playlists;
@@ -62,5 +63,17 @@ public class PlaylistCreateParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("description"));
         Assert.Null(parameters.Published);
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        PlaylistCreateParams parameters = new() { UserID = "smedjan", Name = "New Playlist" };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(new Uri("https://api.spotify.com/v1/users/smedjan/playlists"), url);
     }
 }

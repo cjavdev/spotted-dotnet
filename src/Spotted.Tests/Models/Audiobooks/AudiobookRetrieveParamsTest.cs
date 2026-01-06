@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Audiobooks;
 
 namespace Spotted.Tests.Models.Audiobooks;
@@ -42,5 +43,20 @@ public class AudiobookRetrieveParamsTest : TestBase
 
         Assert.Null(parameters.Market);
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        AudiobookRetrieveParams parameters = new() { ID = "7iHfbu1YPACw6oZPAFJtqe", Market = "ES" };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri("https://api.spotify.com/v1/audiobooks/7iHfbu1YPACw6oZPAFJtqe?market=ES"),
+            url
+        );
     }
 }

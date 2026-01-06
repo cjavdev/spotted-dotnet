@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Albums;
 
 namespace Spotted.Tests.Models.Albums;
@@ -38,5 +39,20 @@ public class AlbumRetrieveParamsTest : TestBase
 
         Assert.Null(parameters.Market);
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        AlbumRetrieveParams parameters = new() { ID = "4aawyAB9vmqN3uQ7FjRGTy", Market = "ES" };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri("https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy?market=ES"),
+            url
+        );
     }
 }

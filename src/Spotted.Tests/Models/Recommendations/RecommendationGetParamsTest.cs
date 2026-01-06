@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Recommendations;
 
 namespace Spotted.Tests.Models.Recommendations;
@@ -405,5 +406,71 @@ public class RecommendationGetParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("target_time_signature"));
         Assert.Null(parameters.TargetValence);
         Assert.False(parameters.RawQueryData.ContainsKey("target_valence"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        RecommendationGetParams parameters = new()
+        {
+            Limit = 10,
+            Market = "ES",
+            MaxAcousticness = 0,
+            MaxDanceability = 0,
+            MaxDurationMs = 0,
+            MaxEnergy = 0,
+            MaxInstrumentalness = 0,
+            MaxKey = 0,
+            MaxLiveness = 0,
+            MaxLoudness = 0,
+            MaxMode = 0,
+            MaxPopularity = 0,
+            MaxSpeechiness = 0,
+            MaxTempo = 0,
+            MaxTimeSignature = 0,
+            MaxValence = 0,
+            MinAcousticness = 0,
+            MinDanceability = 0,
+            MinDurationMs = 0,
+            MinEnergy = 0,
+            MinInstrumentalness = 0,
+            MinKey = 0,
+            MinLiveness = 0,
+            MinLoudness = 0,
+            MinMode = 0,
+            MinPopularity = 0,
+            MinSpeechiness = 0,
+            MinTempo = 0,
+            MinTimeSignature = 11,
+            MinValence = 0,
+            SeedArtists = "4NHQUGzhtTLFvgF5SZesLK",
+            SeedGenres = "classical,country",
+            SeedTracks = "0c6xIDDpzE81m2q797ordA",
+            TargetAcousticness = 0,
+            TargetDanceability = 0,
+            TargetDurationMs = 0,
+            TargetEnergy = 0,
+            TargetInstrumentalness = 0,
+            TargetKey = 0,
+            TargetLiveness = 0,
+            TargetLoudness = 0,
+            TargetMode = 0,
+            TargetPopularity = 0,
+            TargetSpeechiness = 0,
+            TargetTempo = 0,
+            TargetTimeSignature = 0,
+            TargetValence = 0,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/recommendations?limit=10&market=ES&max_acousticness=0&max_danceability=0&max_duration_ms=0&max_energy=0&max_instrumentalness=0&max_key=0&max_liveness=0&max_loudness=0&max_mode=0&max_popularity=0&max_speechiness=0&max_tempo=0&max_time_signature=0&max_valence=0&min_acousticness=0&min_danceability=0&min_duration_ms=0&min_energy=0&min_instrumentalness=0&min_key=0&min_liveness=0&min_loudness=0&min_mode=0&min_popularity=0&min_speechiness=0&min_tempo=0&min_time_signature=11&min_valence=0&seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA&target_acousticness=0&target_danceability=0&target_duration_ms=0&target_energy=0&target_instrumentalness=0&target_key=0&target_liveness=0&target_loudness=0&target_mode=0&target_popularity=0&target_speechiness=0&target_tempo=0&target_time_signature=0&target_valence=0"
+            ),
+            url
+        );
     }
 }

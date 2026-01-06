@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Me.Player;
 
 namespace Spotted.Tests.Models.Me.Player;
@@ -53,5 +54,27 @@ public class PlayerListRecentlyPlayedParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("before"));
         Assert.Null(parameters.Limit);
         Assert.False(parameters.RawQueryData.ContainsKey("limit"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        PlayerListRecentlyPlayedParams parameters = new()
+        {
+            After = 1484811043508,
+            Before = 0,
+            Limit = 10,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/me/player/recently-played?after=1484811043508&before=0&limit=10"
+            ),
+            url
+        );
     }
 }

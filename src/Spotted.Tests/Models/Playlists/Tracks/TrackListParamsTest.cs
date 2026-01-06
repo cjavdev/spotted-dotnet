@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Playlists.Tracks;
 
 namespace Spotted.Tests.Models.Playlists.Tracks;
@@ -74,5 +75,30 @@ public class TrackListParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
         Assert.Null(parameters.Offset);
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        TrackListParams parameters = new()
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            AdditionalTypes = "additional_types",
+            Fields = "items(added_by.id,track(name,href,album(name,href)))",
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks?additional_types=additional_types&fields=items(added_by.id%2ctrack(name%2chref%2calbum(name%2chref)))&limit=10&market=ES&offset=5"
+            ),
+            url
+        );
     }
 }

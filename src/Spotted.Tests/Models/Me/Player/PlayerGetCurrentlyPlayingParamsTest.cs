@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Me.Player;
 
 namespace Spotted.Tests.Models.Me.Player;
@@ -45,5 +46,26 @@ public class PlayerGetCurrentlyPlayingParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("additional_types"));
         Assert.Null(parameters.Market);
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        PlayerGetCurrentlyPlayingParams parameters = new()
+        {
+            AdditionalTypes = "additional_types",
+            Market = "ES",
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/me/player/currently-playing?additional_types=additional_types&market=ES"
+            ),
+            url
+        );
     }
 }

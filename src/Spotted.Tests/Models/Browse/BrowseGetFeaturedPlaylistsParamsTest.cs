@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Browse;
 
 namespace Spotted.Tests.Models.Browse;
@@ -53,5 +54,27 @@ public class BrowseGetFeaturedPlaylistsParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("locale"));
         Assert.Null(parameters.Offset);
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        BrowseGetFeaturedPlaylistsParams parameters = new()
+        {
+            Limit = 10,
+            Locale = "sv_SE",
+            Offset = 5,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/browse/featured-playlists?limit=10&locale=sv_SE&offset=5"
+            ),
+            url
+        );
     }
 }

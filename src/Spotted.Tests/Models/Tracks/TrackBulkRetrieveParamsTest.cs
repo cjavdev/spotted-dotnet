@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Tracks;
 
 namespace Spotted.Tests.Models.Tracks;
@@ -45,5 +46,26 @@ public class TrackBulkRetrieveParamsTest : TestBase
 
         Assert.Null(parameters.Market);
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        TrackBulkRetrieveParams parameters = new()
+        {
+            IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+            Market = "ES",
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/tracks?ids=7ouMYWpwJ422jRcDASZB7P%2c4VqPOruhp5EdPBeR92t6lQ%2c2takcwOaAZWiXQijPHIx7B&market=ES"
+            ),
+            url
+        );
     }
 }

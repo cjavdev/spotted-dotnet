@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Tracks;
 
 namespace Spotted.Tests.Models.Tracks;
@@ -38,5 +39,20 @@ public class TrackRetrieveParamsTest : TestBase
 
         Assert.Null(parameters.Market);
         Assert.False(parameters.RawQueryData.ContainsKey("market"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        TrackRetrieveParams parameters = new() { ID = "11dFghVXANMlKmJXsNCbNl", Market = "ES" };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri("https://api.spotify.com/v1/tracks/11dFghVXANMlKmJXsNCbNl?market=ES"),
+            url
+        );
     }
 }

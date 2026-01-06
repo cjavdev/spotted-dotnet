@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Me.Player.Queue;
 
 namespace Spotted.Tests.Models.Me.Player.Queue;
@@ -42,5 +43,26 @@ public class QueueAddParamsTest : TestBase
 
         Assert.Null(parameters.DeviceID);
         Assert.False(parameters.RawQueryData.ContainsKey("device_id"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        QueueAddParams parameters = new()
+        {
+            Uri = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
+            DeviceID = "0d1841b0976bae2a3a310dd74c0f3df354899bc8",
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/me/player/queue?uri=spotify%3atrack%3a4iV5W9uYEdYUVa79Axb7Rh&device_id=0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+            ),
+            url
+        );
     }
 }

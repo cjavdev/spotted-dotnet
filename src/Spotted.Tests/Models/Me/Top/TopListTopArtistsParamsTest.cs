@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Me.Top;
 
 namespace Spotted.Tests.Models.Me.Top;
@@ -53,5 +54,27 @@ public class TopListTopArtistsParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
         Assert.Null(parameters.TimeRange);
         Assert.False(parameters.RawQueryData.ContainsKey("time_range"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        TopListTopArtistsParams parameters = new()
+        {
+            Limit = 10,
+            Offset = 5,
+            TimeRange = "medium_term",
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri(
+                "https://api.spotify.com/v1/me/top/artists?limit=10&offset=5&time_range=medium_term"
+            ),
+            url
+        );
     }
 }

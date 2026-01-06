@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Spotted.Models.Playlists.Tracks;
@@ -64,6 +65,25 @@ public class TrackRemoveParamsTest : TestBase
         Assert.False(parameters.RawBodyData.ContainsKey("published"));
         Assert.Null(parameters.SnapshotID);
         Assert.False(parameters.RawBodyData.ContainsKey("snapshot_id"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        TrackRemoveParams parameters = new()
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Tracks = [new() { Uri = "uri" }],
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri("https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks"),
+            url
+        );
     }
 }
 

@@ -1,3 +1,4 @@
+using System;
 using Spotted.Models.Browse.Categories;
 
 namespace Spotted.Tests.Models.Browse.Categories;
@@ -53,5 +54,25 @@ public class CategoryListParamsTest : TestBase
         Assert.False(parameters.RawQueryData.ContainsKey("locale"));
         Assert.Null(parameters.Offset);
         Assert.False(parameters.RawQueryData.ContainsKey("offset"));
+    }
+
+    [Fact]
+    public void Url_Works()
+    {
+        CategoryListParams parameters = new()
+        {
+            Limit = 10,
+            Locale = "sv_SE",
+            Offset = 5,
+        };
+
+        var url = parameters.Url(
+            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
+        );
+
+        Assert.Equal(
+            new Uri("https://api.spotify.com/v1/browse/categories?limit=10&locale=sv_SE&offset=5"),
+            url
+        );
     }
 }
