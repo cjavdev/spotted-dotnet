@@ -11,6 +11,16 @@ namespace Spotted.Services.Playlists;
 /// <inheritdoc/>
 public sealed class TrackService : global::Spotted.Services.Playlists.ITrackService
 {
+    readonly Lazy<global::Spotted.Services.Playlists.ITrackServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public global::Spotted.Services.Playlists.ITrackServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public global::Spotted.Services.Playlists.ITrackService WithOptions(
         Func<ClientOptions, ClientOptions> modifier
@@ -21,15 +31,135 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
         );
     }
 
-    readonly ISpottedClient _client;
-
     public TrackService(ISpottedClient client)
+    {
+        _client = client;
+
+        _withRawResponse = new(() =>
+            new global::Spotted.Services.Playlists.TrackServiceWithRawResponse(
+                client.WithRawResponse
+            )
+        );
+    }
+
+    /// <inheritdoc/>
+    public async Task<TrackUpdateResponse> Update(
+        TrackUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Update(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<TrackUpdateResponse> Update(
+        string playlistID,
+        TrackUpdateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Update(parameters with { PlaylistID = playlistID }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<TrackListPage> List(
+        TrackListParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.List(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<TrackListPage> List(
+        string playlistID,
+        TrackListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.List(parameters with { PlaylistID = playlistID }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<TrackAddResponse> Add(
+        TrackAddParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Add(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<TrackAddResponse> Add(
+        string playlistID,
+        TrackAddParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Add(parameters with { PlaylistID = playlistID }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<TrackRemoveResponse> Remove(
+        TrackRemoveParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Remove(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<TrackRemoveResponse> Remove(
+        string playlistID,
+        TrackRemoveParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return this.Remove(parameters with { PlaylistID = playlistID }, cancellationToken);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class TrackServiceWithRawResponse
+    : global::Spotted.Services.Playlists.ITrackServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public global::Spotted.Services.Playlists.ITrackServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    {
+        return new global::Spotted.Services.Playlists.TrackServiceWithRawResponse(
+            this._client.WithOptions(modifier)
+        );
+    }
+
+    public TrackServiceWithRawResponse(ISpottedClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
-    public async Task<TrackUpdateResponse> Update(
+    public async Task<HttpResponse<TrackUpdateResponse>> Update(
         TrackUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -44,21 +174,25 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var track = await response
-            .Deserialize<TrackUpdateResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            track.Validate();
-        }
-        return track;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var track = await response
+                    .Deserialize<TrackUpdateResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    track.Validate();
+                }
+                return track;
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<TrackUpdateResponse> Update(
+    public Task<HttpResponse<TrackUpdateResponse>> Update(
         string playlistID,
         TrackUpdateParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -66,11 +200,11 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
     {
         parameters ??= new();
 
-        return await this.Update(parameters with { PlaylistID = playlistID }, cancellationToken);
+        return this.Update(parameters with { PlaylistID = playlistID }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<TrackListPage> List(
+    public async Task<HttpResponse<TrackListPage>> List(
         TrackListParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -85,21 +219,25 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var page = await response
-            .Deserialize<TrackListPageResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            page.Validate();
-        }
-        return new TrackListPage(this, parameters, page);
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var page = await response
+                    .Deserialize<TrackListPageResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    page.Validate();
+                }
+                return new TrackListPage(this, parameters, page);
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<TrackListPage> List(
+    public Task<HttpResponse<TrackListPage>> List(
         string playlistID,
         TrackListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -107,11 +245,11 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
     {
         parameters ??= new();
 
-        return await this.List(parameters with { PlaylistID = playlistID }, cancellationToken);
+        return this.List(parameters with { PlaylistID = playlistID }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<TrackAddResponse> Add(
+    public async Task<HttpResponse<TrackAddResponse>> Add(
         TrackAddParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -126,21 +264,25 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
             Method = HttpMethod.Post,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var deserializedResponse = await response
-            .Deserialize<TrackAddResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            deserializedResponse.Validate();
-        }
-        return deserializedResponse;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<TrackAddResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<TrackAddResponse> Add(
+    public Task<HttpResponse<TrackAddResponse>> Add(
         string playlistID,
         TrackAddParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -148,11 +290,11 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
     {
         parameters ??= new();
 
-        return await this.Add(parameters with { PlaylistID = playlistID }, cancellationToken);
+        return this.Add(parameters with { PlaylistID = playlistID }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<TrackRemoveResponse> Remove(
+    public async Task<HttpResponse<TrackRemoveResponse>> Remove(
         TrackRemoveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -167,26 +309,30 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
             Method = HttpMethod.Delete,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var track = await response
-            .Deserialize<TrackRemoveResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            track.Validate();
-        }
-        return track;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var track = await response
+                    .Deserialize<TrackRemoveResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    track.Validate();
+                }
+                return track;
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<TrackRemoveResponse> Remove(
+    public Task<HttpResponse<TrackRemoveResponse>> Remove(
         string playlistID,
         TrackRemoveParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        return await this.Remove(parameters with { PlaylistID = playlistID }, cancellationToken);
+        return this.Remove(parameters with { PlaylistID = playlistID }, cancellationToken);
     }
 }

@@ -11,21 +11,96 @@ namespace Spotted.Services.Me;
 /// <inheritdoc/>
 public sealed class FollowingService : IFollowingService
 {
+    readonly Lazy<IFollowingServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public IFollowingServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public IFollowingService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
         return new FollowingService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public FollowingService(ISpottedClient client)
+    {
+        _client = client;
+
+        _withRawResponse = new(() => new FollowingServiceWithRawResponse(client.WithRawResponse));
+    }
+
+    /// <inheritdoc/>
+    public async Task<FollowingBulkRetrieveResponse> BulkRetrieve(
+        FollowingBulkRetrieveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.BulkRetrieve(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<List<bool>> Check(
+        FollowingCheckParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Check(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task Follow(
+        FollowingFollowParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Follow(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task Unfollow(
+        FollowingUnfollowParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Unfollow(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class FollowingServiceWithRawResponse : IFollowingServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public IFollowingServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    {
+        return new FollowingServiceWithRawResponse(this._client.WithOptions(modifier));
+    }
+
+    public FollowingServiceWithRawResponse(ISpottedClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
-    public async Task<FollowingBulkRetrieveResponse> BulkRetrieve(
+    public async Task<HttpResponse<FollowingBulkRetrieveResponse>> BulkRetrieve(
         FollowingBulkRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -37,21 +112,25 @@ public sealed class FollowingService : IFollowingService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var deserializedResponse = await response
-            .Deserialize<FollowingBulkRetrieveResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            deserializedResponse.Validate();
-        }
-        return deserializedResponse;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<FollowingBulkRetrieveResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<List<bool>> Check(
+    public async Task<HttpResponse<List<bool>>> Check(
         FollowingCheckParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -61,14 +140,18 @@ public sealed class FollowingService : IFollowingService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize<List<bool>>(cancellationToken).ConfigureAwait(false);
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                return await response.Deserialize<List<bool>>(token).ConfigureAwait(false);
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task Follow(
+    public Task<HttpResponse> Follow(
         FollowingFollowParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -78,13 +161,11 @@ public sealed class FollowingService : IFollowingService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Unfollow(
+    public Task<HttpResponse> Unfollow(
         FollowingUnfollowParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -96,8 +177,6 @@ public sealed class FollowingService : IFollowingService
             Method = HttpMethod.Delete,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 }

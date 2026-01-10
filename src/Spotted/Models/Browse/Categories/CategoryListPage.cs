@@ -8,7 +8,7 @@ using Spotted.Services.Browse;
 namespace Spotted.Models.Browse.Categories;
 
 public sealed class CategoryListPage(
-    ICategoryService service,
+    ICategoryServiceWithRawResponse service,
     CategoryListParams parameters,
     CategoryListPageResponse response
 ) : IPage<CategoryListResponse>

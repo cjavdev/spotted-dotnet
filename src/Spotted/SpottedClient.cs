@@ -14,17 +14,6 @@ namespace Spotted;
 /// <inheritdoc/>
 public sealed class SpottedClient : ISpottedClient
 {
-#if NET
-    static readonly Random Random = Random.Shared;
-#else
-    static readonly ThreadLocal<Random> _threadLocalRandom = new(() => new Random());
-
-    static Random Random
-    {
-        get { return _threadLocalRandom.Value!; }
-    }
-#endif
-
     readonly ClientOptions _options;
 
     /// <inheritdoc/>
@@ -81,6 +70,14 @@ public sealed class SpottedClient : ISpottedClient
     {
         get { return this._options.AccessToken; }
         init { this._options.AccessToken = value; }
+    }
+
+    readonly Lazy<ISpottedClientWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public ISpottedClientWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
     }
 
     /// <inheritdoc/>
@@ -181,6 +178,212 @@ public sealed class SpottedClient : ISpottedClient
 
     readonly Lazy<IMarketService> _markets;
     public IMarketService Markets
+    {
+        get { return _markets.Value; }
+    }
+
+    public void Dispose() => this.HttpClient.Dispose();
+
+    public SpottedClient()
+    {
+        _options = new();
+
+        _withRawResponse = new(() => new SpottedClientWithRawResponse(this._options));
+        _albums = new(() => new AlbumService(this));
+        _artists = new(() => new ArtistService(this));
+        _shows = new(() => new ShowService(this));
+        _episodes = new(() => new EpisodeService(this));
+        _audiobooks = new(() => new AudiobookService(this));
+        _me = new(() => new MeService(this));
+        _chapters = new(() => new ChapterService(this));
+        _tracks = new(() => new TrackService(this));
+        _search = new(() => new SearchService(this));
+        _playlists = new(() => new PlaylistService(this));
+        _users = new(() => new UserService(this));
+        _browse = new(() => new BrowseService(this));
+        _audioFeatures = new(() => new AudioFeatureService(this));
+        _audioAnalysis = new(() => new AudioAnalysisService(this));
+        _recommendations = new(() => new RecommendationService(this));
+        _markets = new(() => new MarketService(this));
+    }
+
+    public SpottedClient(ClientOptions options)
+        : this()
+    {
+        _options = options;
+    }
+}
+
+/// <inheritdoc/>
+public sealed class SpottedClientWithRawResponse : ISpottedClientWithRawResponse
+{
+#if NET
+    static readonly Random Random = Random.Shared;
+#else
+    static readonly ThreadLocal<Random> _threadLocalRandom = new(() => new Random());
+
+    static Random Random
+    {
+        get { return _threadLocalRandom.Value!; }
+    }
+#endif
+
+    readonly ClientOptions _options;
+
+    /// <inheritdoc/>
+    public HttpClient HttpClient
+    {
+        get { return this._options.HttpClient; }
+        init { this._options.HttpClient = value; }
+    }
+
+    /// <inheritdoc/>
+    public string BaseUrl
+    {
+        get { return this._options.BaseUrl; }
+        init { this._options.BaseUrl = value; }
+    }
+
+    /// <inheritdoc/>
+    public bool ResponseValidation
+    {
+        get { return this._options.ResponseValidation; }
+        init { this._options.ResponseValidation = value; }
+    }
+
+    /// <inheritdoc/>
+    public int? MaxRetries
+    {
+        get { return this._options.MaxRetries; }
+        init { this._options.MaxRetries = value; }
+    }
+
+    /// <inheritdoc/>
+    public TimeSpan? Timeout
+    {
+        get { return this._options.Timeout; }
+        init { this._options.Timeout = value; }
+    }
+
+    /// <inheritdoc/>
+    public string? ClientID
+    {
+        get { return this._options.ClientID; }
+        init { this._options.ClientID = value; }
+    }
+
+    /// <inheritdoc/>
+    public string? ClientSecret
+    {
+        get { return this._options.ClientSecret; }
+        init { this._options.ClientSecret = value; }
+    }
+
+    /// <inheritdoc/>
+    public string? AccessToken
+    {
+        get { return this._options.AccessToken; }
+        init { this._options.AccessToken = value; }
+    }
+
+    /// <inheritdoc/>
+    public ISpottedClientWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    {
+        return new SpottedClientWithRawResponse(modifier(this._options));
+    }
+
+    readonly Lazy<IAlbumServiceWithRawResponse> _albums;
+    public IAlbumServiceWithRawResponse Albums
+    {
+        get { return _albums.Value; }
+    }
+
+    readonly Lazy<IArtistServiceWithRawResponse> _artists;
+    public IArtistServiceWithRawResponse Artists
+    {
+        get { return _artists.Value; }
+    }
+
+    readonly Lazy<IShowServiceWithRawResponse> _shows;
+    public IShowServiceWithRawResponse Shows
+    {
+        get { return _shows.Value; }
+    }
+
+    readonly Lazy<IEpisodeServiceWithRawResponse> _episodes;
+    public IEpisodeServiceWithRawResponse Episodes
+    {
+        get { return _episodes.Value; }
+    }
+
+    readonly Lazy<IAudiobookServiceWithRawResponse> _audiobooks;
+    public IAudiobookServiceWithRawResponse Audiobooks
+    {
+        get { return _audiobooks.Value; }
+    }
+
+    readonly Lazy<IMeServiceWithRawResponse> _me;
+    public IMeServiceWithRawResponse Me
+    {
+        get { return _me.Value; }
+    }
+
+    readonly Lazy<IChapterServiceWithRawResponse> _chapters;
+    public IChapterServiceWithRawResponse Chapters
+    {
+        get { return _chapters.Value; }
+    }
+
+    readonly Lazy<ITrackServiceWithRawResponse> _tracks;
+    public ITrackServiceWithRawResponse Tracks
+    {
+        get { return _tracks.Value; }
+    }
+
+    readonly Lazy<ISearchServiceWithRawResponse> _search;
+    public ISearchServiceWithRawResponse Search
+    {
+        get { return _search.Value; }
+    }
+
+    readonly Lazy<IPlaylistServiceWithRawResponse> _playlists;
+    public IPlaylistServiceWithRawResponse Playlists
+    {
+        get { return _playlists.Value; }
+    }
+
+    readonly Lazy<IUserServiceWithRawResponse> _users;
+    public IUserServiceWithRawResponse Users
+    {
+        get { return _users.Value; }
+    }
+
+    readonly Lazy<IBrowseServiceWithRawResponse> _browse;
+    public IBrowseServiceWithRawResponse Browse
+    {
+        get { return _browse.Value; }
+    }
+
+    readonly Lazy<IAudioFeatureServiceWithRawResponse> _audioFeatures;
+    public IAudioFeatureServiceWithRawResponse AudioFeatures
+    {
+        get { return _audioFeatures.Value; }
+    }
+
+    readonly Lazy<IAudioAnalysisServiceWithRawResponse> _audioAnalysis;
+    public IAudioAnalysisServiceWithRawResponse AudioAnalysis
+    {
+        get { return _audioAnalysis.Value; }
+    }
+
+    readonly Lazy<IRecommendationServiceWithRawResponse> _recommendations;
+    public IRecommendationServiceWithRawResponse Recommendations
+    {
+        get { return _recommendations.Value; }
+    }
+
+    readonly Lazy<IMarketServiceWithRawResponse> _markets;
+    public IMarketServiceWithRawResponse Markets
     {
         get { return _markets.Value; }
     }
@@ -375,29 +578,29 @@ public sealed class SpottedClient : ISpottedClient
 
     public void Dispose() => this.HttpClient.Dispose();
 
-    public SpottedClient()
+    public SpottedClientWithRawResponse()
     {
         _options = new();
 
-        _albums = new(() => new AlbumService(this));
-        _artists = new(() => new ArtistService(this));
-        _shows = new(() => new ShowService(this));
-        _episodes = new(() => new EpisodeService(this));
-        _audiobooks = new(() => new AudiobookService(this));
-        _me = new(() => new MeService(this));
-        _chapters = new(() => new ChapterService(this));
-        _tracks = new(() => new TrackService(this));
-        _search = new(() => new SearchService(this));
-        _playlists = new(() => new PlaylistService(this));
-        _users = new(() => new UserService(this));
-        _browse = new(() => new BrowseService(this));
-        _audioFeatures = new(() => new AudioFeatureService(this));
-        _audioAnalysis = new(() => new AudioAnalysisService(this));
-        _recommendations = new(() => new RecommendationService(this));
-        _markets = new(() => new MarketService(this));
+        _albums = new(() => new AlbumServiceWithRawResponse(this));
+        _artists = new(() => new ArtistServiceWithRawResponse(this));
+        _shows = new(() => new ShowServiceWithRawResponse(this));
+        _episodes = new(() => new EpisodeServiceWithRawResponse(this));
+        _audiobooks = new(() => new AudiobookServiceWithRawResponse(this));
+        _me = new(() => new MeServiceWithRawResponse(this));
+        _chapters = new(() => new ChapterServiceWithRawResponse(this));
+        _tracks = new(() => new TrackServiceWithRawResponse(this));
+        _search = new(() => new SearchServiceWithRawResponse(this));
+        _playlists = new(() => new PlaylistServiceWithRawResponse(this));
+        _users = new(() => new UserServiceWithRawResponse(this));
+        _browse = new(() => new BrowseServiceWithRawResponse(this));
+        _audioFeatures = new(() => new AudioFeatureServiceWithRawResponse(this));
+        _audioAnalysis = new(() => new AudioAnalysisServiceWithRawResponse(this));
+        _recommendations = new(() => new RecommendationServiceWithRawResponse(this));
+        _markets = new(() => new MarketServiceWithRawResponse(this));
     }
 
-    public SpottedClient(ClientOptions options)
+    public SpottedClientWithRawResponse(ClientOptions options)
         : this()
     {
         _options = options;

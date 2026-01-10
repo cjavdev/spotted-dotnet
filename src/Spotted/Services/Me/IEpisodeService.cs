@@ -15,6 +15,12 @@ namespace Spotted.Services.Me;
 public interface IEpisodeService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    global::Spotted.Services.Me.IEpisodeServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -61,4 +67,56 @@ public interface IEpisodeService
     /// that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
     /// </summary>
     Task Save(EpisodeSaveParams parameters, CancellationToken cancellationToken = default);
+}
+
+/// <summary>
+/// A view of <see cref="global::Spotted.Services.Me.IEpisodeService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IEpisodeServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    global::Spotted.Services.Me.IEpisodeServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/episodes`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IEpisodeService.List(EpisodeListParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<EpisodeListPage>> List(
+        EpisodeListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/episodes/contains`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IEpisodeService.Check(EpisodeCheckParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<List<bool>>> Check(
+        EpisodeCheckParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `delete /me/episodes`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IEpisodeService.Remove(EpisodeRemoveParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> Remove(
+        EpisodeRemoveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/episodes`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IEpisodeService.Save(EpisodeSaveParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> Save(
+        EpisodeSaveParams parameters,
+        CancellationToken cancellationToken = default
+    );
 }

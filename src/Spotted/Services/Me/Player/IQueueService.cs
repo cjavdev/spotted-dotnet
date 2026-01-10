@@ -14,6 +14,12 @@ namespace Spotted.Services.Me.Player;
 public interface IQueueService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    IQueueServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -31,6 +37,38 @@ public interface IQueueService
     /// Get the list of objects that make up the user's queue.
     /// </summary>
     Task<QueueGetResponse> Get(
+        QueueGetParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="IQueueService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IQueueServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    IQueueServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for `post /me/player/queue`, but is otherwise the
+    /// same as <see cref="IQueueService.Add(QueueAddParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> Add(
+        QueueAddParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/player/queue`, but is otherwise the
+    /// same as <see cref="IQueueService.Get(QueueGetParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<QueueGetResponse>> Get(
         QueueGetParams? parameters = null,
         CancellationToken cancellationToken = default
     );

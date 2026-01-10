@@ -8,7 +8,7 @@ using Spotted.Services.Me;
 namespace Spotted.Models.Me.Playlists;
 
 public sealed class PlaylistListPage(
-    IPlaylistService service,
+    IPlaylistServiceWithRawResponse service,
     PlaylistListParams parameters,
     PagingPlaylistObject response
 ) : IPage<SimplifiedPlaylistObject>

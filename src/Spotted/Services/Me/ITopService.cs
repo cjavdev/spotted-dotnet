@@ -14,6 +14,12 @@ namespace Spotted.Services.Me;
 public interface ITopService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    ITopServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -32,6 +38,38 @@ public interface ITopService
     /// Get the current user's top tracks based on calculated affinity.
     /// </summary>
     Task<TopListTopTracksPage> ListTopTracks(
+        TopListTopTracksParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="ITopService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface ITopServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    ITopServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/top/artists`, but is otherwise the
+    /// same as <see cref="ITopService.ListTopArtists(TopListTopArtistsParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<TopListTopArtistsPage>> ListTopArtists(
+        TopListTopArtistsParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/top/tracks`, but is otherwise the
+    /// same as <see cref="ITopService.ListTopTracks(TopListTopTracksParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<TopListTopTracksPage>> ListTopTracks(
         TopListTopTracksParams? parameters = null,
         CancellationToken cancellationToken = default
     );

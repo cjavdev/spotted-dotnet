@@ -8,7 +8,7 @@ using Spotted.Services.Me;
 namespace Spotted.Models.Me.Albums;
 
 public sealed class AlbumListPage(
-    IAlbumService service,
+    IAlbumServiceWithRawResponse service,
     AlbumListParams parameters,
     AlbumListPageResponse response
 ) : IPage<AlbumListResponse>
