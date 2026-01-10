@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Spotted.Core;
@@ -40,4 +41,7 @@ public sealed class TopListTopTracksPage(
     {
         response.Validate();
     }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(this.Items, ModelBase.ToStringSerializerOptions);
 }

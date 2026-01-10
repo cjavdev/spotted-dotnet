@@ -770,6 +770,9 @@ public record class PlayerGetStateResponseItem
     {
         return 0;
     }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
 }
 
 sealed class PlayerGetStateResponseItemConverter : JsonConverter<PlayerGetStateResponseItem>
