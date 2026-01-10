@@ -373,6 +373,9 @@ public record class CurrentlyPlaying
     {
         return 0;
     }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
 }
 
 sealed class CurrentlyPlayingConverter : JsonConverter<CurrentlyPlaying>
@@ -704,6 +707,9 @@ public record class QueueGetResponseQueue
     {
         return 0;
     }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
 }
 
 sealed class QueueGetResponseQueueConverter : JsonConverter<QueueGetResponseQueue>
