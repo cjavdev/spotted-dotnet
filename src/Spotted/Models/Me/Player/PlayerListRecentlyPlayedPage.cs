@@ -8,7 +8,7 @@ using Spotted.Services.Me;
 namespace Spotted.Models.Me.Player;
 
 public sealed class PlayerListRecentlyPlayedPage(
-    IPlayerService service,
+    IPlayerServiceWithRawResponse service,
     PlayerListRecentlyPlayedParams parameters,
     PlayerListRecentlyPlayedPageResponse response
 ) : IPage<PlayerListRecentlyPlayedResponse>

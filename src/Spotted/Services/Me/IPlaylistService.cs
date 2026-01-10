@@ -14,6 +14,12 @@ namespace Spotted.Services.Me;
 public interface IPlaylistService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    global::Spotted.Services.Me.IPlaylistServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -26,6 +32,31 @@ public interface IPlaylistService
     /// Get a list of the playlists owned or followed by the current Spotify user.
     /// </summary>
     Task<PlaylistListPage> List(
+        PlaylistListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="global::Spotted.Services.Me.IPlaylistService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IPlaylistServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    global::Spotted.Services.Me.IPlaylistServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/playlists`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IPlaylistService.List(PlaylistListParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<PlaylistListPage>> List(
         PlaylistListParams? parameters = null,
         CancellationToken cancellationToken = default
     );

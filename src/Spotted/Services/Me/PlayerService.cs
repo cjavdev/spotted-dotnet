@@ -11,17 +11,27 @@ namespace Spotted.Services.Me;
 /// <inheritdoc/>
 public sealed class PlayerService : IPlayerService
 {
+    readonly Lazy<IPlayerServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public IPlayerServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public IPlayerService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
         return new PlayerService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public PlayerService(ISpottedClient client)
     {
         _client = client;
+
+        _withRawResponse = new(() => new PlayerServiceWithRawResponse(client.WithRawResponse));
         _queue = new(() => new QueueService(client));
     }
 
@@ -37,6 +47,187 @@ public sealed class PlayerService : IPlayerService
         CancellationToken cancellationToken = default
     )
     {
+        using var response = await this
+            .WithRawResponse.GetCurrentlyPlaying(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<PlayerGetDevicesResponse> GetDevices(
+        PlayerGetDevicesParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.GetDevices(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<PlayerGetStateResponse> GetState(
+        PlayerGetStateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.GetState(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<PlayerListRecentlyPlayedPage> ListRecentlyPlayed(
+        PlayerListRecentlyPlayedParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.ListRecentlyPlayed(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task PausePlayback(
+        PlayerPausePlaybackParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.PausePlayback(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SeekToPosition(
+        PlayerSeekToPositionParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.SeekToPosition(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SetRepeatMode(
+        PlayerSetRepeatModeParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.SetRepeatMode(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SetVolume(
+        PlayerSetVolumeParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.SetVolume(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SkipNext(
+        PlayerSkipNextParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.SkipNext(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task SkipPrevious(
+        PlayerSkipPreviousParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.SkipPrevious(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task StartPlayback(
+        PlayerStartPlaybackParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.StartPlayback(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task ToggleShuffle(
+        PlayerToggleShuffleParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.ToggleShuffle(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task Transfer(
+        PlayerTransferParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Transfer(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class PlayerServiceWithRawResponse : IPlayerServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public IPlayerServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    {
+        return new PlayerServiceWithRawResponse(this._client.WithOptions(modifier));
+    }
+
+    public PlayerServiceWithRawResponse(ISpottedClientWithRawResponse client)
+    {
+        _client = client;
+
+        _queue = new(() => new QueueServiceWithRawResponse(client));
+    }
+
+    readonly Lazy<IQueueServiceWithRawResponse> _queue;
+    public IQueueServiceWithRawResponse Queue
+    {
+        get { return _queue.Value; }
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<PlayerGetCurrentlyPlayingResponse>> GetCurrentlyPlaying(
+        PlayerGetCurrentlyPlayingParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
         parameters ??= new();
 
         HttpRequest<PlayerGetCurrentlyPlayingParams> request = new()
@@ -44,21 +235,25 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var deserializedResponse = await response
-            .Deserialize<PlayerGetCurrentlyPlayingResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            deserializedResponse.Validate();
-        }
-        return deserializedResponse;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<PlayerGetCurrentlyPlayingResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<PlayerGetDevicesResponse> GetDevices(
+    public async Task<HttpResponse<PlayerGetDevicesResponse>> GetDevices(
         PlayerGetDevicesParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -70,21 +265,25 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var deserializedResponse = await response
-            .Deserialize<PlayerGetDevicesResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            deserializedResponse.Validate();
-        }
-        return deserializedResponse;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<PlayerGetDevicesResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<PlayerGetStateResponse> GetState(
+    public async Task<HttpResponse<PlayerGetStateResponse>> GetState(
         PlayerGetStateParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -96,21 +295,25 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var deserializedResponse = await response
-            .Deserialize<PlayerGetStateResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            deserializedResponse.Validate();
-        }
-        return deserializedResponse;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<PlayerGetStateResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<PlayerListRecentlyPlayedPage> ListRecentlyPlayed(
+    public async Task<HttpResponse<PlayerListRecentlyPlayedPage>> ListRecentlyPlayed(
         PlayerListRecentlyPlayedParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -122,21 +325,25 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var page = await response
-            .Deserialize<PlayerListRecentlyPlayedPageResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            page.Validate();
-        }
-        return new PlayerListRecentlyPlayedPage(this, parameters, page);
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var page = await response
+                    .Deserialize<PlayerListRecentlyPlayedPageResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    page.Validate();
+                }
+                return new PlayerListRecentlyPlayedPage(this, parameters, page);
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task PausePlayback(
+    public Task<HttpResponse> PausePlayback(
         PlayerPausePlaybackParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -148,13 +355,11 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SeekToPosition(
+    public Task<HttpResponse> SeekToPosition(
         PlayerSeekToPositionParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -164,13 +369,11 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SetRepeatMode(
+    public Task<HttpResponse> SetRepeatMode(
         PlayerSetRepeatModeParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -180,13 +383,11 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SetVolume(
+    public Task<HttpResponse> SetVolume(
         PlayerSetVolumeParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -196,13 +397,11 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SkipNext(
+    public Task<HttpResponse> SkipNext(
         PlayerSkipNextParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -214,13 +413,11 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Post,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SkipPrevious(
+    public Task<HttpResponse> SkipPrevious(
         PlayerSkipPreviousParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -232,13 +429,11 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Post,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task StartPlayback(
+    public Task<HttpResponse> StartPlayback(
         PlayerStartPlaybackParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -250,13 +445,11 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task ToggleShuffle(
+    public Task<HttpResponse> ToggleShuffle(
         PlayerToggleShuffleParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -266,13 +459,11 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Transfer(
+    public Task<HttpResponse> Transfer(
         PlayerTransferParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -282,8 +473,6 @@ public sealed class PlayerService : IPlayerService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 }

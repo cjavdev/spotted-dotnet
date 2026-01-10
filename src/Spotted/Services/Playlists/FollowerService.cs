@@ -12,21 +12,122 @@ namespace Spotted.Services.Playlists;
 /// <inheritdoc/>
 public sealed class FollowerService : IFollowerService
 {
+    readonly Lazy<IFollowerServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public IFollowerServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public IFollowerService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
         return new FollowerService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public FollowerService(ISpottedClient client)
+    {
+        _client = client;
+
+        _withRawResponse = new(() => new FollowerServiceWithRawResponse(client.WithRawResponse));
+    }
+
+    /// <inheritdoc/>
+    public async Task<List<bool>> Check(
+        FollowerCheckParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Check(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<List<bool>> Check(
+        string playlistID,
+        FollowerCheckParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Check(parameters with { PlaylistID = playlistID }, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task Follow(
+        FollowerFollowParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Follow(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task Follow(
+        string playlistID,
+        FollowerFollowParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        await this.Follow(parameters with { PlaylistID = playlistID }, cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task Unfollow(
+        FollowerUnfollowParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Unfollow(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task Unfollow(
+        string playlistID,
+        FollowerUnfollowParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        await this.Unfollow(parameters with { PlaylistID = playlistID }, cancellationToken)
+            .ConfigureAwait(false);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class FollowerServiceWithRawResponse : IFollowerServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public IFollowerServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    {
+        return new FollowerServiceWithRawResponse(this._client.WithOptions(modifier));
+    }
+
+    public FollowerServiceWithRawResponse(ISpottedClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
-    public async Task<List<bool>> Check(
+    public async Task<HttpResponse<List<bool>>> Check(
         FollowerCheckParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -41,14 +142,18 @@ public sealed class FollowerService : IFollowerService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize<List<bool>>(cancellationToken).ConfigureAwait(false);
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                return await response.Deserialize<List<bool>>(token).ConfigureAwait(false);
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<List<bool>> Check(
+    public Task<HttpResponse<List<bool>>> Check(
         string playlistID,
         FollowerCheckParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -56,11 +161,11 @@ public sealed class FollowerService : IFollowerService
     {
         parameters ??= new();
 
-        return await this.Check(parameters with { PlaylistID = playlistID }, cancellationToken);
+        return this.Check(parameters with { PlaylistID = playlistID }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Follow(
+    public Task<HttpResponse> Follow(
         FollowerFollowParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -75,13 +180,11 @@ public sealed class FollowerService : IFollowerService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Follow(
+    public Task<HttpResponse> Follow(
         string playlistID,
         FollowerFollowParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -89,11 +192,11 @@ public sealed class FollowerService : IFollowerService
     {
         parameters ??= new();
 
-        await this.Follow(parameters with { PlaylistID = playlistID }, cancellationToken);
+        return this.Follow(parameters with { PlaylistID = playlistID }, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Unfollow(
+    public Task<HttpResponse> Unfollow(
         FollowerUnfollowParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -108,13 +211,11 @@ public sealed class FollowerService : IFollowerService
             Method = HttpMethod.Delete,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Unfollow(
+    public Task<HttpResponse> Unfollow(
         string playlistID,
         FollowerUnfollowParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -122,6 +223,6 @@ public sealed class FollowerService : IFollowerService
     {
         parameters ??= new();
 
-        await this.Unfollow(parameters with { PlaylistID = playlistID }, cancellationToken);
+        return this.Unfollow(parameters with { PlaylistID = playlistID }, cancellationToken);
     }
 }

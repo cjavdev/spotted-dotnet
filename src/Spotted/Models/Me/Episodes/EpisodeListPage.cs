@@ -8,7 +8,7 @@ using Spotted.Services.Me;
 namespace Spotted.Models.Me.Episodes;
 
 public sealed class EpisodeListPage(
-    IEpisodeService service,
+    IEpisodeServiceWithRawResponse service,
     EpisodeListParams parameters,
     EpisodeListPageResponse response
 ) : IPage<EpisodeListResponse>

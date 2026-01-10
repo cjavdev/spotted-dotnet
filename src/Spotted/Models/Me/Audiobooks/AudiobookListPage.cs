@@ -8,7 +8,7 @@ using Spotted.Services.Me;
 namespace Spotted.Models.Me.Audiobooks;
 
 public sealed class AudiobookListPage(
-    IAudiobookService service,
+    IAudiobookServiceWithRawResponse service,
     AudiobookListParams parameters,
     AudiobookListPageResponse response
 ) : IPage<AudiobookListResponse>

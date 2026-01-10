@@ -8,7 +8,7 @@ using Spotted.Services.Me;
 namespace Spotted.Models.Me.Top;
 
 public sealed class TopListTopTracksPage(
-    ITopService service,
+    ITopServiceWithRawResponse service,
     TopListTopTracksParams parameters,
     TopListTopTracksPageResponse response
 ) : IPage<TrackObject>

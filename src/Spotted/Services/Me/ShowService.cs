@@ -11,6 +11,16 @@ namespace Spotted.Services.Me;
 /// <inheritdoc/>
 public sealed class ShowService : global::Spotted.Services.Me.IShowService
 {
+    readonly Lazy<global::Spotted.Services.Me.IShowServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public global::Spotted.Services.Me.IShowServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public global::Spotted.Services.Me.IShowService WithOptions(
         Func<ClientOptions, ClientOptions> modifier
@@ -19,15 +29,87 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
         return new global::Spotted.Services.Me.ShowService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public ShowService(ISpottedClient client)
+    {
+        _client = client;
+
+        _withRawResponse = new(() =>
+            new global::Spotted.Services.Me.ShowServiceWithRawResponse(client.WithRawResponse)
+        );
+    }
+
+    /// <inheritdoc/>
+    public async Task<ShowListPage> List(
+        ShowListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.List(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<List<bool>> Check(
+        ShowCheckParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Check(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task Remove(
+        ShowRemoveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Remove(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task Save(
+        ShowSaveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Save(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class ShowServiceWithRawResponse
+    : global::Spotted.Services.Me.IShowServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public global::Spotted.Services.Me.IShowServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    {
+        return new global::Spotted.Services.Me.ShowServiceWithRawResponse(
+            this._client.WithOptions(modifier)
+        );
+    }
+
+    public ShowServiceWithRawResponse(ISpottedClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
-    public async Task<ShowListPage> List(
+    public async Task<HttpResponse<ShowListPage>> List(
         ShowListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -39,21 +121,25 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var page = await response
-            .Deserialize<ShowListPageResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            page.Validate();
-        }
-        return new ShowListPage(this, parameters, page);
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var page = await response
+                    .Deserialize<ShowListPageResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    page.Validate();
+                }
+                return new ShowListPage(this, parameters, page);
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<List<bool>> Check(
+    public async Task<HttpResponse<List<bool>>> Check(
         ShowCheckParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -63,14 +149,18 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize<List<bool>>(cancellationToken).ConfigureAwait(false);
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                return await response.Deserialize<List<bool>>(token).ConfigureAwait(false);
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task Remove(
+    public Task<HttpResponse> Remove(
         ShowRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -82,13 +172,11 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
             Method = HttpMethod.Delete,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Save(
+    public Task<HttpResponse> Save(
         ShowSaveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -100,8 +188,6 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 }

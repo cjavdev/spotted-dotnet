@@ -14,6 +14,12 @@ namespace Spotted.Services;
 public interface ISearchService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    ISearchServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -26,6 +32,29 @@ public interface ISearchService
     /// only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
     /// </summary>
     Task<SearchQueryResponse> Query(
+        SearchQueryParams parameters,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="ISearchService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface ISearchServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    ISearchServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /search`, but is otherwise the
+    /// same as <see cref="ISearchService.Query(SearchQueryParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<SearchQueryResponse>> Query(
         SearchQueryParams parameters,
         CancellationToken cancellationToken = default
     );

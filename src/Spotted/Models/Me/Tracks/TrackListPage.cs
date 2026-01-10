@@ -8,7 +8,7 @@ using Spotted.Services.Me;
 namespace Spotted.Models.Me.Tracks;
 
 public sealed class TrackListPage(
-    ITrackService service,
+    ITrackServiceWithRawResponse service,
     TrackListParams parameters,
     TrackListPageResponse response
 ) : IPage<TrackListResponse>

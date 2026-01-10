@@ -10,21 +10,60 @@ namespace Spotted.Services;
 /// <inheritdoc/>
 public sealed class MarketService : IMarketService
 {
+    readonly Lazy<IMarketServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public IMarketServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public IMarketService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
         return new MarketService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public MarketService(ISpottedClient client)
+    {
+        _client = client;
+
+        _withRawResponse = new(() => new MarketServiceWithRawResponse(client.WithRawResponse));
+    }
+
+    /// <inheritdoc/>
+    public async Task<MarketListResponse> List(
+        MarketListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.List(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class MarketServiceWithRawResponse : IMarketServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public IMarketServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    {
+        return new MarketServiceWithRawResponse(this._client.WithOptions(modifier));
+    }
+
+    public MarketServiceWithRawResponse(ISpottedClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
-    public async Task<MarketListResponse> List(
+    public async Task<HttpResponse<MarketListResponse>> List(
         MarketListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -36,16 +75,20 @@ public sealed class MarketService : IMarketService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var markets = await response
-            .Deserialize<MarketListResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            markets.Validate();
-        }
-        return markets;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var markets = await response
+                    .Deserialize<MarketListResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    markets.Validate();
+                }
+                return markets;
+            }
+        );
     }
 }

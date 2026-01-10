@@ -15,6 +15,12 @@ namespace Spotted.Services;
 public interface IBrowseService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    IBrowseServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -38,6 +44,41 @@ public interface IBrowseService
     /// on a Spotify player’s “Browse” tab).
     /// </summary>
     Task<BrowseGetNewReleasesResponse> GetNewReleases(
+        BrowseGetNewReleasesParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="IBrowseService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IBrowseServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    IBrowseServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    ICategoryServiceWithRawResponse Categories { get; }
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /browse/featured-playlists`, but is otherwise the
+    /// same as <see cref="IBrowseService.GetFeaturedPlaylists(BrowseGetFeaturedPlaylistsParams?, CancellationToken)"/>.
+    /// </summary>
+    [Obsolete("deprecated")]
+    Task<HttpResponse<BrowseGetFeaturedPlaylistsResponse>> GetFeaturedPlaylists(
+        BrowseGetFeaturedPlaylistsParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /browse/new-releases`, but is otherwise the
+    /// same as <see cref="IBrowseService.GetNewReleases(BrowseGetNewReleasesParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<BrowseGetNewReleasesResponse>> GetNewReleases(
         BrowseGetNewReleasesParams? parameters = null,
         CancellationToken cancellationToken = default
     );

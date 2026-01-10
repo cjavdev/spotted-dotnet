@@ -8,7 +8,7 @@ using Spotted.Services.Me;
 namespace Spotted.Models.Me.Top;
 
 public sealed class TopListTopArtistsPage(
-    ITopService service,
+    ITopServiceWithRawResponse service,
     TopListTopArtistsParams parameters,
     TopListTopArtistsPageResponse response
 ) : IPage<ArtistObject>

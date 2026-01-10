@@ -11,22 +11,79 @@ namespace Spotted.Services;
 /// <inheritdoc/>
 public sealed class AudioAnalysisService : IAudioAnalysisService
 {
+    readonly Lazy<IAudioAnalysisServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public IAudioAnalysisServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public IAudioAnalysisService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
         return new AudioAnalysisService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public AudioAnalysisService(ISpottedClient client)
+    {
+        _client = client;
+
+        _withRawResponse = new(() =>
+            new AudioAnalysisServiceWithRawResponse(client.WithRawResponse)
+        );
+    }
+
+    /// <inheritdoc/>
+    [Obsolete("deprecated")]
+    public async Task<AudioAnalysisRetrieveResponse> Retrieve(
+        AudioAnalysisRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Retrieve(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    [Obsolete("deprecated")]
+    public Task<AudioAnalysisRetrieveResponse> Retrieve(
+        string id,
+        AudioAnalysisRetrieveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.Retrieve(parameters with { ID = id }, cancellationToken);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class AudioAnalysisServiceWithRawResponse : IAudioAnalysisServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public IAudioAnalysisServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    {
+        return new AudioAnalysisServiceWithRawResponse(this._client.WithOptions(modifier));
+    }
+
+    public AudioAnalysisServiceWithRawResponse(ISpottedClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
     [Obsolete("deprecated")]
-    public async Task<AudioAnalysisRetrieveResponse> Retrieve(
+    public async Task<HttpResponse<AudioAnalysisRetrieveResponse>> Retrieve(
         AudioAnalysisRetrieveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -41,22 +98,26 @@ public sealed class AudioAnalysisService : IAudioAnalysisService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var audioAnalysis = await response
-            .Deserialize<AudioAnalysisRetrieveResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            audioAnalysis.Validate();
-        }
-        return audioAnalysis;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var audioAnalysis = await response
+                    .Deserialize<AudioAnalysisRetrieveResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    audioAnalysis.Validate();
+                }
+                return audioAnalysis;
+            }
+        );
     }
 
     /// <inheritdoc/>
     [Obsolete("deprecated")]
-    public async Task<AudioAnalysisRetrieveResponse> Retrieve(
+    public Task<HttpResponse<AudioAnalysisRetrieveResponse>> Retrieve(
         string id,
         AudioAnalysisRetrieveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -64,6 +125,6 @@ public sealed class AudioAnalysisService : IAudioAnalysisService
     {
         parameters ??= new();
 
-        return await this.Retrieve(parameters with { ID = id }, cancellationToken);
+        return this.Retrieve(parameters with { ID = id }, cancellationToken);
     }
 }

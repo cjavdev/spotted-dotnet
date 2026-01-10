@@ -14,6 +14,12 @@ namespace Spotted.Services;
 public interface IRecommendationService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    IRecommendationServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -40,6 +46,40 @@ public interface IRecommendationService
     /// </summary>
     [Obsolete("deprecated")]
     Task<RecommendationListAvailableGenreSeedsResponse> ListAvailableGenreSeeds(
+        RecommendationListAvailableGenreSeedsParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="IRecommendationService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IRecommendationServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    IRecommendationServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /recommendations`, but is otherwise the
+    /// same as <see cref="IRecommendationService.Get(RecommendationGetParams?, CancellationToken)"/>.
+    /// </summary>
+    [Obsolete("deprecated")]
+    Task<HttpResponse<RecommendationGetResponse>> Get(
+        RecommendationGetParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /recommendations/available-genre-seeds`, but is otherwise the
+    /// same as <see cref="IRecommendationService.ListAvailableGenreSeeds(RecommendationListAvailableGenreSeedsParams?, CancellationToken)"/>.
+    /// </summary>
+    [Obsolete("deprecated")]
+    Task<HttpResponse<RecommendationListAvailableGenreSeedsResponse>> ListAvailableGenreSeeds(
         RecommendationListAvailableGenreSeedsParams? parameters = null,
         CancellationToken cancellationToken = default
     );
