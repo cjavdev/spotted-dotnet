@@ -121,7 +121,7 @@ class QueueGetResponseFromRaw : IFromRawJson<QueueGetResponse>
 /// The currently playing track or episode. Can be `null`.
 /// </summary>
 [JsonConverter(typeof(CurrentlyPlayingConverter))]
-public record class CurrentlyPlaying
+public record class CurrentlyPlaying : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -350,7 +350,7 @@ public record class CurrentlyPlaying
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {
@@ -455,7 +455,7 @@ sealed class CurrentlyPlayingConverter : JsonConverter<CurrentlyPlaying>
 }
 
 [JsonConverter(typeof(QueueGetResponseQueueConverter))]
-public record class QueueGetResponseQueue
+public record class QueueGetResponseQueue : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -684,7 +684,7 @@ public record class QueueGetResponseQueue
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {

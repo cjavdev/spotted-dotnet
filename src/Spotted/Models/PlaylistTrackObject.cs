@@ -154,7 +154,7 @@ class PlaylistTrackObjectFromRaw : IFromRawJson<PlaylistTrackObject>
 /// Information about the track or episode.
 /// </summary>
 [JsonConverter(typeof(TrackConverter))]
-public record class Track
+public record class Track : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -367,7 +367,7 @@ public record class Track
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {

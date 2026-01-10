@@ -457,7 +457,7 @@ class ActionsFromRaw : IFromRawJson<Actions>
 /// The currently playing track or episode. Can be `null`.
 /// </summary>
 [JsonConverter(typeof(ItemConverter))]
-public record class Item
+public record class Item : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -682,7 +682,7 @@ public record class Item
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {

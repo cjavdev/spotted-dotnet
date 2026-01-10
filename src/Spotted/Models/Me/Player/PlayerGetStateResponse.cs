@@ -518,7 +518,7 @@ class PlayerGetStateResponseActionsFromRaw : IFromRawJson<PlayerGetStateResponse
 /// The currently playing track or episode. Can be `null`.
 /// </summary>
 [JsonConverter(typeof(PlayerGetStateResponseItemConverter))]
-public record class PlayerGetStateResponseItem
+public record class PlayerGetStateResponseItem : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -747,7 +747,7 @@ public record class PlayerGetStateResponseItem
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {
