@@ -8,6 +8,9 @@ using Spotted.Services.Me;
 
 namespace Spotted.Models.Me.Shows;
 
+/// <summary>
+/// A single page from the paginated endpoint that <see cref="IShowService.List(ShowListParams, CancellationToken)"/> queries.
+/// </summary>
 public sealed class ShowListPage(
     IShowServiceWithRawResponse service,
     ShowListParams parameters,

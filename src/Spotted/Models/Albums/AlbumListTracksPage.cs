@@ -8,6 +8,9 @@ using Spotted.Services;
 
 namespace Spotted.Models.Albums;
 
+/// <summary>
+/// A single page from the paginated endpoint that <see cref="IAlbumService.ListTracks(AlbumListTracksParams, CancellationToken)"/> queries.
+/// </summary>
 public sealed class AlbumListTracksPage(
     IAlbumServiceWithRawResponse service,
     AlbumListTracksParams parameters,

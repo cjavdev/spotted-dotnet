@@ -8,6 +8,9 @@ using Spotted.Services.Users;
 
 namespace Spotted.Models.Users.Playlists;
 
+/// <summary>
+/// A single page from the paginated endpoint that <see cref="IPlaylistService.List(PlaylistListParams, CancellationToken)"/> queries.
+/// </summary>
 public sealed class PlaylistListPage(
     IPlaylistServiceWithRawResponse service,
     PlaylistListParams parameters,

@@ -8,6 +8,9 @@ using Spotted.Services.Me;
 
 namespace Spotted.Models.Me.Top;
 
+/// <summary>
+/// A single page from the paginated endpoint that <see cref="ITopService.ListTopArtists(TopListTopArtistsParams, CancellationToken)"/> queries.
+/// </summary>
 public sealed class TopListTopArtistsPage(
     ITopServiceWithRawResponse service,
     TopListTopArtistsParams parameters,

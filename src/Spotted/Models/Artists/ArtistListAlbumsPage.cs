@@ -8,6 +8,9 @@ using Spotted.Services;
 
 namespace Spotted.Models.Artists;
 
+/// <summary>
+/// A single page from the paginated endpoint that <see cref="IArtistService.ListAlbums(ArtistListAlbumsParams, CancellationToken)"/> queries.
+/// </summary>
 public sealed class ArtistListAlbumsPage(
     IArtistServiceWithRawResponse service,
     ArtistListAlbumsParams parameters,

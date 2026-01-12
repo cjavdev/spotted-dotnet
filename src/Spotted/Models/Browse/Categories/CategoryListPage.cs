@@ -8,6 +8,9 @@ using Spotted.Services.Browse;
 
 namespace Spotted.Models.Browse.Categories;
 
+/// <summary>
+/// A single page from the paginated endpoint that <see cref="ICategoryService.List(CategoryListParams, CancellationToken)"/> queries.
+/// </summary>
 public sealed class CategoryListPage(
     ICategoryServiceWithRawResponse service,
     CategoryListParams parameters,

@@ -8,6 +8,9 @@ using Spotted.Services.Me;
 
 namespace Spotted.Models.Me.Player;
 
+/// <summary>
+/// A single page from the paginated endpoint that <see cref="IPlayerService.ListRecentlyPlayed(PlayerListRecentlyPlayedParams, CancellationToken)"/> queries.
+/// </summary>
 public sealed class PlayerListRecentlyPlayedPage(
     IPlayerServiceWithRawResponse service,
     PlayerListRecentlyPlayedParams parameters,
