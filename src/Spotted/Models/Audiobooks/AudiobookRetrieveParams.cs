@@ -43,7 +43,10 @@ public sealed record class AudiobookRetrieveParams : ParamsBase
     public AudiobookRetrieveParams() { }
 
     public AudiobookRetrieveParams(AudiobookRetrieveParams audiobookRetrieveParams)
-        : base(audiobookRetrieveParams) { }
+        : base(audiobookRetrieveParams)
+    {
+        this.ID = audiobookRetrieveParams.ID;
+    }
 
     public AudiobookRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

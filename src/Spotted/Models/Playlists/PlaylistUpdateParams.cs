@@ -102,6 +102,8 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     public PlaylistUpdateParams(PlaylistUpdateParams playlistUpdateParams)
         : base(playlistUpdateParams)
     {
+        this.PlaylistID = playlistUpdateParams.PlaylistID;
+
         this._rawBodyData = [.. playlistUpdateParams._rawBodyData];
     }
 

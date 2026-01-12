@@ -54,7 +54,10 @@ public sealed record class PlaylistListParams : ParamsBase
     public PlaylistListParams() { }
 
     public PlaylistListParams(PlaylistListParams playlistListParams)
-        : base(playlistListParams) { }
+        : base(playlistListParams)
+    {
+        this.UserID = playlistListParams.UserID;
+    }
 
     public PlaylistListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

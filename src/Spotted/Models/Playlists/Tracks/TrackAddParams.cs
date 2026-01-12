@@ -90,6 +90,8 @@ public sealed record class TrackAddParams : ParamsBase
     public TrackAddParams(TrackAddParams trackAddParams)
         : base(trackAddParams)
     {
+        this.PlaylistID = trackAddParams.PlaylistID;
+
         this._rawBodyData = [.. trackAddParams._rawBodyData];
     }
 

@@ -18,7 +18,10 @@ public sealed record class UserRetrieveProfileParams : ParamsBase
     public UserRetrieveProfileParams() { }
 
     public UserRetrieveProfileParams(UserRetrieveProfileParams userRetrieveProfileParams)
-        : base(userRetrieveProfileParams) { }
+        : base(userRetrieveProfileParams)
+    {
+        this.UserID = userRetrieveProfileParams.UserID;
+    }
 
     public UserRetrieveProfileParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

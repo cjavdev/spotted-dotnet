@@ -80,7 +80,10 @@ public sealed record class AudiobookListChaptersParams : ParamsBase
     public AudiobookListChaptersParams() { }
 
     public AudiobookListChaptersParams(AudiobookListChaptersParams audiobookListChaptersParams)
-        : base(audiobookListChaptersParams) { }
+        : base(audiobookListChaptersParams)
+    {
+        this.ID = audiobookListChaptersParams.ID;
+    }
 
     public AudiobookListChaptersParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

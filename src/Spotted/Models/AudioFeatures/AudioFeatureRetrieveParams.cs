@@ -20,7 +20,10 @@ public sealed record class AudioFeatureRetrieveParams : ParamsBase
     public AudioFeatureRetrieveParams() { }
 
     public AudioFeatureRetrieveParams(AudioFeatureRetrieveParams audioFeatureRetrieveParams)
-        : base(audioFeatureRetrieveParams) { }
+        : base(audioFeatureRetrieveParams)
+    {
+        this.ID = audioFeatureRetrieveParams.ID;
+    }
 
     public AudioFeatureRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

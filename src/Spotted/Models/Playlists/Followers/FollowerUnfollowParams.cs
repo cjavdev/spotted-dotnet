@@ -18,7 +18,10 @@ public sealed record class FollowerUnfollowParams : ParamsBase
     public FollowerUnfollowParams() { }
 
     public FollowerUnfollowParams(FollowerUnfollowParams followerUnfollowParams)
-        : base(followerUnfollowParams) { }
+        : base(followerUnfollowParams)
+    {
+        this.PlaylistID = followerUnfollowParams.PlaylistID;
+    }
 
     public FollowerUnfollowParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

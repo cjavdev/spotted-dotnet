@@ -18,7 +18,10 @@ public sealed record class ImageListParams : ParamsBase
     public ImageListParams() { }
 
     public ImageListParams(ImageListParams imageListParams)
-        : base(imageListParams) { }
+        : base(imageListParams)
+    {
+        this.PlaylistID = imageListParams.PlaylistID;
+    }
 
     public ImageListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

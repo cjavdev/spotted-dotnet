@@ -85,6 +85,8 @@ public sealed record class TrackRemoveParams : ParamsBase
     public TrackRemoveParams(TrackRemoveParams trackRemoveParams)
         : base(trackRemoveParams)
     {
+        this.PlaylistID = trackRemoveParams.PlaylistID;
+
         this._rawBodyData = [.. trackRemoveParams._rawBodyData];
     }
 

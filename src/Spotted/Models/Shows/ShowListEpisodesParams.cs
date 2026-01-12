@@ -79,7 +79,10 @@ public sealed record class ShowListEpisodesParams : ParamsBase
     public ShowListEpisodesParams() { }
 
     public ShowListEpisodesParams(ShowListEpisodesParams showListEpisodesParams)
-        : base(showListEpisodesParams) { }
+        : base(showListEpisodesParams)
+    {
+        this.ID = showListEpisodesParams.ID;
+    }
 
     public ShowListEpisodesParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

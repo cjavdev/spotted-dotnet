@@ -43,7 +43,10 @@ public sealed record class ShowRetrieveParams : ParamsBase
     public ShowRetrieveParams() { }
 
     public ShowRetrieveParams(ShowRetrieveParams showRetrieveParams)
-        : base(showRetrieveParams) { }
+        : base(showRetrieveParams)
+    {
+        this.ID = showRetrieveParams.ID;
+    }
 
     public ShowRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

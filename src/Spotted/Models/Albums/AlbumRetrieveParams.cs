@@ -42,7 +42,10 @@ public sealed record class AlbumRetrieveParams : ParamsBase
     public AlbumRetrieveParams() { }
 
     public AlbumRetrieveParams(AlbumRetrieveParams albumRetrieveParams)
-        : base(albumRetrieveParams) { }
+        : base(albumRetrieveParams)
+    {
+        this.ID = albumRetrieveParams.ID;
+    }
 
     public AlbumRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

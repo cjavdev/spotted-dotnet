@@ -98,6 +98,8 @@ public sealed record class PlaylistCreateParams : ParamsBase
     public PlaylistCreateParams(PlaylistCreateParams playlistCreateParams)
         : base(playlistCreateParams)
     {
+        this.UserID = playlistCreateParams.UserID;
+
         this._rawBodyData = [.. playlistCreateParams._rawBodyData];
     }
 

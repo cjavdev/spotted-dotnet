@@ -21,7 +21,10 @@ public sealed record class AudioAnalysisRetrieveParams : ParamsBase
     public AudioAnalysisRetrieveParams() { }
 
     public AudioAnalysisRetrieveParams(AudioAnalysisRetrieveParams audioAnalysisRetrieveParams)
-        : base(audioAnalysisRetrieveParams) { }
+        : base(audioAnalysisRetrieveParams)
+    {
+        this.ID = audioAnalysisRetrieveParams.ID;
+    }
 
     public AudioAnalysisRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

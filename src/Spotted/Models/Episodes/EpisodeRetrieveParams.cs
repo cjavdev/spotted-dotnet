@@ -43,7 +43,10 @@ public sealed record class EpisodeRetrieveParams : ParamsBase
     public EpisodeRetrieveParams() { }
 
     public EpisodeRetrieveParams(EpisodeRetrieveParams episodeRetrieveParams)
-        : base(episodeRetrieveParams) { }
+        : base(episodeRetrieveParams)
+    {
+        this.ID = episodeRetrieveParams.ID;
+    }
 
     public EpisodeRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

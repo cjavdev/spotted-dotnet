@@ -22,7 +22,10 @@ public sealed record class ArtistListRelatedArtistsParams : ParamsBase
     public ArtistListRelatedArtistsParams(
         ArtistListRelatedArtistsParams artistListRelatedArtistsParams
     )
-        : base(artistListRelatedArtistsParams) { }
+        : base(artistListRelatedArtistsParams)
+    {
+        this.ID = artistListRelatedArtistsParams.ID;
+    }
 
     public ArtistListRelatedArtistsParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

@@ -47,6 +47,8 @@ public sealed record class FollowerFollowParams : ParamsBase
     public FollowerFollowParams(FollowerFollowParams followerFollowParams)
         : base(followerFollowParams)
     {
+        this.PlaylistID = followerFollowParams.PlaylistID;
+
         this._rawBodyData = [.. followerFollowParams._rawBodyData];
     }
 

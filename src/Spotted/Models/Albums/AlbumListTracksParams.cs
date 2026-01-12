@@ -79,7 +79,10 @@ public sealed record class AlbumListTracksParams : ParamsBase
     public AlbumListTracksParams() { }
 
     public AlbumListTracksParams(AlbumListTracksParams albumListTracksParams)
-        : base(albumListTracksParams) { }
+        : base(albumListTracksParams)
+    {
+        this.ID = albumListTracksParams.ID;
+    }
 
     public AlbumListTracksParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

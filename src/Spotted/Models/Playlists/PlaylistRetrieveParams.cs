@@ -89,7 +89,10 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
     public PlaylistRetrieveParams() { }
 
     public PlaylistRetrieveParams(PlaylistRetrieveParams playlistRetrieveParams)
-        : base(playlistRetrieveParams) { }
+        : base(playlistRetrieveParams)
+    {
+        this.PlaylistID = playlistRetrieveParams.PlaylistID;
+    }
 
     public PlaylistRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

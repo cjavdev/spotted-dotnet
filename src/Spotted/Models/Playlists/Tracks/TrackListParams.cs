@@ -124,7 +124,10 @@ public sealed record class TrackListParams : ParamsBase
     public TrackListParams() { }
 
     public TrackListParams(TrackListParams trackListParams)
-        : base(trackListParams) { }
+        : base(trackListParams)
+    {
+        this.PlaylistID = trackListParams.PlaylistID;
+    }
 
     public TrackListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

@@ -42,7 +42,10 @@ public sealed record class ArtistTopTracksParams : ParamsBase
     public ArtistTopTracksParams() { }
 
     public ArtistTopTracksParams(ArtistTopTracksParams artistTopTracksParams)
-        : base(artistTopTracksParams) { }
+        : base(artistTopTracksParams)
+    {
+        this.ID = artistTopTracksParams.ID;
+    }
 
     public ArtistTopTracksParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

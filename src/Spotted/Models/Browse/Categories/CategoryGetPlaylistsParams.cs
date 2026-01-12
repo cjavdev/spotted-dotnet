@@ -55,7 +55,10 @@ public sealed record class CategoryGetPlaylistsParams : ParamsBase
     public CategoryGetPlaylistsParams() { }
 
     public CategoryGetPlaylistsParams(CategoryGetPlaylistsParams categoryGetPlaylistsParams)
-        : base(categoryGetPlaylistsParams) { }
+        : base(categoryGetPlaylistsParams)
+    {
+        this.CategoryID = categoryGetPlaylistsParams.CategoryID;
+    }
 
     public CategoryGetPlaylistsParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
