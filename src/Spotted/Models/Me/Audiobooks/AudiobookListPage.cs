@@ -8,6 +8,9 @@ using Spotted.Services.Me;
 
 namespace Spotted.Models.Me.Audiobooks;
 
+/// <summary>
+/// A single page from the paginated endpoint that <see cref="IAudiobookService.List(AudiobookListParams, CancellationToken)"/> queries.
+/// </summary>
 public sealed class AudiobookListPage(
     IAudiobookServiceWithRawResponse service,
     AudiobookListParams parameters,
