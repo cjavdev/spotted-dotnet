@@ -145,6 +145,8 @@ public sealed record class TrackUpdateParams : ParamsBase
     public TrackUpdateParams(TrackUpdateParams trackUpdateParams)
         : base(trackUpdateParams)
     {
+        this.PlaylistID = trackUpdateParams.PlaylistID;
+
         this._rawBodyData = [.. trackUpdateParams._rawBodyData];
     }
 

@@ -43,7 +43,10 @@ public sealed record class TrackRetrieveParams : ParamsBase
     public TrackRetrieveParams() { }
 
     public TrackRetrieveParams(TrackRetrieveParams trackRetrieveParams)
-        : base(trackRetrieveParams) { }
+        : base(trackRetrieveParams)
+    {
+        this.ID = trackRetrieveParams.ID;
+    }
 
     public TrackRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

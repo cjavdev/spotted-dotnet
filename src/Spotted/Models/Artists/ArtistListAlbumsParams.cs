@@ -98,7 +98,10 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
     public ArtistListAlbumsParams() { }
 
     public ArtistListAlbumsParams(ArtistListAlbumsParams artistListAlbumsParams)
-        : base(artistListAlbumsParams) { }
+        : base(artistListAlbumsParams)
+    {
+        this.ID = artistListAlbumsParams.ID;
+    }
 
     public ArtistListAlbumsParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

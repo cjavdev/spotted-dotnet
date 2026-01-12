@@ -42,7 +42,10 @@ public sealed record class CategoryRetrieveParams : ParamsBase
     public CategoryRetrieveParams() { }
 
     public CategoryRetrieveParams(CategoryRetrieveParams categoryRetrieveParams)
-        : base(categoryRetrieveParams) { }
+        : base(categoryRetrieveParams)
+    {
+        this.CategoryID = categoryRetrieveParams.CategoryID;
+    }
 
     public CategoryRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

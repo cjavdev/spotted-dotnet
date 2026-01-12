@@ -19,7 +19,10 @@ public sealed record class ArtistRetrieveParams : ParamsBase
     public ArtistRetrieveParams() { }
 
     public ArtistRetrieveParams(ArtistRetrieveParams artistRetrieveParams)
-        : base(artistRetrieveParams) { }
+        : base(artistRetrieveParams)
+    {
+        this.ID = artistRetrieveParams.ID;
+    }
 
     public ArtistRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

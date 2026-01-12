@@ -43,7 +43,10 @@ public sealed record class ChapterRetrieveParams : ParamsBase
     public ChapterRetrieveParams() { }
 
     public ChapterRetrieveParams(ChapterRetrieveParams chapterRetrieveParams)
-        : base(chapterRetrieveParams) { }
+        : base(chapterRetrieveParams)
+    {
+        this.ID = chapterRetrieveParams.ID;
+    }
 
     public ChapterRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,

@@ -36,6 +36,8 @@ public sealed record class ImageUpdateParams : ParamsBase
     public ImageUpdateParams(ImageUpdateParams imageUpdateParams)
         : base(imageUpdateParams)
     {
+        this.PlaylistID = imageUpdateParams.PlaylistID;
+
         this._rawBodyData = [.. imageUpdateParams._rawBodyData];
     }
 

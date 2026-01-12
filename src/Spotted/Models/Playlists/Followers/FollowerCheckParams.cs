@@ -36,7 +36,10 @@ public sealed record class FollowerCheckParams : ParamsBase
     public FollowerCheckParams() { }
 
     public FollowerCheckParams(FollowerCheckParams followerCheckParams)
-        : base(followerCheckParams) { }
+        : base(followerCheckParams)
+    {
+        this.PlaylistID = followerCheckParams.PlaylistID;
+    }
 
     public FollowerCheckParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
