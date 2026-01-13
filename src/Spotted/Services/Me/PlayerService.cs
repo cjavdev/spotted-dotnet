@@ -90,111 +90,84 @@ public sealed class PlayerService : IPlayerService
     }
 
     /// <inheritdoc/>
-    public async Task PausePlayback(
+    public Task PausePlayback(
         PlayerPausePlaybackParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.PausePlayback(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.PausePlayback(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SeekToPosition(
+    public Task SeekToPosition(
         PlayerSeekToPositionParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.SeekToPosition(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.SeekToPosition(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SetRepeatMode(
+    public Task SetRepeatMode(
         PlayerSetRepeatModeParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.SetRepeatMode(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.SetRepeatMode(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SetVolume(
+    public Task SetVolume(
         PlayerSetVolumeParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.SetVolume(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.SetVolume(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SkipNext(
+    public Task SkipNext(
         PlayerSkipNextParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.SkipNext(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.SkipNext(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task SkipPrevious(
+    public Task SkipPrevious(
         PlayerSkipPreviousParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.SkipPrevious(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.SkipPrevious(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task StartPlayback(
+    public Task StartPlayback(
         PlayerStartPlaybackParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.StartPlayback(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.StartPlayback(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task ToggleShuffle(
+    public Task ToggleShuffle(
         PlayerToggleShuffleParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.ToggleShuffle(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.ToggleShuffle(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Transfer(
+    public Task Transfer(
         PlayerTransferParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Transfer(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Transfer(parameters, cancellationToken);
     }
 }
 

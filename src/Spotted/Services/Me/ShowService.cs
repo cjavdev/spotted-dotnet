@@ -63,27 +63,21 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
     }
 
     /// <inheritdoc/>
-    public async Task Remove(
+    public Task Remove(
         ShowRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Remove(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Remove(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Save(
+    public Task Save(
         ShowSaveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Save(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Save(parameters, cancellationToken);
     }
 }
 

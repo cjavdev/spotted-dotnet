@@ -63,27 +63,18 @@ public sealed class EpisodeService : global::Spotted.Services.Me.IEpisodeService
     }
 
     /// <inheritdoc/>
-    public async Task Remove(
+    public Task Remove(
         EpisodeRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Remove(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Remove(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Save(
-        EpisodeSaveParams parameters,
-        CancellationToken cancellationToken = default
-    )
+    public Task Save(EpisodeSaveParams parameters, CancellationToken cancellationToken = default)
     {
-        using var response = await this
-            .WithRawResponse.Save(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Save(parameters, cancellationToken);
     }
 }
 
