@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -14,8 +15,14 @@ public sealed record class PlayerGetDevicesResponse : JsonModel
 {
     public required IReadOnlyList<DeviceObject> Devices
     {
-        get { return JsonModel.GetNotNullClass<List<DeviceObject>>(this.RawData, "devices"); }
-        init { JsonModel.Set(this._rawData, "devices", value); }
+        get { return this._rawData.GetNotNullStruct<ImmutableArray<DeviceObject>>("devices"); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<DeviceObject>>(
+                "devices",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <inheritdoc/>
@@ -34,14 +41,14 @@ public sealed record class PlayerGetDevicesResponse : JsonModel
 
     public PlayerGetDevicesResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlayerGetDevicesResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

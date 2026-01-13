@@ -20,7 +20,7 @@ public sealed record class ChapterRestrictionObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -28,7 +28,7 @@ public sealed record class ChapterRestrictionObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -44,7 +44,7 @@ public sealed record class ChapterRestrictionObject : JsonModel
     /// </summary>
     public string? Reason
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "reason"); }
+        get { return this._rawData.GetNullableClass<string>("reason"); }
         init
         {
             if (value == null)
@@ -52,7 +52,7 @@ public sealed record class ChapterRestrictionObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "reason", value);
+            this._rawData.Set("reason", value);
         }
     }
 
@@ -70,14 +70,14 @@ public sealed record class ChapterRestrictionObject : JsonModel
 
     public ChapterRestrictionObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ChapterRestrictionObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

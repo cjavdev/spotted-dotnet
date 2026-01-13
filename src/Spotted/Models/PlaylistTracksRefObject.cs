@@ -16,7 +16,7 @@ public sealed record class PlaylistTracksRefObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        get { return this._rawData.GetNullableClass<string>("href"); }
         init
         {
             if (value == null)
@@ -24,7 +24,7 @@ public sealed record class PlaylistTracksRefObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "href", value);
+            this._rawData.Set("href", value);
         }
     }
 
@@ -36,7 +36,7 @@ public sealed record class PlaylistTracksRefObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -44,7 +44,7 @@ public sealed record class PlaylistTracksRefObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -53,7 +53,7 @@ public sealed record class PlaylistTracksRefObject : JsonModel
     /// </summary>
     public long? Total
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "total"); }
+        get { return this._rawData.GetNullableStruct<long>("total"); }
         init
         {
             if (value == null)
@@ -61,7 +61,7 @@ public sealed record class PlaylistTracksRefObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "total", value);
+            this._rawData.Set("total", value);
         }
     }
 
@@ -80,14 +80,14 @@ public sealed record class PlaylistTracksRefObject : JsonModel
 
     public PlaylistTracksRefObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlaylistTracksRefObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

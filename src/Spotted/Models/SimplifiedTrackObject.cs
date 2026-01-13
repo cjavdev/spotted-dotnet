@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -17,7 +18,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
+        get { return this._rawData.GetNullableClass<string>("id"); }
         init
         {
             if (value == null)
@@ -25,7 +26,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "id", value);
+            this._rawData.Set("id", value);
         }
     }
 
@@ -37,8 +38,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     {
         get
         {
-            return JsonModel.GetNullableClass<List<SimplifiedArtistObject>>(
-                this.RawData,
+            return this._rawData.GetNullableStruct<ImmutableArray<SimplifiedArtistObject>>(
                 "artists"
             );
         }
@@ -49,7 +49,10 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "artists", value);
+            this._rawData.Set<ImmutableArray<SimplifiedArtistObject>?>(
+                "artists",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -59,7 +62,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public IReadOnlyList<string>? AvailableMarkets
     {
-        get { return JsonModel.GetNullableClass<List<string>>(this.RawData, "available_markets"); }
+        get { return this._rawData.GetNullableStruct<ImmutableArray<string>>("available_markets"); }
         init
         {
             if (value == null)
@@ -67,7 +70,10 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "available_markets", value);
+            this._rawData.Set<ImmutableArray<string>?>(
+                "available_markets",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -76,7 +82,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public long? DiscNumber
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "disc_number"); }
+        get { return this._rawData.GetNullableStruct<long>("disc_number"); }
         init
         {
             if (value == null)
@@ -84,7 +90,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "disc_number", value);
+            this._rawData.Set("disc_number", value);
         }
     }
 
@@ -93,7 +99,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public long? DurationMs
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "duration_ms"); }
+        get { return this._rawData.GetNullableStruct<long>("duration_ms"); }
         init
         {
             if (value == null)
@@ -101,7 +107,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "duration_ms", value);
+            this._rawData.Set("duration_ms", value);
         }
     }
 
@@ -111,7 +117,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public bool? Explicit
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "explicit"); }
+        get { return this._rawData.GetNullableStruct<bool>("explicit"); }
         init
         {
             if (value == null)
@@ -119,7 +125,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "explicit", value);
+            this._rawData.Set("explicit", value);
         }
     }
 
@@ -128,7 +134,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
+        get { return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls"); }
         init
         {
             if (value == null)
@@ -136,7 +142,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "external_urls", value);
+            this._rawData.Set("external_urls", value);
         }
     }
 
@@ -145,7 +151,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        get { return this._rawData.GetNullableClass<string>("href"); }
         init
         {
             if (value == null)
@@ -153,7 +159,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "href", value);
+            this._rawData.Set("href", value);
         }
     }
 
@@ -162,7 +168,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public bool? IsLocal
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_local"); }
+        get { return this._rawData.GetNullableStruct<bool>("is_local"); }
         init
         {
             if (value == null)
@@ -170,7 +176,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "is_local", value);
+            this._rawData.Set("is_local", value);
         }
     }
 
@@ -181,7 +187,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public bool? IsPlayable
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_playable"); }
+        get { return this._rawData.GetNullableStruct<bool>("is_playable"); }
         init
         {
             if (value == null)
@@ -189,7 +195,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "is_playable", value);
+            this._rawData.Set("is_playable", value);
         }
     }
 
@@ -202,7 +208,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public LinkedTrackObject? LinkedFrom
     {
-        get { return JsonModel.GetNullableClass<LinkedTrackObject>(this.RawData, "linked_from"); }
+        get { return this._rawData.GetNullableClass<LinkedTrackObject>("linked_from"); }
         init
         {
             if (value == null)
@@ -210,7 +216,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "linked_from", value);
+            this._rawData.Set("linked_from", value);
         }
     }
 
@@ -219,7 +225,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public string? Name
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "name"); }
+        get { return this._rawData.GetNullableClass<string>("name"); }
         init
         {
             if (value == null)
@@ -227,7 +233,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "name", value);
+            this._rawData.Set("name", value);
         }
     }
 
@@ -237,8 +243,8 @@ public sealed record class SimplifiedTrackObject : JsonModel
     [Obsolete("deprecated")]
     public string? PreviewUrl
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "preview_url"); }
-        init { JsonModel.Set(this._rawData, "preview_url", value); }
+        get { return this._rawData.GetNullableClass<string>("preview_url"); }
+        init { this._rawData.Set("preview_url", value); }
     }
 
     /// <summary>
@@ -249,7 +255,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -257,7 +263,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -266,10 +272,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public TrackRestrictionObject? Restrictions
     {
-        get
-        {
-            return JsonModel.GetNullableClass<TrackRestrictionObject>(this.RawData, "restrictions");
-        }
+        get { return this._rawData.GetNullableClass<TrackRestrictionObject>("restrictions"); }
         init
         {
             if (value == null)
@@ -277,7 +280,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "restrictions", value);
+            this._rawData.Set("restrictions", value);
         }
     }
 
@@ -287,7 +290,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public long? TrackNumber
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "track_number"); }
+        get { return this._rawData.GetNullableStruct<long>("track_number"); }
         init
         {
             if (value == null)
@@ -295,7 +298,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "track_number", value);
+            this._rawData.Set("track_number", value);
         }
     }
 
@@ -304,7 +307,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public string? Type
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
+        get { return this._rawData.GetNullableClass<string>("type"); }
         init
         {
             if (value == null)
@@ -312,7 +315,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "type", value);
+            this._rawData.Set("type", value);
         }
     }
 
@@ -322,7 +325,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return this._rawData.GetNullableClass<string>("uri"); }
         init
         {
             if (value == null)
@@ -330,7 +333,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "uri", value);
+            this._rawData.Set("uri", value);
         }
     }
 
@@ -367,14 +370,14 @@ public sealed record class SimplifiedTrackObject : JsonModel
 
     public SimplifiedTrackObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     SimplifiedTrackObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

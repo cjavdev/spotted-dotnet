@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -18,8 +19,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
-        init { JsonModel.Set(this._rawData, "id", value); }
+        get { return this._rawData.GetNotNullClass<string>("id"); }
+        init { this._rawData.Set("id", value); }
     }
 
     /// <summary>
@@ -28,8 +29,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     [System::Obsolete("deprecated")]
     public required string? AudioPreviewUrl
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "audio_preview_url"); }
-        init { JsonModel.Set(this._rawData, "audio_preview_url", value); }
+        get { return this._rawData.GetNullableClass<string>("audio_preview_url"); }
+        init { this._rawData.Set("audio_preview_url", value); }
     }
 
     /// <summary>
@@ -37,8 +38,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required long ChapterNumber
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "chapter_number"); }
-        init { JsonModel.Set(this._rawData, "chapter_number", value); }
+        get { return this._rawData.GetNotNullStruct<long>("chapter_number"); }
+        init { this._rawData.Set("chapter_number", value); }
     }
 
     /// <summary>
@@ -47,8 +48,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required string Description
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "description"); }
-        init { JsonModel.Set(this._rawData, "description", value); }
+        get { return this._rawData.GetNotNullClass<string>("description"); }
+        init { this._rawData.Set("description", value); }
     }
 
     /// <summary>
@@ -56,8 +57,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required long DurationMs
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "duration_ms"); }
-        init { JsonModel.Set(this._rawData, "duration_ms", value); }
+        get { return this._rawData.GetNotNullStruct<long>("duration_ms"); }
+        init { this._rawData.Set("duration_ms", value); }
     }
 
     /// <summary>
@@ -66,8 +67,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required bool Explicit
     {
-        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "explicit"); }
-        init { JsonModel.Set(this._rawData, "explicit", value); }
+        get { return this._rawData.GetNotNullStruct<bool>("explicit"); }
+        init { this._rawData.Set("explicit", value); }
     }
 
     /// <summary>
@@ -75,8 +76,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required ExternalUrlObject ExternalUrls
     {
-        get { return JsonModel.GetNotNullClass<ExternalUrlObject>(this.RawData, "external_urls"); }
-        init { JsonModel.Set(this._rawData, "external_urls", value); }
+        get { return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls"); }
+        init { this._rawData.Set("external_urls", value); }
     }
 
     /// <summary>
@@ -84,8 +85,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
-        init { JsonModel.Set(this._rawData, "href", value); }
+        get { return this._rawData.GetNotNullClass<string>("href"); }
+        init { this._rawData.Set("href", value); }
     }
 
     /// <summary>
@@ -93,8 +94,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required string HtmlDescription
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "html_description"); }
-        init { JsonModel.Set(this._rawData, "html_description", value); }
+        get { return this._rawData.GetNotNullClass<string>("html_description"); }
+        init { this._rawData.Set("html_description", value); }
     }
 
     /// <summary>
@@ -102,8 +103,14 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
-        init { JsonModel.Set(this._rawData, "images", value); }
+        get { return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images"); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<ImageObject>>(
+                "images",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -111,8 +118,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required bool IsPlayable
     {
-        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "is_playable"); }
-        init { JsonModel.Set(this._rawData, "is_playable", value); }
+        get { return this._rawData.GetNotNullStruct<bool>("is_playable"); }
+        init { this._rawData.Set("is_playable", value); }
     }
 
     /// <summary>
@@ -121,8 +128,14 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required IReadOnlyList<string> Languages
     {
-        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "languages"); }
-        init { JsonModel.Set(this._rawData, "languages", value); }
+        get { return this._rawData.GetNotNullStruct<ImmutableArray<string>>("languages"); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<string>>(
+                "languages",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -130,8 +143,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required string Name
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
-        init { JsonModel.Set(this._rawData, "name", value); }
+        get { return this._rawData.GetNotNullClass<string>("name"); }
+        init { this._rawData.Set("name", value); }
     }
 
     /// <summary>
@@ -140,8 +153,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required string ReleaseDate
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "release_date"); }
-        init { JsonModel.Set(this._rawData, "release_date", value); }
+        get { return this._rawData.GetNotNullClass<string>("release_date"); }
+        init { this._rawData.Set("release_date", value); }
     }
 
     /// <summary>
@@ -154,11 +167,11 @@ public sealed record class SimplifiedChapterObject : JsonModel
     {
         get
         {
-            return JsonModel.GetNotNullClass<
+            return this._rawData.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Audiobooks.ReleaseDatePrecision>
-            >(this.RawData, "release_date_precision");
+            >("release_date_precision");
         }
-        init { JsonModel.Set(this._rawData, "release_date_precision", value); }
+        init { this._rawData.Set("release_date_precision", value); }
     }
 
     /// <summary>
@@ -166,8 +179,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public JsonElement Type
     {
-        get { return JsonModel.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
-        init { JsonModel.Set(this._rawData, "type", value); }
+        get { return this._rawData.GetNotNullStruct<JsonElement>("type"); }
+        init { this._rawData.Set("type", value); }
     }
 
     /// <summary>
@@ -176,8 +189,8 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public required string Uri
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "uri"); }
-        init { JsonModel.Set(this._rawData, "uri", value); }
+        get { return this._rawData.GetNotNullClass<string>("uri"); }
+        init { this._rawData.Set("uri", value); }
     }
 
     /// <summary>
@@ -187,7 +200,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public IReadOnlyList<string>? AvailableMarkets
     {
-        get { return JsonModel.GetNullableClass<List<string>>(this.RawData, "available_markets"); }
+        get { return this._rawData.GetNullableStruct<ImmutableArray<string>>("available_markets"); }
         init
         {
             if (value == null)
@@ -195,7 +208,10 @@ public sealed record class SimplifiedChapterObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "available_markets", value);
+            this._rawData.Set<ImmutableArray<string>?>(
+                "available_markets",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -207,7 +223,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -215,7 +231,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -224,13 +240,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public ChapterRestrictionObject? Restrictions
     {
-        get
-        {
-            return JsonModel.GetNullableClass<ChapterRestrictionObject>(
-                this.RawData,
-                "restrictions"
-            );
-        }
+        get { return this._rawData.GetNullableClass<ChapterRestrictionObject>("restrictions"); }
         init
         {
             if (value == null)
@@ -238,7 +248,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "restrictions", value);
+            this._rawData.Set("restrictions", value);
         }
     }
 
@@ -248,7 +258,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// </summary>
     public ResumePointObject? ResumePoint
     {
-        get { return JsonModel.GetNullableClass<ResumePointObject>(this.RawData, "resume_point"); }
+        get { return this._rawData.GetNullableClass<ResumePointObject>("resume_point"); }
         init
         {
             if (value == null)
@@ -256,7 +266,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "resume_point", value);
+            this._rawData.Set("resume_point", value);
         }
     }
 
@@ -310,7 +320,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public SimplifiedChapterObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
 
         this.Type = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
     }
@@ -320,7 +330,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
     [SetsRequiredMembers]
     SimplifiedChapterObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

@@ -18,10 +18,7 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public System::DateTimeOffset? AddedAt
     {
-        get
-        {
-            return JsonModel.GetNullableStruct<System::DateTimeOffset>(this.RawData, "added_at");
-        }
+        get { return this._rawData.GetNullableStruct<System::DateTimeOffset>("added_at"); }
         init
         {
             if (value == null)
@@ -29,7 +26,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "added_at", value);
+            this._rawData.Set("added_at", value);
         }
     }
 
@@ -39,7 +36,7 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public PlaylistUserObject? AddedBy
     {
-        get { return JsonModel.GetNullableClass<PlaylistUserObject>(this.RawData, "added_by"); }
+        get { return this._rawData.GetNullableClass<PlaylistUserObject>("added_by"); }
         init
         {
             if (value == null)
@@ -47,7 +44,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "added_by", value);
+            this._rawData.Set("added_by", value);
         }
     }
 
@@ -57,7 +54,7 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public bool? IsLocal
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_local"); }
+        get { return this._rawData.GetNullableStruct<bool>("is_local"); }
         init
         {
             if (value == null)
@@ -65,7 +62,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "is_local", value);
+            this._rawData.Set("is_local", value);
         }
     }
 
@@ -77,7 +74,7 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -85,7 +82,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -94,7 +91,7 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public Track? Track
     {
-        get { return JsonModel.GetNullableClass<Track>(this.RawData, "track"); }
+        get { return this._rawData.GetNullableClass<Track>("track"); }
         init
         {
             if (value == null)
@@ -102,7 +99,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "track", value);
+            this._rawData.Set("track", value);
         }
     }
 
@@ -123,14 +120,14 @@ public sealed record class PlaylistTrackObject : JsonModel
 
     public PlaylistTrackObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlaylistTrackObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -17,8 +18,14 @@ public sealed record class RecommendationGetResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<Seed> Seeds
     {
-        get { return JsonModel.GetNotNullClass<List<Seed>>(this.RawData, "seeds"); }
-        init { JsonModel.Set(this._rawData, "seeds", value); }
+        get { return this._rawData.GetNotNullStruct<ImmutableArray<Seed>>("seeds"); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<Seed>>(
+                "seeds",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -26,8 +33,14 @@ public sealed record class RecommendationGetResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<TrackObject> Tracks
     {
-        get { return JsonModel.GetNotNullClass<List<TrackObject>>(this.RawData, "tracks"); }
-        init { JsonModel.Set(this._rawData, "tracks", value); }
+        get { return this._rawData.GetNotNullStruct<ImmutableArray<TrackObject>>("tracks"); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<TrackObject>>(
+                "tracks",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -38,7 +51,7 @@ public sealed record class RecommendationGetResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -46,7 +59,7 @@ public sealed record class RecommendationGetResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -71,14 +84,14 @@ public sealed record class RecommendationGetResponse : JsonModel
 
     public RecommendationGetResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     RecommendationGetResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -108,7 +121,7 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
+        get { return this._rawData.GetNullableClass<string>("id"); }
         init
         {
             if (value == null)
@@ -116,7 +129,7 @@ public sealed record class Seed : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "id", value);
+            this._rawData.Set("id", value);
         }
     }
 
@@ -126,7 +139,7 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public long? AfterFilteringSize
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "afterFilteringSize"); }
+        get { return this._rawData.GetNullableStruct<long>("afterFilteringSize"); }
         init
         {
             if (value == null)
@@ -134,7 +147,7 @@ public sealed record class Seed : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "afterFilteringSize", value);
+            this._rawData.Set("afterFilteringSize", value);
         }
     }
 
@@ -143,7 +156,7 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public long? AfterRelinkingSize
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "afterRelinkingSize"); }
+        get { return this._rawData.GetNullableStruct<long>("afterRelinkingSize"); }
         init
         {
             if (value == null)
@@ -151,7 +164,7 @@ public sealed record class Seed : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "afterRelinkingSize", value);
+            this._rawData.Set("afterRelinkingSize", value);
         }
     }
 
@@ -162,7 +175,7 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        get { return this._rawData.GetNullableClass<string>("href"); }
         init
         {
             if (value == null)
@@ -170,7 +183,7 @@ public sealed record class Seed : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "href", value);
+            this._rawData.Set("href", value);
         }
     }
 
@@ -179,7 +192,7 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public long? InitialPoolSize
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "initialPoolSize"); }
+        get { return this._rawData.GetNullableStruct<long>("initialPoolSize"); }
         init
         {
             if (value == null)
@@ -187,7 +200,7 @@ public sealed record class Seed : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "initialPoolSize", value);
+            this._rawData.Set("initialPoolSize", value);
         }
     }
 
@@ -199,7 +212,7 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -207,7 +220,7 @@ public sealed record class Seed : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -216,7 +229,7 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public string? Type
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
+        get { return this._rawData.GetNullableClass<string>("type"); }
         init
         {
             if (value == null)
@@ -224,7 +237,7 @@ public sealed record class Seed : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "type", value);
+            this._rawData.Set("type", value);
         }
     }
 
@@ -247,14 +260,14 @@ public sealed record class Seed : JsonModel
 
     public Seed(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     Seed(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

@@ -15,8 +15,8 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public required long? Height
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "height"); }
-        init { JsonModel.Set(this._rawData, "height", value); }
+        get { return this._rawData.GetNullableStruct<long>("height"); }
+        init { this._rawData.Set("height", value); }
     }
 
     /// <summary>
@@ -24,8 +24,8 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public required string Url
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "url"); }
-        init { JsonModel.Set(this._rawData, "url", value); }
+        get { return this._rawData.GetNotNullClass<string>("url"); }
+        init { this._rawData.Set("url", value); }
     }
 
     /// <summary>
@@ -33,8 +33,8 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public required long? Width
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "width"); }
-        init { JsonModel.Set(this._rawData, "width", value); }
+        get { return this._rawData.GetNullableStruct<long>("width"); }
+        init { this._rawData.Set("width", value); }
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -53,7 +53,7 @@ public sealed record class ImageObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -73,14 +73,14 @@ public sealed record class ImageObject : JsonModel
 
     public ImageObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ImageObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

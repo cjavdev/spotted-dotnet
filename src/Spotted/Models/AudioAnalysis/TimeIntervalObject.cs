@@ -15,7 +15,7 @@ public sealed record class TimeIntervalObject : JsonModel
     /// </summary>
     public double? Confidence
     {
-        get { return JsonModel.GetNullableStruct<double>(this.RawData, "confidence"); }
+        get { return this._rawData.GetNullableStruct<double>("confidence"); }
         init
         {
             if (value == null)
@@ -23,7 +23,7 @@ public sealed record class TimeIntervalObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "confidence", value);
+            this._rawData.Set("confidence", value);
         }
     }
 
@@ -32,7 +32,7 @@ public sealed record class TimeIntervalObject : JsonModel
     /// </summary>
     public double? Duration
     {
-        get { return JsonModel.GetNullableStruct<double>(this.RawData, "duration"); }
+        get { return this._rawData.GetNullableStruct<double>("duration"); }
         init
         {
             if (value == null)
@@ -40,7 +40,7 @@ public sealed record class TimeIntervalObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "duration", value);
+            this._rawData.Set("duration", value);
         }
     }
 
@@ -52,7 +52,7 @@ public sealed record class TimeIntervalObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -60,7 +60,7 @@ public sealed record class TimeIntervalObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -69,7 +69,7 @@ public sealed record class TimeIntervalObject : JsonModel
     /// </summary>
     public double? Start
     {
-        get { return JsonModel.GetNullableStruct<double>(this.RawData, "start"); }
+        get { return this._rawData.GetNullableStruct<double>("start"); }
         init
         {
             if (value == null)
@@ -77,7 +77,7 @@ public sealed record class TimeIntervalObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "start", value);
+            this._rawData.Set("start", value);
         }
     }
 
@@ -97,14 +97,14 @@ public sealed record class TimeIntervalObject : JsonModel
 
     public TimeIntervalObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     TimeIntervalObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

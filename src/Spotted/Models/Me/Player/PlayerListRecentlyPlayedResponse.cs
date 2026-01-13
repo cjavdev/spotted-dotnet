@@ -21,7 +21,7 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
     /// </summary>
     public ContextObject? Context
     {
-        get { return JsonModel.GetNullableClass<ContextObject>(this.RawData, "context"); }
+        get { return this._rawData.GetNullableClass<ContextObject>("context"); }
         init
         {
             if (value == null)
@@ -29,7 +29,7 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "context", value);
+            this._rawData.Set("context", value);
         }
     }
 
@@ -38,7 +38,7 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
     /// </summary>
     public DateTimeOffset? PlayedAt
     {
-        get { return JsonModel.GetNullableStruct<DateTimeOffset>(this.RawData, "played_at"); }
+        get { return this._rawData.GetNullableStruct<DateTimeOffset>("played_at"); }
         init
         {
             if (value == null)
@@ -46,7 +46,7 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "played_at", value);
+            this._rawData.Set("played_at", value);
         }
     }
 
@@ -58,7 +58,7 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -66,7 +66,7 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -75,7 +75,7 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
     /// </summary>
     public TrackObject? Track
     {
-        get { return JsonModel.GetNullableClass<TrackObject>(this.RawData, "track"); }
+        get { return this._rawData.GetNullableClass<TrackObject>("track"); }
         init
         {
             if (value == null)
@@ -83,7 +83,7 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "track", value);
+            this._rawData.Set("track", value);
         }
     }
 
@@ -105,14 +105,14 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
 
     public PlayerListRecentlyPlayedResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlayerListRecentlyPlayedResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

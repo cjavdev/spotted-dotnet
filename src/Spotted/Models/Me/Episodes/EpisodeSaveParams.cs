@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Spotted.Models.Me.Episodes;
 /// </summary>
 public sealed record class EpisodeSaveParams : ParamsBase
 {
-    readonly FreezableDictionary<string, JsonElement> _rawBodyData = [];
+    readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
     {
         get { return this._rawBodyData.Freeze(); }
@@ -30,8 +31,14 @@ public sealed record class EpisodeSaveParams : ParamsBase
     /// </summary>
     public required IReadOnlyList<string> Ids
     {
-        get { return JsonModel.GetNotNullClass<List<string>>(this.RawBodyData, "ids"); }
-        init { JsonModel.Set(this._rawBodyData, "ids", value); }
+        get { return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("ids"); }
+        init
+        {
+            this._rawBodyData.Set<ImmutableArray<string>>(
+                "ids",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -42,7 +49,7 @@ public sealed record class EpisodeSaveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -50,7 +57,7 @@ public sealed record class EpisodeSaveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "published", value);
+            this._rawBodyData.Set("published", value);
         }
     }
 
@@ -59,7 +66,7 @@ public sealed record class EpisodeSaveParams : ParamsBase
     public EpisodeSaveParams(EpisodeSaveParams episodeSaveParams)
         : base(episodeSaveParams)
     {
-        this._rawBodyData = [.. episodeSaveParams._rawBodyData];
+        this._rawBodyData = new(episodeSaveParams._rawBodyData);
     }
 
     public EpisodeSaveParams(
@@ -68,9 +75,9 @@ public sealed record class EpisodeSaveParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -81,9 +88,9 @@ public sealed record class EpisodeSaveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 #pragma warning restore CS8618
 

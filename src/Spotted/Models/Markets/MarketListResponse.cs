@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,7 +13,7 @@ public sealed record class MarketListResponse : JsonModel
 {
     public IReadOnlyList<string>? Markets
     {
-        get { return JsonModel.GetNullableClass<List<string>>(this.RawData, "markets"); }
+        get { return this._rawData.GetNullableStruct<ImmutableArray<string>>("markets"); }
         init
         {
             if (value == null)
@@ -20,7 +21,10 @@ public sealed record class MarketListResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "markets", value);
+            this._rawData.Set<ImmutableArray<string>?>(
+                "markets",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -37,14 +41,14 @@ public sealed record class MarketListResponse : JsonModel
 
     public MarketListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     MarketListResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

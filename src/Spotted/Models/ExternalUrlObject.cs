@@ -18,7 +18,7 @@ public sealed record class ExternalUrlObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -26,7 +26,7 @@ public sealed record class ExternalUrlObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -36,7 +36,7 @@ public sealed record class ExternalUrlObject : JsonModel
     /// </summary>
     public string? Spotify
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "spotify"); }
+        get { return this._rawData.GetNullableClass<string>("spotify"); }
         init
         {
             if (value == null)
@@ -44,7 +44,7 @@ public sealed record class ExternalUrlObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "spotify", value);
+            this._rawData.Set("spotify", value);
         }
     }
 
@@ -62,14 +62,14 @@ public sealed record class ExternalUrlObject : JsonModel
 
     public ExternalUrlObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ExternalUrlObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

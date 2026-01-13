@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Spotted.Models.Me.Episodes;
 /// </summary>
 public sealed record class EpisodeRemoveParams : ParamsBase
 {
-    readonly FreezableDictionary<string, JsonElement> _rawBodyData = [];
+    readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
     {
         get { return this._rawBodyData.Freeze(); }
@@ -30,7 +31,7 @@ public sealed record class EpisodeRemoveParams : ParamsBase
     /// </summary>
     public IReadOnlyList<string>? Ids
     {
-        get { return JsonModel.GetNullableClass<List<string>>(this.RawBodyData, "ids"); }
+        get { return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("ids"); }
         init
         {
             if (value == null)
@@ -38,7 +39,10 @@ public sealed record class EpisodeRemoveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "ids", value);
+            this._rawBodyData.Set<ImmutableArray<string>?>(
+                "ids",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -50,7 +54,7 @@ public sealed record class EpisodeRemoveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -58,7 +62,7 @@ public sealed record class EpisodeRemoveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "published", value);
+            this._rawBodyData.Set("published", value);
         }
     }
 
@@ -67,7 +71,7 @@ public sealed record class EpisodeRemoveParams : ParamsBase
     public EpisodeRemoveParams(EpisodeRemoveParams episodeRemoveParams)
         : base(episodeRemoveParams)
     {
-        this._rawBodyData = [.. episodeRemoveParams._rawBodyData];
+        this._rawBodyData = new(episodeRemoveParams._rawBodyData);
     }
 
     public EpisodeRemoveParams(
@@ -76,9 +80,9 @@ public sealed record class EpisodeRemoveParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -89,9 +93,9 @@ public sealed record class EpisodeRemoveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 #pragma warning restore CS8618
 
