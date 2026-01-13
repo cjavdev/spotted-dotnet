@@ -15,7 +15,11 @@ public sealed record class PlayerGetDevicesResponse : JsonModel
 {
     public required IReadOnlyList<DeviceObject> Devices
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<DeviceObject>>("devices"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<DeviceObject>>("devices");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<DeviceObject>>(

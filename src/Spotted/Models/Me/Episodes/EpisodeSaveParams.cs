@@ -31,7 +31,11 @@ public sealed record class EpisodeSaveParams : ParamsBase
     /// </summary>
     public required IReadOnlyList<string> Ids
     {
-        get { return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("ids"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("ids");
+        }
         init
         {
             this._rawBodyData.Set<ImmutableArray<string>>(
@@ -49,7 +53,11 @@ public sealed record class EpisodeSaveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

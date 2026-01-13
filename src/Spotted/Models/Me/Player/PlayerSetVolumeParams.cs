@@ -20,7 +20,11 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
     /// </summary>
     public required long VolumePercent
     {
-        get { return this._rawQueryData.GetNotNullStruct<long>("volume_percent"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullStruct<long>("volume_percent");
+        }
         init { this._rawQueryData.Set("volume_percent", value); }
     }
 
@@ -30,7 +34,11 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return this._rawQueryData.GetNullableClass<string>("device_id"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("device_id");
+        }
         init
         {
             if (value == null)

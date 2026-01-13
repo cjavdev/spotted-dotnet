@@ -40,7 +40,11 @@ public sealed record class TrackUpdateParams : ParamsBase
     /// </summary>
     public long? InsertBefore
     {
-        get { return this._rawBodyData.GetNullableStruct<long>("insert_before"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<long>("insert_before");
+        }
         init
         {
             if (value == null)
@@ -60,7 +64,11 @@ public sealed record class TrackUpdateParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -81,7 +89,11 @@ public sealed record class TrackUpdateParams : ParamsBase
     /// </summary>
     public long? RangeLength
     {
-        get { return this._rawBodyData.GetNullableStruct<long>("range_length"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<long>("range_length");
+        }
         init
         {
             if (value == null)
@@ -98,7 +110,11 @@ public sealed record class TrackUpdateParams : ParamsBase
     /// </summary>
     public long? RangeStart
     {
-        get { return this._rawBodyData.GetNullableStruct<long>("range_start"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<long>("range_start");
+        }
         init
         {
             if (value == null)
@@ -115,7 +131,11 @@ public sealed record class TrackUpdateParams : ParamsBase
     /// </summary>
     public string? SnapshotID
     {
-        get { return this._rawBodyData.GetNullableClass<string>("snapshot_id"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("snapshot_id");
+        }
         init
         {
             if (value == null)
@@ -129,7 +149,11 @@ public sealed record class TrackUpdateParams : ParamsBase
 
     public IReadOnlyList<string>? Uris
     {
-        get { return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("uris"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("uris");
+        }
         init
         {
             if (value == null)

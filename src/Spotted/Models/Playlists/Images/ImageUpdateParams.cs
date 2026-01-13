@@ -27,7 +27,11 @@ public sealed record class ImageUpdateParams : ParamsBase
     /// </summary>
     public BinaryContent? Body
     {
-        get { return this._rawBodyData.GetNotNullClass<BinaryContent>("body"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNotNullClass<BinaryContent>("body");
+        }
         init { this._rawBodyData.Set("body", value); }
     }
 

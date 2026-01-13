@@ -18,7 +18,11 @@ public sealed record class RecommendationListAvailableGenreSeedsResponse : JsonM
 {
     public required IReadOnlyList<string> Genres
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<string>>("genres"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("genres");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<string>>(

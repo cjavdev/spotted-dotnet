@@ -15,7 +15,11 @@ public sealed record class TimeIntervalObject : JsonModel
     /// </summary>
     public double? Confidence
     {
-        get { return this._rawData.GetNullableStruct<double>("confidence"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<double>("confidence");
+        }
         init
         {
             if (value == null)
@@ -32,7 +36,11 @@ public sealed record class TimeIntervalObject : JsonModel
     /// </summary>
     public double? Duration
     {
-        get { return this._rawData.GetNullableStruct<double>("duration"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<double>("duration");
+        }
         init
         {
             if (value == null)
@@ -52,7 +60,11 @@ public sealed record class TimeIntervalObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -69,7 +81,11 @@ public sealed record class TimeIntervalObject : JsonModel
     /// </summary>
     public double? Start
     {
-        get { return this._rawData.GetNullableStruct<double>("start"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<double>("start");
+        }
         init
         {
             if (value == null)

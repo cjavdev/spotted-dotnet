@@ -15,7 +15,11 @@ public sealed record class ShowBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<ShowBase> Shows
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<ShowBase>>("shows"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ShowBase>>("shows");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<ShowBase>>(

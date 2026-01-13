@@ -21,7 +21,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return this._rawData.GetNotNullClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("id");
+        }
         init { this._rawData.Set("id", value); }
     }
 
@@ -30,7 +34,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required ApiEnum<string, AlbumGroup> AlbumGroup
     {
-        get { return this._rawData.GetNotNullClass<ApiEnum<string, AlbumGroup>>("album_group"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<ApiEnum<string, AlbumGroup>>("album_group");
+        }
         init { this._rawData.Set("album_group", value); }
     }
 
@@ -41,6 +49,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Artists.AlbumType>
             >("album_type");
@@ -56,6 +65,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNotNullStruct<ImmutableArray<SimplifiedArtistObject>>(
                 "artists"
             );
@@ -77,7 +87,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<string> AvailableMarkets
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<string>>("available_markets"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("available_markets");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<string>>(
@@ -92,7 +106,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required ExternalUrlObject ExternalUrls
     {
-        get { return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls");
+        }
         init { this._rawData.Set("external_urls", value); }
     }
 
@@ -101,7 +119,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return this._rawData.GetNotNullClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
         init { this._rawData.Set("href", value); }
     }
 
@@ -110,7 +132,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<ImageObject>>(
@@ -126,7 +152,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required string Name
     {
-        get { return this._rawData.GetNotNullClass<string>("name"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
         init { this._rawData.Set("name", value); }
     }
 
@@ -135,7 +165,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required string ReleaseDate
     {
-        get { return this._rawData.GetNotNullClass<string>("release_date"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("release_date");
+        }
         init { this._rawData.Set("release_date", value); }
     }
 
@@ -149,6 +183,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Artists.ReleaseDatePrecision>
             >("release_date_precision");
@@ -161,7 +196,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required long TotalTracks
     {
-        get { return this._rawData.GetNotNullStruct<long>("total_tracks"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total_tracks");
+        }
         init { this._rawData.Set("total_tracks", value); }
     }
 
@@ -170,7 +209,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public JsonElement Type
     {
-        get { return this._rawData.GetNotNullStruct<JsonElement>("type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<JsonElement>("type");
+        }
         init { this._rawData.Set("type", value); }
     }
 
@@ -180,7 +223,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public required string Uri
     {
-        get { return this._rawData.GetNotNullClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("uri");
+        }
         init { this._rawData.Set("uri", value); }
     }
 
@@ -192,7 +239,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -209,7 +260,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// </summary>
     public AlbumRestrictionObject? Restrictions
     {
-        get { return this._rawData.GetNullableClass<AlbumRestrictionObject>("restrictions"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<AlbumRestrictionObject>("restrictions");
+        }
         init
         {
             if (value == null)

@@ -18,7 +18,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public System::DateTimeOffset? AddedAt
     {
-        get { return this._rawData.GetNullableStruct<System::DateTimeOffset>("added_at"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<System::DateTimeOffset>("added_at");
+        }
         init
         {
             if (value == null)
@@ -36,7 +40,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public PlaylistUserObject? AddedBy
     {
-        get { return this._rawData.GetNullableClass<PlaylistUserObject>("added_by"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<PlaylistUserObject>("added_by");
+        }
         init
         {
             if (value == null)
@@ -54,7 +62,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public bool? IsLocal
     {
-        get { return this._rawData.GetNullableStruct<bool>("is_local"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_local");
+        }
         init
         {
             if (value == null)
@@ -74,7 +86,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -91,7 +107,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public Track? Track
     {
-        get { return this._rawData.GetNullableClass<Track>("track"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Track>("track");
+        }
         init
         {
             if (value == null)

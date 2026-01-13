@@ -27,7 +27,11 @@ public sealed record class CategoryRetrieveParams : ParamsBase
     /// </summary>
     public string? Locale
     {
-        get { return this._rawQueryData.GetNullableClass<string>("locale"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("locale");
+        }
         init
         {
             if (value == null)

@@ -13,7 +13,11 @@ public sealed record class MarketListResponse : JsonModel
 {
     public IReadOnlyList<string>? Markets
     {
-        get { return this._rawData.GetNullableStruct<ImmutableArray<string>>("markets"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>("markets");
+        }
         init
         {
             if (value == null)

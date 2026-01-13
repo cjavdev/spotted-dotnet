@@ -15,7 +15,11 @@ public sealed record class EpisodeBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<EpisodeObject> Episodes
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<EpisodeObject>>("episodes"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<EpisodeObject>>("episodes");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<EpisodeObject>>(

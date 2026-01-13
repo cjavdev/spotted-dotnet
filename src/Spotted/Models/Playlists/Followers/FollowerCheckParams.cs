@@ -21,7 +21,11 @@ public sealed record class FollowerCheckParams : ParamsBase
     /// </summary>
     public string? Ids
     {
-        get { return this._rawQueryData.GetNullableClass<string>("ids"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("ids");
+        }
         init
         {
             if (value == null)

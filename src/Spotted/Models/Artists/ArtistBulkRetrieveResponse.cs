@@ -15,7 +15,11 @@ public sealed record class ArtistBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<ArtistObject> Artists
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<ArtistObject>>("artists"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ArtistObject>>("artists");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<ArtistObject>>(

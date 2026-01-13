@@ -20,7 +20,11 @@ public sealed record class AlbumRestrictionObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -40,7 +44,11 @@ public sealed record class AlbumRestrictionObject : JsonModel
     /// </summary>
     public ApiEnum<string, Reason>? Reason
     {
-        get { return this._rawData.GetNullableClass<ApiEnum<string, Reason>>("reason"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ApiEnum<string, Reason>>("reason");
+        }
         init
         {
             if (value == null)

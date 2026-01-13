@@ -17,6 +17,7 @@ public sealed record class FollowingBulkRetrieveResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNotNullClass<FollowingBulkRetrieveResponseArtists>("artists");
         }
         init { this._rawData.Set("artists", value); }
@@ -85,7 +86,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public Cursors? Cursors
     {
-        get { return this._rawData.GetNullableClass<Cursors>("cursors"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Cursors>("cursors");
+        }
         init
         {
             if (value == null)
@@ -102,7 +107,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return this._rawData.GetNullableClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -116,7 +125,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
 
     public IReadOnlyList<ArtistObject>? Items
     {
-        get { return this._rawData.GetNullableStruct<ImmutableArray<ArtistObject>>("items"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<ArtistObject>>("items");
+        }
         init
         {
             if (value == null)
@@ -136,7 +149,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public long? Limit
     {
-        get { return this._rawData.GetNullableStruct<long>("limit"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -153,7 +170,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public string? Next
     {
-        get { return this._rawData.GetNullableClass<string>("next"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("next");
+        }
         init
         {
             if (value == null)
@@ -173,7 +194,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -190,7 +215,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public long? Total
     {
-        get { return this._rawData.GetNullableStruct<long>("total"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("total");
+        }
         init
         {
             if (value == null)
@@ -266,7 +295,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public string? After
     {
-        get { return this._rawData.GetNullableClass<string>("after"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("after");
+        }
         init
         {
             if (value == null)
@@ -283,7 +316,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public string? Before
     {
-        get { return this._rawData.GetNullableClass<string>("before"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("before");
+        }
         init
         {
             if (value == null)
@@ -303,7 +340,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

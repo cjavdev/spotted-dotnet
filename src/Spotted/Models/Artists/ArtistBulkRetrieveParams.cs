@@ -19,7 +19,11 @@ public sealed record class ArtistBulkRetrieveParams : ParamsBase
     /// </summary>
     public required string Ids
     {
-        get { return this._rawQueryData.GetNotNullClass<string>("ids"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("ids");
+        }
         init { this._rawQueryData.Set("ids", value); }
     }
 

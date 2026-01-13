@@ -22,6 +22,7 @@ public sealed record class AudioFeatureBulkRetrieveResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNotNullStruct<ImmutableArray<AudioFeature>>("audio_features");
         }
         init
@@ -94,7 +95,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return this._rawData.GetNullableClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("id");
+        }
         init
         {
             if (value == null)
@@ -112,7 +117,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Acousticness
     {
-        get { return this._rawData.GetNullableStruct<float>("acousticness"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("acousticness");
+        }
         init
         {
             if (value == null)
@@ -130,7 +139,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public string? AnalysisUrl
     {
-        get { return this._rawData.GetNullableClass<string>("analysis_url"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("analysis_url");
+        }
         init
         {
             if (value == null)
@@ -149,7 +162,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Danceability
     {
-        get { return this._rawData.GetNullableStruct<float>("danceability"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("danceability");
+        }
         init
         {
             if (value == null)
@@ -166,7 +183,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public long? DurationMs
     {
-        get { return this._rawData.GetNullableStruct<long>("duration_ms"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("duration_ms");
+        }
         init
         {
             if (value == null)
@@ -187,7 +208,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Energy
     {
-        get { return this._rawData.GetNullableStruct<float>("energy"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("energy");
+        }
         init
         {
             if (value == null)
@@ -208,7 +233,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Instrumentalness
     {
-        get { return this._rawData.GetNullableStruct<float>("instrumentalness"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("instrumentalness");
+        }
         init
         {
             if (value == null)
@@ -227,7 +256,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public long? Key
     {
-        get { return this._rawData.GetNullableStruct<long>("key"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("key");
+        }
         init
         {
             if (value == null)
@@ -246,7 +279,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Liveness
     {
-        get { return this._rawData.GetNullableStruct<float>("liveness"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("liveness");
+        }
         init
         {
             if (value == null)
@@ -267,7 +304,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Loudness
     {
-        get { return this._rawData.GetNullableStruct<float>("loudness"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("loudness");
+        }
         init
         {
             if (value == null)
@@ -286,7 +327,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public long? Mode
     {
-        get { return this._rawData.GetNullableStruct<long>("mode"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("mode");
+        }
         init
         {
             if (value == null)
@@ -306,7 +351,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -329,7 +378,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Speechiness
     {
-        get { return this._rawData.GetNullableStruct<float>("speechiness"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("speechiness");
+        }
         init
         {
             if (value == null)
@@ -348,7 +401,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Tempo
     {
-        get { return this._rawData.GetNullableStruct<float>("tempo"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("tempo");
+        }
         init
         {
             if (value == null)
@@ -367,7 +424,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public long? TimeSignature
     {
-        get { return this._rawData.GetNullableStruct<long>("time_signature"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("time_signature");
+        }
         init
         {
             if (value == null)
@@ -384,7 +445,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public string? TrackHref
     {
-        get { return this._rawData.GetNullableClass<string>("track_href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("track_href");
+        }
         init
         {
             if (value == null)
@@ -401,7 +466,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public ApiEnum<string, AudioFeatureType>? Type
     {
-        get { return this._rawData.GetNullableClass<ApiEnum<string, AudioFeatureType>>("type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ApiEnum<string, AudioFeatureType>>("type");
+        }
         init
         {
             if (value == null)
@@ -418,7 +487,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return this._rawData.GetNullableClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)
@@ -438,7 +511,11 @@ public sealed record class AudioFeature : JsonModel
     /// </summary>
     public float? Valence
     {
-        get { return this._rawData.GetNullableStruct<float>("valence"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<float>("valence");
+        }
         init
         {
             if (value == null)

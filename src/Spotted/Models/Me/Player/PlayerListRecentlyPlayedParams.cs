@@ -20,7 +20,11 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? After
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("after"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("after");
+        }
         init
         {
             if (value == null)
@@ -38,7 +42,11 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? Before
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("before"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("before");
+        }
         init
         {
             if (value == null)
@@ -56,7 +64,11 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)

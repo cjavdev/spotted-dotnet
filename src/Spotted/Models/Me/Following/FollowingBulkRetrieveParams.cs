@@ -18,7 +18,11 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public JsonElement Type
     {
-        get { return this._rawQueryData.GetNotNullStruct<JsonElement>("type"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullStruct<JsonElement>("type");
+        }
         init { this._rawQueryData.Set("type", value); }
     }
 
@@ -27,7 +31,11 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public string? After
     {
-        get { return this._rawQueryData.GetNullableClass<string>("after"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("after");
+        }
         init
         {
             if (value == null)
@@ -45,7 +53,11 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)

@@ -12,7 +12,11 @@ public sealed record class TrackAddResponse : JsonModel
 {
     public string? SnapshotID
     {
-        get { return this._rawData.GetNullableClass<string>("snapshot_id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("snapshot_id");
+        }
         init
         {
             if (value == null)

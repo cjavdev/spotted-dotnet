@@ -21,7 +21,11 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return this._rawData.GetNotNullClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
         init { this._rawData.Set("href", value); }
     }
 
@@ -30,7 +34,11 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
     /// </summary>
     public required long Limit
     {
-        get { return this._rawData.GetNotNullStruct<long>("limit"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("limit");
+        }
         init { this._rawData.Set("limit", value); }
     }
 
@@ -39,7 +47,11 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
     /// </summary>
     public required string? Next
     {
-        get { return this._rawData.GetNullableClass<string>("next"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("next");
+        }
         init { this._rawData.Set("next", value); }
     }
 
@@ -48,7 +60,11 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
     /// </summary>
     public required long Offset
     {
-        get { return this._rawData.GetNotNullStruct<long>("offset"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("offset");
+        }
         init { this._rawData.Set("offset", value); }
     }
 
@@ -57,7 +73,11 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
     /// </summary>
     public required string? Previous
     {
-        get { return this._rawData.GetNullableClass<string>("previous"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("previous");
+        }
         init { this._rawData.Set("previous", value); }
     }
 
@@ -66,7 +86,11 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
     /// </summary>
     public required long Total
     {
-        get { return this._rawData.GetNotNullStruct<long>("total"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total");
+        }
         init { this._rawData.Set("total", value); }
     }
 
@@ -74,6 +98,7 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNullableStruct<ImmutableArray<SimplifiedChapterObject>>(
                 "items"
             );
@@ -100,7 +125,11 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
