@@ -81,7 +81,7 @@ public class SimplifiedEpisodeObjectTest : TestBase
         string expectedReleaseDate = "1981-12-15";
         ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision> expectedReleaseDatePrecision =
             SimplifiedEpisodeObjectReleaseDatePrecision.Day;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("episode");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         string expectedLanguage = "en";
         bool expectedPublished = true;
@@ -255,7 +255,7 @@ public class SimplifiedEpisodeObjectTest : TestBase
         string expectedReleaseDate = "1981-12-15";
         ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision> expectedReleaseDatePrecision =
             SimplifiedEpisodeObjectReleaseDatePrecision.Day;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("episode");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         string expectedLanguage = "en";
         bool expectedPublished = true;
@@ -546,10 +546,7 @@ public class SimplifiedEpisodeObjectReleaseDatePrecisionTest : TestBase
     {
         var value = JsonSerializer.Deserialize<
             ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>
-        >(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
-            ModelBase.SerializerOptions
-        );
+        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
 
         Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
@@ -577,10 +574,7 @@ public class SimplifiedEpisodeObjectReleaseDatePrecisionTest : TestBase
     {
         var value = JsonSerializer.Deserialize<
             ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>
-        >(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
-            ModelBase.SerializerOptions
-        );
+        >(JsonSerializer.SerializeToElement("invalid value"), ModelBase.SerializerOptions);
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<
             ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>

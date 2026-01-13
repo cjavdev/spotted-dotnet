@@ -312,7 +312,7 @@ public sealed record class ShowBase : JsonModel
         _ = this.Name;
         _ = this.Publisher;
         _ = this.TotalEpisodes;
-        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.Deserialize<JsonElement>("\"show\"")))
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("show")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -322,7 +322,7 @@ public sealed record class ShowBase : JsonModel
 
     public ShowBase()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        this.Type = JsonSerializer.SerializeToElement("show");
     }
 
     public ShowBase(ShowBase showBase)
@@ -332,7 +332,7 @@ public sealed record class ShowBase : JsonModel
     {
         this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        this.Type = JsonSerializer.SerializeToElement("show");
     }
 
 #pragma warning disable CS8618

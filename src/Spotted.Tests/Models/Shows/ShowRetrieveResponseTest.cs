@@ -140,7 +140,7 @@ public class ShowRetrieveResponseTest : TestBase
         string expectedName = "name";
         string expectedPublisher = "publisher";
         long expectedTotalEpisodes = 0;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("show");
         string expectedUri = "uri";
         bool expectedPublished = true;
         IntersectionMember1Episodes expectedEpisodes = new()
@@ -476,7 +476,7 @@ public class ShowRetrieveResponseTest : TestBase
         string expectedName = "name";
         string expectedPublisher = "publisher";
         long expectedTotalEpisodes = 0;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("show");
         string expectedUri = "uri";
         bool expectedPublished = true;
         IntersectionMember1Episodes expectedEpisodes = new()

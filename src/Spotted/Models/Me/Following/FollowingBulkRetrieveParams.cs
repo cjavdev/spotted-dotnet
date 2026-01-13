@@ -71,7 +71,7 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
 
     public FollowingBulkRetrieveParams()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"artist\"");
+        this.Type = JsonSerializer.SerializeToElement("artist");
     }
 
     public FollowingBulkRetrieveParams(FollowingBulkRetrieveParams followingBulkRetrieveParams)

@@ -726,7 +726,7 @@ public class ChapterTest : TestBase
         string expectedReleaseDate = "1981-12-15";
         ApiEnum<string, ChapterReleaseDatePrecision> expectedReleaseDatePrecision =
             ChapterReleaseDatePrecision.Day;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("episode");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         List<string> expectedAvailableMarkets = ["string"];
         bool expectedPublished = true;
@@ -1023,7 +1023,7 @@ public class ChapterTest : TestBase
         string expectedReleaseDate = "1981-12-15";
         ApiEnum<string, ChapterReleaseDatePrecision> expectedReleaseDatePrecision =
             ChapterReleaseDatePrecision.Day;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("episode");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         List<string> expectedAvailableMarkets = ["string"];
         bool expectedPublished = true;
@@ -1514,7 +1514,7 @@ public class ChapterReleaseDatePrecisionTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ChapterReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
 
@@ -1544,7 +1544,7 @@ public class ChapterReleaseDatePrecisionTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ChapterReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);

@@ -155,7 +155,7 @@ public class EpisodeObjectTest : TestBase
             Uri = "uri",
             Published = true,
         };
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("episode");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         string expectedLanguage = "en";
         bool expectedPublished = true;
@@ -441,7 +441,7 @@ public class EpisodeObjectTest : TestBase
             Uri = "uri",
             Published = true,
         };
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("episode");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         string expectedLanguage = "en";
         bool expectedPublished = true;
@@ -917,7 +917,7 @@ public class ReleaseDatePrecisionTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
 
@@ -947,7 +947,7 @@ public class ReleaseDatePrecisionTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);

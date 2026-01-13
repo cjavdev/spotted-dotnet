@@ -79,7 +79,7 @@ public class ShowBaseTest : TestBase
         string expectedName = "name";
         string expectedPublisher = "publisher";
         long expectedTotalEpisodes = 0;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("show");
         string expectedUri = "uri";
         bool expectedPublished = true;
 
@@ -243,7 +243,7 @@ public class ShowBaseTest : TestBase
         string expectedName = "name";
         string expectedPublisher = "publisher";
         long expectedTotalEpisodes = 0;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("show");
         string expectedUri = "uri";
         bool expectedPublished = true;
 

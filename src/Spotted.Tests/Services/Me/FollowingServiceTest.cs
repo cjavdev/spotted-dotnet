@@ -10,7 +10,7 @@ public class FollowingServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Me.Following.BulkRetrieve(
-            new() { Type = JsonSerializer.Deserialize<JsonElement>("\"artist\"") },
+            new() { Type = JsonSerializer.SerializeToElement("artist") },
             TestContext.Current.CancellationToken
         );
         response.Validate();

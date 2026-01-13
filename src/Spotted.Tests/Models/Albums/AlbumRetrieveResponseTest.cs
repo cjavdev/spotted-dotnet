@@ -148,7 +148,7 @@ public class AlbumRetrieveResponseTest : TestBase
         ApiEnum<string, ReleaseDatePrecision> expectedReleaseDatePrecision =
             ReleaseDatePrecision.Year;
         long expectedTotalTracks = 9;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("album");
         string expectedUri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ";
         List<Models::SimplifiedArtistObject> expectedArtists =
         [
@@ -553,7 +553,7 @@ public class AlbumRetrieveResponseTest : TestBase
         ApiEnum<string, ReleaseDatePrecision> expectedReleaseDatePrecision =
             ReleaseDatePrecision.Year;
         long expectedTotalTracks = 9;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("album");
         string expectedUri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ";
         List<Models::SimplifiedArtistObject> expectedArtists =
         [
@@ -1006,7 +1006,7 @@ public class AlbumTypeTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumType>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
 
@@ -1036,7 +1036,7 @@ public class AlbumTypeTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumType>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
@@ -1066,7 +1066,7 @@ public class ReleaseDatePrecisionTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
 
@@ -1096,7 +1096,7 @@ public class ReleaseDatePrecisionTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);

@@ -164,7 +164,7 @@ public class ChapterRetrieveResponseTest : TestBase
         string expectedReleaseDate = "1981-12-15";
         ApiEnum<string, ReleaseDatePrecision> expectedReleaseDatePrecision =
             ReleaseDatePrecision.Day;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("episode");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         List<string> expectedAvailableMarkets = ["string"];
         bool expectedPublished = true;
@@ -465,7 +465,7 @@ public class ChapterRetrieveResponseTest : TestBase
         string expectedReleaseDate = "1981-12-15";
         ApiEnum<string, ReleaseDatePrecision> expectedReleaseDatePrecision =
             ReleaseDatePrecision.Day;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("episode");
         string expectedUri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr";
         List<string> expectedAvailableMarkets = ["string"];
         bool expectedPublished = true;
@@ -956,7 +956,7 @@ public class ReleaseDatePrecisionTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
 
@@ -986,7 +986,7 @@ public class ReleaseDatePrecisionTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);

@@ -404,12 +404,7 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
         }
         _ = this.Publisher;
         _ = this.TotalChapters;
-        if (
-            !JsonElement.DeepEquals(
-                this.Type,
-                JsonSerializer.Deserialize<JsonElement>("\"audiobook\"")
-            )
-        )
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("audiobook")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -421,7 +416,7 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
 
     public AudiobookRetrieveResponse()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"audiobook\"");
+        this.Type = JsonSerializer.SerializeToElement("audiobook");
     }
 
     public AudiobookRetrieveResponse(AudiobookRetrieveResponse audiobookRetrieveResponse)
@@ -431,7 +426,7 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     {
         this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"audiobook\"");
+        this.Type = JsonSerializer.SerializeToElement("audiobook");
     }
 
 #pragma warning disable CS8618
