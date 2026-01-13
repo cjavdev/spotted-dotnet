@@ -1087,49 +1087,13 @@ public class ItemTest : TestBase
     [Fact]
     public void TrackObjectValidationWorks()
     {
-        Item value = new(
-            new TrackObject()
+        Item value = new TrackObject()
+        {
+            ID = "id",
+            Album = new()
             {
-                ID = "id",
-                Album = new()
-                {
-                    ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                    AlbumType = AlbumType.Compilation,
-                    Artists =
-                    [
-                        new()
-                        {
-                            ID = "id",
-                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
-                            Href = "href",
-                            Name = "name",
-                            Published = true,
-                            Type = SimplifiedArtistObjectType.Artist,
-                            Uri = "uri",
-                        },
-                    ],
-                    AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
-                    Href = "href",
-                    Images =
-                    [
-                        new()
-                        {
-                            Height = 300,
-                            Url =
-                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                            Width = 300,
-                            Published = true,
-                        },
-                    ],
-                    Name = "name",
-                    ReleaseDate = "1981-12",
-                    ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
-                    TotalTracks = 9,
-                    Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Published = true,
-                    Restrictions = new() { Published = true, Reason = Reason.Market },
-                },
+                ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                AlbumType = AlbumType.Compilation,
                 Artists =
                 [
                     new()
@@ -1143,60 +1107,126 @@ public class ItemTest : TestBase
                         Uri = "uri",
                     },
                 ],
-                AvailableMarkets = ["string"],
-                DiscNumber = 0,
-                DurationMs = 0,
-                Explicit = true,
-                ExternalIds = new()
-                {
-                    Ean = "ean",
-                    Isrc = "isrc",
-                    Published = true,
-                    Upc = "upc",
-                },
+                AvailableMarkets = ["CA", "BR", "IT"],
                 ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
-                IsLocal = true,
-                IsPlayable = true,
-                LinkedFrom = new()
+                Images =
+                [
+                    new()
+                    {
+                        Height = 300,
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Width = 300,
+                        Published = true,
+                    },
+                ],
+                Name = "name",
+                ReleaseDate = "1981-12",
+                ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                TotalTracks = 9,
+                Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                Published = true,
+                Restrictions = new() { Published = true, Reason = Reason.Market },
+            },
+            Artists =
+            [
+                new()
                 {
                     ID = "id",
                     ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Name = "name",
                     Published = true,
-                    Type = "type",
+                    Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
-                Name = "name",
-                Popularity = 0,
-                PreviewUrl = "preview_url",
+            ],
+            AvailableMarkets = ["string"],
+            DiscNumber = 0,
+            DurationMs = 0,
+            Explicit = true,
+            ExternalIds = new()
+            {
+                Ean = "ean",
+                Isrc = "isrc",
                 Published = true,
-                Restrictions = new() { Published = true, Reason = "reason" },
-                TrackNumber = 0,
-                Type = TrackObjectType.Track,
+                Upc = "upc",
+            },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            IsLocal = true,
+            IsPlayable = true,
+            LinkedFrom = new()
+            {
+                ID = "id",
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                Href = "href",
+                Published = true,
+                Type = "type",
                 Uri = "uri",
-            }
-        );
+            },
+            Name = "name",
+            Popularity = 0,
+            PreviewUrl = "preview_url",
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            TrackNumber = 0,
+            Type = TrackObjectType.Track,
+            Uri = "uri",
+        };
         value.Validate();
     }
 
     [Fact]
     public void EpisodeObjectValidationWorks()
     {
-        Item value = new(
-            new EpisodeObject()
+        Item value = new EpisodeObject()
+        {
+            ID = "5Xt5DXGzch68nYYamXrNxZ",
+            AudioPreviewUrl =
+                "https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17",
+            Description =
+                "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
+            DurationMs = 1686230,
+            Explicit = true,
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
+            HtmlDescription =
+                "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            IsExternallyHosted = true,
+            IsPlayable = true,
+            Languages = ["fr", "en"],
+            Name = "Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\n",
+            ReleaseDate = "1981-12-15",
+            ReleaseDatePrecision = ReleaseDatePrecision.Day,
+            Show = new()
             {
-                ID = "5Xt5DXGzch68nYYamXrNxZ",
-                AudioPreviewUrl =
-                    "https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17",
-                Description =
-                    "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
-                DurationMs = 1686230,
+                ID = "id",
+                AvailableMarkets = ["string"],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
+                Description = "description",
                 Explicit = true,
                 ExternalUrls = new() { Published = true, Spotify = "spotify" },
-                Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
-                HtmlDescription =
-                    "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
+                Href = "href",
+                HtmlDescription = "html_description",
                 Images =
                 [
                     new()
@@ -1208,110 +1238,38 @@ public class ItemTest : TestBase
                     },
                 ],
                 IsExternallyHosted = true,
-                IsPlayable = true,
-                Languages = ["fr", "en"],
-                Name = "Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\n",
-                ReleaseDate = "1981-12-15",
-                ReleaseDatePrecision = ReleaseDatePrecision.Day,
-                Show = new()
-                {
-                    ID = "id",
-                    AvailableMarkets = ["string"],
-                    Copyrights =
-                    [
-                        new()
-                        {
-                            Published = true,
-                            Text = "text",
-                            Type = "type",
-                        },
-                    ],
-                    Description = "description",
-                    Explicit = true,
-                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
-                    Href = "href",
-                    HtmlDescription = "html_description",
-                    Images =
-                    [
-                        new()
-                        {
-                            Height = 300,
-                            Url =
-                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                            Width = 300,
-                            Published = true,
-                        },
-                    ],
-                    IsExternallyHosted = true,
-                    Languages = ["string"],
-                    MediaType = "media_type",
-                    Name = "name",
-                    Publisher = "publisher",
-                    TotalEpisodes = 0,
-                    Uri = "uri",
-                    Published = true,
-                },
-                Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
-                Language = "en",
+                Languages = ["string"],
+                MediaType = "media_type",
+                Name = "name",
+                Publisher = "publisher",
+                TotalEpisodes = 0,
+                Uri = "uri",
                 Published = true,
-                Restrictions = new() { Published = true, Reason = "reason" },
-                ResumePoint = new()
-                {
-                    FullyPlayed = true,
-                    Published = true,
-                    ResumePositionMs = 0,
-                },
-            }
-        );
+            },
+            Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
+            Language = "en",
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
+        };
         value.Validate();
     }
 
     [Fact]
     public void TrackObjectSerializationRoundtripWorks()
     {
-        Item value = new(
-            new TrackObject()
+        Item value = new TrackObject()
+        {
+            ID = "id",
+            Album = new()
             {
-                ID = "id",
-                Album = new()
-                {
-                    ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                    AlbumType = AlbumType.Compilation,
-                    Artists =
-                    [
-                        new()
-                        {
-                            ID = "id",
-                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
-                            Href = "href",
-                            Name = "name",
-                            Published = true,
-                            Type = SimplifiedArtistObjectType.Artist,
-                            Uri = "uri",
-                        },
-                    ],
-                    AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
-                    Href = "href",
-                    Images =
-                    [
-                        new()
-                        {
-                            Height = 300,
-                            Url =
-                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                            Width = 300,
-                            Published = true,
-                        },
-                    ],
-                    Name = "name",
-                    ReleaseDate = "1981-12",
-                    ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
-                    TotalTracks = 9,
-                    Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
-                    Published = true,
-                    Restrictions = new() { Published = true, Reason = Reason.Market },
-                },
+                ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                AlbumType = AlbumType.Compilation,
                 Artists =
                 [
                     new()
@@ -1325,40 +1283,73 @@ public class ItemTest : TestBase
                         Uri = "uri",
                     },
                 ],
-                AvailableMarkets = ["string"],
-                DiscNumber = 0,
-                DurationMs = 0,
-                Explicit = true,
-                ExternalIds = new()
-                {
-                    Ean = "ean",
-                    Isrc = "isrc",
-                    Published = true,
-                    Upc = "upc",
-                },
+                AvailableMarkets = ["CA", "BR", "IT"],
                 ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
-                IsLocal = true,
-                IsPlayable = true,
-                LinkedFrom = new()
+                Images =
+                [
+                    new()
+                    {
+                        Height = 300,
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Width = 300,
+                        Published = true,
+                    },
+                ],
+                Name = "name",
+                ReleaseDate = "1981-12",
+                ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                TotalTracks = 9,
+                Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                Published = true,
+                Restrictions = new() { Published = true, Reason = Reason.Market },
+            },
+            Artists =
+            [
+                new()
                 {
                     ID = "id",
                     ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
+                    Name = "name",
                     Published = true,
-                    Type = "type",
+                    Type = SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
-                Name = "name",
-                Popularity = 0,
-                PreviewUrl = "preview_url",
+            ],
+            AvailableMarkets = ["string"],
+            DiscNumber = 0,
+            DurationMs = 0,
+            Explicit = true,
+            ExternalIds = new()
+            {
+                Ean = "ean",
+                Isrc = "isrc",
                 Published = true,
-                Restrictions = new() { Published = true, Reason = "reason" },
-                TrackNumber = 0,
-                Type = TrackObjectType.Track,
+                Upc = "upc",
+            },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            IsLocal = true,
+            IsPlayable = true,
+            LinkedFrom = new()
+            {
+                ID = "id",
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                Href = "href",
+                Published = true,
+                Type = "type",
                 Uri = "uri",
-            }
-        );
+            },
+            Name = "name",
+            Popularity = 0,
+            PreviewUrl = "preview_url",
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            TrackNumber = 0,
+            Type = TrackObjectType.Track,
+            Uri = "uri",
+        };
         string element = JsonSerializer.Serialize(value);
         var deserialized = JsonSerializer.Deserialize<Item>(element);
 
@@ -1368,20 +1359,53 @@ public class ItemTest : TestBase
     [Fact]
     public void EpisodeObjectSerializationRoundtripWorks()
     {
-        Item value = new(
-            new EpisodeObject()
+        Item value = new EpisodeObject()
+        {
+            ID = "5Xt5DXGzch68nYYamXrNxZ",
+            AudioPreviewUrl =
+                "https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17",
+            Description =
+                "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
+            DurationMs = 1686230,
+            Explicit = true,
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
+            HtmlDescription =
+                "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            IsExternallyHosted = true,
+            IsPlayable = true,
+            Languages = ["fr", "en"],
+            Name = "Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\n",
+            ReleaseDate = "1981-12-15",
+            ReleaseDatePrecision = ReleaseDatePrecision.Day,
+            Show = new()
             {
-                ID = "5Xt5DXGzch68nYYamXrNxZ",
-                AudioPreviewUrl =
-                    "https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17",
-                Description =
-                    "A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.\n",
-                DurationMs = 1686230,
+                ID = "id",
+                AvailableMarkets = ["string"],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
+                Description = "description",
                 Explicit = true,
                 ExternalUrls = new() { Published = true, Spotify = "spotify" },
-                Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
-                HtmlDescription =
-                    "<p>A Spotify podcast sharing fresh insights on important topics of the moment—in a way only Spotify can. You’ll hear from experts in the music, podcast and tech industries as we discover and uncover stories about our work and the world around us.</p>\n",
+                Href = "href",
+                HtmlDescription = "html_description",
                 Images =
                 [
                     new()
@@ -1393,61 +1417,25 @@ public class ItemTest : TestBase
                     },
                 ],
                 IsExternallyHosted = true,
-                IsPlayable = true,
-                Languages = ["fr", "en"],
-                Name = "Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\n",
-                ReleaseDate = "1981-12-15",
-                ReleaseDatePrecision = ReleaseDatePrecision.Day,
-                Show = new()
-                {
-                    ID = "id",
-                    AvailableMarkets = ["string"],
-                    Copyrights =
-                    [
-                        new()
-                        {
-                            Published = true,
-                            Text = "text",
-                            Type = "type",
-                        },
-                    ],
-                    Description = "description",
-                    Explicit = true,
-                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
-                    Href = "href",
-                    HtmlDescription = "html_description",
-                    Images =
-                    [
-                        new()
-                        {
-                            Height = 300,
-                            Url =
-                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
-                            Width = 300,
-                            Published = true,
-                        },
-                    ],
-                    IsExternallyHosted = true,
-                    Languages = ["string"],
-                    MediaType = "media_type",
-                    Name = "name",
-                    Publisher = "publisher",
-                    TotalEpisodes = 0,
-                    Uri = "uri",
-                    Published = true,
-                },
-                Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
-                Language = "en",
+                Languages = ["string"],
+                MediaType = "media_type",
+                Name = "name",
+                Publisher = "publisher",
+                TotalEpisodes = 0,
+                Uri = "uri",
                 Published = true,
-                Restrictions = new() { Published = true, Reason = "reason" },
-                ResumePoint = new()
-                {
-                    FullyPlayed = true,
-                    Published = true,
-                    ResumePositionMs = 0,
-                },
-            }
-        );
+            },
+            Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
+            Language = "en",
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
+        };
         string element = JsonSerializer.Serialize(value);
         var deserialized = JsonSerializer.Deserialize<Item>(element);
 
