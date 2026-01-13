@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -18,7 +19,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
+        get { return this._rawData.GetNullableClass<string>("id"); }
         init
         {
             if (value == null)
@@ -26,7 +27,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "id", value);
+            this._rawData.Set("id", value);
         }
     }
 
@@ -35,7 +36,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalUrlObject>(this.RawData, "external_urls"); }
+        get { return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls"); }
         init
         {
             if (value == null)
@@ -43,7 +44,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "external_urls", value);
+            this._rawData.Set("external_urls", value);
         }
     }
 
@@ -52,7 +53,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public FollowersObject? Followers
     {
-        get { return JsonModel.GetNullableClass<FollowersObject>(this.RawData, "followers"); }
+        get { return this._rawData.GetNullableClass<FollowersObject>("followers"); }
         init
         {
             if (value == null)
@@ -60,7 +61,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "followers", value);
+            this._rawData.Set("followers", value);
         }
     }
 
@@ -70,7 +71,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public IReadOnlyList<string>? Genres
     {
-        get { return JsonModel.GetNullableClass<List<string>>(this.RawData, "genres"); }
+        get { return this._rawData.GetNullableStruct<ImmutableArray<string>>("genres"); }
         init
         {
             if (value == null)
@@ -78,7 +79,10 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "genres", value);
+            this._rawData.Set<ImmutableArray<string>?>(
+                "genres",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -87,7 +91,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        get { return this._rawData.GetNullableClass<string>("href"); }
         init
         {
             if (value == null)
@@ -95,7 +99,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "href", value);
+            this._rawData.Set("href", value);
         }
     }
 
@@ -104,7 +108,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public IReadOnlyList<ImageObject>? Images
     {
-        get { return JsonModel.GetNullableClass<List<ImageObject>>(this.RawData, "images"); }
+        get { return this._rawData.GetNullableStruct<ImmutableArray<ImageObject>>("images"); }
         init
         {
             if (value == null)
@@ -112,7 +116,10 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "images", value);
+            this._rawData.Set<ImmutableArray<ImageObject>?>(
+                "images",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -121,7 +128,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public string? Name
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "name"); }
+        get { return this._rawData.GetNullableClass<string>("name"); }
         init
         {
             if (value == null)
@@ -129,7 +136,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "name", value);
+            this._rawData.Set("name", value);
         }
     }
 
@@ -140,7 +147,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public long? Popularity
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "popularity"); }
+        get { return this._rawData.GetNullableStruct<long>("popularity"); }
         init
         {
             if (value == null)
@@ -148,7 +155,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "popularity", value);
+            this._rawData.Set("popularity", value);
         }
     }
 
@@ -160,7 +167,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -168,7 +175,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -179,8 +186,7 @@ public sealed record class ArtistObject : JsonModel
     {
         get
         {
-            return JsonModel.GetNullableClass<ApiEnum<string, global::Spotted.Models.Type>>(
-                this.RawData,
+            return this._rawData.GetNullableClass<ApiEnum<string, global::Spotted.Models.Type>>(
                 "type"
             );
         }
@@ -191,7 +197,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "type", value);
+            this._rawData.Set("type", value);
         }
     }
 
@@ -201,7 +207,7 @@ public sealed record class ArtistObject : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
+        get { return this._rawData.GetNullableClass<string>("uri"); }
         init
         {
             if (value == null)
@@ -209,7 +215,7 @@ public sealed record class ArtistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "uri", value);
+            this._rawData.Set("uri", value);
         }
     }
 
@@ -239,14 +245,14 @@ public sealed record class ArtistObject : JsonModel
 
     public ArtistObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ArtistObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

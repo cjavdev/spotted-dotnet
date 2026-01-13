@@ -15,7 +15,7 @@ public sealed record class ExternalIDObject : JsonModel
     /// </summary>
     public string? Ean
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "ean"); }
+        get { return this._rawData.GetNullableClass<string>("ean"); }
         init
         {
             if (value == null)
@@ -23,7 +23,7 @@ public sealed record class ExternalIDObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "ean", value);
+            this._rawData.Set("ean", value);
         }
     }
 
@@ -32,7 +32,7 @@ public sealed record class ExternalIDObject : JsonModel
     /// </summary>
     public string? Isrc
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "isrc"); }
+        get { return this._rawData.GetNullableClass<string>("isrc"); }
         init
         {
             if (value == null)
@@ -40,7 +40,7 @@ public sealed record class ExternalIDObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "isrc", value);
+            this._rawData.Set("isrc", value);
         }
     }
 
@@ -52,7 +52,7 @@ public sealed record class ExternalIDObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -60,7 +60,7 @@ public sealed record class ExternalIDObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -69,7 +69,7 @@ public sealed record class ExternalIDObject : JsonModel
     /// </summary>
     public string? Upc
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "upc"); }
+        get { return this._rawData.GetNullableClass<string>("upc"); }
         init
         {
             if (value == null)
@@ -77,7 +77,7 @@ public sealed record class ExternalIDObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "upc", value);
+            this._rawData.Set("upc", value);
         }
     }
 
@@ -97,14 +97,14 @@ public sealed record class ExternalIDObject : JsonModel
 
     public ExternalIDObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ExternalIDObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

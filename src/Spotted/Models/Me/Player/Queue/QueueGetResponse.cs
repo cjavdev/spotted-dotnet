@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -17,10 +18,7 @@ public sealed record class QueueGetResponse : JsonModel
     /// </summary>
     public CurrentlyPlaying? CurrentlyPlaying
     {
-        get
-        {
-            return JsonModel.GetNullableClass<CurrentlyPlaying>(this.RawData, "currently_playing");
-        }
+        get { return this._rawData.GetNullableClass<CurrentlyPlaying>("currently_playing"); }
         init
         {
             if (value == null)
@@ -28,7 +26,7 @@ public sealed record class QueueGetResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "currently_playing", value);
+            this._rawData.Set("currently_playing", value);
         }
     }
 
@@ -40,7 +38,7 @@ public sealed record class QueueGetResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -48,7 +46,7 @@ public sealed record class QueueGetResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -59,7 +57,7 @@ public sealed record class QueueGetResponse : JsonModel
     {
         get
         {
-            return JsonModel.GetNullableClass<List<QueueGetResponseQueue>>(this.RawData, "queue");
+            return this._rawData.GetNullableStruct<ImmutableArray<QueueGetResponseQueue>>("queue");
         }
         init
         {
@@ -68,7 +66,10 @@ public sealed record class QueueGetResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "queue", value);
+            this._rawData.Set<ImmutableArray<QueueGetResponseQueue>?>(
+                "queue",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -90,14 +91,14 @@ public sealed record class QueueGetResponse : JsonModel
 
     public QueueGetResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     QueueGetResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

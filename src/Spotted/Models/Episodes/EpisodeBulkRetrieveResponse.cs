@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -14,8 +15,14 @@ public sealed record class EpisodeBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<EpisodeObject> Episodes
     {
-        get { return JsonModel.GetNotNullClass<List<EpisodeObject>>(this.RawData, "episodes"); }
-        init { JsonModel.Set(this._rawData, "episodes", value); }
+        get { return this._rawData.GetNotNullStruct<ImmutableArray<EpisodeObject>>("episodes"); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<EpisodeObject>>(
+                "episodes",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <inheritdoc/>
@@ -34,14 +41,14 @@ public sealed record class EpisodeBulkRetrieveResponse : JsonModel
 
     public EpisodeBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     EpisodeBulkRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

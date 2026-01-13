@@ -22,8 +22,8 @@ public sealed record class PlayerSeekToPositionParams : ParamsBase
     /// </summary>
     public required long PositionMs
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawQueryData, "position_ms"); }
-        init { JsonModel.Set(this._rawQueryData, "position_ms", value); }
+        get { return this._rawQueryData.GetNotNullStruct<long>("position_ms"); }
+        init { this._rawQueryData.Set("position_ms", value); }
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public sealed record class PlayerSeekToPositionParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "device_id"); }
+        get { return this._rawQueryData.GetNullableClass<string>("device_id"); }
         init
         {
             if (value == null)
@@ -40,7 +40,7 @@ public sealed record class PlayerSeekToPositionParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "device_id", value);
+            this._rawQueryData.Set("device_id", value);
         }
     }
 
@@ -54,8 +54,8 @@ public sealed record class PlayerSeekToPositionParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -65,8 +65,8 @@ public sealed record class PlayerSeekToPositionParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

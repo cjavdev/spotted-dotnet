@@ -12,7 +12,7 @@ public sealed record class TrackRemoveResponse : JsonModel
 {
     public string? SnapshotID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "snapshot_id"); }
+        get { return this._rawData.GetNullableClass<string>("snapshot_id"); }
         init
         {
             if (value == null)
@@ -20,7 +20,7 @@ public sealed record class TrackRemoveResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "snapshot_id", value);
+            this._rawData.Set("snapshot_id", value);
         }
     }
 
@@ -37,14 +37,14 @@ public sealed record class TrackRemoveResponse : JsonModel
 
     public TrackRemoveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     TrackRemoveResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

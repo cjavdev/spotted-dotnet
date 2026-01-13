@@ -17,7 +17,7 @@ public sealed record class EpisodeListResponse : JsonModel
     /// </summary>
     public DateTimeOffset? AddedAt
     {
-        get { return JsonModel.GetNullableStruct<DateTimeOffset>(this.RawData, "added_at"); }
+        get { return this._rawData.GetNullableStruct<DateTimeOffset>("added_at"); }
         init
         {
             if (value == null)
@@ -25,7 +25,7 @@ public sealed record class EpisodeListResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "added_at", value);
+            this._rawData.Set("added_at", value);
         }
     }
 
@@ -34,7 +34,7 @@ public sealed record class EpisodeListResponse : JsonModel
     /// </summary>
     public EpisodeObject? Episode
     {
-        get { return JsonModel.GetNullableClass<EpisodeObject>(this.RawData, "episode"); }
+        get { return this._rawData.GetNullableClass<EpisodeObject>("episode"); }
         init
         {
             if (value == null)
@@ -42,7 +42,7 @@ public sealed record class EpisodeListResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "episode", value);
+            this._rawData.Set("episode", value);
         }
     }
 
@@ -54,7 +54,7 @@ public sealed record class EpisodeListResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -62,7 +62,7 @@ public sealed record class EpisodeListResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -81,14 +81,14 @@ public sealed record class EpisodeListResponse : JsonModel
 
     public EpisodeListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     EpisodeListResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

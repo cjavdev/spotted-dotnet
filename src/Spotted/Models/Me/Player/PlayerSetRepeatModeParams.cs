@@ -22,8 +22,8 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
     /// </summary>
     public required string State
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "state"); }
-        init { JsonModel.Set(this._rawQueryData, "state", value); }
+        get { return this._rawQueryData.GetNotNullClass<string>("state"); }
+        init { this._rawQueryData.Set("state", value); }
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "device_id"); }
+        get { return this._rawQueryData.GetNullableClass<string>("device_id"); }
         init
         {
             if (value == null)
@@ -40,7 +40,7 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "device_id", value);
+            this._rawQueryData.Set("device_id", value);
         }
     }
 
@@ -54,8 +54,8 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -65,8 +65,8 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

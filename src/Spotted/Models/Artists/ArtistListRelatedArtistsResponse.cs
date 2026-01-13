@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -17,8 +18,14 @@ public sealed record class ArtistListRelatedArtistsResponse : JsonModel
 {
     public required IReadOnlyList<ArtistObject> Artists
     {
-        get { return JsonModel.GetNotNullClass<List<ArtistObject>>(this.RawData, "artists"); }
-        init { JsonModel.Set(this._rawData, "artists", value); }
+        get { return this._rawData.GetNotNullStruct<ImmutableArray<ArtistObject>>("artists"); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<ArtistObject>>(
+                "artists",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <inheritdoc/>
@@ -39,14 +46,14 @@ public sealed record class ArtistListRelatedArtistsResponse : JsonModel
 
     public ArtistListRelatedArtistsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ArtistListRelatedArtistsResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

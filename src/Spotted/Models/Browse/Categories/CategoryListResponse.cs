@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -16,8 +17,8 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
-        init { JsonModel.Set(this._rawData, "id", value); }
+        get { return this._rawData.GetNotNullClass<string>("id"); }
+        init { this._rawData.Set("id", value); }
     }
 
     /// <summary>
@@ -25,8 +26,8 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
-        init { JsonModel.Set(this._rawData, "href", value); }
+        get { return this._rawData.GetNotNullClass<string>("href"); }
+        init { this._rawData.Set("href", value); }
     }
 
     /// <summary>
@@ -34,8 +35,14 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<ImageObject> Icons
     {
-        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "icons"); }
-        init { JsonModel.Set(this._rawData, "icons", value); }
+        get { return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("icons"); }
+        init
+        {
+            this._rawData.Set<ImmutableArray<ImageObject>>(
+                "icons",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -43,8 +50,8 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public required string Name
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
-        init { JsonModel.Set(this._rawData, "name", value); }
+        get { return this._rawData.GetNotNullClass<string>("name"); }
+        init { this._rawData.Set("name", value); }
     }
 
     /// <summary>
@@ -55,7 +62,7 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -63,7 +70,7 @@ public sealed record class CategoryListResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -87,14 +94,14 @@ public sealed record class CategoryListResponse : JsonModel
 
     public CategoryListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     CategoryListResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

@@ -20,7 +20,7 @@ public sealed record class ShowListResponse : JsonModel
     /// </summary>
     public DateTimeOffset? AddedAt
     {
-        get { return JsonModel.GetNullableStruct<DateTimeOffset>(this.RawData, "added_at"); }
+        get { return this._rawData.GetNullableStruct<DateTimeOffset>("added_at"); }
         init
         {
             if (value == null)
@@ -28,7 +28,7 @@ public sealed record class ShowListResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "added_at", value);
+            this._rawData.Set("added_at", value);
         }
     }
 
@@ -40,7 +40,7 @@ public sealed record class ShowListResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get { return this._rawData.GetNullableStruct<bool>("published"); }
         init
         {
             if (value == null)
@@ -48,7 +48,7 @@ public sealed record class ShowListResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -57,7 +57,7 @@ public sealed record class ShowListResponse : JsonModel
     /// </summary>
     public ShowBase? Show
     {
-        get { return JsonModel.GetNullableClass<ShowBase>(this.RawData, "show"); }
+        get { return this._rawData.GetNullableClass<ShowBase>("show"); }
         init
         {
             if (value == null)
@@ -65,7 +65,7 @@ public sealed record class ShowListResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "show", value);
+            this._rawData.Set("show", value);
         }
     }
 
@@ -84,14 +84,14 @@ public sealed record class ShowListResponse : JsonModel
 
     public ShowListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ShowListResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

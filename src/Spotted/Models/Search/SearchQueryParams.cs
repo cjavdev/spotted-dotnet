@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text.Json;
@@ -36,8 +37,8 @@ public sealed record class SearchQueryParams : ParamsBase
     /// </summary>
     public required string Q
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "q"); }
-        init { JsonModel.Set(this._rawQueryData, "q", value); }
+        get { return this._rawQueryData.GetNotNullClass<string>("q"); }
+        init { this._rawQueryData.Set("q", value); }
     }
 
     /// <summary>
@@ -49,11 +50,16 @@ public sealed record class SearchQueryParams : ParamsBase
     {
         get
         {
-            return JsonModel.GetNotNullClass<
-                List<ApiEnum<string, global::Spotted.Models.Search.Type>>
-            >(this.RawQueryData, "type");
+            return this._rawQueryData.GetNotNullStruct<
+                ImmutableArray<ApiEnum<string, global::Spotted.Models.Search.Type>>
+            >("type");
         }
-        init { JsonModel.Set(this._rawQueryData, "type", value); }
+        init
+        {
+            this._rawQueryData.Set<
+                ImmutableArray<ApiEnum<string, global::Spotted.Models.Search.Type>>
+            >("type", ImmutableArray.ToImmutableArray(value));
+        }
     }
 
     /// <summary>
@@ -66,8 +72,7 @@ public sealed record class SearchQueryParams : ParamsBase
     {
         get
         {
-            return JsonModel.GetNullableClass<ApiEnum<string, IncludeExternal>>(
-                this.RawQueryData,
+            return this._rawQueryData.GetNullableClass<ApiEnum<string, IncludeExternal>>(
                 "include_external"
             );
         }
@@ -78,7 +83,7 @@ public sealed record class SearchQueryParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "include_external", value);
+            this._rawQueryData.Set("include_external", value);
         }
     }
 
@@ -87,7 +92,7 @@ public sealed record class SearchQueryParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get { return this._rawQueryData.GetNullableStruct<long>("limit"); }
         init
         {
             if (value == null)
@@ -95,7 +100,7 @@ public sealed record class SearchQueryParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "limit", value);
+            this._rawQueryData.Set("limit", value);
         }
     }
 
@@ -111,7 +116,7 @@ public sealed record class SearchQueryParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get { return this._rawQueryData.GetNullableClass<string>("market"); }
         init
         {
             if (value == null)
@@ -119,7 +124,7 @@ public sealed record class SearchQueryParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "market", value);
+            this._rawQueryData.Set("market", value);
         }
     }
 
@@ -129,7 +134,7 @@ public sealed record class SearchQueryParams : ParamsBase
     /// </summary>
     public long? Offset
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "offset"); }
+        get { return this._rawQueryData.GetNullableStruct<long>("offset"); }
         init
         {
             if (value == null)
@@ -137,7 +142,7 @@ public sealed record class SearchQueryParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "offset", value);
+            this._rawQueryData.Set("offset", value);
         }
     }
 
@@ -151,8 +156,8 @@ public sealed record class SearchQueryParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -162,8 +167,8 @@ public sealed record class SearchQueryParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 
