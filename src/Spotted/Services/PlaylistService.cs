@@ -81,15 +81,12 @@ public sealed class PlaylistService : IPlaylistService
     }
 
     /// <inheritdoc/>
-    public async Task Update(
+    public Task Update(
         PlaylistUpdateParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Update(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Update(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>

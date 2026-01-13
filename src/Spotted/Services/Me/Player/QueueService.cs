@@ -34,12 +34,9 @@ public sealed class QueueService : IQueueService
     }
 
     /// <inheritdoc/>
-    public async Task Add(QueueAddParams parameters, CancellationToken cancellationToken = default)
+    public Task Add(QueueAddParams parameters, CancellationToken cancellationToken = default)
     {
-        using var response = await this
-            .WithRawResponse.Add(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Add(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>

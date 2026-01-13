@@ -63,27 +63,18 @@ public sealed class TrackService : global::Spotted.Services.Me.ITrackService
     }
 
     /// <inheritdoc/>
-    public async Task Remove(
+    public Task Remove(
         TrackRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Remove(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Remove(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Save(
-        TrackSaveParams parameters,
-        CancellationToken cancellationToken = default
-    )
+    public Task Save(TrackSaveParams parameters, CancellationToken cancellationToken = default)
     {
-        using var response = await this
-            .WithRawResponse.Save(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Save(parameters, cancellationToken);
     }
 }
 

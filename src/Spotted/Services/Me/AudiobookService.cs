@@ -63,27 +63,18 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
     }
 
     /// <inheritdoc/>
-    public async Task Remove(
+    public Task Remove(
         AudiobookRemoveParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Remove(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Remove(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Save(
-        AudiobookSaveParams parameters,
-        CancellationToken cancellationToken = default
-    )
+    public Task Save(AudiobookSaveParams parameters, CancellationToken cancellationToken = default)
     {
-        using var response = await this
-            .WithRawResponse.Save(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Save(parameters, cancellationToken);
     }
 }
 

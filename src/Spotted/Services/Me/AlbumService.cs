@@ -63,27 +63,21 @@ public sealed class AlbumService : global::Spotted.Services.Me.IAlbumService
     }
 
     /// <inheritdoc/>
-    public async Task Remove(
+    public Task Remove(
         AlbumRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Remove(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Remove(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Save(
+    public Task Save(
         AlbumSaveParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Save(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Save(parameters, cancellationToken);
     }
 }
 

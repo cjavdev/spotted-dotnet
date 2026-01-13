@@ -59,27 +59,21 @@ public sealed class FollowingService : IFollowingService
     }
 
     /// <inheritdoc/>
-    public async Task Follow(
+    public Task Follow(
         FollowingFollowParams parameters,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Follow(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Follow(parameters, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Unfollow(
+    public Task Unfollow(
         FollowingUnfollowParams? parameters = null,
         CancellationToken cancellationToken = default
     )
     {
-        using var response = await this
-            .WithRawResponse.Unfollow(parameters, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+        return this.WithRawResponse.Unfollow(parameters, cancellationToken);
     }
 }
 
