@@ -345,7 +345,7 @@ public sealed record class ShowRetrieveResponse : JsonModel
         _ = this.Name;
         _ = this.Publisher;
         _ = this.TotalEpisodes;
-        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.Deserialize<JsonElement>("\"show\"")))
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("show")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -356,7 +356,7 @@ public sealed record class ShowRetrieveResponse : JsonModel
 
     public ShowRetrieveResponse()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        this.Type = JsonSerializer.SerializeToElement("show");
     }
 
     public ShowRetrieveResponse(ShowRetrieveResponse showRetrieveResponse)
@@ -366,7 +366,7 @@ public sealed record class ShowRetrieveResponse : JsonModel
     {
         this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        this.Type = JsonSerializer.SerializeToElement("show");
     }
 
 #pragma warning disable CS8618

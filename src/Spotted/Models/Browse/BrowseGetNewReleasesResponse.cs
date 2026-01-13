@@ -528,9 +528,7 @@ public sealed record class Item : JsonModel
         _ = this.ReleaseDate;
         this.ReleaseDatePrecision.Validate();
         _ = this.TotalTracks;
-        if (
-            !JsonElement.DeepEquals(this.Type, JsonSerializer.Deserialize<JsonElement>("\"album\""))
-        )
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("album")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -541,7 +539,7 @@ public sealed record class Item : JsonModel
 
     public Item()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        this.Type = JsonSerializer.SerializeToElement("album");
     }
 
     public Item(Item item)
@@ -551,7 +549,7 @@ public sealed record class Item : JsonModel
     {
         this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        this.Type = JsonSerializer.SerializeToElement("album");
     }
 
 #pragma warning disable CS8618

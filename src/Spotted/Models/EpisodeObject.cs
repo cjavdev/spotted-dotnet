@@ -381,12 +381,7 @@ public sealed record class EpisodeObject : JsonModel
         _ = this.ReleaseDate;
         this.ReleaseDatePrecision.Validate();
         this.Show.Validate();
-        if (
-            !JsonElement.DeepEquals(
-                this.Type,
-                JsonSerializer.Deserialize<JsonElement>("\"episode\"")
-            )
-        )
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("episode")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -400,7 +395,7 @@ public sealed record class EpisodeObject : JsonModel
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public EpisodeObject()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        this.Type = JsonSerializer.SerializeToElement("episode");
     }
 
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
@@ -412,7 +407,7 @@ public sealed record class EpisodeObject : JsonModel
     {
         this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"episode\"");
+        this.Type = JsonSerializer.SerializeToElement("episode");
     }
 
 #pragma warning disable CS8618

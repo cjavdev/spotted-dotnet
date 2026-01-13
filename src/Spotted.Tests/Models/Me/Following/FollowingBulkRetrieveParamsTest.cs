@@ -15,7 +15,7 @@ public class FollowingBulkRetrieveParamsTest : TestBase
             Limit = 10,
         };
 
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"artist\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("artist");
         string expectedAfter = "0I2XqVXqHScXjHhk6AYYRe";
         long expectedLimit = 10;
 
@@ -56,7 +56,7 @@ public class FollowingBulkRetrieveParamsTest : TestBase
     {
         FollowingBulkRetrieveParams parameters = new()
         {
-            Type = JsonSerializer.Deserialize<JsonElement>("\"artist\""),
+            Type = JsonSerializer.SerializeToElement("artist"),
             After = "0I2XqVXqHScXjHhk6AYYRe",
             Limit = 10,
         };

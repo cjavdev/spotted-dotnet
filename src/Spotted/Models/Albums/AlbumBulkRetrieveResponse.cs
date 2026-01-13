@@ -493,9 +493,7 @@ public sealed record class Album : JsonModel
         _ = this.ReleaseDate;
         this.ReleaseDatePrecision.Validate();
         _ = this.TotalTracks;
-        if (
-            !JsonElement.DeepEquals(this.Type, JsonSerializer.Deserialize<JsonElement>("\"album\""))
-        )
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("album")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -519,7 +517,7 @@ public sealed record class Album : JsonModel
 
     public Album()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        this.Type = JsonSerializer.SerializeToElement("album");
     }
 
     public Album(global::Spotted.Models.Albums.Album album)
@@ -529,7 +527,7 @@ public sealed record class Album : JsonModel
     {
         this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        this.Type = JsonSerializer.SerializeToElement("album");
     }
 
 #pragma warning disable CS8618

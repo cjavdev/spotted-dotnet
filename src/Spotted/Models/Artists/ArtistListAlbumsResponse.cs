@@ -297,9 +297,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
         _ = this.ReleaseDate;
         this.ReleaseDatePrecision.Validate();
         _ = this.TotalTracks;
-        if (
-            !JsonElement.DeepEquals(this.Type, JsonSerializer.Deserialize<JsonElement>("\"album\""))
-        )
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("album")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -310,7 +308,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
 
     public ArtistListAlbumsResponse()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        this.Type = JsonSerializer.SerializeToElement("album");
     }
 
     public ArtistListAlbumsResponse(ArtistListAlbumsResponse artistListAlbumsResponse)
@@ -320,7 +318,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     {
         this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        this.Type = JsonSerializer.SerializeToElement("album");
     }
 
 #pragma warning disable CS8618

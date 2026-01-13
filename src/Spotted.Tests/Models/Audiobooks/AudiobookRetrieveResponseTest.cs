@@ -145,7 +145,7 @@ public class AudiobookRetrieveResponseTest : TestBase
         ];
         string expectedPublisher = "publisher";
         long expectedTotalChapters = 0;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"audiobook\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("audiobook");
         string expectedUri = "uri";
         string expectedEdition = "Unabridged";
         bool expectedPublished = true;
@@ -498,7 +498,7 @@ public class AudiobookRetrieveResponseTest : TestBase
         ];
         string expectedPublisher = "publisher";
         long expectedTotalChapters = 0;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"audiobook\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("audiobook");
         string expectedUri = "uri";
         string expectedEdition = "Unabridged";
         bool expectedPublished = true;
