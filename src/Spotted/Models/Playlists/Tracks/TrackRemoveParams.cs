@@ -34,6 +34,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     {
         get
         {
+            this._rawBodyData.Freeze();
             return this._rawBodyData.GetNotNullStruct<
                 ImmutableArray<global::Spotted.Models.Playlists.Tracks.Track>
             >("tracks");
@@ -55,7 +56,11 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -74,7 +79,11 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// </summary>
     public string? SnapshotID
     {
-        get { return this._rawBodyData.GetNullableClass<string>("snapshot_id"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("snapshot_id");
+        }
         init
         {
             if (value == null)
@@ -175,7 +184,11 @@ public sealed record class Track : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return this._rawData.GetNullableClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)

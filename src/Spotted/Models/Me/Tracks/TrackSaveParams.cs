@@ -31,7 +31,11 @@ public sealed record class TrackSaveParams : ParamsBase
     /// </summary>
     public required IReadOnlyList<string> Ids
     {
-        get { return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("ids"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("ids");
+        }
         init
         {
             this._rawBodyData.Set<ImmutableArray<string>>(
@@ -49,7 +53,11 @@ public sealed record class TrackSaveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -74,6 +82,7 @@ public sealed record class TrackSaveParams : ParamsBase
     {
         get
         {
+            this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableStruct<ImmutableArray<TimestampedID>>(
                 "timestamped_ids"
             );
@@ -175,7 +184,11 @@ public sealed record class TimestampedID : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return this._rawData.GetNotNullClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("id");
+        }
         init { this._rawData.Set("id", value); }
     }
 
@@ -188,7 +201,11 @@ public sealed record class TimestampedID : JsonModel
     /// </summary>
     public required DateTimeOffset AddedAt
     {
-        get { return this._rawData.GetNotNullStruct<DateTimeOffset>("added_at"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<DateTimeOffset>("added_at");
+        }
         init { this._rawData.Set("added_at", value); }
     }
 

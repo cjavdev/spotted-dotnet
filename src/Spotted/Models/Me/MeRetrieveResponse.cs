@@ -17,7 +17,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return this._rawData.GetNullableClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("id");
+        }
         init
         {
             if (value == null)
@@ -37,7 +41,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public string? Country
     {
-        get { return this._rawData.GetNullableClass<string>("country"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("country");
+        }
         init
         {
             if (value == null)
@@ -54,7 +62,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public string? DisplayName
     {
-        get { return this._rawData.GetNullableClass<string>("display_name"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("display_name");
+        }
         init
         {
             if (value == null)
@@ -75,7 +87,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public string? Email
     {
-        get { return this._rawData.GetNullableClass<string>("email"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("email");
+        }
         init
         {
             if (value == null)
@@ -94,7 +110,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public ExplicitContent? ExplicitContent
     {
-        get { return this._rawData.GetNullableClass<ExplicitContent>("explicit_content"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ExplicitContent>("explicit_content");
+        }
         init
         {
             if (value == null)
@@ -111,7 +131,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public ExternalUrlObject? ExternalUrls
     {
-        get { return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls");
+        }
         init
         {
             if (value == null)
@@ -128,7 +152,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public FollowersObject? Followers
     {
-        get { return this._rawData.GetNullableClass<FollowersObject>("followers"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<FollowersObject>("followers");
+        }
         init
         {
             if (value == null)
@@ -145,7 +173,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return this._rawData.GetNullableClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -162,7 +194,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public IReadOnlyList<ImageObject>? Images
     {
-        get { return this._rawData.GetNullableStruct<ImmutableArray<ImageObject>>("images"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<ImageObject>>("images");
+        }
         init
         {
             if (value == null)
@@ -185,7 +221,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public string? Product
     {
-        get { return this._rawData.GetNullableClass<string>("product"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("product");
+        }
         init
         {
             if (value == null)
@@ -205,7 +245,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -222,7 +266,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public string? Type
     {
-        get { return this._rawData.GetNullableClass<string>("type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
         init
         {
             if (value == null)
@@ -240,7 +288,11 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return this._rawData.GetNullableClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)
@@ -320,7 +372,11 @@ public sealed record class ExplicitContent : JsonModel
     /// </summary>
     public bool? FilterEnabled
     {
-        get { return this._rawData.GetNullableStruct<bool>("filter_enabled"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("filter_enabled");
+        }
         init
         {
             if (value == null)
@@ -338,7 +394,11 @@ public sealed record class ExplicitContent : JsonModel
     /// </summary>
     public bool? FilterLocked
     {
-        get { return this._rawData.GetNullableStruct<bool>("filter_locked"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("filter_locked");
+        }
         init
         {
             if (value == null)
@@ -358,7 +418,11 @@ public sealed record class ExplicitContent : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

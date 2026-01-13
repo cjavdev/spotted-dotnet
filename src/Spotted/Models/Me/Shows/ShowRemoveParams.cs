@@ -29,7 +29,11 @@ public sealed record class ShowRemoveParams : ParamsBase
     /// </summary>
     public IReadOnlyList<string>? Ids
     {
-        get { return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("ids"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("ids");
+        }
         init
         {
             if (value == null)
@@ -52,7 +56,11 @@ public sealed record class ShowRemoveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

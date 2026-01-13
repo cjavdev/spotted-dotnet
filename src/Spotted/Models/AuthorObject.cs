@@ -15,7 +15,11 @@ public sealed record class AuthorObject : JsonModel
     /// </summary>
     public string? Name
     {
-        get { return this._rawData.GetNullableClass<string>("name"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("name");
+        }
         init
         {
             if (value == null)
@@ -35,7 +39,11 @@ public sealed record class AuthorObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

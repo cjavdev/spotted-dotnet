@@ -17,7 +17,11 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return this._rawData.GetNotNullClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("id");
+        }
         init { this._rawData.Set("id", value); }
     }
 
@@ -26,7 +30,11 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return this._rawData.GetNotNullClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
         init { this._rawData.Set("href", value); }
     }
 
@@ -35,7 +43,11 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<ImageObject> Icons
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("icons"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("icons");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<ImageObject>>(
@@ -50,7 +62,11 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public required string Name
     {
-        get { return this._rawData.GetNotNullClass<string>("name"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
         init { this._rawData.Set("name", value); }
     }
 
@@ -62,7 +78,11 @@ public sealed record class CategoryListResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

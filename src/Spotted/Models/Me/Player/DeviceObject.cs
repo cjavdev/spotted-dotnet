@@ -17,7 +17,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return this._rawData.GetNullableClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("id");
+        }
         init { this._rawData.Set("id", value); }
     }
 
@@ -26,7 +30,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public bool? IsActive
     {
-        get { return this._rawData.GetNullableStruct<bool>("is_active"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_active");
+        }
         init
         {
             if (value == null)
@@ -43,7 +51,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public bool? IsPrivateSession
     {
-        get { return this._rawData.GetNullableStruct<bool>("is_private_session"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_private_session");
+        }
         init
         {
             if (value == null)
@@ -61,7 +73,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public bool? IsRestricted
     {
-        get { return this._rawData.GetNullableStruct<bool>("is_restricted"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_restricted");
+        }
         init
         {
             if (value == null)
@@ -80,7 +96,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public string? Name
     {
-        get { return this._rawData.GetNullableClass<string>("name"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("name");
+        }
         init
         {
             if (value == null)
@@ -100,7 +120,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -117,7 +141,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public bool? SupportsVolume
     {
-        get { return this._rawData.GetNullableStruct<bool>("supports_volume"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("supports_volume");
+        }
         init
         {
             if (value == null)
@@ -134,7 +162,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public string? Type
     {
-        get { return this._rawData.GetNullableClass<string>("type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
         init
         {
             if (value == null)
@@ -151,7 +183,11 @@ public sealed record class DeviceObject : JsonModel
     /// </summary>
     public long? VolumePercent
     {
-        get { return this._rawData.GetNullableStruct<long>("volume_percent"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("volume_percent");
+        }
         init { this._rawData.Set("volume_percent", value); }
     }
 

@@ -31,7 +31,11 @@ public sealed record class PlayerTransferParams : ParamsBase
     /// </summary>
     public required IReadOnlyList<string> DeviceIds
     {
-        get { return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("device_ids"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("device_ids");
+        }
         init
         {
             this._rawBodyData.Set<ImmutableArray<string>>(
@@ -47,7 +51,11 @@ public sealed record class PlayerTransferParams : ParamsBase
     /// </summary>
     public bool? Play
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("play"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("play");
+        }
         init
         {
             if (value == null)
@@ -67,7 +75,11 @@ public sealed record class PlayerTransferParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

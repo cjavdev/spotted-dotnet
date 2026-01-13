@@ -23,7 +23,11 @@ public sealed record class AudiobookListChaptersParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -47,7 +51,11 @@ public sealed record class AudiobookListChaptersParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return this._rawQueryData.GetNullableClass<string>("market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)
@@ -65,7 +73,11 @@ public sealed record class AudiobookListChaptersParams : ParamsBase
     /// </summary>
     public long? Offset
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("offset"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("offset");
+        }
         init
         {
             if (value == null)

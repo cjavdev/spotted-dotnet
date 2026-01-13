@@ -31,7 +31,11 @@ public sealed record class PlaylistCreateParams : ParamsBase
     /// </summary>
     public required string Name
     {
-        get { return this._rawBodyData.GetNotNullClass<string>("name"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNotNullClass<string>("name");
+        }
         init { this._rawBodyData.Set("name", value); }
     }
 
@@ -43,7 +47,11 @@ public sealed record class PlaylistCreateParams : ParamsBase
     /// </summary>
     public bool? Collaborative
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("collaborative"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("collaborative");
+        }
         init
         {
             if (value == null)
@@ -61,7 +69,11 @@ public sealed record class PlaylistCreateParams : ParamsBase
     /// </summary>
     public string? Description
     {
-        get { return this._rawBodyData.GetNullableClass<string>("description"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("description");
+        }
         init
         {
             if (value == null)
@@ -81,7 +93,11 @@ public sealed record class PlaylistCreateParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

@@ -24,7 +24,11 @@ public sealed record class PlayerGetStateParams : ParamsBase
     /// </summary>
     public string? AdditionalTypes
     {
-        get { return this._rawQueryData.GetNullableClass<string>("additional_types"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("additional_types");
+        }
         init
         {
             if (value == null)
@@ -48,7 +52,11 @@ public sealed record class PlayerGetStateParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return this._rawQueryData.GetNullableClass<string>("market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)

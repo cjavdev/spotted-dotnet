@@ -18,7 +18,11 @@ public sealed record class ExternalUrlObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -36,7 +40,11 @@ public sealed record class ExternalUrlObject : JsonModel
     /// </summary>
     public string? Spotify
     {
-        get { return this._rawData.GetNullableClass<string>("spotify"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("spotify");
+        }
         init
         {
             if (value == null)

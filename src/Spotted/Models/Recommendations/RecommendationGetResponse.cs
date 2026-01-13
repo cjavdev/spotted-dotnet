@@ -18,7 +18,11 @@ public sealed record class RecommendationGetResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<Seed> Seeds
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<Seed>>("seeds"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<Seed>>("seeds");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<Seed>>(
@@ -33,7 +37,11 @@ public sealed record class RecommendationGetResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<TrackObject> Tracks
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<TrackObject>>("tracks"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<TrackObject>>("tracks");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<TrackObject>>(
@@ -51,7 +59,11 @@ public sealed record class RecommendationGetResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -121,7 +133,11 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return this._rawData.GetNullableClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("id");
+        }
         init
         {
             if (value == null)
@@ -139,7 +155,11 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public long? AfterFilteringSize
     {
-        get { return this._rawData.GetNullableStruct<long>("afterFilteringSize"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("afterFilteringSize");
+        }
         init
         {
             if (value == null)
@@ -156,7 +176,11 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public long? AfterRelinkingSize
     {
-        get { return this._rawData.GetNullableStruct<long>("afterRelinkingSize"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("afterRelinkingSize");
+        }
         init
         {
             if (value == null)
@@ -175,7 +199,11 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return this._rawData.GetNullableClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -192,7 +220,11 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public long? InitialPoolSize
     {
-        get { return this._rawData.GetNullableStruct<long>("initialPoolSize"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("initialPoolSize");
+        }
         init
         {
             if (value == null)
@@ -212,7 +244,11 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -229,7 +265,11 @@ public sealed record class Seed : JsonModel
     /// </summary>
     public string? Type
     {
-        get { return this._rawData.GetNullableClass<string>("type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
         init
         {
             if (value == null)

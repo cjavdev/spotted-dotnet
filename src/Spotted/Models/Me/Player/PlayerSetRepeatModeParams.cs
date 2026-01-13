@@ -22,7 +22,11 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
     /// </summary>
     public required string State
     {
-        get { return this._rawQueryData.GetNotNullClass<string>("state"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("state");
+        }
         init { this._rawQueryData.Set("state", value); }
     }
 
@@ -32,7 +36,11 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return this._rawQueryData.GetNullableClass<string>("device_id"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("device_id");
+        }
         init
         {
             if (value == null)

@@ -15,7 +15,11 @@ public sealed record class ContextObject : JsonModel
     /// </summary>
     public ExternalUrlObject? ExternalUrls
     {
-        get { return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls");
+        }
         init
         {
             if (value == null)
@@ -32,7 +36,11 @@ public sealed record class ContextObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return this._rawData.GetNullableClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -52,7 +60,11 @@ public sealed record class ContextObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -69,7 +81,11 @@ public sealed record class ContextObject : JsonModel
     /// </summary>
     public string? Type
     {
-        get { return this._rawData.GetNullableClass<string>("type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
         init
         {
             if (value == null)
@@ -87,7 +103,11 @@ public sealed record class ContextObject : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return this._rawData.GetNullableClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)

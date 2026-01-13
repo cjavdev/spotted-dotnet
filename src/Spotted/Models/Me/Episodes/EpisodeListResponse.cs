@@ -17,7 +17,11 @@ public sealed record class EpisodeListResponse : JsonModel
     /// </summary>
     public DateTimeOffset? AddedAt
     {
-        get { return this._rawData.GetNullableStruct<DateTimeOffset>("added_at"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<DateTimeOffset>("added_at");
+        }
         init
         {
             if (value == null)
@@ -34,7 +38,11 @@ public sealed record class EpisodeListResponse : JsonModel
     /// </summary>
     public EpisodeObject? Episode
     {
-        get { return this._rawData.GetNullableClass<EpisodeObject>("episode"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<EpisodeObject>("episode");
+        }
         init
         {
             if (value == null)
@@ -54,7 +62,11 @@ public sealed record class EpisodeListResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

@@ -19,7 +19,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return this._rawData.GetNotNullClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("id");
+        }
         init { this._rawData.Set("id", value); }
     }
 
@@ -29,7 +33,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     [System::Obsolete("deprecated")]
     public required string? AudioPreviewUrl
     {
-        get { return this._rawData.GetNullableClass<string>("audio_preview_url"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("audio_preview_url");
+        }
         init { this._rawData.Set("audio_preview_url", value); }
     }
 
@@ -39,7 +47,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required string Description
     {
-        get { return this._rawData.GetNotNullClass<string>("description"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("description");
+        }
         init { this._rawData.Set("description", value); }
     }
 
@@ -48,7 +60,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required long DurationMs
     {
-        get { return this._rawData.GetNotNullStruct<long>("duration_ms"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("duration_ms");
+        }
         init { this._rawData.Set("duration_ms", value); }
     }
 
@@ -58,7 +74,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required bool Explicit
     {
-        get { return this._rawData.GetNotNullStruct<bool>("explicit"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<bool>("explicit");
+        }
         init { this._rawData.Set("explicit", value); }
     }
 
@@ -67,7 +87,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required ExternalUrlObject ExternalUrls
     {
-        get { return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls");
+        }
         init { this._rawData.Set("external_urls", value); }
     }
 
@@ -76,7 +100,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return this._rawData.GetNotNullClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
         init { this._rawData.Set("href", value); }
     }
 
@@ -85,7 +113,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required string HtmlDescription
     {
-        get { return this._rawData.GetNotNullClass<string>("html_description"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("html_description");
+        }
         init { this._rawData.Set("html_description", value); }
     }
 
@@ -94,7 +126,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<ImageObject>>(
@@ -109,7 +145,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required bool IsExternallyHosted
     {
-        get { return this._rawData.GetNotNullStruct<bool>("is_externally_hosted"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<bool>("is_externally_hosted");
+        }
         init { this._rawData.Set("is_externally_hosted", value); }
     }
 
@@ -118,7 +158,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required bool IsPlayable
     {
-        get { return this._rawData.GetNotNullStruct<bool>("is_playable"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<bool>("is_playable");
+        }
         init { this._rawData.Set("is_playable", value); }
     }
 
@@ -128,7 +172,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required IReadOnlyList<string> Languages
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<string>>("languages"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("languages");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<string>>(
@@ -143,7 +191,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required string Name
     {
-        get { return this._rawData.GetNotNullClass<string>("name"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
         init { this._rawData.Set("name", value); }
     }
 
@@ -153,7 +205,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required string ReleaseDate
     {
-        get { return this._rawData.GetNotNullClass<string>("release_date"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("release_date");
+        }
         init { this._rawData.Set("release_date", value); }
     }
 
@@ -167,6 +223,7 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNotNullClass<
                 ApiEnum<string, SimplifiedEpisodeObjectReleaseDatePrecision>
             >("release_date_precision");
@@ -179,7 +236,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public JsonElement Type
     {
-        get { return this._rawData.GetNotNullStruct<JsonElement>("type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<JsonElement>("type");
+        }
         init { this._rawData.Set("type", value); }
     }
 
@@ -189,7 +250,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public required string Uri
     {
-        get { return this._rawData.GetNotNullClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("uri");
+        }
         init { this._rawData.Set("uri", value); }
     }
 
@@ -201,7 +266,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     [System::Obsolete("deprecated")]
     public string? Language
     {
-        get { return this._rawData.GetNullableClass<string>("language"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("language");
+        }
         init
         {
             if (value == null)
@@ -221,7 +290,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -238,7 +311,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public EpisodeRestrictionObject? Restrictions
     {
-        get { return this._rawData.GetNullableClass<EpisodeRestrictionObject>("restrictions"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<EpisodeRestrictionObject>("restrictions");
+        }
         init
         {
             if (value == null)
@@ -256,7 +333,11 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
     /// </summary>
     public ResumePointObject? ResumePoint
     {
-        get { return this._rawData.GetNullableClass<ResumePointObject>("resume_point"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ResumePointObject>("resume_point");
+        }
         init
         {
             if (value == null)

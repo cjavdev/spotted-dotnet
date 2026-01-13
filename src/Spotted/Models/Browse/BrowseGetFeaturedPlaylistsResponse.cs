@@ -20,7 +20,11 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : JsonModel
     /// </summary>
     public string? Message
     {
-        get { return this._rawData.GetNullableClass<string>("message"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("message");
+        }
         init
         {
             if (value == null)
@@ -34,7 +38,11 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : JsonModel
 
     public PagingPlaylistObject? Playlists
     {
-        get { return this._rawData.GetNullableClass<PagingPlaylistObject>("playlists"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<PagingPlaylistObject>("playlists");
+        }
         init
         {
             if (value == null)
@@ -54,7 +62,11 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

@@ -15,7 +15,11 @@ public sealed record class ExternalIDObject : JsonModel
     /// </summary>
     public string? Ean
     {
-        get { return this._rawData.GetNullableClass<string>("ean"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("ean");
+        }
         init
         {
             if (value == null)
@@ -32,7 +36,11 @@ public sealed record class ExternalIDObject : JsonModel
     /// </summary>
     public string? Isrc
     {
-        get { return this._rawData.GetNullableClass<string>("isrc"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("isrc");
+        }
         init
         {
             if (value == null)
@@ -52,7 +60,11 @@ public sealed record class ExternalIDObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -69,7 +81,11 @@ public sealed record class ExternalIDObject : JsonModel
     /// </summary>
     public string? Upc
     {
-        get { return this._rawData.GetNullableClass<string>("upc"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("upc");
+        }
         init
         {
             if (value == null)

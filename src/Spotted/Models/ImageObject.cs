@@ -15,7 +15,11 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public required long? Height
     {
-        get { return this._rawData.GetNullableStruct<long>("height"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("height");
+        }
         init { this._rawData.Set("height", value); }
     }
 
@@ -24,7 +28,11 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public required string Url
     {
-        get { return this._rawData.GetNotNullClass<string>("url"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("url");
+        }
         init { this._rawData.Set("url", value); }
     }
 
@@ -33,7 +41,11 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public required long? Width
     {
-        get { return this._rawData.GetNullableStruct<long>("width"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("width");
+        }
         init { this._rawData.Set("width", value); }
     }
 
@@ -45,7 +57,11 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

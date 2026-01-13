@@ -19,7 +19,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return this._rawData.GetNotNullClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("id");
+        }
         init { this._rawData.Set("id", value); }
     }
 
@@ -30,6 +34,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Albums.AlbumType>
             >("album_type");
@@ -45,7 +50,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<string> AvailableMarkets
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<string>>("available_markets"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("available_markets");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<string>>(
@@ -60,7 +69,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required ExternalUrlObject ExternalUrls
     {
-        get { return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls");
+        }
         init { this._rawData.Set("external_urls", value); }
     }
 
@@ -69,7 +82,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return this._rawData.GetNotNullClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
         init { this._rawData.Set("href", value); }
     }
 
@@ -78,7 +95,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<ImageObject>>(
@@ -94,7 +115,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required string Name
     {
-        get { return this._rawData.GetNotNullClass<string>("name"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
         init { this._rawData.Set("name", value); }
     }
 
@@ -103,7 +128,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required string ReleaseDate
     {
-        get { return this._rawData.GetNotNullClass<string>("release_date"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("release_date");
+        }
         init { this._rawData.Set("release_date", value); }
     }
 
@@ -117,6 +146,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Albums.ReleaseDatePrecision>
             >("release_date_precision");
@@ -129,7 +159,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required long TotalTracks
     {
-        get { return this._rawData.GetNotNullStruct<long>("total_tracks"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total_tracks");
+        }
         init { this._rawData.Set("total_tracks", value); }
     }
 
@@ -138,7 +172,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public JsonElement Type
     {
-        get { return this._rawData.GetNotNullStruct<JsonElement>("type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<JsonElement>("type");
+        }
         init { this._rawData.Set("type", value); }
     }
 
@@ -148,7 +186,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public required string Uri
     {
-        get { return this._rawData.GetNotNullClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("uri");
+        }
         init { this._rawData.Set("uri", value); }
     }
 
@@ -160,6 +202,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNullableStruct<ImmutableArray<SimplifiedArtistObject>>(
                 "artists"
             );
@@ -185,6 +228,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNullableStruct<ImmutableArray<CopyrightObject>>("copyrights");
         }
         init
@@ -206,7 +250,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public ExternalIDObject? ExternalIds
     {
-        get { return this._rawData.GetNullableClass<ExternalIDObject>("external_ids"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ExternalIDObject>("external_ids");
+        }
         init
         {
             if (value == null)
@@ -224,7 +272,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     [System::Obsolete("deprecated")]
     public IReadOnlyList<string>? Genres
     {
-        get { return this._rawData.GetNullableStruct<ImmutableArray<string>>("genres"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<string>>("genres");
+        }
         init
         {
             if (value == null)
@@ -244,7 +296,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public string? Label
     {
-        get { return this._rawData.GetNullableClass<string>("label"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("label");
+        }
         init
         {
             if (value == null)
@@ -262,7 +318,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public long? Popularity
     {
-        get { return this._rawData.GetNullableStruct<long>("popularity"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("popularity");
+        }
         init
         {
             if (value == null)
@@ -282,7 +342,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -299,7 +363,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public AlbumRestrictionObject? Restrictions
     {
-        get { return this._rawData.GetNullableClass<AlbumRestrictionObject>("restrictions"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<AlbumRestrictionObject>("restrictions");
+        }
         init
         {
             if (value == null)
@@ -316,7 +384,11 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// </summary>
     public AlbumRetrieveResponseTracks? Tracks
     {
-        get { return this._rawData.GetNullableClass<AlbumRetrieveResponseTracks>("tracks"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<AlbumRetrieveResponseTracks>("tracks");
+        }
         init
         {
             if (value == null)
@@ -522,7 +594,11 @@ public sealed record class AlbumRetrieveResponseTracks : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return this._rawData.GetNotNullClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
         init { this._rawData.Set("href", value); }
     }
 
@@ -531,7 +607,11 @@ public sealed record class AlbumRetrieveResponseTracks : JsonModel
     /// </summary>
     public required long Limit
     {
-        get { return this._rawData.GetNotNullStruct<long>("limit"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("limit");
+        }
         init { this._rawData.Set("limit", value); }
     }
 
@@ -540,7 +620,11 @@ public sealed record class AlbumRetrieveResponseTracks : JsonModel
     /// </summary>
     public required string? Next
     {
-        get { return this._rawData.GetNullableClass<string>("next"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("next");
+        }
         init { this._rawData.Set("next", value); }
     }
 
@@ -549,7 +633,11 @@ public sealed record class AlbumRetrieveResponseTracks : JsonModel
     /// </summary>
     public required long Offset
     {
-        get { return this._rawData.GetNotNullStruct<long>("offset"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("offset");
+        }
         init { this._rawData.Set("offset", value); }
     }
 
@@ -558,7 +646,11 @@ public sealed record class AlbumRetrieveResponseTracks : JsonModel
     /// </summary>
     public required string? Previous
     {
-        get { return this._rawData.GetNullableClass<string>("previous"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("previous");
+        }
         init { this._rawData.Set("previous", value); }
     }
 
@@ -567,7 +659,11 @@ public sealed record class AlbumRetrieveResponseTracks : JsonModel
     /// </summary>
     public required long Total
     {
-        get { return this._rawData.GetNotNullStruct<long>("total"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total");
+        }
         init { this._rawData.Set("total", value); }
     }
 
@@ -575,6 +671,7 @@ public sealed record class AlbumRetrieveResponseTracks : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNullableStruct<ImmutableArray<SimplifiedTrackObject>>("items");
         }
         init
@@ -599,7 +696,11 @@ public sealed record class AlbumRetrieveResponseTracks : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)

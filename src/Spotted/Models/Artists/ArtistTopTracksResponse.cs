@@ -13,7 +13,11 @@ public sealed record class ArtistTopTracksResponse : JsonModel
 {
     public required IReadOnlyList<TrackObject> Tracks
     {
-        get { return this._rawData.GetNotNullStruct<ImmutableArray<TrackObject>>("tracks"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<TrackObject>>("tracks");
+        }
         init
         {
             this._rawData.Set<ImmutableArray<TrackObject>>(

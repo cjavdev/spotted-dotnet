@@ -37,7 +37,11 @@ public sealed record class SearchQueryParams : ParamsBase
     /// </summary>
     public required string Q
     {
-        get { return this._rawQueryData.GetNotNullClass<string>("q"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("q");
+        }
         init { this._rawQueryData.Set("q", value); }
     }
 
@@ -50,6 +54,7 @@ public sealed record class SearchQueryParams : ParamsBase
     {
         get
         {
+            this._rawQueryData.Freeze();
             return this._rawQueryData.GetNotNullStruct<
                 ImmutableArray<ApiEnum<string, global::Spotted.Models.Search.Type>>
             >("type");
@@ -72,6 +77,7 @@ public sealed record class SearchQueryParams : ParamsBase
     {
         get
         {
+            this._rawQueryData.Freeze();
             return this._rawQueryData.GetNullableClass<ApiEnum<string, IncludeExternal>>(
                 "include_external"
             );
@@ -92,7 +98,11 @@ public sealed record class SearchQueryParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -116,7 +126,11 @@ public sealed record class SearchQueryParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return this._rawQueryData.GetNullableClass<string>("market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)
@@ -134,7 +148,11 @@ public sealed record class SearchQueryParams : ParamsBase
     /// </summary>
     public long? Offset
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("offset"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("offset");
+        }
         init
         {
             if (value == null)

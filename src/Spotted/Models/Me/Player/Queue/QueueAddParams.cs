@@ -20,7 +20,11 @@ public sealed record class QueueAddParams : ParamsBase
     /// </summary>
     public required string Uri
     {
-        get { return this._rawQueryData.GetNotNullClass<string>("uri"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("uri");
+        }
         init { this._rawQueryData.Set("uri", value); }
     }
 
@@ -30,7 +34,11 @@ public sealed record class QueueAddParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return this._rawQueryData.GetNullableClass<string>("device_id"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("device_id");
+        }
         init
         {
             if (value == null)

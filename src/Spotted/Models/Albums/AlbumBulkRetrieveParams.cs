@@ -20,7 +20,11 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
     /// </summary>
     public required string Ids
     {
-        get { return this._rawQueryData.GetNotNullClass<string>("ids"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("ids");
+        }
         init { this._rawQueryData.Set("ids", value); }
     }
 
@@ -36,7 +40,11 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return this._rawQueryData.GetNullableClass<string>("market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)

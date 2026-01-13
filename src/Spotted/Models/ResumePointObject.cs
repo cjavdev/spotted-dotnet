@@ -15,7 +15,11 @@ public sealed record class ResumePointObject : JsonModel
     /// </summary>
     public bool? FullyPlayed
     {
-        get { return this._rawData.GetNullableStruct<bool>("fully_played"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("fully_played");
+        }
         init
         {
             if (value == null)
@@ -35,7 +39,11 @@ public sealed record class ResumePointObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -52,7 +60,11 @@ public sealed record class ResumePointObject : JsonModel
     /// </summary>
     public long? ResumePositionMs
     {
-        get { return this._rawData.GetNullableStruct<long>("resume_position_ms"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("resume_position_ms");
+        }
         init
         {
             if (value == null)

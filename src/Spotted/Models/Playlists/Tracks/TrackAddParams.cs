@@ -33,7 +33,11 @@ public sealed record class TrackAddParams : ParamsBase
     /// </summary>
     public long? Position
     {
-        get { return this._rawBodyData.GetNullableStruct<long>("position"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<long>("position");
+        }
         init
         {
             if (value == null)
@@ -53,7 +57,11 @@ public sealed record class TrackAddParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -74,7 +82,11 @@ public sealed record class TrackAddParams : ParamsBase
     /// </summary>
     public IReadOnlyList<string>? Uris
     {
-        get { return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("uris"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("uris");
+        }
         init
         {
             if (value == null)

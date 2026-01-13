@@ -18,7 +18,11 @@ public sealed record class QueueGetResponse : JsonModel
     /// </summary>
     public CurrentlyPlaying? CurrentlyPlaying
     {
-        get { return this._rawData.GetNullableClass<CurrentlyPlaying>("currently_playing"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<CurrentlyPlaying>("currently_playing");
+        }
         init
         {
             if (value == null)
@@ -38,7 +42,11 @@ public sealed record class QueueGetResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -57,6 +65,7 @@ public sealed record class QueueGetResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNullableStruct<ImmutableArray<QueueGetResponseQueue>>("queue");
         }
         init

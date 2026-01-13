@@ -21,7 +21,11 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
     /// </summary>
     public ContextObject? Context
     {
-        get { return this._rawData.GetNullableClass<ContextObject>("context"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ContextObject>("context");
+        }
         init
         {
             if (value == null)
@@ -38,7 +42,11 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
     /// </summary>
     public DateTimeOffset? PlayedAt
     {
-        get { return this._rawData.GetNullableStruct<DateTimeOffset>("played_at"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<DateTimeOffset>("played_at");
+        }
         init
         {
             if (value == null)
@@ -58,7 +66,11 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -75,7 +87,11 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
     /// </summary>
     public TrackObject? Track
     {
-        get { return this._rawData.GetNullableClass<TrackObject>("track"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<TrackObject>("track");
+        }
         init
         {
             if (value == null)

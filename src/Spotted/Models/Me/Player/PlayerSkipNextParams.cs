@@ -21,7 +21,11 @@ public sealed record class PlayerSkipNextParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return this._rawQueryData.GetNullableClass<string>("device_id"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("device_id");
+        }
         init
         {
             if (value == null)

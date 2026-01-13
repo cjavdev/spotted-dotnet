@@ -18,7 +18,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return this._rawData.GetNullableClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("id");
+        }
         init
         {
             if (value == null)
@@ -35,7 +39,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public ExternalUrlObject? ExternalUrls
     {
-        get { return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls");
+        }
         init
         {
             if (value == null)
@@ -52,7 +60,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return this._rawData.GetNullableClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -72,7 +84,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -91,6 +107,7 @@ public sealed record class PlaylistUserObject : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNullableClass<ApiEnum<string, PlaylistUserObjectType>>("type");
         }
         init
@@ -110,7 +127,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return this._rawData.GetNullableClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)

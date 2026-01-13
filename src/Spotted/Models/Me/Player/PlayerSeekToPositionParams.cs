@@ -22,7 +22,11 @@ public sealed record class PlayerSeekToPositionParams : ParamsBase
     /// </summary>
     public required long PositionMs
     {
-        get { return this._rawQueryData.GetNotNullStruct<long>("position_ms"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullStruct<long>("position_ms");
+        }
         init { this._rawQueryData.Set("position_ms", value); }
     }
 
@@ -32,7 +36,11 @@ public sealed record class PlayerSeekToPositionParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return this._rawQueryData.GetNullableClass<string>("device_id"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("device_id");
+        }
         init
         {
             if (value == null)

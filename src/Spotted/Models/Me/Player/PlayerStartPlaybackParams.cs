@@ -29,7 +29,11 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return this._rawQueryData.GetNullableClass<string>("device_id"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("device_id");
+        }
         init
         {
             if (value == null)
@@ -47,7 +51,11 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public string? ContextUri
     {
-        get { return this._rawBodyData.GetNullableClass<string>("context_uri"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("context_uri");
+        }
         init
         {
             if (value == null)
@@ -70,6 +78,7 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     {
         get
         {
+            this._rawBodyData.Freeze();
             return this._rawBodyData.GetNullableClass<FrozenDictionary<string, JsonElement>>(
                 "offset"
             );
@@ -95,7 +104,11 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public long? PositionMs
     {
-        get { return this._rawBodyData.GetNullableStruct<long>("position_ms"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<long>("position_ms");
+        }
         init
         {
             if (value == null)
@@ -115,7 +128,11 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return this._rawBodyData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -133,7 +150,11 @@ public sealed record class PlayerStartPlaybackParams : ParamsBase
     /// </summary>
     public IReadOnlyList<string>? Uris
     {
-        get { return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("uris"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<ImmutableArray<string>>("uris");
+        }
         init
         {
             if (value == null)

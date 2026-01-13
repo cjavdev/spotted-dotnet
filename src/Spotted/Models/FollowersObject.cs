@@ -16,7 +16,11 @@ public sealed record class FollowersObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return this._rawData.GetNullableClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init { this._rawData.Set("href", value); }
     }
 
@@ -28,7 +32,11 @@ public sealed record class FollowersObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -45,7 +53,11 @@ public sealed record class FollowersObject : JsonModel
     /// </summary>
     public long? Total
     {
-        get { return this._rawData.GetNullableStruct<long>("total"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("total");
+        }
         init
         {
             if (value == null)

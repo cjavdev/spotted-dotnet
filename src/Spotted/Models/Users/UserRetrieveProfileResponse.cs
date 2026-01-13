@@ -21,7 +21,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return this._rawData.GetNullableClass<string>("id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("id");
+        }
         init
         {
             if (value == null)
@@ -38,7 +42,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// </summary>
     public string? DisplayName
     {
-        get { return this._rawData.GetNullableClass<string>("display_name"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("display_name");
+        }
         init { this._rawData.Set("display_name", value); }
     }
 
@@ -47,7 +55,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// </summary>
     public ExternalUrlObject? ExternalUrls
     {
-        get { return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls");
+        }
         init
         {
             if (value == null)
@@ -64,7 +76,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// </summary>
     public FollowersObject? Followers
     {
-        get { return this._rawData.GetNullableClass<FollowersObject>("followers"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<FollowersObject>("followers");
+        }
         init
         {
             if (value == null)
@@ -81,7 +97,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return this._rawData.GetNullableClass<string>("href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -98,7 +118,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// </summary>
     public IReadOnlyList<ImageObject>? Images
     {
-        get { return this._rawData.GetNullableStruct<ImmutableArray<ImageObject>>("images"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<ImageObject>>("images");
+        }
         init
         {
             if (value == null)
@@ -121,7 +145,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return this._rawData.GetNullableStruct<bool>("published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -140,6 +168,7 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     {
         get
         {
+            this._rawData.Freeze();
             return this._rawData.GetNullableClass<
                 ApiEnum<string, global::Spotted.Models.Users.Type>
             >("type");
@@ -161,7 +190,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return this._rawData.GetNullableClass<string>("uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)

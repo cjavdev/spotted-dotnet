@@ -23,7 +23,11 @@ public sealed record class FollowingCheckParams : ParamsBase
     /// </summary>
     public required string Ids
     {
-        get { return this._rawQueryData.GetNotNullClass<string>("ids"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("ids");
+        }
         init { this._rawQueryData.Set("ids", value); }
     }
 
@@ -34,6 +38,7 @@ public sealed record class FollowingCheckParams : ParamsBase
     {
         get
         {
+            this._rawQueryData.Freeze();
             return this._rawQueryData.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Me.Following.Type>
             >("type");

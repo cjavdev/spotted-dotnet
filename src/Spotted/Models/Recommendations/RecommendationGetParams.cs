@@ -29,7 +29,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -53,7 +57,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return this._rawQueryData.GetNullableClass<string>("market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)
@@ -73,7 +81,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxAcousticness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_acousticness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_acousticness");
+        }
         init
         {
             if (value == null)
@@ -93,7 +105,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxDanceability
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_danceability"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_danceability");
+        }
         init
         {
             if (value == null)
@@ -113,7 +129,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxDurationMs
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("max_duration_ms"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("max_duration_ms");
+        }
         init
         {
             if (value == null)
@@ -133,7 +153,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxEnergy
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_energy"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_energy");
+        }
         init
         {
             if (value == null)
@@ -153,7 +177,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxInstrumentalness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_instrumentalness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_instrumentalness");
+        }
         init
         {
             if (value == null)
@@ -173,7 +201,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxKey
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("max_key"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("max_key");
+        }
         init
         {
             if (value == null)
@@ -193,7 +225,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxLiveness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_liveness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_liveness");
+        }
         init
         {
             if (value == null)
@@ -213,7 +249,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxLoudness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_loudness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_loudness");
+        }
         init
         {
             if (value == null)
@@ -233,7 +273,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxMode
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("max_mode"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("max_mode");
+        }
         init
         {
             if (value == null)
@@ -253,7 +297,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxPopularity
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("max_popularity"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("max_popularity");
+        }
         init
         {
             if (value == null)
@@ -273,7 +321,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxSpeechiness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_speechiness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_speechiness");
+        }
         init
         {
             if (value == null)
@@ -293,7 +345,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxTempo
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_tempo"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_tempo");
+        }
         init
         {
             if (value == null)
@@ -313,7 +369,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MaxTimeSignature
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("max_time_signature"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("max_time_signature");
+        }
         init
         {
             if (value == null)
@@ -333,7 +393,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MaxValence
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("max_valence"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("max_valence");
+        }
         init
         {
             if (value == null)
@@ -353,7 +417,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinAcousticness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_acousticness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_acousticness");
+        }
         init
         {
             if (value == null)
@@ -373,7 +441,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinDanceability
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_danceability"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_danceability");
+        }
         init
         {
             if (value == null)
@@ -393,7 +465,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinDurationMs
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("min_duration_ms"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("min_duration_ms");
+        }
         init
         {
             if (value == null)
@@ -413,7 +489,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinEnergy
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_energy"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_energy");
+        }
         init
         {
             if (value == null)
@@ -433,7 +513,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinInstrumentalness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_instrumentalness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_instrumentalness");
+        }
         init
         {
             if (value == null)
@@ -453,7 +537,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinKey
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("min_key"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("min_key");
+        }
         init
         {
             if (value == null)
@@ -473,7 +561,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinLiveness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_liveness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_liveness");
+        }
         init
         {
             if (value == null)
@@ -493,7 +585,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinLoudness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_loudness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_loudness");
+        }
         init
         {
             if (value == null)
@@ -513,7 +609,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinMode
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("min_mode"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("min_mode");
+        }
         init
         {
             if (value == null)
@@ -533,7 +633,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinPopularity
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("min_popularity"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("min_popularity");
+        }
         init
         {
             if (value == null)
@@ -553,7 +657,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinSpeechiness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_speechiness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_speechiness");
+        }
         init
         {
             if (value == null)
@@ -573,7 +681,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinTempo
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_tempo"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_tempo");
+        }
         init
         {
             if (value == null)
@@ -593,7 +705,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? MinTimeSignature
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("min_time_signature"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("min_time_signature");
+        }
         init
         {
             if (value == null)
@@ -613,7 +729,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? MinValence
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("min_valence"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("min_valence");
+        }
         init
         {
             if (value == null)
@@ -633,7 +753,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public string? SeedArtists
     {
-        get { return this._rawQueryData.GetNullableClass<string>("seed_artists"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("seed_artists");
+        }
         init
         {
             if (value == null)
@@ -653,7 +777,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public string? SeedGenres
     {
-        get { return this._rawQueryData.GetNullableClass<string>("seed_genres"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("seed_genres");
+        }
         init
         {
             if (value == null)
@@ -673,7 +801,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public string? SeedTracks
     {
-        get { return this._rawQueryData.GetNullableClass<string>("seed_tracks"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("seed_tracks");
+        }
         init
         {
             if (value == null)
@@ -693,7 +825,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetAcousticness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_acousticness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_acousticness");
+        }
         init
         {
             if (value == null)
@@ -713,7 +849,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetDanceability
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_danceability"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_danceability");
+        }
         init
         {
             if (value == null)
@@ -730,7 +870,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetDurationMs
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("target_duration_ms"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("target_duration_ms");
+        }
         init
         {
             if (value == null)
@@ -750,7 +894,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetEnergy
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_energy"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_energy");
+        }
         init
         {
             if (value == null)
@@ -770,7 +918,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetInstrumentalness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_instrumentalness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_instrumentalness");
+        }
         init
         {
             if (value == null)
@@ -790,7 +942,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetKey
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("target_key"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("target_key");
+        }
         init
         {
             if (value == null)
@@ -810,7 +966,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetLiveness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_liveness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_liveness");
+        }
         init
         {
             if (value == null)
@@ -830,7 +990,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetLoudness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_loudness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_loudness");
+        }
         init
         {
             if (value == null)
@@ -850,7 +1014,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetMode
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("target_mode"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("target_mode");
+        }
         init
         {
             if (value == null)
@@ -870,7 +1038,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetPopularity
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("target_popularity"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("target_popularity");
+        }
         init
         {
             if (value == null)
@@ -890,7 +1062,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetSpeechiness
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_speechiness"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_speechiness");
+        }
         init
         {
             if (value == null)
@@ -907,7 +1083,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetTempo
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_tempo"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_tempo");
+        }
         init
         {
             if (value == null)
@@ -927,7 +1107,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public long? TargetTimeSignature
     {
-        get { return this._rawQueryData.GetNullableStruct<long>("target_time_signature"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("target_time_signature");
+        }
         init
         {
             if (value == null)
@@ -947,7 +1131,11 @@ public sealed record class RecommendationGetParams : ParamsBase
     /// </summary>
     public double? TargetValence
     {
-        get { return this._rawQueryData.GetNullableStruct<double>("target_valence"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<double>("target_valence");
+        }
         init
         {
             if (value == null)
