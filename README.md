@@ -1,12 +1,5 @@
 # Unofficial Spotify API Library
 
-> [!NOTE]
-> The Unofficial Spotify API Library is currently in **beta** and we're excited for you to experiment with it!
->
-> This library has not yet been exhaustively tested in production environments and may be missing some features you'd expect in a stable release. As we continue development, there may be breaking changes that require updates to your code.
->
-> **We'd love your feedback!** Please share any suggestions, bug reports, feature requests, or general thoughts by [filing an issue](https://www.github.com/cjavdev/spotted-dotnet/issues/new).
-
 The Unofficial Spotify SDK provides convenient access to the [Spotted REST API](https://spotted.stldocs.com?docs) from applications written in C#.
 
 It is generated with [Stainless](https://www.stainless.com/).
