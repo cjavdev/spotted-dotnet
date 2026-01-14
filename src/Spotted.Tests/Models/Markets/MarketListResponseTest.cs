@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models.Markets;
 
 namespace Spotted.Tests.Models.Markets;
@@ -26,8 +27,11 @@ public class MarketListResponseTest : TestBase
     {
         var model = new MarketListResponse { Markets = ["CA", "BR", "IT"] };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<MarketListResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<MarketListResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -37,8 +41,11 @@ public class MarketListResponseTest : TestBase
     {
         var model = new MarketListResponse { Markets = ["CA", "BR", "IT"] };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<MarketListResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<MarketListResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         List<string> expectedMarkets = ["CA", "BR", "IT"];
