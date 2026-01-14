@@ -69,7 +69,7 @@ public sealed record class RecommendationListAvailableGenreSeedsResponse : JsonM
     }
 
     [SetsRequiredMembers]
-    public RecommendationListAvailableGenreSeedsResponse(List<string> genres)
+    public RecommendationListAvailableGenreSeedsResponse(IReadOnlyList<string> genres)
         : this()
     {
         this.Genres = genres;

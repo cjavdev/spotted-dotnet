@@ -70,7 +70,7 @@ public sealed record class ArtistListRelatedArtistsResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public ArtistListRelatedArtistsResponse(List<ArtistObject> artists)
+    public ArtistListRelatedArtistsResponse(IReadOnlyList<ArtistObject> artists)
         : this()
     {
         this.Artists = artists;

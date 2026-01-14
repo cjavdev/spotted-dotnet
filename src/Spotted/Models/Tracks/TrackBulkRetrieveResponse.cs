@@ -65,7 +65,7 @@ public sealed record class TrackBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public TrackBulkRetrieveResponse(List<TrackObject> tracks)
+    public TrackBulkRetrieveResponse(IReadOnlyList<TrackObject> tracks)
         : this()
     {
         this.Tracks = tracks;

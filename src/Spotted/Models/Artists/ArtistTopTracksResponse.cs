@@ -63,7 +63,7 @@ public sealed record class ArtistTopTracksResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public ArtistTopTracksResponse(List<TrackObject> tracks)
+    public ArtistTopTracksResponse(IReadOnlyList<TrackObject> tracks)
         : this()
     {
         this.Tracks = tracks;

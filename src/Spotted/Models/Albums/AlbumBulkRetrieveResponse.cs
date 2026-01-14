@@ -69,7 +69,7 @@ public sealed record class AlbumBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public AlbumBulkRetrieveResponse(List<global::Spotted.Models.Albums.Album> albums)
+    public AlbumBulkRetrieveResponse(IReadOnlyList<global::Spotted.Models.Albums.Album> albums)
         : this()
     {
         this.Albums = albums;

@@ -65,7 +65,7 @@ public sealed record class ArtistBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public ArtistBulkRetrieveResponse(List<ArtistObject> artists)
+    public ArtistBulkRetrieveResponse(IReadOnlyList<ArtistObject> artists)
         : this()
     {
         this.Artists = artists;

@@ -65,7 +65,7 @@ public sealed record class EpisodeBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public EpisodeBulkRetrieveResponse(List<EpisodeObject> episodes)
+    public EpisodeBulkRetrieveResponse(IReadOnlyList<EpisodeObject> episodes)
         : this()
     {
         this.Episodes = episodes;

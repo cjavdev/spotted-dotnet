@@ -65,7 +65,7 @@ public sealed record class PlayerGetDevicesResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public PlayerGetDevicesResponse(List<DeviceObject> devices)
+    public PlayerGetDevicesResponse(IReadOnlyList<DeviceObject> devices)
         : this()
     {
         this.Devices = devices;
