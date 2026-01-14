@@ -67,7 +67,7 @@ public sealed record class ChapterBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public ChapterBulkRetrieveResponse(List<Chapter> chapters)
+    public ChapterBulkRetrieveResponse(IReadOnlyList<Chapter> chapters)
         : this()
     {
         this.Chapters = chapters;

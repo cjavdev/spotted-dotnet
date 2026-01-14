@@ -68,7 +68,7 @@ public sealed record class AudiobookBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public AudiobookBulkRetrieveResponse(List<Audiobook> audiobooks)
+    public AudiobookBulkRetrieveResponse(IReadOnlyList<Audiobook> audiobooks)
         : this()
     {
         this.Audiobooks = audiobooks;

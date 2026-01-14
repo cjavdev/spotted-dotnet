@@ -65,7 +65,7 @@ public sealed record class ShowBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public ShowBulkRetrieveResponse(List<ShowBase> shows)
+    public ShowBulkRetrieveResponse(IReadOnlyList<ShowBase> shows)
         : this()
     {
         this.Shows = shows;

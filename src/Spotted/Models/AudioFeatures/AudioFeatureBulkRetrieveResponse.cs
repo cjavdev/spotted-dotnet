@@ -72,7 +72,7 @@ public sealed record class AudioFeatureBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public AudioFeatureBulkRetrieveResponse(List<AudioFeature> audioFeatures)
+    public AudioFeatureBulkRetrieveResponse(IReadOnlyList<AudioFeature> audioFeatures)
         : this()
     {
         this.AudioFeatures = audioFeatures;
