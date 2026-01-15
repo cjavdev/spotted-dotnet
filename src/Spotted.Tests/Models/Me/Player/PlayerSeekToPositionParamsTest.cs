@@ -54,9 +54,7 @@ public class PlayerSeekToPositionParamsTest : TestBase
             DeviceID = "0d1841b0976bae2a3a310dd74c0f3df354899bc8",
         };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(
             new Uri(

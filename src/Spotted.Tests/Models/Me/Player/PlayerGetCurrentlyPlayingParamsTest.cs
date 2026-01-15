@@ -57,9 +57,7 @@ public class PlayerGetCurrentlyPlayingParamsTest : TestBase
             Market = "ES",
         };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(
             new Uri(

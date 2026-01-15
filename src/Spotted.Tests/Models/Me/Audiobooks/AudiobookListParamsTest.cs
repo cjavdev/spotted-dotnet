@@ -49,9 +49,7 @@ public class AudiobookListParamsTest : TestBase
     {
         AudiobookListParams parameters = new() { Limit = 10, Offset = 5 };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/audiobooks?limit=10&offset=5"), url);
     }

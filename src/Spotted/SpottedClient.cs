@@ -52,21 +52,7 @@ public sealed class SpottedClient : ISpottedClient
     }
 
     /// <inheritdoc/>
-    public string? ClientID
-    {
-        get { return this._options.ClientID; }
-        init { this._options.ClientID = value; }
-    }
-
-    /// <inheritdoc/>
-    public string? ClientSecret
-    {
-        get { return this._options.ClientSecret; }
-        init { this._options.ClientSecret = value; }
-    }
-
-    /// <inheritdoc/>
-    public string? AccessToken
+    public string AccessToken
     {
         get { return this._options.AccessToken; }
         init { this._options.AccessToken = value; }
@@ -266,21 +252,7 @@ public sealed class SpottedClientWithRawResponse : ISpottedClientWithRawResponse
     }
 
     /// <inheritdoc/>
-    public string? ClientID
-    {
-        get { return this._options.ClientID; }
-        init { this._options.ClientID = value; }
-    }
-
-    /// <inheritdoc/>
-    public string? ClientSecret
-    {
-        get { return this._options.ClientSecret; }
-        init { this._options.ClientSecret = value; }
-    }
-
-    /// <inheritdoc/>
-    public string? AccessToken
+    public string AccessToken
     {
         get { return this._options.AccessToken; }
         init { this._options.AccessToken = value; }

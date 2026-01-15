@@ -66,9 +66,7 @@ public class CategoryListParamsTest : TestBase
             Offset = 5,
         };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(
             new Uri("https://api.spotify.com/v1/browse/categories?limit=10&locale=sv_SE&offset=5"),
