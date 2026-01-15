@@ -26,9 +26,7 @@ public class ShowCheckParamsTest : TestBase
             Ids = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
         };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(
             new Uri(

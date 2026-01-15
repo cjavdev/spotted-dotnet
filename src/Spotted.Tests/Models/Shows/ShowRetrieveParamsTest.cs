@@ -46,9 +46,7 @@ public class ShowRetrieveParamsTest : TestBase
     {
         ShowRetrieveParams parameters = new() { ID = "38bS44xjbVVZ3No3ByF1dJ", Market = "ES" };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(
             new Uri("https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ?market=ES"),

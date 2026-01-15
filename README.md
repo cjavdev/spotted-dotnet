@@ -43,7 +43,7 @@ Configure the client using environment variables:
 ```csharp
 using Spotted;
 
-// Configured using the SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_ACCESS_TOKEN and SPOTTED_BASE_URL environment variables
+// Configured using the SPOTIFY_ACCESS_TOKEN and SPOTTED_BASE_URL environment variables
 SpottedClient client = new();
 ```
 
@@ -52,23 +52,17 @@ Or manually:
 ```csharp
 using Spotted;
 
-SpottedClient client = new()
-{
-    ClientID = "My Client ID",
-    ClientSecret = "My Client Secret",
-};
+SpottedClient client = new() { AccessToken = "My Access Token" };
 ```
 
 Or using a combination of the two approaches.
 
 See this table for the available options:
 
-| Property       | Environment variable    | Required | Default value                  |
-| -------------- | ----------------------- | -------- | ------------------------------ |
-| `ClientID`     | `SPOTIFY_CLIENT_ID`     | false    | -                              |
-| `ClientSecret` | `SPOTIFY_CLIENT_SECRET` | false    | -                              |
-| `AccessToken`  | `SPOTIFY_ACCESS_TOKEN`  | false    | -                              |
-| `BaseUrl`      | `SPOTTED_BASE_URL`      | true     | `"https://api.spotify.com/v1"` |
+| Property      | Environment variable   | Required | Default value                  |
+| ------------- | ---------------------- | -------- | ------------------------------ |
+| `AccessToken` | `SPOTIFY_ACCESS_TOKEN` | true     | -                              |
+| `BaseUrl`     | `SPOTTED_BASE_URL`     | true     | `"https://api.spotify.com/v1"` |
 
 ### Modifying configuration
 

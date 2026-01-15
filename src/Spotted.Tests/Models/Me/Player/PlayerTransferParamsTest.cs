@@ -63,9 +63,7 @@ public class PlayerTransferParamsTest : TestBase
     {
         PlayerTransferParams parameters = new() { DeviceIds = ["74ASZWbe4lXaubB36ztrGX"] };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/player"), url);
     }

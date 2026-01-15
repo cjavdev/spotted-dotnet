@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using Spotted.Exceptions;
 
 namespace Spotted.Core;
 
@@ -82,26 +83,14 @@ public struct ClientOptions()
     /// </summary>
     public TimeSpan? Timeout { get; set; }
 
-    Lazy<string?> _clientID = new(() => Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_ID"));
-    public string? ClientID
-    {
-        readonly get { return _clientID.Value; }
-        set { _clientID = new(() => value); }
-    }
-
-    Lazy<string?> _clientSecret = new(() =>
-        Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_SECRET")
-    );
-    public string? ClientSecret
-    {
-        readonly get { return _clientSecret.Value; }
-        set { _clientSecret = new(() => value); }
-    }
-
-    Lazy<string?> _accessToken = new(() =>
+    Lazy<string> _accessToken = new(() =>
         Environment.GetEnvironmentVariable("SPOTIFY_ACCESS_TOKEN")
+        ?? throw new SpottedInvalidDataException(
+            string.Format("{0} cannot be null", nameof(AccessToken)),
+            new ArgumentNullException(nameof(AccessToken))
+        )
     );
-    public string? AccessToken
+    public string AccessToken
     {
         readonly get { return _accessToken.Value; }
         set { _accessToken = new(() => value); }

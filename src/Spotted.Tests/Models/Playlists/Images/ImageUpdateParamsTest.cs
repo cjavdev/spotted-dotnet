@@ -32,9 +32,7 @@ public class ImageUpdateParamsTest : TestBase
             Body = Encoding.UTF8.GetBytes("text"),
         };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(
             new Uri("https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/images"),

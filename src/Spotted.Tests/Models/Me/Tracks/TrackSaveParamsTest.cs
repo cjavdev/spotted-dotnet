@@ -76,9 +76,7 @@ public class TrackSaveParamsTest : TestBase
     {
         TrackSaveParams parameters = new() { Ids = ["string"] };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/tracks"), url);
     }

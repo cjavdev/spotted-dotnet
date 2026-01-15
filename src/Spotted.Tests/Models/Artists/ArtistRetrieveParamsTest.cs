@@ -20,9 +20,7 @@ public class ArtistRetrieveParamsTest : TestBase
     {
         ArtistRetrieveParams parameters = new() { ID = "0TnOYISbd1XYRBk9myaseg" };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg"), url);
     }

@@ -66,9 +66,7 @@ public class PlayerListRecentlyPlayedParamsTest : TestBase
             Limit = 10,
         };
 
-        var url = parameters.Url(
-            new() { ClientID = "My Client ID", ClientSecret = "My Client Secret" }
-        );
+        var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
         Assert.Equal(
             new Uri(

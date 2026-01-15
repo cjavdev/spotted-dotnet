@@ -36,11 +36,7 @@ public interface ISpottedClient : IDisposable
     /// <inheritdoc cref="ClientOptions.Timeout" />
     TimeSpan? Timeout { get; init; }
 
-    string? ClientID { get; init; }
-
-    string? ClientSecret { get; init; }
-
-    string? AccessToken { get; init; }
+    string AccessToken { get; init; }
 
     /// <summary>
     /// Returns a view of this service that provides access to raw HTTP responses
@@ -108,11 +104,7 @@ public interface ISpottedClientWithRawResponse : IDisposable
     /// <inheritdoc cref="ClientOptions.Timeout" />
     TimeSpan? Timeout { get; init; }
 
-    string? ClientID { get; init; }
-
-    string? ClientSecret { get; init; }
-
-    string? AccessToken { get; init; }
+    string AccessToken { get; init; }
 
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.
