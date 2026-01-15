@@ -5,7 +5,7 @@
     <PackageTags>sdk;api;http;library</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Copyright>Copyright 2026 Spotted</Copyright>
-    <PackageProjectUrl>https://spotted.stldocs.com?docs</PackageProjectUrl>
+    <PackageProjectUrl>https://spotted.cjav.dev</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/cjavdev/spotted-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
