@@ -1,5 +1,76 @@
 # Changelog
 
+## 0.6.0 (2026-01-15)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.5.0...v0.6.0)
+
+### ⚠ BREAKING CHANGES
+
+* **client:** change casing of some identifiers
+* **client:** **Migration:** Only use all-caps in PascalCase for two-letter acronyms. Otherwise, use a capital letter for the first letter and lowercase letters for the rest.
+* **client:** add pagination
+
+### Features
+
+* **api:** manual updates ([5413eb1](https://github.com/cjavdev/spotted-dotnet/commit/5413eb1019560d5396328c71b21e7bfd1755d76a))
+* **api:** manual updates ([a9afbf4](https://github.com/cjavdev/spotted-dotnet/commit/a9afbf4fa05a35b4743b7cfdb8ab03fd21252ae7))
+* **api:** manual updates ([e103ed6](https://github.com/cjavdev/spotted-dotnet/commit/e103ed683a593ad054f7440e0703a1bf26f3a0fd))
+* **api:** manual updates ([d146c8d](https://github.com/cjavdev/spotted-dotnet/commit/d146c8d1082ca36a7ca6d7eeba4209c3362496ba))
+* **api:** turn off oauth ([d5fd3cd](https://github.com/cjavdev/spotted-dotnet/commit/d5fd3cd18f9ce182edd5540db5a738091ca2927e))
+* **client:** add helper functions for raw messages ([a7c7651](https://github.com/cjavdev/spotted-dotnet/commit/a7c76513fbd54f4af05fb632fb3ae6115e266a79))
+* **client:** add more `ToString` implementations ([834cf2c](https://github.com/cjavdev/spotted-dotnet/commit/834cf2c8b4e4d7d8f892f7082b537c0f2afe98b5))
+* **client:** add pagination ([3ff02eb](https://github.com/cjavdev/spotted-dotnet/commit/3ff02eb08a64a7f149544712d493afba581d8984))
+* **client:** support accessing raw responses ([b65d061](https://github.com/cjavdev/spotted-dotnet/commit/b65d0614af3e7770743bbff7b9e3a7bfe4a6f65b))
+
+
+### Bug Fixes
+
+* **ci:** run tests properly on windows ([d338698](https://github.com/cjavdev/spotted-dotnet/commit/d338698b7eaccfae814a4d828d69c6a26ee5c62c))
+* **client:** add missing serializer options ([8dbcfe0](https://github.com/cjavdev/spotted-dotnet/commit/8dbcfe02a89d7ed02eb593f655f5c8496c4bdb28))
+* **client:** bad deserialize call for void method ([43e731c](https://github.com/cjavdev/spotted-dotnet/commit/43e731cf66b9d701e5ec37aea7ed171c0070923d))
+* **client:** copy path params in params copy constructors ([f4af49a](https://github.com/cjavdev/spotted-dotnet/commit/f4af49afe2fc0015ec0f43e23c126fb07f34d8ac))
+* **client:** don't dispose `HttpResponse` for methods that directly return it ([9d6e6da](https://github.com/cjavdev/spotted-dotnet/commit/9d6e6da67fb3407e682744db533e5d0f22a1f4b5))
+* **client:** ensure deep immutability for deep array/dict structures ([2bfffa1](https://github.com/cjavdev/spotted-dotnet/commit/2bfffa1247fc61d6c29f514de08c59bdfbac81e5))
+* **client:** freeze models on property access ([69774cd](https://github.com/cjavdev/spotted-dotnet/commit/69774cddd2df0a6e0467789f35d9400df37e71df))
+* **client:** throw api enum errors as invalid data exception ([fc525b0](https://github.com/cjavdev/spotted-dotnet/commit/fc525b0a067cad3a4c19600b64513d8e9429baef))
+* **client:** use readonly type for param ([48b9312](https://github.com/cjavdev/spotted-dotnet/commit/48b9312ec1203a1a2aceda434fa9d071b3f92024))
+* **internal:** don't try to push symbols to nuget as separate package ([89d16b3](https://github.com/cjavdev/spotted-dotnet/commit/89d16b3fed635e8137d136b89faf4635c21499fa))
+* **internal:** remove redundant line ([c1c0eec](https://github.com/cjavdev/spotted-dotnet/commit/c1c0eec8ad54b6eae29a1f2b8cbc4bcc4aab002b))
+* **internal:** remove roundtrip tests for multipart params ([2e1b3cf](https://github.com/cjavdev/spotted-dotnet/commit/2e1b3cfb769971b62713269f40936d2859571eac))
+* **internal:** test nullability warnings ([34b7ec9](https://github.com/cjavdev/spotted-dotnet/commit/34b7ec9ae0d24a99d5e4fbf5af3e8d066de762b7))
+
+
+### Performance Improvements
+
+* **client:** add json deserialization caching ([2bfffa1](https://github.com/cjavdev/spotted-dotnet/commit/2bfffa1247fc61d6c29f514de08c59bdfbac81e5))
+
+
+### Chores
+
+* **client:** consistently use serializer options ([2b090b5](https://github.com/cjavdev/spotted-dotnet/commit/2b090b597e8893edfa0fa146e1545a2260baa299))
+* **client:** refactor union instantiation ([55dec9f](https://github.com/cjavdev/spotted-dotnet/commit/55dec9f19948704be6379a86603fc655d8efff4e))
+* **internal:** add files to sln so they show up in visual studio ([9cb64bc](https://github.com/cjavdev/spotted-dotnet/commit/9cb64bc232596c45e91c3861bd67ffb435ca701c))
+* **internal:** share csproj properties with dir build props ([34b7ec9](https://github.com/cjavdev/spotted-dotnet/commit/34b7ec9ae0d24a99d5e4fbf5af3e8d066de762b7))
+* **internal:** suppress a diagnostic ([8f86ff9](https://github.com/cjavdev/spotted-dotnet/commit/8f86ff9878cece4beb1657d3d15fa23251975c9f))
+* **internal:** turn off overzealous lints ([1906b65](https://github.com/cjavdev/spotted-dotnet/commit/1906b652f15abbbcd0667e52b025534d07035014))
+* **internal:** use better namespace aliases ([518f29c](https://github.com/cjavdev/spotted-dotnet/commit/518f29c9b11ac0028a32bd33cd50304e41203add))
+* **internal:** use better test examples ([34b7ec9](https://github.com/cjavdev/spotted-dotnet/commit/34b7ec9ae0d24a99d5e4fbf5af3e8d066de762b7))
+* **readme:** remove beta warning now that we're in ga ([d8f2ffb](https://github.com/cjavdev/spotted-dotnet/commit/d8f2ffb579cbece3ed6da2fbc088efd8495c5c95))
+* rename some identifiers ([41fe823](https://github.com/cjavdev/spotted-dotnet/commit/41fe823c2ea9ce2983251eef00459c16f5e6adcb))
+
+
+### Documentation
+
+* add raw responses to readme ([25283bb](https://github.com/cjavdev/spotted-dotnet/commit/25283bbbf60b619a88a561e005b77168a1a51629))
+
+
+### Refactors
+
+* **client:** add `JsonDictionary` identity methods ([f8d1ff9](https://github.com/cjavdev/spotted-dotnet/commit/f8d1ff9920485126b435cf4f53e3fd99bdac0840))
+* **client:** change casing of some identifiers ([745ac1e](https://github.com/cjavdev/spotted-dotnet/commit/745ac1e98e5e543abbcb645684c5e2e6b0f355a6))
+* **client:** make unions implement `ModelBase` ([a268072](https://github.com/cjavdev/spotted-dotnet/commit/a268072e83d455bed4b52899bad95d6514f00012))
+* **internal:** `JsonElement` constant construction ([66efad3](https://github.com/cjavdev/spotted-dotnet/commit/66efad367cd79a4fd94df50e596d5312da5016a0))
+
 ## 0.5.0 (2025-12-18)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.4.0...v0.5.0)
