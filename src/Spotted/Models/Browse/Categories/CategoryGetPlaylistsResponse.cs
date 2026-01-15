@@ -17,7 +17,11 @@ public sealed record class CategoryGetPlaylistsResponse : JsonModel
     /// </summary>
     public string? Message
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "message"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("message");
+        }
         init
         {
             if (value == null)
@@ -25,13 +29,17 @@ public sealed record class CategoryGetPlaylistsResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "message", value);
+            this._rawData.Set("message", value);
         }
     }
 
     public PagingPlaylistObject? Playlists
     {
-        get { return JsonModel.GetNullableClass<PagingPlaylistObject>(this.RawData, "playlists"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<PagingPlaylistObject>("playlists");
+        }
         init
         {
             if (value == null)
@@ -39,7 +47,7 @@ public sealed record class CategoryGetPlaylistsResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "playlists", value);
+            this._rawData.Set("playlists", value);
         }
     }
 
@@ -51,7 +59,11 @@ public sealed record class CategoryGetPlaylistsResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -59,7 +71,7 @@ public sealed record class CategoryGetPlaylistsResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -78,14 +90,14 @@ public sealed record class CategoryGetPlaylistsResponse : JsonModel
 
     public CategoryGetPlaylistsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     CategoryGetPlaylistsResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

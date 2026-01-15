@@ -15,14 +15,14 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -31,7 +31,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = PlaylistUserObjectType.User,
@@ -53,14 +53,14 @@ public class SimplifiedPlaylistObjectTest : TestBase
         string expectedID = "id";
         bool expectedCollaborative = true;
         string expectedDescription = "description";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         List<ImageObject> expectedImages =
         [
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -69,7 +69,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Owner expectedOwner = new()
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -90,7 +90,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.Equal(expectedID, model.ID);
         Assert.Equal(expectedCollaborative, model.Collaborative);
         Assert.Equal(expectedDescription, model.Description);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.NotNull(model.Images);
         Assert.Equal(expectedImages.Count, model.Images.Count);
@@ -115,14 +115,14 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -131,7 +131,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = PlaylistUserObjectType.User,
@@ -150,8 +150,11 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedPlaylistObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedPlaylistObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -164,14 +167,14 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -180,7 +183,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = PlaylistUserObjectType.User,
@@ -199,21 +202,24 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Uri = "uri",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedPlaylistObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedPlaylistObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
         bool expectedCollaborative = true;
         string expectedDescription = "description";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         List<ImageObject> expectedImages =
         [
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -222,7 +228,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Owner expectedOwner = new()
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -243,7 +249,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.Equal(expectedID, deserialized.ID);
         Assert.Equal(expectedCollaborative, deserialized.Collaborative);
         Assert.Equal(expectedDescription, deserialized.Description);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.NotNull(deserialized.Images);
         Assert.Equal(expectedImages.Count, deserialized.Images.Count);
@@ -268,14 +274,14 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = "id",
             Collaborative = true,
             Description = "description",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -284,7 +290,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             Owner = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = PlaylistUserObjectType.User,
@@ -317,7 +323,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("collaborative"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -356,7 +362,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = null,
             Collaborative = null,
             Description = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Images = null,
             Name = null,
@@ -374,7 +380,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("collaborative"));
         Assert.Null(model.Description);
         Assert.False(model.RawData.ContainsKey("description"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -405,7 +411,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ID = null,
             Collaborative = null,
             Description = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Images = null,
             Name = null,
@@ -429,7 +435,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -438,7 +444,7 @@ public class OwnerTest : TestBase
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedPublished = true;
         ApiEnum<string, PlaylistUserObjectType> expectedType = PlaylistUserObjectType.User;
@@ -446,7 +452,7 @@ public class OwnerTest : TestBase
         string expectedDisplayName = "display_name";
 
         Assert.Equal(expectedID, model.ID);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
@@ -460,7 +466,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -468,8 +474,8 @@ public class OwnerTest : TestBase
             DisplayName = "display_name",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Owner>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Owner>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -480,7 +486,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -488,12 +494,12 @@ public class OwnerTest : TestBase
             DisplayName = "display_name",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Owner>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Owner>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedPublished = true;
         ApiEnum<string, PlaylistUserObjectType> expectedType = PlaylistUserObjectType.User;
@@ -501,7 +507,7 @@ public class OwnerTest : TestBase
         string expectedDisplayName = "display_name";
 
         Assert.Equal(expectedID, deserialized.ID);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
@@ -515,7 +521,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -533,7 +539,7 @@ public class OwnerTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -562,7 +568,7 @@ public class OwnerTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,
@@ -571,7 +577,7 @@ public class OwnerTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -592,7 +598,7 @@ public class OwnerTest : TestBase
 
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,
@@ -608,7 +614,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -625,7 +631,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -641,7 +647,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -660,7 +666,7 @@ public class OwnerTest : TestBase
         var model = new Owner
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -690,8 +696,11 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1 { DisplayName = "display_name" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -701,8 +710,11 @@ public class IntersectionMember1Test : TestBase
     {
         var model = new IntersectionMember1 { DisplayName = "display_name" };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<IntersectionMember1>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedDisplayName = "display_name";

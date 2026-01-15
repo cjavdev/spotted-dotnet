@@ -18,7 +18,11 @@ public sealed record class CopyrightObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -26,7 +30,7 @@ public sealed record class CopyrightObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -35,7 +39,11 @@ public sealed record class CopyrightObject : JsonModel
     /// </summary>
     public string? Text
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "text"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("text");
+        }
         init
         {
             if (value == null)
@@ -43,7 +51,7 @@ public sealed record class CopyrightObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "text", value);
+            this._rawData.Set("text", value);
         }
     }
 
@@ -53,7 +61,11 @@ public sealed record class CopyrightObject : JsonModel
     /// </summary>
     public string? Type
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
         init
         {
             if (value == null)
@@ -61,7 +73,7 @@ public sealed record class CopyrightObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "type", value);
+            this._rawData.Set("type", value);
         }
     }
 
@@ -80,14 +92,14 @@ public sealed record class CopyrightObject : JsonModel
 
     public CopyrightObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     CopyrightObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

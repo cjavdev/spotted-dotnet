@@ -20,15 +20,18 @@ public sealed record class AudioFeatureRetrieveParams : ParamsBase
     public AudioFeatureRetrieveParams() { }
 
     public AudioFeatureRetrieveParams(AudioFeatureRetrieveParams audioFeatureRetrieveParams)
-        : base(audioFeatureRetrieveParams) { }
+        : base(audioFeatureRetrieveParams)
+    {
+        this.ID = audioFeatureRetrieveParams.ID;
+    }
 
     public AudioFeatureRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -38,8 +41,8 @@ public sealed record class AudioFeatureRetrieveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

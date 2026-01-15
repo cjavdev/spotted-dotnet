@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 using Spotted.Models.Artists;
 
@@ -17,7 +18,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -31,7 +32,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -51,7 +52,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Followers = new()
                 {
                     Href = "href",
@@ -65,7 +66,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -95,7 +96,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -109,7 +110,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -124,8 +125,11 @@ public class ArtistBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ArtistBulkRetrieveResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ArtistBulkRetrieveResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -140,7 +144,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -154,7 +158,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -169,8 +173,11 @@ public class ArtistBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ArtistBulkRetrieveResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ArtistBulkRetrieveResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         List<ArtistObject> expectedArtists =
@@ -178,7 +185,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Followers = new()
                 {
                     Href = "href",
@@ -192,7 +199,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -222,7 +229,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -236,7 +243,7 @@ public class ArtistBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,

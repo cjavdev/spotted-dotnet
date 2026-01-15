@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 using Spotted.Models.Recommendations;
 
@@ -39,7 +40,7 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -48,14 +49,14 @@ public class RecommendationGetResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -74,7 +75,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -86,21 +87,21 @@ public class RecommendationGetResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -108,7 +109,7 @@ public class RecommendationGetResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -146,7 +147,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -155,14 +156,14 @@ public class RecommendationGetResponseTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -181,7 +182,7 @@ public class RecommendationGetResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -193,21 +194,21 @@ public class RecommendationGetResponseTest : TestBase
                 DiscNumber = 0,
                 DurationMs = 0,
                 Explicit = true,
-                ExternalIDs = new()
+                ExternalIds = new()
                 {
                     Ean = "ean",
                     Isrc = "isrc",
                     Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = "type",
@@ -215,7 +216,7 @@ public class RecommendationGetResponseTest : TestBase
                 },
                 Name = "name",
                 Popularity = 0,
-                PreviewURL = "preview_url",
+                PreviewUrl = "preview_url",
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
@@ -270,7 +271,7 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -279,14 +280,14 @@ public class RecommendationGetResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -305,7 +306,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -317,21 +318,21 @@ public class RecommendationGetResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -339,7 +340,7 @@ public class RecommendationGetResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -350,8 +351,11 @@ public class RecommendationGetResponseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<RecommendationGetResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<RecommendationGetResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -388,7 +392,7 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -397,14 +401,14 @@ public class RecommendationGetResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -423,7 +427,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -435,21 +439,21 @@ public class RecommendationGetResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -457,7 +461,7 @@ public class RecommendationGetResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -468,8 +472,11 @@ public class RecommendationGetResponseTest : TestBase
             Published = true,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<RecommendationGetResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<RecommendationGetResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         List<Seed> expectedSeeds =
@@ -499,7 +506,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -508,14 +515,14 @@ public class RecommendationGetResponseTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -534,7 +541,7 @@ public class RecommendationGetResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -546,21 +553,21 @@ public class RecommendationGetResponseTest : TestBase
                 DiscNumber = 0,
                 DurationMs = 0,
                 Explicit = true,
-                ExternalIDs = new()
+                ExternalIds = new()
                 {
                     Ean = "ean",
                     Isrc = "isrc",
                     Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = "type",
@@ -568,7 +575,7 @@ public class RecommendationGetResponseTest : TestBase
                 },
                 Name = "name",
                 Popularity = 0,
-                PreviewURL = "preview_url",
+                PreviewUrl = "preview_url",
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
@@ -623,7 +630,7 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -632,14 +639,14 @@ public class RecommendationGetResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -658,7 +665,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -670,21 +677,21 @@ public class RecommendationGetResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -692,7 +699,7 @@ public class RecommendationGetResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -738,7 +745,7 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -747,14 +754,14 @@ public class RecommendationGetResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -773,7 +780,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -785,21 +792,21 @@ public class RecommendationGetResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -807,7 +814,7 @@ public class RecommendationGetResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -853,7 +860,7 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -862,14 +869,14 @@ public class RecommendationGetResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -888,7 +895,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -900,21 +907,21 @@ public class RecommendationGetResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -922,7 +929,7 @@ public class RecommendationGetResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -967,7 +974,7 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -976,14 +983,14 @@ public class RecommendationGetResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -1002,7 +1009,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -1014,21 +1021,21 @@ public class RecommendationGetResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -1036,7 +1043,7 @@ public class RecommendationGetResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -1085,7 +1092,7 @@ public class RecommendationGetResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -1094,14 +1101,14 @@ public class RecommendationGetResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -1120,7 +1127,7 @@ public class RecommendationGetResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -1132,21 +1139,21 @@ public class RecommendationGetResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -1154,7 +1161,7 @@ public class RecommendationGetResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -1218,8 +1225,8 @@ public class SeedTest : TestBase
             Type = "type",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Seed>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Seed>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -1238,8 +1245,8 @@ public class SeedTest : TestBase
             Type = "type",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Seed>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Seed>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "id";

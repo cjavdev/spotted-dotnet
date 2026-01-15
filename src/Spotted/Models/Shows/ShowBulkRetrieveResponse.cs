@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -14,8 +15,18 @@ public sealed record class ShowBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<ShowBase> Shows
     {
-        get { return JsonModel.GetNotNullClass<List<ShowBase>>(this.RawData, "shows"); }
-        init { JsonModel.Set(this._rawData, "shows", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ShowBase>>("shows");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<ShowBase>>(
+                "shows",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <inheritdoc/>
@@ -34,14 +45,14 @@ public sealed record class ShowBulkRetrieveResponse : JsonModel
 
     public ShowBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ShowBulkRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -54,7 +65,7 @@ public sealed record class ShowBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public ShowBulkRetrieveResponse(List<ShowBase> shows)
+    public ShowBulkRetrieveResponse(IReadOnlyList<ShowBase> shows)
         : this()
     {
         this.Shows = shows;

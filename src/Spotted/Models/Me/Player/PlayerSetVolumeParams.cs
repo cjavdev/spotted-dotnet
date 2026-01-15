@@ -20,8 +20,12 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
     /// </summary>
     public required long VolumePercent
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawQueryData, "volume_percent"); }
-        init { JsonModel.Set(this._rawQueryData, "volume_percent", value); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullStruct<long>("volume_percent");
+        }
+        init { this._rawQueryData.Set("volume_percent", value); }
     }
 
     /// <summary>
@@ -30,7 +34,11 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
     /// </summary>
     public string? DeviceID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "device_id"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("device_id");
+        }
         init
         {
             if (value == null)
@@ -38,7 +46,7 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "device_id", value);
+            this._rawQueryData.Set("device_id", value);
         }
     }
 
@@ -52,8 +60,8 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -63,8 +71,8 @@ public sealed record class PlayerSetVolumeParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

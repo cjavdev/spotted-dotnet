@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
@@ -24,14 +25,14 @@ public class PagingPlaylistObjectTest : TestBase
                     ID = "id",
                     Collaborative = true,
                     Description = "description",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -41,7 +42,7 @@ public class PagingPlaylistObjectTest : TestBase
                     Owner = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = PlaylistUserObjectType.User,
@@ -76,14 +77,14 @@ public class PagingPlaylistObjectTest : TestBase
                 ID = "id",
                 Collaborative = true,
                 Description = "description",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -92,7 +93,7 @@ public class PagingPlaylistObjectTest : TestBase
                 Owner = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = PlaylistUserObjectType.User,
@@ -146,14 +147,14 @@ public class PagingPlaylistObjectTest : TestBase
                     ID = "id",
                     Collaborative = true,
                     Description = "description",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -163,7 +164,7 @@ public class PagingPlaylistObjectTest : TestBase
                     Owner = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = PlaylistUserObjectType.User,
@@ -185,8 +186,11 @@ public class PagingPlaylistObjectTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PagingPlaylistObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<PagingPlaylistObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -209,14 +213,14 @@ public class PagingPlaylistObjectTest : TestBase
                     ID = "id",
                     Collaborative = true,
                     Description = "description",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -226,7 +230,7 @@ public class PagingPlaylistObjectTest : TestBase
                     Owner = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = PlaylistUserObjectType.User,
@@ -248,8 +252,11 @@ public class PagingPlaylistObjectTest : TestBase
             Published = true,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PagingPlaylistObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<PagingPlaylistObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -265,14 +272,14 @@ public class PagingPlaylistObjectTest : TestBase
                 ID = "id",
                 Collaborative = true,
                 Description = "description",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -281,7 +288,7 @@ public class PagingPlaylistObjectTest : TestBase
                 Owner = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = PlaylistUserObjectType.User,
@@ -335,14 +342,14 @@ public class PagingPlaylistObjectTest : TestBase
                     ID = "id",
                     Collaborative = true,
                     Description = "description",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -352,7 +359,7 @@ public class PagingPlaylistObjectTest : TestBase
                     Owner = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = PlaylistUserObjectType.User,

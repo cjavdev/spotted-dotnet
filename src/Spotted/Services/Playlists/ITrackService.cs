@@ -14,6 +14,12 @@ namespace Spotted.Services.Playlists;
 public interface ITrackService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    global::Spotted.Services.Playlists.ITrackServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -48,13 +54,13 @@ public interface ITrackService
     /// <summary>
     /// Get full details of the items of a playlist owned by a Spotify user.
     /// </summary>
-    Task<TrackListPageResponse> List(
+    Task<TrackListPage> List(
         TrackListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(TrackListParams, CancellationToken)"/>
-    Task<TrackListPageResponse> List(
+    Task<TrackListPage> List(
         string playlistID,
         TrackListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -85,6 +91,86 @@ public interface ITrackService
 
     /// <inheritdoc cref="Remove(TrackRemoveParams, CancellationToken)"/>
     Task<TrackRemoveResponse> Remove(
+        string playlistID,
+        TrackRemoveParams parameters,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="global::Spotted.Services.Playlists.ITrackService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface ITrackServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    global::Spotted.Services.Playlists.ITrackServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /playlists/{playlist_id}/tracks`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Playlists.ITrackService.Update(TrackUpdateParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<TrackUpdateResponse>> Update(
+        TrackUpdateParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Update(TrackUpdateParams, CancellationToken)"/>
+    Task<HttpResponse<TrackUpdateResponse>> Update(
+        string playlistID,
+        TrackUpdateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /playlists/{playlist_id}/tracks`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Playlists.ITrackService.List(TrackListParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<TrackListPage>> List(
+        TrackListParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="List(TrackListParams, CancellationToken)"/>
+    Task<HttpResponse<TrackListPage>> List(
+        string playlistID,
+        TrackListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `post /playlists/{playlist_id}/tracks`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Playlists.ITrackService.Add(TrackAddParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<TrackAddResponse>> Add(
+        TrackAddParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Add(TrackAddParams, CancellationToken)"/>
+    Task<HttpResponse<TrackAddResponse>> Add(
+        string playlistID,
+        TrackAddParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `delete /playlists/{playlist_id}/tracks`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Playlists.ITrackService.Remove(TrackRemoveParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<TrackRemoveResponse>> Remove(
+        TrackRemoveParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Remove(TrackRemoveParams, CancellationToken)"/>
+    Task<HttpResponse<TrackRemoveResponse>> Remove(
         string playlistID,
         TrackRemoveParams parameters,
         CancellationToken cancellationToken = default

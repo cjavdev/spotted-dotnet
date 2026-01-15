@@ -15,6 +15,12 @@ namespace Spotted.Services.Playlists;
 public interface IFollowerService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    IFollowerServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -55,6 +61,68 @@ public interface IFollowerService
 
     /// <inheritdoc cref="Unfollow(FollowerUnfollowParams, CancellationToken)"/>
     Task Unfollow(
+        string playlistID,
+        FollowerUnfollowParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="IFollowerService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IFollowerServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    IFollowerServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /playlists/{playlist_id}/followers/contains`, but is otherwise the
+    /// same as <see cref="IFollowerService.Check(FollowerCheckParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<List<bool>>> Check(
+        FollowerCheckParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Check(FollowerCheckParams, CancellationToken)"/>
+    Task<HttpResponse<List<bool>>> Check(
+        string playlistID,
+        FollowerCheckParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /playlists/{playlist_id}/followers`, but is otherwise the
+    /// same as <see cref="IFollowerService.Follow(FollowerFollowParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> Follow(
+        FollowerFollowParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Follow(FollowerFollowParams, CancellationToken)"/>
+    Task<HttpResponse> Follow(
+        string playlistID,
+        FollowerFollowParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `delete /playlists/{playlist_id}/followers`, but is otherwise the
+    /// same as <see cref="IFollowerService.Unfollow(FollowerUnfollowParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> Unfollow(
+        FollowerUnfollowParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Unfollow(FollowerUnfollowParams, CancellationToken)"/>
+    Task<HttpResponse> Unfollow(
         string playlistID,
         FollowerUnfollowParams? parameters = null,
         CancellationToken cancellationToken = default

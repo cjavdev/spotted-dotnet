@@ -23,7 +23,11 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
     /// </summary>
     public string? IncludeGroups
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "include_groups"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("include_groups");
+        }
         init
         {
             if (value == null)
@@ -31,7 +35,7 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "include_groups", value);
+            this._rawQueryData.Set("include_groups", value);
         }
     }
 
@@ -41,7 +45,11 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -49,7 +57,7 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "limit", value);
+            this._rawQueryData.Set("limit", value);
         }
     }
 
@@ -65,7 +73,11 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)
@@ -73,7 +85,7 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "market", value);
+            this._rawQueryData.Set("market", value);
         }
     }
 
@@ -83,7 +95,11 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
     /// </summary>
     public long? Offset
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "offset"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("offset");
+        }
         init
         {
             if (value == null)
@@ -91,22 +107,25 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "offset", value);
+            this._rawQueryData.Set("offset", value);
         }
     }
 
     public ArtistListAlbumsParams() { }
 
     public ArtistListAlbumsParams(ArtistListAlbumsParams artistListAlbumsParams)
-        : base(artistListAlbumsParams) { }
+        : base(artistListAlbumsParams)
+    {
+        this.ID = artistListAlbumsParams.ID;
+    }
 
     public ArtistListAlbumsParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -116,8 +135,8 @@ public sealed record class ArtistListAlbumsParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

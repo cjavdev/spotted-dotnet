@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
@@ -22,8 +23,11 @@ public class TrackRestrictionObjectTest : TestBase
     {
         var model = new TrackRestrictionObject { Published = true, Reason = "reason" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TrackRestrictionObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TrackRestrictionObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -33,8 +37,11 @@ public class TrackRestrictionObjectTest : TestBase
     {
         var model = new TrackRestrictionObject { Published = true, Reason = "reason" };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TrackRestrictionObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TrackRestrictionObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;

@@ -19,7 +19,11 @@ public sealed record class PlaylistListParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -27,7 +31,7 @@ public sealed record class PlaylistListParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "limit", value);
+            this._rawQueryData.Set("limit", value);
         }
     }
 
@@ -37,7 +41,11 @@ public sealed record class PlaylistListParams : ParamsBase
     /// </summary>
     public long? Offset
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "offset"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("offset");
+        }
         init
         {
             if (value == null)
@@ -45,7 +53,7 @@ public sealed record class PlaylistListParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "offset", value);
+            this._rawQueryData.Set("offset", value);
         }
     }
 
@@ -59,8 +67,8 @@ public sealed record class PlaylistListParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -70,8 +78,8 @@ public sealed record class PlaylistListParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

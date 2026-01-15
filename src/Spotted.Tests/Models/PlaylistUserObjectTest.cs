@@ -13,7 +13,7 @@ public class PlaylistUserObjectTest : TestBase
         var model = new PlaylistUserObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -21,14 +21,14 @@ public class PlaylistUserObjectTest : TestBase
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedPublished = true;
         ApiEnum<string, PlaylistUserObjectType> expectedType = PlaylistUserObjectType.User;
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, model.ID);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
@@ -41,15 +41,18 @@ public class PlaylistUserObjectTest : TestBase
         var model = new PlaylistUserObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlaylistUserObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<PlaylistUserObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -60,26 +63,29 @@ public class PlaylistUserObjectTest : TestBase
         var model = new PlaylistUserObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
             Uri = "uri",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<PlaylistUserObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<PlaylistUserObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedPublished = true;
         ApiEnum<string, PlaylistUserObjectType> expectedType = PlaylistUserObjectType.User;
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, deserialized.ID);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
@@ -92,7 +98,7 @@ public class PlaylistUserObjectTest : TestBase
         var model = new PlaylistUserObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = PlaylistUserObjectType.User,
@@ -109,7 +115,7 @@ public class PlaylistUserObjectTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -136,7 +142,7 @@ public class PlaylistUserObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,
@@ -145,7 +151,7 @@ public class PlaylistUserObjectTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -164,7 +170,7 @@ public class PlaylistUserObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,
@@ -190,9 +196,11 @@ public class PlaylistUserObjectTypeTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, PlaylistUserObjectType>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
@@ -216,7 +224,7 @@ public class PlaylistUserObjectTypeTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, PlaylistUserObjectType>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);

@@ -10,34 +10,80 @@ namespace Spotted.Services.Me.Player;
 /// <inheritdoc/>
 public sealed class QueueService : IQueueService
 {
+    readonly Lazy<IQueueServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public IQueueServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public IQueueService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
         return new QueueService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public QueueService(ISpottedClient client)
+    {
+        _client = client;
+
+        _withRawResponse = new(() => new QueueServiceWithRawResponse(client.WithRawResponse));
+    }
+
+    /// <inheritdoc/>
+    public Task Add(QueueAddParams parameters, CancellationToken cancellationToken = default)
+    {
+        return this.WithRawResponse.Add(parameters, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public async Task<QueueGetResponse> Get(
+        QueueGetParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Get(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class QueueServiceWithRawResponse : IQueueServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public IQueueServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    {
+        return new QueueServiceWithRawResponse(this._client.WithOptions(modifier));
+    }
+
+    public QueueServiceWithRawResponse(ISpottedClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
-    public async Task Add(QueueAddParams parameters, CancellationToken cancellationToken = default)
+    public Task<HttpResponse> Add(
+        QueueAddParams parameters,
+        CancellationToken cancellationToken = default
+    )
     {
         HttpRequest<QueueAddParams> request = new()
         {
             Method = HttpMethod.Post,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task<QueueGetResponse> Get(
+    public async Task<HttpResponse<QueueGetResponse>> Get(
         QueueGetParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -49,16 +95,20 @@ public sealed class QueueService : IQueueService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var queue = await response
-            .Deserialize<QueueGetResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            queue.Validate();
-        }
-        return queue;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var queue = await response
+                    .Deserialize<QueueGetResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    queue.Validate();
+                }
+                return queue;
+            }
+        );
     }
 }

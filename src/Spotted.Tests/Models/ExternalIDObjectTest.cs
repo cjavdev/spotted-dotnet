@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
@@ -38,8 +39,11 @@ public class ExternalIDObjectTest : TestBase
             Upc = "upc",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExternalIDObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ExternalIDObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -55,8 +59,11 @@ public class ExternalIDObjectTest : TestBase
             Upc = "upc",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExternalIDObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ExternalIDObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedEan = "ean";

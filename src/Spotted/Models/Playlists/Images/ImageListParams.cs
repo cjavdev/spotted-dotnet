@@ -18,15 +18,18 @@ public sealed record class ImageListParams : ParamsBase
     public ImageListParams() { }
 
     public ImageListParams(ImageListParams imageListParams)
-        : base(imageListParams) { }
+        : base(imageListParams)
+    {
+        this.PlaylistID = imageListParams.PlaylistID;
+    }
 
     public ImageListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -36,8 +39,8 @@ public sealed record class ImageListParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

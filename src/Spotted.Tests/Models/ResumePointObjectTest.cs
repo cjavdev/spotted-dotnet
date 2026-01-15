@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
@@ -34,8 +35,11 @@ public class ResumePointObjectTest : TestBase
             ResumePositionMs = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ResumePointObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ResumePointObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -50,8 +54,11 @@ public class ResumePointObjectTest : TestBase
             ResumePositionMs = 0,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ResumePointObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ResumePointObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         bool expectedFullyPlayed = true;

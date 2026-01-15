@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Spotted.Models.Playlists.Tracks;
 /// </summary>
 public sealed record class TrackRemoveParams : ParamsBase
 {
-    readonly FreezableDictionary<string, JsonElement> _rawBodyData = [];
+    readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
     {
         get { return this._rawBodyData.Freeze(); }
@@ -33,12 +34,18 @@ public sealed record class TrackRemoveParams : ParamsBase
     {
         get
         {
-            return JsonModel.GetNotNullClass<List<global::Spotted.Models.Playlists.Tracks.Track>>(
-                this.RawBodyData,
-                "tracks"
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNotNullStruct<
+                ImmutableArray<global::Spotted.Models.Playlists.Tracks.Track>
+            >("tracks");
+        }
+        init
+        {
+            this._rawBodyData.Set<ImmutableArray<global::Spotted.Models.Playlists.Tracks.Track>>(
+                "tracks",
+                ImmutableArray.ToImmutableArray(value)
             );
         }
-        init { JsonModel.Set(this._rawBodyData, "tracks", value); }
     }
 
     /// <summary>
@@ -49,7 +56,11 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -57,7 +68,7 @@ public sealed record class TrackRemoveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "published", value);
+            this._rawBodyData.Set("published", value);
         }
     }
 
@@ -68,7 +79,11 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// </summary>
     public string? SnapshotID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawBodyData, "snapshot_id"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("snapshot_id");
+        }
         init
         {
             if (value == null)
@@ -76,7 +91,7 @@ public sealed record class TrackRemoveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "snapshot_id", value);
+            this._rawBodyData.Set("snapshot_id", value);
         }
     }
 
@@ -85,7 +100,9 @@ public sealed record class TrackRemoveParams : ParamsBase
     public TrackRemoveParams(TrackRemoveParams trackRemoveParams)
         : base(trackRemoveParams)
     {
-        this._rawBodyData = [.. trackRemoveParams._rawBodyData];
+        this.PlaylistID = trackRemoveParams.PlaylistID;
+
+        this._rawBodyData = new(trackRemoveParams._rawBodyData);
     }
 
     public TrackRemoveParams(
@@ -94,9 +111,9 @@ public sealed record class TrackRemoveParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -107,9 +124,9 @@ public sealed record class TrackRemoveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 #pragma warning restore CS8618
 
@@ -141,7 +158,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     internal override HttpContent? BodyContent()
     {
         return new StringContent(
-            JsonSerializer.Serialize(this.RawBodyData),
+            JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
         );
@@ -167,7 +184,11 @@ public sealed record class Track : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)
@@ -175,7 +196,7 @@ public sealed record class Track : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "uri", value);
+            this._rawData.Set("uri", value);
         }
     }
 
@@ -192,14 +213,14 @@ public sealed record class Track : JsonModel
 
     public Track(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     Track(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

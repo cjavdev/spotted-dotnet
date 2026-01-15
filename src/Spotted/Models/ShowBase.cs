@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -17,8 +18,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
-        init { JsonModel.Set(this._rawData, "id", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("id");
+        }
+        init { this._rawData.Set("id", value); }
     }
 
     /// <summary>
@@ -27,8 +32,18 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required IReadOnlyList<string> AvailableMarkets
     {
-        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "available_markets"); }
-        init { JsonModel.Set(this._rawData, "available_markets", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("available_markets");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<string>>(
+                "available_markets",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -36,8 +51,18 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required IReadOnlyList<CopyrightObject> Copyrights
     {
-        get { return JsonModel.GetNotNullClass<List<CopyrightObject>>(this.RawData, "copyrights"); }
-        init { JsonModel.Set(this._rawData, "copyrights", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<CopyrightObject>>("copyrights");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<CopyrightObject>>(
+                "copyrights",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -46,8 +71,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required string Description
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "description"); }
-        init { JsonModel.Set(this._rawData, "description", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("description");
+        }
+        init { this._rawData.Set("description", value); }
     }
 
     /// <summary>
@@ -56,17 +85,25 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required bool Explicit
     {
-        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "explicit"); }
-        init { JsonModel.Set(this._rawData, "explicit", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<bool>("explicit");
+        }
+        init { this._rawData.Set("explicit", value); }
     }
 
     /// <summary>
     /// External URLs for this show.
     /// </summary>
-    public required ExternalURLObject ExternalURLs
+    public required ExternalUrlObject ExternalUrls
     {
-        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
-        init { JsonModel.Set(this._rawData, "external_urls", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls");
+        }
+        init { this._rawData.Set("external_urls", value); }
     }
 
     /// <summary>
@@ -74,17 +111,25 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
-        init { JsonModel.Set(this._rawData, "href", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
+        init { this._rawData.Set("href", value); }
     }
 
     /// <summary>
     /// A description of the show. This field may contain HTML tags.
     /// </summary>
-    public required string HTMLDescription
+    public required string HtmlDescription
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "html_description"); }
-        init { JsonModel.Set(this._rawData, "html_description", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("html_description");
+        }
+        init { this._rawData.Set("html_description", value); }
     }
 
     /// <summary>
@@ -92,8 +137,18 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
-        init { JsonModel.Set(this._rawData, "images", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<ImageObject>>(
+                "images",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -102,8 +157,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required bool IsExternallyHosted
     {
-        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "is_externally_hosted"); }
-        init { JsonModel.Set(this._rawData, "is_externally_hosted", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<bool>("is_externally_hosted");
+        }
+        init { this._rawData.Set("is_externally_hosted", value); }
     }
 
     /// <summary>
@@ -112,8 +171,18 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required IReadOnlyList<string> Languages
     {
-        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "languages"); }
-        init { JsonModel.Set(this._rawData, "languages", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("languages");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<string>>(
+                "languages",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -121,8 +190,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required string MediaType
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "media_type"); }
-        init { JsonModel.Set(this._rawData, "media_type", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("media_type");
+        }
+        init { this._rawData.Set("media_type", value); }
     }
 
     /// <summary>
@@ -130,8 +203,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required string Name
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
-        init { JsonModel.Set(this._rawData, "name", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
     }
 
     /// <summary>
@@ -139,8 +216,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required string Publisher
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "publisher"); }
-        init { JsonModel.Set(this._rawData, "publisher", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("publisher");
+        }
+        init { this._rawData.Set("publisher", value); }
     }
 
     /// <summary>
@@ -148,8 +229,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required long TotalEpisodes
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total_episodes"); }
-        init { JsonModel.Set(this._rawData, "total_episodes", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total_episodes");
+        }
+        init { this._rawData.Set("total_episodes", value); }
     }
 
     /// <summary>
@@ -157,8 +242,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public JsonElement Type
     {
-        get { return JsonModel.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
-        init { JsonModel.Set(this._rawData, "type", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<JsonElement>("type");
+        }
+        init { this._rawData.Set("type", value); }
     }
 
     /// <summary>
@@ -167,8 +256,12 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public required string Uri
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "uri"); }
-        init { JsonModel.Set(this._rawData, "uri", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("uri");
+        }
+        init { this._rawData.Set("uri", value); }
     }
 
     /// <summary>
@@ -179,7 +272,11 @@ public sealed record class ShowBase : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -187,7 +284,7 @@ public sealed record class ShowBase : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -202,9 +299,9 @@ public sealed record class ShowBase : JsonModel
         }
         _ = this.Description;
         _ = this.Explicit;
-        this.ExternalURLs.Validate();
+        this.ExternalUrls.Validate();
         _ = this.Href;
-        _ = this.HTMLDescription;
+        _ = this.HtmlDescription;
         foreach (var item in this.Images)
         {
             item.Validate();
@@ -215,7 +312,7 @@ public sealed record class ShowBase : JsonModel
         _ = this.Name;
         _ = this.Publisher;
         _ = this.TotalEpisodes;
-        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.Deserialize<JsonElement>("\"show\"")))
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("show")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -225,7 +322,7 @@ public sealed record class ShowBase : JsonModel
 
     public ShowBase()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        this.Type = JsonSerializer.SerializeToElement("show");
     }
 
     public ShowBase(ShowBase showBase)
@@ -233,16 +330,16 @@ public sealed record class ShowBase : JsonModel
 
     public ShowBase(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"show\"");
+        this.Type = JsonSerializer.SerializeToElement("show");
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ShowBase(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

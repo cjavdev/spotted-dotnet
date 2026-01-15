@@ -15,7 +15,7 @@ public class TrackServiceTest : TestBase
     public async Task Check_Works()
     {
         await this.client.Me.Tracks.Check(
-            new() { IDs = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B" },
+            new() { Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B" },
             TestContext.Current.CancellationToken
         );
     }
@@ -30,7 +30,7 @@ public class TrackServiceTest : TestBase
     public async Task Save_Works()
     {
         await this.client.Me.Tracks.Save(
-            new() { IDs = ["string"] },
+            new() { Ids = ["string"] },
             TestContext.Current.CancellationToken
         );
     }

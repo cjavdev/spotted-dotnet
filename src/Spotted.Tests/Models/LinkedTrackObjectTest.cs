@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
@@ -11,7 +12,7 @@ public class LinkedTrackObjectTest : TestBase
         var model = new LinkedTrackObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
@@ -19,14 +20,14 @@ public class LinkedTrackObjectTest : TestBase
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedPublished = true;
         string expectedType = "type";
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, model.ID);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
@@ -39,15 +40,18 @@ public class LinkedTrackObjectTest : TestBase
         var model = new LinkedTrackObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<LinkedTrackObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<LinkedTrackObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -58,26 +62,29 @@ public class LinkedTrackObjectTest : TestBase
         var model = new LinkedTrackObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
             Uri = "uri",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<LinkedTrackObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<LinkedTrackObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedPublished = true;
         string expectedType = "type";
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, deserialized.ID);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
@@ -90,7 +97,7 @@ public class LinkedTrackObjectTest : TestBase
         var model = new LinkedTrackObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
@@ -107,7 +114,7 @@ public class LinkedTrackObjectTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -134,7 +141,7 @@ public class LinkedTrackObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,
@@ -143,7 +150,7 @@ public class LinkedTrackObjectTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -162,7 +169,7 @@ public class LinkedTrackObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,

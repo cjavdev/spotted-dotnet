@@ -16,8 +16,12 @@ public sealed record class FollowersObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
-        init { JsonModel.Set(this._rawData, "href", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
+        init { this._rawData.Set("href", value); }
     }
 
     /// <summary>
@@ -28,7 +32,11 @@ public sealed record class FollowersObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -36,7 +44,7 @@ public sealed record class FollowersObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -45,7 +53,11 @@ public sealed record class FollowersObject : JsonModel
     /// </summary>
     public long? Total
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "total"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("total");
+        }
         init
         {
             if (value == null)
@@ -53,7 +65,7 @@ public sealed record class FollowersObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "total", value);
+            this._rawData.Set("total", value);
         }
     }
 
@@ -72,14 +84,14 @@ public sealed record class FollowersObject : JsonModel
 
     public FollowersObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     FollowersObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

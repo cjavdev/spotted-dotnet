@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -15,8 +16,12 @@ public sealed record class PagingPlaylistObject : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
-        init { JsonModel.Set(this._rawData, "href", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
+        init { this._rawData.Set("href", value); }
     }
 
     /// <summary>
@@ -24,8 +29,12 @@ public sealed record class PagingPlaylistObject : JsonModel
     /// </summary>
     public required long Limit
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "limit"); }
-        init { JsonModel.Set(this._rawData, "limit", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("limit");
+        }
+        init { this._rawData.Set("limit", value); }
     }
 
     /// <summary>
@@ -33,8 +42,12 @@ public sealed record class PagingPlaylistObject : JsonModel
     /// </summary>
     public required string? Next
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
-        init { JsonModel.Set(this._rawData, "next", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("next");
+        }
+        init { this._rawData.Set("next", value); }
     }
 
     /// <summary>
@@ -42,8 +55,12 @@ public sealed record class PagingPlaylistObject : JsonModel
     /// </summary>
     public required long Offset
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "offset"); }
-        init { JsonModel.Set(this._rawData, "offset", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("offset");
+        }
+        init { this._rawData.Set("offset", value); }
     }
 
     /// <summary>
@@ -51,8 +68,12 @@ public sealed record class PagingPlaylistObject : JsonModel
     /// </summary>
     public required string? Previous
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "previous"); }
-        init { JsonModel.Set(this._rawData, "previous", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("previous");
+        }
+        init { this._rawData.Set("previous", value); }
     }
 
     /// <summary>
@@ -60,16 +81,20 @@ public sealed record class PagingPlaylistObject : JsonModel
     /// </summary>
     public required long Total
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total"); }
-        init { JsonModel.Set(this._rawData, "total", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total");
+        }
+        init { this._rawData.Set("total", value); }
     }
 
     public IReadOnlyList<SimplifiedPlaylistObject>? Items
     {
         get
         {
-            return JsonModel.GetNullableClass<List<SimplifiedPlaylistObject>>(
-                this.RawData,
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<SimplifiedPlaylistObject>>(
                 "items"
             );
         }
@@ -80,7 +105,10 @@ public sealed record class PagingPlaylistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "items", value);
+            this._rawData.Set<ImmutableArray<SimplifiedPlaylistObject>?>(
+                "items",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -92,7 +120,11 @@ public sealed record class PagingPlaylistObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -100,7 +132,7 @@ public sealed record class PagingPlaylistObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -127,14 +159,14 @@ public sealed record class PagingPlaylistObject : JsonModel
 
     public PagingPlaylistObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PagingPlaylistObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

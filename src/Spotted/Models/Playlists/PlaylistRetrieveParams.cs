@@ -25,7 +25,11 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
     /// </summary>
     public string? AdditionalTypes
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "additional_types"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("additional_types");
+        }
         init
         {
             if (value == null)
@@ -33,7 +37,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "additional_types", value);
+            this._rawQueryData.Set("additional_types", value);
         }
     }
 
@@ -50,7 +54,11 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
     /// </summary>
     public string? Fields
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "fields"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("fields");
+        }
         init
         {
             if (value == null)
@@ -58,7 +66,7 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "fields", value);
+            this._rawQueryData.Set("fields", value);
         }
     }
 
@@ -74,7 +82,11 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)
@@ -82,22 +94,25 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "market", value);
+            this._rawQueryData.Set("market", value);
         }
     }
 
     public PlaylistRetrieveParams() { }
 
     public PlaylistRetrieveParams(PlaylistRetrieveParams playlistRetrieveParams)
-        : base(playlistRetrieveParams) { }
+        : base(playlistRetrieveParams)
+    {
+        this.PlaylistID = playlistRetrieveParams.PlaylistID;
+    }
 
     public PlaylistRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -107,8 +122,8 @@ public sealed record class PlaylistRetrieveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

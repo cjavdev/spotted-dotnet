@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -16,12 +17,10 @@ public sealed record class FollowingBulkRetrieveResponse : JsonModel
     {
         get
         {
-            return JsonModel.GetNotNullClass<FollowingBulkRetrieveResponseArtists>(
-                this.RawData,
-                "artists"
-            );
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<FollowingBulkRetrieveResponseArtists>("artists");
         }
-        init { JsonModel.Set(this._rawData, "artists", value); }
+        init { this._rawData.Set("artists", value); }
     }
 
     /// <inheritdoc/>
@@ -39,14 +38,14 @@ public sealed record class FollowingBulkRetrieveResponse : JsonModel
 
     public FollowingBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     FollowingBulkRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -87,7 +86,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public Cursors? Cursors
     {
-        get { return JsonModel.GetNullableClass<Cursors>(this.RawData, "cursors"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Cursors>("cursors");
+        }
         init
         {
             if (value == null)
@@ -95,7 +98,7 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "cursors", value);
+            this._rawData.Set("cursors", value);
         }
     }
 
@@ -104,7 +107,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -112,13 +119,17 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "href", value);
+            this._rawData.Set("href", value);
         }
     }
 
     public IReadOnlyList<ArtistObject>? Items
     {
-        get { return JsonModel.GetNullableClass<List<ArtistObject>>(this.RawData, "items"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<ArtistObject>>("items");
+        }
         init
         {
             if (value == null)
@@ -126,7 +137,10 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "items", value);
+            this._rawData.Set<ImmutableArray<ArtistObject>?>(
+                "items",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -135,7 +149,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public long? Limit
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "limit"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -143,7 +161,7 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "limit", value);
+            this._rawData.Set("limit", value);
         }
     }
 
@@ -152,7 +170,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public string? Next
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("next");
+        }
         init
         {
             if (value == null)
@@ -160,7 +182,7 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "next", value);
+            this._rawData.Set("next", value);
         }
     }
 
@@ -172,7 +194,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -180,7 +206,7 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -189,7 +215,11 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
     /// </summary>
     public long? Total
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "total"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("total");
+        }
         init
         {
             if (value == null)
@@ -197,7 +227,7 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "total", value);
+            this._rawData.Set("total", value);
         }
     }
 
@@ -225,14 +255,14 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
 
     public FollowingBulkRetrieveResponseArtists(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     FollowingBulkRetrieveResponseArtists(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -265,7 +295,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public string? After
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "after"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("after");
+        }
         init
         {
             if (value == null)
@@ -273,7 +307,7 @@ public sealed record class Cursors : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "after", value);
+            this._rawData.Set("after", value);
         }
     }
 
@@ -282,7 +316,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public string? Before
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "before"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("before");
+        }
         init
         {
             if (value == null)
@@ -290,7 +328,7 @@ public sealed record class Cursors : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "before", value);
+            this._rawData.Set("before", value);
         }
     }
 
@@ -302,7 +340,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -310,7 +352,7 @@ public sealed record class Cursors : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -329,14 +371,14 @@ public sealed record class Cursors : JsonModel
 
     public Cursors(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     Cursors(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

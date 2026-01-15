@@ -24,8 +24,11 @@ public class AlbumRestrictionObjectTest : TestBase
     {
         var model = new AlbumRestrictionObject { Published = true, Reason = Reason.Market };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AlbumRestrictionObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<AlbumRestrictionObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -35,8 +38,11 @@ public class AlbumRestrictionObjectTest : TestBase
     {
         var model = new AlbumRestrictionObject { Published = true, Reason = Reason.Market };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AlbumRestrictionObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<AlbumRestrictionObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;
@@ -120,9 +126,11 @@ public class ReasonTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, Reason>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
@@ -148,7 +156,7 @@ public class ReasonTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, Reason>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);

@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 using Spotted.Models.Me.Player;
 
@@ -11,20 +12,20 @@ public class ContextObjectTest : TestBase
     {
         var model = new ContextObject
         {
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
             Uri = "uri",
         };
 
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedPublished = true;
         string expectedType = "type";
         string expectedUri = "uri";
 
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedType, model.Type);
@@ -36,15 +37,18 @@ public class ContextObjectTest : TestBase
     {
         var model = new ContextObject
         {
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ContextObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ContextObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -54,24 +58,27 @@ public class ContextObjectTest : TestBase
     {
         var model = new ContextObject
         {
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
             Uri = "uri",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ContextObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ContextObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedPublished = true;
         string expectedType = "type";
         string expectedUri = "uri";
 
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedType, deserialized.Type);
@@ -83,7 +90,7 @@ public class ContextObjectTest : TestBase
     {
         var model = new ContextObject
         {
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
@@ -98,7 +105,7 @@ public class ContextObjectTest : TestBase
     {
         var model = new ContextObject { };
 
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -124,14 +131,14 @@ public class ContextObjectTest : TestBase
         var model = new ContextObject
         {
             // Null should be interpreted as omitted for these properties
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,
             Uri = null,
         };
 
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -149,7 +156,7 @@ public class ContextObjectTest : TestBase
         var model = new ContextObject
         {
             // Null should be interpreted as omitted for these properties
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             Published = null,
             Type = null,

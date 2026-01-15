@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,8 +13,18 @@ public sealed record class ArtistTopTracksResponse : JsonModel
 {
     public required IReadOnlyList<TrackObject> Tracks
     {
-        get { return JsonModel.GetNotNullClass<List<TrackObject>>(this.RawData, "tracks"); }
-        init { JsonModel.Set(this._rawData, "tracks", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<TrackObject>>("tracks");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<TrackObject>>(
+                "tracks",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <inheritdoc/>
@@ -32,14 +43,14 @@ public sealed record class ArtistTopTracksResponse : JsonModel
 
     public ArtistTopTracksResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ArtistTopTracksResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -52,7 +63,7 @@ public sealed record class ArtistTopTracksResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public ArtistTopTracksResponse(List<TrackObject> tracks)
+    public ArtistTopTracksResponse(IReadOnlyList<TrackObject> tracks)
         : this()
     {
         this.Tracks = tracks;

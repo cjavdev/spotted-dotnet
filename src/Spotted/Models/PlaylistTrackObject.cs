@@ -20,7 +20,8 @@ public sealed record class PlaylistTrackObject : JsonModel
     {
         get
         {
-            return JsonModel.GetNullableStruct<System::DateTimeOffset>(this.RawData, "added_at");
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<System::DateTimeOffset>("added_at");
         }
         init
         {
@@ -29,7 +30,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "added_at", value);
+            this._rawData.Set("added_at", value);
         }
     }
 
@@ -39,7 +40,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public PlaylistUserObject? AddedBy
     {
-        get { return JsonModel.GetNullableClass<PlaylistUserObject>(this.RawData, "added_by"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<PlaylistUserObject>("added_by");
+        }
         init
         {
             if (value == null)
@@ -47,7 +52,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "added_by", value);
+            this._rawData.Set("added_by", value);
         }
     }
 
@@ -57,7 +62,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public bool? IsLocal
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_local"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_local");
+        }
         init
         {
             if (value == null)
@@ -65,7 +74,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "is_local", value);
+            this._rawData.Set("is_local", value);
         }
     }
 
@@ -77,7 +86,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -85,7 +98,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -94,7 +107,11 @@ public sealed record class PlaylistTrackObject : JsonModel
     /// </summary>
     public Track? Track
     {
-        get { return JsonModel.GetNullableClass<Track>(this.RawData, "track"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Track>("track");
+        }
         init
         {
             if (value == null)
@@ -102,7 +119,7 @@ public sealed record class PlaylistTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "track", value);
+            this._rawData.Set("track", value);
         }
     }
 
@@ -123,14 +140,14 @@ public sealed record class PlaylistTrackObject : JsonModel
 
     public PlaylistTrackObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlaylistTrackObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -154,7 +171,7 @@ class PlaylistTrackObjectFromRaw : IFromRawJson<PlaylistTrackObject>
 /// Information about the track or episode.
 /// </summary>
 [JsonConverter(typeof(TrackConverter))]
-public record class Track
+public record class Track : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -162,64 +179,70 @@ public record class Track
 
     public JsonElement Json
     {
-        get { return this._element ??= JsonSerializer.SerializeToElement(this.Value); }
+        get
+        {
+            return this._element ??= JsonSerializer.SerializeToElement(
+                this.Value,
+                ModelBase.SerializerOptions
+            );
+        }
     }
 
     public string? ID
     {
-        get { return Match<string?>(object1: (x) => x.ID, episodeObject: (x) => x.ID); }
+        get { return Match<string?>(object_: (x) => x.ID, episodeObject: (x) => x.ID); }
     }
 
     public long? DurationMs
     {
         get
         {
-            return Match<long?>(object1: (x) => x.DurationMs, episodeObject: (x) => x.DurationMs);
+            return Match<long?>(object_: (x) => x.DurationMs, episodeObject: (x) => x.DurationMs);
         }
     }
 
     public bool? Explicit
     {
-        get { return Match<bool?>(object1: (x) => x.Explicit, episodeObject: (x) => x.Explicit); }
+        get { return Match<bool?>(object_: (x) => x.Explicit, episodeObject: (x) => x.Explicit); }
     }
 
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
         get
         {
-            return Match<ExternalURLObject?>(
-                object1: (x) => x.ExternalURLs,
-                episodeObject: (x) => x.ExternalURLs
+            return Match<ExternalUrlObject?>(
+                object_: (x) => x.ExternalUrls,
+                episodeObject: (x) => x.ExternalUrls
             );
         }
     }
 
     public string? Href
     {
-        get { return Match<string?>(object1: (x) => x.Href, episodeObject: (x) => x.Href); }
+        get { return Match<string?>(object_: (x) => x.Href, episodeObject: (x) => x.Href); }
     }
 
     public bool? IsPlayable
     {
         get
         {
-            return Match<bool?>(object1: (x) => x.IsPlayable, episodeObject: (x) => x.IsPlayable);
+            return Match<bool?>(object_: (x) => x.IsPlayable, episodeObject: (x) => x.IsPlayable);
         }
     }
 
     public string? Name
     {
-        get { return Match<string?>(object1: (x) => x.Name, episodeObject: (x) => x.Name); }
+        get { return Match<string?>(object_: (x) => x.Name, episodeObject: (x) => x.Name); }
     }
 
     public bool? Published
     {
-        get { return Match<bool?>(object1: (x) => x.Published, episodeObject: (x) => x.Published); }
+        get { return Match<bool?>(object_: (x) => x.Published, episodeObject: (x) => x.Published); }
     }
 
     public string? Uri
     {
-        get { return Match<string?>(object1: (x) => x.Uri, episodeObject: (x) => x.Uri); }
+        get { return Match<string?>(object_: (x) => x.Uri, episodeObject: (x) => x.Uri); }
     }
 
     public Track(TrackObject value, JsonElement? element = null)
@@ -302,14 +325,14 @@ public record class Track
     /// </example>
     /// </summary>
     public void Switch(
-        System::Action<TrackObject> object1,
+        System::Action<TrackObject> object_,
         System::Action<EpisodeObject> episodeObject
     )
     {
         switch (this.Value)
         {
             case TrackObject value:
-                object1(value);
+                object_(value);
                 break;
             case EpisodeObject value:
                 episodeObject(value);
@@ -341,13 +364,13 @@ public record class Track
     /// </example>
     /// </summary>
     public T Match<T>(
-        System::Func<TrackObject, T> object1,
+        System::Func<TrackObject, T> object_,
         System::Func<EpisodeObject, T> episodeObject
     )
     {
         return this.Value switch
         {
-            TrackObject value => object1(value),
+            TrackObject value => object_(value),
             EpisodeObject value => episodeObject(value),
             _ => throw new SpottedInvalidDataException("Data did not match any variant of Track"),
         };
@@ -367,13 +390,13 @@ public record class Track
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {
             throw new SpottedInvalidDataException("Data did not match any variant of Track");
         }
-        this.Switch((object1) => object1.Validate(), (episodeObject) => episodeObject.Validate());
+        this.Switch((object_) => object_.Validate(), (episodeObject) => episodeObject.Validate());
     }
 
     public virtual bool Equals(Track? other)
@@ -385,6 +408,9 @@ public record class Track
     {
         return 0;
     }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
 }
 
 sealed class TrackConverter : JsonConverter<Track>

@@ -14,6 +14,12 @@ namespace Spotted.Services;
 public interface IShowService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    IShowServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -48,13 +54,68 @@ public interface IShowService
     /// Get Spotify catalog information about an show’s episodes. Optional parameters
     /// can be used to limit the number of episodes returned.
     /// </summary>
-    Task<ShowListEpisodesPageResponse> ListEpisodes(
+    Task<ShowListEpisodesPage> ListEpisodes(
         ShowListEpisodesParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListEpisodes(ShowListEpisodesParams, CancellationToken)"/>
-    Task<ShowListEpisodesPageResponse> ListEpisodes(
+    Task<ShowListEpisodesPage> ListEpisodes(
+        string id,
+        ShowListEpisodesParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="IShowService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IShowServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    IShowServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /shows/{id}`, but is otherwise the
+    /// same as <see cref="IShowService.Retrieve(ShowRetrieveParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<ShowRetrieveResponse>> Retrieve(
+        ShowRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Retrieve(ShowRetrieveParams, CancellationToken)"/>
+    Task<HttpResponse<ShowRetrieveResponse>> Retrieve(
+        string id,
+        ShowRetrieveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /shows`, but is otherwise the
+    /// same as <see cref="IShowService.BulkRetrieve(ShowBulkRetrieveParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<ShowBulkRetrieveResponse>> BulkRetrieve(
+        ShowBulkRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /shows/{id}/episodes`, but is otherwise the
+    /// same as <see cref="IShowService.ListEpisodes(ShowListEpisodesParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<ShowListEpisodesPage>> ListEpisodes(
+        ShowListEpisodesParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="ListEpisodes(ShowListEpisodesParams, CancellationToken)"/>
+    Task<HttpResponse<ShowListEpisodesPage>> ListEpisodes(
         string id,
         ShowListEpisodesParams? parameters = null,
         CancellationToken cancellationToken = default

@@ -15,6 +15,12 @@ namespace Spotted.Services;
 public interface IEpisodeService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    IEpisodeServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -38,10 +44,48 @@ public interface IEpisodeService
     );
 
     /// <summary>
-    /// Get Spotify catalog information for several episodes based on their Spotify
-    /// IDs.
+    /// Get Spotify catalog information for several episodes based on their Spotify IDs.
     /// </summary>
     Task<EpisodeBulkRetrieveResponse> BulkRetrieve(
+        EpisodeBulkRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="IEpisodeService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IEpisodeServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    IEpisodeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /episodes/{id}`, but is otherwise the
+    /// same as <see cref="IEpisodeService.Retrieve(EpisodeRetrieveParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<EpisodeObject>> Retrieve(
+        EpisodeRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Retrieve(EpisodeRetrieveParams, CancellationToken)"/>
+    Task<HttpResponse<EpisodeObject>> Retrieve(
+        string id,
+        EpisodeRetrieveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /episodes`, but is otherwise the
+    /// same as <see cref="IEpisodeService.BulkRetrieve(EpisodeBulkRetrieveParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<EpisodeBulkRetrieveResponse>> BulkRetrieve(
         EpisodeBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );

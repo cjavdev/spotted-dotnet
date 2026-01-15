@@ -18,8 +18,12 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public JsonElement Type
     {
-        get { return JsonModel.GetNotNullStruct<JsonElement>(this.RawQueryData, "type"); }
-        init { JsonModel.Set(this._rawQueryData, "type", value); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullStruct<JsonElement>("type");
+        }
+        init { this._rawQueryData.Set("type", value); }
     }
 
     /// <summary>
@@ -27,7 +31,11 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public string? After
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "after"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("after");
+        }
         init
         {
             if (value == null)
@@ -35,7 +43,7 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "after", value);
+            this._rawQueryData.Set("after", value);
         }
     }
 
@@ -45,7 +53,11 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -53,11 +65,14 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "limit", value);
+            this._rawQueryData.Set("limit", value);
         }
     }
 
-    public FollowingBulkRetrieveParams() { }
+    public FollowingBulkRetrieveParams()
+    {
+        this.Type = JsonSerializer.SerializeToElement("artist");
+    }
 
     public FollowingBulkRetrieveParams(FollowingBulkRetrieveParams followingBulkRetrieveParams)
         : base(followingBulkRetrieveParams) { }
@@ -67,8 +82,8 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -78,8 +93,8 @@ public sealed record class FollowingBulkRetrieveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

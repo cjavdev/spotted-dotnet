@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models.AudioAnalysis;
 
 namespace Spotted.Tests.Models.AudioAnalysis;
@@ -38,8 +39,11 @@ public class TimeIntervalObjectTest : TestBase
             Start = 0.49567,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TimeIntervalObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TimeIntervalObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -55,8 +59,11 @@ public class TimeIntervalObjectTest : TestBase
             Start = 0.49567,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TimeIntervalObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TimeIntervalObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         double expectedConfidence = 0.925;

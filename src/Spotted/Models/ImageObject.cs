@@ -15,17 +15,25 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public required long? Height
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "height"); }
-        init { JsonModel.Set(this._rawData, "height", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("height");
+        }
+        init { this._rawData.Set("height", value); }
     }
 
     /// <summary>
     /// The source URL of the image.
     /// </summary>
-    public required string URL
+    public required string Url
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "url"); }
-        init { JsonModel.Set(this._rawData, "url", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("url");
+        }
+        init { this._rawData.Set("url", value); }
     }
 
     /// <summary>
@@ -33,8 +41,12 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public required long? Width
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "width"); }
-        init { JsonModel.Set(this._rawData, "width", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("width");
+        }
+        init { this._rawData.Set("width", value); }
     }
 
     /// <summary>
@@ -45,7 +57,11 @@ public sealed record class ImageObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -53,7 +69,7 @@ public sealed record class ImageObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -61,7 +77,7 @@ public sealed record class ImageObject : JsonModel
     public override void Validate()
     {
         _ = this.Height;
-        _ = this.URL;
+        _ = this.Url;
         _ = this.Width;
         _ = this.Published;
     }
@@ -73,14 +89,14 @@ public sealed record class ImageObject : JsonModel
 
     public ImageObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ImageObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

@@ -15,6 +15,12 @@ namespace Spotted.Services.Me;
 public interface IPlayerService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    IPlayerServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -53,7 +59,7 @@ public interface IPlayerService
     /// Get tracks from the current user's recently played tracks. _**Note**: Currently
     /// doesn't support podcast episodes._
     /// </summary>
-    Task<PlayerListRecentlyPlayedPageResponse> ListRecentlyPlayed(
+    Task<PlayerListRecentlyPlayedPage> ListRecentlyPlayed(
         PlayerListRecentlyPlayedParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -141,4 +147,137 @@ public interface IPlayerService
     /// guaranteed when you use this API with other Player API endpoints.
     /// </summary>
     Task Transfer(PlayerTransferParams parameters, CancellationToken cancellationToken = default);
+}
+
+/// <summary>
+/// A view of <see cref="IPlayerService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IPlayerServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    IPlayerServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    IQueueServiceWithRawResponse Queue { get; }
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/player/currently-playing`, but is otherwise the
+    /// same as <see cref="IPlayerService.GetCurrentlyPlaying(PlayerGetCurrentlyPlayingParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<PlayerGetCurrentlyPlayingResponse>> GetCurrentlyPlaying(
+        PlayerGetCurrentlyPlayingParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/player/devices`, but is otherwise the
+    /// same as <see cref="IPlayerService.GetDevices(PlayerGetDevicesParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<PlayerGetDevicesResponse>> GetDevices(
+        PlayerGetDevicesParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/player`, but is otherwise the
+    /// same as <see cref="IPlayerService.GetState(PlayerGetStateParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<PlayerGetStateResponse>> GetState(
+        PlayerGetStateParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/player/recently-played`, but is otherwise the
+    /// same as <see cref="IPlayerService.ListRecentlyPlayed(PlayerListRecentlyPlayedParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<PlayerListRecentlyPlayedPage>> ListRecentlyPlayed(
+        PlayerListRecentlyPlayedParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/player/pause`, but is otherwise the
+    /// same as <see cref="IPlayerService.PausePlayback(PlayerPausePlaybackParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> PausePlayback(
+        PlayerPausePlaybackParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/player/seek`, but is otherwise the
+    /// same as <see cref="IPlayerService.SeekToPosition(PlayerSeekToPositionParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> SeekToPosition(
+        PlayerSeekToPositionParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/player/repeat`, but is otherwise the
+    /// same as <see cref="IPlayerService.SetRepeatMode(PlayerSetRepeatModeParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> SetRepeatMode(
+        PlayerSetRepeatModeParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/player/volume`, but is otherwise the
+    /// same as <see cref="IPlayerService.SetVolume(PlayerSetVolumeParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> SetVolume(
+        PlayerSetVolumeParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `post /me/player/next`, but is otherwise the
+    /// same as <see cref="IPlayerService.SkipNext(PlayerSkipNextParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> SkipNext(
+        PlayerSkipNextParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `post /me/player/previous`, but is otherwise the
+    /// same as <see cref="IPlayerService.SkipPrevious(PlayerSkipPreviousParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> SkipPrevious(
+        PlayerSkipPreviousParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/player/play`, but is otherwise the
+    /// same as <see cref="IPlayerService.StartPlayback(PlayerStartPlaybackParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> StartPlayback(
+        PlayerStartPlaybackParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/player/shuffle`, but is otherwise the
+    /// same as <see cref="IPlayerService.ToggleShuffle(PlayerToggleShuffleParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> ToggleShuffle(
+        PlayerToggleShuffleParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/player`, but is otherwise the
+    /// same as <see cref="IPlayerService.Transfer(PlayerTransferParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> Transfer(
+        PlayerTransferParams parameters,
+        CancellationToken cancellationToken = default
+    );
 }

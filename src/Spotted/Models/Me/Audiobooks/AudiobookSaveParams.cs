@@ -18,10 +18,14 @@ public sealed record class AudiobookSaveParams : ParamsBase
     /// For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum:
     /// 50 IDs.
     /// </summary>
-    public required string IDs
+    public required string Ids
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
-        init { JsonModel.Set(this._rawQueryData, "ids", value); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("ids");
+        }
+        init { this._rawQueryData.Set("ids", value); }
     }
 
     public AudiobookSaveParams() { }
@@ -34,8 +38,8 @@ public sealed record class AudiobookSaveParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -45,8 +49,8 @@ public sealed record class AudiobookSaveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

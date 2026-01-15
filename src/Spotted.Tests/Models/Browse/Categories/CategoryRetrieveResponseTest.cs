@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 using Spotted.Models.Browse.Categories;
 
@@ -19,7 +20,7 @@ public class CategoryRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -35,7 +36,7 @@ public class CategoryRetrieveResponseTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -66,7 +67,7 @@ public class CategoryRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -75,8 +76,11 @@ public class CategoryRetrieveResponseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CategoryRetrieveResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<CategoryRetrieveResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -93,7 +97,7 @@ public class CategoryRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -102,8 +106,11 @@ public class CategoryRetrieveResponseTest : TestBase
             Published = true,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<CategoryRetrieveResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<CategoryRetrieveResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedID = "equal";
@@ -113,7 +120,7 @@ public class CategoryRetrieveResponseTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -144,7 +151,7 @@ public class CategoryRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -168,7 +175,7 @@ public class CategoryRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -192,7 +199,7 @@ public class CategoryRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -215,7 +222,7 @@ public class CategoryRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -242,7 +249,7 @@ public class CategoryRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },

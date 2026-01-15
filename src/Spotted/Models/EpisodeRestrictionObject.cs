@@ -20,7 +20,11 @@ public sealed record class EpisodeRestrictionObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -28,7 +32,7 @@ public sealed record class EpisodeRestrictionObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -43,7 +47,11 @@ public sealed record class EpisodeRestrictionObject : JsonModel
     /// </summary>
     public string? Reason
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "reason"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("reason");
+        }
         init
         {
             if (value == null)
@@ -51,7 +59,7 @@ public sealed record class EpisodeRestrictionObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "reason", value);
+            this._rawData.Set("reason", value);
         }
     }
 
@@ -69,14 +77,14 @@ public sealed record class EpisodeRestrictionObject : JsonModel
 
     public EpisodeRestrictionObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     EpisodeRestrictionObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

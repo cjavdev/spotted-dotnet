@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -17,8 +18,18 @@ public sealed record class RecommendationListAvailableGenreSeedsResponse : JsonM
 {
     public required IReadOnlyList<string> Genres
     {
-        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "genres"); }
-        init { JsonModel.Set(this._rawData, "genres", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("genres");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<string>>(
+                "genres",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <inheritdoc/>
@@ -38,14 +49,14 @@ public sealed record class RecommendationListAvailableGenreSeedsResponse : JsonM
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     RecommendationListAvailableGenreSeedsResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -58,7 +69,7 @@ public sealed record class RecommendationListAvailableGenreSeedsResponse : JsonM
     }
 
     [SetsRequiredMembers]
-    public RecommendationListAvailableGenreSeedsResponse(List<string> genres)
+    public RecommendationListAvailableGenreSeedsResponse(IReadOnlyList<string> genres)
         : this()
     {
         this.Genres = genres;

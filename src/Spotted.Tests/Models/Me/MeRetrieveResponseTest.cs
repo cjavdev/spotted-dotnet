@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 using Spotted.Models.Me;
 
@@ -22,7 +23,7 @@ public class MeRetrieveResponseTest : TestBase
                 FilterLocked = true,
                 Published = true,
             },
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -35,7 +36,7 @@ public class MeRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -56,7 +57,7 @@ public class MeRetrieveResponseTest : TestBase
             FilterLocked = true,
             Published = true,
         };
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         FollowersObject expectedFollowers = new()
         {
             Href = "href",
@@ -69,7 +70,7 @@ public class MeRetrieveResponseTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -84,7 +85,7 @@ public class MeRetrieveResponseTest : TestBase
         Assert.Equal(expectedDisplayName, model.DisplayName);
         Assert.Equal(expectedEmail, model.Email);
         Assert.Equal(expectedExplicitContent, model.ExplicitContent);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedFollowers, model.Followers);
         Assert.Equal(expectedHref, model.Href);
         Assert.NotNull(model.Images);
@@ -114,7 +115,7 @@ public class MeRetrieveResponseTest : TestBase
                 FilterLocked = true,
                 Published = true,
             },
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -127,7 +128,7 @@ public class MeRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -138,8 +139,11 @@ public class MeRetrieveResponseTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<MeRetrieveResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<MeRetrieveResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -159,7 +163,7 @@ public class MeRetrieveResponseTest : TestBase
                 FilterLocked = true,
                 Published = true,
             },
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -172,7 +176,7 @@ public class MeRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -183,8 +187,11 @@ public class MeRetrieveResponseTest : TestBase
             Uri = "uri",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<MeRetrieveResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<MeRetrieveResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -197,7 +204,7 @@ public class MeRetrieveResponseTest : TestBase
             FilterLocked = true,
             Published = true,
         };
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         FollowersObject expectedFollowers = new()
         {
             Href = "href",
@@ -210,7 +217,7 @@ public class MeRetrieveResponseTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -225,7 +232,7 @@ public class MeRetrieveResponseTest : TestBase
         Assert.Equal(expectedDisplayName, deserialized.DisplayName);
         Assert.Equal(expectedEmail, deserialized.Email);
         Assert.Equal(expectedExplicitContent, deserialized.ExplicitContent);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedFollowers, deserialized.Followers);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.NotNull(deserialized.Images);
@@ -255,7 +262,7 @@ public class MeRetrieveResponseTest : TestBase
                 FilterLocked = true,
                 Published = true,
             },
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -268,7 +275,7 @@ public class MeRetrieveResponseTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -297,7 +304,7 @@ public class MeRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("email"));
         Assert.Null(model.ExplicitContent);
         Assert.False(model.RawData.ContainsKey("explicit_content"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Followers);
         Assert.False(model.RawData.ContainsKey("followers"));
@@ -334,7 +341,7 @@ public class MeRetrieveResponseTest : TestBase
             DisplayName = null,
             Email = null,
             ExplicitContent = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Followers = null,
             Href = null,
             Images = null,
@@ -354,7 +361,7 @@ public class MeRetrieveResponseTest : TestBase
         Assert.False(model.RawData.ContainsKey("email"));
         Assert.Null(model.ExplicitContent);
         Assert.False(model.RawData.ContainsKey("explicit_content"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Followers);
         Assert.False(model.RawData.ContainsKey("followers"));
@@ -383,7 +390,7 @@ public class MeRetrieveResponseTest : TestBase
             DisplayName = null,
             Email = null,
             ExplicitContent = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Followers = null,
             Href = null,
             Images = null,
@@ -428,8 +435,11 @@ public class ExplicitContentTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExplicitContent>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ExplicitContent>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -444,8 +454,11 @@ public class ExplicitContentTest : TestBase
             Published = true,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExplicitContent>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ExplicitContent>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         bool expectedFilterEnabled = true;

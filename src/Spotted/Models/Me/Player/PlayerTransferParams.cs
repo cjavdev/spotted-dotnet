@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Spotted.Models.Me.Player;
 /// </summary>
 public sealed record class PlayerTransferParams : ParamsBase
 {
-    readonly FreezableDictionary<string, JsonElement> _rawBodyData = [];
+    readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
     {
         get { return this._rawBodyData.Freeze(); }
@@ -28,10 +29,20 @@ public sealed record class PlayerTransferParams : ParamsBase
     /// Although an array is accepted, only a single device_id is currently supported.
     /// Supplying more than one will return `400 Bad Request`_
     /// </summary>
-    public required IReadOnlyList<string> DeviceIDs
+    public required IReadOnlyList<string> DeviceIds
     {
-        get { return JsonModel.GetNotNullClass<List<string>>(this.RawBodyData, "device_ids"); }
-        init { JsonModel.Set(this._rawBodyData, "device_ids", value); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNotNullStruct<ImmutableArray<string>>("device_ids");
+        }
+        init
+        {
+            this._rawBodyData.Set<ImmutableArray<string>>(
+                "device_ids",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -40,7 +51,11 @@ public sealed record class PlayerTransferParams : ParamsBase
     /// </summary>
     public bool? Play
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "play"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("play");
+        }
         init
         {
             if (value == null)
@@ -48,7 +63,7 @@ public sealed record class PlayerTransferParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "play", value);
+            this._rawBodyData.Set("play", value);
         }
     }
 
@@ -60,7 +75,11 @@ public sealed record class PlayerTransferParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -68,7 +87,7 @@ public sealed record class PlayerTransferParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "published", value);
+            this._rawBodyData.Set("published", value);
         }
     }
 
@@ -77,7 +96,7 @@ public sealed record class PlayerTransferParams : ParamsBase
     public PlayerTransferParams(PlayerTransferParams playerTransferParams)
         : base(playerTransferParams)
     {
-        this._rawBodyData = [.. playerTransferParams._rawBodyData];
+        this._rawBodyData = new(playerTransferParams._rawBodyData);
     }
 
     public PlayerTransferParams(
@@ -86,9 +105,9 @@ public sealed record class PlayerTransferParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -99,9 +118,9 @@ public sealed record class PlayerTransferParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 #pragma warning restore CS8618
 
@@ -130,7 +149,7 @@ public sealed record class PlayerTransferParams : ParamsBase
     internal override HttpContent? BodyContent()
     {
         return new StringContent(
-            JsonSerializer.Serialize(this.RawBodyData),
+            JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
         );

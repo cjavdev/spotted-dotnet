@@ -19,7 +19,7 @@ public class ArtistServiceTest : TestBase
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Artists.BulkRetrieve(
-            new() { IDs = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6" },
+            new() { Ids = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6" },
             TestContext.Current.CancellationToken
         );
         response.Validate();

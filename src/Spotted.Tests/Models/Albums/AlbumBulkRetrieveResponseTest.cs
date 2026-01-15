@@ -21,14 +21,14 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
                     AlbumType = AlbumAlbumType.Compilation,
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -44,7 +44,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -61,7 +61,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                             Type = "type",
                         },
                     ],
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
@@ -91,7 +91,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -107,21 +107,21 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                 DiscNumber = 0,
                                 DurationMs = 0,
                                 Explicit = true,
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 IsLocal = true,
                                 IsPlayable = true,
                                 LinkedFrom = new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Published = true,
                                     Type = "type",
                                     Uri = "uri",
                                 },
                                 Name = "name",
-                                PreviewURL = "preview_url",
+                                PreviewUrl = "preview_url",
                                 Published = true,
                                 Restrictions = new() { Published = true, Reason = "reason" },
                                 TrackNumber = 0,
@@ -142,14 +142,14 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                 ID = "2up3OPMp9Tb4dAKM2erWXQ",
                 AlbumType = AlbumAlbumType.Compilation,
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -164,7 +164,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -181,7 +181,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                         Type = "type",
                     },
                 ],
-                ExternalIDs = new()
+                ExternalIds = new()
                 {
                     Ean = "ean",
                     Isrc = "isrc",
@@ -211,7 +211,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -223,21 +223,21 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
                                 Uri = "uri",
                             },
                             Name = "name",
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -269,14 +269,14 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
                     AlbumType = AlbumAlbumType.Compilation,
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -292,7 +292,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -309,7 +309,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                             Type = "type",
                         },
                     ],
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
@@ -339,7 +339,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -355,21 +355,21 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                 DiscNumber = 0,
                                 DurationMs = 0,
                                 Explicit = true,
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 IsLocal = true,
                                 IsPlayable = true,
                                 LinkedFrom = new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Published = true,
                                     Type = "type",
                                     Uri = "uri",
                                 },
                                 Name = "name",
-                                PreviewURL = "preview_url",
+                                PreviewUrl = "preview_url",
                                 Published = true,
                                 Restrictions = new() { Published = true, Reason = "reason" },
                                 TrackNumber = 0,
@@ -383,8 +383,11 @@ public class AlbumBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AlbumBulkRetrieveResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<AlbumBulkRetrieveResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -401,14 +404,14 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
                     AlbumType = AlbumAlbumType.Compilation,
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -424,7 +427,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -441,7 +444,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                             Type = "type",
                         },
                     ],
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
@@ -471,7 +474,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -487,21 +490,21 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                 DiscNumber = 0,
                                 DurationMs = 0,
                                 Explicit = true,
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 IsLocal = true,
                                 IsPlayable = true,
                                 LinkedFrom = new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Published = true,
                                     Type = "type",
                                     Uri = "uri",
                                 },
                                 Name = "name",
-                                PreviewURL = "preview_url",
+                                PreviewUrl = "preview_url",
                                 Published = true,
                                 Restrictions = new() { Published = true, Reason = "reason" },
                                 TrackNumber = 0,
@@ -515,8 +518,11 @@ public class AlbumBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AlbumBulkRetrieveResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<AlbumBulkRetrieveResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         List<Album> expectedAlbums =
@@ -526,14 +532,14 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                 ID = "2up3OPMp9Tb4dAKM2erWXQ",
                 AlbumType = AlbumAlbumType.Compilation,
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -548,7 +554,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -565,7 +571,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                         Type = "type",
                     },
                 ],
-                ExternalIDs = new()
+                ExternalIds = new()
                 {
                     Ean = "ean",
                     Isrc = "isrc",
@@ -595,7 +601,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                 new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Name = "name",
                                     Published = true,
@@ -607,21 +613,21 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                             DiscNumber = 0,
                             DurationMs = 0,
                             Explicit = true,
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             IsLocal = true,
                             IsPlayable = true,
                             LinkedFrom = new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Published = true,
                                 Type = "type",
                                 Uri = "uri",
                             },
                             Name = "name",
-                            PreviewURL = "preview_url",
+                            PreviewUrl = "preview_url",
                             Published = true,
                             Restrictions = new() { Published = true, Reason = "reason" },
                             TrackNumber = 0,
@@ -653,14 +659,14 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
                     AlbumType = AlbumAlbumType.Compilation,
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -676,7 +682,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -693,7 +699,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                             Type = "type",
                         },
                     ],
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
@@ -723,7 +729,7 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                     new()
                                     {
                                         ID = "id",
-                                        ExternalURLs = new()
+                                        ExternalUrls = new()
                                         {
                                             Published = true,
                                             Spotify = "spotify",
@@ -739,21 +745,21 @@ public class AlbumBulkRetrieveResponseTest : TestBase
                                 DiscNumber = 0,
                                 DurationMs = 0,
                                 Explicit = true,
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 IsLocal = true,
                                 IsPlayable = true,
                                 LinkedFrom = new()
                                 {
                                     ID = "id",
-                                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                     Href = "href",
                                     Published = true,
                                     Type = "type",
                                     Uri = "uri",
                                 },
                                 Name = "name",
-                                PreviewURL = "preview_url",
+                                PreviewUrl = "preview_url",
                                 Published = true,
                                 Restrictions = new() { Published = true, Reason = "reason" },
                                 TrackNumber = 0,
@@ -781,14 +787,14 @@ public class AlbumTest : TestBase
             ID = "2up3OPMp9Tb4dAKM2erWXQ",
             AlbumType = AlbumAlbumType.Compilation,
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -803,7 +809,7 @@ public class AlbumTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -820,7 +826,7 @@ public class AlbumTest : TestBase
                     Type = "type",
                 },
             ],
-            ExternalIDs = new()
+            ExternalIds = new()
             {
                 Ean = "ean",
                 Isrc = "isrc",
@@ -850,7 +856,7 @@ public class AlbumTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -862,21 +868,21 @@ public class AlbumTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
                             Uri = "uri",
                         },
                         Name = "name",
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -891,7 +897,7 @@ public class AlbumTest : TestBase
         string expectedID = "2up3OPMp9Tb4dAKM2erWXQ";
         ApiEnum<string, AlbumAlbumType> expectedAlbumType = AlbumAlbumType.Compilation;
         List<string> expectedAvailableMarkets = ["CA", "BR", "IT"];
-        Models::ExternalURLObject expectedExternalURLs = new()
+        Models::ExternalUrlObject expectedExternalUrls = new()
         {
             Published = true,
             Spotify = "spotify",
@@ -902,7 +908,7 @@ public class AlbumTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -912,14 +918,14 @@ public class AlbumTest : TestBase
         ApiEnum<string, AlbumReleaseDatePrecision> expectedReleaseDatePrecision =
             AlbumReleaseDatePrecision.Year;
         long expectedTotalTracks = 9;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("album");
         string expectedUri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ";
         List<Models::SimplifiedArtistObject> expectedArtists =
         [
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
                 Published = true,
@@ -936,7 +942,7 @@ public class AlbumTest : TestBase
                 Type = "type",
             },
         ];
-        Models::ExternalIDObject expectedExternalIDs = new()
+        Models::ExternalIDObject expectedExternalIds = new()
         {
             Ean = "ean",
             Isrc = "isrc",
@@ -970,7 +976,7 @@ public class AlbumTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -982,21 +988,21 @@ public class AlbumTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -1014,7 +1020,7 @@ public class AlbumTest : TestBase
         {
             Assert.Equal(expectedAvailableMarkets[i], model.AvailableMarkets[i]);
         }
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedImages.Count, model.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
@@ -1039,7 +1045,7 @@ public class AlbumTest : TestBase
         {
             Assert.Equal(expectedCopyrights[i], model.Copyrights[i]);
         }
-        Assert.Equal(expectedExternalIDs, model.ExternalIDs);
+        Assert.Equal(expectedExternalIds, model.ExternalIds);
         Assert.NotNull(model.Genres);
         Assert.Equal(expectedGenres.Count, model.Genres.Count);
         for (int i = 0; i < expectedGenres.Count; i++)
@@ -1061,14 +1067,14 @@ public class AlbumTest : TestBase
             ID = "2up3OPMp9Tb4dAKM2erWXQ",
             AlbumType = AlbumAlbumType.Compilation,
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1083,7 +1089,7 @@ public class AlbumTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1100,7 +1106,7 @@ public class AlbumTest : TestBase
                     Type = "type",
                 },
             ],
-            ExternalIDs = new()
+            ExternalIds = new()
             {
                 Ean = "ean",
                 Isrc = "isrc",
@@ -1130,7 +1136,7 @@ public class AlbumTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -1142,21 +1148,21 @@ public class AlbumTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
                             Uri = "uri",
                         },
                         Name = "name",
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -1168,8 +1174,8 @@ public class AlbumTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Album>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Album>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -1182,14 +1188,14 @@ public class AlbumTest : TestBase
             ID = "2up3OPMp9Tb4dAKM2erWXQ",
             AlbumType = AlbumAlbumType.Compilation,
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1204,7 +1210,7 @@ public class AlbumTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1221,7 +1227,7 @@ public class AlbumTest : TestBase
                     Type = "type",
                 },
             ],
-            ExternalIDs = new()
+            ExternalIds = new()
             {
                 Ean = "ean",
                 Isrc = "isrc",
@@ -1251,7 +1257,7 @@ public class AlbumTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -1263,21 +1269,21 @@ public class AlbumTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
                             Uri = "uri",
                         },
                         Name = "name",
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -1289,14 +1295,14 @@ public class AlbumTest : TestBase
             },
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Album>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Album>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "2up3OPMp9Tb4dAKM2erWXQ";
         ApiEnum<string, AlbumAlbumType> expectedAlbumType = AlbumAlbumType.Compilation;
         List<string> expectedAvailableMarkets = ["CA", "BR", "IT"];
-        Models::ExternalURLObject expectedExternalURLs = new()
+        Models::ExternalUrlObject expectedExternalUrls = new()
         {
             Published = true,
             Spotify = "spotify",
@@ -1307,7 +1313,7 @@ public class AlbumTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -1317,14 +1323,14 @@ public class AlbumTest : TestBase
         ApiEnum<string, AlbumReleaseDatePrecision> expectedReleaseDatePrecision =
             AlbumReleaseDatePrecision.Year;
         long expectedTotalTracks = 9;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("album");
         string expectedUri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ";
         List<Models::SimplifiedArtistObject> expectedArtists =
         [
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
                 Published = true,
@@ -1341,7 +1347,7 @@ public class AlbumTest : TestBase
                 Type = "type",
             },
         ];
-        Models::ExternalIDObject expectedExternalIDs = new()
+        Models::ExternalIDObject expectedExternalIds = new()
         {
             Ean = "ean",
             Isrc = "isrc",
@@ -1375,7 +1381,7 @@ public class AlbumTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -1387,21 +1393,21 @@ public class AlbumTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -1419,7 +1425,7 @@ public class AlbumTest : TestBase
         {
             Assert.Equal(expectedAvailableMarkets[i], deserialized.AvailableMarkets[i]);
         }
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedImages.Count, deserialized.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
@@ -1444,7 +1450,7 @@ public class AlbumTest : TestBase
         {
             Assert.Equal(expectedCopyrights[i], deserialized.Copyrights[i]);
         }
-        Assert.Equal(expectedExternalIDs, deserialized.ExternalIDs);
+        Assert.Equal(expectedExternalIds, deserialized.ExternalIds);
         Assert.NotNull(deserialized.Genres);
         Assert.Equal(expectedGenres.Count, deserialized.Genres.Count);
         for (int i = 0; i < expectedGenres.Count; i++)
@@ -1466,14 +1472,14 @@ public class AlbumTest : TestBase
             ID = "2up3OPMp9Tb4dAKM2erWXQ",
             AlbumType = AlbumAlbumType.Compilation,
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1488,7 +1494,7 @@ public class AlbumTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1505,7 +1511,7 @@ public class AlbumTest : TestBase
                     Type = "type",
                 },
             ],
-            ExternalIDs = new()
+            ExternalIds = new()
             {
                 Ean = "ean",
                 Isrc = "isrc",
@@ -1535,7 +1541,7 @@ public class AlbumTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -1547,21 +1553,21 @@ public class AlbumTest : TestBase
                         DiscNumber = 0,
                         DurationMs = 0,
                         Explicit = true,
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         IsLocal = true,
                         IsPlayable = true,
                         LinkedFrom = new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Published = true,
                             Type = "type",
                             Uri = "uri",
                         },
                         Name = "name",
-                        PreviewURL = "preview_url",
+                        PreviewUrl = "preview_url",
                         Published = true,
                         Restrictions = new() { Published = true, Reason = "reason" },
                         TrackNumber = 0,
@@ -1584,14 +1590,14 @@ public class AlbumTest : TestBase
             ID = "2up3OPMp9Tb4dAKM2erWXQ",
             AlbumType = AlbumAlbumType.Compilation,
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1607,7 +1613,7 @@ public class AlbumTest : TestBase
         Assert.False(model.RawData.ContainsKey("artists"));
         Assert.Null(model.Copyrights);
         Assert.False(model.RawData.ContainsKey("copyrights"));
-        Assert.Null(model.ExternalIDs);
+        Assert.Null(model.ExternalIds);
         Assert.False(model.RawData.ContainsKey("external_ids"));
         Assert.Null(model.Genres);
         Assert.False(model.RawData.ContainsKey("genres"));
@@ -1631,14 +1637,14 @@ public class AlbumTest : TestBase
             ID = "2up3OPMp9Tb4dAKM2erWXQ",
             AlbumType = AlbumAlbumType.Compilation,
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1661,14 +1667,14 @@ public class AlbumTest : TestBase
             ID = "2up3OPMp9Tb4dAKM2erWXQ",
             AlbumType = AlbumAlbumType.Compilation,
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1682,7 +1688,7 @@ public class AlbumTest : TestBase
             // Null should be interpreted as omitted for these properties
             Artists = null,
             Copyrights = null,
-            ExternalIDs = null,
+            ExternalIds = null,
             Genres = null,
             Label = null,
             Popularity = null,
@@ -1695,7 +1701,7 @@ public class AlbumTest : TestBase
         Assert.False(model.RawData.ContainsKey("artists"));
         Assert.Null(model.Copyrights);
         Assert.False(model.RawData.ContainsKey("copyrights"));
-        Assert.Null(model.ExternalIDs);
+        Assert.Null(model.ExternalIds);
         Assert.False(model.RawData.ContainsKey("external_ids"));
         Assert.Null(model.Genres);
         Assert.False(model.RawData.ContainsKey("genres"));
@@ -1719,14 +1725,14 @@ public class AlbumTest : TestBase
             ID = "2up3OPMp9Tb4dAKM2erWXQ",
             AlbumType = AlbumAlbumType.Compilation,
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1740,7 +1746,7 @@ public class AlbumTest : TestBase
             // Null should be interpreted as omitted for these properties
             Artists = null,
             Copyrights = null,
-            ExternalIDs = null,
+            ExternalIds = null,
             Genres = null,
             Label = null,
             Popularity = null,
@@ -1770,9 +1776,11 @@ public class AlbumAlbumTypeTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumAlbumType>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
@@ -1798,7 +1806,7 @@ public class AlbumAlbumTypeTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumAlbumType>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
@@ -1828,9 +1836,11 @@ public class AlbumReleaseDatePrecisionTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
@@ -1856,7 +1866,7 @@ public class AlbumReleaseDatePrecisionTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
@@ -1892,7 +1902,7 @@ public class AlbumTracksTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -1904,21 +1914,21 @@ public class AlbumTracksTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -1945,7 +1955,7 @@ public class AlbumTracksTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -1957,21 +1967,21 @@ public class AlbumTracksTest : TestBase
                 DiscNumber = 0,
                 DurationMs = 0,
                 Explicit = true,
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
-                PreviewURL = "preview_url",
+                PreviewUrl = "preview_url",
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
@@ -2017,7 +2027,7 @@ public class AlbumTracksTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -2029,21 +2039,21 @@ public class AlbumTracksTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -2054,8 +2064,11 @@ public class AlbumTracksTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AlbumTracks>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<AlbumTracks>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -2081,7 +2094,7 @@ public class AlbumTracksTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -2093,21 +2106,21 @@ public class AlbumTracksTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -2118,8 +2131,11 @@ public class AlbumTracksTest : TestBase
             Published = true,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<AlbumTracks>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<AlbumTracks>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -2138,7 +2154,7 @@ public class AlbumTracksTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -2150,21 +2166,21 @@ public class AlbumTracksTest : TestBase
                 DiscNumber = 0,
                 DurationMs = 0,
                 Explicit = true,
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = "type",
                     Uri = "uri",
                 },
                 Name = "name",
-                PreviewURL = "preview_url",
+                PreviewUrl = "preview_url",
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
@@ -2210,7 +2226,7 @@ public class AlbumTracksTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -2222,21 +2238,21 @@ public class AlbumTracksTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
                         Uri = "uri",
                     },
                     Name = "name",
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,

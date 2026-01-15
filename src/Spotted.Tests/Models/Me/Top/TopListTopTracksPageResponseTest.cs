@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 using Spotted.Models.Me.Top;
 
@@ -32,7 +33,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -41,14 +42,14 @@ public class TopListTopTracksPageResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -67,7 +68,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -79,21 +80,21 @@ public class TopListTopTracksPageResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -101,7 +102,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -132,7 +133,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -141,14 +142,14 @@ public class TopListTopTracksPageResponseTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -167,7 +168,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -179,21 +180,21 @@ public class TopListTopTracksPageResponseTest : TestBase
                 DiscNumber = 0,
                 DurationMs = 0,
                 Explicit = true,
-                ExternalIDs = new()
+                ExternalIds = new()
                 {
                     Ean = "ean",
                     Isrc = "isrc",
                     Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = "type",
@@ -201,7 +202,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                 },
                 Name = "name",
                 Popularity = 0,
-                PreviewURL = "preview_url",
+                PreviewUrl = "preview_url",
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
@@ -251,7 +252,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -260,14 +261,14 @@ public class TopListTopTracksPageResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -286,7 +287,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -298,21 +299,21 @@ public class TopListTopTracksPageResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -320,7 +321,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -331,8 +332,11 @@ public class TopListTopTracksPageResponseTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TopListTopTracksPageResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TopListTopTracksPageResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -362,7 +366,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -371,14 +375,14 @@ public class TopListTopTracksPageResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -397,7 +401,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -409,21 +413,21 @@ public class TopListTopTracksPageResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -431,7 +435,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,
@@ -442,8 +446,11 @@ public class TopListTopTracksPageResponseTest : TestBase
             Published = true,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TopListTopTracksPageResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TopListTopTracksPageResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -466,7 +473,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -475,14 +482,14 @@ public class TopListTopTracksPageResponseTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -501,7 +508,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -513,21 +520,21 @@ public class TopListTopTracksPageResponseTest : TestBase
                 DiscNumber = 0,
                 DurationMs = 0,
                 Explicit = true,
-                ExternalIDs = new()
+                ExternalIds = new()
                 {
                     Ean = "ean",
                     Isrc = "isrc",
                     Published = true,
                     Upc = "upc",
                 },
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 IsLocal = true,
                 IsPlayable = true,
                 LinkedFrom = new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Published = true,
                     Type = "type",
@@ -535,7 +542,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                 },
                 Name = "name",
                 Popularity = 0,
-                PreviewURL = "preview_url",
+                PreviewUrl = "preview_url",
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
@@ -585,7 +592,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -594,14 +601,14 @@ public class TopListTopTracksPageResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -620,7 +627,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -632,21 +639,21 @@ public class TopListTopTracksPageResponseTest : TestBase
                     DiscNumber = 0,
                     DurationMs = 0,
                     Explicit = true,
-                    ExternalIDs = new()
+                    ExternalIds = new()
                     {
                         Ean = "ean",
                         Isrc = "isrc",
                         Published = true,
                         Upc = "upc",
                     },
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     IsLocal = true,
                     IsPlayable = true,
                     LinkedFrom = new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Published = true,
                         Type = "type",
@@ -654,7 +661,7 @@ public class TopListTopTracksPageResponseTest : TestBase
                     },
                     Name = "name",
                     Popularity = 0,
-                    PreviewURL = "preview_url",
+                    PreviewUrl = "preview_url",
                     Published = true,
                     Restrictions = new() { Published = true, Reason = "reason" },
                     TrackNumber = 0,

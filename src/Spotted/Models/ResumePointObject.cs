@@ -15,7 +15,11 @@ public sealed record class ResumePointObject : JsonModel
     /// </summary>
     public bool? FullyPlayed
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "fully_played"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("fully_played");
+        }
         init
         {
             if (value == null)
@@ -23,7 +27,7 @@ public sealed record class ResumePointObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "fully_played", value);
+            this._rawData.Set("fully_played", value);
         }
     }
 
@@ -35,7 +39,11 @@ public sealed record class ResumePointObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -43,7 +51,7 @@ public sealed record class ResumePointObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -52,7 +60,11 @@ public sealed record class ResumePointObject : JsonModel
     /// </summary>
     public long? ResumePositionMs
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "resume_position_ms"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("resume_position_ms");
+        }
         init
         {
             if (value == null)
@@ -60,7 +72,7 @@ public sealed record class ResumePointObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "resume_position_ms", value);
+            this._rawData.Set("resume_position_ms", value);
         }
     }
 
@@ -79,14 +91,14 @@ public sealed record class ResumePointObject : JsonModel
 
     public ResumePointObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ResumePointObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 using Spotted.Models.Shows;
 
@@ -29,15 +30,15 @@ public class ShowBulkRetrieveResponseTest : TestBase
                     ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
-                    HTMLDescription = "html_description",
+                    HtmlDescription = "html_description",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -72,15 +73,15 @@ public class ShowBulkRetrieveResponseTest : TestBase
                 ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
-                HTMLDescription = "html_description",
+                HtmlDescription = "html_description",
                 Images =
                 [
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -125,15 +126,15 @@ public class ShowBulkRetrieveResponseTest : TestBase
                     ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
-                    HTMLDescription = "html_description",
+                    HtmlDescription = "html_description",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -151,8 +152,11 @@ public class ShowBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ShowBulkRetrieveResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ShowBulkRetrieveResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -179,15 +183,15 @@ public class ShowBulkRetrieveResponseTest : TestBase
                     ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
-                    HTMLDescription = "html_description",
+                    HtmlDescription = "html_description",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -205,8 +209,11 @@ public class ShowBulkRetrieveResponseTest : TestBase
             ],
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ShowBulkRetrieveResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ShowBulkRetrieveResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         List<ShowBase> expectedShows =
@@ -226,15 +233,15 @@ public class ShowBulkRetrieveResponseTest : TestBase
                 ],
                 Description = "description",
                 Explicit = true,
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
-                HTMLDescription = "html_description",
+                HtmlDescription = "html_description",
                 Images =
                 [
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -279,15 +286,15 @@ public class ShowBulkRetrieveResponseTest : TestBase
                     ],
                     Description = "description",
                     Explicit = true,
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
-                    HTMLDescription = "html_description",
+                    HtmlDescription = "html_description",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,

@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using Spotted.Exceptions;
 
 namespace Spotted.Core;
 
@@ -39,11 +40,15 @@ public struct ClientOptions()
     }
 
     /// <summary>
-    /// Whether to validate every response before returning it.
+    /// Whether to validate response bodies before returning them.
     ///
-    /// <para>Defaults to false, which means the shape of the response will not be
-    /// validated upfront. Instead, validation will only occur for the parts of the
-    /// response that are accessed.</para>
+    /// <para>Defaults to false, which means the shape of the response body will not be validated upfront.
+    /// Instead, validation will only occur for the parts of the response body that are accessed.</para>
+    ///
+    /// <para>Note that when set to true, the response body is only validated if the response is
+    /// deserialized. Methods that don't eagerly deserialize the response, such as those on
+    /// <see cref="ISpottedClient.WithRawResponse"/>, don't perform validation until deserialization
+    /// is triggered.</para>
     /// </summary>
     public bool ResponseValidation { get; set; } = false;
 
@@ -78,26 +83,14 @@ public struct ClientOptions()
     /// </summary>
     public TimeSpan? Timeout { get; set; }
 
-    Lazy<string?> _clientID = new(() => Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_ID"));
-    public string? ClientID
-    {
-        readonly get { return _clientID.Value; }
-        set { _clientID = new(() => value); }
-    }
-
-    Lazy<string?> _clientSecret = new(() =>
-        Environment.GetEnvironmentVariable("SPOTIFY_CLIENT_SECRET")
-    );
-    public string? ClientSecret
-    {
-        readonly get { return _clientSecret.Value; }
-        set { _clientSecret = new(() => value); }
-    }
-
-    Lazy<string?> _accessToken = new(() =>
+    Lazy<string> _accessToken = new(() =>
         Environment.GetEnvironmentVariable("SPOTIFY_ACCESS_TOKEN")
+        ?? throw new SpottedInvalidDataException(
+            string.Format("{0} cannot be null", nameof(AccessToken)),
+            new ArgumentNullException(nameof(AccessToken))
+        )
     );
-    public string? AccessToken
+    public string AccessToken
     {
         readonly get { return _accessToken.Value; }
         set { _accessToken = new(() => value); }

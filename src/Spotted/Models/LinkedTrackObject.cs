@@ -16,7 +16,11 @@ public sealed record class LinkedTrackObject : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("id");
+        }
         init
         {
             if (value == null)
@@ -24,16 +28,20 @@ public sealed record class LinkedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "id", value);
+            this._rawData.Set("id", value);
         }
     }
 
     /// <summary>
     /// Known external URLs for this track.
     /// </summary>
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls");
+        }
         init
         {
             if (value == null)
@@ -41,7 +49,7 @@ public sealed record class LinkedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "external_urls", value);
+            this._rawData.Set("external_urls", value);
         }
     }
 
@@ -50,7 +58,11 @@ public sealed record class LinkedTrackObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -58,7 +70,7 @@ public sealed record class LinkedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "href", value);
+            this._rawData.Set("href", value);
         }
     }
 
@@ -70,7 +82,11 @@ public sealed record class LinkedTrackObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -78,7 +94,7 @@ public sealed record class LinkedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -87,7 +103,11 @@ public sealed record class LinkedTrackObject : JsonModel
     /// </summary>
     public string? Type
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("type");
+        }
         init
         {
             if (value == null)
@@ -95,7 +115,7 @@ public sealed record class LinkedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "type", value);
+            this._rawData.Set("type", value);
         }
     }
 
@@ -105,7 +125,11 @@ public sealed record class LinkedTrackObject : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)
@@ -113,7 +137,7 @@ public sealed record class LinkedTrackObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "uri", value);
+            this._rawData.Set("uri", value);
         }
     }
 
@@ -121,7 +145,7 @@ public sealed record class LinkedTrackObject : JsonModel
     public override void Validate()
     {
         _ = this.ID;
-        this.ExternalURLs?.Validate();
+        this.ExternalUrls?.Validate();
         _ = this.Href;
         _ = this.Published;
         _ = this.Type;
@@ -135,14 +159,14 @@ public sealed record class LinkedTrackObject : JsonModel
 
     public LinkedTrackObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     LinkedTrackObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

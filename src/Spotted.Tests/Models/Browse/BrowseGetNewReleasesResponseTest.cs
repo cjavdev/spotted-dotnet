@@ -33,7 +33,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -42,14 +42,14 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -87,7 +87,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -96,14 +96,14 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -148,7 +148,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -157,14 +157,14 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -183,8 +183,11 @@ public class BrowseGetNewReleasesResponseTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<BrowseGetNewReleasesResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<BrowseGetNewReleasesResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -213,7 +216,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -222,14 +225,14 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -248,8 +251,11 @@ public class BrowseGetNewReleasesResponseTest : TestBase
             },
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<BrowseGetNewReleasesResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<BrowseGetNewReleasesResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         BrowseGetNewReleasesResponseAlbums expectedAlbums = new()
@@ -271,7 +277,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -280,14 +286,14 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -332,7 +338,7 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             new()
                             {
                                 ID = "id",
-                                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                                 Href = "href",
                                 Name = "name",
                                 Published = true,
@@ -341,14 +347,14 @@ public class BrowseGetNewReleasesResponseTest : TestBase
                             },
                         ],
                         AvailableMarkets = ["CA", "BR", "IT"],
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Images =
                         [
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -395,7 +401,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -404,14 +410,14 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -446,7 +452,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -455,14 +461,14 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     },
                 ],
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -515,7 +521,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -524,14 +530,14 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -549,8 +555,11 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<BrowseGetNewReleasesResponseAlbums>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<BrowseGetNewReleasesResponseAlbums>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -577,7 +586,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -586,14 +595,14 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -611,8 +620,11 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
             Published = true,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<BrowseGetNewReleasesResponseAlbums>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<BrowseGetNewReleasesResponseAlbums>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedHref = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n";
@@ -632,7 +644,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Href = "href",
                         Name = "name",
                         Published = true,
@@ -641,14 +653,14 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                     },
                 ],
                 AvailableMarkets = ["CA", "BR", "IT"],
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Images =
                 [
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -701,7 +713,7 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         new()
                         {
                             ID = "id",
-                            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
                             Href = "href",
                             Name = "name",
                             Published = true,
@@ -710,14 +722,14 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
                         },
                     ],
                     AvailableMarkets = ["CA", "BR", "IT"],
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Images =
                     [
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -831,7 +843,7 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -840,14 +852,14 @@ public class ItemTest : TestBase
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -868,7 +880,7 @@ public class ItemTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
                 Published = true,
@@ -877,7 +889,7 @@ public class ItemTest : TestBase
             },
         ];
         List<string> expectedAvailableMarkets = ["CA", "BR", "IT"];
-        Models::ExternalURLObject expectedExternalURLs = new()
+        Models::ExternalUrlObject expectedExternalUrls = new()
         {
             Published = true,
             Spotify = "spotify",
@@ -888,7 +900,7 @@ public class ItemTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -898,7 +910,7 @@ public class ItemTest : TestBase
         ApiEnum<string, ReleaseDatePrecision> expectedReleaseDatePrecision =
             ReleaseDatePrecision.Year;
         long expectedTotalTracks = 9;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("album");
         string expectedUri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ";
         bool expectedPublished = true;
         Models::AlbumRestrictionObject expectedRestrictions = new()
@@ -919,7 +931,7 @@ public class ItemTest : TestBase
         {
             Assert.Equal(expectedAvailableMarkets[i], model.AvailableMarkets[i]);
         }
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedImages.Count, model.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
@@ -948,7 +960,7 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -957,14 +969,14 @@ public class ItemTest : TestBase
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -978,8 +990,8 @@ public class ItemTest : TestBase
             Restrictions = new() { Published = true, Reason = Models::Reason.Market },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Item>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Item>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -996,7 +1008,7 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1005,14 +1017,14 @@ public class ItemTest : TestBase
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1026,8 +1038,8 @@ public class ItemTest : TestBase
             Restrictions = new() { Published = true, Reason = Models::Reason.Market },
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Item>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Item>(element, ModelBase.SerializerOptions);
         Assert.NotNull(deserialized);
 
         string expectedID = "2up3OPMp9Tb4dAKM2erWXQ";
@@ -1037,7 +1049,7 @@ public class ItemTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
                 Published = true,
@@ -1046,7 +1058,7 @@ public class ItemTest : TestBase
             },
         ];
         List<string> expectedAvailableMarkets = ["CA", "BR", "IT"];
-        Models::ExternalURLObject expectedExternalURLs = new()
+        Models::ExternalUrlObject expectedExternalUrls = new()
         {
             Published = true,
             Spotify = "spotify",
@@ -1057,7 +1069,7 @@ public class ItemTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -1067,7 +1079,7 @@ public class ItemTest : TestBase
         ApiEnum<string, ReleaseDatePrecision> expectedReleaseDatePrecision =
             ReleaseDatePrecision.Year;
         long expectedTotalTracks = 9;
-        JsonElement expectedType = JsonSerializer.Deserialize<JsonElement>("\"album\"");
+        JsonElement expectedType = JsonSerializer.SerializeToElement("album");
         string expectedUri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ";
         bool expectedPublished = true;
         Models::AlbumRestrictionObject expectedRestrictions = new()
@@ -1088,7 +1100,7 @@ public class ItemTest : TestBase
         {
             Assert.Equal(expectedAvailableMarkets[i], deserialized.AvailableMarkets[i]);
         }
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedImages.Count, deserialized.Images.Count);
         for (int i = 0; i < expectedImages.Count; i++)
@@ -1117,7 +1129,7 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1126,14 +1138,14 @@ public class ItemTest : TestBase
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1162,7 +1174,7 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1171,14 +1183,14 @@ public class ItemTest : TestBase
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1208,7 +1220,7 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1217,14 +1229,14 @@ public class ItemTest : TestBase
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1251,7 +1263,7 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1260,14 +1272,14 @@ public class ItemTest : TestBase
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1301,7 +1313,7 @@ public class ItemTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -1310,14 +1322,14 @@ public class ItemTest : TestBase
                 },
             ],
             AvailableMarkets = ["CA", "BR", "IT"],
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Images =
             [
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -1354,9 +1366,11 @@ public class AlbumTypeTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumType>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
@@ -1382,7 +1396,7 @@ public class AlbumTypeTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, AlbumType>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
@@ -1412,9 +1426,11 @@ public class ReleaseDatePrecisionTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
@@ -1440,7 +1456,7 @@ public class ReleaseDatePrecisionTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, ReleaseDatePrecision>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);

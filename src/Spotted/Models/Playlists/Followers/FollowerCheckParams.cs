@@ -19,9 +19,13 @@ public sealed record class FollowerCheckParams : ParamsBase
     /// **Deprecated** A single item list containing current user's [Spotify Username](/documentation/web-api/concepts/spotify-uris-ids).
     /// Maximum: 1 id.
     /// </summary>
-    public string? IDs
+    public string? Ids
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "ids"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("ids");
+        }
         init
         {
             if (value == null)
@@ -29,22 +33,25 @@ public sealed record class FollowerCheckParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "ids", value);
+            this._rawQueryData.Set("ids", value);
         }
     }
 
     public FollowerCheckParams() { }
 
     public FollowerCheckParams(FollowerCheckParams followerCheckParams)
-        : base(followerCheckParams) { }
+        : base(followerCheckParams)
+    {
+        this.PlaylistID = followerCheckParams.PlaylistID;
+    }
 
     public FollowerCheckParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -54,8 +61,8 @@ public sealed record class FollowerCheckParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

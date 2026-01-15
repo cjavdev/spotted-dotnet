@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models.Playlists.Tracks;
 
 namespace Spotted.Tests.Models.Playlists.Tracks;
@@ -20,8 +21,11 @@ public class TrackAddResponseTest : TestBase
     {
         var model = new TrackAddResponse { SnapshotID = "abc" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TrackAddResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TrackAddResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -31,8 +35,11 @@ public class TrackAddResponseTest : TestBase
     {
         var model = new TrackAddResponse { SnapshotID = "abc" };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<TrackAddResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<TrackAddResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedSnapshotID = "abc";

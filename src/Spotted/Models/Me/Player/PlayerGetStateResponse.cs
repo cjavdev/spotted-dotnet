@@ -20,10 +20,8 @@ public sealed record class PlayerGetStateResponse : JsonModel
     {
         get
         {
-            return JsonModel.GetNullableClass<PlayerGetStateResponseActions>(
-                this.RawData,
-                "actions"
-            );
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<PlayerGetStateResponseActions>("actions");
         }
         init
         {
@@ -32,7 +30,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "actions", value);
+            this._rawData.Set("actions", value);
         }
     }
 
@@ -41,7 +39,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public ContextObject? Context
     {
-        get { return JsonModel.GetNullableClass<ContextObject>(this.RawData, "context"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ContextObject>("context");
+        }
         init
         {
             if (value == null)
@@ -49,7 +51,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "context", value);
+            this._rawData.Set("context", value);
         }
     }
 
@@ -59,7 +61,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public string? CurrentlyPlayingType
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "currently_playing_type"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("currently_playing_type");
+        }
         init
         {
             if (value == null)
@@ -67,7 +73,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "currently_playing_type", value);
+            this._rawData.Set("currently_playing_type", value);
         }
     }
 
@@ -76,7 +82,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public DeviceObject? Device
     {
-        get { return JsonModel.GetNullableClass<DeviceObject>(this.RawData, "device"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<DeviceObject>("device");
+        }
         init
         {
             if (value == null)
@@ -84,7 +94,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "device", value);
+            this._rawData.Set("device", value);
         }
     }
 
@@ -93,7 +103,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public bool? IsPlaying
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "is_playing"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("is_playing");
+        }
         init
         {
             if (value == null)
@@ -101,7 +115,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "is_playing", value);
+            this._rawData.Set("is_playing", value);
         }
     }
 
@@ -110,7 +124,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public PlayerGetStateResponseItem? Item
     {
-        get { return JsonModel.GetNullableClass<PlayerGetStateResponseItem>(this.RawData, "item"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<PlayerGetStateResponseItem>("item");
+        }
         init
         {
             if (value == null)
@@ -118,7 +136,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "item", value);
+            this._rawData.Set("item", value);
         }
     }
 
@@ -127,7 +145,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public long? ProgressMs
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "progress_ms"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("progress_ms");
+        }
         init
         {
             if (value == null)
@@ -135,7 +157,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "progress_ms", value);
+            this._rawData.Set("progress_ms", value);
         }
     }
 
@@ -147,7 +169,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -155,7 +181,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -164,7 +190,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public string? RepeatState
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "repeat_state"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("repeat_state");
+        }
         init
         {
             if (value == null)
@@ -172,7 +202,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "repeat_state", value);
+            this._rawData.Set("repeat_state", value);
         }
     }
 
@@ -181,7 +211,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public bool? ShuffleState
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "shuffle_state"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("shuffle_state");
+        }
         init
         {
             if (value == null)
@@ -189,7 +223,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "shuffle_state", value);
+            this._rawData.Set("shuffle_state", value);
         }
     }
 
@@ -199,7 +233,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
     /// </summary>
     public long? Timestamp
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "timestamp"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("timestamp");
+        }
         init
         {
             if (value == null)
@@ -207,7 +245,7 @@ public sealed record class PlayerGetStateResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "timestamp", value);
+            this._rawData.Set("timestamp", value);
         }
     }
 
@@ -234,14 +272,14 @@ public sealed record class PlayerGetStateResponse : JsonModel
 
     public PlayerGetStateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlayerGetStateResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -276,7 +314,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? InterruptingPlayback
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "interrupting_playback"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("interrupting_playback");
+        }
         init
         {
             if (value == null)
@@ -284,7 +326,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "interrupting_playback", value);
+            this._rawData.Set("interrupting_playback", value);
         }
     }
 
@@ -293,7 +335,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? Pausing
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "pausing"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("pausing");
+        }
         init
         {
             if (value == null)
@@ -301,7 +347,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "pausing", value);
+            this._rawData.Set("pausing", value);
         }
     }
 
@@ -313,7 +359,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -321,7 +371,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -330,7 +380,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? Resuming
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "resuming"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("resuming");
+        }
         init
         {
             if (value == null)
@@ -338,7 +392,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "resuming", value);
+            this._rawData.Set("resuming", value);
         }
     }
 
@@ -347,7 +401,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? Seeking
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "seeking"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("seeking");
+        }
         init
         {
             if (value == null)
@@ -355,7 +413,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "seeking", value);
+            this._rawData.Set("seeking", value);
         }
     }
 
@@ -364,7 +422,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? SkippingNext
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "skipping_next"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("skipping_next");
+        }
         init
         {
             if (value == null)
@@ -372,7 +434,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "skipping_next", value);
+            this._rawData.Set("skipping_next", value);
         }
     }
 
@@ -381,7 +443,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? SkippingPrev
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "skipping_prev"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("skipping_prev");
+        }
         init
         {
             if (value == null)
@@ -389,7 +455,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "skipping_prev", value);
+            this._rawData.Set("skipping_prev", value);
         }
     }
 
@@ -398,7 +464,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? TogglingRepeatContext
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "toggling_repeat_context"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("toggling_repeat_context");
+        }
         init
         {
             if (value == null)
@@ -406,7 +476,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "toggling_repeat_context", value);
+            this._rawData.Set("toggling_repeat_context", value);
         }
     }
 
@@ -415,7 +485,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? TogglingRepeatTrack
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "toggling_repeat_track"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("toggling_repeat_track");
+        }
         init
         {
             if (value == null)
@@ -423,7 +497,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "toggling_repeat_track", value);
+            this._rawData.Set("toggling_repeat_track", value);
         }
     }
 
@@ -432,7 +506,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? TogglingShuffle
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "toggling_shuffle"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("toggling_shuffle");
+        }
         init
         {
             if (value == null)
@@ -440,7 +518,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "toggling_shuffle", value);
+            this._rawData.Set("toggling_shuffle", value);
         }
     }
 
@@ -449,7 +527,11 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
     /// </summary>
     public bool? TransferringPlayback
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "transferring_playback"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("transferring_playback");
+        }
         init
         {
             if (value == null)
@@ -457,7 +539,7 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "transferring_playback", value);
+            this._rawData.Set("transferring_playback", value);
         }
     }
 
@@ -486,14 +568,14 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
 
     public PlayerGetStateResponseActions(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlayerGetStateResponseActions(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -518,7 +600,7 @@ class PlayerGetStateResponseActionsFromRaw : IFromRawJson<PlayerGetStateResponse
 /// The currently playing track or episode. Can be `null`.
 /// </summary>
 [JsonConverter(typeof(PlayerGetStateResponseItemConverter))]
-public record class PlayerGetStateResponseItem
+public record class PlayerGetStateResponseItem : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -526,7 +608,13 @@ public record class PlayerGetStateResponseItem
 
     public JsonElement Json
     {
-        get { return this._element ??= JsonSerializer.SerializeToElement(this.Value); }
+        get
+        {
+            return this._element ??= JsonSerializer.SerializeToElement(
+                this.Value,
+                ModelBase.SerializerOptions
+            );
+        }
     }
 
     public string? ID
@@ -553,13 +641,13 @@ public record class PlayerGetStateResponseItem
         }
     }
 
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
         get
         {
-            return Match<ExternalURLObject?>(
-                trackObject: (x) => x.ExternalURLs,
-                episodeObject: (x) => x.ExternalURLs
+            return Match<ExternalUrlObject?>(
+                trackObject: (x) => x.ExternalUrls,
+                episodeObject: (x) => x.ExternalUrls
             );
         }
     }
@@ -747,7 +835,7 @@ public record class PlayerGetStateResponseItem
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {
@@ -770,6 +858,9 @@ public record class PlayerGetStateResponseItem
     {
         return 0;
     }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
 }
 
 sealed class PlayerGetStateResponseItemConverter : JsonConverter<PlayerGetStateResponseItem>

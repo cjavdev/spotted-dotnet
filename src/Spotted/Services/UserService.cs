@@ -12,17 +12,27 @@ namespace Spotted.Services;
 /// <inheritdoc/>
 public sealed class UserService : IUserService
 {
+    readonly Lazy<IUserServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public IUserServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public IUserService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
         return new UserService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public UserService(ISpottedClient client)
     {
         _client = client;
+
+        _withRawResponse = new(() => new UserServiceWithRawResponse(client.WithRawResponse));
         _playlists = new(() => new Users::PlaylistService(client));
     }
 
@@ -38,6 +48,55 @@ public sealed class UserService : IUserService
         CancellationToken cancellationToken = default
     )
     {
+        using var response = await this
+            .WithRawResponse.RetrieveProfile(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task<UserRetrieveProfileResponse> RetrieveProfile(
+        string userID,
+        UserRetrieveProfileParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        parameters ??= new();
+
+        return this.RetrieveProfile(parameters with { UserID = userID }, cancellationToken);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public IUserServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
+    {
+        return new UserServiceWithRawResponse(this._client.WithOptions(modifier));
+    }
+
+    public UserServiceWithRawResponse(ISpottedClientWithRawResponse client)
+    {
+        _client = client;
+
+        _playlists = new(() => new Users::PlaylistServiceWithRawResponse(client));
+    }
+
+    readonly Lazy<Users::IPlaylistServiceWithRawResponse> _playlists;
+    public Users::IPlaylistServiceWithRawResponse Playlists
+    {
+        get { return _playlists.Value; }
+    }
+
+    /// <inheritdoc/>
+    public async Task<HttpResponse<UserRetrieveProfileResponse>> RetrieveProfile(
+        UserRetrieveProfileParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
         if (parameters.UserID == null)
         {
             throw new SpottedInvalidDataException("'parameters.UserID' cannot be null");
@@ -48,21 +107,25 @@ public sealed class UserService : IUserService
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var deserializedResponse = await response
-            .Deserialize<UserRetrieveProfileResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            deserializedResponse.Validate();
-        }
-        return deserializedResponse;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var deserializedResponse = await response
+                    .Deserialize<UserRetrieveProfileResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    deserializedResponse.Validate();
+                }
+                return deserializedResponse;
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<UserRetrieveProfileResponse> RetrieveProfile(
+    public Task<HttpResponse<UserRetrieveProfileResponse>> RetrieveProfile(
         string userID,
         UserRetrieveProfileParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -70,6 +133,6 @@ public sealed class UserService : IUserService
     {
         parameters ??= new();
 
-        return await this.RetrieveProfile(parameters with { UserID = userID }, cancellationToken);
+        return this.RetrieveProfile(parameters with { UserID = userID }, cancellationToken);
     }
 }

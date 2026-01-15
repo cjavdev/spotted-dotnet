@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models.Me.Following;
 using Models = Spotted.Models;
 
@@ -26,7 +27,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Followers = new()
                         {
                             Href = "href",
@@ -40,7 +41,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -74,7 +75,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -88,7 +89,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -129,7 +130,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Followers = new()
                         {
                             Href = "href",
@@ -143,7 +144,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -163,8 +164,11 @@ public class FollowingBulkRetrieveResponseTest : TestBase
             },
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponse>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponse>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -188,7 +192,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Followers = new()
                         {
                             Href = "href",
@@ -202,7 +206,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -222,8 +226,11 @@ public class FollowingBulkRetrieveResponseTest : TestBase
             },
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponse>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponse>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         FollowingBulkRetrieveResponseArtists expectedArtists = new()
@@ -240,7 +247,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -254,7 +261,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -295,7 +302,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                     new()
                     {
                         ID = "id",
-                        ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
                         Followers = new()
                         {
                             Href = "href",
@@ -309,7 +316,7 @@ public class FollowingBulkRetrieveResponseTest : TestBase
                             new()
                             {
                                 Height = 300,
-                                URL =
+                                Url =
                                     "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                                 Width = 300,
                                 Published = true,
@@ -352,7 +359,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -366,7 +373,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -397,7 +404,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Followers = new()
                 {
                     Href = "href",
@@ -411,7 +418,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -459,7 +466,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -473,7 +480,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -492,8 +499,11 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
             Total = 0,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponseArtists>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponseArtists>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -515,7 +525,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -529,7 +539,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -548,9 +558,10 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
             Total = 0,
         };
 
-        string element = JsonSerializer.Serialize(model);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
         var deserialized = JsonSerializer.Deserialize<FollowingBulkRetrieveResponseArtists>(
-            element
+            element,
+            ModelBase.SerializerOptions
         );
         Assert.NotNull(deserialized);
 
@@ -566,7 +577,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Followers = new()
                 {
                     Href = "href",
@@ -580,7 +591,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                     new()
                     {
                         Height = 300,
-                        URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                         Width = 300,
                         Published = true,
                     },
@@ -628,7 +639,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Followers = new()
                     {
                         Href = "href",
@@ -642,7 +653,7 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
                         new()
                         {
                             Height = 300,
-                            URL =
+                            Url =
                                 "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                             Width = 300,
                             Published = true,
@@ -774,8 +785,8 @@ public class CursorsTest : TestBase
             Published = true,
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Cursors>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Cursors>(json, ModelBase.SerializerOptions);
 
         Assert.Equal(model, deserialized);
     }
@@ -790,8 +801,11 @@ public class CursorsTest : TestBase
             Published = true,
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<Cursors>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<Cursors>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedAfter = "after";

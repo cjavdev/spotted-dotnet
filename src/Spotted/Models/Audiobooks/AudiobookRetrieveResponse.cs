@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -19,8 +20,12 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required string ID
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "id"); }
-        init { JsonModel.Set(this._rawData, "id", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("id");
+        }
+        init { this._rawData.Set("id", value); }
     }
 
     /// <summary>
@@ -28,8 +33,18 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<AuthorObject> Authors
     {
-        get { return JsonModel.GetNotNullClass<List<AuthorObject>>(this.RawData, "authors"); }
-        init { JsonModel.Set(this._rawData, "authors", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<AuthorObject>>("authors");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<AuthorObject>>(
+                "authors",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -39,8 +54,18 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<string> AvailableMarkets
     {
-        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "available_markets"); }
-        init { JsonModel.Set(this._rawData, "available_markets", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("available_markets");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<string>>(
+                "available_markets",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -48,8 +73,18 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<CopyrightObject> Copyrights
     {
-        get { return JsonModel.GetNotNullClass<List<CopyrightObject>>(this.RawData, "copyrights"); }
-        init { JsonModel.Set(this._rawData, "copyrights", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<CopyrightObject>>("copyrights");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<CopyrightObject>>(
+                "copyrights",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -58,8 +93,12 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required string Description
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "description"); }
-        init { JsonModel.Set(this._rawData, "description", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("description");
+        }
+        init { this._rawData.Set("description", value); }
     }
 
     /// <summary>
@@ -68,14 +107,22 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required bool Explicit
     {
-        get { return JsonModel.GetNotNullStruct<bool>(this.RawData, "explicit"); }
-        init { JsonModel.Set(this._rawData, "explicit", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<bool>("explicit");
+        }
+        init { this._rawData.Set("explicit", value); }
     }
 
-    public required ExternalURLObject ExternalURLs
+    public required ExternalUrlObject ExternalUrls
     {
-        get { return JsonModel.GetNotNullClass<ExternalURLObject>(this.RawData, "external_urls"); }
-        init { JsonModel.Set(this._rawData, "external_urls", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<ExternalUrlObject>("external_urls");
+        }
+        init { this._rawData.Set("external_urls", value); }
     }
 
     /// <summary>
@@ -83,17 +130,25 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
-        init { JsonModel.Set(this._rawData, "href", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
+        init { this._rawData.Set("href", value); }
     }
 
     /// <summary>
     /// A description of the audiobook. This field may contain HTML tags.
     /// </summary>
-    public required string HTMLDescription
+    public required string HtmlDescription
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "html_description"); }
-        init { JsonModel.Set(this._rawData, "html_description", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("html_description");
+        }
+        init { this._rawData.Set("html_description", value); }
     }
 
     /// <summary>
@@ -101,8 +156,18 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<ImageObject> Images
     {
-        get { return JsonModel.GetNotNullClass<List<ImageObject>>(this.RawData, "images"); }
-        init { JsonModel.Set(this._rawData, "images", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ImageObject>>("images");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<ImageObject>>(
+                "images",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -111,8 +176,18 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<string> Languages
     {
-        get { return JsonModel.GetNotNullClass<List<string>>(this.RawData, "languages"); }
-        init { JsonModel.Set(this._rawData, "languages", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<string>>("languages");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<string>>(
+                "languages",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -120,8 +195,12 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required string MediaType
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "media_type"); }
-        init { JsonModel.Set(this._rawData, "media_type", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("media_type");
+        }
+        init { this._rawData.Set("media_type", value); }
     }
 
     /// <summary>
@@ -129,8 +208,12 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required string Name
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "name"); }
-        init { JsonModel.Set(this._rawData, "name", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("name");
+        }
+        init { this._rawData.Set("name", value); }
     }
 
     /// <summary>
@@ -138,8 +221,18 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required IReadOnlyList<NarratorObject> Narrators
     {
-        get { return JsonModel.GetNotNullClass<List<NarratorObject>>(this.RawData, "narrators"); }
-        init { JsonModel.Set(this._rawData, "narrators", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<NarratorObject>>("narrators");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<NarratorObject>>(
+                "narrators",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <summary>
@@ -147,8 +240,12 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required string Publisher
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "publisher"); }
-        init { JsonModel.Set(this._rawData, "publisher", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("publisher");
+        }
+        init { this._rawData.Set("publisher", value); }
     }
 
     /// <summary>
@@ -156,8 +253,12 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required long TotalChapters
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total_chapters"); }
-        init { JsonModel.Set(this._rawData, "total_chapters", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total_chapters");
+        }
+        init { this._rawData.Set("total_chapters", value); }
     }
 
     /// <summary>
@@ -165,8 +266,12 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public JsonElement Type
     {
-        get { return JsonModel.GetNotNullStruct<JsonElement>(this.RawData, "type"); }
-        init { JsonModel.Set(this._rawData, "type", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<JsonElement>("type");
+        }
+        init { this._rawData.Set("type", value); }
     }
 
     /// <summary>
@@ -175,8 +280,12 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public required string Uri
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "uri"); }
-        init { JsonModel.Set(this._rawData, "uri", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("uri");
+        }
+        init { this._rawData.Set("uri", value); }
     }
 
     /// <summary>
@@ -184,7 +293,11 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public string? Edition
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "edition"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("edition");
+        }
         init
         {
             if (value == null)
@@ -192,7 +305,7 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "edition", value);
+            this._rawData.Set("edition", value);
         }
     }
 
@@ -204,7 +317,11 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -212,7 +329,7 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -223,9 +340,10 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
     {
         get
         {
-            return JsonModel.GetNotNullClass<IntersectionMember1Chapters>(this.RawData, "chapters");
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<IntersectionMember1Chapters>("chapters");
         }
-        init { JsonModel.Set(this._rawData, "chapters", value); }
+        init { this._rawData.Set("chapters", value); }
     }
 
     public static implicit operator AudiobookBase(
@@ -239,9 +357,9 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
             Copyrights = audiobookRetrieveResponse.Copyrights,
             Description = audiobookRetrieveResponse.Description,
             Explicit = audiobookRetrieveResponse.Explicit,
-            ExternalURLs = audiobookRetrieveResponse.ExternalURLs,
+            ExternalUrls = audiobookRetrieveResponse.ExternalUrls,
             Href = audiobookRetrieveResponse.Href,
-            HTMLDescription = audiobookRetrieveResponse.HTMLDescription,
+            HtmlDescription = audiobookRetrieveResponse.HtmlDescription,
             Images = audiobookRetrieveResponse.Images,
             Languages = audiobookRetrieveResponse.Languages,
             MediaType = audiobookRetrieveResponse.MediaType,
@@ -270,9 +388,9 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
         }
         _ = this.Description;
         _ = this.Explicit;
-        this.ExternalURLs.Validate();
+        this.ExternalUrls.Validate();
         _ = this.Href;
-        _ = this.HTMLDescription;
+        _ = this.HtmlDescription;
         foreach (var item in this.Images)
         {
             item.Validate();
@@ -286,12 +404,7 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
         }
         _ = this.Publisher;
         _ = this.TotalChapters;
-        if (
-            !JsonElement.DeepEquals(
-                this.Type,
-                JsonSerializer.Deserialize<JsonElement>("\"audiobook\"")
-            )
-        )
+        if (!JsonElement.DeepEquals(this.Type, JsonSerializer.SerializeToElement("audiobook")))
         {
             throw new SpottedInvalidDataException("Invalid value given for constant");
         }
@@ -303,7 +416,7 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
 
     public AudiobookRetrieveResponse()
     {
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"audiobook\"");
+        this.Type = JsonSerializer.SerializeToElement("audiobook");
     }
 
     public AudiobookRetrieveResponse(AudiobookRetrieveResponse audiobookRetrieveResponse)
@@ -311,16 +424,16 @@ public sealed record class AudiobookRetrieveResponse : JsonModel
 
     public AudiobookRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
 
-        this.Type = JsonSerializer.Deserialize<JsonElement>("\"audiobook\"");
+        this.Type = JsonSerializer.SerializeToElement("audiobook");
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     AudiobookRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -356,9 +469,10 @@ public sealed record class IntersectionMember1 : JsonModel
     {
         get
         {
-            return JsonModel.GetNotNullClass<IntersectionMember1Chapters>(this.RawData, "chapters");
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<IntersectionMember1Chapters>("chapters");
         }
-        init { JsonModel.Set(this._rawData, "chapters", value); }
+        init { this._rawData.Set("chapters", value); }
     }
 
     /// <inheritdoc/>
@@ -376,14 +490,14 @@ public sealed record class IntersectionMember1 : JsonModel
 
     public IntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     IntersectionMember1(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -425,8 +539,12 @@ public sealed record class IntersectionMember1Chapters : JsonModel
     /// </summary>
     public required string Href
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawData, "href"); }
-        init { JsonModel.Set(this._rawData, "href", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
+        init { this._rawData.Set("href", value); }
     }
 
     /// <summary>
@@ -434,8 +552,12 @@ public sealed record class IntersectionMember1Chapters : JsonModel
     /// </summary>
     public required long Limit
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "limit"); }
-        init { JsonModel.Set(this._rawData, "limit", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("limit");
+        }
+        init { this._rawData.Set("limit", value); }
     }
 
     /// <summary>
@@ -443,8 +565,12 @@ public sealed record class IntersectionMember1Chapters : JsonModel
     /// </summary>
     public required string? Next
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
-        init { JsonModel.Set(this._rawData, "next", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("next");
+        }
+        init { this._rawData.Set("next", value); }
     }
 
     /// <summary>
@@ -452,8 +578,12 @@ public sealed record class IntersectionMember1Chapters : JsonModel
     /// </summary>
     public required long Offset
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "offset"); }
-        init { JsonModel.Set(this._rawData, "offset", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("offset");
+        }
+        init { this._rawData.Set("offset", value); }
     }
 
     /// <summary>
@@ -461,8 +591,12 @@ public sealed record class IntersectionMember1Chapters : JsonModel
     /// </summary>
     public required string? Previous
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "previous"); }
-        init { JsonModel.Set(this._rawData, "previous", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("previous");
+        }
+        init { this._rawData.Set("previous", value); }
     }
 
     /// <summary>
@@ -470,15 +604,22 @@ public sealed record class IntersectionMember1Chapters : JsonModel
     /// </summary>
     public required long Total
     {
-        get { return JsonModel.GetNotNullStruct<long>(this.RawData, "total"); }
-        init { JsonModel.Set(this._rawData, "total", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total");
+        }
+        init { this._rawData.Set("total", value); }
     }
 
     public IReadOnlyList<SimplifiedChapterObject>? Items
     {
         get
         {
-            return JsonModel.GetNullableClass<List<SimplifiedChapterObject>>(this.RawData, "items");
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<SimplifiedChapterObject>>(
+                "items"
+            );
         }
         init
         {
@@ -487,7 +628,10 @@ public sealed record class IntersectionMember1Chapters : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "items", value);
+            this._rawData.Set<ImmutableArray<SimplifiedChapterObject>?>(
+                "items",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -499,7 +643,11 @@ public sealed record class IntersectionMember1Chapters : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -507,7 +655,7 @@ public sealed record class IntersectionMember1Chapters : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -534,14 +682,14 @@ public sealed record class IntersectionMember1Chapters : JsonModel
 
     public IntersectionMember1Chapters(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     IntersectionMember1Chapters(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

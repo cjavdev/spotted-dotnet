@@ -18,7 +18,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public string? ID
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "id"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("id");
+        }
         init
         {
             if (value == null)
@@ -26,16 +30,20 @@ public sealed record class PlaylistUserObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "id", value);
+            this._rawData.Set("id", value);
         }
     }
 
     /// <summary>
     /// Known public external URLs for this user.
     /// </summary>
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
-        get { return JsonModel.GetNullableClass<ExternalURLObject>(this.RawData, "external_urls"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ExternalUrlObject>("external_urls");
+        }
         init
         {
             if (value == null)
@@ -43,7 +51,7 @@ public sealed record class PlaylistUserObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "external_urls", value);
+            this._rawData.Set("external_urls", value);
         }
     }
 
@@ -52,7 +60,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -60,7 +72,7 @@ public sealed record class PlaylistUserObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "href", value);
+            this._rawData.Set("href", value);
         }
     }
 
@@ -72,7 +84,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -80,7 +96,7 @@ public sealed record class PlaylistUserObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -91,10 +107,8 @@ public sealed record class PlaylistUserObject : JsonModel
     {
         get
         {
-            return JsonModel.GetNullableClass<ApiEnum<string, PlaylistUserObjectType>>(
-                this.RawData,
-                "type"
-            );
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<ApiEnum<string, PlaylistUserObjectType>>("type");
         }
         init
         {
@@ -103,7 +117,7 @@ public sealed record class PlaylistUserObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "type", value);
+            this._rawData.Set("type", value);
         }
     }
 
@@ -113,7 +127,11 @@ public sealed record class PlaylistUserObject : JsonModel
     /// </summary>
     public string? Uri
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "uri"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("uri");
+        }
         init
         {
             if (value == null)
@@ -121,7 +139,7 @@ public sealed record class PlaylistUserObject : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "uri", value);
+            this._rawData.Set("uri", value);
         }
     }
 
@@ -129,7 +147,7 @@ public sealed record class PlaylistUserObject : JsonModel
     public override void Validate()
     {
         _ = this.ID;
-        this.ExternalURLs?.Validate();
+        this.ExternalUrls?.Validate();
         _ = this.Href;
         _ = this.Published;
         this.Type?.Validate();
@@ -143,14 +161,14 @@ public sealed record class PlaylistUserObject : JsonModel
 
     public PlaylistUserObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlaylistUserObject(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 

@@ -11,6 +11,16 @@ namespace Spotted.Services.Me;
 /// <inheritdoc/>
 public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookService
 {
+    readonly Lazy<global::Spotted.Services.Me.IAudiobookServiceWithRawResponse> _withRawResponse;
+
+    /// <inheritdoc/>
+    public global::Spotted.Services.Me.IAudiobookServiceWithRawResponse WithRawResponse
+    {
+        get { return _withRawResponse.Value; }
+    }
+
+    readonly ISpottedClient _client;
+
     /// <inheritdoc/>
     public global::Spotted.Services.Me.IAudiobookService WithOptions(
         Func<ClientOptions, ClientOptions> modifier
@@ -19,15 +29,78 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
         return new global::Spotted.Services.Me.AudiobookService(this._client.WithOptions(modifier));
     }
 
-    readonly ISpottedClient _client;
-
     public AudiobookService(ISpottedClient client)
+    {
+        _client = client;
+
+        _withRawResponse = new(() =>
+            new global::Spotted.Services.Me.AudiobookServiceWithRawResponse(client.WithRawResponse)
+        );
+    }
+
+    /// <inheritdoc/>
+    public async Task<AudiobookListPage> List(
+        AudiobookListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.List(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public async Task<List<bool>> Check(
+        AudiobookCheckParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        using var response = await this
+            .WithRawResponse.Check(parameters, cancellationToken)
+            .ConfigureAwait(false);
+        return await response.Deserialize(cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <inheritdoc/>
+    public Task Remove(
+        AudiobookRemoveParams parameters,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return this.WithRawResponse.Remove(parameters, cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public Task Save(AudiobookSaveParams parameters, CancellationToken cancellationToken = default)
+    {
+        return this.WithRawResponse.Save(parameters, cancellationToken);
+    }
+}
+
+/// <inheritdoc/>
+public sealed class AudiobookServiceWithRawResponse
+    : global::Spotted.Services.Me.IAudiobookServiceWithRawResponse
+{
+    readonly ISpottedClientWithRawResponse _client;
+
+    /// <inheritdoc/>
+    public global::Spotted.Services.Me.IAudiobookServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    )
+    {
+        return new global::Spotted.Services.Me.AudiobookServiceWithRawResponse(
+            this._client.WithOptions(modifier)
+        );
+    }
+
+    public AudiobookServiceWithRawResponse(ISpottedClientWithRawResponse client)
     {
         _client = client;
     }
 
     /// <inheritdoc/>
-    public async Task<AudiobookListPageResponse> List(
+    public async Task<HttpResponse<AudiobookListPage>> List(
         AudiobookListParams? parameters = null,
         CancellationToken cancellationToken = default
     )
@@ -39,21 +112,25 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        var page = await response
-            .Deserialize<AudiobookListPageResponse>(cancellationToken)
-            .ConfigureAwait(false);
-        if (this._client.ResponseValidation)
-        {
-            page.Validate();
-        }
-        return page;
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                var page = await response
+                    .Deserialize<AudiobookListPageResponse>(token)
+                    .ConfigureAwait(false);
+                if (this._client.ResponseValidation)
+                {
+                    page.Validate();
+                }
+                return new AudiobookListPage(this, parameters, page);
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task<List<bool>> Check(
+    public async Task<HttpResponse<List<bool>>> Check(
         AudiobookCheckParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -63,14 +140,18 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
             Method = HttpMethod.Get,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
-        return await response.Deserialize<List<bool>>(cancellationToken).ConfigureAwait(false);
+        var response = await this._client.Execute(request, cancellationToken).ConfigureAwait(false);
+        return new(
+            response,
+            async (token) =>
+            {
+                return await response.Deserialize<List<bool>>(token).ConfigureAwait(false);
+            }
+        );
     }
 
     /// <inheritdoc/>
-    public async Task Remove(
+    public Task<HttpResponse> Remove(
         AudiobookRemoveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -80,13 +161,11 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
             Method = HttpMethod.Delete,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 
     /// <inheritdoc/>
-    public async Task Save(
+    public Task<HttpResponse> Save(
         AudiobookSaveParams parameters,
         CancellationToken cancellationToken = default
     )
@@ -96,8 +175,6 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
             Method = HttpMethod.Put,
             Params = parameters,
         };
-        using var response = await this
-            ._client.Execute(request, cancellationToken)
-            .ConfigureAwait(false);
+        return this._client.Execute(request, cancellationToken);
     }
 }

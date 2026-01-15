@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -21,7 +21,11 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
     /// </summary>
     public Cursors? Cursors
     {
-        get { return JsonModel.GetNullableClass<Cursors>(this.RawData, "cursors"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Cursors>("cursors");
+        }
         init
         {
             if (value == null)
@@ -29,7 +33,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "cursors", value);
+            this._rawData.Set("cursors", value);
         }
     }
 
@@ -38,7 +42,11 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
     /// </summary>
     public string? Href
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "href"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("href");
+        }
         init
         {
             if (value == null)
@@ -46,18 +54,18 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "href", value);
+            this._rawData.Set("href", value);
         }
     }
 
-    public IReadOnlyList<PlayerListRecentlyPlayedPageResponseItem>? Items
+    public IReadOnlyList<PlayerListRecentlyPlayedResponse>? Items
     {
         get
         {
-            return JsonModel.GetNullableClass<List<PlayerListRecentlyPlayedPageResponseItem>>(
-                this.RawData,
-                "items"
-            );
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<
+                ImmutableArray<PlayerListRecentlyPlayedResponse>
+            >("items");
         }
         init
         {
@@ -66,7 +74,10 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "items", value);
+            this._rawData.Set<ImmutableArray<PlayerListRecentlyPlayedResponse>?>(
+                "items",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -75,7 +86,11 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
     /// </summary>
     public long? Limit
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "limit"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -83,7 +98,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "limit", value);
+            this._rawData.Set("limit", value);
         }
     }
 
@@ -92,7 +107,11 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
     /// </summary>
     public string? Next
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "next"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("next");
+        }
         init
         {
             if (value == null)
@@ -100,7 +119,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "next", value);
+            this._rawData.Set("next", value);
         }
     }
 
@@ -112,7 +131,11 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -120,7 +143,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -129,7 +152,11 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
     /// </summary>
     public long? Total
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawData, "total"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<long>("total");
+        }
         init
         {
             if (value == null)
@@ -137,7 +164,7 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "total", value);
+            this._rawData.Set("total", value);
         }
     }
 
@@ -165,14 +192,14 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
 
     public PlayerListRecentlyPlayedPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     PlayerListRecentlyPlayedPageResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -205,7 +232,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public string? After
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "after"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("after");
+        }
         init
         {
             if (value == null)
@@ -213,7 +244,7 @@ public sealed record class Cursors : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "after", value);
+            this._rawData.Set("after", value);
         }
     }
 
@@ -222,7 +253,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public string? Before
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawData, "before"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("before");
+        }
         init
         {
             if (value == null)
@@ -230,7 +265,7 @@ public sealed record class Cursors : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "before", value);
+            this._rawData.Set("before", value);
         }
     }
 
@@ -242,7 +277,11 @@ public sealed record class Cursors : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -250,7 +289,7 @@ public sealed record class Cursors : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -269,14 +308,14 @@ public sealed record class Cursors : JsonModel
 
     public Cursors(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     Cursors(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -292,132 +331,4 @@ class CursorsFromRaw : IFromRawJson<Cursors>
     /// <inheritdoc/>
     public Cursors FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
         Cursors.FromRawUnchecked(rawData);
-}
-
-[JsonConverter(
-    typeof(JsonModelConverter<
-        PlayerListRecentlyPlayedPageResponseItem,
-        PlayerListRecentlyPlayedPageResponseItemFromRaw
-    >)
-)]
-public sealed record class PlayerListRecentlyPlayedPageResponseItem : JsonModel
-{
-    /// <summary>
-    /// The context the track was played from.
-    /// </summary>
-    public ContextObject? Context
-    {
-        get { return JsonModel.GetNullableClass<ContextObject>(this.RawData, "context"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            JsonModel.Set(this._rawData, "context", value);
-        }
-    }
-
-    /// <summary>
-    /// The date and time the track was played.
-    /// </summary>
-    public DateTimeOffset? PlayedAt
-    {
-        get { return JsonModel.GetNullableStruct<DateTimeOffset>(this.RawData, "played_at"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            JsonModel.Set(this._rawData, "played_at", value);
-        }
-    }
-
-    /// <summary>
-    /// The playlist's public/private status (if it should be added to the user's
-    /// profile or not): `true` the playlist will be public, `false` the playlist
-    /// will be private, `null` the playlist status is not relevant. For more about
-    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
-    /// </summary>
-    public bool? Published
-    {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            JsonModel.Set(this._rawData, "published", value);
-        }
-    }
-
-    /// <summary>
-    /// The track the user listened to.
-    /// </summary>
-    public TrackObject? Track
-    {
-        get { return JsonModel.GetNullableClass<TrackObject>(this.RawData, "track"); }
-        init
-        {
-            if (value == null)
-            {
-                return;
-            }
-
-            JsonModel.Set(this._rawData, "track", value);
-        }
-    }
-
-    /// <inheritdoc/>
-    public override void Validate()
-    {
-        this.Context?.Validate();
-        _ = this.PlayedAt;
-        _ = this.Published;
-        this.Track?.Validate();
-    }
-
-    public PlayerListRecentlyPlayedPageResponseItem() { }
-
-    public PlayerListRecentlyPlayedPageResponseItem(
-        PlayerListRecentlyPlayedPageResponseItem playerListRecentlyPlayedPageResponseItem
-    )
-        : base(playerListRecentlyPlayedPageResponseItem) { }
-
-    public PlayerListRecentlyPlayedPageResponseItem(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        this._rawData = [.. rawData];
-    }
-
-#pragma warning disable CS8618
-    [SetsRequiredMembers]
-    PlayerListRecentlyPlayedPageResponseItem(FrozenDictionary<string, JsonElement> rawData)
-    {
-        this._rawData = [.. rawData];
-    }
-#pragma warning restore CS8618
-
-    /// <inheritdoc cref="PlayerListRecentlyPlayedPageResponseItemFromRaw.FromRawUnchecked"/>
-    public static PlayerListRecentlyPlayedPageResponseItem FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
-    {
-        return new(FrozenDictionary.ToFrozenDictionary(rawData));
-    }
-}
-
-class PlayerListRecentlyPlayedPageResponseItemFromRaw
-    : IFromRawJson<PlayerListRecentlyPlayedPageResponseItem>
-{
-    /// <inheritdoc/>
-    public PlayerListRecentlyPlayedPageResponseItem FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => PlayerListRecentlyPlayedPageResponseItem.FromRawUnchecked(rawData);
 }

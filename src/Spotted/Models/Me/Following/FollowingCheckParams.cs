@@ -21,10 +21,14 @@ public sealed record class FollowingCheckParams : ParamsBase
     /// to check. For example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`.
     /// A maximum of 50 IDs can be sent in one request.
     /// </summary>
-    public required string IDs
+    public required string Ids
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
-        init { JsonModel.Set(this._rawQueryData, "ids", value); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("ids");
+        }
+        init { this._rawQueryData.Set("ids", value); }
     }
 
     /// <summary>
@@ -34,11 +38,12 @@ public sealed record class FollowingCheckParams : ParamsBase
     {
         get
         {
-            return JsonModel.GetNotNullClass<
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<
                 ApiEnum<string, global::Spotted.Models.Me.Following.Type>
-            >(this.RawQueryData, "type");
+            >("type");
         }
-        init { JsonModel.Set(this._rawQueryData, "type", value); }
+        init { this._rawQueryData.Set("type", value); }
     }
 
     public FollowingCheckParams() { }
@@ -51,8 +56,8 @@ public sealed record class FollowingCheckParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -62,8 +67,8 @@ public sealed record class FollowingCheckParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

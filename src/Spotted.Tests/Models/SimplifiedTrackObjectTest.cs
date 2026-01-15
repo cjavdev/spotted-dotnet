@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
@@ -17,7 +18,7 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -29,21 +30,21 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
-            PreviewURL = "preview_url",
+            PreviewUrl = "preview_url",
             Published = true,
             Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
@@ -57,7 +58,7 @@ public class SimplifiedTrackObjectTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
                 Published = true,
@@ -69,21 +70,21 @@ public class SimplifiedTrackObjectTest : TestBase
         long expectedDiscNumber = 0;
         long expectedDurationMs = 0;
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedIsLocal = true;
         bool expectedIsPlayable = true;
         LinkedTrackObject expectedLinkedFrom = new()
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
             Uri = "uri",
         };
         string expectedName = "name";
-        string expectedPreviewURL = "preview_url";
+        string expectedPreviewUrl = "preview_url";
         bool expectedPublished = true;
         TrackRestrictionObject expectedRestrictions = new() { Published = true, Reason = "reason" };
         long expectedTrackNumber = 0;
@@ -106,13 +107,13 @@ public class SimplifiedTrackObjectTest : TestBase
         Assert.Equal(expectedDiscNumber, model.DiscNumber);
         Assert.Equal(expectedDurationMs, model.DurationMs);
         Assert.Equal(expectedExplicit, model.Explicit);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedHref, model.Href);
         Assert.Equal(expectedIsLocal, model.IsLocal);
         Assert.Equal(expectedIsPlayable, model.IsPlayable);
         Assert.Equal(expectedLinkedFrom, model.LinkedFrom);
         Assert.Equal(expectedName, model.Name);
-        Assert.Equal(expectedPreviewURL, model.PreviewURL);
+        Assert.Equal(expectedPreviewUrl, model.PreviewUrl);
         Assert.Equal(expectedPublished, model.Published);
         Assert.Equal(expectedRestrictions, model.Restrictions);
         Assert.Equal(expectedTrackNumber, model.TrackNumber);
@@ -131,7 +132,7 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -143,21 +144,21 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
-            PreviewURL = "preview_url",
+            PreviewUrl = "preview_url",
             Published = true,
             Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
@@ -165,8 +166,11 @@ public class SimplifiedTrackObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedTrackObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedTrackObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -182,7 +186,7 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -194,21 +198,21 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
-            PreviewURL = "preview_url",
+            PreviewUrl = "preview_url",
             Published = true,
             Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
@@ -216,8 +220,11 @@ public class SimplifiedTrackObjectTest : TestBase
             Uri = "uri",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<SimplifiedTrackObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<SimplifiedTrackObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
@@ -226,7 +233,7 @@ public class SimplifiedTrackObjectTest : TestBase
             new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Name = "name",
                 Published = true,
@@ -238,21 +245,21 @@ public class SimplifiedTrackObjectTest : TestBase
         long expectedDiscNumber = 0;
         long expectedDurationMs = 0;
         bool expectedExplicit = true;
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         string expectedHref = "href";
         bool expectedIsLocal = true;
         bool expectedIsPlayable = true;
         LinkedTrackObject expectedLinkedFrom = new()
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             Published = true,
             Type = "type",
             Uri = "uri",
         };
         string expectedName = "name";
-        string expectedPreviewURL = "preview_url";
+        string expectedPreviewUrl = "preview_url";
         bool expectedPublished = true;
         TrackRestrictionObject expectedRestrictions = new() { Published = true, Reason = "reason" };
         long expectedTrackNumber = 0;
@@ -275,13 +282,13 @@ public class SimplifiedTrackObjectTest : TestBase
         Assert.Equal(expectedDiscNumber, deserialized.DiscNumber);
         Assert.Equal(expectedDurationMs, deserialized.DurationMs);
         Assert.Equal(expectedExplicit, deserialized.Explicit);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedHref, deserialized.Href);
         Assert.Equal(expectedIsLocal, deserialized.IsLocal);
         Assert.Equal(expectedIsPlayable, deserialized.IsPlayable);
         Assert.Equal(expectedLinkedFrom, deserialized.LinkedFrom);
         Assert.Equal(expectedName, deserialized.Name);
-        Assert.Equal(expectedPreviewURL, deserialized.PreviewURL);
+        Assert.Equal(expectedPreviewUrl, deserialized.PreviewUrl);
         Assert.Equal(expectedPublished, deserialized.Published);
         Assert.Equal(expectedRestrictions, deserialized.Restrictions);
         Assert.Equal(expectedTrackNumber, deserialized.TrackNumber);
@@ -300,7 +307,7 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -312,21 +319,21 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = "type",
                 Uri = "uri",
             },
             Name = "name",
-            PreviewURL = "preview_url",
+            PreviewUrl = "preview_url",
             Published = true,
             Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
@@ -340,7 +347,7 @@ public class SimplifiedTrackObjectTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new SimplifiedTrackObject { PreviewURL = "preview_url" };
+        var model = new SimplifiedTrackObject { PreviewUrl = "preview_url" };
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
@@ -354,7 +361,7 @@ public class SimplifiedTrackObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("duration_ms"));
         Assert.Null(model.Explicit);
         Assert.False(model.RawData.ContainsKey("explicit"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -381,7 +388,7 @@ public class SimplifiedTrackObjectTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new SimplifiedTrackObject { PreviewURL = "preview_url" };
+        var model = new SimplifiedTrackObject { PreviewUrl = "preview_url" };
 
         model.Validate();
     }
@@ -391,7 +398,7 @@ public class SimplifiedTrackObjectTest : TestBase
     {
         var model = new SimplifiedTrackObject
         {
-            PreviewURL = "preview_url",
+            PreviewUrl = "preview_url",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -400,7 +407,7 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = null,
             DurationMs = null,
             Explicit = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             IsLocal = null,
             IsPlayable = null,
@@ -425,7 +432,7 @@ public class SimplifiedTrackObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("duration_ms"));
         Assert.Null(model.Explicit);
         Assert.False(model.RawData.ContainsKey("explicit"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Href);
         Assert.False(model.RawData.ContainsKey("href"));
@@ -454,7 +461,7 @@ public class SimplifiedTrackObjectTest : TestBase
     {
         var model = new SimplifiedTrackObject
         {
-            PreviewURL = "preview_url",
+            PreviewUrl = "preview_url",
 
             // Null should be interpreted as omitted for these properties
             ID = null,
@@ -463,7 +470,7 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = null,
             DurationMs = null,
             Explicit = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Href = null,
             IsLocal = null,
             IsPlayable = null,
@@ -490,7 +497,7 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -502,14 +509,14 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = "type",
@@ -523,7 +530,7 @@ public class SimplifiedTrackObjectTest : TestBase
             Uri = "uri",
         };
 
-        Assert.Null(model.PreviewURL);
+        Assert.Null(model.PreviewUrl);
         Assert.False(model.RawData.ContainsKey("preview_url"));
     }
 
@@ -538,7 +545,7 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -550,14 +557,14 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = "type",
@@ -585,7 +592,7 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -597,14 +604,14 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = "type",
@@ -617,10 +624,10 @@ public class SimplifiedTrackObjectTest : TestBase
             Type = "type",
             Uri = "uri",
 
-            PreviewURL = null,
+            PreviewUrl = null,
         };
 
-        Assert.Null(model.PreviewURL);
+        Assert.Null(model.PreviewUrl);
         Assert.True(model.RawData.ContainsKey("preview_url"));
     }
 
@@ -635,7 +642,7 @@ public class SimplifiedTrackObjectTest : TestBase
                 new()
                 {
                     ID = "id",
-                    ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
                     Href = "href",
                     Name = "name",
                     Published = true,
@@ -647,14 +654,14 @@ public class SimplifiedTrackObjectTest : TestBase
             DiscNumber = 0,
             DurationMs = 0,
             Explicit = true,
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Href = "href",
             IsLocal = true,
             IsPlayable = true,
             LinkedFrom = new()
             {
                 ID = "id",
-                ExternalURLs = new() { Published = true, Spotify = "spotify" },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
                 Href = "href",
                 Published = true,
                 Type = "type",
@@ -667,7 +674,7 @@ public class SimplifiedTrackObjectTest : TestBase
             Type = "type",
             Uri = "uri",
 
-            PreviewURL = null,
+            PreviewUrl = null,
         };
 
         model.Validate();

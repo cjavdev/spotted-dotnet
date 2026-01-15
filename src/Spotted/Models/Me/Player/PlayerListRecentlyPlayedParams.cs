@@ -20,7 +20,11 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? After
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "after"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("after");
+        }
         init
         {
             if (value == null)
@@ -28,7 +32,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "after", value);
+            this._rawQueryData.Set("after", value);
         }
     }
 
@@ -38,7 +42,11 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? Before
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "before"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("before");
+        }
         init
         {
             if (value == null)
@@ -46,7 +54,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "before", value);
+            this._rawQueryData.Set("before", value);
         }
     }
 
@@ -56,7 +64,11 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
     /// </summary>
     public long? Limit
     {
-        get { return JsonModel.GetNullableStruct<long>(this.RawQueryData, "limit"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableStruct<long>("limit");
+        }
         init
         {
             if (value == null)
@@ -64,7 +76,7 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "limit", value);
+            this._rawQueryData.Set("limit", value);
         }
     }
 
@@ -80,8 +92,8 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -91,8 +103,8 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

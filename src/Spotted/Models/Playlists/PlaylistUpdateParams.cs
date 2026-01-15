@@ -15,7 +15,7 @@ namespace Spotted.Models.Playlists;
 /// </summary>
 public sealed record class PlaylistUpdateParams : ParamsBase
 {
-    readonly FreezableDictionary<string, JsonElement> _rawBodyData = [];
+    readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
     {
         get { return this._rawBodyData.Freeze(); }
@@ -30,7 +30,11 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     /// </summary>
     public bool? Collaborative
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "collaborative"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("collaborative");
+        }
         init
         {
             if (value == null)
@@ -38,7 +42,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "collaborative", value);
+            this._rawBodyData.Set("collaborative", value);
         }
     }
 
@@ -48,7 +52,11 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     /// </summary>
     public string? Description
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawBodyData, "description"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("description");
+        }
         init
         {
             if (value == null)
@@ -56,7 +64,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "description", value);
+            this._rawBodyData.Set("description", value);
         }
     }
 
@@ -65,7 +73,11 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     /// </summary>
     public string? Name
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawBodyData, "name"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableClass<string>("name");
+        }
         init
         {
             if (value == null)
@@ -73,7 +85,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "name", value);
+            this._rawBodyData.Set("name", value);
         }
     }
 
@@ -85,7 +97,11 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -93,7 +109,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "published", value);
+            this._rawBodyData.Set("published", value);
         }
     }
 
@@ -102,7 +118,9 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     public PlaylistUpdateParams(PlaylistUpdateParams playlistUpdateParams)
         : base(playlistUpdateParams)
     {
-        this._rawBodyData = [.. playlistUpdateParams._rawBodyData];
+        this.PlaylistID = playlistUpdateParams.PlaylistID;
+
+        this._rawBodyData = new(playlistUpdateParams._rawBodyData);
     }
 
     public PlaylistUpdateParams(
@@ -111,9 +129,9 @@ public sealed record class PlaylistUpdateParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -124,9 +142,9 @@ public sealed record class PlaylistUpdateParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 #pragma warning restore CS8618
 
@@ -158,7 +176,7 @@ public sealed record class PlaylistUpdateParams : ParamsBase
     internal override HttpContent? BodyContent()
     {
         return new StringContent(
-            JsonSerializer.Serialize(this.RawBodyData),
+            JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
         );

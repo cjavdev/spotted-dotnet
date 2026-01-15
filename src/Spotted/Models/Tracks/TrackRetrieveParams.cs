@@ -28,7 +28,11 @@ public sealed record class TrackRetrieveParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)
@@ -36,22 +40,25 @@ public sealed record class TrackRetrieveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "market", value);
+            this._rawQueryData.Set("market", value);
         }
     }
 
     public TrackRetrieveParams() { }
 
     public TrackRetrieveParams(TrackRetrieveParams trackRetrieveParams)
-        : base(trackRetrieveParams) { }
+        : base(trackRetrieveParams)
+    {
+        this.ID = trackRetrieveParams.ID;
+    }
 
     public TrackRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -61,8 +68,8 @@ public sealed record class TrackRetrieveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -14,8 +15,18 @@ public sealed record class ArtistBulkRetrieveResponse : JsonModel
 {
     public required IReadOnlyList<ArtistObject> Artists
     {
-        get { return JsonModel.GetNotNullClass<List<ArtistObject>>(this.RawData, "artists"); }
-        init { JsonModel.Set(this._rawData, "artists", value); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<ImmutableArray<ArtistObject>>("artists");
+        }
+        init
+        {
+            this._rawData.Set<ImmutableArray<ArtistObject>>(
+                "artists",
+                ImmutableArray.ToImmutableArray(value)
+            );
+        }
     }
 
     /// <inheritdoc/>
@@ -34,14 +45,14 @@ public sealed record class ArtistBulkRetrieveResponse : JsonModel
 
     public ArtistBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     ArtistBulkRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -54,7 +65,7 @@ public sealed record class ArtistBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public ArtistBulkRetrieveResponse(List<ArtistObject> artists)
+    public ArtistBulkRetrieveResponse(IReadOnlyList<ArtistObject> artists)
         : this()
     {
         this.Artists = artists;

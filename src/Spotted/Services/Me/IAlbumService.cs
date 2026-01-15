@@ -15,6 +15,12 @@ namespace Spotted.Services.Me;
 public interface IAlbumService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    global::Spotted.Services.Me.IAlbumServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -24,10 +30,9 @@ public interface IAlbumService
     );
 
     /// <summary>
-    /// Get a list of the albums saved in the current Spotify user's 'Your Music'
-    /// library.
+    /// Get a list of the albums saved in the current Spotify user's 'Your Music' library.
     /// </summary>
-    Task<AlbumListPageResponse> List(
+    Task<AlbumListPage> List(
         AlbumListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
@@ -53,4 +58,56 @@ public interface IAlbumService
     /// Save one or more albums to the current user's 'Your Music' library.
     /// </summary>
     Task Save(AlbumSaveParams? parameters = null, CancellationToken cancellationToken = default);
+}
+
+/// <summary>
+/// A view of <see cref="global::Spotted.Services.Me.IAlbumService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IAlbumServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    global::Spotted.Services.Me.IAlbumServiceWithRawResponse WithOptions(
+        Func<ClientOptions, ClientOptions> modifier
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/albums`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IAlbumService.List(AlbumListParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<AlbumListPage>> List(
+        AlbumListParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /me/albums/contains`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IAlbumService.Check(AlbumCheckParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<List<bool>>> Check(
+        AlbumCheckParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `delete /me/albums`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IAlbumService.Remove(AlbumRemoveParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> Remove(
+        AlbumRemoveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `put /me/albums`, but is otherwise the
+    /// same as <see cref="global::Spotted.Services.Me.IAlbumService.Save(AlbumSaveParams?, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse> Save(
+        AlbumSaveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
 }

@@ -14,7 +14,7 @@ public class ArtistObjectTest : TestBase
         var model = new ArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -28,7 +28,7 @@ public class ArtistObjectTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -41,7 +41,7 @@ public class ArtistObjectTest : TestBase
         };
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         FollowersObject expectedFollowers = new()
         {
             Href = "href",
@@ -55,7 +55,7 @@ public class ArtistObjectTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -67,7 +67,7 @@ public class ArtistObjectTest : TestBase
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, model.ID);
-        Assert.Equal(expectedExternalURLs, model.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, model.ExternalUrls);
         Assert.Equal(expectedFollowers, model.Followers);
         Assert.NotNull(model.Genres);
         Assert.Equal(expectedGenres.Count, model.Genres.Count);
@@ -95,7 +95,7 @@ public class ArtistObjectTest : TestBase
         var model = new ArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -109,7 +109,7 @@ public class ArtistObjectTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -121,8 +121,11 @@ public class ArtistObjectTest : TestBase
             Uri = "uri",
         };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ArtistObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ArtistObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -133,7 +136,7 @@ public class ArtistObjectTest : TestBase
         var model = new ArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -147,7 +150,7 @@ public class ArtistObjectTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -159,12 +162,15 @@ public class ArtistObjectTest : TestBase
             Uri = "uri",
         };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ArtistObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ArtistObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
-        ExternalURLObject expectedExternalURLs = new() { Published = true, Spotify = "spotify" };
+        ExternalUrlObject expectedExternalUrls = new() { Published = true, Spotify = "spotify" };
         FollowersObject expectedFollowers = new()
         {
             Href = "href",
@@ -178,7 +184,7 @@ public class ArtistObjectTest : TestBase
             new()
             {
                 Height = 300,
-                URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                 Width = 300,
                 Published = true,
             },
@@ -190,7 +196,7 @@ public class ArtistObjectTest : TestBase
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, deserialized.ID);
-        Assert.Equal(expectedExternalURLs, deserialized.ExternalURLs);
+        Assert.Equal(expectedExternalUrls, deserialized.ExternalUrls);
         Assert.Equal(expectedFollowers, deserialized.Followers);
         Assert.NotNull(deserialized.Genres);
         Assert.Equal(expectedGenres.Count, deserialized.Genres.Count);
@@ -218,7 +224,7 @@ public class ArtistObjectTest : TestBase
         var model = new ArtistObject
         {
             ID = "id",
-            ExternalURLs = new() { Published = true, Spotify = "spotify" },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
             Followers = new()
             {
                 Href = "href",
@@ -232,7 +238,7 @@ public class ArtistObjectTest : TestBase
                 new()
                 {
                     Height = 300,
-                    URL = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
                     Width = 300,
                     Published = true,
                 },
@@ -254,7 +260,7 @@ public class ArtistObjectTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Followers);
         Assert.False(model.RawData.ContainsKey("followers"));
@@ -291,7 +297,7 @@ public class ArtistObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Followers = null,
             Genres = null,
             Href = null,
@@ -305,7 +311,7 @@ public class ArtistObjectTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
-        Assert.Null(model.ExternalURLs);
+        Assert.Null(model.ExternalUrls);
         Assert.False(model.RawData.ContainsKey("external_urls"));
         Assert.Null(model.Followers);
         Assert.False(model.RawData.ContainsKey("followers"));
@@ -334,7 +340,7 @@ public class ArtistObjectTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
-            ExternalURLs = null,
+            ExternalUrls = null,
             Followers = null,
             Genres = null,
             Href = null,
@@ -365,9 +371,11 @@ public class TypeTest : TestBase
     public void InvalidEnumValidationThrows_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
+
+        Assert.NotNull(value);
         Assert.Throws<SpottedInvalidDataException>(() => value.Validate());
     }
 
@@ -391,7 +399,7 @@ public class TypeTest : TestBase
     public void InvalidEnumSerializationRoundtrip_Works()
     {
         var value = JsonSerializer.Deserialize<ApiEnum<string, Type>>(
-            JsonSerializer.Deserialize<JsonElement>("\"invalid value\""),
+            JsonSerializer.SerializeToElement("invalid value"),
             ModelBase.SerializerOptions
         );
         string json = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);

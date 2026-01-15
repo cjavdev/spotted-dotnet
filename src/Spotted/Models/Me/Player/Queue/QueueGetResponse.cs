@@ -1,5 +1,6 @@
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -19,7 +20,8 @@ public sealed record class QueueGetResponse : JsonModel
     {
         get
         {
-            return JsonModel.GetNullableClass<CurrentlyPlaying>(this.RawData, "currently_playing");
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<CurrentlyPlaying>("currently_playing");
         }
         init
         {
@@ -28,7 +30,7 @@ public sealed record class QueueGetResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "currently_playing", value);
+            this._rawData.Set("currently_playing", value);
         }
     }
 
@@ -40,7 +42,11 @@ public sealed record class QueueGetResponse : JsonModel
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawData, "published"); }
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -48,7 +54,7 @@ public sealed record class QueueGetResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "published", value);
+            this._rawData.Set("published", value);
         }
     }
 
@@ -59,7 +65,8 @@ public sealed record class QueueGetResponse : JsonModel
     {
         get
         {
-            return JsonModel.GetNullableClass<List<QueueGetResponseQueue>>(this.RawData, "queue");
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<QueueGetResponseQueue>>("queue");
         }
         init
         {
@@ -68,7 +75,10 @@ public sealed record class QueueGetResponse : JsonModel
                 return;
             }
 
-            JsonModel.Set(this._rawData, "queue", value);
+            this._rawData.Set<ImmutableArray<QueueGetResponseQueue>?>(
+                "queue",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
         }
     }
 
@@ -90,14 +100,14 @@ public sealed record class QueueGetResponse : JsonModel
 
     public QueueGetResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
     QueueGetResponse(FrozenDictionary<string, JsonElement> rawData)
     {
-        this._rawData = [.. rawData];
+        this._rawData = new(rawData);
     }
 #pragma warning restore CS8618
 
@@ -121,7 +131,7 @@ class QueueGetResponseFromRaw : IFromRawJson<QueueGetResponse>
 /// The currently playing track or episode. Can be `null`.
 /// </summary>
 [JsonConverter(typeof(CurrentlyPlayingConverter))]
-public record class CurrentlyPlaying
+public record class CurrentlyPlaying : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -129,7 +139,13 @@ public record class CurrentlyPlaying
 
     public JsonElement Json
     {
-        get { return this._element ??= JsonSerializer.SerializeToElement(this.Value); }
+        get
+        {
+            return this._element ??= JsonSerializer.SerializeToElement(
+                this.Value,
+                ModelBase.SerializerOptions
+            );
+        }
     }
 
     public string? ID
@@ -156,13 +172,13 @@ public record class CurrentlyPlaying
         }
     }
 
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
         get
         {
-            return Match<ExternalURLObject?>(
-                trackObject: (x) => x.ExternalURLs,
-                episodeObject: (x) => x.ExternalURLs
+            return Match<ExternalUrlObject?>(
+                trackObject: (x) => x.ExternalUrls,
+                episodeObject: (x) => x.ExternalUrls
             );
         }
     }
@@ -350,7 +366,7 @@ public record class CurrentlyPlaying
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {
@@ -373,6 +389,9 @@ public record class CurrentlyPlaying
     {
         return 0;
     }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
 }
 
 sealed class CurrentlyPlayingConverter : JsonConverter<CurrentlyPlaying>
@@ -452,7 +471,7 @@ sealed class CurrentlyPlayingConverter : JsonConverter<CurrentlyPlaying>
 }
 
 [JsonConverter(typeof(QueueGetResponseQueueConverter))]
-public record class QueueGetResponseQueue
+public record class QueueGetResponseQueue : ModelBase
 {
     public object? Value { get; } = null;
 
@@ -460,7 +479,13 @@ public record class QueueGetResponseQueue
 
     public JsonElement Json
     {
-        get { return this._element ??= JsonSerializer.SerializeToElement(this.Value); }
+        get
+        {
+            return this._element ??= JsonSerializer.SerializeToElement(
+                this.Value,
+                ModelBase.SerializerOptions
+            );
+        }
     }
 
     public string? ID
@@ -487,13 +512,13 @@ public record class QueueGetResponseQueue
         }
     }
 
-    public ExternalURLObject? ExternalURLs
+    public ExternalUrlObject? ExternalUrls
     {
         get
         {
-            return Match<ExternalURLObject?>(
-                trackObject: (x) => x.ExternalURLs,
-                episodeObject: (x) => x.ExternalURLs
+            return Match<ExternalUrlObject?>(
+                trackObject: (x) => x.ExternalUrls,
+                episodeObject: (x) => x.ExternalUrls
             );
         }
     }
@@ -681,7 +706,7 @@ public record class QueueGetResponseQueue
     /// Thrown when the instance does not pass validation.
     /// </exception>
     /// </summary>
-    public void Validate()
+    public override void Validate()
     {
         if (this.Value == null)
         {
@@ -704,6 +729,9 @@ public record class QueueGetResponseQueue
     {
         return 0;
     }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
 }
 
 sealed class QueueGetResponseQueueConverter : JsonConverter<QueueGetResponseQueue>

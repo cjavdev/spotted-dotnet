@@ -18,10 +18,14 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
     /// A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids)
     /// for the albums. Maximum: 20 IDs.
     /// </summary>
-    public required string IDs
+    public required string Ids
     {
-        get { return JsonModel.GetNotNullClass<string>(this.RawQueryData, "ids"); }
-        init { JsonModel.Set(this._rawQueryData, "ids", value); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNotNullClass<string>("ids");
+        }
+        init { this._rawQueryData.Set("ids", value); }
     }
 
     /// <summary>
@@ -36,7 +40,11 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
     /// </summary>
     public string? Market
     {
-        get { return JsonModel.GetNullableClass<string>(this.RawQueryData, "market"); }
+        get
+        {
+            this._rawQueryData.Freeze();
+            return this._rawQueryData.GetNullableClass<string>("market");
+        }
         init
         {
             if (value == null)
@@ -44,7 +52,7 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawQueryData, "market", value);
+            this._rawQueryData.Set("market", value);
         }
     }
 
@@ -58,8 +66,8 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 
 #pragma warning disable CS8618
@@ -69,8 +77,8 @@ public sealed record class AlbumBulkRetrieveParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawQueryData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
     }
 #pragma warning restore CS8618
 

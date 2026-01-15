@@ -14,7 +14,7 @@ namespace Spotted.Models.Playlists.Followers;
 /// </summary>
 public sealed record class FollowerFollowParams : ParamsBase
 {
-    readonly FreezableDictionary<string, JsonElement> _rawBodyData = [];
+    readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
     {
         get { return this._rawBodyData.Freeze(); }
@@ -30,7 +30,11 @@ public sealed record class FollowerFollowParams : ParamsBase
     /// </summary>
     public bool? Published
     {
-        get { return JsonModel.GetNullableStruct<bool>(this.RawBodyData, "published"); }
+        get
+        {
+            this._rawBodyData.Freeze();
+            return this._rawBodyData.GetNullableStruct<bool>("published");
+        }
         init
         {
             if (value == null)
@@ -38,7 +42,7 @@ public sealed record class FollowerFollowParams : ParamsBase
                 return;
             }
 
-            JsonModel.Set(this._rawBodyData, "published", value);
+            this._rawBodyData.Set("published", value);
         }
     }
 
@@ -47,7 +51,9 @@ public sealed record class FollowerFollowParams : ParamsBase
     public FollowerFollowParams(FollowerFollowParams followerFollowParams)
         : base(followerFollowParams)
     {
-        this._rawBodyData = [.. followerFollowParams._rawBodyData];
+        this.PlaylistID = followerFollowParams.PlaylistID;
+
+        this._rawBodyData = new(followerFollowParams._rawBodyData);
     }
 
     public FollowerFollowParams(
@@ -56,9 +62,9 @@ public sealed record class FollowerFollowParams : ParamsBase
         IReadOnlyDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 
 #pragma warning disable CS8618
@@ -69,9 +75,9 @@ public sealed record class FollowerFollowParams : ParamsBase
         FrozenDictionary<string, JsonElement> rawBodyData
     )
     {
-        this._rawHeaderData = [.. rawHeaderData];
-        this._rawQueryData = [.. rawQueryData];
-        this._rawBodyData = [.. rawBodyData];
+        this._rawHeaderData = new(rawHeaderData);
+        this._rawQueryData = new(rawQueryData);
+        this._rawBodyData = new(rawBodyData);
     }
 #pragma warning restore CS8618
 
@@ -103,7 +109,7 @@ public sealed record class FollowerFollowParams : ParamsBase
     internal override HttpContent? BodyContent()
     {
         return new StringContent(
-            JsonSerializer.Serialize(this.RawBodyData),
+            JsonSerializer.Serialize(this.RawBodyData, ModelBase.SerializerOptions),
             Encoding.UTF8,
             "application/json"
         );

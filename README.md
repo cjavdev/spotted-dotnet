@@ -1,17 +1,10 @@
 # Unofficial Spotify API Library
 
-> [!NOTE]
-> The Unofficial Spotify API Library is currently in **beta** and we're excited for you to experiment with it!
->
-> This library has not yet been exhaustively tested in production environments and may be missing some features you'd expect in a stable release. As we continue development, there may be breaking changes that require updates to your code.
->
-> **We'd love your feedback!** Please share any suggestions, bug reports, feature requests, or general thoughts by [filing an issue](https://www.github.com/cjavdev/spotted-dotnet/issues/new).
-
-The Unofficial Spotify SDK provides convenient access to the [Spotted REST API](https://spotted.stldocs.com) from applications written in C#.
+The Unofficial Spotify SDK provides convenient access to the [Spotted REST API](https://spotted.cjav.dev) from applications written in C#.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
-The REST API documentation can be found on [spotted.stldocs.com](https://spotted.stldocs.com).
+The REST API documentation can be found on [spotted.cjav.dev](https://spotted.cjav.dev).
 
 ## Installation
 
@@ -50,7 +43,7 @@ Configure the client using environment variables:
 ```csharp
 using Spotted;
 
-// Configured using the SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_ACCESS_TOKEN and SPOTTED_BASE_URL environment variables
+// Configured using the SPOTIFY_ACCESS_TOKEN and SPOTTED_BASE_URL environment variables
 SpottedClient client = new();
 ```
 
@@ -59,23 +52,17 @@ Or manually:
 ```csharp
 using Spotted;
 
-SpottedClient client = new()
-{
-    ClientID = "My Client ID",
-    ClientSecret = "My Client Secret",
-};
+SpottedClient client = new() { AccessToken = "My Access Token" };
 ```
 
 Or using a combination of the two approaches.
 
 See this table for the available options:
 
-| Property       | Environment variable    | Required | Default value                  |
-| -------------- | ----------------------- | -------- | ------------------------------ |
-| `ClientID`     | `SPOTIFY_CLIENT_ID`     | false    | -                              |
-| `ClientSecret` | `SPOTIFY_CLIENT_SECRET` | false    | -                              |
-| `AccessToken`  | `SPOTIFY_ACCESS_TOKEN`  | false    | -                              |
-| `BaseUrl`      | `SPOTTED_BASE_URL`      | true     | `"https://api.spotify.com/v1"` |
+| Property      | Environment variable   | Required | Default value                  |
+| ------------- | ---------------------- | -------- | ------------------------------ |
+| `AccessToken` | `SPOTIFY_ACCESS_TOKEN` | true     | -                              |
+| `BaseUrl`     | `SPOTTED_BASE_URL`     | true     | `"https://api.spotify.com/v1"` |
 
 ### Modifying configuration
 
@@ -140,6 +127,31 @@ using var fileStream = File.Open(path, FileMode.OpenOrCreate);
 await contentStream.CopyToAsync(fileStream); // Or any other Stream
 ```
 
+## Raw responses
+
+The SDK defines methods that deserialize responses into instances of C# classes. However, these methods don't provide access to the response headers, status code, or the raw response body.
+
+To access this data, prefix any HTTP method call on a client or service with `WithRawResponse`:
+
+```csharp
+var response = await client.WithRawResponse.Albums.Retrieve(parameters);
+var statusCode = response.StatusCode;
+var headers = response.Headers;
+```
+
+The raw `HttpResponseMessage` can also be accessed through the `RawMessage` property.
+
+For non-streaming responses, you can deserialize the response into an instance of a C# class if needed:
+
+```csharp
+using System;
+using Spotted.Models.Albums;
+
+var response = await client.WithRawResponse.Albums.Retrieve(parameters);
+AlbumRetrieveResponse deserialized = await response.Deserialize();
+Console.WriteLine(deserialized);
+```
+
 ## Error handling
 
 The SDK throws custom unchecked exception types:
@@ -166,6 +178,46 @@ false
 - `SpottedInvalidDataException`: Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
 
 - `SpottedException`: Base class for all exceptions.
+
+## Pagination
+
+The SDK defines methods that return a paginated lists of results. It provides convenient ways to access the results either one page at a time or item-by-item across all pages.
+
+### Auto-pagination
+
+To iterate through all results across all pages, use the `Paginate` method, which automatically fetches more pages as needed. The method returns an [`IAsyncEnumerable`](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.iasyncenumerable-1):
+
+```csharp
+using System;
+
+var page = await client.Shows.ListEpisodes(parameters);
+await foreach (var item in page.Paginate())
+{
+    Console.WriteLine(item);
+}
+```
+
+### Manual pagination
+
+To access individual page items and manually request the next page, use the `Items` property, and `HasNext` and `Next` methods:
+
+```csharp
+using System;
+
+var page = await client.Shows.ListEpisodes(parameters);
+while (true)
+{
+    foreach (var item in page.Items)
+    {
+        Console.WriteLine(item);
+    }
+    if (!page.HasNext())
+    {
+        break;
+    }
+    page = await page.Next();
+}
+```
 
 ## Network options
 

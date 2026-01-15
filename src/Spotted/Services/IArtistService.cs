@@ -15,6 +15,12 @@ namespace Spotted.Services;
 public interface IArtistService
 {
     /// <summary>
+    /// Returns a view of this service that provides access to raw HTTP responses
+    /// for each method.
+    /// </summary>
+    IArtistServiceWithRawResponse WithRawResponse { get; }
+
+    /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
@@ -38,8 +44,7 @@ public interface IArtistService
     );
 
     /// <summary>
-    /// Get Spotify catalog information for several artists based on their Spotify
-    /// IDs.
+    /// Get Spotify catalog information for several artists based on their Spotify IDs.
     /// </summary>
     Task<ArtistBulkRetrieveResponse> BulkRetrieve(
         ArtistBulkRetrieveParams parameters,
@@ -49,13 +54,13 @@ public interface IArtistService
     /// <summary>
     /// Get Spotify catalog information about an artist's albums.
     /// </summary>
-    Task<ArtistListAlbumsPageResponse> ListAlbums(
+    Task<ArtistListAlbumsPage> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>
-    Task<ArtistListAlbumsPageResponse> ListAlbums(
+    Task<ArtistListAlbumsPage> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -89,6 +94,95 @@ public interface IArtistService
 
     /// <inheritdoc cref="TopTracks(ArtistTopTracksParams, CancellationToken)"/>
     Task<ArtistTopTracksResponse> TopTracks(
+        string id,
+        ArtistTopTracksParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+}
+
+/// <summary>
+/// A view of <see cref="IArtistService"/> that provides access to raw
+/// HTTP responses for each method.
+/// </summary>
+public interface IArtistServiceWithRawResponse
+{
+    /// <summary>
+    /// Returns a view of this service with the given option modifications applied.
+    ///
+    /// <para>The original service is not modified.</para>
+    /// </summary>
+    IArtistServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /artists/{id}`, but is otherwise the
+    /// same as <see cref="IArtistService.Retrieve(ArtistRetrieveParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<ArtistObject>> Retrieve(
+        ArtistRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="Retrieve(ArtistRetrieveParams, CancellationToken)"/>
+    Task<HttpResponse<ArtistObject>> Retrieve(
+        string id,
+        ArtistRetrieveParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /artists`, but is otherwise the
+    /// same as <see cref="IArtistService.BulkRetrieve(ArtistBulkRetrieveParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<ArtistBulkRetrieveResponse>> BulkRetrieve(
+        ArtistBulkRetrieveParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /artists/{id}/albums`, but is otherwise the
+    /// same as <see cref="IArtistService.ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
+        ArtistListAlbumsParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>
+    Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
+        string id,
+        ArtistListAlbumsParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /artists/{id}/related-artists`, but is otherwise the
+    /// same as <see cref="IArtistService.ListRelatedArtists(ArtistListRelatedArtistsParams, CancellationToken)"/>.
+    /// </summary>
+    [Obsolete("deprecated")]
+    Task<HttpResponse<ArtistListRelatedArtistsResponse>> ListRelatedArtists(
+        ArtistListRelatedArtistsParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="ListRelatedArtists(ArtistListRelatedArtistsParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
+    Task<HttpResponse<ArtistListRelatedArtistsResponse>> ListRelatedArtists(
+        string id,
+        ArtistListRelatedArtistsParams? parameters = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Returns a raw HTTP response for `get /artists/{id}/top-tracks`, but is otherwise the
+    /// same as <see cref="IArtistService.TopTracks(ArtistTopTracksParams, CancellationToken)"/>.
+    /// </summary>
+    Task<HttpResponse<ArtistTopTracksResponse>> TopTracks(
+        ArtistTopTracksParams parameters,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <inheritdoc cref="TopTracks(ArtistTopTracksParams, CancellationToken)"/>
+    Task<HttpResponse<ArtistTopTracksResponse>> TopTracks(
         string id,
         ArtistTopTracksParams? parameters = null,
         CancellationToken cancellationToken = default

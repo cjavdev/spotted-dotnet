@@ -1,14 +1,15 @@
 using System.Text.Json;
+using Spotted.Core;
 using Spotted.Models;
 
 namespace Spotted.Tests.Models;
 
-public class ExternalURLObjectTest : TestBase
+public class ExternalUrlObjectTest : TestBase
 {
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        var model = new ExternalURLObject { Published = true, Spotify = "spotify" };
+        var model = new ExternalUrlObject { Published = true, Spotify = "spotify" };
 
         bool expectedPublished = true;
         string expectedSpotify = "spotify";
@@ -20,10 +21,13 @@ public class ExternalURLObjectTest : TestBase
     [Fact]
     public void SerializationRoundtrip_Works()
     {
-        var model = new ExternalURLObject { Published = true, Spotify = "spotify" };
+        var model = new ExternalUrlObject { Published = true, Spotify = "spotify" };
 
-        string json = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExternalURLObject>(json);
+        string json = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ExternalUrlObject>(
+            json,
+            ModelBase.SerializerOptions
+        );
 
         Assert.Equal(model, deserialized);
     }
@@ -31,10 +35,13 @@ public class ExternalURLObjectTest : TestBase
     [Fact]
     public void FieldRoundtripThroughSerialization_Works()
     {
-        var model = new ExternalURLObject { Published = true, Spotify = "spotify" };
+        var model = new ExternalUrlObject { Published = true, Spotify = "spotify" };
 
-        string element = JsonSerializer.Serialize(model);
-        var deserialized = JsonSerializer.Deserialize<ExternalURLObject>(element);
+        string element = JsonSerializer.Serialize(model, ModelBase.SerializerOptions);
+        var deserialized = JsonSerializer.Deserialize<ExternalUrlObject>(
+            element,
+            ModelBase.SerializerOptions
+        );
         Assert.NotNull(deserialized);
 
         bool expectedPublished = true;
@@ -47,7 +54,7 @@ public class ExternalURLObjectTest : TestBase
     [Fact]
     public void Validation_Works()
     {
-        var model = new ExternalURLObject { Published = true, Spotify = "spotify" };
+        var model = new ExternalUrlObject { Published = true, Spotify = "spotify" };
 
         model.Validate();
     }
@@ -55,7 +62,7 @@ public class ExternalURLObjectTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetAreNotSet_Works()
     {
-        var model = new ExternalURLObject { };
+        var model = new ExternalUrlObject { };
 
         Assert.Null(model.Published);
         Assert.False(model.RawData.ContainsKey("published"));
@@ -66,7 +73,7 @@ public class ExternalURLObjectTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesUnsetValidation_Works()
     {
-        var model = new ExternalURLObject { };
+        var model = new ExternalUrlObject { };
 
         model.Validate();
     }
@@ -74,7 +81,7 @@ public class ExternalURLObjectTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullAreNotSet_Works()
     {
-        var model = new ExternalURLObject
+        var model = new ExternalUrlObject
         {
             // Null should be interpreted as omitted for these properties
             Published = null,
@@ -90,7 +97,7 @@ public class ExternalURLObjectTest : TestBase
     [Fact]
     public void OptionalNonNullablePropertiesSetToNullValidation_Works()
     {
-        var model = new ExternalURLObject
+        var model = new ExternalUrlObject
         {
             // Null should be interpreted as omitted for these properties
             Published = null,
