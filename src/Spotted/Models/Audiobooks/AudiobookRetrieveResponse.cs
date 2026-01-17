@@ -454,12 +454,7 @@ class AudiobookRetrieveResponseFromRaw : IFromRawJson<AudiobookRetrieveResponse>
     ) => AudiobookRetrieveResponse.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(
-    typeof(JsonModelConverter<
-        global::Spotted.Models.Audiobooks.IntersectionMember1,
-        global::Spotted.Models.Audiobooks.IntersectionMember1FromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<IntersectionMember1, IntersectionMember1FromRaw>))]
 public sealed record class IntersectionMember1 : JsonModel
 {
     /// <summary>
@@ -483,9 +478,7 @@ public sealed record class IntersectionMember1 : JsonModel
 
     public IntersectionMember1() { }
 
-    public IntersectionMember1(
-        global::Spotted.Models.Audiobooks.IntersectionMember1 intersectionMember1
-    )
+    public IntersectionMember1(IntersectionMember1 intersectionMember1)
         : base(intersectionMember1) { }
 
     public IntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
@@ -501,8 +494,8 @@ public sealed record class IntersectionMember1 : JsonModel
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="global::Spotted.Models.Audiobooks.IntersectionMember1FromRaw.FromRawUnchecked"/>
-    public static global::Spotted.Models.Audiobooks.IntersectionMember1 FromRawUnchecked(
+    /// <inheritdoc cref="IntersectionMember1FromRaw.FromRawUnchecked"/>
+    public static IntersectionMember1 FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -517,13 +510,11 @@ public sealed record class IntersectionMember1 : JsonModel
     }
 }
 
-class IntersectionMember1FromRaw
-    : IFromRawJson<global::Spotted.Models.Audiobooks.IntersectionMember1>
+class IntersectionMember1FromRaw : IFromRawJson<IntersectionMember1>
 {
     /// <inheritdoc/>
-    public global::Spotted.Models.Audiobooks.IntersectionMember1 FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Spotted.Models.Audiobooks.IntersectionMember1.FromRawUnchecked(rawData);
+    public IntersectionMember1 FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        IntersectionMember1.FromRawUnchecked(rawData);
 }
 
 /// <summary>

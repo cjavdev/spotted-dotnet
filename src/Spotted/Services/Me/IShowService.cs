@@ -18,16 +18,14 @@ public interface IShowService
     /// Returns a view of this service that provides access to raw HTTP responses
     /// for each method.
     /// </summary>
-    global::Spotted.Services.Me.IShowServiceWithRawResponse WithRawResponse { get; }
+    IShowServiceWithRawResponse WithRawResponse { get; }
 
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    global::Spotted.Services.Me.IShowService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    );
+    IShowService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
     /// Get a list of shows saved in the current Spotify user's library. Optional
@@ -58,7 +56,7 @@ public interface IShowService
 }
 
 /// <summary>
-/// A view of <see cref="global::Spotted.Services.Me.IShowService"/> that provides access to raw
+/// A view of <see cref="IShowService"/> that provides access to raw
 /// HTTP responses for each method.
 /// </summary>
 public interface IShowServiceWithRawResponse
@@ -68,13 +66,11 @@ public interface IShowServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    global::Spotted.Services.Me.IShowServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    );
+    IShowServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
     /// Returns a raw HTTP response for `get /me/shows`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.IShowService.List(ShowListParams?, CancellationToken)"/>.
+    /// same as <see cref="IShowService.List(ShowListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ShowListPage>> List(
         ShowListParams? parameters = null,
@@ -83,7 +79,7 @@ public interface IShowServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for `get /me/shows/contains`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.IShowService.Check(ShowCheckParams, CancellationToken)"/>.
+    /// same as <see cref="IShowService.Check(ShowCheckParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<List<bool>>> Check(
         ShowCheckParams parameters,
@@ -92,7 +88,7 @@ public interface IShowServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for `delete /me/shows`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.IShowService.Remove(ShowRemoveParams?, CancellationToken)"/>.
+    /// same as <see cref="IShowService.Remove(ShowRemoveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Remove(
         ShowRemoveParams? parameters = null,
@@ -101,7 +97,7 @@ public interface IShowServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for `put /me/shows`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.IShowService.Save(ShowSaveParams?, CancellationToken)"/>.
+    /// same as <see cref="IShowService.Save(ShowSaveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Save(
         ShowSaveParams? parameters = null,

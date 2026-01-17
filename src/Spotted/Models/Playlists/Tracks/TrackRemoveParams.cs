@@ -30,18 +30,16 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M"
     /// }] }`. A maximum of 100 objects can be sent at once.
     /// </summary>
-    public required IReadOnlyList<global::Spotted.Models.Playlists.Tracks.Track> Tracks
+    public required IReadOnlyList<Track> Tracks
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullStruct<
-                ImmutableArray<global::Spotted.Models.Playlists.Tracks.Track>
-            >("tracks");
+            return this._rawBodyData.GetNotNullStruct<ImmutableArray<Track>>("tracks");
         }
         init
         {
-            this._rawBodyData.Set<ImmutableArray<global::Spotted.Models.Playlists.Tracks.Track>>(
+            this._rawBodyData.Set<ImmutableArray<Track>>(
                 "tracks",
                 ImmutableArray.ToImmutableArray(value)
             );
@@ -174,9 +172,7 @@ public sealed record class TrackRemoveParams : ParamsBase
     }
 }
 
-[JsonConverter(
-    typeof(JsonModelConverter<global::Spotted.Models.Playlists.Tracks.Track, TrackFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<Track, TrackFromRaw>))]
 public sealed record class Track : JsonModel
 {
     /// <summary>
@@ -208,7 +204,7 @@ public sealed record class Track : JsonModel
 
     public Track() { }
 
-    public Track(global::Spotted.Models.Playlists.Tracks.Track track)
+    public Track(Track track)
         : base(track) { }
 
     public Track(IReadOnlyDictionary<string, JsonElement> rawData)
@@ -225,18 +221,15 @@ public sealed record class Track : JsonModel
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="TrackFromRaw.FromRawUnchecked"/>
-    public static global::Spotted.Models.Playlists.Tracks.Track FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public static Track FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class TrackFromRaw : IFromRawJson<global::Spotted.Models.Playlists.Tracks.Track>
+class TrackFromRaw : IFromRawJson<Track>
 {
     /// <inheritdoc/>
-    public global::Spotted.Models.Playlists.Tracks.Track FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Spotted.Models.Playlists.Tracks.Track.FromRawUnchecked(rawData);
+    public Track FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Track.FromRawUnchecked(rawData);
 }

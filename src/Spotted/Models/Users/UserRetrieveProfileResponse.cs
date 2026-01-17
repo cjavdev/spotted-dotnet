@@ -261,7 +261,7 @@ class UserRetrieveProfileResponseFromRaw : IFromRawJson<UserRetrieveProfileRespo
 /// <summary>
 /// The object type.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.Users.TypeConverter))]
+[JsonConverter(typeof(TypeConverter))]
 public enum Type
 {
     User,

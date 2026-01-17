@@ -220,7 +220,7 @@ public sealed record class SearchQueryParams : ParamsBase
     }
 }
 
-[JsonConverter(typeof(global::Spotted.Models.Search.TypeConverter))]
+[JsonConverter(typeof(TypeConverter))]
 public enum Type
 {
     Album,

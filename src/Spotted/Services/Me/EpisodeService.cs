@@ -9,12 +9,12 @@ using Spotted.Models.Me.Episodes;
 namespace Spotted.Services.Me;
 
 /// <inheritdoc/>
-public sealed class EpisodeService : global::Spotted.Services.Me.IEpisodeService
+public sealed class EpisodeService : IEpisodeService
 {
-    readonly Lazy<global::Spotted.Services.Me.IEpisodeServiceWithRawResponse> _withRawResponse;
+    readonly Lazy<IEpisodeServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IEpisodeServiceWithRawResponse WithRawResponse
+    public IEpisodeServiceWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
@@ -22,20 +22,16 @@ public sealed class EpisodeService : global::Spotted.Services.Me.IEpisodeService
     readonly ISpottedClient _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IEpisodeService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IEpisodeService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.EpisodeService(this._client.WithOptions(modifier));
+        return new EpisodeService(this._client.WithOptions(modifier));
     }
 
     public EpisodeService(ISpottedClient client)
     {
         _client = client;
 
-        _withRawResponse = new(() =>
-            new global::Spotted.Services.Me.EpisodeServiceWithRawResponse(client.WithRawResponse)
-        );
+        _withRawResponse = new(() => new EpisodeServiceWithRawResponse(client.WithRawResponse));
     }
 
     /// <inheritdoc/>
@@ -79,19 +75,14 @@ public sealed class EpisodeService : global::Spotted.Services.Me.IEpisodeService
 }
 
 /// <inheritdoc/>
-public sealed class EpisodeServiceWithRawResponse
-    : global::Spotted.Services.Me.IEpisodeServiceWithRawResponse
+public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawResponse
 {
     readonly ISpottedClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IEpisodeServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IEpisodeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.EpisodeServiceWithRawResponse(
-            this._client.WithOptions(modifier)
-        );
+        return new EpisodeServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
     public EpisodeServiceWithRawResponse(ISpottedClientWithRawResponse client)

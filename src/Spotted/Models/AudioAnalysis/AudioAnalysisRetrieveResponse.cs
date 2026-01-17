@@ -183,14 +183,12 @@ public sealed record class AudioAnalysisRetrieveResponse : JsonModel
         }
     }
 
-    public global::Spotted.Models.AudioAnalysis.Track? Track
+    public Track? Track
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<global::Spotted.Models.AudioAnalysis.Track>(
-                "track"
-            );
+            return this._rawData.GetNullableClass<Track>("track");
         }
         init
         {
@@ -1163,9 +1161,7 @@ class SegmentFromRaw : IFromRawJson<Segment>
         Segment.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(
-    typeof(JsonModelConverter<global::Spotted.Models.AudioAnalysis.Track, TrackFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<Track, TrackFromRaw>))]
 public sealed record class Track : JsonModel
 {
     /// <summary>
@@ -1768,7 +1764,7 @@ public sealed record class Track : JsonModel
 
     public Track() { }
 
-    public Track(global::Spotted.Models.AudioAnalysis.Track track)
+    public Track(Track track)
         : base(track) { }
 
     public Track(IReadOnlyDictionary<string, JsonElement> rawData)
@@ -1785,18 +1781,15 @@ public sealed record class Track : JsonModel
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="TrackFromRaw.FromRawUnchecked"/>
-    public static global::Spotted.Models.AudioAnalysis.Track FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public static Track FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class TrackFromRaw : IFromRawJson<global::Spotted.Models.AudioAnalysis.Track>
+class TrackFromRaw : IFromRawJson<Track>
 {
     /// <inheritdoc/>
-    public global::Spotted.Models.AudioAnalysis.Track FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Spotted.Models.AudioAnalysis.Track.FromRawUnchecked(rawData);
+    public Track FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Track.FromRawUnchecked(rawData);
 }

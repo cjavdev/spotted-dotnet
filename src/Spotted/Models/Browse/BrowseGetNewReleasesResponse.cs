@@ -277,14 +277,12 @@ public sealed record class Item : JsonModel
     /// <summary>
     /// The type of the album.
     /// </summary>
-    public required ApiEnum<string, global::Spotted.Models.Browse.AlbumType> AlbumType
+    public required ApiEnum<string, AlbumType> AlbumType
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<
-                ApiEnum<string, global::Spotted.Models.Browse.AlbumType>
-            >("album_type");
+            return this._rawData.GetNotNullClass<ApiEnum<string, AlbumType>>("album_type");
         }
         init { this._rawData.Set("album_type", value); }
     }
@@ -408,17 +406,14 @@ public sealed record class Item : JsonModel
     /// <summary>
     /// The precision with which `release_date` value is known.
     /// </summary>
-    public required ApiEnum<
-        string,
-        global::Spotted.Models.Browse.ReleaseDatePrecision
-    > ReleaseDatePrecision
+    public required ApiEnum<string, ReleaseDatePrecision> ReleaseDatePrecision
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<
-                ApiEnum<string, global::Spotted.Models.Browse.ReleaseDatePrecision>
-            >("release_date_precision");
+            return this._rawData.GetNotNullClass<ApiEnum<string, ReleaseDatePrecision>>(
+                "release_date_precision"
+            );
         }
         init { this._rawData.Set("release_date_precision", value); }
     }
@@ -577,7 +572,7 @@ class ItemFromRaw : IFromRawJson<Item>
 /// <summary>
 /// The type of the album.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.Browse.AlbumTypeConverter))]
+[JsonConverter(typeof(AlbumTypeConverter))]
 public enum AlbumType
 {
     Album,
@@ -585,9 +580,9 @@ public enum AlbumType
     Compilation,
 }
 
-sealed class AlbumTypeConverter : JsonConverter<global::Spotted.Models.Browse.AlbumType>
+sealed class AlbumTypeConverter : JsonConverter<AlbumType>
 {
-    public override global::Spotted.Models.Browse.AlbumType Read(
+    public override AlbumType Read(
         ref Utf8JsonReader reader,
         System::Type typeToConvert,
         JsonSerializerOptions options
@@ -595,16 +590,16 @@ sealed class AlbumTypeConverter : JsonConverter<global::Spotted.Models.Browse.Al
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "album" => global::Spotted.Models.Browse.AlbumType.Album,
-            "single" => global::Spotted.Models.Browse.AlbumType.Single,
-            "compilation" => global::Spotted.Models.Browse.AlbumType.Compilation,
-            _ => (global::Spotted.Models.Browse.AlbumType)(-1),
+            "album" => AlbumType.Album,
+            "single" => AlbumType.Single,
+            "compilation" => AlbumType.Compilation,
+            _ => (AlbumType)(-1),
         };
     }
 
     public override void Write(
         Utf8JsonWriter writer,
-        global::Spotted.Models.Browse.AlbumType value,
+        AlbumType value,
         JsonSerializerOptions options
     )
     {
@@ -612,9 +607,9 @@ sealed class AlbumTypeConverter : JsonConverter<global::Spotted.Models.Browse.Al
             writer,
             value switch
             {
-                global::Spotted.Models.Browse.AlbumType.Album => "album",
-                global::Spotted.Models.Browse.AlbumType.Single => "single",
-                global::Spotted.Models.Browse.AlbumType.Compilation => "compilation",
+                AlbumType.Album => "album",
+                AlbumType.Single => "single",
+                AlbumType.Compilation => "compilation",
                 _ => throw new SpottedInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
@@ -627,7 +622,7 @@ sealed class AlbumTypeConverter : JsonConverter<global::Spotted.Models.Browse.Al
 /// <summary>
 /// The precision with which `release_date` value is known.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.Browse.ReleaseDatePrecisionConverter))]
+[JsonConverter(typeof(ReleaseDatePrecisionConverter))]
 public enum ReleaseDatePrecision
 {
     Year,
@@ -635,10 +630,9 @@ public enum ReleaseDatePrecision
     Day,
 }
 
-sealed class ReleaseDatePrecisionConverter
-    : JsonConverter<global::Spotted.Models.Browse.ReleaseDatePrecision>
+sealed class ReleaseDatePrecisionConverter : JsonConverter<ReleaseDatePrecision>
 {
-    public override global::Spotted.Models.Browse.ReleaseDatePrecision Read(
+    public override ReleaseDatePrecision Read(
         ref Utf8JsonReader reader,
         System::Type typeToConvert,
         JsonSerializerOptions options
@@ -646,16 +640,16 @@ sealed class ReleaseDatePrecisionConverter
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "year" => global::Spotted.Models.Browse.ReleaseDatePrecision.Year,
-            "month" => global::Spotted.Models.Browse.ReleaseDatePrecision.Month,
-            "day" => global::Spotted.Models.Browse.ReleaseDatePrecision.Day,
-            _ => (global::Spotted.Models.Browse.ReleaseDatePrecision)(-1),
+            "year" => ReleaseDatePrecision.Year,
+            "month" => ReleaseDatePrecision.Month,
+            "day" => ReleaseDatePrecision.Day,
+            _ => (ReleaseDatePrecision)(-1),
         };
     }
 
     public override void Write(
         Utf8JsonWriter writer,
-        global::Spotted.Models.Browse.ReleaseDatePrecision value,
+        ReleaseDatePrecision value,
         JsonSerializerOptions options
     )
     {
@@ -663,9 +657,9 @@ sealed class ReleaseDatePrecisionConverter
             writer,
             value switch
             {
-                global::Spotted.Models.Browse.ReleaseDatePrecision.Year => "year",
-                global::Spotted.Models.Browse.ReleaseDatePrecision.Month => "month",
-                global::Spotted.Models.Browse.ReleaseDatePrecision.Day => "day",
+                ReleaseDatePrecision.Year => "year",
+                ReleaseDatePrecision.Month => "month",
+                ReleaseDatePrecision.Day => "day",
                 _ => throw new SpottedInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),

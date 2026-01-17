@@ -9,12 +9,12 @@ using Spotted.Models.Playlists.Tracks;
 namespace Spotted.Services.Playlists;
 
 /// <inheritdoc/>
-public sealed class TrackService : global::Spotted.Services.Playlists.ITrackService
+public sealed class TrackService : ITrackService
 {
-    readonly Lazy<global::Spotted.Services.Playlists.ITrackServiceWithRawResponse> _withRawResponse;
+    readonly Lazy<ITrackServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Playlists.ITrackServiceWithRawResponse WithRawResponse
+    public ITrackServiceWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
@@ -22,24 +22,16 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
     readonly ISpottedClient _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Playlists.ITrackService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public ITrackService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Playlists.TrackService(
-            this._client.WithOptions(modifier)
-        );
+        return new TrackService(this._client.WithOptions(modifier));
     }
 
     public TrackService(ISpottedClient client)
     {
         _client = client;
 
-        _withRawResponse = new(() =>
-            new global::Spotted.Services.Playlists.TrackServiceWithRawResponse(
-                client.WithRawResponse
-            )
-        );
+        _withRawResponse = new(() => new TrackServiceWithRawResponse(client.WithRawResponse));
     }
 
     /// <inheritdoc/>
@@ -138,19 +130,14 @@ public sealed class TrackService : global::Spotted.Services.Playlists.ITrackServ
 }
 
 /// <inheritdoc/>
-public sealed class TrackServiceWithRawResponse
-    : global::Spotted.Services.Playlists.ITrackServiceWithRawResponse
+public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
 {
     readonly ISpottedClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Playlists.ITrackServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public ITrackServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Playlists.TrackServiceWithRawResponse(
-            this._client.WithOptions(modifier)
-        );
+        return new TrackServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
     public TrackServiceWithRawResponse(ISpottedClientWithRawResponse client)

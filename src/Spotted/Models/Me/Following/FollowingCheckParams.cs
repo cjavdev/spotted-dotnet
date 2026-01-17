@@ -107,7 +107,7 @@ public sealed record class FollowingCheckParams : ParamsBase
 /// <summary>
 /// The ID type: either `artist` or `user`.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.Me.Following.TypeConverter))]
+[JsonConverter(typeof(TypeConverter))]
 public enum Type
 {
     Artist,
