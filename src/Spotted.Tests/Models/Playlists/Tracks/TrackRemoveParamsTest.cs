@@ -84,6 +84,22 @@ public class TrackRemoveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackRemoveParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Tracks = [new() { Uri = "uri" }],
+            Published = true,
+            SnapshotID = "snapshot_id",
+        };
+
+        TrackRemoveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }
 
 public class TrackTest : TestBase

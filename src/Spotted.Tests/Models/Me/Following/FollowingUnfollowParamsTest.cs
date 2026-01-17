@@ -59,4 +59,14 @@ public class FollowingUnfollowParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/following"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new FollowingUnfollowParams { Ids = ["string"], Published = true };
+
+        FollowingUnfollowParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

@@ -35,4 +35,17 @@ public class AudioFeatureBulkRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AudioFeatureBulkRetrieveParams
+        {
+            Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+        };
+
+        AudioFeatureBulkRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

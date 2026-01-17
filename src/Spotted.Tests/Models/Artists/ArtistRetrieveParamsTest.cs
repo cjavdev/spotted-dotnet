@@ -24,4 +24,14 @@ public class ArtistRetrieveParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ArtistRetrieveParams { ID = "0TnOYISbd1XYRBk9myaseg" };
+
+        ArtistRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

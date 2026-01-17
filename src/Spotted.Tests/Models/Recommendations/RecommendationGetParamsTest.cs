@@ -471,4 +471,63 @@ public class RecommendationGetParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new RecommendationGetParams
+        {
+            Limit = 10,
+            Market = "ES",
+            MaxAcousticness = 0,
+            MaxDanceability = 0,
+            MaxDurationMs = 0,
+            MaxEnergy = 0,
+            MaxInstrumentalness = 0,
+            MaxKey = 0,
+            MaxLiveness = 0,
+            MaxLoudness = 0,
+            MaxMode = 0,
+            MaxPopularity = 0,
+            MaxSpeechiness = 0,
+            MaxTempo = 0,
+            MaxTimeSignature = 0,
+            MaxValence = 0,
+            MinAcousticness = 0,
+            MinDanceability = 0,
+            MinDurationMs = 0,
+            MinEnergy = 0,
+            MinInstrumentalness = 0,
+            MinKey = 0,
+            MinLiveness = 0,
+            MinLoudness = 0,
+            MinMode = 0,
+            MinPopularity = 0,
+            MinSpeechiness = 0,
+            MinTempo = 0,
+            MinTimeSignature = 11,
+            MinValence = 0,
+            SeedArtists = "4NHQUGzhtTLFvgF5SZesLK",
+            SeedGenres = "classical,country",
+            SeedTracks = "0c6xIDDpzE81m2q797ordA",
+            TargetAcousticness = 0,
+            TargetDanceability = 0,
+            TargetDurationMs = 0,
+            TargetEnergy = 0,
+            TargetInstrumentalness = 0,
+            TargetKey = 0,
+            TargetLiveness = 0,
+            TargetLoudness = 0,
+            TargetMode = 0,
+            TargetPopularity = 0,
+            TargetSpeechiness = 0,
+            TargetTempo = 0,
+            TargetTimeSignature = 0,
+            TargetValence = 0,
+        };
+
+        RecommendationGetParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

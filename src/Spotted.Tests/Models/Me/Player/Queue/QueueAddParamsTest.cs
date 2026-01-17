@@ -63,4 +63,18 @@ public class QueueAddParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new QueueAddParams
+        {
+            Uri = "spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
+            DeviceID = "0d1841b0976bae2a3a310dd74c0f3df354899bc8",
+        };
+
+        QueueAddParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

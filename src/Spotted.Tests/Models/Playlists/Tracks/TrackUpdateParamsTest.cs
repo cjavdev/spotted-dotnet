@@ -103,4 +103,23 @@ public class TrackUpdateParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackUpdateParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            InsertBefore = 3,
+            Published = true,
+            RangeLength = 2,
+            RangeStart = 1,
+            SnapshotID = "snapshot_id",
+            Uris = ["string"],
+        };
+
+        TrackUpdateParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

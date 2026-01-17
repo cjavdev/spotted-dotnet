@@ -53,4 +53,14 @@ public class PlaylistListParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/playlists?limit=10&offset=5"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlaylistListParams { Limit = 10, Offset = 5 };
+
+        PlaylistListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

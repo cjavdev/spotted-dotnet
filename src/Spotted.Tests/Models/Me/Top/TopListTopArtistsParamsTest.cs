@@ -75,4 +75,19 @@ public class TopListTopArtistsParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TopListTopArtistsParams
+        {
+            Limit = 10,
+            Offset = 5,
+            TimeRange = "medium_term",
+        };
+
+        TopListTopArtistsParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

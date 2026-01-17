@@ -53,4 +53,14 @@ public class EpisodeRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new EpisodeRetrieveParams { ID = "512ojhOuo1ktJprKbVcKyQ", Market = "ES" };
+
+        EpisodeRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

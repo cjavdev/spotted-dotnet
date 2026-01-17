@@ -11,14 +11,20 @@ namespace Spotted.Models.Artists;
 /// <summary>
 /// Get Spotify catalog information about artists similar to a given artist. Similarity
 /// is based on analysis of the Spotify community's listening history.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 [Obsolete("deprecated")]
-public sealed record class ArtistListRelatedArtistsParams : ParamsBase
+public record class ArtistListRelatedArtistsParams : ParamsBase
 {
     public string? ID { get; init; }
 
     public ArtistListRelatedArtistsParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ArtistListRelatedArtistsParams(
         ArtistListRelatedArtistsParams artistListRelatedArtistsParams
     )
@@ -26,6 +32,7 @@ public sealed record class ArtistListRelatedArtistsParams : ParamsBase
     {
         this.ID = artistListRelatedArtistsParams.ID;
     }
+#pragma warning restore CS8618
 
     public ArtistListRelatedArtistsParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -60,6 +67,28 @@ public sealed record class ArtistListRelatedArtistsParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["ID"] = this.ID,
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(ArtistListRelatedArtistsParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return (this.ID?.Equals(other.ID) ?? other.ID == null)
+            && this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -78,5 +107,10 @@ public sealed record class ArtistListRelatedArtistsParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

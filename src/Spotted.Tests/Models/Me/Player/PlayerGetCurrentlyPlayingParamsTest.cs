@@ -66,4 +66,18 @@ public class PlayerGetCurrentlyPlayingParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlayerGetCurrentlyPlayingParams
+        {
+            AdditionalTypes = "additional_types",
+            Market = "ES",
+        };
+
+        PlayerGetCurrentlyPlayingParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

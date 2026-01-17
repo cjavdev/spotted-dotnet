@@ -79,4 +79,20 @@ public class TrackAddParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackAddParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Position = 0,
+            Published = true,
+            Uris = ["string"],
+        };
+
+        TrackAddParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

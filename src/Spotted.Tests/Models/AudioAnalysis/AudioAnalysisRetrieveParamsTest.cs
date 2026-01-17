@@ -27,4 +27,14 @@ public class AudioAnalysisRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AudioAnalysisRetrieveParams { ID = "11dFghVXANMlKmJXsNCbNl" };
+
+        AudioAnalysisRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

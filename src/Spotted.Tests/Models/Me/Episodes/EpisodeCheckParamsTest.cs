@@ -35,4 +35,17 @@ public class EpisodeCheckParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new EpisodeCheckParams
+        {
+            Ids = "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf",
+        };
+
+        EpisodeCheckParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

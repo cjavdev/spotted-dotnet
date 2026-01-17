@@ -39,4 +39,18 @@ public class ImageUpdateParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ImageUpdateParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Body = Encoding.UTF8.GetBytes("text"),
+        };
+
+        ImageUpdateParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

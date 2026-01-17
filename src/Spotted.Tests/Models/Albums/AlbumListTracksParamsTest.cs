@@ -81,4 +81,20 @@ public class AlbumListTracksParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AlbumListTracksParams
+        {
+            ID = "4aawyAB9vmqN3uQ7FjRGTy",
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        AlbumListTracksParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

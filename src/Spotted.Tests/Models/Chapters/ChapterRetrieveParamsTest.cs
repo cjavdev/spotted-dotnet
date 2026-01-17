@@ -53,4 +53,14 @@ public class ChapterRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ChapterRetrieveParams { ID = "0D5wENdkdwbqlrHoaJ9g29", Market = "ES" };
+
+        ChapterRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

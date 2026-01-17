@@ -59,4 +59,14 @@ public class ShowRemoveParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/shows"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ShowRemoveParams { Ids = ["string"], Published = true };
+
+        ShowRemoveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

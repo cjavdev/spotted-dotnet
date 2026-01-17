@@ -55,4 +55,14 @@ public class ArtistTopTracksParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ArtistTopTracksParams { ID = "0TnOYISbd1XYRBk9myaseg", Market = "ES" };
+
+        ArtistTopTracksParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

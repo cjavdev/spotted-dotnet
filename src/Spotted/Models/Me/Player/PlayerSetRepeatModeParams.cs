@@ -12,8 +12,12 @@ namespace Spotted.Models.Me.Player;
 /// Set the repeat mode for the user's playback. This API only works for users who
 /// have Spotify Premium. The order of execution is not guaranteed when you use this
 /// API with other Player API endpoints.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class PlayerSetRepeatModeParams : ParamsBase
+public record class PlayerSetRepeatModeParams : ParamsBase
 {
     /// <summary>
     /// **track**, **context** or **off**.<br/> **track** will repeat the current
@@ -54,8 +58,11 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
 
     public PlayerSetRepeatModeParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerSetRepeatModeParams(PlayerSetRepeatModeParams playerSetRepeatModeParams)
         : base(playerSetRepeatModeParams) { }
+#pragma warning restore CS8618
 
     public PlayerSetRepeatModeParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -90,6 +97,26 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(PlayerSetRepeatModeParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/me/player/repeat")
@@ -105,5 +132,10 @@ public sealed record class PlayerSetRepeatModeParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

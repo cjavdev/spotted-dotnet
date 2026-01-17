@@ -53,4 +53,14 @@ public class CategoryRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new CategoryRetrieveParams { CategoryID = "dinner", Locale = "sv_SE" };
+
+        CategoryRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

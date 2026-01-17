@@ -57,4 +57,18 @@ public class FollowerFollowParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new FollowerFollowParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Published = true,
+        };
+
+        FollowerFollowParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }
