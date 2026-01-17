@@ -57,4 +57,17 @@ public class PlayerSkipNextParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlayerSkipNextParams
+        {
+            DeviceID = "0d1841b0976bae2a3a310dd74c0f3df354899bc8",
+        };
+
+        PlayerSkipNextParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

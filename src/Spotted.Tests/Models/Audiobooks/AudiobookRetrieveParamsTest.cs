@@ -57,4 +57,18 @@ public class AudiobookRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AudiobookRetrieveParams
+        {
+            ID = "7iHfbu1YPACw6oZPAFJtqe",
+            Market = "ES",
+        };
+
+        AudiobookRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

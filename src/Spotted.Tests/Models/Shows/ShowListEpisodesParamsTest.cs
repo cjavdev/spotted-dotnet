@@ -81,4 +81,20 @@ public class ShowListEpisodesParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ShowListEpisodesParams
+        {
+            ID = "38bS44xjbVVZ3No3ByF1dJ",
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        ShowListEpisodesParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

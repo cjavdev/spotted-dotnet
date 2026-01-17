@@ -35,4 +35,17 @@ public class TrackCheckParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackCheckParams
+        {
+            Ids = "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B",
+        };
+
+        TrackCheckParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

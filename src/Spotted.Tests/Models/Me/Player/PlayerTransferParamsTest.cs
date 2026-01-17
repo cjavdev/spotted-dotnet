@@ -67,4 +67,19 @@ public class PlayerTransferParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/player"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlayerTransferParams
+        {
+            DeviceIds = ["74ASZWbe4lXaubB36ztrGX"],
+            Play = true,
+            Published = true,
+        };
+
+        PlayerTransferParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

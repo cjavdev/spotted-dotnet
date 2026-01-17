@@ -27,4 +27,14 @@ public class ImageListParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ImageListParams { PlaylistID = "3cEYpjA9oz9GiPac4AsH4n" };
+
+        ImageListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

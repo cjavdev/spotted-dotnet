@@ -75,4 +75,19 @@ public class BrowseGetFeaturedPlaylistsParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new BrowseGetFeaturedPlaylistsParams
+        {
+            Limit = 10,
+            Locale = "sv_SE",
+            Offset = 5,
+        };
+
+        BrowseGetFeaturedPlaylistsParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

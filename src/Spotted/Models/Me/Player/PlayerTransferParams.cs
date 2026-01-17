@@ -14,8 +14,12 @@ namespace Spotted.Models.Me.Player;
 /// Transfer playback to a new device and optionally begin playback. This API only
 /// works for users who have Spotify Premium. The order of execution is not guaranteed
 /// when you use this API with other Player API endpoints.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class PlayerTransferParams : ParamsBase
+public record class PlayerTransferParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
@@ -93,11 +97,14 @@ public sealed record class PlayerTransferParams : ParamsBase
 
     public PlayerTransferParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerTransferParams(PlayerTransferParams playerTransferParams)
         : base(playerTransferParams)
     {
         this._rawBodyData = new(playerTransferParams._rawBodyData);
     }
+#pragma warning restore CS8618
 
     public PlayerTransferParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -138,6 +145,28 @@ public sealed record class PlayerTransferParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+                ["BodyData"] = this._rawBodyData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(PlayerTransferParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData)
+            && this._rawBodyData.Equals(other._rawBodyData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/me/player")
@@ -162,5 +191,10 @@ public sealed record class PlayerTransferParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

@@ -24,4 +24,14 @@ public class UserRetrieveProfileParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/users/smedjan"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new UserRetrieveProfileParams { UserID = "smedjan" };
+
+        UserRetrieveProfileParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

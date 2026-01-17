@@ -12,8 +12,12 @@ namespace Spotted.Models.Me.Player.Queue;
 /// Add an item to be played next in the user's current playback queue. This API only
 /// works for users who have Spotify Premium. The order of execution is not guaranteed
 /// when you use this API with other Player API endpoints.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class QueueAddParams : ParamsBase
+public record class QueueAddParams : ParamsBase
 {
     /// <summary>
     /// The uri of the item to add to the queue. Must be a track or an episode uri.
@@ -52,8 +56,11 @@ public sealed record class QueueAddParams : ParamsBase
 
     public QueueAddParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public QueueAddParams(QueueAddParams queueAddParams)
         : base(queueAddParams) { }
+#pragma warning restore CS8618
 
     public QueueAddParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -88,6 +95,26 @@ public sealed record class QueueAddParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(QueueAddParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/me/player/queue")
@@ -103,5 +130,10 @@ public sealed record class QueueAddParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

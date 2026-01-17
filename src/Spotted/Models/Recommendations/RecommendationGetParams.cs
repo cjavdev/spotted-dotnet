@@ -15,10 +15,14 @@ namespace Spotted.Models.Recommendations;
 /// with pool size details.
 ///
 /// <para>For artists and tracks that are very new or obscure there might not be
-/// enough data to generate a list of tracks. </para>
+/// enough data to generate a list of tracks.</para>
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 [Obsolete("deprecated")]
-public sealed record class RecommendationGetParams : ParamsBase
+public record class RecommendationGetParams : ParamsBase
 {
     /// <summary>
     /// The target size of the list of recommended tracks. For seeds with unusually
@@ -1149,8 +1153,11 @@ public sealed record class RecommendationGetParams : ParamsBase
 
     public RecommendationGetParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public RecommendationGetParams(RecommendationGetParams recommendationGetParams)
         : base(recommendationGetParams) { }
+#pragma warning restore CS8618
 
     public RecommendationGetParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -1185,6 +1192,26 @@ public sealed record class RecommendationGetParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(RecommendationGetParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/recommendations")
@@ -1200,5 +1227,10 @@ public sealed record class RecommendationGetParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

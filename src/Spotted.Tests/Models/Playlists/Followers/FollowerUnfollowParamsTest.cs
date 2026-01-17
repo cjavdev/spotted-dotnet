@@ -27,4 +27,14 @@ public class FollowerUnfollowParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new FollowerUnfollowParams { PlaylistID = "3cEYpjA9oz9GiPac4AsH4n" };
+
+        FollowerUnfollowParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

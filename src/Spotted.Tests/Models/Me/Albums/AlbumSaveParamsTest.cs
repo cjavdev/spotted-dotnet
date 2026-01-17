@@ -59,4 +59,14 @@ public class AlbumSaveParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/albums"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AlbumSaveParams { Ids = ["string"], Published = true };
+
+        AlbumSaveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

@@ -10,16 +10,23 @@ namespace Spotted.Models.Recommendations;
 
 /// <summary>
 /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 [Obsolete("deprecated")]
-public sealed record class RecommendationListAvailableGenreSeedsParams : ParamsBase
+public record class RecommendationListAvailableGenreSeedsParams : ParamsBase
 {
     public RecommendationListAvailableGenreSeedsParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public RecommendationListAvailableGenreSeedsParams(
         RecommendationListAvailableGenreSeedsParams recommendationListAvailableGenreSeedsParams
     )
         : base(recommendationListAvailableGenreSeedsParams) { }
+#pragma warning restore CS8618
 
     public RecommendationListAvailableGenreSeedsParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -54,6 +61,26 @@ public sealed record class RecommendationListAvailableGenreSeedsParams : ParamsB
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(RecommendationListAvailableGenreSeedsParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -71,5 +98,10 @@ public sealed record class RecommendationListAvailableGenreSeedsParams : ParamsB
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

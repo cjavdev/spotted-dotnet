@@ -53,4 +53,14 @@ public class ShowRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ShowRetrieveParams { ID = "38bS44xjbVVZ3No3ByF1dJ", Market = "ES" };
+
+        ShowRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

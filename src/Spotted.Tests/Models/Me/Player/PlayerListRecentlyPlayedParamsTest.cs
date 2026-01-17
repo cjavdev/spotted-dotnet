@@ -75,4 +75,19 @@ public class PlayerListRecentlyPlayedParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlayerListRecentlyPlayedParams
+        {
+            After = 1484811043508,
+            Before = 0,
+            Limit = 10,
+        };
+
+        PlayerListRecentlyPlayedParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

@@ -10,18 +10,25 @@ namespace Spotted.Models.Users;
 
 /// <summary>
 /// Get public profile information about a Spotify user.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class UserRetrieveProfileParams : ParamsBase
+public record class UserRetrieveProfileParams : ParamsBase
 {
     public string? UserID { get; init; }
 
     public UserRetrieveProfileParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public UserRetrieveProfileParams(UserRetrieveProfileParams userRetrieveProfileParams)
         : base(userRetrieveProfileParams)
     {
         this.UserID = userRetrieveProfileParams.UserID;
     }
+#pragma warning restore CS8618
 
     public UserRetrieveProfileParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -56,6 +63,28 @@ public sealed record class UserRetrieveProfileParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["UserID"] = this.UserID,
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(UserRetrieveProfileParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return (this.UserID?.Equals(other.UserID) ?? other.UserID == null)
+            && this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -73,5 +102,10 @@ public sealed record class UserRetrieveProfileParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

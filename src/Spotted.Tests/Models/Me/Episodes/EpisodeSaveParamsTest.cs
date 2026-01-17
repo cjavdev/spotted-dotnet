@@ -55,4 +55,14 @@ public class EpisodeSaveParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/episodes"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new EpisodeSaveParams { Ids = ["string"], Published = true };
+
+        EpisodeSaveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

@@ -63,4 +63,18 @@ public class PlayerSetRepeatModeParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlayerSetRepeatModeParams
+        {
+            State = "context",
+            DeviceID = "0d1841b0976bae2a3a310dd74c0f3df354899bc8",
+        };
+
+        PlayerSetRepeatModeParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

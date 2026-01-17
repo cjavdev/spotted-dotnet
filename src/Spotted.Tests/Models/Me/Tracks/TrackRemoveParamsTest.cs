@@ -59,4 +59,14 @@ public class TrackRemoveParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/tracks"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackRemoveParams { Ids = ["string"], Published = true };
+
+        TrackRemoveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

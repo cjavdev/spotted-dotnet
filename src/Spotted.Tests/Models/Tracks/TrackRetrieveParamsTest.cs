@@ -53,4 +53,14 @@ public class TrackRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackRetrieveParams { ID = "11dFghVXANMlKmJXsNCbNl", Market = "ES" };
+
+        TrackRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

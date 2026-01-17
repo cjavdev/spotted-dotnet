@@ -72,4 +72,19 @@ public class CategoryGetPlaylistsParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new CategoryGetPlaylistsParams
+        {
+            CategoryID = "dinner",
+            Limit = 10,
+            Offset = 5,
+        };
+
+        CategoryGetPlaylistsParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

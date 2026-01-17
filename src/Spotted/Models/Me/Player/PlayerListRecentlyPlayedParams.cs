@@ -11,8 +11,12 @@ namespace Spotted.Models.Me.Player;
 /// <summary>
 /// Get tracks from the current user's recently played tracks. _**Note**: Currently
 /// doesn't support podcast episodes._
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
+public record class PlayerListRecentlyPlayedParams : ParamsBase
 {
     /// <summary>
     /// A Unix timestamp in milliseconds. Returns all items after (but not including)
@@ -82,10 +86,13 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
 
     public PlayerListRecentlyPlayedParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerListRecentlyPlayedParams(
         PlayerListRecentlyPlayedParams playerListRecentlyPlayedParams
     )
         : base(playerListRecentlyPlayedParams) { }
+#pragma warning restore CS8618
 
     public PlayerListRecentlyPlayedParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -120,6 +127,26 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(PlayerListRecentlyPlayedParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -137,5 +164,10 @@ public sealed record class PlayerListRecentlyPlayedParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }
