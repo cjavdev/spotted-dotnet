@@ -182,14 +182,12 @@ public sealed record class PlaylistCreateResponse : JsonModel
     /// <summary>
     /// The user who owns the playlist
     /// </summary>
-    public global::Spotted.Models.Users.Playlists.Owner? Owner
+    public Owner? Owner
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNullableClass<global::Spotted.Models.Users.Playlists.Owner>(
-                "owner"
-            );
+            return this._rawData.GetNullableClass<Owner>("owner");
         }
         init
         {
@@ -372,12 +370,7 @@ class PlaylistCreateResponseFromRaw : IFromRawJson<PlaylistCreateResponse>
 /// <summary>
 /// The user who owns the playlist
 /// </summary>
-[JsonConverter(
-    typeof(JsonModelConverter<
-        global::Spotted.Models.Users.Playlists.Owner,
-        global::Spotted.Models.Users.Playlists.OwnerFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<Owner, OwnerFromRaw>))]
 public sealed record class Owner : JsonModel
 {
     /// <summary>
@@ -521,9 +514,7 @@ public sealed record class Owner : JsonModel
         init { this._rawData.Set("display_name", value); }
     }
 
-    public static implicit operator PlaylistUserObject(
-        global::Spotted.Models.Users.Playlists.Owner owner
-    ) =>
+    public static implicit operator PlaylistUserObject(Owner owner) =>
         new()
         {
             ID = owner.ID,
@@ -548,7 +539,7 @@ public sealed record class Owner : JsonModel
 
     public Owner() { }
 
-    public Owner(global::Spotted.Models.Users.Playlists.Owner owner)
+    public Owner(Owner owner)
         : base(owner) { }
 
     public Owner(IReadOnlyDictionary<string, JsonElement> rawData)
@@ -564,29 +555,21 @@ public sealed record class Owner : JsonModel
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="global::Spotted.Models.Users.Playlists.OwnerFromRaw.FromRawUnchecked"/>
-    public static global::Spotted.Models.Users.Playlists.Owner FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="OwnerFromRaw.FromRawUnchecked"/>
+    public static Owner FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class OwnerFromRaw : IFromRawJson<global::Spotted.Models.Users.Playlists.Owner>
+class OwnerFromRaw : IFromRawJson<Owner>
 {
     /// <inheritdoc/>
-    public global::Spotted.Models.Users.Playlists.Owner FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Spotted.Models.Users.Playlists.Owner.FromRawUnchecked(rawData);
+    public Owner FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Owner.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(
-    typeof(JsonModelConverter<
-        global::Spotted.Models.Users.Playlists.IntersectionMember1,
-        global::Spotted.Models.Users.Playlists.IntersectionMember1FromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<IntersectionMember1, IntersectionMember1FromRaw>))]
 public sealed record class IntersectionMember1 : JsonModel
 {
     /// <summary>
@@ -610,9 +593,7 @@ public sealed record class IntersectionMember1 : JsonModel
 
     public IntersectionMember1() { }
 
-    public IntersectionMember1(
-        global::Spotted.Models.Users.Playlists.IntersectionMember1 intersectionMember1
-    )
+    public IntersectionMember1(IntersectionMember1 intersectionMember1)
         : base(intersectionMember1) { }
 
     public IntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
@@ -628,8 +609,8 @@ public sealed record class IntersectionMember1 : JsonModel
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="global::Spotted.Models.Users.Playlists.IntersectionMember1FromRaw.FromRawUnchecked"/>
-    public static global::Spotted.Models.Users.Playlists.IntersectionMember1 FromRawUnchecked(
+    /// <inheritdoc cref="IntersectionMember1FromRaw.FromRawUnchecked"/>
+    public static IntersectionMember1 FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     )
     {
@@ -637,13 +618,11 @@ public sealed record class IntersectionMember1 : JsonModel
     }
 }
 
-class IntersectionMember1FromRaw
-    : IFromRawJson<global::Spotted.Models.Users.Playlists.IntersectionMember1>
+class IntersectionMember1FromRaw : IFromRawJson<IntersectionMember1>
 {
     /// <inheritdoc/>
-    public global::Spotted.Models.Users.Playlists.IntersectionMember1 FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Spotted.Models.Users.Playlists.IntersectionMember1.FromRawUnchecked(rawData);
+    public IntersectionMember1 FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        IntersectionMember1.FromRawUnchecked(rawData);
 }
 
 /// <summary>

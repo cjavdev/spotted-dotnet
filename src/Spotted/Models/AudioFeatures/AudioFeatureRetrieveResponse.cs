@@ -515,7 +515,7 @@ class AudioFeatureRetrieveResponseFromRaw : IFromRawJson<AudioFeatureRetrieveRes
 /// <summary>
 /// The object type.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.AudioFeatures.TypeConverter))]
+[JsonConverter(typeof(TypeConverter))]
 public enum Type
 {
     AudioFeatures,

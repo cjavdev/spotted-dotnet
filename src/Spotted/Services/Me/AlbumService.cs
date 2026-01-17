@@ -9,12 +9,12 @@ using Spotted.Models.Me.Albums;
 namespace Spotted.Services.Me;
 
 /// <inheritdoc/>
-public sealed class AlbumService : global::Spotted.Services.Me.IAlbumService
+public sealed class AlbumService : IAlbumService
 {
-    readonly Lazy<global::Spotted.Services.Me.IAlbumServiceWithRawResponse> _withRawResponse;
+    readonly Lazy<IAlbumServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IAlbumServiceWithRawResponse WithRawResponse
+    public IAlbumServiceWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
@@ -22,20 +22,16 @@ public sealed class AlbumService : global::Spotted.Services.Me.IAlbumService
     readonly ISpottedClient _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IAlbumService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IAlbumService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.AlbumService(this._client.WithOptions(modifier));
+        return new AlbumService(this._client.WithOptions(modifier));
     }
 
     public AlbumService(ISpottedClient client)
     {
         _client = client;
 
-        _withRawResponse = new(() =>
-            new global::Spotted.Services.Me.AlbumServiceWithRawResponse(client.WithRawResponse)
-        );
+        _withRawResponse = new(() => new AlbumServiceWithRawResponse(client.WithRawResponse));
     }
 
     /// <inheritdoc/>
@@ -82,19 +78,14 @@ public sealed class AlbumService : global::Spotted.Services.Me.IAlbumService
 }
 
 /// <inheritdoc/>
-public sealed class AlbumServiceWithRawResponse
-    : global::Spotted.Services.Me.IAlbumServiceWithRawResponse
+public sealed class AlbumServiceWithRawResponse : IAlbumServiceWithRawResponse
 {
     readonly ISpottedClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IAlbumServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IAlbumServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.AlbumServiceWithRawResponse(
-            this._client.WithOptions(modifier)
-        );
+        return new AlbumServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
     public AlbumServiceWithRawResponse(ISpottedClientWithRawResponse client)

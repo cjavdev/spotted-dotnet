@@ -9,12 +9,12 @@ using Spotted.Models.Me.Tracks;
 namespace Spotted.Services.Me;
 
 /// <inheritdoc/>
-public sealed class TrackService : global::Spotted.Services.Me.ITrackService
+public sealed class TrackService : ITrackService
 {
-    readonly Lazy<global::Spotted.Services.Me.ITrackServiceWithRawResponse> _withRawResponse;
+    readonly Lazy<ITrackServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.ITrackServiceWithRawResponse WithRawResponse
+    public ITrackServiceWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
@@ -22,20 +22,16 @@ public sealed class TrackService : global::Spotted.Services.Me.ITrackService
     readonly ISpottedClient _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.ITrackService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public ITrackService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.TrackService(this._client.WithOptions(modifier));
+        return new TrackService(this._client.WithOptions(modifier));
     }
 
     public TrackService(ISpottedClient client)
     {
         _client = client;
 
-        _withRawResponse = new(() =>
-            new global::Spotted.Services.Me.TrackServiceWithRawResponse(client.WithRawResponse)
-        );
+        _withRawResponse = new(() => new TrackServiceWithRawResponse(client.WithRawResponse));
     }
 
     /// <inheritdoc/>
@@ -79,19 +75,14 @@ public sealed class TrackService : global::Spotted.Services.Me.ITrackService
 }
 
 /// <inheritdoc/>
-public sealed class TrackServiceWithRawResponse
-    : global::Spotted.Services.Me.ITrackServiceWithRawResponse
+public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
 {
     readonly ISpottedClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.ITrackServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public ITrackServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.TrackServiceWithRawResponse(
-            this._client.WithOptions(modifier)
-        );
+        return new TrackServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
     public TrackServiceWithRawResponse(ISpottedClientWithRawResponse client)
