@@ -375,6 +375,70 @@ public class BrowseGetNewReleasesResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new BrowseGetNewReleasesResponse
+        {
+            Albums = new()
+            {
+                Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
+                Limit = 20,
+                Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+                Offset = 0,
+                Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+                Total = 4,
+                Items =
+                [
+                    new()
+                    {
+                        ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                        AlbumType = AlbumType.Compilation,
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = Models::SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["CA", "BR", "IT"],
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Images =
+                        [
+                            new()
+                            {
+                                Height = 300,
+                                Url =
+                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                Width = 300,
+                                Published = true,
+                            },
+                        ],
+                        Name = "name",
+                        ReleaseDate = "1981-12",
+                        ReleaseDatePrecision = ReleaseDatePrecision.Year,
+                        TotalTracks = 9,
+                        Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Models::Reason.Market },
+                    },
+                ],
+                Published = true,
+            },
+        };
+
+        BrowseGetNewReleasesResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
@@ -826,6 +890,67 @@ public class BrowseGetNewReleasesResponseAlbumsTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new BrowseGetNewReleasesResponseAlbums
+        {
+            Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
+            Limit = 20,
+            Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+            Offset = 0,
+            Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+            Total = 4,
+            Items =
+            [
+                new()
+                {
+                    ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                    AlbumType = AlbumType.Compilation,
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = Models::SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["CA", "BR", "IT"],
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    Images =
+                    [
+                        new()
+                        {
+                            Height = 300,
+                            Url =
+                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                            Width = 300,
+                            Published = true,
+                        },
+                    ],
+                    Name = "name",
+                    ReleaseDate = "1981-12",
+                    ReleaseDatePrecision = ReleaseDatePrecision.Year,
+                    TotalTracks = 9,
+                    Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
+                },
+            ],
+            Published = true,
+        };
+
+        BrowseGetNewReleasesResponseAlbums copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 
@@ -1346,6 +1471,53 @@ public class ItemTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Item
+        {
+            ID = "2up3OPMp9Tb4dAKM2erWXQ",
+            AlbumType = AlbumType.Compilation,
+            Artists =
+            [
+                new()
+                {
+                    ID = "id",
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    Name = "name",
+                    Published = true,
+                    Type = Models::SimplifiedArtistObjectType.Artist,
+                    Uri = "uri",
+                },
+            ],
+            AvailableMarkets = ["CA", "BR", "IT"],
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Name = "name",
+            ReleaseDate = "1981-12",
+            ReleaseDatePrecision = ReleaseDatePrecision.Year,
+            TotalTracks = 9,
+            Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+            Published = true,
+            Restrictions = new() { Published = true, Reason = Models::Reason.Market },
+        };
+
+        Item copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 

@@ -136,4 +136,19 @@ public class PlaylistTracksRefObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new PlaylistTracksRefObject
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
+
+        PlaylistTracksRefObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

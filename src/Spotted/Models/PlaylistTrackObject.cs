@@ -135,8 +135,11 @@ public sealed record class PlaylistTrackObject : JsonModel
 
     public PlaylistTrackObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlaylistTrackObject(PlaylistTrackObject playlistTrackObject)
         : base(playlistTrackObject) { }
+#pragma warning restore CS8618
 
     public PlaylistTrackObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

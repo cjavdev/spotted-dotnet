@@ -159,4 +159,31 @@ public class PlayerGetDevicesResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new PlayerGetDevicesResponse
+        {
+            Devices =
+            [
+                new()
+                {
+                    ID = "id",
+                    IsActive = true,
+                    IsPrivateSession = true,
+                    IsRestricted = true,
+                    Name = "Kitchen speaker",
+                    Published = true,
+                    SupportsVolume = true,
+                    Type = "computer",
+                    VolumePercent = 59,
+                },
+            ],
+        };
+
+        PlayerGetDevicesResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

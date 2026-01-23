@@ -41,10 +41,13 @@ public sealed record class AudiobookBulkRetrieveResponse : JsonModel
 
     public AudiobookBulkRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudiobookBulkRetrieveResponse(
         AudiobookBulkRetrieveResponse audiobookBulkRetrieveResponse
     )
         : base(audiobookBulkRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public AudiobookBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -489,8 +492,11 @@ public sealed record class Audiobook : JsonModel
         this.Type = JsonSerializer.SerializeToElement("audiobook");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Audiobook(Audiobook audiobook)
         : base(audiobook) { }
+#pragma warning restore CS8618
 
     public Audiobook(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -547,8 +553,11 @@ public sealed record class AudiobookIntersectionMember1 : JsonModel
 
     public AudiobookIntersectionMember1() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudiobookIntersectionMember1(AudiobookIntersectionMember1 audiobookIntersectionMember1)
         : base(audiobookIntersectionMember1) { }
+#pragma warning restore CS8618
 
     public AudiobookIntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -741,10 +750,13 @@ public sealed record class AudiobookIntersectionMember1Chapters : JsonModel
 
     public AudiobookIntersectionMember1Chapters() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudiobookIntersectionMember1Chapters(
         AudiobookIntersectionMember1Chapters audiobookIntersectionMember1Chapters
     )
         : base(audiobookIntersectionMember1Chapters) { }
+#pragma warning restore CS8618
 
     public AudiobookIntersectionMember1Chapters(IReadOnlyDictionary<string, JsonElement> rawData)
     {

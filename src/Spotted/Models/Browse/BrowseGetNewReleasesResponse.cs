@@ -33,8 +33,11 @@ public sealed record class BrowseGetNewReleasesResponse : JsonModel
 
     public BrowseGetNewReleasesResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public BrowseGetNewReleasesResponse(BrowseGetNewReleasesResponse browseGetNewReleasesResponse)
         : base(browseGetNewReleasesResponse) { }
+#pragma warning restore CS8618
 
     public BrowseGetNewReleasesResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -222,10 +225,13 @@ public sealed record class BrowseGetNewReleasesResponseAlbums : JsonModel
 
     public BrowseGetNewReleasesResponseAlbums() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public BrowseGetNewReleasesResponseAlbums(
         BrowseGetNewReleasesResponseAlbums browseGetNewReleasesResponseAlbums
     )
         : base(browseGetNewReleasesResponseAlbums) { }
+#pragma warning restore CS8618
 
     public BrowseGetNewReleasesResponseAlbums(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -537,8 +543,11 @@ public sealed record class Item : JsonModel
         this.Type = JsonSerializer.SerializeToElement("album");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Item(Item item)
         : base(item) { }
+#pragma warning restore CS8618
 
     public Item(IReadOnlyDictionary<string, JsonElement> rawData)
     {

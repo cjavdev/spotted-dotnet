@@ -109,8 +109,11 @@ public sealed record class CategoryListResponse : JsonModel
 
     public CategoryListResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public CategoryListResponse(CategoryListResponse categoryListResponse)
         : base(categoryListResponse) { }
+#pragma warning restore CS8618
 
     public CategoryListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

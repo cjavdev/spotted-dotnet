@@ -106,4 +106,14 @@ public class AuthorObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new AuthorObject { Name = "name", Published = true };
+
+        AuthorObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

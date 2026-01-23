@@ -185,10 +185,13 @@ public sealed record class PlayerListRecentlyPlayedPageResponse : JsonModel
 
     public PlayerListRecentlyPlayedPageResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerListRecentlyPlayedPageResponse(
         PlayerListRecentlyPlayedPageResponse playerListRecentlyPlayedPageResponse
     )
         : base(playerListRecentlyPlayedPageResponse) { }
+#pragma warning restore CS8618
 
     public PlayerListRecentlyPlayedPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -303,8 +306,11 @@ public sealed record class Cursors : JsonModel
 
     public Cursors() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Cursors(Cursors cursors)
         : base(cursors) { }
+#pragma warning restore CS8618
 
     public Cursors(IReadOnlyDictionary<string, JsonElement> rawData)
     {

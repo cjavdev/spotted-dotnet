@@ -114,10 +114,13 @@ public sealed record class PlayerListRecentlyPlayedResponse : JsonModel
 
     public PlayerListRecentlyPlayedResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerListRecentlyPlayedResponse(
         PlayerListRecentlyPlayedResponse playerListRecentlyPlayedResponse
     )
         : base(playerListRecentlyPlayedResponse) { }
+#pragma warning restore CS8618
 
     public PlayerListRecentlyPlayedResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

@@ -45,10 +45,13 @@ public sealed record class AudioFeatureBulkRetrieveResponse : JsonModel
 
     public AudioFeatureBulkRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudioFeatureBulkRetrieveResponse(
         AudioFeatureBulkRetrieveResponse audioFeatureBulkRetrieveResponse
     )
         : base(audioFeatureBulkRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public AudioFeatureBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -553,8 +556,11 @@ public sealed record class AudioFeature : JsonModel
 
     public AudioFeature() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudioFeature(AudioFeature audioFeature)
         : base(audioFeature) { }
+#pragma warning restore CS8618
 
     public AudioFeature(IReadOnlyDictionary<string, JsonElement> rawData)
     {

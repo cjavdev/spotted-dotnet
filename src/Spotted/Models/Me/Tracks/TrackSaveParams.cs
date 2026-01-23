@@ -252,8 +252,11 @@ public sealed record class TimestampedID : JsonModel
 
     public TimestampedID() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TimestampedID(TimestampedID timestampedID)
         : base(timestampedID) { }
+#pragma warning restore CS8618
 
     public TimestampedID(IReadOnlyDictionary<string, JsonElement> rawData)
     {

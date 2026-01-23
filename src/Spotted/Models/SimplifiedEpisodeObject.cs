@@ -387,9 +387,12 @@ public sealed record class SimplifiedEpisodeObject : JsonModel
         this.Type = JsonSerializer.SerializeToElement("episode");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public SimplifiedEpisodeObject(SimplifiedEpisodeObject simplifiedEpisodeObject)
         : base(simplifiedEpisodeObject) { }
+#pragma warning restore CS8618
 
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public SimplifiedEpisodeObject(IReadOnlyDictionary<string, JsonElement> rawData)

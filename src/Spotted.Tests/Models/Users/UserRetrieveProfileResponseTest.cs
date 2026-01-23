@@ -457,6 +457,41 @@ public class UserRetrieveProfileResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new UserRetrieveProfileResponse
+        {
+            ID = "id",
+            DisplayName = "display_name",
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
+            Href = "href",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Published = true,
+            Type = Type.User,
+            Uri = "uri",
+        };
+
+        UserRetrieveProfileResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class TypeTest : TestBase

@@ -336,8 +336,11 @@ public sealed record class PlaylistRetrieveResponse : JsonModel
 
     public PlaylistRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlaylistRetrieveResponse(PlaylistRetrieveResponse playlistRetrieveResponse)
         : base(playlistRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public PlaylistRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -541,8 +544,11 @@ public sealed record class Owner : JsonModel
 
     public Owner() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Owner(Owner owner)
         : base(owner) { }
+#pragma warning restore CS8618
 
     public Owner(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -595,8 +601,11 @@ public sealed record class IntersectionMember1 : JsonModel
 
     public IntersectionMember1() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public IntersectionMember1(IntersectionMember1 intersectionMember1)
         : base(intersectionMember1) { }
+#pragma warning restore CS8618
 
     public IntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -779,10 +788,13 @@ public sealed record class PlaylistRetrieveResponseTracks : JsonModel
 
     public PlaylistRetrieveResponseTracks() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlaylistRetrieveResponseTracks(
         PlaylistRetrieveResponseTracks playlistRetrieveResponseTracks
     )
         : base(playlistRetrieveResponseTracks) { }
+#pragma warning restore CS8618
 
     public PlaylistRetrieveResponseTracks(IReadOnlyDictionary<string, JsonElement> rawData)
     {

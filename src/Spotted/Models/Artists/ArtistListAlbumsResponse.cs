@@ -306,8 +306,11 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
         this.Type = JsonSerializer.SerializeToElement("album");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ArtistListAlbumsResponse(ArtistListAlbumsResponse artistListAlbumsResponse)
         : base(artistListAlbumsResponse) { }
+#pragma warning restore CS8618
 
     public ArtistListAlbumsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

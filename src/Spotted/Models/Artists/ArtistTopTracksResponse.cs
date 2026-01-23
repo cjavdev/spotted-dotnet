@@ -38,8 +38,11 @@ public sealed record class ArtistTopTracksResponse : JsonModel
 
     public ArtistTopTracksResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ArtistTopTracksResponse(ArtistTopTracksResponse artistTopTracksResponse)
         : base(artistTopTracksResponse) { }
+#pragma warning restore CS8618
 
     public ArtistTopTracksResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

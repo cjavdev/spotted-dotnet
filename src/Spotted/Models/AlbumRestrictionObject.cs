@@ -69,8 +69,11 @@ public sealed record class AlbumRestrictionObject : JsonModel
 
     public AlbumRestrictionObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AlbumRestrictionObject(AlbumRestrictionObject albumRestrictionObject)
         : base(albumRestrictionObject) { }
+#pragma warning restore CS8618
 
     public AlbumRestrictionObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

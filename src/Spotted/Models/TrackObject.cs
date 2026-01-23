@@ -511,8 +511,11 @@ public sealed record class TrackObject : JsonModel
 
     public TrackObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TrackObject(TrackObject trackObject)
         : base(trackObject) { }
+#pragma warning restore CS8618
 
     public TrackObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -825,8 +828,11 @@ public sealed record class Album : JsonModel
         this.Type = JsonSerializer.SerializeToElement("album");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Album(Album album)
         : base(album) { }
+#pragma warning restore CS8618
 
     public Album(IReadOnlyDictionary<string, JsonElement> rawData)
     {

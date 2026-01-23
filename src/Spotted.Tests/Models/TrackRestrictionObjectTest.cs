@@ -106,4 +106,14 @@ public class TrackRestrictionObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new TrackRestrictionObject { Published = true, Reason = "reason" };
+
+        TrackRestrictionObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

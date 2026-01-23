@@ -207,8 +207,11 @@ public sealed record class DeviceObject : JsonModel
 
     public DeviceObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public DeviceObject(DeviceObject deviceObject)
         : base(deviceObject) { }
+#pragma warning restore CS8618
 
     public DeviceObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

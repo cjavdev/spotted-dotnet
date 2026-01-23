@@ -479,8 +479,11 @@ public sealed record class AudioFeatureRetrieveResponse : JsonModel
 
     public AudioFeatureRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudioFeatureRetrieveResponse(AudioFeatureRetrieveResponse audioFeatureRetrieveResponse)
         : base(audioFeatureRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public AudioFeatureRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

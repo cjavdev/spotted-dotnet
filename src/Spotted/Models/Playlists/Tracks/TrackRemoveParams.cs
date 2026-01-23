@@ -240,8 +240,11 @@ public sealed record class Track : JsonModel
 
     public Track() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Track(Track track)
         : base(track) { }
+#pragma warning restore CS8618
 
     public Track(IReadOnlyDictionary<string, JsonElement> rawData)
     {

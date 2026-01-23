@@ -40,8 +40,11 @@ public sealed record class PlayerGetDevicesResponse : JsonModel
 
     public PlayerGetDevicesResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerGetDevicesResponse(PlayerGetDevicesResponse playerGetDevicesResponse)
         : base(playerGetDevicesResponse) { }
+#pragma warning restore CS8618
 
     public PlayerGetDevicesResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

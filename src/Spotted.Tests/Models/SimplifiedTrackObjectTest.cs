@@ -679,4 +679,54 @@ public class SimplifiedTrackObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new SimplifiedTrackObject
+        {
+            ID = "id",
+            Artists =
+            [
+                new()
+                {
+                    ID = "id",
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    Name = "name",
+                    Published = true,
+                    Type = SimplifiedArtistObjectType.Artist,
+                    Uri = "uri",
+                },
+            ],
+            AvailableMarkets = ["string"],
+            DiscNumber = 0,
+            DurationMs = 0,
+            Explicit = true,
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            IsLocal = true,
+            IsPlayable = true,
+            LinkedFrom = new()
+            {
+                ID = "id",
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                Href = "href",
+                Published = true,
+                Type = "type",
+                Uri = "uri",
+            },
+            Name = "name",
+            PreviewUrl = "preview_url",
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            TrackNumber = 0,
+            Type = "type",
+            Uri = "uri",
+        };
+
+        SimplifiedTrackObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

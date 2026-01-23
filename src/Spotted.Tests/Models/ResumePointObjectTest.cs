@@ -136,4 +136,19 @@ public class ResumePointObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ResumePointObject
+        {
+            FullyPlayed = true,
+            Published = true,
+            ResumePositionMs = 0,
+        };
+
+        ResumePointObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

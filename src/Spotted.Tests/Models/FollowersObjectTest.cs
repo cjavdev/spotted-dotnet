@@ -180,4 +180,19 @@ public class FollowersObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new FollowersObject
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
+
+        FollowersObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

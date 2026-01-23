@@ -79,8 +79,11 @@ public sealed record class FollowersObject : JsonModel
 
     public FollowersObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public FollowersObject(FollowersObject followersObject)
         : base(followersObject) { }
+#pragma warning restore CS8618
 
     public FollowersObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

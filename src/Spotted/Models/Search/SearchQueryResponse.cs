@@ -153,8 +153,11 @@ public sealed record class SearchQueryResponse : JsonModel
 
     public SearchQueryResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SearchQueryResponse(SearchQueryResponse searchQueryResponse)
         : base(searchQueryResponse) { }
+#pragma warning restore CS8618
 
     public SearchQueryResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -331,8 +334,11 @@ public sealed record class SearchQueryResponseAlbums : JsonModel
 
     public SearchQueryResponseAlbums() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SearchQueryResponseAlbums(SearchQueryResponseAlbums searchQueryResponseAlbums)
         : base(searchQueryResponseAlbums) { }
+#pragma warning restore CS8618
 
     public SearchQueryResponseAlbums(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -644,8 +650,11 @@ public sealed record class Item : JsonModel
         this.Type = JsonSerializer.SerializeToElement("album");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Item(Item item)
         : base(item) { }
+#pragma warning restore CS8618
 
     public Item(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -922,8 +931,11 @@ public sealed record class SearchQueryResponseArtists : JsonModel
 
     public SearchQueryResponseArtists() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SearchQueryResponseArtists(SearchQueryResponseArtists searchQueryResponseArtists)
         : base(searchQueryResponseArtists) { }
+#pragma warning restore CS8618
 
     public SearchQueryResponseArtists(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -1101,10 +1113,13 @@ public sealed record class SearchQueryResponseAudiobooks : JsonModel
 
     public SearchQueryResponseAudiobooks() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SearchQueryResponseAudiobooks(
         SearchQueryResponseAudiobooks searchQueryResponseAudiobooks
     )
         : base(searchQueryResponseAudiobooks) { }
+#pragma warning restore CS8618
 
     public SearchQueryResponseAudiobooks(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -1284,8 +1299,11 @@ public sealed record class SearchQueryResponseEpisodes : JsonModel
 
     public SearchQueryResponseEpisodes() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SearchQueryResponseEpisodes(SearchQueryResponseEpisodes searchQueryResponseEpisodes)
         : base(searchQueryResponseEpisodes) { }
+#pragma warning restore CS8618
 
     public SearchQueryResponseEpisodes(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -1463,8 +1481,11 @@ public sealed record class SearchQueryResponseShows : JsonModel
 
     public SearchQueryResponseShows() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SearchQueryResponseShows(SearchQueryResponseShows searchQueryResponseShows)
         : base(searchQueryResponseShows) { }
+#pragma warning restore CS8618
 
     public SearchQueryResponseShows(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -1642,8 +1663,11 @@ public sealed record class SearchQueryResponseTracks : JsonModel
 
     public SearchQueryResponseTracks() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SearchQueryResponseTracks(SearchQueryResponseTracks searchQueryResponseTracks)
         : base(searchQueryResponseTracks) { }
+#pragma warning restore CS8618
 
     public SearchQueryResponseTracks(IReadOnlyDictionary<string, JsonElement> rawData)
     {

@@ -88,8 +88,11 @@ public sealed record class EpisodeListResponse : JsonModel
 
     public EpisodeListResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public EpisodeListResponse(EpisodeListResponse episodeListResponse)
         : base(episodeListResponse) { }
+#pragma warning restore CS8618
 
     public EpisodeListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

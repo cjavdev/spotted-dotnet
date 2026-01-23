@@ -225,8 +225,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
 
     public UserRetrieveProfileResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public UserRetrieveProfileResponse(UserRetrieveProfileResponse userRetrieveProfileResponse)
         : base(userRetrieveProfileResponse) { }
+#pragma warning restore CS8618
 
     public UserRetrieveProfileResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

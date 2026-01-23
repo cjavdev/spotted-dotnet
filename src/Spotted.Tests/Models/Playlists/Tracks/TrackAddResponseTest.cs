@@ -96,4 +96,14 @@ public class TrackAddResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new TrackAddResponse { SnapshotID = "abc" };
+
+        TrackAddResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

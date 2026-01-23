@@ -434,8 +434,11 @@ public sealed record class SimplifiedTrackObject : JsonModel
 
     public SimplifiedTrackObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SimplifiedTrackObject(SimplifiedTrackObject simplifiedTrackObject)
         : base(simplifiedTrackObject) { }
+#pragma warning restore CS8618
 
     public SimplifiedTrackObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
