@@ -9,10 +9,13 @@ using Spotted.Core;
 namespace Spotted.Models.Tracks;
 
 /// <summary>
-/// Get Spotify catalog information for a single track identified by its unique Spotify
-/// ID.
+/// Get Spotify catalog information for a single track identified by its unique Spotify ID.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class TrackRetrieveParams : ParamsBase
+public record class TrackRetrieveParams : ParamsBase
 {
     public string? ID { get; init; }
 
@@ -46,11 +49,14 @@ public sealed record class TrackRetrieveParams : ParamsBase
 
     public TrackRetrieveParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TrackRetrieveParams(TrackRetrieveParams trackRetrieveParams)
         : base(trackRetrieveParams)
     {
         this.ID = trackRetrieveParams.ID;
     }
+#pragma warning restore CS8618
 
     public TrackRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -85,6 +91,28 @@ public sealed record class TrackRetrieveParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["ID"] = this.ID,
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(TrackRetrieveParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return (this.ID?.Equals(other.ID) ?? other.ID == null)
+            && this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -102,5 +130,10 @@ public sealed record class TrackRetrieveParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

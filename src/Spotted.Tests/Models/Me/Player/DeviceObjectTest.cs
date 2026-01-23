@@ -294,4 +294,25 @@ public class DeviceObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new DeviceObject
+        {
+            ID = "id",
+            IsActive = true,
+            IsPrivateSession = true,
+            IsRestricted = true,
+            Name = "Kitchen speaker",
+            Published = true,
+            SupportsVolume = true,
+            Type = "computer",
+            VolumePercent = 59,
+        };
+
+        DeviceObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

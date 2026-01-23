@@ -15,18 +15,16 @@ namespace Spotted.Models.Albums;
 )]
 public sealed record class AlbumBulkRetrieveResponse : JsonModel
 {
-    public required IReadOnlyList<global::Spotted.Models.Albums.Album> Albums
+    public required IReadOnlyList<Album> Albums
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullStruct<
-                ImmutableArray<global::Spotted.Models.Albums.Album>
-            >("albums");
+            return this._rawData.GetNotNullStruct<ImmutableArray<Album>>("albums");
         }
         init
         {
-            this._rawData.Set<ImmutableArray<global::Spotted.Models.Albums.Album>>(
+            this._rawData.Set<ImmutableArray<Album>>(
                 "albums",
                 ImmutableArray.ToImmutableArray(value)
             );
@@ -44,8 +42,11 @@ public sealed record class AlbumBulkRetrieveResponse : JsonModel
 
     public AlbumBulkRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AlbumBulkRetrieveResponse(AlbumBulkRetrieveResponse albumBulkRetrieveResponse)
         : base(albumBulkRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public AlbumBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -69,7 +70,7 @@ public sealed record class AlbumBulkRetrieveResponse : JsonModel
     }
 
     [SetsRequiredMembers]
-    public AlbumBulkRetrieveResponse(IReadOnlyList<global::Spotted.Models.Albums.Album> albums)
+    public AlbumBulkRetrieveResponse(IReadOnlyList<Album> albums)
         : this()
     {
         this.Albums = albums;
@@ -84,12 +85,7 @@ class AlbumBulkRetrieveResponseFromRaw : IFromRawJson<AlbumBulkRetrieveResponse>
     ) => AlbumBulkRetrieveResponse.FromRawUnchecked(rawData);
 }
 
-[JsonConverter(
-    typeof(JsonModelConverter<
-        global::Spotted.Models.Albums.Album,
-        global::Spotted.Models.Albums.AlbumFromRaw
-    >)
-)]
+[JsonConverter(typeof(JsonModelConverter<Album, AlbumFromRaw>))]
 public sealed record class Album : JsonModel
 {
     /// <summary>
@@ -216,17 +212,14 @@ public sealed record class Album : JsonModel
     /// <summary>
     /// The precision with which `release_date` value is known.
     /// </summary>
-    public required ApiEnum<
-        string,
-        global::Spotted.Models.Albums.AlbumReleaseDatePrecision
-    > ReleaseDatePrecision
+    public required ApiEnum<string, AlbumReleaseDatePrecision> ReleaseDatePrecision
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<
-                ApiEnum<string, global::Spotted.Models.Albums.AlbumReleaseDatePrecision>
-            >("release_date_precision");
+            return this._rawData.GetNotNullClass<ApiEnum<string, AlbumReleaseDatePrecision>>(
+                "release_date_precision"
+            );
         }
         init { this._rawData.Set("release_date_precision", value); }
     }
@@ -520,8 +513,11 @@ public sealed record class Album : JsonModel
         this.Type = JsonSerializer.SerializeToElement("album");
     }
 
-    public Album(global::Spotted.Models.Albums.Album album)
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Album(Album album)
         : base(album) { }
+#pragma warning restore CS8618
 
     public Album(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -538,21 +534,18 @@ public sealed record class Album : JsonModel
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="global::Spotted.Models.Albums.AlbumFromRaw.FromRawUnchecked"/>
-    public static global::Spotted.Models.Albums.Album FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    /// <inheritdoc cref="AlbumFromRaw.FromRawUnchecked"/>
+    public static Album FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class AlbumFromRaw : IFromRawJson<global::Spotted.Models.Albums.Album>
+class AlbumFromRaw : IFromRawJson<Album>
 {
     /// <inheritdoc/>
-    public global::Spotted.Models.Albums.Album FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Spotted.Models.Albums.Album.FromRawUnchecked(rawData);
+    public Album FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Album.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -608,7 +601,7 @@ sealed class AlbumAlbumTypeConverter : JsonConverter<AlbumAlbumType>
 /// <summary>
 /// The precision with which `release_date` value is known.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.Albums.AlbumReleaseDatePrecisionConverter))]
+[JsonConverter(typeof(AlbumReleaseDatePrecisionConverter))]
 public enum AlbumReleaseDatePrecision
 {
     Year,
@@ -616,10 +609,9 @@ public enum AlbumReleaseDatePrecision
     Day,
 }
 
-sealed class AlbumReleaseDatePrecisionConverter
-    : JsonConverter<global::Spotted.Models.Albums.AlbumReleaseDatePrecision>
+sealed class AlbumReleaseDatePrecisionConverter : JsonConverter<AlbumReleaseDatePrecision>
 {
-    public override global::Spotted.Models.Albums.AlbumReleaseDatePrecision Read(
+    public override AlbumReleaseDatePrecision Read(
         ref Utf8JsonReader reader,
         System::Type typeToConvert,
         JsonSerializerOptions options
@@ -627,16 +619,16 @@ sealed class AlbumReleaseDatePrecisionConverter
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "year" => global::Spotted.Models.Albums.AlbumReleaseDatePrecision.Year,
-            "month" => global::Spotted.Models.Albums.AlbumReleaseDatePrecision.Month,
-            "day" => global::Spotted.Models.Albums.AlbumReleaseDatePrecision.Day,
-            _ => (global::Spotted.Models.Albums.AlbumReleaseDatePrecision)(-1),
+            "year" => AlbumReleaseDatePrecision.Year,
+            "month" => AlbumReleaseDatePrecision.Month,
+            "day" => AlbumReleaseDatePrecision.Day,
+            _ => (AlbumReleaseDatePrecision)(-1),
         };
     }
 
     public override void Write(
         Utf8JsonWriter writer,
-        global::Spotted.Models.Albums.AlbumReleaseDatePrecision value,
+        AlbumReleaseDatePrecision value,
         JsonSerializerOptions options
     )
     {
@@ -644,9 +636,9 @@ sealed class AlbumReleaseDatePrecisionConverter
             writer,
             value switch
             {
-                global::Spotted.Models.Albums.AlbumReleaseDatePrecision.Year => "year",
-                global::Spotted.Models.Albums.AlbumReleaseDatePrecision.Month => "month",
-                global::Spotted.Models.Albums.AlbumReleaseDatePrecision.Day => "day",
+                AlbumReleaseDatePrecision.Year => "year",
+                AlbumReleaseDatePrecision.Month => "month",
+                AlbumReleaseDatePrecision.Day => "day",
                 _ => throw new SpottedInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),
@@ -803,8 +795,11 @@ public sealed record class AlbumTracks : JsonModel
 
     public AlbumTracks() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AlbumTracks(AlbumTracks albumTracks)
         : base(albumTracks) { }
+#pragma warning restore CS8618
 
     public AlbumTracks(IReadOnlyDictionary<string, JsonElement> rawData)
     {

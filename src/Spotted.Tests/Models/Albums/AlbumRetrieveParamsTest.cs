@@ -53,4 +53,14 @@ public class AlbumRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AlbumRetrieveParams { ID = "4aawyAB9vmqN3uQ7FjRGTy", Market = "ES" };
+
+        AlbumRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

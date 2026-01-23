@@ -73,4 +73,19 @@ public class AlbumListParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AlbumListParams
+        {
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        AlbumListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

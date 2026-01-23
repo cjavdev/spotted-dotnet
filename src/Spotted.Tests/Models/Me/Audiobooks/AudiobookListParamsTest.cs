@@ -53,4 +53,14 @@ public class AudiobookListParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/audiobooks?limit=10&offset=5"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AudiobookListParams { Limit = 10, Offset = 5 };
+
+        AudiobookListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

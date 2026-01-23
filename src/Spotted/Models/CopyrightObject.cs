@@ -87,8 +87,11 @@ public sealed record class CopyrightObject : JsonModel
 
     public CopyrightObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public CopyrightObject(CopyrightObject copyrightObject)
         : base(copyrightObject) { }
+#pragma warning restore CS8618
 
     public CopyrightObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

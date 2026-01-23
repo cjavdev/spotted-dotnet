@@ -70,4 +70,19 @@ public class PlaylistListParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlaylistListParams
+        {
+            UserID = "smedjan",
+            Limit = 10,
+            Offset = 5,
+        };
+
+        PlaylistListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

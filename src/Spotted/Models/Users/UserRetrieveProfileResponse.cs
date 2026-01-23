@@ -225,8 +225,11 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
 
     public UserRetrieveProfileResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public UserRetrieveProfileResponse(UserRetrieveProfileResponse userRetrieveProfileResponse)
         : base(userRetrieveProfileResponse) { }
+#pragma warning restore CS8618
 
     public UserRetrieveProfileResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -261,7 +264,7 @@ class UserRetrieveProfileResponseFromRaw : IFromRawJson<UserRetrieveProfileRespo
 /// <summary>
 /// The object type.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.Users.TypeConverter))]
+[JsonConverter(typeof(TypeConverter))]
 public enum Type
 {
     User,

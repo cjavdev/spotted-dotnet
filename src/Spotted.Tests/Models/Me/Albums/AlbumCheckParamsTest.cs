@@ -35,4 +35,17 @@ public class AlbumCheckParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AlbumCheckParams
+        {
+            Ids = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc",
+        };
+
+        AlbumCheckParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

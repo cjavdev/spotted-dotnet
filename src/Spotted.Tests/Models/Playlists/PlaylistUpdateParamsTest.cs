@@ -78,4 +78,21 @@ public class PlaylistUpdateParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlaylistUpdateParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            Collaborative = true,
+            Description = "Updated playlist description",
+            Name = "Updated Playlist Name",
+            Published = true,
+        };
+
+        PlaylistUpdateParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

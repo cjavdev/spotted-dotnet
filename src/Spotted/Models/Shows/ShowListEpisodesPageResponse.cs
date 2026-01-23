@@ -156,8 +156,11 @@ public sealed record class ShowListEpisodesPageResponse : JsonModel
 
     public ShowListEpisodesPageResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ShowListEpisodesPageResponse(ShowListEpisodesPageResponse showListEpisodesPageResponse)
         : base(showListEpisodesPageResponse) { }
+#pragma warning restore CS8618
 
     public ShowListEpisodesPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

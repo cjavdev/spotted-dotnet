@@ -10,10 +10,13 @@ namespace Spotted.Models.Audiobooks;
 
 /// <summary>
 /// Get Spotify catalog information about an audiobook's chapters. Audiobooks are
-/// only available within the US, UK, Canada, Ireland, New Zealand and Australia
-/// markets.
+/// only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class AudiobookListChaptersParams : ParamsBase
+public record class AudiobookListChaptersParams : ParamsBase
 {
     public string? ID { get; init; }
 
@@ -91,11 +94,14 @@ public sealed record class AudiobookListChaptersParams : ParamsBase
 
     public AudiobookListChaptersParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudiobookListChaptersParams(AudiobookListChaptersParams audiobookListChaptersParams)
         : base(audiobookListChaptersParams)
     {
         this.ID = audiobookListChaptersParams.ID;
     }
+#pragma warning restore CS8618
 
     public AudiobookListChaptersParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -130,6 +136,28 @@ public sealed record class AudiobookListChaptersParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["ID"] = this.ID,
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(AudiobookListChaptersParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return (this.ID?.Equals(other.ID) ?? other.ID == null)
+            && this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -148,5 +176,10 @@ public sealed record class AudiobookListChaptersParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

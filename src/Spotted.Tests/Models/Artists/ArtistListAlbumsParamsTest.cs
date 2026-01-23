@@ -90,4 +90,21 @@ public class ArtistListAlbumsParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ArtistListAlbumsParams
+        {
+            ID = "0TnOYISbd1XYRBk9myaseg",
+            IncludeGroups = "single,appears_on",
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        ArtistListAlbumsParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

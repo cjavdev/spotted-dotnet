@@ -66,4 +66,18 @@ public class PlayerGetStateParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlayerGetStateParams
+        {
+            AdditionalTypes = "additional_types",
+            Market = "ES",
+        };
+
+        PlayerGetStateParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

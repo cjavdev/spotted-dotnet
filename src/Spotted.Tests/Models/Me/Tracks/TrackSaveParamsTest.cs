@@ -80,6 +80,24 @@ public class TrackSaveParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/tracks"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackSaveParams
+        {
+            Ids = ["string"],
+            Published = true,
+            TimestampedIds =
+            [
+                new() { ID = "id", AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z") },
+            ],
+        };
+
+        TrackSaveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }
 
 public class TimestampedIDTest : TestBase
@@ -151,5 +169,19 @@ public class TimestampedIDTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new TimestampedID
+        {
+            ID = "id",
+            AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+        };
+
+        TimestampedID copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

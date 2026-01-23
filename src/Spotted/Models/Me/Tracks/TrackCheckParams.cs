@@ -11,8 +11,12 @@ namespace Spotted.Models.Me.Tracks;
 /// <summary>
 /// Check if one or more tracks is already saved in the current Spotify user's 'Your
 /// Music' library.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class TrackCheckParams : ParamsBase
+public record class TrackCheckParams : ParamsBase
 {
     /// <summary>
     /// A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
@@ -31,8 +35,11 @@ public sealed record class TrackCheckParams : ParamsBase
 
     public TrackCheckParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TrackCheckParams(TrackCheckParams trackCheckParams)
         : base(trackCheckParams) { }
+#pragma warning restore CS8618
 
     public TrackCheckParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -67,6 +74,26 @@ public sealed record class TrackCheckParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(TrackCheckParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/me/tracks/contains")
@@ -82,5 +109,10 @@ public sealed record class TrackCheckParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

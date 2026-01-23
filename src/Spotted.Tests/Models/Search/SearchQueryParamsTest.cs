@@ -108,6 +108,24 @@ public class SearchQueryParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new Search::SearchQueryParams
+        {
+            Q = "remaster%20track:Doxy%20artist:Miles%20Davis",
+            Type = [Search::Type.Album],
+            IncludeExternal = Search::IncludeExternal.Audio,
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        Search::SearchQueryParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }
 
 public class TypeTest : TestBase

@@ -10,8 +10,12 @@ namespace Spotted.Models.Me.Tracks;
 
 /// <summary>
 /// Get a list of the songs saved in the current Spotify user's 'Your Music' library.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class TrackListParams : ParamsBase
+public record class TrackListParams : ParamsBase
 {
     /// <summary>
     /// The maximum number of items to return. Default: 20. Minimum: 1. Maximum:
@@ -87,8 +91,11 @@ public sealed record class TrackListParams : ParamsBase
 
     public TrackListParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TrackListParams(TrackListParams trackListParams)
         : base(trackListParams) { }
+#pragma warning restore CS8618
 
     public TrackListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -123,6 +130,26 @@ public sealed record class TrackListParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(TrackListParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/me/tracks")
@@ -138,5 +165,10 @@ public sealed record class TrackListParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

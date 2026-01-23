@@ -73,8 +73,11 @@ public sealed record class ChapterRestrictionObject : JsonModel
 
     public ChapterRestrictionObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ChapterRestrictionObject(ChapterRestrictionObject chapterRestrictionObject)
         : base(chapterRestrictionObject) { }
+#pragma warning restore CS8618
 
     public ChapterRestrictionObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

@@ -150,4 +150,20 @@ public class TimeIntervalObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new TimeIntervalObject
+        {
+            Confidence = 0.925,
+            Duration = 2.18749,
+            Published = true,
+            Start = 0.49567,
+        };
+
+        TimeIntervalObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

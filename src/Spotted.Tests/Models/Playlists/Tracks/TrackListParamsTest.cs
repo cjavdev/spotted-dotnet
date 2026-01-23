@@ -99,4 +99,22 @@ public class TrackListParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackListParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            AdditionalTypes = "additional_types",
+            Fields = "items(added_by.id,track(name,href,album(name,href)))",
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        TrackListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

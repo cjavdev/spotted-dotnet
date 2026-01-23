@@ -117,4 +117,25 @@ public class PlayerStartPlaybackParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlayerStartPlaybackParams
+        {
+            DeviceID = "0d1841b0976bae2a3a310dd74c0f3df354899bc8",
+            ContextUri = "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+            Offset = new Dictionary<string, JsonElement>()
+            {
+                { "position", JsonSerializer.SerializeToElement("bar") },
+            },
+            PositionMs = 0,
+            Published = true,
+            Uris = ["string"],
+        };
+
+        PlayerStartPlaybackParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

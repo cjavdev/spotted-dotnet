@@ -70,4 +70,18 @@ public class FollowingBulkRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new FollowingBulkRetrieveParams
+        {
+            After = "0I2XqVXqHScXjHhk6AYYRe",
+            Limit = 10,
+        };
+
+        FollowingBulkRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

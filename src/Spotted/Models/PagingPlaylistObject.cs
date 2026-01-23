@@ -154,8 +154,11 @@ public sealed record class PagingPlaylistObject : JsonModel
 
     public PagingPlaylistObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PagingPlaylistObject(PagingPlaylistObject pagingPlaylistObject)
         : base(pagingPlaylistObject) { }
+#pragma warning restore CS8618
 
     public PagingPlaylistObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

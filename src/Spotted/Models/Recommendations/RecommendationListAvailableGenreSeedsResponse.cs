@@ -40,10 +40,13 @@ public sealed record class RecommendationListAvailableGenreSeedsResponse : JsonM
 
     public RecommendationListAvailableGenreSeedsResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public RecommendationListAvailableGenreSeedsResponse(
         RecommendationListAvailableGenreSeedsResponse recommendationListAvailableGenreSeedsResponse
     )
         : base(recommendationListAvailableGenreSeedsResponse) { }
+#pragma warning restore CS8618
 
     public RecommendationListAvailableGenreSeedsResponse(
         IReadOnlyDictionary<string, JsonElement> rawData

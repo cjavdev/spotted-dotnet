@@ -13,8 +13,12 @@ namespace Spotted.Models.Me.Episodes;
 /// 'Your Episodes' library.<br/> This API endpoint is in __beta__ and could change
 /// without warning. Please share any feedback that you have, or issues that you discover,
 /// in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class EpisodeCheckParams : ParamsBase
+public record class EpisodeCheckParams : ParamsBase
 {
     /// <summary>
     /// A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids)
@@ -32,8 +36,11 @@ public sealed record class EpisodeCheckParams : ParamsBase
 
     public EpisodeCheckParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public EpisodeCheckParams(EpisodeCheckParams episodeCheckParams)
         : base(episodeCheckParams) { }
+#pragma warning restore CS8618
 
     public EpisodeCheckParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -68,6 +75,26 @@ public sealed record class EpisodeCheckParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(EpisodeCheckParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/me/episodes/contains")
@@ -83,5 +110,10 @@ public sealed record class EpisodeCheckParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

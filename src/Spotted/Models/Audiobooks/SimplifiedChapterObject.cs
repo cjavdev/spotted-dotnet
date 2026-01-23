@@ -216,17 +216,14 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// <summary>
     /// The precision with which `release_date` value is known.
     /// </summary>
-    public required ApiEnum<
-        string,
-        global::Spotted.Models.Audiobooks.ReleaseDatePrecision
-    > ReleaseDatePrecision
+    public required ApiEnum<string, ReleaseDatePrecision> ReleaseDatePrecision
     {
         get
         {
             this._rawData.Freeze();
-            return this._rawData.GetNotNullClass<
-                ApiEnum<string, global::Spotted.Models.Audiobooks.ReleaseDatePrecision>
-            >("release_date_precision");
+            return this._rawData.GetNotNullClass<ApiEnum<string, ReleaseDatePrecision>>(
+                "release_date_precision"
+            );
         }
         init { this._rawData.Set("release_date_precision", value); }
     }
@@ -389,9 +386,12 @@ public sealed record class SimplifiedChapterObject : JsonModel
         this.Type = JsonSerializer.SerializeToElement("episode");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public SimplifiedChapterObject(SimplifiedChapterObject simplifiedChapterObject)
         : base(simplifiedChapterObject) { }
+#pragma warning restore CS8618
 
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public SimplifiedChapterObject(IReadOnlyDictionary<string, JsonElement> rawData)
@@ -430,7 +430,7 @@ class SimplifiedChapterObjectFromRaw : IFromRawJson<SimplifiedChapterObject>
 /// <summary>
 /// The precision with which `release_date` value is known.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.Audiobooks.ReleaseDatePrecisionConverter))]
+[JsonConverter(typeof(ReleaseDatePrecisionConverter))]
 public enum ReleaseDatePrecision
 {
     Year,
@@ -438,10 +438,9 @@ public enum ReleaseDatePrecision
     Day,
 }
 
-sealed class ReleaseDatePrecisionConverter
-    : JsonConverter<global::Spotted.Models.Audiobooks.ReleaseDatePrecision>
+sealed class ReleaseDatePrecisionConverter : JsonConverter<ReleaseDatePrecision>
 {
-    public override global::Spotted.Models.Audiobooks.ReleaseDatePrecision Read(
+    public override ReleaseDatePrecision Read(
         ref Utf8JsonReader reader,
         System::Type typeToConvert,
         JsonSerializerOptions options
@@ -449,16 +448,16 @@ sealed class ReleaseDatePrecisionConverter
     {
         return JsonSerializer.Deserialize<string>(ref reader, options) switch
         {
-            "year" => global::Spotted.Models.Audiobooks.ReleaseDatePrecision.Year,
-            "month" => global::Spotted.Models.Audiobooks.ReleaseDatePrecision.Month,
-            "day" => global::Spotted.Models.Audiobooks.ReleaseDatePrecision.Day,
-            _ => (global::Spotted.Models.Audiobooks.ReleaseDatePrecision)(-1),
+            "year" => ReleaseDatePrecision.Year,
+            "month" => ReleaseDatePrecision.Month,
+            "day" => ReleaseDatePrecision.Day,
+            _ => (ReleaseDatePrecision)(-1),
         };
     }
 
     public override void Write(
         Utf8JsonWriter writer,
-        global::Spotted.Models.Audiobooks.ReleaseDatePrecision value,
+        ReleaseDatePrecision value,
         JsonSerializerOptions options
     )
     {
@@ -466,9 +465,9 @@ sealed class ReleaseDatePrecisionConverter
             writer,
             value switch
             {
-                global::Spotted.Models.Audiobooks.ReleaseDatePrecision.Year => "year",
-                global::Spotted.Models.Audiobooks.ReleaseDatePrecision.Month => "month",
-                global::Spotted.Models.Audiobooks.ReleaseDatePrecision.Day => "day",
+                ReleaseDatePrecision.Year => "year",
+                ReleaseDatePrecision.Month => "month",
+                ReleaseDatePrecision.Day => "day",
                 _ => throw new SpottedInvalidDataException(
                     string.Format("Invalid value '{0}' in {1}", value, nameof(value))
                 ),

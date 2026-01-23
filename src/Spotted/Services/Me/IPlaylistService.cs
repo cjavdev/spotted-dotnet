@@ -17,16 +17,14 @@ public interface IPlaylistService
     /// Returns a view of this service that provides access to raw HTTP responses
     /// for each method.
     /// </summary>
-    global::Spotted.Services.Me.IPlaylistServiceWithRawResponse WithRawResponse { get; }
+    IPlaylistServiceWithRawResponse WithRawResponse { get; }
 
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    global::Spotted.Services.Me.IPlaylistService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    );
+    IPlaylistService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
     /// Get a list of the playlists owned or followed by the current Spotify user.
@@ -38,7 +36,7 @@ public interface IPlaylistService
 }
 
 /// <summary>
-/// A view of <see cref="global::Spotted.Services.Me.IPlaylistService"/> that provides access to raw
+/// A view of <see cref="IPlaylistService"/> that provides access to raw
 /// HTTP responses for each method.
 /// </summary>
 public interface IPlaylistServiceWithRawResponse
@@ -48,13 +46,11 @@ public interface IPlaylistServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    global::Spotted.Services.Me.IPlaylistServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    );
+    IPlaylistServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
     /// Returns a raw HTTP response for `get /me/playlists`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.IPlaylistService.List(PlaylistListParams?, CancellationToken)"/>.
+    /// same as <see cref="IPlaylistService.List(PlaylistListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PlaylistListPage>> List(
         PlaylistListParams? parameters = null,

@@ -88,10 +88,13 @@ public sealed record class BrowseGetFeaturedPlaylistsResponse : JsonModel
 
     public BrowseGetFeaturedPlaylistsResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public BrowseGetFeaturedPlaylistsResponse(
         BrowseGetFeaturedPlaylistsResponse browseGetFeaturedPlaylistsResponse
     )
         : base(browseGetFeaturedPlaylistsResponse) { }
+#pragma warning restore CS8618
 
     public BrowseGetFeaturedPlaylistsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

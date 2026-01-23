@@ -91,8 +91,11 @@ public sealed record class RecommendationGetResponse : JsonModel
 
     public RecommendationGetResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public RecommendationGetResponse(RecommendationGetResponse recommendationGetResponse)
         : base(recommendationGetResponse) { }
+#pragma warning restore CS8618
 
     public RecommendationGetResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -295,8 +298,11 @@ public sealed record class Seed : JsonModel
 
     public Seed() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Seed(Seed seed)
         : base(seed) { }
+#pragma warning restore CS8618
 
     public Seed(IReadOnlyDictionary<string, JsonElement> rawData)
     {

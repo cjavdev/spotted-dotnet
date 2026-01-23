@@ -9,12 +9,12 @@ using Spotted.Models.Me.Playlists;
 namespace Spotted.Services.Me;
 
 /// <inheritdoc/>
-public sealed class PlaylistService : global::Spotted.Services.Me.IPlaylistService
+public sealed class PlaylistService : IPlaylistService
 {
-    readonly Lazy<global::Spotted.Services.Me.IPlaylistServiceWithRawResponse> _withRawResponse;
+    readonly Lazy<IPlaylistServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IPlaylistServiceWithRawResponse WithRawResponse
+    public IPlaylistServiceWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
@@ -22,20 +22,16 @@ public sealed class PlaylistService : global::Spotted.Services.Me.IPlaylistServi
     readonly ISpottedClient _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IPlaylistService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IPlaylistService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.PlaylistService(this._client.WithOptions(modifier));
+        return new PlaylistService(this._client.WithOptions(modifier));
     }
 
     public PlaylistService(ISpottedClient client)
     {
         _client = client;
 
-        _withRawResponse = new(() =>
-            new global::Spotted.Services.Me.PlaylistServiceWithRawResponse(client.WithRawResponse)
-        );
+        _withRawResponse = new(() => new PlaylistServiceWithRawResponse(client.WithRawResponse));
     }
 
     /// <inheritdoc/>
@@ -52,19 +48,14 @@ public sealed class PlaylistService : global::Spotted.Services.Me.IPlaylistServi
 }
 
 /// <inheritdoc/>
-public sealed class PlaylistServiceWithRawResponse
-    : global::Spotted.Services.Me.IPlaylistServiceWithRawResponse
+public sealed class PlaylistServiceWithRawResponse : IPlaylistServiceWithRawResponse
 {
     readonly ISpottedClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IPlaylistServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IPlaylistServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.PlaylistServiceWithRawResponse(
-            this._client.WithOptions(modifier)
-        );
+        return new PlaylistServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
     public PlaylistServiceWithRawResponse(ISpottedClientWithRawResponse client)

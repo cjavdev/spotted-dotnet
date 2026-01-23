@@ -106,4 +106,14 @@ public class EpisodeRestrictionObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new EpisodeRestrictionObject { Published = true, Reason = "reason" };
+
+        EpisodeRestrictionObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

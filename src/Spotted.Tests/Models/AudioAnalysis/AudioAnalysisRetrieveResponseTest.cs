@@ -840,6 +840,123 @@ public class AudioAnalysisRetrieveResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new AudioAnalysisRetrieveResponse
+        {
+            Bars =
+            [
+                new()
+                {
+                    Confidence = 0.925,
+                    Duration = 2.18749,
+                    Published = true,
+                    Start = 0.49567,
+                },
+            ],
+            Beats =
+            [
+                new()
+                {
+                    Confidence = 0.925,
+                    Duration = 2.18749,
+                    Published = true,
+                    Start = 0.49567,
+                },
+            ],
+            Meta = new()
+            {
+                AnalysisTime = 6.93906,
+                AnalyzerVersion = "4.0.0",
+                DetailedStatus = "OK",
+                InputProcess = "libvorbisfile L+R 44100->22050",
+                Platform = "Linux",
+                StatusCode = 0,
+                Timestamp = 1495193577,
+            },
+            Published = true,
+            Sections =
+            [
+                new()
+                {
+                    Confidence = 1,
+                    Duration = 6.97092,
+                    Key = 9,
+                    KeyConfidence = 0.297,
+                    Loudness = -14.938,
+                    Mode = Mode.ModeNoResult,
+                    ModeConfidence = 0.471,
+                    Published = true,
+                    Start = 0,
+                    Tempo = 113.178,
+                    TempoConfidence = 0.647,
+                    TimeSignature = 4,
+                    TimeSignatureConfidence = 1,
+                },
+            ],
+            Segments =
+            [
+                new()
+                {
+                    Confidence = 0.435,
+                    Duration = 0.19891,
+                    LoudnessEnd = 0,
+                    LoudnessMax = -14.25,
+                    LoudnessMaxTime = 0.07305,
+                    LoudnessStart = -23.053,
+                    Pitches = [0.212, 0.141, 0.294],
+                    Published = true,
+                    Start = 0.70154,
+                    Timbre = [42.115, 64.373, -0.233],
+                },
+            ],
+            Tatums =
+            [
+                new()
+                {
+                    Confidence = 0.925,
+                    Duration = 2.18749,
+                    Published = true,
+                    Start = 0.49567,
+                },
+            ],
+            Track = new()
+            {
+                AnalysisChannels = 1,
+                AnalysisSampleRate = 22050,
+                CodeVersion = 3.15,
+                Codestring = "codestring",
+                Duration = 207.95985,
+                EchoprintVersion = 4.15,
+                Echoprintstring = "echoprintstring",
+                EndOfFadeIn = 0,
+                Key = 9,
+                KeyConfidence = 0.408,
+                Loudness = -5.883f,
+                Mode = 0,
+                ModeConfidence = 0.485,
+                NumSamples = 4585515,
+                OffsetSeconds = 0,
+                RhythmVersion = 1,
+                Rhythmstring = "rhythmstring",
+                SampleMd5 = "sample_md5",
+                StartOfFadeOut = 201.13705,
+                SynchVersion = 1,
+                Synchstring = "synchstring",
+                Tempo = 118.211f,
+                TempoConfidence = 0.73,
+                TimeSignature = 4,
+                TimeSignatureConfidence = 0.994,
+                WindowSeconds = 0,
+            },
+        };
+
+        AudioAnalysisRetrieveResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class MetaTest : TestBase
@@ -1023,6 +1140,25 @@ public class MetaTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Meta
+        {
+            AnalysisTime = 6.93906,
+            AnalyzerVersion = "4.0.0",
+            DetailedStatus = "OK",
+            InputProcess = "libvorbisfile L+R 44100->22050",
+            Platform = "Linux",
+            StatusCode = 0,
+            Timestamp = 1495193577,
+        };
+
+        Meta copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 
@@ -1294,6 +1430,31 @@ public class SectionTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Section
+        {
+            Confidence = 1,
+            Duration = 6.97092,
+            Key = 9,
+            KeyConfidence = 0.297,
+            Loudness = -14.938,
+            Mode = Mode.ModeNoResult,
+            ModeConfidence = 0.471,
+            Published = true,
+            Start = 0,
+            Tempo = 113.178,
+            TempoConfidence = 0.647,
+            TimeSignature = 4,
+            TimeSignatureConfidence = 1,
+        };
+
+        Section copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 
@@ -1603,6 +1764,28 @@ public class SegmentTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Segment
+        {
+            Confidence = 0.435,
+            Duration = 0.19891,
+            LoudnessEnd = 0,
+            LoudnessMax = -14.25,
+            LoudnessMaxTime = 0.07305,
+            LoudnessStart = -23.053,
+            Pitches = [0.212, 0.141, 0.294],
+            Published = true,
+            Start = 0.70154,
+            Timbre = [42.115, 64.373, -0.233],
+        };
+
+        Segment copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 
@@ -2053,5 +2236,43 @@ public class TrackTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Track
+        {
+            AnalysisChannels = 1,
+            AnalysisSampleRate = 22050,
+            CodeVersion = 3.15,
+            Codestring = "codestring",
+            Duration = 207.95985,
+            EchoprintVersion = 4.15,
+            Echoprintstring = "echoprintstring",
+            EndOfFadeIn = 0,
+            Key = 9,
+            KeyConfidence = 0.408,
+            Loudness = -5.883f,
+            Mode = 0,
+            ModeConfidence = 0.485,
+            NumSamples = 4585515,
+            OffsetSeconds = 0,
+            RhythmVersion = 1,
+            Rhythmstring = "rhythmstring",
+            SampleMd5 = "sample_md5",
+            StartOfFadeOut = 201.13705,
+            SynchVersion = 1,
+            Synchstring = "synchstring",
+            Tempo = 118.211f,
+            TempoConfidence = 0.73,
+            TimeSignature = 4,
+            TimeSignatureConfidence = 0.994,
+            WindowSeconds = 0,
+        };
+
+        Track copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

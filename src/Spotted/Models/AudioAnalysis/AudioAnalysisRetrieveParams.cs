@@ -12,19 +12,26 @@ namespace Spotted.Models.AudioAnalysis;
 /// Get a low-level audio analysis for a track in the Spotify catalog. The audio
 /// analysis describes the track’s structure and musical content, including rhythm,
 /// pitch, and timbre.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
 [Obsolete("deprecated")]
-public sealed record class AudioAnalysisRetrieveParams : ParamsBase
+public record class AudioAnalysisRetrieveParams : ParamsBase
 {
     public string? ID { get; init; }
 
     public AudioAnalysisRetrieveParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudioAnalysisRetrieveParams(AudioAnalysisRetrieveParams audioAnalysisRetrieveParams)
         : base(audioAnalysisRetrieveParams)
     {
         this.ID = audioAnalysisRetrieveParams.ID;
     }
+#pragma warning restore CS8618
 
     public AudioAnalysisRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -59,6 +66,28 @@ public sealed record class AudioAnalysisRetrieveParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["ID"] = this.ID,
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(AudioAnalysisRetrieveParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return (this.ID?.Equals(other.ID) ?? other.ID == null)
+            && this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -76,5 +105,10 @@ public sealed record class AudioAnalysisRetrieveParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

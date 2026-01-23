@@ -74,4 +74,21 @@ public class PlaylistCreateParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/users/smedjan/playlists"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlaylistCreateParams
+        {
+            UserID = "smedjan",
+            Name = "New Playlist",
+            Collaborative = true,
+            Description = "New playlist description",
+            Published = true,
+        };
+
+        PlaylistCreateParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

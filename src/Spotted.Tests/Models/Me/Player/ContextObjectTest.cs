@@ -165,4 +165,21 @@ public class ContextObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ContextObject
+        {
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            Published = true,
+            Type = "type",
+            Uri = "uri",
+        };
+
+        ContextObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

@@ -70,8 +70,11 @@ public sealed record class TrackRestrictionObject : JsonModel
 
     public TrackRestrictionObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TrackRestrictionObject(TrackRestrictionObject trackRestrictionObject)
         : base(trackRestrictionObject) { }
+#pragma warning restore CS8618
 
     public TrackRestrictionObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

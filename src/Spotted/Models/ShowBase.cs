@@ -325,8 +325,11 @@ public sealed record class ShowBase : JsonModel
         this.Type = JsonSerializer.SerializeToElement("show");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ShowBase(ShowBase showBase)
         : base(showBase) { }
+#pragma warning restore CS8618
 
     public ShowBase(IReadOnlyDictionary<string, JsonElement> rawData)
     {

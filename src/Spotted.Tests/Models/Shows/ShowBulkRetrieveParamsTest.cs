@@ -66,4 +66,18 @@ public class ShowBulkRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ShowBulkRetrieveParams
+        {
+            Ids = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
+            Market = "ES",
+        };
+
+        ShowBulkRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

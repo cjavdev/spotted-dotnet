@@ -555,4 +555,52 @@ public class AudiobookBaseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new AudiobookBase
+        {
+            ID = "id",
+            Authors = [new() { Name = "name", Published = true }],
+            AvailableMarkets = ["string"],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
+            Description = "description",
+            Explicit = true,
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            HtmlDescription = "html_description",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Languages = ["string"],
+            MediaType = "media_type",
+            Name = "name",
+            Narrators = [new() { Name = "name", Published = true }],
+            Publisher = "publisher",
+            TotalChapters = 0,
+            Uri = "uri",
+            Edition = "Unabridged",
+            Published = true,
+        };
+
+        AudiobookBase copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

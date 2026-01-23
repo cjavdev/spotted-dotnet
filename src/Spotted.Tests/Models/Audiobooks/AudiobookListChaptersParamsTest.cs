@@ -81,4 +81,20 @@ public class AudiobookListChaptersParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AudiobookListChaptersParams
+        {
+            ID = "7iHfbu1YPACw6oZPAFJtqe",
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        AudiobookListChaptersParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

@@ -42,8 +42,11 @@ public sealed record class ChapterBulkRetrieveResponse : JsonModel
 
     public ChapterBulkRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ChapterBulkRetrieveResponse(ChapterBulkRetrieveResponse chapterBulkRetrieveResponse)
         : base(chapterBulkRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public ChapterBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -472,9 +475,12 @@ public sealed record class Chapter : JsonModel
         this.Type = JsonSerializer.SerializeToElement("episode");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public Chapter(Chapter chapter)
         : base(chapter) { }
+#pragma warning restore CS8618
 
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public Chapter(IReadOnlyDictionary<string, JsonElement> rawData)

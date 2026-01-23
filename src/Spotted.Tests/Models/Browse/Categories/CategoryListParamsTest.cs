@@ -73,4 +73,19 @@ public class CategoryListParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new CategoryListParams
+        {
+            Limit = 10,
+            Locale = "sv_SE",
+            Offset = 5,
+        };
+
+        CategoryListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

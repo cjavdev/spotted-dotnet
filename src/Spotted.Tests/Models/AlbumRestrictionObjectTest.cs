@@ -107,6 +107,16 @@ public class AlbumRestrictionObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new AlbumRestrictionObject { Published = true, Reason = Reason.Market };
+
+        AlbumRestrictionObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class ReasonTest : TestBase

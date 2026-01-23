@@ -15,8 +15,12 @@ namespace Spotted.Models.Search;
 /// Get Spotify catalog information about albums, artists, playlists, tracks, shows,
 /// episodes or audiobooks that match a keyword string. Audiobooks are only available
 /// within the US, UK, Canada, Ireland, New Zealand and Australia markets.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class SearchQueryParams : ParamsBase
+public record class SearchQueryParams : ParamsBase
 {
     /// <summary>
     /// Your search query.
@@ -166,8 +170,11 @@ public sealed record class SearchQueryParams : ParamsBase
 
     public SearchQueryParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SearchQueryParams(SearchQueryParams searchQueryParams)
         : base(searchQueryParams) { }
+#pragma warning restore CS8618
 
     public SearchQueryParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -202,6 +209,26 @@ public sealed record class SearchQueryParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(SearchQueryParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override System::Uri Url(ClientOptions options)
     {
         return new System::UriBuilder(options.BaseUrl.ToString().TrimEnd('/') + "/search")
@@ -218,9 +245,14 @@ public sealed record class SearchQueryParams : ParamsBase
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
     }
+
+    public override int GetHashCode()
+    {
+        return 0;
+    }
 }
 
-[JsonConverter(typeof(global::Spotted.Models.Search.TypeConverter))]
+[JsonConverter(typeof(TypeConverter))]
 public enum Type
 {
     Album,

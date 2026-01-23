@@ -72,8 +72,11 @@ public sealed record class EpisodeRestrictionObject : JsonModel
 
     public EpisodeRestrictionObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public EpisodeRestrictionObject(EpisodeRestrictionObject episodeRestrictionObject)
         : base(episodeRestrictionObject) { }
+#pragma warning restore CS8618
 
     public EpisodeRestrictionObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

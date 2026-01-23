@@ -75,4 +75,19 @@ public class TopListTopTracksParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TopListTopTracksParams
+        {
+            Limit = 10,
+            Offset = 5,
+            TimeRange = "medium_term",
+        };
+
+        TopListTopTracksParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

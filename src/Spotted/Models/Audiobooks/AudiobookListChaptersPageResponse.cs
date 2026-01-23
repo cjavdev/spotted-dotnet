@@ -159,10 +159,13 @@ public sealed record class AudiobookListChaptersPageResponse : JsonModel
 
     public AudiobookListChaptersPageResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudiobookListChaptersPageResponse(
         AudiobookListChaptersPageResponse audiobookListChaptersPageResponse
     )
         : base(audiobookListChaptersPageResponse) { }
+#pragma warning restore CS8618
 
     public AudiobookListChaptersPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

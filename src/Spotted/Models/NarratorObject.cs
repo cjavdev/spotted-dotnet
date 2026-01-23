@@ -64,8 +64,11 @@ public sealed record class NarratorObject : JsonModel
 
     public NarratorObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public NarratorObject(NarratorObject narratorObject)
         : base(narratorObject) { }
+#pragma warning restore CS8618
 
     public NarratorObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

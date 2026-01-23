@@ -64,8 +64,11 @@ public sealed record class AuthorObject : JsonModel
 
     public AuthorObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AuthorObject(AuthorObject authorObject)
         : base(authorObject) { }
+#pragma warning restore CS8618
 
     public AuthorObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

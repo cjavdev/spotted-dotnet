@@ -108,8 +108,11 @@ public sealed record class ExternalIDObject : JsonModel
 
     public ExternalIDObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ExternalIDObject(ExternalIDObject externalIDObject)
         : base(externalIDObject) { }
+#pragma warning restore CS8618
 
     public ExternalIDObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

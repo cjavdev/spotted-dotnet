@@ -81,4 +81,20 @@ public class PlaylistRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new PlaylistRetrieveParams
+        {
+            PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
+            AdditionalTypes = "additional_types",
+            Fields = "items(added_by.id,track(name,href,album(name,href)))",
+            Market = "ES",
+        };
+
+        PlaylistRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

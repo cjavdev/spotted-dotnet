@@ -73,4 +73,19 @@ public class EpisodeListParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new EpisodeListParams
+        {
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        EpisodeListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

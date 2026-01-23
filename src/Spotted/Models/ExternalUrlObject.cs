@@ -65,8 +65,11 @@ public sealed record class ExternalUrlObject : JsonModel
 
     public ExternalUrlObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ExternalUrlObject(ExternalUrlObject externalUrlObject)
         : base(externalUrlObject) { }
+#pragma warning restore CS8618
 
     public ExternalUrlObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

@@ -85,8 +85,11 @@ public sealed record class CategoryGetPlaylistsResponse : JsonModel
 
     public CategoryGetPlaylistsResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public CategoryGetPlaylistsResponse(CategoryGetPlaylistsResponse categoryGetPlaylistsResponse)
         : base(categoryGetPlaylistsResponse) { }
+#pragma warning restore CS8618
 
     public CategoryGetPlaylistsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

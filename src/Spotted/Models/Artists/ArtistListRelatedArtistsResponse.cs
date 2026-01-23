@@ -43,10 +43,13 @@ public sealed record class ArtistListRelatedArtistsResponse : JsonModel
 
     public ArtistListRelatedArtistsResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ArtistListRelatedArtistsResponse(
         ArtistListRelatedArtistsResponse artistListRelatedArtistsResponse
     )
         : base(artistListRelatedArtistsResponse) { }
+#pragma warning restore CS8618
 
     public ArtistListRelatedArtistsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

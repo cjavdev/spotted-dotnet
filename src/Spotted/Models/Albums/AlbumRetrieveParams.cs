@@ -10,8 +10,12 @@ namespace Spotted.Models.Albums;
 
 /// <summary>
 /// Get Spotify catalog information for a single album.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class AlbumRetrieveParams : ParamsBase
+public record class AlbumRetrieveParams : ParamsBase
 {
     public string? ID { get; init; }
 
@@ -45,11 +49,14 @@ public sealed record class AlbumRetrieveParams : ParamsBase
 
     public AlbumRetrieveParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AlbumRetrieveParams(AlbumRetrieveParams albumRetrieveParams)
         : base(albumRetrieveParams)
     {
         this.ID = albumRetrieveParams.ID;
     }
+#pragma warning restore CS8618
 
     public AlbumRetrieveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -84,6 +91,28 @@ public sealed record class AlbumRetrieveParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["ID"] = this.ID,
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(AlbumRetrieveParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return (this.ID?.Equals(other.ID) ?? other.ID == null)
+            && this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -101,5 +130,10 @@ public sealed record class AlbumRetrieveParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

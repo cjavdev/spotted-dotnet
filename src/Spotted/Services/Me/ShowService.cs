@@ -9,12 +9,12 @@ using Spotted.Models.Me.Shows;
 namespace Spotted.Services.Me;
 
 /// <inheritdoc/>
-public sealed class ShowService : global::Spotted.Services.Me.IShowService
+public sealed class ShowService : IShowService
 {
-    readonly Lazy<global::Spotted.Services.Me.IShowServiceWithRawResponse> _withRawResponse;
+    readonly Lazy<IShowServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IShowServiceWithRawResponse WithRawResponse
+    public IShowServiceWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
@@ -22,20 +22,16 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
     readonly ISpottedClient _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IShowService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IShowService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.ShowService(this._client.WithOptions(modifier));
+        return new ShowService(this._client.WithOptions(modifier));
     }
 
     public ShowService(ISpottedClient client)
     {
         _client = client;
 
-        _withRawResponse = new(() =>
-            new global::Spotted.Services.Me.ShowServiceWithRawResponse(client.WithRawResponse)
-        );
+        _withRawResponse = new(() => new ShowServiceWithRawResponse(client.WithRawResponse));
     }
 
     /// <inheritdoc/>
@@ -82,19 +78,14 @@ public sealed class ShowService : global::Spotted.Services.Me.IShowService
 }
 
 /// <inheritdoc/>
-public sealed class ShowServiceWithRawResponse
-    : global::Spotted.Services.Me.IShowServiceWithRawResponse
+public sealed class ShowServiceWithRawResponse : IShowServiceWithRawResponse
 {
     readonly ISpottedClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IShowServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IShowServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.ShowServiceWithRawResponse(
-            this._client.WithOptions(modifier)
-        );
+        return new ShowServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
     public ShowServiceWithRawResponse(ISpottedClientWithRawResponse client)

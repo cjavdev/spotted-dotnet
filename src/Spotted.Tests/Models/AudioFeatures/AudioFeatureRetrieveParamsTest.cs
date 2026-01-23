@@ -27,4 +27,14 @@ public class AudioFeatureRetrieveParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AudioFeatureRetrieveParams { ID = "11dFghVXANMlKmJXsNCbNl" };
+
+        AudioFeatureRetrieveParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

@@ -479,8 +479,11 @@ public sealed record class AudioFeatureRetrieveResponse : JsonModel
 
     public AudioFeatureRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudioFeatureRetrieveResponse(AudioFeatureRetrieveResponse audioFeatureRetrieveResponse)
         : base(audioFeatureRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public AudioFeatureRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -515,7 +518,7 @@ class AudioFeatureRetrieveResponseFromRaw : IFromRawJson<AudioFeatureRetrieveRes
 /// <summary>
 /// The object type.
 /// </summary>
-[JsonConverter(typeof(global::Spotted.Models.AudioFeatures.TypeConverter))]
+[JsonConverter(typeof(TypeConverter))]
 public enum Type
 {
     AudioFeatures,

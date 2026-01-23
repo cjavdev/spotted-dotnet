@@ -40,8 +40,11 @@ public sealed record class ShowBulkRetrieveResponse : JsonModel
 
     public ShowBulkRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ShowBulkRetrieveResponse(ShowBulkRetrieveResponse showBulkRetrieveResponse)
         : base(showBulkRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public ShowBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

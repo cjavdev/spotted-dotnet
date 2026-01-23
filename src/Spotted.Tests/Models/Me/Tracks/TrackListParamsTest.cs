@@ -73,4 +73,19 @@ public class TrackListParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new TrackListParams
+        {
+            Limit = 10,
+            Market = "ES",
+            Offset = 5,
+        };
+
+        TrackListParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

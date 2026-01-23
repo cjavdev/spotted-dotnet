@@ -27,4 +27,14 @@ public class ArtistListRelatedArtistsParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ArtistListRelatedArtistsParams { ID = "0TnOYISbd1XYRBk9myaseg" };
+
+        ArtistListRelatedArtistsParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

@@ -18,16 +18,14 @@ public interface ITrackService
     /// Returns a view of this service that provides access to raw HTTP responses
     /// for each method.
     /// </summary>
-    global::Spotted.Services.Me.ITrackServiceWithRawResponse WithRawResponse { get; }
+    ITrackServiceWithRawResponse WithRawResponse { get; }
 
     /// <summary>
     /// Returns a view of this service with the given option modifications applied.
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    global::Spotted.Services.Me.ITrackService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    );
+    ITrackService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
     /// Get a list of the songs saved in the current Spotify user's 'Your Music' library.
@@ -61,7 +59,7 @@ public interface ITrackService
 }
 
 /// <summary>
-/// A view of <see cref="global::Spotted.Services.Me.ITrackService"/> that provides access to raw
+/// A view of <see cref="ITrackService"/> that provides access to raw
 /// HTTP responses for each method.
 /// </summary>
 public interface ITrackServiceWithRawResponse
@@ -71,13 +69,11 @@ public interface ITrackServiceWithRawResponse
     ///
     /// <para>The original service is not modified.</para>
     /// </summary>
-    global::Spotted.Services.Me.ITrackServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    );
+    ITrackServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
     /// Returns a raw HTTP response for `get /me/tracks`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.ITrackService.List(TrackListParams?, CancellationToken)"/>.
+    /// same as <see cref="ITrackService.List(TrackListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TrackListPage>> List(
         TrackListParams? parameters = null,
@@ -86,7 +82,7 @@ public interface ITrackServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for `get /me/tracks/contains`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.ITrackService.Check(TrackCheckParams, CancellationToken)"/>.
+    /// same as <see cref="ITrackService.Check(TrackCheckParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<List<bool>>> Check(
         TrackCheckParams parameters,
@@ -95,7 +91,7 @@ public interface ITrackServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for `delete /me/tracks`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.ITrackService.Remove(TrackRemoveParams?, CancellationToken)"/>.
+    /// same as <see cref="ITrackService.Remove(TrackRemoveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Remove(
         TrackRemoveParams? parameters = null,
@@ -104,7 +100,7 @@ public interface ITrackServiceWithRawResponse
 
     /// <summary>
     /// Returns a raw HTTP response for `put /me/tracks`, but is otherwise the
-    /// same as <see cref="global::Spotted.Services.Me.ITrackService.Save(TrackSaveParams, CancellationToken)"/>.
+    /// same as <see cref="ITrackService.Save(TrackSaveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Save(
         TrackSaveParams parameters,

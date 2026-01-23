@@ -943,6 +943,94 @@ public class ChapterRetrieveResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ChapterRetrieveResponse
+        {
+            ID = "5Xt5DXGzch68nYYamXrNxZ",
+            AudioPreviewUrl =
+                "https://p.scdn.co/mp3-preview/2f37da1d4221f40b9d1a98cd191f4d6f1646ad17",
+            Audiobook = new()
+            {
+                ID = "id",
+                Authors = [new() { Name = "name", Published = true }],
+                AvailableMarkets = ["string"],
+                Copyrights =
+                [
+                    new()
+                    {
+                        Published = true,
+                        Text = "text",
+                        Type = "type",
+                    },
+                ],
+                Description = "description",
+                Explicit = true,
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                Href = "href",
+                HtmlDescription = "html_description",
+                Images =
+                [
+                    new()
+                    {
+                        Height = 300,
+                        Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                        Width = 300,
+                        Published = true,
+                    },
+                ],
+                Languages = ["string"],
+                MediaType = "media_type",
+                Name = "name",
+                Narrators = [new() { Name = "name", Published = true }],
+                Publisher = "publisher",
+                TotalChapters = 0,
+                Uri = "uri",
+                Edition = "Unabridged",
+                Published = true,
+            },
+            ChapterNumber = 1,
+            Description =
+                "We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.\n",
+            DurationMs = 1686230,
+            Explicit = true,
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "https://api.spotify.com/v1/episodes/5Xt5DXGzch68nYYamXrNxZ",
+            HtmlDescription =
+                "<p>We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.</p>\n",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            IsPlayable = true,
+            Languages = ["fr", "en"],
+            Name = "Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\n",
+            ReleaseDate = "1981-12-15",
+            ReleaseDatePrecision = ReleaseDatePrecision.Day,
+            Uri = "spotify:episode:0zLhl3WsOCQHbe1BPTiHgr",
+            AvailableMarkets = ["string"],
+            Published = true,
+            Restrictions = new() { Published = true, Reason = "reason" },
+            ResumePoint = new()
+            {
+                FullyPlayed = true,
+                Published = true,
+                ResumePositionMs = 0,
+            },
+        };
+
+        ChapterRetrieveResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class ReleaseDatePrecisionTest : TestBase

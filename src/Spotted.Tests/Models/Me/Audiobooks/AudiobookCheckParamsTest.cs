@@ -35,4 +35,17 @@ public class AudiobookCheckParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new AudiobookCheckParams
+        {
+            Ids = "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe",
+        };
+
+        AudiobookCheckParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

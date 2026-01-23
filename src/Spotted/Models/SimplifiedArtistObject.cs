@@ -180,8 +180,11 @@ public sealed record class SimplifiedArtistObject : JsonModel
 
     public SimplifiedArtistObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SimplifiedArtistObject(SimplifiedArtistObject simplifiedArtistObject)
         : base(simplifiedArtistObject) { }
+#pragma warning restore CS8618
 
     public SimplifiedArtistObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

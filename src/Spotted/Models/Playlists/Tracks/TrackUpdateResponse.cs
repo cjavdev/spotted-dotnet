@@ -36,8 +36,11 @@ public sealed record class TrackUpdateResponse : JsonModel
 
     public TrackUpdateResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TrackUpdateResponse(TrackUpdateResponse trackUpdateResponse)
         : base(trackUpdateResponse) { }
+#pragma warning restore CS8618
 
     public TrackUpdateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

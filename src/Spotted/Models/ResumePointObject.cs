@@ -86,8 +86,11 @@ public sealed record class ResumePointObject : JsonModel
 
     public ResumePointObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ResumePointObject(ResumePointObject resumePointObject)
         : base(resumePointObject) { }
+#pragma warning restore CS8618
 
     public ResumePointObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

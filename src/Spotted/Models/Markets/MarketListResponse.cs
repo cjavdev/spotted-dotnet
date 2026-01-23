@@ -40,8 +40,11 @@ public sealed record class MarketListResponse : JsonModel
 
     public MarketListResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public MarketListResponse(MarketListResponse marketListResponse)
         : base(marketListResponse) { }
+#pragma warning restore CS8618
 
     public MarketListResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

@@ -13,8 +13,12 @@ namespace Spotted.Models.Playlists.Tracks;
 
 /// <summary>
 /// Remove one or more items from a user's playlist.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class TrackRemoveParams : ParamsBase
+public record class TrackRemoveParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
     public IReadOnlyDictionary<string, JsonElement> RawBodyData
@@ -30,18 +34,16 @@ public sealed record class TrackRemoveParams : ParamsBase
     /// "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M"
     /// }] }`. A maximum of 100 objects can be sent at once.
     /// </summary>
-    public required IReadOnlyList<global::Spotted.Models.Playlists.Tracks.Track> Tracks
+    public required IReadOnlyList<Track> Tracks
     {
         get
         {
             this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullStruct<
-                ImmutableArray<global::Spotted.Models.Playlists.Tracks.Track>
-            >("tracks");
+            return this._rawBodyData.GetNotNullStruct<ImmutableArray<Track>>("tracks");
         }
         init
         {
-            this._rawBodyData.Set<ImmutableArray<global::Spotted.Models.Playlists.Tracks.Track>>(
+            this._rawBodyData.Set<ImmutableArray<Track>>(
                 "tracks",
                 ImmutableArray.ToImmutableArray(value)
             );
@@ -97,6 +99,8 @@ public sealed record class TrackRemoveParams : ParamsBase
 
     public TrackRemoveParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TrackRemoveParams(TrackRemoveParams trackRemoveParams)
         : base(trackRemoveParams)
     {
@@ -104,6 +108,7 @@ public sealed record class TrackRemoveParams : ParamsBase
 
         this._rawBodyData = new(trackRemoveParams._rawBodyData);
     }
+#pragma warning restore CS8618
 
     public TrackRemoveParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -144,6 +149,30 @@ public sealed record class TrackRemoveParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["PlaylistID"] = this.PlaylistID,
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+                ["BodyData"] = this._rawBodyData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(TrackRemoveParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return (this.PlaylistID?.Equals(other.PlaylistID) ?? other.PlaylistID == null)
+            && this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData)
+            && this._rawBodyData.Equals(other._rawBodyData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -172,11 +201,14 @@ public sealed record class TrackRemoveParams : ParamsBase
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
     }
+
+    public override int GetHashCode()
+    {
+        return 0;
+    }
 }
 
-[JsonConverter(
-    typeof(JsonModelConverter<global::Spotted.Models.Playlists.Tracks.Track, TrackFromRaw>)
-)]
+[JsonConverter(typeof(JsonModelConverter<Track, TrackFromRaw>))]
 public sealed record class Track : JsonModel
 {
     /// <summary>
@@ -208,8 +240,11 @@ public sealed record class Track : JsonModel
 
     public Track() { }
 
-    public Track(global::Spotted.Models.Playlists.Tracks.Track track)
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Track(Track track)
         : base(track) { }
+#pragma warning restore CS8618
 
     public Track(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -225,18 +260,15 @@ public sealed record class Track : JsonModel
 #pragma warning restore CS8618
 
     /// <inheritdoc cref="TrackFromRaw.FromRawUnchecked"/>
-    public static global::Spotted.Models.Playlists.Tracks.Track FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    )
+    public static Track FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         return new(FrozenDictionary.ToFrozenDictionary(rawData));
     }
 }
 
-class TrackFromRaw : IFromRawJson<global::Spotted.Models.Playlists.Tracks.Track>
+class TrackFromRaw : IFromRawJson<Track>
 {
     /// <inheritdoc/>
-    public global::Spotted.Models.Playlists.Tracks.Track FromRawUnchecked(
-        IReadOnlyDictionary<string, JsonElement> rawData
-    ) => global::Spotted.Models.Playlists.Tracks.Track.FromRawUnchecked(rawData);
+    public Track FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Track.FromRawUnchecked(rawData);
 }

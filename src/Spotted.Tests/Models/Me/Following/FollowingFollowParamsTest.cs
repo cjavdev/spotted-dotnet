@@ -55,4 +55,14 @@ public class FollowingFollowParamsTest : TestBase
 
         Assert.Equal(new Uri("https://api.spotify.com/v1/me/following"), url);
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new FollowingFollowParams { Ids = ["string"], Published = true };
+
+        FollowingFollowParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

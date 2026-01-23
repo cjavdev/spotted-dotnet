@@ -9,12 +9,12 @@ using Spotted.Models.Me.Audiobooks;
 namespace Spotted.Services.Me;
 
 /// <inheritdoc/>
-public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookService
+public sealed class AudiobookService : IAudiobookService
 {
-    readonly Lazy<global::Spotted.Services.Me.IAudiobookServiceWithRawResponse> _withRawResponse;
+    readonly Lazy<IAudiobookServiceWithRawResponse> _withRawResponse;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IAudiobookServiceWithRawResponse WithRawResponse
+    public IAudiobookServiceWithRawResponse WithRawResponse
     {
         get { return _withRawResponse.Value; }
     }
@@ -22,20 +22,16 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
     readonly ISpottedClient _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IAudiobookService WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IAudiobookService WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.AudiobookService(this._client.WithOptions(modifier));
+        return new AudiobookService(this._client.WithOptions(modifier));
     }
 
     public AudiobookService(ISpottedClient client)
     {
         _client = client;
 
-        _withRawResponse = new(() =>
-            new global::Spotted.Services.Me.AudiobookServiceWithRawResponse(client.WithRawResponse)
-        );
+        _withRawResponse = new(() => new AudiobookServiceWithRawResponse(client.WithRawResponse));
     }
 
     /// <inheritdoc/>
@@ -79,19 +75,14 @@ public sealed class AudiobookService : global::Spotted.Services.Me.IAudiobookSer
 }
 
 /// <inheritdoc/>
-public sealed class AudiobookServiceWithRawResponse
-    : global::Spotted.Services.Me.IAudiobookServiceWithRawResponse
+public sealed class AudiobookServiceWithRawResponse : IAudiobookServiceWithRawResponse
 {
     readonly ISpottedClientWithRawResponse _client;
 
     /// <inheritdoc/>
-    public global::Spotted.Services.Me.IAudiobookServiceWithRawResponse WithOptions(
-        Func<ClientOptions, ClientOptions> modifier
-    )
+    public IAudiobookServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier)
     {
-        return new global::Spotted.Services.Me.AudiobookServiceWithRawResponse(
-            this._client.WithOptions(modifier)
-        );
+        return new AudiobookServiceWithRawResponse(this._client.WithOptions(modifier));
     }
 
     public AudiobookServiceWithRawResponse(ISpottedClientWithRawResponse client)

@@ -56,4 +56,14 @@ public class BrowseGetNewReleasesParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new BrowseGetNewReleasesParams { Limit = 10, Offset = 5 };
+
+        BrowseGetNewReleasesParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }

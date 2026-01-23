@@ -40,8 +40,11 @@ public sealed record class ArtistBulkRetrieveResponse : JsonModel
 
     public ArtistBulkRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ArtistBulkRetrieveResponse(ArtistBulkRetrieveResponse artistBulkRetrieveResponse)
         : base(artistBulkRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public ArtistBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

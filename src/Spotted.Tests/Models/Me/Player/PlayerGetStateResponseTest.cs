@@ -955,6 +955,147 @@ public class PlayerGetStateResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new PlayerGetStateResponse
+        {
+            Actions = new()
+            {
+                InterruptingPlayback = true,
+                Pausing = true,
+                Published = true,
+                Resuming = true,
+                Seeking = true,
+                SkippingNext = true,
+                SkippingPrev = true,
+                TogglingRepeatContext = true,
+                TogglingRepeatTrack = true,
+                TogglingShuffle = true,
+                TransferringPlayback = true,
+            },
+            Context = new()
+            {
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                Href = "href",
+                Published = true,
+                Type = "type",
+                Uri = "uri",
+            },
+            CurrentlyPlayingType = "currently_playing_type",
+            Device = new()
+            {
+                ID = "id",
+                IsActive = true,
+                IsPrivateSession = true,
+                IsRestricted = true,
+                Name = "Kitchen speaker",
+                Published = true,
+                SupportsVolume = true,
+                Type = "computer",
+                VolumePercent = 59,
+            },
+            IsPlaying = true,
+            Item = new TrackObject()
+            {
+                ID = "id",
+                Album = new()
+                {
+                    ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                    AlbumType = AlbumType.Compilation,
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["CA", "BR", "IT"],
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    Images =
+                    [
+                        new()
+                        {
+                            Height = 300,
+                            Url =
+                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                            Width = 300,
+                            Published = true,
+                        },
+                    ],
+                    Name = "name",
+                    ReleaseDate = "1981-12",
+                    ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                    TotalTracks = 9,
+                    Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = Reason.Market },
+                },
+                Artists =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Name = "name",
+                        Published = true,
+                        Type = SimplifiedArtistObjectType.Artist,
+                        Uri = "uri",
+                    },
+                ],
+                AvailableMarkets = ["string"],
+                DiscNumber = 0,
+                DurationMs = 0,
+                Explicit = true,
+                ExternalIds = new()
+                {
+                    Ean = "ean",
+                    Isrc = "isrc",
+                    Published = true,
+                    Upc = "upc",
+                },
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                Href = "href",
+                IsLocal = true,
+                IsPlayable = true,
+                LinkedFrom = new()
+                {
+                    ID = "id",
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    Published = true,
+                    Type = "type",
+                    Uri = "uri",
+                },
+                Name = "name",
+                Popularity = 0,
+                PreviewUrl = "preview_url",
+                Published = true,
+                Restrictions = new() { Published = true, Reason = "reason" },
+                TrackNumber = 0,
+                Type = TrackObjectType.Track,
+                Uri = "uri",
+            },
+            ProgressMs = 0,
+            Published = true,
+            RepeatState = "repeat_state",
+            ShuffleState = true,
+            Timestamp = 0,
+        };
+
+        PlayerGetStateResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class PlayerGetStateResponseActionsTest : TestBase
@@ -1200,6 +1341,29 @@ public class PlayerGetStateResponseActionsTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new PlayerGetStateResponseActions
+        {
+            InterruptingPlayback = true,
+            Pausing = true,
+            Published = true,
+            Resuming = true,
+            Seeking = true,
+            SkippingNext = true,
+            SkippingPrev = true,
+            TogglingRepeatContext = true,
+            TogglingRepeatTrack = true,
+            TogglingShuffle = true,
+            TransferringPlayback = true,
+        };
+
+        PlayerGetStateResponseActions copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 

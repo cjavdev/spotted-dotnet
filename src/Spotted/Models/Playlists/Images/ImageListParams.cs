@@ -10,18 +10,25 @@ namespace Spotted.Models.Playlists.Images;
 
 /// <summary>
 /// Get the current image associated with a specific playlist.
+///
+/// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
+/// breaking changes in non-major versions. We may add new methods in the future that
+/// cause existing derived classes to break.</para>
 /// </summary>
-public sealed record class ImageListParams : ParamsBase
+public record class ImageListParams : ParamsBase
 {
     public string? PlaylistID { get; init; }
 
     public ImageListParams() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ImageListParams(ImageListParams imageListParams)
         : base(imageListParams)
     {
         this.PlaylistID = imageListParams.PlaylistID;
     }
+#pragma warning restore CS8618
 
     public ImageListParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
@@ -56,6 +63,28 @@ public sealed record class ImageListParams : ParamsBase
         );
     }
 
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            new Dictionary<string, object?>()
+            {
+                ["PlaylistID"] = this.PlaylistID,
+                ["HeaderData"] = this._rawHeaderData.Freeze(),
+                ["QueryData"] = this._rawQueryData.Freeze(),
+            },
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public virtual bool Equals(ImageListParams? other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+        return (this.PlaylistID?.Equals(other.PlaylistID) ?? other.PlaylistID == null)
+            && this._rawHeaderData.Equals(other._rawHeaderData)
+            && this._rawQueryData.Equals(other._rawQueryData);
+    }
+
     public override Uri Url(ClientOptions options)
     {
         return new UriBuilder(
@@ -74,5 +103,10 @@ public sealed record class ImageListParams : ParamsBase
         {
             ParamsBase.AddHeaderElementToRequest(request, item.Key, item.Value);
         }
+    }
+
+    public override int GetHashCode()
+    {
+        return 0;
     }
 }

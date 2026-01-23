@@ -35,4 +35,17 @@ public class ShowCheckParamsTest : TestBase
             url
         );
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var parameters = new ShowCheckParams
+        {
+            Ids = "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ",
+        };
+
+        ShowCheckParams copied = new(parameters);
+
+        Assert.Equal(parameters, copied);
+    }
 }
