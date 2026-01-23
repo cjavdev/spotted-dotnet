@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.7.0 (2026-01-23)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **client:** add `ToString` to `ApiEnum` ([ae941c8](https://github.com/cjavdev/spotted-dotnet/commit/ae941c8f923d1a28201f7a3230823164a2b967ae))
+* **client:** add Equals and ToString to params ([2c968f6](https://github.com/cjavdev/spotted-dotnet/commit/2c968f684d9879e0e1f152281c44f6da19e4fe0f))
+
+
+### Bug Fixes
+
+* **ci:** don't throw an error about missing lsof ([02165cc](https://github.com/cjavdev/spotted-dotnet/commit/02165cc783a2c646a6761de13d4a8f0562b60bd4))
+
+
+### Chores
+
+* **internal:** add copy constructor tests ([7013602](https://github.com/cjavdev/spotted-dotnet/commit/7013602a5e3f94e832e8b04af093af575deed115))
+* **internal:** simplify imports ([aa26cc4](https://github.com/cjavdev/spotted-dotnet/commit/aa26cc4f9947c2e4fb6f54bdde26d07d5db30354))
+* **internal:** update `actions/checkout` version ([8118778](https://github.com/cjavdev/spotted-dotnet/commit/811877858b4082db8468c2c6cbf8b75a9d85a85b))
+
 ## 0.6.0 (2026-01-15)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.5.0...v0.6.0)
