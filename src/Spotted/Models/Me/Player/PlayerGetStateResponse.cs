@@ -267,8 +267,11 @@ public sealed record class PlayerGetStateResponse : JsonModel
 
     public PlayerGetStateResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerGetStateResponse(PlayerGetStateResponse playerGetStateResponse)
         : base(playerGetStateResponse) { }
+#pragma warning restore CS8618
 
     public PlayerGetStateResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -561,10 +564,13 @@ public sealed record class PlayerGetStateResponseActions : JsonModel
 
     public PlayerGetStateResponseActions() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerGetStateResponseActions(
         PlayerGetStateResponseActions playerGetStateResponseActions
     )
         : base(playerGetStateResponseActions) { }
+#pragma warning restore CS8618
 
     public PlayerGetStateResponseActions(IReadOnlyDictionary<string, JsonElement> rawData)
     {

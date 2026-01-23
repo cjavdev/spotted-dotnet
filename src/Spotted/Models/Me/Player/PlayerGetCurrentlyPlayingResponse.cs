@@ -205,10 +205,13 @@ public sealed record class PlayerGetCurrentlyPlayingResponse : JsonModel
 
     public PlayerGetCurrentlyPlayingResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlayerGetCurrentlyPlayingResponse(
         PlayerGetCurrentlyPlayingResponse playerGetCurrentlyPlayingResponse
     )
         : base(playerGetCurrentlyPlayingResponse) { }
+#pragma warning restore CS8618
 
     public PlayerGetCurrentlyPlayingResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -499,8 +502,11 @@ public sealed record class Actions : JsonModel
 
     public Actions() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Actions(Actions actions)
         : base(actions) { }
+#pragma warning restore CS8618
 
     public Actions(IReadOnlyDictionary<string, JsonElement> rawData)
     {

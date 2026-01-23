@@ -170,4 +170,18 @@ public class TimestampedIDTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new TimestampedID
+        {
+            ID = "id",
+            AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+        };
+
+        TimestampedID copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

@@ -1859,6 +1859,178 @@ public class PlaylistRetrieveResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new PlaylistRetrieveResponse
+        {
+            ID = "id",
+            Collaborative = true,
+            Description = "description",
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
+            Href = "href",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Name = "name",
+            Owner = new()
+            {
+                ID = "id",
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                Href = "href",
+                Published = true,
+                Type = Models::PlaylistUserObjectType.User,
+                Uri = "uri",
+                DisplayName = "display_name",
+            },
+            Published = true,
+            SnapshotID = "snapshot_id",
+            Tracks = new()
+            {
+                Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
+                Limit = 20,
+                Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+                Offset = 0,
+                Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+                Total = 4,
+                Items =
+                [
+                    new()
+                    {
+                        AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                        AddedBy = new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Published = true,
+                            Type = Models::PlaylistUserObjectType.User,
+                            Uri = "uri",
+                        },
+                        IsLocal = true,
+                        Published = true,
+                        Track = new Models::TrackObject()
+                        {
+                            ID = "id",
+                            Album = new()
+                            {
+                                ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                                AlbumType = Models::AlbumType.Compilation,
+                                Artists =
+                                [
+                                    new()
+                                    {
+                                        ID = "id",
+                                        ExternalUrls = new()
+                                        {
+                                            Published = true,
+                                            Spotify = "spotify",
+                                        },
+                                        Href = "href",
+                                        Name = "name",
+                                        Published = true,
+                                        Type = Models::SimplifiedArtistObjectType.Artist,
+                                        Uri = "uri",
+                                    },
+                                ],
+                                AvailableMarkets = ["CA", "BR", "IT"],
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Images =
+                                [
+                                    new()
+                                    {
+                                        Height = 300,
+                                        Url =
+                                            "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                        Width = 300,
+                                        Published = true,
+                                    },
+                                ],
+                                Name = "name",
+                                ReleaseDate = "1981-12",
+                                ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
+                                TotalTracks = 9,
+                                Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                                Published = true,
+                                Restrictions = new()
+                                {
+                                    Published = true,
+                                    Reason = Models::Reason.Market,
+                                },
+                            },
+                            Artists =
+                            [
+                                new()
+                                {
+                                    ID = "id",
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                    Href = "href",
+                                    Name = "name",
+                                    Published = true,
+                                    Type = Models::SimplifiedArtistObjectType.Artist,
+                                    Uri = "uri",
+                                },
+                            ],
+                            AvailableMarkets = ["string"],
+                            DiscNumber = 0,
+                            DurationMs = 0,
+                            Explicit = true,
+                            ExternalIds = new()
+                            {
+                                Ean = "ean",
+                                Isrc = "isrc",
+                                Published = true,
+                                Upc = "upc",
+                            },
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            IsLocal = true,
+                            IsPlayable = true,
+                            LinkedFrom = new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Published = true,
+                                Type = "type",
+                                Uri = "uri",
+                            },
+                            Name = "name",
+                            Popularity = 0,
+                            PreviewUrl = "preview_url",
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = "reason" },
+                            TrackNumber = 0,
+                            Type = Models::TrackObjectType.Track,
+                            Uri = "uri",
+                        },
+                    },
+                ],
+                Published = true,
+            },
+            Type = "type",
+            Uri = "uri",
+        };
+
+        PlaylistRetrieveResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class OwnerTest : TestBase
@@ -2121,6 +2293,25 @@ public class OwnerTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Owner
+        {
+            ID = "id",
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            Published = true,
+            Type = Models::PlaylistUserObjectType.User,
+            Uri = "uri",
+            DisplayName = "display_name",
+        };
+
+        Owner copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class IntersectionMember1Test : TestBase
@@ -2206,6 +2397,16 @@ public class IntersectionMember1Test : TestBase
         var model = new IntersectionMember1 { DisplayName = null };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new IntersectionMember1 { DisplayName = "display_name" };
+
+        IntersectionMember1 copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 
@@ -3060,5 +3261,134 @@ public class PlaylistRetrieveResponseTracksTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new PlaylistRetrieveResponseTracks
+        {
+            Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
+            Limit = 20,
+            Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+            Offset = 0,
+            Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+            Total = 4,
+            Items =
+            [
+                new()
+                {
+                    AddedAt = DateTimeOffset.Parse("2019-12-27T18:11:19.117Z"),
+                    AddedBy = new()
+                    {
+                        ID = "id",
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = Models::PlaylistUserObjectType.User,
+                        Uri = "uri",
+                    },
+                    IsLocal = true,
+                    Published = true,
+                    Track = new Models::TrackObject()
+                    {
+                        ID = "id",
+                        Album = new()
+                        {
+                            ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                            AlbumType = Models::AlbumType.Compilation,
+                            Artists =
+                            [
+                                new()
+                                {
+                                    ID = "id",
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                    Href = "href",
+                                    Name = "name",
+                                    Published = true,
+                                    Type = Models::SimplifiedArtistObjectType.Artist,
+                                    Uri = "uri",
+                                },
+                            ],
+                            AvailableMarkets = ["CA", "BR", "IT"],
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Images =
+                            [
+                                new()
+                                {
+                                    Height = 300,
+                                    Url =
+                                        "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                    Width = 300,
+                                    Published = true,
+                                },
+                            ],
+                            Name = "name",
+                            ReleaseDate = "1981-12",
+                            ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
+                            TotalTracks = 9,
+                            Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                            Published = true,
+                            Restrictions = new()
+                            {
+                                Published = true,
+                                Reason = Models::Reason.Market,
+                            },
+                        },
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = Models::SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["string"],
+                        DiscNumber = 0,
+                        DurationMs = 0,
+                        Explicit = true,
+                        ExternalIds = new()
+                        {
+                            Ean = "ean",
+                            Isrc = "isrc",
+                            Published = true,
+                            Upc = "upc",
+                        },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        IsLocal = true,
+                        IsPlayable = true,
+                        LinkedFrom = new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Published = true,
+                            Type = "type",
+                            Uri = "uri",
+                        },
+                        Name = "name",
+                        Popularity = 0,
+                        PreviewUrl = "preview_url",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
+                        TrackNumber = 0,
+                        Type = Models::TrackObjectType.Track,
+                        Uri = "uri",
+                    },
+                },
+            ],
+            Published = true,
+        };
+
+        PlaylistRetrieveResponseTracks copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

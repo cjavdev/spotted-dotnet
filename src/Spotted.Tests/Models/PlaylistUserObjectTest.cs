@@ -179,6 +179,24 @@ public class PlaylistUserObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new PlaylistUserObject
+        {
+            ID = "id",
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            Published = true,
+            Type = PlaylistUserObjectType.User,
+            Uri = "uri",
+        };
+
+        PlaylistUserObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class PlaylistUserObjectTypeTest : TestBase

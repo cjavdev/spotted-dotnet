@@ -325,8 +325,11 @@ public sealed record class SimplifiedPlaylistObject : JsonModel
 
     public SimplifiedPlaylistObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public SimplifiedPlaylistObject(SimplifiedPlaylistObject simplifiedPlaylistObject)
         : base(simplifiedPlaylistObject) { }
+#pragma warning restore CS8618
 
     public SimplifiedPlaylistObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -530,8 +533,11 @@ public sealed record class Owner : JsonModel
 
     public Owner() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Owner(Owner owner)
         : base(owner) { }
+#pragma warning restore CS8618
 
     public Owner(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -584,8 +590,11 @@ public sealed record class IntersectionMember1 : JsonModel
 
     public IntersectionMember1() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public IntersectionMember1(IntersectionMember1 intersectionMember1)
         : base(intersectionMember1) { }
+#pragma warning restore CS8618
 
     public IntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
     {

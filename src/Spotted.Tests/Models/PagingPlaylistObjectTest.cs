@@ -461,4 +461,66 @@ public class PagingPlaylistObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new PagingPlaylistObject
+        {
+            Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
+            Limit = 20,
+            Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+            Offset = 0,
+            Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+            Total = 4,
+            Items =
+            [
+                new()
+                {
+                    ID = "id",
+                    Collaborative = true,
+                    Description = "description",
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    Images =
+                    [
+                        new()
+                        {
+                            Height = 300,
+                            Url =
+                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                            Width = 300,
+                            Published = true,
+                        },
+                    ],
+                    Name = "name",
+                    Owner = new()
+                    {
+                        ID = "id",
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = PlaylistUserObjectType.User,
+                        Uri = "uri",
+                        DisplayName = "display_name",
+                    },
+                    Published = true,
+                    SnapshotID = "snapshot_id",
+                    Tracks = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
+                    Type = "type",
+                    Uri = "uri",
+                },
+            ],
+            Published = true,
+        };
+
+        PagingPlaylistObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

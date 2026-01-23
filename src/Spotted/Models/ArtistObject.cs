@@ -281,8 +281,11 @@ public sealed record class ArtistObject : JsonModel
 
     public ArtistObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ArtistObject(ArtistObject artistObject)
         : base(artistObject) { }
+#pragma warning restore CS8618
 
     public ArtistObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

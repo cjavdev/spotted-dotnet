@@ -359,8 +359,11 @@ public sealed record class ShowRetrieveResponse : JsonModel
         this.Type = JsonSerializer.SerializeToElement("show");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ShowRetrieveResponse(ShowRetrieveResponse showRetrieveResponse)
         : base(showRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public ShowRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -418,8 +421,11 @@ public sealed record class IntersectionMember1 : JsonModel
 
     public IntersectionMember1() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public IntersectionMember1(IntersectionMember1 intersectionMember1)
         : base(intersectionMember1) { }
+#pragma warning restore CS8618
 
     public IntersectionMember1(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -608,8 +614,11 @@ public sealed record class IntersectionMember1Episodes : JsonModel
 
     public IntersectionMember1Episodes() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public IntersectionMember1Episodes(IntersectionMember1Episodes intersectionMember1Episodes)
         : base(intersectionMember1Episodes) { }
+#pragma warning restore CS8618
 
     public IntersectionMember1Episodes(IReadOnlyDictionary<string, JsonElement> rawData)
     {

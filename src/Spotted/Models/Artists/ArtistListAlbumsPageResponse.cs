@@ -156,8 +156,11 @@ public sealed record class ArtistListAlbumsPageResponse : JsonModel
 
     public ArtistListAlbumsPageResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ArtistListAlbumsPageResponse(ArtistListAlbumsPageResponse artistListAlbumsPageResponse)
         : base(artistListAlbumsPageResponse) { }
+#pragma warning restore CS8618
 
     public ArtistListAlbumsPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

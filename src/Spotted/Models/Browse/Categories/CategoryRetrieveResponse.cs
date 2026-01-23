@@ -111,8 +111,11 @@ public sealed record class CategoryRetrieveResponse : JsonModel
 
     public CategoryRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public CategoryRetrieveResponse(CategoryRetrieveResponse categoryRetrieveResponse)
         : base(categoryRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public CategoryRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

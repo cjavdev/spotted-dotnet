@@ -77,4 +77,17 @@ public class RecommendationListAvailableGenreSeedsResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new RecommendationListAvailableGenreSeedsResponse
+        {
+            Genres = ["alternative", "samba"],
+        };
+
+        RecommendationListAvailableGenreSeedsResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

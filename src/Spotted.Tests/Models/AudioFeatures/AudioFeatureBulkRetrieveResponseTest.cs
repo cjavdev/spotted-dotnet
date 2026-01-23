@@ -224,6 +224,44 @@ public class AudioFeatureBulkRetrieveResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new AudioFeatureBulkRetrieveResponse
+        {
+            AudioFeatures =
+            [
+                new()
+                {
+                    ID = "2takcwOaAZWiXQijPHIx7B",
+                    Acousticness = 0.00242f,
+                    AnalysisUrl =
+                        "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
+                    Danceability = 0.585f,
+                    DurationMs = 237040,
+                    Energy = 0.842f,
+                    Instrumentalness = 0.00686f,
+                    Key = 9,
+                    Liveness = 0.0866f,
+                    Loudness = -5.883f,
+                    Mode = 0,
+                    Published = true,
+                    Speechiness = 0.0556f,
+                    Tempo = 118.211f,
+                    TimeSignature = 4,
+                    TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
+                    Type = AudioFeatureType.AudioFeatures,
+                    Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
+                    Valence = 0.428f,
+                },
+            ],
+        };
+
+        AudioFeatureBulkRetrieveResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class AudioFeatureTest : TestBase
@@ -583,6 +621,37 @@ public class AudioFeatureTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new AudioFeature
+        {
+            ID = "2takcwOaAZWiXQijPHIx7B",
+            Acousticness = 0.00242f,
+            AnalysisUrl = "https://api.spotify.com/v1/audio-analysis/2takcwOaAZWiXQijPHIx7B\n",
+            Danceability = 0.585f,
+            DurationMs = 237040,
+            Energy = 0.842f,
+            Instrumentalness = 0.00686f,
+            Key = 9,
+            Liveness = 0.0866f,
+            Loudness = -5.883f,
+            Mode = 0,
+            Published = true,
+            Speechiness = 0.0556f,
+            Tempo = 118.211f,
+            TimeSignature = 4,
+            TrackHref = "https://api.spotify.com/v1/tracks/2takcwOaAZWiXQijPHIx7B\n",
+            Type = AudioFeatureType.AudioFeatures,
+            Uri = "spotify:track:2takcwOaAZWiXQijPHIx7B",
+            Valence = 0.428f,
+        };
+
+        AudioFeature copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }
 

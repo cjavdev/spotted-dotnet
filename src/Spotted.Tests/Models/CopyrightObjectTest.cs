@@ -136,4 +136,19 @@ public class CopyrightObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new CopyrightObject
+        {
+            Published = true,
+            Text = "text",
+            Type = "type",
+        };
+
+        CopyrightObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

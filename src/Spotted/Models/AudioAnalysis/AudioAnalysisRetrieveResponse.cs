@@ -231,10 +231,13 @@ public sealed record class AudioAnalysisRetrieveResponse : JsonModel
 
     public AudioAnalysisRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudioAnalysisRetrieveResponse(
         AudioAnalysisRetrieveResponse audioAnalysisRetrieveResponse
     )
         : base(audioAnalysisRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public AudioAnalysisRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -431,8 +434,11 @@ public sealed record class Meta : JsonModel
 
     public Meta() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Meta(Meta meta)
         : base(meta) { }
+#pragma warning restore CS8618
 
     public Meta(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -775,8 +781,11 @@ public sealed record class Section : JsonModel
 
     public Section() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Section(Section section)
         : base(section) { }
+#pragma warning restore CS8618
 
     public Section(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -1131,8 +1140,11 @@ public sealed record class Segment : JsonModel
 
     public Segment() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Segment(Segment segment)
         : base(segment) { }
+#pragma warning restore CS8618
 
     public Segment(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -1764,8 +1776,11 @@ public sealed record class Track : JsonModel
 
     public Track() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Track(Track track)
         : base(track) { }
+#pragma warning restore CS8618
 
     public Track(IReadOnlyDictionary<string, JsonElement> rawData)
     {

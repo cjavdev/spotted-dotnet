@@ -327,8 +327,11 @@ public sealed record class MeRetrieveResponse : JsonModel
 
     public MeRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public MeRetrieveResponse(MeRetrieveResponse meRetrieveResponse)
         : base(meRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public MeRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -444,8 +447,11 @@ public sealed record class ExplicitContent : JsonModel
 
     public ExplicitContent() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ExplicitContent(ExplicitContent explicitContent)
         : base(explicitContent) { }
+#pragma warning restore CS8618
 
     public ExplicitContent(IReadOnlyDictionary<string, JsonElement> rawData)
     {

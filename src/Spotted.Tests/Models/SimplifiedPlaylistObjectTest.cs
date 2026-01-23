@@ -425,6 +425,54 @@ public class SimplifiedPlaylistObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new SimplifiedPlaylistObject
+        {
+            ID = "id",
+            Collaborative = true,
+            Description = "description",
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Name = "name",
+            Owner = new()
+            {
+                ID = "id",
+                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                Href = "href",
+                Published = true,
+                Type = PlaylistUserObjectType.User,
+                Uri = "uri",
+                DisplayName = "display_name",
+            },
+            Published = true,
+            SnapshotID = "snapshot_id",
+            Tracks = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
+            Type = "type",
+            Uri = "uri",
+        };
+
+        SimplifiedPlaylistObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class OwnerTest : TestBase
@@ -677,6 +725,25 @@ public class OwnerTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Owner
+        {
+            ID = "id",
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            Published = true,
+            Type = PlaylistUserObjectType.User,
+            Uri = "uri",
+            DisplayName = "display_name",
+        };
+
+        Owner copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class IntersectionMember1Test : TestBase
@@ -762,5 +829,15 @@ public class IntersectionMember1Test : TestBase
         var model = new IntersectionMember1 { DisplayName = null };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new IntersectionMember1 { DisplayName = "display_name" };
+
+        IntersectionMember1 copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

@@ -154,10 +154,13 @@ public sealed record class TopListTopArtistsPageResponse : JsonModel
 
     public TopListTopArtistsPageResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TopListTopArtistsPageResponse(
         TopListTopArtistsPageResponse topListTopArtistsPageResponse
     )
         : base(topListTopArtistsPageResponse) { }
+#pragma warning restore CS8618
 
     public TopListTopArtistsPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

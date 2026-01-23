@@ -84,8 +84,11 @@ public sealed record class ImageObject : JsonModel
 
     public ImageObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ImageObject(ImageObject imageObject)
         : base(imageObject) { }
+#pragma warning restore CS8618
 
     public ImageObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

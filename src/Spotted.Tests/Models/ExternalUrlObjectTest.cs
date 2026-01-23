@@ -106,4 +106,14 @@ public class ExternalUrlObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ExternalUrlObject { Published = true, Spotify = "spotify" };
+
+        ExternalUrlObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

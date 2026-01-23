@@ -150,4 +150,20 @@ public class ImageObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ImageObject
+        {
+            Height = 300,
+            Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+            Width = 300,
+            Published = true,
+        };
+
+        ImageObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

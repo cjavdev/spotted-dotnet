@@ -470,4 +470,67 @@ public class AlbumListTracksPageResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new AlbumListTracksPageResponse
+        {
+            Href = "https://api.spotify.com/v1/me/shows?offset=0&limit=20\n",
+            Limit = 20,
+            Next = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+            Offset = 0,
+            Previous = "https://api.spotify.com/v1/me/shows?offset=1&limit=1",
+            Total = 4,
+            Items =
+            [
+                new()
+                {
+                    ID = "id",
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["string"],
+                    DiscNumber = 0,
+                    DurationMs = 0,
+                    Explicit = true,
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    IsLocal = true,
+                    IsPlayable = true,
+                    LinkedFrom = new()
+                    {
+                        ID = "id",
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = "type",
+                        Uri = "uri",
+                    },
+                    Name = "name",
+                    PreviewUrl = "preview_url",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    TrackNumber = 0,
+                    Type = "type",
+                    Uri = "uri",
+                },
+            ],
+            Published = true,
+        };
+
+        AlbumListTracksPageResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

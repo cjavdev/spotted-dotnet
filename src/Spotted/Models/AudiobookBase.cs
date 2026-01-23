@@ -379,8 +379,11 @@ public sealed record class AudiobookBase : JsonModel
         this.Type = JsonSerializer.SerializeToElement("audiobook");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AudiobookBase(AudiobookBase audiobookBase)
         : base(audiobookBase) { }
+#pragma warning restore CS8618
 
     public AudiobookBase(IReadOnlyDictionary<string, JsonElement> rawData)
     {

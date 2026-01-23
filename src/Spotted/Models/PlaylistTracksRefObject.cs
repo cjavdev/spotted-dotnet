@@ -87,8 +87,11 @@ public sealed record class PlaylistTracksRefObject : JsonModel
 
     public PlaylistTracksRefObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlaylistTracksRefObject(PlaylistTracksRefObject playlistTracksRefObject)
         : base(playlistTracksRefObject) { }
+#pragma warning restore CS8618
 
     public PlaylistTracksRefObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

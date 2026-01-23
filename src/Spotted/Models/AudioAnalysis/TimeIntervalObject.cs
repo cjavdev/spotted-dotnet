@@ -108,8 +108,11 @@ public sealed record class TimeIntervalObject : JsonModel
 
     public TimeIntervalObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TimeIntervalObject(TimeIntervalObject timeIntervalObject)
         : base(timeIntervalObject) { }
+#pragma warning restore CS8618
 
     public TimeIntervalObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

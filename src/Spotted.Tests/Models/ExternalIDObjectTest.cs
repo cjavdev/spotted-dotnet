@@ -150,4 +150,20 @@ public class ExternalIDObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ExternalIDObject
+        {
+            Ean = "ean",
+            Isrc = "isrc",
+            Published = true,
+            Upc = "upc",
+        };
+
+        ExternalIDObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

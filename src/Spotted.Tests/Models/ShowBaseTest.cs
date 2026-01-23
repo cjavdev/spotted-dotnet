@@ -510,4 +510,50 @@ public class ShowBaseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ShowBase
+        {
+            ID = "id",
+            AvailableMarkets = ["string"],
+            Copyrights =
+            [
+                new()
+                {
+                    Published = true,
+                    Text = "text",
+                    Type = "type",
+                },
+            ],
+            Description = "description",
+            Explicit = true,
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            HtmlDescription = "html_description",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            IsExternallyHosted = true,
+            Languages = ["string"],
+            MediaType = "media_type",
+            Name = "name",
+            Publisher = "publisher",
+            TotalEpisodes = 0,
+            Uri = "uri",
+            Published = true,
+        };
+
+        ShowBase copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

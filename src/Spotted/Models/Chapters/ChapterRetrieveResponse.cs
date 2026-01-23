@@ -400,9 +400,12 @@ public sealed record class ChapterRetrieveResponse : JsonModel
         this.Type = JsonSerializer.SerializeToElement("episode");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public ChapterRetrieveResponse(ChapterRetrieveResponse chapterRetrieveResponse)
         : base(chapterRetrieveResponse) { }
+#pragma warning restore CS8618
 
     [System::Obsolete("Required properties are deprecated: audio_preview_url")]
     public ChapterRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)

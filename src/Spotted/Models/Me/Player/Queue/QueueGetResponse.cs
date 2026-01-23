@@ -95,8 +95,11 @@ public sealed record class QueueGetResponse : JsonModel
 
     public QueueGetResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public QueueGetResponse(QueueGetResponse queueGetResponse)
         : base(queueGetResponse) { }
+#pragma warning restore CS8618
 
     public QueueGetResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

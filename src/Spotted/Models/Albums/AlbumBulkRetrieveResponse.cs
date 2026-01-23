@@ -42,8 +42,11 @@ public sealed record class AlbumBulkRetrieveResponse : JsonModel
 
     public AlbumBulkRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AlbumBulkRetrieveResponse(AlbumBulkRetrieveResponse albumBulkRetrieveResponse)
         : base(albumBulkRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public AlbumBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -510,8 +513,11 @@ public sealed record class Album : JsonModel
         this.Type = JsonSerializer.SerializeToElement("album");
     }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Album(Album album)
         : base(album) { }
+#pragma warning restore CS8618
 
     public Album(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -789,8 +795,11 @@ public sealed record class AlbumTracks : JsonModel
 
     public AlbumTracks() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public AlbumTracks(AlbumTracks albumTracks)
         : base(albumTracks) { }
+#pragma warning restore CS8618
 
     public AlbumTracks(IReadOnlyDictionary<string, JsonElement> rawData)
     {

@@ -178,4 +178,22 @@ public class LinkedTrackObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new LinkedTrackObject
+        {
+            ID = "id",
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            Published = true,
+            Type = "type",
+            Uri = "uri",
+        };
+
+        LinkedTrackObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

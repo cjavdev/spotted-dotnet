@@ -131,8 +131,11 @@ public sealed record class ContextObject : JsonModel
 
     public ContextObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public ContextObject(ContextObject contextObject)
         : base(contextObject) { }
+#pragma warning restore CS8618
 
     public ContextObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

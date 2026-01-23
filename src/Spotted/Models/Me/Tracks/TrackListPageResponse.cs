@@ -152,8 +152,11 @@ public sealed record class TrackListPageResponse : JsonModel
 
     public TrackListPageResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public TrackListPageResponse(TrackListPageResponse trackListPageResponse)
         : base(trackListPageResponse) { }
+#pragma warning restore CS8618
 
     public TrackListPageResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {

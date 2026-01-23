@@ -262,4 +262,30 @@ public class CategoryListResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new CategoryListResponse
+        {
+            ID = "equal",
+            Href = "href",
+            Icons =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Name = "EQUAL",
+            Published = true,
+        };
+
+        CategoryListResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

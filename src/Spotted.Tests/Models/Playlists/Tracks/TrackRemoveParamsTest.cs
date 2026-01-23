@@ -188,4 +188,14 @@ public class TrackTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Track { Uri = "uri" };
+
+        Track copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }

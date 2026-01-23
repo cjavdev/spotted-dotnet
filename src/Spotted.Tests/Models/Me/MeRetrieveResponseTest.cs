@@ -402,6 +402,50 @@ public class MeRetrieveResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new MeRetrieveResponse
+        {
+            ID = "id",
+            Country = "country",
+            DisplayName = "display_name",
+            Email = "email",
+            ExplicitContent = new()
+            {
+                FilterEnabled = true,
+                FilterLocked = true,
+                Published = true,
+            },
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Followers = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
+            Href = "href",
+            Images =
+            [
+                new()
+                {
+                    Height = 300,
+                    Url = "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                    Width = 300,
+                    Published = true,
+                },
+            ],
+            Product = "product",
+            Published = true,
+            Type = "type",
+            Uri = "uri",
+        };
+
+        MeRetrieveResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class ExplicitContentTest : TestBase
@@ -535,5 +579,20 @@ public class ExplicitContentTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ExplicitContent
+        {
+            FilterEnabled = true,
+            FilterLocked = true,
+            Published = true,
+        };
+
+        ExplicitContent copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

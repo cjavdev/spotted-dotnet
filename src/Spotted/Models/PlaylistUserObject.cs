@@ -156,8 +156,11 @@ public sealed record class PlaylistUserObject : JsonModel
 
     public PlaylistUserObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public PlaylistUserObject(PlaylistUserObject playlistUserObject)
         : base(playlistUserObject) { }
+#pragma warning restore CS8618
 
     public PlaylistUserObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

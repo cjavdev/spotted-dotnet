@@ -31,10 +31,13 @@ public sealed record class FollowingBulkRetrieveResponse : JsonModel
 
     public FollowingBulkRetrieveResponse() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public FollowingBulkRetrieveResponse(
         FollowingBulkRetrieveResponse followingBulkRetrieveResponse
     )
         : base(followingBulkRetrieveResponse) { }
+#pragma warning restore CS8618
 
     public FollowingBulkRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -248,10 +251,13 @@ public sealed record class FollowingBulkRetrieveResponseArtists : JsonModel
 
     public FollowingBulkRetrieveResponseArtists() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public FollowingBulkRetrieveResponseArtists(
         FollowingBulkRetrieveResponseArtists followingBulkRetrieveResponseArtists
     )
         : base(followingBulkRetrieveResponseArtists) { }
+#pragma warning restore CS8618
 
     public FollowingBulkRetrieveResponseArtists(IReadOnlyDictionary<string, JsonElement> rawData)
     {
@@ -366,8 +372,11 @@ public sealed record class Cursors : JsonModel
 
     public Cursors() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public Cursors(Cursors cursors)
         : base(cursors) { }
+#pragma warning restore CS8618
 
     public Cursors(IReadOnlyDictionary<string, JsonElement> rawData)
     {

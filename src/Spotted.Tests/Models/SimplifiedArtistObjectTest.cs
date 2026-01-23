@@ -195,6 +195,25 @@ public class SimplifiedArtistObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new SimplifiedArtistObject
+        {
+            ID = "id",
+            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+            Href = "href",
+            Name = "name",
+            Published = true,
+            Type = SimplifiedArtistObjectType.Artist,
+            Uri = "uri",
+        };
+
+        SimplifiedArtistObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class SimplifiedArtistObjectTypeTest : TestBase

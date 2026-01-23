@@ -338,6 +338,64 @@ public class FollowingBulkRetrieveResponseTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new FollowingBulkRetrieveResponse
+        {
+            Artists = new()
+            {
+                Cursors = new()
+                {
+                    After = "after",
+                    Before = "before",
+                    Published = true,
+                },
+                Href = "href",
+                Items =
+                [
+                    new()
+                    {
+                        ID = "id",
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Followers = new()
+                        {
+                            Href = "href",
+                            Published = true,
+                            Total = 0,
+                        },
+                        Genres = ["Prog rock", "Grunge"],
+                        Href = "href",
+                        Images =
+                        [
+                            new()
+                            {
+                                Height = 300,
+                                Url =
+                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                Width = 300,
+                                Published = true,
+                            },
+                        ],
+                        Name = "name",
+                        Popularity = 0,
+                        Published = true,
+                        Type = Models::Type.Artist,
+                        Uri = "uri",
+                    },
+                ],
+                Limit = 0,
+                Next = "next",
+                Published = true,
+                Total = 0,
+            },
+        };
+
+        FollowingBulkRetrieveResponse copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class FollowingBulkRetrieveResponseArtistsTest : TestBase
@@ -752,6 +810,61 @@ public class FollowingBulkRetrieveResponseArtistsTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new FollowingBulkRetrieveResponseArtists
+        {
+            Cursors = new()
+            {
+                After = "after",
+                Before = "before",
+                Published = true,
+            },
+            Href = "href",
+            Items =
+            [
+                new()
+                {
+                    ID = "id",
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Followers = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
+                    Genres = ["Prog rock", "Grunge"],
+                    Href = "href",
+                    Images =
+                    [
+                        new()
+                        {
+                            Height = 300,
+                            Url =
+                                "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                            Width = 300,
+                            Published = true,
+                        },
+                    ],
+                    Name = "name",
+                    Popularity = 0,
+                    Published = true,
+                    Type = Models::Type.Artist,
+                    Uri = "uri",
+                },
+            ],
+            Limit = 0,
+            Next = "next",
+            Published = true,
+            Total = 0,
+        };
+
+        FollowingBulkRetrieveResponseArtists copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
 
 public class CursorsTest : TestBase
@@ -882,5 +995,20 @@ public class CursorsTest : TestBase
         };
 
         model.Validate();
+    }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new Cursors
+        {
+            After = "after",
+            Before = "before",
+            Published = true,
+        };
+
+        Cursors copied = new(model);
+
+        Assert.Equal(model, copied);
     }
 }

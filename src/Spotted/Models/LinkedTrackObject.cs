@@ -154,8 +154,11 @@ public sealed record class LinkedTrackObject : JsonModel
 
     public LinkedTrackObject() { }
 
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
     public LinkedTrackObject(LinkedTrackObject linkedTrackObject)
         : base(linkedTrackObject) { }
+#pragma warning restore CS8618
 
     public LinkedTrackObject(IReadOnlyDictionary<string, JsonElement> rawData)
     {

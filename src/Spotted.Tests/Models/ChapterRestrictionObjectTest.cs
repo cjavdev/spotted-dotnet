@@ -106,4 +106,14 @@ public class ChapterRestrictionObjectTest : TestBase
 
         model.Validate();
     }
+
+    [Fact]
+    public void CopyConstructor_Works()
+    {
+        var model = new ChapterRestrictionObject { Published = true, Reason = "reason" };
+
+        ChapterRestrictionObject copied = new(model);
+
+        Assert.Equal(model, copied);
+    }
 }
