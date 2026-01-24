@@ -7,7 +7,7 @@ namespace Spotted.Core;
 /// <summary>
 /// A class representing the SDK client configuration.
 /// </summary>
-public struct ClientOptions()
+public record struct ClientOptions()
 {
     /// <summary>
     /// The default value used for <see cref="MaxRetries"/>.
