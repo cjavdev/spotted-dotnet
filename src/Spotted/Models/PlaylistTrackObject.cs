@@ -402,10 +402,10 @@ public record class Track : ModelBase
         this.Switch((object_) => object_.Validate(), (episodeObject) => episodeObject.Validate());
     }
 
-    public virtual bool Equals(Track? other)
-    {
-        return other != null && JsonElement.DeepEquals(this.Json, other.Json);
-    }
+    public virtual bool Equals(Track? other) =>
+        other != null
+        && this.VariantIndex() == other.VariantIndex()
+        && JsonElement.DeepEquals(this.Json, other.Json);
 
     public override int GetHashCode()
     {
@@ -414,6 +414,16 @@ public record class Track : ModelBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
+
+    int VariantIndex()
+    {
+        return this.Value switch
+        {
+            TrackObject _ => 0,
+            EpisodeObject _ => 1,
+            _ => -1,
+        };
+    }
 }
 
 sealed class TrackConverter : JsonConverter<Track>
