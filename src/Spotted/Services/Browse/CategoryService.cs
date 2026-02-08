@@ -35,6 +35,7 @@ public sealed class CategoryService : ICategoryService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<CategoryRetrieveResponse> Retrieve(
         CategoryRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -47,6 +48,7 @@ public sealed class CategoryService : ICategoryService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<CategoryRetrieveResponse> Retrieve(
         string categoryID,
         CategoryRetrieveParams? parameters = null,
@@ -59,6 +61,7 @@ public sealed class CategoryService : ICategoryService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<CategoryListPage> List(
         CategoryListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -114,6 +117,7 @@ public sealed class CategoryServiceWithRawResponse : ICategoryServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<CategoryRetrieveResponse>> Retrieve(
         CategoryRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -147,6 +151,7 @@ public sealed class CategoryServiceWithRawResponse : ICategoryServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<CategoryRetrieveResponse>> Retrieve(
         string categoryID,
         CategoryRetrieveParams? parameters = null,
@@ -159,6 +164,7 @@ public sealed class CategoryServiceWithRawResponse : ICategoryServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<CategoryListPage>> List(
         CategoryListParams? parameters = null,
         CancellationToken cancellationToken = default

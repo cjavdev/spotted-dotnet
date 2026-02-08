@@ -44,6 +44,7 @@ public interface IAlbumService
     /// <summary>
     /// Get Spotify catalog information for multiple albums identified by their Spotify IDs.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<AlbumBulkRetrieveResponse> BulkRetrieve(
         AlbumBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -99,6 +100,7 @@ public interface IAlbumServiceWithRawResponse
     /// Returns a raw HTTP response for `get /albums`, but is otherwise the
     /// same as <see cref="IAlbumService.BulkRetrieve(AlbumBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<AlbumBulkRetrieveResponse>> BulkRetrieve(
         AlbumBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

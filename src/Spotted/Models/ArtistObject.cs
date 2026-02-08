@@ -59,6 +59,7 @@ public sealed record class ArtistObject : JsonModel
     /// <summary>
     /// Information about the followers of the artist.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public FollowersObject? Followers
     {
         get
@@ -81,6 +82,7 @@ public sealed record class ArtistObject : JsonModel
     /// A list of the genres the artist is associated with. If not yet classified,
     /// the array is empty.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public IReadOnlyList<string>? Genres
     {
         get
@@ -173,6 +175,7 @@ public sealed record class ArtistObject : JsonModel
     /// being the most popular. The artist's popularity is calculated from the popularity
     /// of all the artist's tracks.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public long? Popularity
     {
         get

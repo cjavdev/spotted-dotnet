@@ -11,6 +11,8 @@ namespace Spotted.Models.Playlists.Tracks;
 /// <summary>
 /// Get full details of the items of a playlist owned by a Spotify user.
 ///
+/// <para>**Note**: This endpoint is only accessible for playlists owned by the current user.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>

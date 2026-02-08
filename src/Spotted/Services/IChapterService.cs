@@ -47,6 +47,7 @@ public interface IChapterService
     /// by their Spotify IDs. Chapters are only available within the US, UK, Canada,
     /// Ireland, New Zealand and Australia markets.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ChapterBulkRetrieveResponse> BulkRetrieve(
         ChapterBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -86,6 +87,7 @@ public interface IChapterServiceWithRawResponse
     /// Returns a raw HTTP response for `get /chapters`, but is otherwise the
     /// same as <see cref="IChapterService.BulkRetrieve(ChapterBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ChapterBulkRetrieveResponse>> BulkRetrieve(
         ChapterBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

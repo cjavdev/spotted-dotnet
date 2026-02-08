@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -39,6 +40,7 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
     /// scope._
     /// </summary>
+    [Obsolete("deprecated")]
     public string? Country
     {
         get
@@ -85,6 +87,7 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// user has granted access to the [user-read-email](/documentation/web-api/concepts/scopes/#list-of-scopes)
     /// scope._
     /// </summary>
+    [Obsolete("deprecated")]
     public string? Email
     {
         get
@@ -108,6 +111,7 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
     /// scope._
     /// </summary>
+    [Obsolete("deprecated")]
     public ExplicitContent? ExplicitContent
     {
         get
@@ -150,6 +154,7 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// <summary>
     /// Information about the followers of the user.
     /// </summary>
+    [Obsolete("deprecated")]
     public FollowersObject? Followers
     {
         get
@@ -219,6 +224,7 @@ public sealed record class MeRetrieveResponse : JsonModel
     /// when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
     /// scope._
     /// </summary>
+    [Obsolete("deprecated")]
     public string? Product
     {
         get
@@ -367,6 +373,7 @@ class MeRetrieveResponseFromRaw : IFromRawJson<MeRetrieveResponse>
 /// current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes)
 /// scope._
 /// </summary>
+[Obsolete("deprecated")]
 [JsonConverter(typeof(JsonModelConverter<ExplicitContent, ExplicitContentFromRaw>))]
 public sealed record class ExplicitContent : JsonModel
 {

@@ -15,6 +15,7 @@ namespace Spotted.Models.Markets;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class MarketListParams : ParamsBase
 {
     public MarketListParams() { }

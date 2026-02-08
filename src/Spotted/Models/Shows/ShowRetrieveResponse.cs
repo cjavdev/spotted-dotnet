@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -30,6 +31,7 @@ public sealed record class ShowRetrieveResponse : JsonModel
     /// A list of the countries in which the show can be played, identified by their
     /// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
     /// </summary>
+    [Obsolete("deprecated")]
     public required IReadOnlyList<string> AvailableMarkets
     {
         get
@@ -211,6 +213,7 @@ public sealed record class ShowRetrieveResponse : JsonModel
     /// <summary>
     /// The publisher of the show.
     /// </summary>
+    [Obsolete("deprecated")]
     public required string Publisher
     {
         get
@@ -354,6 +357,7 @@ public sealed record class ShowRetrieveResponse : JsonModel
         this.Episodes.Validate();
     }
 
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public ShowRetrieveResponse()
     {
         this.Type = JsonSerializer.SerializeToElement("show");
@@ -361,10 +365,12 @@ public sealed record class ShowRetrieveResponse : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public ShowRetrieveResponse(ShowRetrieveResponse showRetrieveResponse)
         : base(showRetrieveResponse) { }
 #pragma warning restore CS8618
 
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public ShowRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -373,6 +379,7 @@ public sealed record class ShowRetrieveResponse : JsonModel
     }
 
 #pragma warning disable CS8618
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     [SetsRequiredMembers]
     ShowRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
     {

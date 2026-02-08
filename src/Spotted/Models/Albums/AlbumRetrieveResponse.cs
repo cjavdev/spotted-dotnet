@@ -46,6 +46,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// is considered available in a market when at least 1 of its tracks is available
     /// in that market._
     /// </summary>
+    [System::Obsolete("deprecated")]
     public required IReadOnlyList<string> AvailableMarkets
     {
         get
@@ -243,6 +244,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// <summary>
     /// Known external IDs for the album.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public ExternalIDObject? ExternalIds
     {
         get
@@ -289,6 +291,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// <summary>
     /// The label associated with the album.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public string? Label
     {
         get
@@ -311,6 +314,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// The popularity of the album. The value will be between 0 and 100, with 100
     /// being the most popular.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public long? Popularity
     {
         get
@@ -433,6 +437,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
         this.Tracks?.Validate();
     }
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public AlbumRetrieveResponse()
     {
         this.Type = JsonSerializer.SerializeToElement("album");
@@ -440,10 +445,12 @@ public sealed record class AlbumRetrieveResponse : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public AlbumRetrieveResponse(AlbumRetrieveResponse albumRetrieveResponse)
         : base(albumRetrieveResponse) { }
 #pragma warning restore CS8618
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public AlbumRetrieveResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -452,6 +459,7 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     }
 
 #pragma warning disable CS8618
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     [SetsRequiredMembers]
     AlbumRetrieveResponse(FrozenDictionary<string, JsonElement> rawData)
     {

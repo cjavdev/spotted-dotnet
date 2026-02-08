@@ -43,6 +43,7 @@ public sealed class UserService : IUserService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<UserRetrieveProfileResponse> RetrieveProfile(
         UserRetrieveProfileParams parameters,
         CancellationToken cancellationToken = default
@@ -55,6 +56,7 @@ public sealed class UserService : IUserService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<UserRetrieveProfileResponse> RetrieveProfile(
         string userID,
         UserRetrieveProfileParams? parameters = null,
@@ -92,6 +94,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<UserRetrieveProfileResponse>> RetrieveProfile(
         UserRetrieveProfileParams parameters,
         CancellationToken cancellationToken = default
@@ -125,6 +128,7 @@ public sealed class UserServiceWithRawResponse : IUserServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<UserRetrieveProfileResponse>> RetrieveProfile(
         string userID,
         UserRetrieveProfileParams? parameters = null,

@@ -10,14 +10,17 @@ using Spotted.Core;
 namespace Spotted.Models.Users.Playlists;
 
 /// <summary>
-/// Create a playlist for a Spotify user. (The playlist will be empty until you [add
-/// tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each user
-/// is generally limited to a maximum of 11000 playlists.
+/// **Deprecated**: Use [Create Playlist](/documentation/web-api/reference/create-playlist) instead.
+///
+/// <para>Create a playlist for a Spotify user. (The playlist will be empty until
+/// you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each
+/// user is generally limited to a maximum of 11000 playlists.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class PlaylistCreateParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();

@@ -47,6 +47,7 @@ public interface IAudiobookService
     /// Spotify IDs. Audiobooks are only available within the US, UK, Canada, Ireland,
     /// New Zealand and Australia markets.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<AudiobookBulkRetrieveResponse> BulkRetrieve(
         AudiobookBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -102,6 +103,7 @@ public interface IAudiobookServiceWithRawResponse
     /// Returns a raw HTTP response for `get /audiobooks`, but is otherwise the
     /// same as <see cref="IAudiobookService.BulkRetrieve(AudiobookBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<AudiobookBulkRetrieveResponse>> BulkRetrieve(
         AudiobookBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

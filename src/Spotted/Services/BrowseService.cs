@@ -55,6 +55,7 @@ public sealed class BrowseService : IBrowseService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<BrowseGetNewReleasesResponse> GetNewReleases(
         BrowseGetNewReleasesParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -123,6 +124,7 @@ public sealed class BrowseServiceWithRawResponse : IBrowseServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<BrowseGetNewReleasesResponse>> GetNewReleases(
         BrowseGetNewReleasesParams? parameters = null,
         CancellationToken cancellationToken = default

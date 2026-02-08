@@ -88,6 +88,7 @@ public sealed record class TrackObject : JsonModel
     /// A list of the countries in which the track can be played, identified by their
     /// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public IReadOnlyList<string>? AvailableMarkets
     {
         get
@@ -176,6 +177,7 @@ public sealed record class TrackObject : JsonModel
     /// <summary>
     /// Known external IDs for the track.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public ExternalIDObject? ExternalIds
     {
         get
@@ -286,6 +288,7 @@ public sealed record class TrackObject : JsonModel
     /// The track in the `linked_from` object contains information about the originally
     /// requested track.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public LinkedTrackObject? LinkedFrom
     {
         get
@@ -338,6 +341,7 @@ public sealed record class TrackObject : JsonModel
     /// value may lag actual popularity by a few days: the value is not updated in
     /// real time._
     /// </summary>
+    [System::Obsolete("deprecated")]
     public long? Popularity
     {
         get
@@ -606,6 +610,7 @@ public sealed record class Album : JsonModel
     /// is considered available in a market when at least 1 of its tracks is available
     /// in that market._
     /// </summary>
+    [System::Obsolete("deprecated")]
     public required IReadOnlyList<string> AvailableMarkets
     {
         get
@@ -823,6 +828,7 @@ public sealed record class Album : JsonModel
         this.Restrictions?.Validate();
     }
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Album()
     {
         this.Type = JsonSerializer.SerializeToElement("album");
@@ -830,10 +836,12 @@ public sealed record class Album : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Album(Album album)
         : base(album) { }
 #pragma warning restore CS8618
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Album(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -842,6 +850,7 @@ public sealed record class Album : JsonModel
     }
 
 #pragma warning disable CS8618
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     [SetsRequiredMembers]
     Album(FrozenDictionary<string, JsonElement> rawData)
     {

@@ -60,6 +60,7 @@ public sealed class ArtistService : IArtistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<ArtistBulkRetrieveResponse> BulkRetrieve(
         ArtistBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -72,6 +73,7 @@ public sealed class ArtistService : IArtistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<ArtistListAlbumsPage> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
@@ -84,6 +86,7 @@ public sealed class ArtistService : IArtistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<ArtistListAlbumsPage> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
@@ -122,6 +125,7 @@ public sealed class ArtistService : IArtistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<ArtistTopTracksResponse> TopTracks(
         ArtistTopTracksParams parameters,
         CancellationToken cancellationToken = default
@@ -134,6 +138,7 @@ public sealed class ArtistService : IArtistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<ArtistTopTracksResponse> TopTracks(
         string id,
         ArtistTopTracksParams? parameters = null,
@@ -208,6 +213,7 @@ public sealed class ArtistServiceWithRawResponse : IArtistServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<ArtistBulkRetrieveResponse>> BulkRetrieve(
         ArtistBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -236,6 +242,7 @@ public sealed class ArtistServiceWithRawResponse : IArtistServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
@@ -269,6 +276,7 @@ public sealed class ArtistServiceWithRawResponse : IArtistServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
@@ -328,6 +336,7 @@ public sealed class ArtistServiceWithRawResponse : IArtistServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<ArtistTopTracksResponse>> TopTracks(
         ArtistTopTracksParams parameters,
         CancellationToken cancellationToken = default
@@ -361,6 +370,7 @@ public sealed class ArtistServiceWithRawResponse : IArtistServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<ArtistTopTracksResponse>> TopTracks(
         string id,
         ArtistTopTracksParams? parameters = null,

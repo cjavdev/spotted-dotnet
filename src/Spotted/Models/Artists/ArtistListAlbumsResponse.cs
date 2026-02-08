@@ -83,6 +83,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// is considered available in a market when at least 1 of its tracks is available
     /// in that market._
     /// </summary>
+    [System::Obsolete("deprecated")]
     public required IReadOnlyList<string> AvailableMarkets
     {
         get
@@ -301,6 +302,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
         this.Restrictions?.Validate();
     }
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public ArtistListAlbumsResponse()
     {
         this.Type = JsonSerializer.SerializeToElement("album");
@@ -308,10 +310,12 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public ArtistListAlbumsResponse(ArtistListAlbumsResponse artistListAlbumsResponse)
         : base(artistListAlbumsResponse) { }
 #pragma warning restore CS8618
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public ArtistListAlbumsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -320,6 +324,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     }
 
 #pragma warning disable CS8618
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     [SetsRequiredMembers]
     ArtistListAlbumsResponse(FrozenDictionary<string, JsonElement> rawData)
     {

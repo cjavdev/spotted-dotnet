@@ -15,6 +15,7 @@ namespace Spotted.Models.Artists;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ArtistListAlbumsParams : ParamsBase
 {
     public string? ID { get; init; }
@@ -44,8 +45,7 @@ public record class ArtistListAlbumsParams : ParamsBase
     }
 
     /// <summary>
-    /// The maximum number of items to return. Default: 20. Minimum: 1. Maximum:
-    /// 50.
+    /// The maximum number of items to return. Default: 5. Minimum: 1. Maximum: 10.
     /// </summary>
     public long? Limit
     {
