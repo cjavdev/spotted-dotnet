@@ -60,6 +60,7 @@ public sealed class EpisodeService : IEpisodeService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<EpisodeBulkRetrieveResponse> BulkRetrieve(
         EpisodeBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -134,6 +135,7 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<EpisodeBulkRetrieveResponse>> BulkRetrieve(
         EpisodeBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

@@ -260,6 +260,7 @@ public sealed record class SimplifiedChapterObject : JsonModel
     /// their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
     /// code.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public IReadOnlyList<string>? AvailableMarkets
     {
         get

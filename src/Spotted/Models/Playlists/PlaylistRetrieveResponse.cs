@@ -249,7 +249,8 @@ public sealed record class PlaylistRetrieveResponse : JsonModel
     }
 
     /// <summary>
-    /// The tracks of the playlist.
+    /// The tracks of the playlist. _**Note**: This field is only available for playlists
+    /// owned by the current user._
     /// </summary>
     public PlaylistRetrieveResponseTracks? Tracks
     {
@@ -637,7 +638,8 @@ class IntersectionMember1FromRaw : IFromRawJson<IntersectionMember1>
 }
 
 /// <summary>
-/// The tracks of the playlist.
+/// The tracks of the playlist. _**Note**: This field is only available for playlists
+/// owned by the current user._
 /// </summary>
 [JsonConverter(
     typeof(JsonModelConverter<

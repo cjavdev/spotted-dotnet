@@ -51,6 +51,9 @@ public interface ITrackService
 
     /// <summary>
     /// Get full details of the items of a playlist owned by a Spotify user.
+    ///
+    /// <para>**Note**: This endpoint is only accessible for playlists owned by the
+    /// current user.</para>
     /// </summary>
     Task<TrackListPage> List(
         TrackListParams parameters,

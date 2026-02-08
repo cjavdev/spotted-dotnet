@@ -46,6 +46,7 @@ public interface ITrackService
     /// <summary>
     /// Get Spotify catalog information for multiple tracks based on their Spotify IDs.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<TrackBulkRetrieveResponse> BulkRetrieve(
         TrackBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -85,6 +86,7 @@ public interface ITrackServiceWithRawResponse
     /// Returns a raw HTTP response for `get /tracks`, but is otherwise the
     /// same as <see cref="ITrackService.BulkRetrieve(TrackBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<TrackBulkRetrieveResponse>> BulkRetrieve(
         TrackBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

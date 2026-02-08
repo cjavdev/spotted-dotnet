@@ -65,6 +65,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// A list of the countries in which the track can be played, identified by their
     /// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
     /// </summary>
+    [Obsolete("deprecated")]
     public IReadOnlyList<string>? AvailableMarkets
     {
         get
@@ -243,6 +244,7 @@ public sealed record class SimplifiedTrackObject : JsonModel
     /// track in the `linked_from` object contains information about the originally
     /// requested track.
     /// </summary>
+    [Obsolete("deprecated")]
     public LinkedTrackObject? LinkedFrom
     {
         get

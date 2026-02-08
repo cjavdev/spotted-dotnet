@@ -43,6 +43,7 @@ public interface IBrowseService
     /// Get a list of new album releases featured in Spotify (shown, for example,
     /// on a Spotify player’s “Browse” tab).
     /// </summary>
+    [Obsolete("deprecated")]
     Task<BrowseGetNewReleasesResponse> GetNewReleases(
         BrowseGetNewReleasesParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -78,6 +79,7 @@ public interface IBrowseServiceWithRawResponse
     /// Returns a raw HTTP response for `get /browse/new-releases`, but is otherwise the
     /// same as <see cref="IBrowseService.GetNewReleases(BrowseGetNewReleasesParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<BrowseGetNewReleasesResponse>> GetNewReleases(
         BrowseGetNewReleasesParams? parameters = null,
         CancellationToken cancellationToken = default

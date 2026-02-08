@@ -74,6 +74,7 @@ public sealed record class UserRetrieveProfileResponse : JsonModel
     /// <summary>
     /// Information about the followers of this user.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public FollowersObject? Followers
     {
         get

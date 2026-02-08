@@ -59,6 +59,7 @@ public sealed class AlbumService : IAlbumService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<AlbumBulkRetrieveResponse> BulkRetrieve(
         AlbumBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -157,6 +158,7 @@ public sealed class AlbumServiceWithRawResponse : IAlbumServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<AlbumBulkRetrieveResponse>> BulkRetrieve(
         AlbumBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

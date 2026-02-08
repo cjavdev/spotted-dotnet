@@ -59,6 +59,7 @@ public sealed class ChapterService : IChapterService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<ChapterBulkRetrieveResponse> BulkRetrieve(
         ChapterBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -133,6 +134,7 @@ public sealed class ChapterServiceWithRawResponse : IChapterServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<ChapterBulkRetrieveResponse>> BulkRetrieve(
         ChapterBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

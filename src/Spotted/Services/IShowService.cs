@@ -45,6 +45,7 @@ public interface IShowService
     /// <summary>
     /// Get Spotify catalog information for several shows based on their Spotify IDs.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ShowBulkRetrieveResponse> BulkRetrieve(
         ShowBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -100,6 +101,7 @@ public interface IShowServiceWithRawResponse
     /// Returns a raw HTTP response for `get /shows`, but is otherwise the
     /// same as <see cref="IShowService.BulkRetrieve(ShowBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ShowBulkRetrieveResponse>> BulkRetrieve(
         ShowBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

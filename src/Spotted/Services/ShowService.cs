@@ -59,6 +59,7 @@ public sealed class ShowService : IShowService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<ShowBulkRetrieveResponse> BulkRetrieve(
         ShowBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -157,6 +158,7 @@ public sealed class ShowServiceWithRawResponse : IShowServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<ShowBulkRetrieveResponse>> BulkRetrieve(
         ShowBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

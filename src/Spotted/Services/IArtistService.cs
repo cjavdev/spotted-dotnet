@@ -46,6 +46,7 @@ public interface IArtistService
     /// <summary>
     /// Get Spotify catalog information for several artists based on their Spotify IDs.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ArtistBulkRetrieveResponse> BulkRetrieve(
         ArtistBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -54,12 +55,14 @@ public interface IArtistService
     /// <summary>
     /// Get Spotify catalog information about an artist's albums.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ArtistListAlbumsPage> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<ArtistListAlbumsPage> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
@@ -87,12 +90,14 @@ public interface IArtistService
     /// <summary>
     /// Get Spotify catalog information about an artist's top tracks by country.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ArtistTopTracksResponse> TopTracks(
         ArtistTopTracksParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="TopTracks(ArtistTopTracksParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<ArtistTopTracksResponse> TopTracks(
         string id,
         ArtistTopTracksParams? parameters = null,
@@ -133,6 +138,7 @@ public interface IArtistServiceWithRawResponse
     /// Returns a raw HTTP response for `get /artists`, but is otherwise the
     /// same as <see cref="IArtistService.BulkRetrieve(ArtistBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistBulkRetrieveResponse>> BulkRetrieve(
         ArtistBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -142,12 +148,14 @@ public interface IArtistServiceWithRawResponse
     /// Returns a raw HTTP response for `get /artists/{id}/albums`, but is otherwise the
     /// same as <see cref="IArtistService.ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
@@ -176,12 +184,14 @@ public interface IArtistServiceWithRawResponse
     /// Returns a raw HTTP response for `get /artists/{id}/top-tracks`, but is otherwise the
     /// same as <see cref="IArtistService.TopTracks(ArtistTopTracksParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistTopTracksResponse>> TopTracks(
         ArtistTopTracksParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="TopTracks(ArtistTopTracksParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistTopTracksResponse>> TopTracks(
         string id,
         ArtistTopTracksParams? parameters = null,
