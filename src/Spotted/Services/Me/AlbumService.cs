@@ -59,6 +59,7 @@ public sealed class AlbumService : IAlbumService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Remove(
         AlbumRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -68,6 +69,7 @@ public sealed class AlbumService : IAlbumService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Save(
         AlbumSaveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -145,6 +147,7 @@ public sealed class AlbumServiceWithRawResponse : IAlbumServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Remove(
         AlbumRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -161,6 +164,7 @@ public sealed class AlbumServiceWithRawResponse : IAlbumServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Save(
         AlbumSaveParams? parameters = null,
         CancellationToken cancellationToken = default

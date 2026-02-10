@@ -17,6 +17,7 @@ namespace Spotted.Models.Me.Tracks;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class TrackRemoveParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();

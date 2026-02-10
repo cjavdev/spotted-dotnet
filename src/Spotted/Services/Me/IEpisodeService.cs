@@ -54,6 +54,7 @@ public interface IEpisodeService
     /// endpoint is in __beta__ and could change without warning. Please share any
     /// feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
     /// </summary>
+    [Obsolete("deprecated")]
     Task Remove(
         EpisodeRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -64,6 +65,7 @@ public interface IEpisodeService
     /// is in __beta__ and could change without warning. Please share any feedback
     /// that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
     /// </summary>
+    [Obsolete("deprecated")]
     Task Save(EpisodeSaveParams parameters, CancellationToken cancellationToken = default);
 }
 
@@ -102,6 +104,7 @@ public interface IEpisodeServiceWithRawResponse
     /// Returns a raw HTTP response for `delete /me/episodes`, but is otherwise the
     /// same as <see cref="IEpisodeService.Remove(EpisodeRemoveParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Remove(
         EpisodeRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -111,6 +114,7 @@ public interface IEpisodeServiceWithRawResponse
     /// Returns a raw HTTP response for `put /me/episodes`, but is otherwise the
     /// same as <see cref="IEpisodeService.Save(EpisodeSaveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Save(
         EpisodeSaveParams parameters,
         CancellationToken cancellationToken = default

@@ -46,11 +46,13 @@ public interface IAudiobookService
     /// <summary>
     /// Remove one or more audiobooks from the Spotify user's library.
     /// </summary>
+    [Obsolete("deprecated")]
     Task Remove(AudiobookRemoveParams parameters, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Save one or more audiobooks to the current Spotify user's library.
     /// </summary>
+    [Obsolete("deprecated")]
     Task Save(AudiobookSaveParams parameters, CancellationToken cancellationToken = default);
 }
 
@@ -89,6 +91,7 @@ public interface IAudiobookServiceWithRawResponse
     /// Returns a raw HTTP response for `delete /me/audiobooks`, but is otherwise the
     /// same as <see cref="IAudiobookService.Remove(AudiobookRemoveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Remove(
         AudiobookRemoveParams parameters,
         CancellationToken cancellationToken = default
@@ -98,6 +101,7 @@ public interface IAudiobookServiceWithRawResponse
     /// Returns a raw HTTP response for `put /me/audiobooks`, but is otherwise the
     /// same as <see cref="IAudiobookService.Save(AudiobookSaveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Save(
         AudiobookSaveParams parameters,
         CancellationToken cancellationToken = default
