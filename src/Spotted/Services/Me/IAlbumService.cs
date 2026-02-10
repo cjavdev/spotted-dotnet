@@ -47,6 +47,7 @@ public interface IAlbumService
     /// <summary>
     /// Remove one or more albums from the current user's 'Your Music' library.
     /// </summary>
+    [Obsolete("deprecated")]
     Task Remove(
         AlbumRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -55,6 +56,7 @@ public interface IAlbumService
     /// <summary>
     /// Save one or more albums to the current user's 'Your Music' library.
     /// </summary>
+    [Obsolete("deprecated")]
     Task Save(AlbumSaveParams? parameters = null, CancellationToken cancellationToken = default);
 }
 
@@ -93,6 +95,7 @@ public interface IAlbumServiceWithRawResponse
     /// Returns a raw HTTP response for `delete /me/albums`, but is otherwise the
     /// same as <see cref="IAlbumService.Remove(AlbumRemoveParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Remove(
         AlbumRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -102,6 +105,7 @@ public interface IAlbumServiceWithRawResponse
     /// Returns a raw HTTP response for `put /me/albums`, but is otherwise the
     /// same as <see cref="IAlbumService.Save(AlbumSaveParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Save(
         AlbumSaveParams? parameters = null,
         CancellationToken cancellationToken = default

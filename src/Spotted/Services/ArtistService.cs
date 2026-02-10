@@ -73,7 +73,6 @@ public sealed class ArtistService : IArtistService
     }
 
     /// <inheritdoc/>
-    [Obsolete("deprecated")]
     public async Task<ArtistListAlbumsPage> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
@@ -86,7 +85,6 @@ public sealed class ArtistService : IArtistService
     }
 
     /// <inheritdoc/>
-    [Obsolete("deprecated")]
     public Task<ArtistListAlbumsPage> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
@@ -242,7 +240,6 @@ public sealed class ArtistServiceWithRawResponse : IArtistServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    [Obsolete("deprecated")]
     public async Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
@@ -276,7 +273,6 @@ public sealed class ArtistServiceWithRawResponse : IArtistServiceWithRawResponse
     }
 
     /// <inheritdoc/>
-    [Obsolete("deprecated")]
     public Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,

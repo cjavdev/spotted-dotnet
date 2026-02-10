@@ -55,14 +55,12 @@ public interface IArtistService
     /// <summary>
     /// Get Spotify catalog information about an artist's albums.
     /// </summary>
-    [Obsolete("deprecated")]
     Task<ArtistListAlbumsPage> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>
-    [Obsolete("deprecated")]
     Task<ArtistListAlbumsPage> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,
@@ -148,14 +146,12 @@ public interface IArtistServiceWithRawResponse
     /// Returns a raw HTTP response for `get /artists/{id}/albums`, but is otherwise the
     /// same as <see cref="IArtistService.ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>.
     /// </summary>
-    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
         ArtistListAlbumsParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>
-    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
         string id,
         ArtistListAlbumsParams? parameters = null,

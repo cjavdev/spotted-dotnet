@@ -47,11 +47,13 @@ public interface IShowService
     /// <summary>
     /// Delete one or more shows from current Spotify user's library.
     /// </summary>
+    [Obsolete("deprecated")]
     Task Remove(ShowRemoveParams? parameters = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Save one or more shows to current Spotify user's library.
     /// </summary>
+    [Obsolete("deprecated")]
     Task Save(ShowSaveParams? parameters = null, CancellationToken cancellationToken = default);
 }
 
@@ -90,6 +92,7 @@ public interface IShowServiceWithRawResponse
     /// Returns a raw HTTP response for `delete /me/shows`, but is otherwise the
     /// same as <see cref="IShowService.Remove(ShowRemoveParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Remove(
         ShowRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -99,6 +102,7 @@ public interface IShowServiceWithRawResponse
     /// Returns a raw HTTP response for `put /me/shows`, but is otherwise the
     /// same as <see cref="IShowService.Save(ShowSaveParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Save(
         ShowSaveParams? parameters = null,
         CancellationToken cancellationToken = default

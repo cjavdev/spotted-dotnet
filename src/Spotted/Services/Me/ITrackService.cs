@@ -47,6 +47,7 @@ public interface ITrackService
     /// <summary>
     /// Remove one or more tracks from the current user's 'Your Music' library.
     /// </summary>
+    [Obsolete("deprecated")]
     Task Remove(
         TrackRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -55,6 +56,7 @@ public interface ITrackService
     /// <summary>
     /// Save one or more tracks to the current user's 'Your Music' library.
     /// </summary>
+    [Obsolete("deprecated")]
     Task Save(TrackSaveParams parameters, CancellationToken cancellationToken = default);
 }
 
@@ -93,6 +95,7 @@ public interface ITrackServiceWithRawResponse
     /// Returns a raw HTTP response for `delete /me/tracks`, but is otherwise the
     /// same as <see cref="ITrackService.Remove(TrackRemoveParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Remove(
         TrackRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -102,6 +105,7 @@ public interface ITrackServiceWithRawResponse
     /// Returns a raw HTTP response for `put /me/tracks`, but is otherwise the
     /// same as <see cref="ITrackService.Save(TrackSaveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Save(
         TrackSaveParams parameters,
         CancellationToken cancellationToken = default
