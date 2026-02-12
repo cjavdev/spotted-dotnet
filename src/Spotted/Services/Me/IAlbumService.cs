@@ -38,7 +38,10 @@ public interface IAlbumService
     /// <summary>
     /// Check if one or more albums is already saved in the current Spotify user's
     /// 'Your Music' library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<List<bool>> Check(
         AlbumCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -46,6 +49,8 @@ public interface IAlbumService
 
     /// <summary>
     /// Remove one or more albums from the current user's 'Your Music' library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Remove(
@@ -55,6 +60,8 @@ public interface IAlbumService
 
     /// <summary>
     /// Save one or more albums to the current user's 'Your Music' library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Save(AlbumSaveParams? parameters = null, CancellationToken cancellationToken = default);
@@ -86,6 +93,7 @@ public interface IAlbumServiceWithRawResponse
     /// Returns a raw HTTP response for `get /me/albums/contains`, but is otherwise the
     /// same as <see cref="IAlbumService.Check(AlbumCheckParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<List<bool>>> Check(
         AlbumCheckParams parameters,
         CancellationToken cancellationToken = default

@@ -11,10 +11,13 @@ namespace Spotted.Models.Me.Audiobooks;
 /// <summary>
 /// Check if one or more audiobooks are already saved in the current Spotify user's library.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class AudiobookCheckParams : ParamsBase
 {
     /// <summary>

@@ -11,9 +11,9 @@ using Spotted.Core;
 namespace Spotted.Models.Me.Episodes;
 
 /// <summary>
-/// Remove one or more episodes from the current user's library.<br/> This API endpoint
-/// is in __beta__ and could change without warning. Please share any feedback that
-/// you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+/// Remove one or more episodes from the current user's library.
+///
+/// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

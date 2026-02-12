@@ -11,10 +11,13 @@ namespace Spotted.Models.Playlists.Followers;
 /// <summary>
 /// Check to see if the current user is following a specified playlist.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class FollowerCheckParams : ParamsBase
 {
     public string? PlaylistID { get; init; }

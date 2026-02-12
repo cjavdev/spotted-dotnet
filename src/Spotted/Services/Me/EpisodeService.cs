@@ -47,6 +47,7 @@ public sealed class EpisodeService : IEpisodeService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         EpisodeCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -123,6 +124,7 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         EpisodeCheckParams parameters,
         CancellationToken cancellationToken = default

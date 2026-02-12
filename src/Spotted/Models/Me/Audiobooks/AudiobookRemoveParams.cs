@@ -11,6 +11,8 @@ namespace Spotted.Models.Me.Audiobooks;
 /// <summary>
 /// Remove one or more audiobooks from the Spotify user's library.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>

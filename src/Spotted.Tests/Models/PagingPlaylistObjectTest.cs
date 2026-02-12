@@ -38,6 +38,12 @@ public class PagingPlaylistObjectTest : TestBase
                             Published = true,
                         },
                     ],
+                    Items = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Name = "name",
                     Owner = new()
                     {
@@ -89,6 +95,12 @@ public class PagingPlaylistObjectTest : TestBase
                         Published = true,
                     },
                 ],
+                Items = new()
+                {
+                    Href = "href",
+                    Published = true,
+                    Total = 0,
+                },
                 Name = "name",
                 Owner = new()
                 {
@@ -160,6 +172,12 @@ public class PagingPlaylistObjectTest : TestBase
                             Published = true,
                         },
                     ],
+                    Items = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Name = "name",
                     Owner = new()
                     {
@@ -226,6 +244,12 @@ public class PagingPlaylistObjectTest : TestBase
                             Published = true,
                         },
                     ],
+                    Items = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Name = "name",
                     Owner = new()
                     {
@@ -284,6 +308,12 @@ public class PagingPlaylistObjectTest : TestBase
                         Published = true,
                     },
                 ],
+                Items = new()
+                {
+                    Href = "href",
+                    Published = true,
+                    Total = 0,
+                },
                 Name = "name",
                 Owner = new()
                 {
@@ -355,6 +385,12 @@ public class PagingPlaylistObjectTest : TestBase
                             Published = true,
                         },
                     ],
+                    Items = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Name = "name",
                     Owner = new()
                     {
@@ -493,6 +529,12 @@ public class PagingPlaylistObjectTest : TestBase
                             Published = true,
                         },
                     ],
+                    Items = new()
+                    {
+                        Href = "href",
+                        Published = true,
+                        Total = 0,
+                    },
                     Name = "name",
                     Owner = new()
                     {

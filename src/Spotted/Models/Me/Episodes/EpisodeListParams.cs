@@ -9,9 +9,7 @@ using Spotted.Core;
 namespace Spotted.Models.Me.Episodes;
 
 /// <summary>
-/// Get a list of the episodes saved in the current Spotify user's library.<br/> This
-/// API endpoint is in __beta__ and could change without warning. Please share any
-/// feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+/// Get a list of the episodes saved in the current Spotify user's library.
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

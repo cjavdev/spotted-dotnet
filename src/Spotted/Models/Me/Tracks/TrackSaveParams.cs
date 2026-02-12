@@ -14,6 +14,8 @@ namespace Spotted.Models.Me.Tracks;
 /// <summary>
 /// Save one or more tracks to the current user's 'Your Music' library.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
