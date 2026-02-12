@@ -13,10 +13,13 @@ namespace Spotted.Models.Me.Following;
 /// <summary>
 /// Remove the current user as a follower of one or more artists or other Spotify users.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class FollowingUnfollowParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();

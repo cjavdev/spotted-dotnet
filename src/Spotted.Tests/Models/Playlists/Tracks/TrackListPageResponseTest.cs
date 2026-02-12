@@ -35,6 +35,94 @@ public class TrackListPageResponseTest : TestBase
                         Uri = "uri",
                     },
                     IsLocal = true,
+                    Item = new TrackObject()
+                    {
+                        ID = "id",
+                        Album = new()
+                        {
+                            ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                            AlbumType = AlbumType.Compilation,
+                            Artists =
+                            [
+                                new()
+                                {
+                                    ID = "id",
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                    Href = "href",
+                                    Name = "name",
+                                    Published = true,
+                                    Type = SimplifiedArtistObjectType.Artist,
+                                    Uri = "uri",
+                                },
+                            ],
+                            AvailableMarkets = ["CA", "BR", "IT"],
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Images =
+                            [
+                                new()
+                                {
+                                    Height = 300,
+                                    Url =
+                                        "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                    Width = 300,
+                                    Published = true,
+                                },
+                            ],
+                            Name = "name",
+                            ReleaseDate = "1981-12",
+                            ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                            TotalTracks = 9,
+                            Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
+                        },
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["string"],
+                        DiscNumber = 0,
+                        DurationMs = 0,
+                        Explicit = true,
+                        ExternalIds = new()
+                        {
+                            Ean = "ean",
+                            Isrc = "isrc",
+                            Published = true,
+                            Upc = "upc",
+                        },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        IsLocal = true,
+                        IsPlayable = true,
+                        LinkedFrom = new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Published = true,
+                            Type = "type",
+                            Uri = "uri",
+                        },
+                        Name = "name",
+                        Popularity = 0,
+                        PreviewUrl = "preview_url",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
+                        TrackNumber = 0,
+                        Type = TrackObjectType.Track,
+                        Uri = "uri",
+                    },
                     Published = true,
                     Track = new TrackObject()
                     {
@@ -150,6 +238,94 @@ public class TrackListPageResponseTest : TestBase
                     Uri = "uri",
                 },
                 IsLocal = true,
+                Item = new TrackObject()
+                {
+                    ID = "id",
+                    Album = new()
+                    {
+                        ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                        AlbumType = AlbumType.Compilation,
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["CA", "BR", "IT"],
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Images =
+                        [
+                            new()
+                            {
+                                Height = 300,
+                                Url =
+                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                Width = 300,
+                                Published = true,
+                            },
+                        ],
+                        Name = "name",
+                        ReleaseDate = "1981-12",
+                        ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                        TotalTracks = 9,
+                        Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
+                    },
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["string"],
+                    DiscNumber = 0,
+                    DurationMs = 0,
+                    Explicit = true,
+                    ExternalIds = new()
+                    {
+                        Ean = "ean",
+                        Isrc = "isrc",
+                        Published = true,
+                        Upc = "upc",
+                    },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    IsLocal = true,
+                    IsPlayable = true,
+                    LinkedFrom = new()
+                    {
+                        ID = "id",
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = "type",
+                        Uri = "uri",
+                    },
+                    Name = "name",
+                    Popularity = 0,
+                    PreviewUrl = "preview_url",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    TrackNumber = 0,
+                    Type = TrackObjectType.Track,
+                    Uri = "uri",
+                },
                 Published = true,
                 Track = new TrackObject()
                 {
@@ -284,6 +460,94 @@ public class TrackListPageResponseTest : TestBase
                         Uri = "uri",
                     },
                     IsLocal = true,
+                    Item = new TrackObject()
+                    {
+                        ID = "id",
+                        Album = new()
+                        {
+                            ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                            AlbumType = AlbumType.Compilation,
+                            Artists =
+                            [
+                                new()
+                                {
+                                    ID = "id",
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                    Href = "href",
+                                    Name = "name",
+                                    Published = true,
+                                    Type = SimplifiedArtistObjectType.Artist,
+                                    Uri = "uri",
+                                },
+                            ],
+                            AvailableMarkets = ["CA", "BR", "IT"],
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Images =
+                            [
+                                new()
+                                {
+                                    Height = 300,
+                                    Url =
+                                        "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                    Width = 300,
+                                    Published = true,
+                                },
+                            ],
+                            Name = "name",
+                            ReleaseDate = "1981-12",
+                            ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                            TotalTracks = 9,
+                            Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
+                        },
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["string"],
+                        DiscNumber = 0,
+                        DurationMs = 0,
+                        Explicit = true,
+                        ExternalIds = new()
+                        {
+                            Ean = "ean",
+                            Isrc = "isrc",
+                            Published = true,
+                            Upc = "upc",
+                        },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        IsLocal = true,
+                        IsPlayable = true,
+                        LinkedFrom = new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Published = true,
+                            Type = "type",
+                            Uri = "uri",
+                        },
+                        Name = "name",
+                        Popularity = 0,
+                        PreviewUrl = "preview_url",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
+                        TrackNumber = 0,
+                        Type = TrackObjectType.Track,
+                        Uri = "uri",
+                    },
                     Published = true,
                     Track = new TrackObject()
                     {
@@ -413,6 +677,94 @@ public class TrackListPageResponseTest : TestBase
                         Uri = "uri",
                     },
                     IsLocal = true,
+                    Item = new TrackObject()
+                    {
+                        ID = "id",
+                        Album = new()
+                        {
+                            ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                            AlbumType = AlbumType.Compilation,
+                            Artists =
+                            [
+                                new()
+                                {
+                                    ID = "id",
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                    Href = "href",
+                                    Name = "name",
+                                    Published = true,
+                                    Type = SimplifiedArtistObjectType.Artist,
+                                    Uri = "uri",
+                                },
+                            ],
+                            AvailableMarkets = ["CA", "BR", "IT"],
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Images =
+                            [
+                                new()
+                                {
+                                    Height = 300,
+                                    Url =
+                                        "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                    Width = 300,
+                                    Published = true,
+                                },
+                            ],
+                            Name = "name",
+                            ReleaseDate = "1981-12",
+                            ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                            TotalTracks = 9,
+                            Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
+                        },
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["string"],
+                        DiscNumber = 0,
+                        DurationMs = 0,
+                        Explicit = true,
+                        ExternalIds = new()
+                        {
+                            Ean = "ean",
+                            Isrc = "isrc",
+                            Published = true,
+                            Upc = "upc",
+                        },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        IsLocal = true,
+                        IsPlayable = true,
+                        LinkedFrom = new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Published = true,
+                            Type = "type",
+                            Uri = "uri",
+                        },
+                        Name = "name",
+                        Popularity = 0,
+                        PreviewUrl = "preview_url",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
+                        TrackNumber = 0,
+                        Type = TrackObjectType.Track,
+                        Uri = "uri",
+                    },
                     Published = true,
                     Track = new TrackObject()
                     {
@@ -535,6 +887,94 @@ public class TrackListPageResponseTest : TestBase
                     Uri = "uri",
                 },
                 IsLocal = true,
+                Item = new TrackObject()
+                {
+                    ID = "id",
+                    Album = new()
+                    {
+                        ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                        AlbumType = AlbumType.Compilation,
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["CA", "BR", "IT"],
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Images =
+                        [
+                            new()
+                            {
+                                Height = 300,
+                                Url =
+                                    "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                Width = 300,
+                                Published = true,
+                            },
+                        ],
+                        Name = "name",
+                        ReleaseDate = "1981-12",
+                        ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                        TotalTracks = 9,
+                        Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = Reason.Market },
+                    },
+                    Artists =
+                    [
+                        new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Name = "name",
+                            Published = true,
+                            Type = SimplifiedArtistObjectType.Artist,
+                            Uri = "uri",
+                        },
+                    ],
+                    AvailableMarkets = ["string"],
+                    DiscNumber = 0,
+                    DurationMs = 0,
+                    Explicit = true,
+                    ExternalIds = new()
+                    {
+                        Ean = "ean",
+                        Isrc = "isrc",
+                        Published = true,
+                        Upc = "upc",
+                    },
+                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                    Href = "href",
+                    IsLocal = true,
+                    IsPlayable = true,
+                    LinkedFrom = new()
+                    {
+                        ID = "id",
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        Published = true,
+                        Type = "type",
+                        Uri = "uri",
+                    },
+                    Name = "name",
+                    Popularity = 0,
+                    PreviewUrl = "preview_url",
+                    Published = true,
+                    Restrictions = new() { Published = true, Reason = "reason" },
+                    TrackNumber = 0,
+                    Type = TrackObjectType.Track,
+                    Uri = "uri",
+                },
                 Published = true,
                 Track = new TrackObject()
                 {
@@ -669,6 +1109,94 @@ public class TrackListPageResponseTest : TestBase
                         Uri = "uri",
                     },
                     IsLocal = true,
+                    Item = new TrackObject()
+                    {
+                        ID = "id",
+                        Album = new()
+                        {
+                            ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                            AlbumType = AlbumType.Compilation,
+                            Artists =
+                            [
+                                new()
+                                {
+                                    ID = "id",
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                    Href = "href",
+                                    Name = "name",
+                                    Published = true,
+                                    Type = SimplifiedArtistObjectType.Artist,
+                                    Uri = "uri",
+                                },
+                            ],
+                            AvailableMarkets = ["CA", "BR", "IT"],
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Images =
+                            [
+                                new()
+                                {
+                                    Height = 300,
+                                    Url =
+                                        "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                    Width = 300,
+                                    Published = true,
+                                },
+                            ],
+                            Name = "name",
+                            ReleaseDate = "1981-12",
+                            ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                            TotalTracks = 9,
+                            Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
+                        },
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["string"],
+                        DiscNumber = 0,
+                        DurationMs = 0,
+                        Explicit = true,
+                        ExternalIds = new()
+                        {
+                            Ean = "ean",
+                            Isrc = "isrc",
+                            Published = true,
+                            Upc = "upc",
+                        },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        IsLocal = true,
+                        IsPlayable = true,
+                        LinkedFrom = new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Published = true,
+                            Type = "type",
+                            Uri = "uri",
+                        },
+                        Name = "name",
+                        Popularity = 0,
+                        PreviewUrl = "preview_url",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
+                        TrackNumber = 0,
+                        Type = TrackObjectType.Track,
+                        Uri = "uri",
+                    },
                     Published = true,
                     Track = new TrackObject()
                     {
@@ -870,6 +1398,94 @@ public class TrackListPageResponseTest : TestBase
                         Uri = "uri",
                     },
                     IsLocal = true,
+                    Item = new TrackObject()
+                    {
+                        ID = "id",
+                        Album = new()
+                        {
+                            ID = "2up3OPMp9Tb4dAKM2erWXQ",
+                            AlbumType = AlbumType.Compilation,
+                            Artists =
+                            [
+                                new()
+                                {
+                                    ID = "id",
+                                    ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                    Href = "href",
+                                    Name = "name",
+                                    Published = true,
+                                    Type = SimplifiedArtistObjectType.Artist,
+                                    Uri = "uri",
+                                },
+                            ],
+                            AvailableMarkets = ["CA", "BR", "IT"],
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Images =
+                            [
+                                new()
+                                {
+                                    Height = 300,
+                                    Url =
+                                        "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228\n",
+                                    Width = 300,
+                                    Published = true,
+                                },
+                            ],
+                            Name = "name",
+                            ReleaseDate = "1981-12",
+                            ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                            TotalTracks = 9,
+                            Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
+                            Published = true,
+                            Restrictions = new() { Published = true, Reason = Reason.Market },
+                        },
+                        Artists =
+                        [
+                            new()
+                            {
+                                ID = "id",
+                                ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                                Href = "href",
+                                Name = "name",
+                                Published = true,
+                                Type = SimplifiedArtistObjectType.Artist,
+                                Uri = "uri",
+                            },
+                        ],
+                        AvailableMarkets = ["string"],
+                        DiscNumber = 0,
+                        DurationMs = 0,
+                        Explicit = true,
+                        ExternalIds = new()
+                        {
+                            Ean = "ean",
+                            Isrc = "isrc",
+                            Published = true,
+                            Upc = "upc",
+                        },
+                        ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                        Href = "href",
+                        IsLocal = true,
+                        IsPlayable = true,
+                        LinkedFrom = new()
+                        {
+                            ID = "id",
+                            ExternalUrls = new() { Published = true, Spotify = "spotify" },
+                            Href = "href",
+                            Published = true,
+                            Type = "type",
+                            Uri = "uri",
+                        },
+                        Name = "name",
+                        Popularity = 0,
+                        PreviewUrl = "preview_url",
+                        Published = true,
+                        Restrictions = new() { Published = true, Reason = "reason" },
+                        TrackNumber = 0,
+                        Type = TrackObjectType.Track,
+                        Uri = "uri",
+                    },
                     Published = true,
                     Track = new TrackObject()
                     {

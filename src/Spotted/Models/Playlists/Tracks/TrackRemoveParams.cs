@@ -12,12 +12,15 @@ using Spotted.Core;
 namespace Spotted.Models.Playlists.Tracks;
 
 /// <summary>
-/// Remove one or more items from a user's playlist.
+/// **Deprecated:** Use [Remove Playlist Items](/documentation/web-api/reference/remove-items-playlist) instead.
+///
+/// <para>Remove one or more items from a user's playlist.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class TrackRemoveParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();

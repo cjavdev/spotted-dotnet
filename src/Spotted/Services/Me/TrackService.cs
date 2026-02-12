@@ -47,6 +47,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         TrackCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -123,6 +124,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         TrackCheckParams parameters,
         CancellationToken cancellationToken = default

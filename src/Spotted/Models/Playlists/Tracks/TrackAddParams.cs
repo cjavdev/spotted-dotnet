@@ -11,12 +11,15 @@ using Spotted.Core;
 namespace Spotted.Models.Playlists.Tracks;
 
 /// <summary>
-/// Add one or more items to a user's playlist.
+/// **Deprecated:** Use [Add Items to Playlist](/documentation/web-api/reference/add-items-to-playlist) instead.
+///
+/// <para>Add one or more items to a user's playlist.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class TrackAddParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();

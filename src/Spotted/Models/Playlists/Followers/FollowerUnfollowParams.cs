@@ -11,10 +11,13 @@ namespace Spotted.Models.Playlists.Followers;
 /// <summary>
 /// Remove the current user as a follower of a playlist.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class FollowerUnfollowParams : ParamsBase
 {
     public string? PlaylistID { get; init; }

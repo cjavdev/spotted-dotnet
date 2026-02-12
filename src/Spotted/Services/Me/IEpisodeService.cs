@@ -28,10 +28,7 @@ public interface IEpisodeService
     IEpisodeService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Get a list of the episodes saved in the current Spotify user's library.<br/>
-    /// This API endpoint is in __beta__ and could change without warning. Please
-    /// share any feedback that you have, or issues that you discover, in our [developer
-    /// community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+    /// Get a list of the episodes saved in the current Spotify user's library.
     /// </summary>
     Task<EpisodeListPage> List(
         EpisodeListParams? parameters = null,
@@ -40,19 +37,20 @@ public interface IEpisodeService
 
     /// <summary>
     /// Check if one or more episodes is already saved in the current Spotify user's
-    /// 'Your Episodes' library.<br/> This API endpoint is in __beta__ and could change
-    /// without warning. Please share any feedback that you have, or issues that
-    /// you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
+    /// 'Your Episodes' library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<List<bool>> Check(
         EpisodeCheckParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Remove one or more episodes from the current user's library.<br/> This API
-    /// endpoint is in __beta__ and could change without warning. Please share any
-    /// feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+    /// Remove one or more episodes from the current user's library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Remove(
@@ -61,9 +59,9 @@ public interface IEpisodeService
     );
 
     /// <summary>
-    /// Save one or more episodes to the current user's library.<br/> This API endpoint
-    /// is in __beta__ and could change without warning. Please share any feedback
-    /// that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+    /// Save one or more episodes to the current user's library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Save(EpisodeSaveParams parameters, CancellationToken cancellationToken = default);
@@ -95,6 +93,7 @@ public interface IEpisodeServiceWithRawResponse
     /// Returns a raw HTTP response for `get /me/episodes/contains`, but is otherwise the
     /// same as <see cref="IEpisodeService.Check(EpisodeCheckParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<List<bool>>> Check(
         EpisodeCheckParams parameters,
         CancellationToken cancellationToken = default

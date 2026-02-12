@@ -11,9 +11,9 @@ using Spotted.Core;
 namespace Spotted.Models.Me.Episodes;
 
 /// <summary>
-/// Save one or more episodes to the current user's library.<br/> This API endpoint
-/// is in __beta__ and could change without warning. Please share any feedback that
-/// you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+/// Save one or more episodes to the current user's library.
+///
+/// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that

@@ -29,13 +29,17 @@ public interface IFollowerService
 
     /// <summary>
     /// Check to see if the current user is following a specified playlist.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<List<bool>> Check(
         FollowerCheckParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Check(FollowerCheckParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<List<bool>> Check(
         string playlistID,
         FollowerCheckParams? parameters = null,
@@ -44,10 +48,14 @@ public interface IFollowerService
 
     /// <summary>
     /// Add the current user as a follower of a playlist.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Follow(FollowerFollowParams parameters, CancellationToken cancellationToken = default);
 
     /// <inheritdoc cref="Follow(FollowerFollowParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task Follow(
         string playlistID,
         FollowerFollowParams? parameters = null,
@@ -56,10 +64,14 @@ public interface IFollowerService
 
     /// <summary>
     /// Remove the current user as a follower of a playlist.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Unfollow(FollowerUnfollowParams parameters, CancellationToken cancellationToken = default);
 
     /// <inheritdoc cref="Unfollow(FollowerUnfollowParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task Unfollow(
         string playlistID,
         FollowerUnfollowParams? parameters = null,
@@ -84,12 +96,14 @@ public interface IFollowerServiceWithRawResponse
     /// Returns a raw HTTP response for `get /playlists/{playlist_id}/followers/contains`, but is otherwise the
     /// same as <see cref="IFollowerService.Check(FollowerCheckParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<List<bool>>> Check(
         FollowerCheckParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Check(FollowerCheckParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<List<bool>>> Check(
         string playlistID,
         FollowerCheckParams? parameters = null,
@@ -100,12 +114,14 @@ public interface IFollowerServiceWithRawResponse
     /// Returns a raw HTTP response for `put /playlists/{playlist_id}/followers`, but is otherwise the
     /// same as <see cref="IFollowerService.Follow(FollowerFollowParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Follow(
         FollowerFollowParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Follow(FollowerFollowParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Follow(
         string playlistID,
         FollowerFollowParams? parameters = null,
@@ -116,12 +132,14 @@ public interface IFollowerServiceWithRawResponse
     /// Returns a raw HTTP response for `delete /playlists/{playlist_id}/followers`, but is otherwise the
     /// same as <see cref="IFollowerService.Unfollow(FollowerUnfollowParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Unfollow(
         FollowerUnfollowParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Unfollow(FollowerUnfollowParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Unfollow(
         string playlistID,
         FollowerUnfollowParams? parameters = null,

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -159,6 +160,28 @@ public sealed record class PlaylistCreateResponse : JsonModel
     }
 
     /// <summary>
+    /// The items of the playlist. _**Note**: This field is only available for playlists
+    /// owned by the current user or playlists the user is a collaborator of._
+    /// </summary>
+    public Items? Items
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Items>("items");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("items", value);
+        }
+    }
+
+    /// <summary>
     /// The name of the playlist.
     /// </summary>
     public string? Name
@@ -247,9 +270,9 @@ public sealed record class PlaylistCreateResponse : JsonModel
     }
 
     /// <summary>
-    /// The tracks of the playlist. _**Note**: This field is only available for playlists
-    /// owned by the current user._
+    /// **Deprecated:** Use `items` instead. The tracks of the playlist.
     /// </summary>
+    [Obsolete("deprecated")]
     public PlaylistCreateResponseTracks? Tracks
     {
         get
@@ -324,6 +347,7 @@ public sealed record class PlaylistCreateResponse : JsonModel
         {
             item.Validate();
         }
+        this.Items?.Validate();
         _ = this.Name;
         this.Owner?.Validate();
         _ = this.Published;
@@ -369,6 +393,187 @@ class PlaylistCreateResponseFromRaw : IFromRawJson<PlaylistCreateResponse>
     public PlaylistCreateResponse FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawData
     ) => PlaylistCreateResponse.FromRawUnchecked(rawData);
+}
+
+/// <summary>
+/// The items of the playlist. _**Note**: This field is only available for playlists
+/// owned by the current user or playlists the user is a collaborator of._
+/// </summary>
+[JsonConverter(typeof(JsonModelConverter<Items, ItemsFromRaw>))]
+public sealed record class Items : JsonModel
+{
+    /// <summary>
+    /// A link to the Web API endpoint returning the full result of the request
+    /// </summary>
+    public required string Href
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullClass<string>("href");
+        }
+        init { this._rawData.Set("href", value); }
+    }
+
+    /// <summary>
+    /// The maximum number of items in the response (as set in the query or by default).
+    /// </summary>
+    public required long Limit
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("limit");
+        }
+        init { this._rawData.Set("limit", value); }
+    }
+
+    /// <summary>
+    /// URL to the next page of items. ( `null` if none)
+    /// </summary>
+    public required string? Next
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("next");
+        }
+        init { this._rawData.Set("next", value); }
+    }
+
+    /// <summary>
+    /// The offset of the items returned (as set in the query or by default)
+    /// </summary>
+    public required long Offset
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("offset");
+        }
+        init { this._rawData.Set("offset", value); }
+    }
+
+    /// <summary>
+    /// URL to the previous page of items. ( `null` if none)
+    /// </summary>
+    public required string? Previous
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("previous");
+        }
+        init { this._rawData.Set("previous", value); }
+    }
+
+    /// <summary>
+    /// The total number of items available to return.
+    /// </summary>
+    public required long Total
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNotNullStruct<long>("total");
+        }
+        init { this._rawData.Set("total", value); }
+    }
+
+    public IReadOnlyList<PlaylistTrackObject>? ItemsValue
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<ImmutableArray<PlaylistTrackObject>>("items");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set<ImmutableArray<PlaylistTrackObject>?>(
+                "items",
+                value == null ? null : ImmutableArray.ToImmutableArray(value)
+            );
+        }
+    }
+
+    /// <summary>
+    /// The playlist's public/private status (if it should be added to the user's
+    /// profile or not): `true` the playlist will be public, `false` the playlist
+    /// will be private, `null` the playlist status is not relevant. For more about
+    /// public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
+    /// </summary>
+    public bool? Published
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableStruct<bool>("published");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("published", value);
+        }
+    }
+
+    /// <inheritdoc/>
+    public override void Validate()
+    {
+        _ = this.Href;
+        _ = this.Limit;
+        _ = this.Next;
+        _ = this.Offset;
+        _ = this.Previous;
+        _ = this.Total;
+        foreach (var item in this.ItemsValue ?? [])
+        {
+            item.Validate();
+        }
+        _ = this.Published;
+    }
+
+    public Items() { }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    public Items(Items items)
+        : base(items) { }
+#pragma warning restore CS8618
+
+    public Items(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+
+#pragma warning disable CS8618
+    [SetsRequiredMembers]
+    Items(FrozenDictionary<string, JsonElement> rawData)
+    {
+        this._rawData = new(rawData);
+    }
+#pragma warning restore CS8618
+
+    /// <inheritdoc cref="ItemsFromRaw.FromRawUnchecked"/>
+    public static Items FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData)
+    {
+        return new(FrozenDictionary.ToFrozenDictionary(rawData));
+    }
+}
+
+class ItemsFromRaw : IFromRawJson<Items>
+{
+    /// <inheritdoc/>
+    public Items FromRawUnchecked(IReadOnlyDictionary<string, JsonElement> rawData) =>
+        Items.FromRawUnchecked(rawData);
 }
 
 /// <summary>
@@ -636,9 +841,9 @@ class IntersectionMember1FromRaw : IFromRawJson<IntersectionMember1>
 }
 
 /// <summary>
-/// The tracks of the playlist. _**Note**: This field is only available for playlists
-/// owned by the current user._
+/// **Deprecated:** Use `items` instead. The tracks of the playlist.
 /// </summary>
+[Obsolete("deprecated")]
 [JsonConverter(
     typeof(JsonModelConverter<PlaylistCreateResponseTracks, PlaylistCreateResponseTracksFromRaw>)
 )]

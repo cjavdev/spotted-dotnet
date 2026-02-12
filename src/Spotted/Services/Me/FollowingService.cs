@@ -47,6 +47,7 @@ public sealed class FollowingService : IFollowingService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         FollowingCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -59,6 +60,7 @@ public sealed class FollowingService : IFollowingService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Follow(
         FollowingFollowParams parameters,
         CancellationToken cancellationToken = default
@@ -68,6 +70,7 @@ public sealed class FollowingService : IFollowingService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Unfollow(
         FollowingUnfollowParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -124,6 +127,7 @@ public sealed class FollowingServiceWithRawResponse : IFollowingServiceWithRawRe
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         FollowingCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -145,6 +149,7 @@ public sealed class FollowingServiceWithRawResponse : IFollowingServiceWithRawRe
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Follow(
         FollowingFollowParams parameters,
         CancellationToken cancellationToken = default
@@ -159,6 +164,7 @@ public sealed class FollowingServiceWithRawResponse : IFollowingServiceWithRawRe
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Unfollow(
         FollowingUnfollowParams? parameters = null,
         CancellationToken cancellationToken = default

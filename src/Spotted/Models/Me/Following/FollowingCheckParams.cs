@@ -13,10 +13,13 @@ namespace Spotted.Models.Me.Following;
 /// <summary>
 /// Check to see if the current user is following one or more artists or other Spotify users.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[System::Obsolete("deprecated")]
 public record class FollowingCheckParams : ParamsBase
 {
     /// <summary>

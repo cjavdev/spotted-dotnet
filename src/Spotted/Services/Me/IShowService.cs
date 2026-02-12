@@ -38,7 +38,10 @@ public interface IShowService
 
     /// <summary>
     /// Check if one or more shows is already saved in the current Spotify user's library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<List<bool>> Check(
         ShowCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -46,12 +49,16 @@ public interface IShowService
 
     /// <summary>
     /// Delete one or more shows from current Spotify user's library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Remove(ShowRemoveParams? parameters = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Save one or more shows to current Spotify user's library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Save(ShowSaveParams? parameters = null, CancellationToken cancellationToken = default);
@@ -83,6 +90,7 @@ public interface IShowServiceWithRawResponse
     /// Returns a raw HTTP response for `get /me/shows/contains`, but is otherwise the
     /// same as <see cref="IShowService.Check(ShowCheckParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<List<bool>>> Check(
         ShowCheckParams parameters,
         CancellationToken cancellationToken = default

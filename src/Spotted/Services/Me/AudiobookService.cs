@@ -47,6 +47,7 @@ public sealed class AudiobookService : IAudiobookService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         AudiobookCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -123,6 +124,7 @@ public sealed class AudiobookServiceWithRawResponse : IAudiobookServiceWithRawRe
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         AudiobookCheckParams parameters,
         CancellationToken cancellationToken = default

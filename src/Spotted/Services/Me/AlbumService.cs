@@ -47,6 +47,7 @@ public sealed class AlbumService : IAlbumService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         AlbumCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -126,6 +127,7 @@ public sealed class AlbumServiceWithRawResponse : IAlbumServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         AlbumCheckParams parameters,
         CancellationToken cancellationToken = default

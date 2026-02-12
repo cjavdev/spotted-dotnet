@@ -35,6 +35,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<TrackUpdateResponse> Update(
         TrackUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -47,6 +48,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<TrackUpdateResponse> Update(
         string playlistID,
         TrackUpdateParams? parameters = null,
@@ -59,6 +61,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<TrackListPage> List(
         TrackListParams parameters,
         CancellationToken cancellationToken = default
@@ -71,6 +74,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<TrackListPage> List(
         string playlistID,
         TrackListParams? parameters = null,
@@ -83,6 +87,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<TrackAddResponse> Add(
         TrackAddParams parameters,
         CancellationToken cancellationToken = default
@@ -95,6 +100,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<TrackAddResponse> Add(
         string playlistID,
         TrackAddParams? parameters = null,
@@ -107,6 +113,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<TrackRemoveResponse> Remove(
         TrackRemoveParams parameters,
         CancellationToken cancellationToken = default
@@ -119,6 +126,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<TrackRemoveResponse> Remove(
         string playlistID,
         TrackRemoveParams parameters,
@@ -146,6 +154,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<TrackUpdateResponse>> Update(
         TrackUpdateParams parameters,
         CancellationToken cancellationToken = default
@@ -179,6 +188,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<TrackUpdateResponse>> Update(
         string playlistID,
         TrackUpdateParams? parameters = null,
@@ -191,6 +201,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<TrackListPage>> List(
         TrackListParams parameters,
         CancellationToken cancellationToken = default
@@ -224,6 +235,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<TrackListPage>> List(
         string playlistID,
         TrackListParams? parameters = null,
@@ -236,6 +248,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<TrackAddResponse>> Add(
         TrackAddParams parameters,
         CancellationToken cancellationToken = default
@@ -269,6 +282,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<TrackAddResponse>> Add(
         string playlistID,
         TrackAddParams? parameters = null,
@@ -281,6 +295,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<TrackRemoveResponse>> Remove(
         TrackRemoveParams parameters,
         CancellationToken cancellationToken = default
@@ -314,6 +329,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<TrackRemoveResponse>> Remove(
         string playlistID,
         TrackRemoveParams parameters,

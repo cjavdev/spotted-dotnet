@@ -36,6 +36,7 @@ public sealed class FollowerService : IFollowerService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         FollowerCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -48,6 +49,7 @@ public sealed class FollowerService : IFollowerService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<List<bool>> Check(
         string playlistID,
         FollowerCheckParams? parameters = null,
@@ -60,6 +62,7 @@ public sealed class FollowerService : IFollowerService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Follow(
         FollowerFollowParams parameters,
         CancellationToken cancellationToken = default
@@ -69,6 +72,7 @@ public sealed class FollowerService : IFollowerService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task Follow(
         string playlistID,
         FollowerFollowParams? parameters = null,
@@ -82,6 +86,7 @@ public sealed class FollowerService : IFollowerService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Unfollow(
         FollowerUnfollowParams parameters,
         CancellationToken cancellationToken = default
@@ -91,6 +96,7 @@ public sealed class FollowerService : IFollowerService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task Unfollow(
         string playlistID,
         FollowerUnfollowParams? parameters = null,
@@ -121,6 +127,7 @@ public sealed class FollowerServiceWithRawResponse : IFollowerServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         FollowerCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -147,6 +154,7 @@ public sealed class FollowerServiceWithRawResponse : IFollowerServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<List<bool>>> Check(
         string playlistID,
         FollowerCheckParams? parameters = null,
@@ -159,6 +167,7 @@ public sealed class FollowerServiceWithRawResponse : IFollowerServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Follow(
         FollowerFollowParams parameters,
         CancellationToken cancellationToken = default
@@ -178,6 +187,7 @@ public sealed class FollowerServiceWithRawResponse : IFollowerServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Follow(
         string playlistID,
         FollowerFollowParams? parameters = null,
@@ -190,6 +200,7 @@ public sealed class FollowerServiceWithRawResponse : IFollowerServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Unfollow(
         FollowerUnfollowParams parameters,
         CancellationToken cancellationToken = default
@@ -209,6 +220,7 @@ public sealed class FollowerServiceWithRawResponse : IFollowerServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Unfollow(
         string playlistID,
         FollowerUnfollowParams? parameters = null,
