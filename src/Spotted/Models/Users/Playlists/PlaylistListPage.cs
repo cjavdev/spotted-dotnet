@@ -48,7 +48,10 @@ public sealed class PlaylistListPage(
     }
 
     public override string ToString() =>
-        JsonSerializer.Serialize(this.Items, ModelBase.ToStringSerializerOptions);
+        JsonSerializer.Serialize(
+            FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this.Items)),
+            ModelBase.ToStringSerializerOptions
+        );
 
     public override bool Equals(object? obj)
     {
