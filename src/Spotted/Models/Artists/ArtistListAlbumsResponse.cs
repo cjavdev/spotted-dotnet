@@ -32,6 +32,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     /// <summary>
     /// This field describes the relationship between the artist and the album.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public required ApiEnum<string, AlbumGroup> AlbumGroup
     {
         get
@@ -302,7 +303,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
         this.Restrictions?.Validate();
     }
 
-    [System::Obsolete("Required properties are deprecated: available_markets")]
+    [System::Obsolete("Required properties are deprecated: album_group, available_markets")]
     public ArtistListAlbumsResponse()
     {
         this.Type = JsonSerializer.SerializeToElement("album");
@@ -310,12 +311,12 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
-    [System::Obsolete("Required properties are deprecated: available_markets")]
+    [System::Obsolete("Required properties are deprecated: album_group, available_markets")]
     public ArtistListAlbumsResponse(ArtistListAlbumsResponse artistListAlbumsResponse)
         : base(artistListAlbumsResponse) { }
 #pragma warning restore CS8618
 
-    [System::Obsolete("Required properties are deprecated: available_markets")]
+    [System::Obsolete("Required properties are deprecated: album_group, available_markets")]
     public ArtistListAlbumsResponse(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -324,7 +325,7 @@ public sealed record class ArtistListAlbumsResponse : JsonModel
     }
 
 #pragma warning disable CS8618
-    [System::Obsolete("Required properties are deprecated: available_markets")]
+    [System::Obsolete("Required properties are deprecated: album_group, available_markets")]
     [SetsRequiredMembers]
     ArtistListAlbumsResponse(FrozenDictionary<string, JsonElement> rawData)
     {
@@ -352,6 +353,7 @@ class ArtistListAlbumsResponseFromRaw : IFromRawJson<ArtistListAlbumsResponse>
 /// <summary>
 /// This field describes the relationship between the artist and the album.
 /// </summary>
+[System::Obsolete("deprecated")]
 [JsonConverter(typeof(AlbumGroupConverter))]
 public enum AlbumGroup
 {
