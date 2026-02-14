@@ -10,14 +10,16 @@ public class ImageUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
+        BinaryContent body = Encoding.UTF8.GetBytes("text");
+
         var parameters = new ImageUpdateParams
         {
             PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
-            Body = Encoding.UTF8.GetBytes("text"),
+            Body = body,
         };
 
         string expectedPlaylistID = "3cEYpjA9oz9GiPac4AsH4n";
-        BinaryContent expectedBody = Encoding.UTF8.GetBytes("text");
+        BinaryContent expectedBody = body;
 
         Assert.Equal(expectedPlaylistID, parameters.PlaylistID);
         Assert.Equal(expectedBody, parameters.Body);
