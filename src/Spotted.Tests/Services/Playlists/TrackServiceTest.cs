@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services.Playlists;
 
 public class TrackServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         var track = await this.client.Playlists.Tracks.Update(
@@ -15,7 +15,7 @@ public class TrackServiceTest : TestBase
         track.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Playlists.Tracks.List(
@@ -26,7 +26,7 @@ public class TrackServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Add_Works()
     {
         var response = await this.client.Playlists.Tracks.Add(
@@ -37,7 +37,7 @@ public class TrackServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Remove_Works()
     {
         var track = await this.client.Playlists.Tracks.Remove(

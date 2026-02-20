@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services;
 
 public class ChapterServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var chapter = await this.client.Chapters.Retrieve(
@@ -15,7 +15,7 @@ public class ChapterServiceTest : TestBase
         chapter.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Chapters.BulkRetrieve(

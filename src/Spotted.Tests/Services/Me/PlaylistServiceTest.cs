@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services.Me;
 
 public class PlaylistServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Me.Playlists.List(

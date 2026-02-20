@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services;
 
 public class TrackServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var trackObject = await this.client.Tracks.Retrieve(
@@ -15,7 +15,7 @@ public class TrackServiceTest : TestBase
         trackObject.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Tracks.BulkRetrieve(
