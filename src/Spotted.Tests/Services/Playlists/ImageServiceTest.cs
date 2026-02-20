@@ -5,7 +5,7 @@ namespace Spotted.Tests.Services.Playlists;
 
 public class ImageServiceTest : TestBase
 {
-    [Fact(Skip = "Mock server doesn't support application/binary responses")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         await this.client.Playlists.Images.Update(
