@@ -5,7 +5,7 @@ namespace Spotted.Tests.Services.Playlists;
 
 public class ImageServiceTest : TestBase
 {
-    [Fact(Skip = "Prism doesn't support application/binary responses")]
+    [Fact(Skip = "Mock server doesn't support application/binary responses")]
     public async Task Update_Works()
     {
         await this.client.Playlists.Images.Update(
@@ -16,7 +16,7 @@ public class ImageServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var imageObjects = await this.client.Playlists.Images.List(

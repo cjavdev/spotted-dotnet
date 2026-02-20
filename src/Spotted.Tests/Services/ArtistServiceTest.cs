@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services;
 
 public class ArtistServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var artistObject = await this.client.Artists.Retrieve(
@@ -15,7 +15,7 @@ public class ArtistServiceTest : TestBase
         artistObject.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Artists.BulkRetrieve(
@@ -25,7 +25,7 @@ public class ArtistServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListAlbums_Works()
     {
         var page = await this.client.Artists.ListAlbums(
@@ -36,7 +36,7 @@ public class ArtistServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListRelatedArtists_Works()
     {
         var response = await this.client.Artists.ListRelatedArtists(
@@ -47,7 +47,7 @@ public class ArtistServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task TopTracks_Works()
     {
         var response = await this.client.Artists.TopTracks(

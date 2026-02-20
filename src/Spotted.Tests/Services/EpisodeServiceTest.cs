@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services;
 
 public class EpisodeServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var episodeObject = await this.client.Episodes.Retrieve(
@@ -15,7 +15,7 @@ public class EpisodeServiceTest : TestBase
         episodeObject.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Episodes.BulkRetrieve(

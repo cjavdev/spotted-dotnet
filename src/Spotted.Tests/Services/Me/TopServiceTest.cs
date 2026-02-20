@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services.Me;
 
 public class TopServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListTopArtists_Works()
     {
         var page = await this.client.Me.Top.ListTopArtists(
@@ -14,7 +14,7 @@ public class TopServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListTopTracks_Works()
     {
         var page = await this.client.Me.Top.ListTopTracks(

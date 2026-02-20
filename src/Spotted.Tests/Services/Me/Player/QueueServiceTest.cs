@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services.Me.Player;
 
 public class QueueServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Add_Works()
     {
         await this.client.Me.Player.Queue.Add(
@@ -13,7 +13,7 @@ public class QueueServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Get_Works()
     {
         var queue = await this.client.Me.Player.Queue.Get(
