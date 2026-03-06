@@ -177,7 +177,6 @@ public sealed record class TrackObject : JsonModel
     /// <summary>
     /// Known external IDs for the track.
     /// </summary>
-    [System::Obsolete("deprecated")]
     public ExternalIDObject? ExternalIds
     {
         get

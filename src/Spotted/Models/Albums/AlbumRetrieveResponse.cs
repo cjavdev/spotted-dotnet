@@ -244,7 +244,6 @@ public sealed record class AlbumRetrieveResponse : JsonModel
     /// <summary>
     /// Known external IDs for the album.
     /// </summary>
-    [System::Obsolete("deprecated")]
     public ExternalIDObject? ExternalIds
     {
         get
