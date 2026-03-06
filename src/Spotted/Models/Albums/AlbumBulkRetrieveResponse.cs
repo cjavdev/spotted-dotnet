@@ -319,7 +319,6 @@ public sealed record class Album : JsonModel
     /// <summary>
     /// Known external IDs for the album.
     /// </summary>
-    [System::Obsolete("deprecated")]
     public ExternalIDObject? ExternalIds
     {
         get
