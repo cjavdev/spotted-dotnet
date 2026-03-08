@@ -108,7 +108,7 @@ using Spotted.Models.Playlists.Images;
 ImageUpdateParams parameters = new()
 {
     PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
-    Body = Encoding.UTF8.GetBytes("text"),
+    Body = Encoding.UTF8.GetBytes("Example data"),
 };
 
 var image = await client.Playlists.Images.Update(parameters);

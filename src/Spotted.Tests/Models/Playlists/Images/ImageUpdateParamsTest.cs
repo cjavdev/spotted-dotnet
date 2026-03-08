@@ -10,7 +10,7 @@ public class ImageUpdateParamsTest : TestBase
     [Fact]
     public void FieldRoundtrip_Works()
     {
-        BinaryContent body = Encoding.UTF8.GetBytes("text");
+        BinaryContent body = Encoding.UTF8.GetBytes("Example data");
 
         var parameters = new ImageUpdateParams
         {
@@ -31,7 +31,7 @@ public class ImageUpdateParamsTest : TestBase
         ImageUpdateParams parameters = new()
         {
             PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
-            Body = Encoding.UTF8.GetBytes("text"),
+            Body = Encoding.UTF8.GetBytes("Example data"),
         };
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
@@ -48,7 +48,7 @@ public class ImageUpdateParamsTest : TestBase
         var parameters = new ImageUpdateParams
         {
             PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
-            Body = Encoding.UTF8.GetBytes("text"),
+            Body = Encoding.UTF8.GetBytes("Example data"),
         };
 
         ImageUpdateParams copied = new(parameters);

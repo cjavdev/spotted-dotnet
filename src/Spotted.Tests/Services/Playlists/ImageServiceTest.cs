@@ -10,7 +10,7 @@ public class ImageServiceTest : TestBase
     {
         await this.client.Playlists.Images.Update(
             "3cEYpjA9oz9GiPac4AsH4n",
-            Encoding.UTF8.GetBytes("text"),
+            Encoding.UTF8.GetBytes("Example data"),
             new(),
             TestContext.Current.CancellationToken
         );
