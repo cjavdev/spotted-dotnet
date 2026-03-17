@@ -68,7 +68,7 @@ public interface IAudioFeatureServiceWithRawResponse
     IAudioFeatureServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /audio-features/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /audio-features/{id}</c>, but is otherwise the
     /// same as <see cref="IAudioFeatureService.Retrieve(AudioFeatureRetrieveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -86,7 +86,7 @@ public interface IAudioFeatureServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /audio-features`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /audio-features</c>, but is otherwise the
     /// same as <see cref="IAudioFeatureService.BulkRetrieve(AudioFeatureBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

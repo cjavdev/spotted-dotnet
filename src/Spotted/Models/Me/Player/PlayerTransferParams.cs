@@ -29,7 +29,7 @@ public record class PlayerTransferParams : ParamsBase
 
     /// <summary>
     /// A JSON array containing the ID of the device on which playback should be
-    /// started/transferred.<br/>For example:`{device_ids:["74ASZWbe4lXaubB36ztrGX"]}`<br/>_**Note**:
+    /// started/transferred.&lt;br/&gt;For example:`{device_ids:["74ASZWbe4lXaubB36ztrGX"]}`&lt;br/&gt;_**Note**:
     /// Although an array is accepted, only a single device_id is currently supported.
     /// Supplying more than one will return `400 Bad Request`_
     /// </summary>
@@ -50,8 +50,8 @@ public record class PlayerTransferParams : ParamsBase
     }
 
     /// <summary>
-    /// **true**: ensure playback happens on new device.<br/>**false** or not provided:
-    /// keep the current playback state.
+    /// **true**: ensure playback happens on new device.&lt;br/&gt;**false** or not
+    /// provided: keep the current playback state.
     /// </summary>
     public bool? Play
     {
@@ -131,7 +131,7 @@ public record class PlayerTransferParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PlayerTransferParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,

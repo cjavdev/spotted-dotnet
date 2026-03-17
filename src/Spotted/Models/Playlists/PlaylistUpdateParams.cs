@@ -29,8 +29,8 @@ public record class PlaylistUpdateParams : ParamsBase
 
     /// <summary>
     /// If `true`, the playlist will become collaborative and other users will be
-    /// able to modify the playlist in their Spotify client. <br/> _**Note**: You
-    /// can only set `collaborative` to `true` on non-public playlists._
+    /// able to modify the playlist in their Spotify client. &lt;br/&gt; _**Note**:
+    /// You can only set `collaborative` to `true` on non-public playlists._
     /// </summary>
     public bool? Collaborative
     {
@@ -155,7 +155,7 @@ public record class PlaylistUpdateParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PlaylistUpdateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,

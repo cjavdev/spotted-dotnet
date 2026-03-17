@@ -44,11 +44,11 @@ public record class BrowseGetFeaturedPlaylistsParams : ParamsBase
     /// <summary>
     /// The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1)
     /// language code and an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2),
-    /// joined by an underscore. For example: `es_MX`, meaning &quot;Spanish (Mexico)&quot;.
-    /// Provide this parameter if you want the category strings returned in a particular
-    /// language.<br/> _**Note**: if `locale` is not supplied, or if the specified
-    /// language is not available, the category strings returned will be in the Spotify
-    /// default language (American English)._
+    /// joined by an underscore. For example: `es_MX`, meaning &amp;quot;Spanish
+    /// (Mexico)&amp;quot;. Provide this parameter if you want the category strings
+    /// returned in a particular language.&lt;br/&gt; _**Note**: if `locale` is not
+    /// supplied, or if the specified language is not available, the category strings
+    /// returned will be in the Spotify default language (American English)._
     /// </summary>
     public string? Locale
     {
@@ -121,7 +121,7 @@ public record class BrowseGetFeaturedPlaylistsParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static BrowseGetFeaturedPlaylistsParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

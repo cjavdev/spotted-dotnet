@@ -24,9 +24,9 @@ public record class TrackListParams : ParamsBase
 
     /// <summary>
     /// A comma-separated list of item types that your client supports besides the
-    /// default `track` type. Valid types are: `track` and `episode`.<br/> _**Note**:
+    /// default `track` type. Valid types are: `track` and `episode`.&lt;br/&gt; _**Note**:
     /// This parameter was introduced to allow existing clients to maintain their
-    /// current behaviour and might be deprecated in the future._<br/> In addition
+    /// current behaviour and might be deprecated in the future._&lt;br/&gt; In addition
     /// to providing this parameter, make sure that your client properly handles cases
     /// of new types in the future by checking against the `type` field of each object.
     /// </summary>
@@ -51,12 +51,12 @@ public record class TrackListParams : ParamsBase
     /// <summary>
     /// Filters for the query: a comma-separated list of the fields to return. If
     /// omitted, all fields are returned. For example, to get just the total number
-    /// of items and the request limit:<br/>`fields=total,limit`<br/>A dot separator
-    /// can be used to specify non-reoccurring fields, while parentheses can be used
-    /// to specify reoccurring fields within objects. For example, to get just the
-    /// added date and user ID of the adder:<br/>`fields=items(added_at,added_by.id)`<br/>Use
-    /// multiple parentheses to drill down into nested objects, for example:<br/>`fields=items(track(name,href,album(name,href)))`<br/>Fields
-    /// can be excluded by prefixing them with an exclamation mark, for example:<br/>`fields=items.track.album(!external_urls,images)`
+    /// of items and the request limit:&lt;br/&gt;`fields=total,limit`&lt;br/&gt;A
+    /// dot separator can be used to specify non-reoccurring fields, while parentheses
+    /// can be used to specify reoccurring fields within objects. For example, to
+    /// get just the added date and user ID of the adder:&lt;br/&gt;`fields=items(added_at,added_by.id)`&lt;br/&gt;Use
+    /// multiple parentheses to drill down into nested objects, for example:&lt;br/&gt;`fields=items(track(name,href,album(name,href)))`&lt;br/&gt;Fields
+    /// can be excluded by prefixing them with an exclamation mark, for example:&lt;br/&gt;`fields=items.track.album(!external_urls,images)`
     /// </summary>
     public string? Fields
     {
@@ -101,12 +101,12 @@ public record class TrackListParams : ParamsBase
     /// <summary>
     /// An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
     ///   If a country code is specified, only content that is available in that market
-    /// will be returned.<br/>   If a valid user access token is specified in the
-    /// request header, the country associated with   the user account will take
-    /// priority over this parameter.<br/>   _**Note**: If neither market or user
-    /// country are provided, the content is considered unavailable for the client._<br/>
-    ///   Users can view the country that is associated with their account in the
-    /// [account settings](https://www.spotify.com/account/overview/).
+    /// will be returned.&lt;br/&gt;   If a valid user access token is specified in
+    /// the request header, the country associated with   the user account will take
+    /// priority over this parameter.&lt;br/&gt;   _**Note**: If neither market or
+    /// user country are provided, the content is considered unavailable for the
+    /// client._&lt;br/&gt;   Users can view the country that is associated with
+    /// their account in the [account settings](https://www.spotify.com/account/overview/).
     /// </summary>
     public string? Market
     {
@@ -180,7 +180,7 @@ public record class TrackListParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TrackListParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

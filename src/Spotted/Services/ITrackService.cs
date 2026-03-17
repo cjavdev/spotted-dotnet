@@ -67,7 +67,7 @@ public interface ITrackServiceWithRawResponse
     ITrackServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /tracks/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /tracks/{id}</c>, but is otherwise the
     /// same as <see cref="ITrackService.Retrieve(TrackRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TrackObject>> Retrieve(
@@ -83,7 +83,7 @@ public interface ITrackServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /tracks</c>, but is otherwise the
     /// same as <see cref="ITrackService.BulkRetrieve(TrackBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

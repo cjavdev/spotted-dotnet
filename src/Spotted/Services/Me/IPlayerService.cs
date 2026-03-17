@@ -47,8 +47,8 @@ public interface IPlayerService
     );
 
     /// <summary>
-    /// Get information about the user’s current playback state, including track
-    /// or episode, progress, and active device.
+    /// Get information about the user’s current playback state, including track or
+    /// episode, progress, and active device.
     /// </summary>
     Task<PlayerGetStateResponse> GetState(
         PlayerGetStateParams? parameters = null,
@@ -66,8 +66,8 @@ public interface IPlayerService
 
     /// <summary>
     /// Pause playback on the user's account. This API only works for users who have
-    /// Spotify Premium. The order of execution is not guaranteed when you use this
-    /// API with other Player API endpoints.
+    /// Spotify Premium. The order of execution is not guaranteed when you use this API
+    /// with other Player API endpoints.
     /// </summary>
     Task PausePlayback(
         PlayerPausePlaybackParams? parameters = null,
@@ -75,9 +75,9 @@ public interface IPlayerService
     );
 
     /// <summary>
-    /// Seeks to the given position in the user’s currently playing track. This API
-    /// only works for users who have Spotify Premium. The order of execution is
-    /// not guaranteed when you use this API with other Player API endpoints.
+    /// Seeks to the given position in the user’s currently playing track. This API only
+    /// works for users who have Spotify Premium. The order of execution is not
+    /// guaranteed when you use this API with other Player API endpoints.
     /// </summary>
     Task SeekToPosition(
         PlayerSeekToPositionParams parameters,
@@ -85,9 +85,9 @@ public interface IPlayerService
     );
 
     /// <summary>
-    /// Set the repeat mode for the user's playback. This API only works for users
-    /// who have Spotify Premium. The order of execution is not guaranteed when you
-    /// use this API with other Player API endpoints.
+    /// Set the repeat mode for the user's playback. This API only works for users who
+    /// have Spotify Premium. The order of execution is not guaranteed when you use this
+    /// API with other Player API endpoints.
     /// </summary>
     Task SetRepeatMode(
         PlayerSetRepeatModeParams parameters,
@@ -95,16 +95,16 @@ public interface IPlayerService
     );
 
     /// <summary>
-    /// Set the volume for the user’s current playback device. This API only works
-    /// for users who have Spotify Premium. The order of execution is not guaranteed
-    /// when you use this API with other Player API endpoints.
+    /// Set the volume for the user’s current playback device. This API only works for
+    /// users who have Spotify Premium. The order of execution is not guaranteed when
+    /// you use this API with other Player API endpoints.
     /// </summary>
     Task SetVolume(PlayerSetVolumeParams parameters, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Skips to next track in the user’s queue. This API only works for users who
-    /// have Spotify Premium. The order of execution is not guaranteed when you use
-    /// this API with other Player API endpoints.
+    /// Skips to next track in the user’s queue. This API only works for users who have
+    /// Spotify Premium. The order of execution is not guaranteed when you use this API
+    /// with other Player API endpoints.
     /// </summary>
     Task SkipNext(
         PlayerSkipNextParams? parameters = null,
@@ -112,9 +112,9 @@ public interface IPlayerService
     );
 
     /// <summary>
-    /// Skips to previous track in the user’s queue. This API only works for users
-    /// who have Spotify Premium. The order of execution is not guaranteed when you
-    /// use this API with other Player API endpoints.
+    /// Skips to previous track in the user’s queue. This API only works for users who
+    /// have Spotify Premium. The order of execution is not guaranteed when you use this
+    /// API with other Player API endpoints.
     /// </summary>
     Task SkipPrevious(
         PlayerSkipPreviousParams? parameters = null,
@@ -122,9 +122,9 @@ public interface IPlayerService
     );
 
     /// <summary>
-    /// Start a new context or resume current playback on the user's active device.
-    /// This API only works for users who have Spotify Premium. The order of execution
-    /// is not guaranteed when you use this API with other Player API endpoints.
+    /// Start a new context or resume current playback on the user's active device. This
+    /// API only works for users who have Spotify Premium. The order of execution is not
+    /// guaranteed when you use this API with other Player API endpoints.
     /// </summary>
     Task StartPlayback(
         PlayerStartPlaybackParams? parameters = null,
@@ -132,9 +132,9 @@ public interface IPlayerService
     );
 
     /// <summary>
-    /// Toggle shuffle on or off for user’s playback. This API only works for users
-    /// who have Spotify Premium. The order of execution is not guaranteed when you
-    /// use this API with other Player API endpoints.
+    /// Toggle shuffle on or off for user’s playback. This API only works for users who
+    /// have Spotify Premium. The order of execution is not guaranteed when you use this
+    /// API with other Player API endpoints.
     /// </summary>
     Task ToggleShuffle(
         PlayerToggleShuffleParams parameters,
@@ -142,8 +142,8 @@ public interface IPlayerService
     );
 
     /// <summary>
-    /// Transfer playback to a new device and optionally begin playback. This API
-    /// only works for users who have Spotify Premium. The order of execution is not
+    /// Transfer playback to a new device and optionally begin playback. This API only
+    /// works for users who have Spotify Premium. The order of execution is not
     /// guaranteed when you use this API with other Player API endpoints.
     /// </summary>
     Task Transfer(PlayerTransferParams parameters, CancellationToken cancellationToken = default);
@@ -165,7 +165,7 @@ public interface IPlayerServiceWithRawResponse
     IQueueServiceWithRawResponse Queue { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/player/currently-playing`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/player/currently-playing</c>, but is otherwise the
     /// same as <see cref="IPlayerService.GetCurrentlyPlaying(PlayerGetCurrentlyPlayingParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PlayerGetCurrentlyPlayingResponse>> GetCurrentlyPlaying(
@@ -174,7 +174,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/player/devices`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/player/devices</c>, but is otherwise the
     /// same as <see cref="IPlayerService.GetDevices(PlayerGetDevicesParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PlayerGetDevicesResponse>> GetDevices(
@@ -183,7 +183,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/player`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/player</c>, but is otherwise the
     /// same as <see cref="IPlayerService.GetState(PlayerGetStateParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PlayerGetStateResponse>> GetState(
@@ -192,7 +192,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/player/recently-played`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/player/recently-played</c>, but is otherwise the
     /// same as <see cref="IPlayerService.ListRecentlyPlayed(PlayerListRecentlyPlayedParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PlayerListRecentlyPlayedPage>> ListRecentlyPlayed(
@@ -201,7 +201,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/player/pause`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/player/pause</c>, but is otherwise the
     /// same as <see cref="IPlayerService.PausePlayback(PlayerPausePlaybackParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> PausePlayback(
@@ -210,7 +210,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/player/seek`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/player/seek</c>, but is otherwise the
     /// same as <see cref="IPlayerService.SeekToPosition(PlayerSeekToPositionParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> SeekToPosition(
@@ -219,7 +219,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/player/repeat`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/player/repeat</c>, but is otherwise the
     /// same as <see cref="IPlayerService.SetRepeatMode(PlayerSetRepeatModeParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> SetRepeatMode(
@@ -228,7 +228,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/player/volume`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/player/volume</c>, but is otherwise the
     /// same as <see cref="IPlayerService.SetVolume(PlayerSetVolumeParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> SetVolume(
@@ -237,7 +237,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /me/player/next`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /me/player/next</c>, but is otherwise the
     /// same as <see cref="IPlayerService.SkipNext(PlayerSkipNextParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> SkipNext(
@@ -246,7 +246,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /me/player/previous`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /me/player/previous</c>, but is otherwise the
     /// same as <see cref="IPlayerService.SkipPrevious(PlayerSkipPreviousParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> SkipPrevious(
@@ -255,7 +255,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/player/play`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/player/play</c>, but is otherwise the
     /// same as <see cref="IPlayerService.StartPlayback(PlayerStartPlaybackParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> StartPlayback(
@@ -264,7 +264,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/player/shuffle`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/player/shuffle</c>, but is otherwise the
     /// same as <see cref="IPlayerService.ToggleShuffle(PlayerToggleShuffleParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> ToggleShuffle(
@@ -273,7 +273,7 @@ public interface IPlayerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/player`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/player</c>, but is otherwise the
     /// same as <see cref="IPlayerService.Transfer(PlayerTransferParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Transfer(

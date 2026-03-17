@@ -51,7 +51,7 @@ public record class PlayerStartPlaybackParams : ParamsBase
 
     /// <summary>
     /// Optional. Spotify URI of the context to play. Valid contexts are albums,
-    /// artists & playlists. `{context_uri:"spotify:album:1Je1IMUlBXcx1Fz0WE7oPT"}`
+    /// artists &amp; playlists. `{context_uri:"spotify:album:1Je1IMUlBXcx1Fz0WE7oPT"}`
     /// </summary>
     public string? ContextUri
     {
@@ -209,7 +209,7 @@ public record class PlayerStartPlaybackParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PlayerStartPlaybackParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,

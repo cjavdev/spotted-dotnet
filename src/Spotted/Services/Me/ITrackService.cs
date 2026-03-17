@@ -28,7 +28,8 @@ public interface ITrackService
     ITrackService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Get a list of the songs saved in the current Spotify user's 'Your Music' library.
+    /// Get a list of the songs saved in the current Spotify user's 'Your Music'
+    /// library.
     /// </summary>
     Task<TrackListPage> List(
         TrackListParams? parameters = null,
@@ -36,10 +37,11 @@ public interface ITrackService
     );
 
     /// <summary>
-    /// Check if one or more tracks is already saved in the current Spotify user's
-    /// 'Your Music' library.
+    /// Check if one or more tracks is already saved in the current Spotify user's 'Your
+    /// Music' library.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved
+    /// Items](/documentation/web-api/reference/check-library-contains) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<List<bool>> Check(
@@ -50,7 +52,8 @@ public interface ITrackService
     /// <summary>
     /// Remove one or more tracks from the current user's 'Your Music' library.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from
+    /// Library](/documentation/web-api/reference/remove-library-items) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Remove(
@@ -61,7 +64,8 @@ public interface ITrackService
     /// <summary>
     /// Save one or more tracks to the current user's 'Your Music' library.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to
+    /// Library](/documentation/web-api/reference/save-library-items) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Save(TrackSaveParams parameters, CancellationToken cancellationToken = default);
@@ -81,7 +85,7 @@ public interface ITrackServiceWithRawResponse
     ITrackServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/tracks</c>, but is otherwise the
     /// same as <see cref="ITrackService.List(TrackListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TrackListPage>> List(
@@ -90,7 +94,7 @@ public interface ITrackServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/tracks/contains`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/tracks/contains</c>, but is otherwise the
     /// same as <see cref="ITrackService.Check(TrackCheckParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -100,7 +104,7 @@ public interface ITrackServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /me/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /me/tracks</c>, but is otherwise the
     /// same as <see cref="ITrackService.Remove(TrackRemoveParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -110,7 +114,7 @@ public interface ITrackServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/tracks</c>, but is otherwise the
     /// same as <see cref="ITrackService.Save(TrackSaveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

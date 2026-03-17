@@ -18,7 +18,7 @@ namespace Spotted.Models.Playlists.Tracks;
 /// and `snapshot_id` in the request's body. To replace items, include `uris` as
 /// either a query parameter or in the request's body. Replacing items in a playlist
 /// will overwrite its existing items. This operation can be used for replacing or
-/// clearing items in a playlist. <br/> **Note**: Replace and reorder are mutually
+/// clearing items in a playlist. &lt;br/&gt; **Note**: Replace and reorder are mutually
 /// exclusive operations which share the same endpoint, but have different parameters.
 /// These operations can't be applied together in a single request.</para>
 ///
@@ -38,12 +38,13 @@ public record class TrackUpdateParams : ParamsBase
     public string? PlaylistID { get; init; }
 
     /// <summary>
-    /// The position where the items should be inserted.<br/>To reorder the items
-    /// to the end of the playlist, simply set _insert_before_ to the position after
-    /// the last item.<br/>Examples:<br/>To reorder the first item to the last position
-    /// in a playlist with 10 items, set _range_start_ to 0, and _insert_before_ to
-    /// 10.<br/>To reorder the last item in a playlist with 10 items to the start
-    /// of the playlist, set _range_start_ to 9, and _insert_before_ to 0.
+    /// The position where the items should be inserted.&lt;br/&gt;To reorder the
+    /// items to the end of the playlist, simply set _insert_before_ to the position
+    /// after the last item.&lt;br/&gt;Examples:&lt;br/&gt;To reorder the first item
+    /// to the last position in a playlist with 10 items, set _range_start_ to 0,
+    /// and _insert_before_ to 10.&lt;br/&gt;To reorder the last item in a playlist
+    /// with 10 items to the start of the playlist, set _range_start_ to 9, and _insert_before_
+    /// to 0.
     /// </summary>
     public long? InsertBefore
     {
@@ -88,11 +89,11 @@ public record class TrackUpdateParams : ParamsBase
     }
 
     /// <summary>
-    /// The amount of items to be reordered. Defaults to 1 if not set.<br/>The range
-    /// of items to be reordered begins from the _range_start_ position, and includes
-    /// the _range_length_ subsequent items.<br/>Example:<br/>To move the items at
-    /// index 9-10 to the start of the playlist, _range_start_ is set to 9, and _range_length_
-    /// is set to 2.
+    /// The amount of items to be reordered. Defaults to 1 if not set.&lt;br/&gt;The
+    /// range of items to be reordered begins from the _range_start_ position, and
+    /// includes the _range_length_ subsequent items.&lt;br/&gt;Example:&lt;br/&gt;To
+    /// move the items at index 9-10 to the start of the playlist, _range_start_ is
+    /// set to 9, and _range_length_ is set to 2.
     /// </summary>
     public long? RangeLength
     {
@@ -213,7 +214,7 @@ public record class TrackUpdateParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TrackUpdateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,

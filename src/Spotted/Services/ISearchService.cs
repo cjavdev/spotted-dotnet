@@ -27,9 +27,9 @@ public interface ISearchService
     ISearchService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Get Spotify catalog information about albums, artists, playlists, tracks,
-    /// shows, episodes or audiobooks that match a keyword string. Audiobooks are
-    /// only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
+    /// Get Spotify catalog information about albums, artists, playlists, tracks, shows,
+    /// episodes or audiobooks that match a keyword string. Audiobooks are only
+    /// available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
     /// </summary>
     Task<SearchQueryResponse> Query(
         SearchQueryParams parameters,
@@ -51,7 +51,7 @@ public interface ISearchServiceWithRawResponse
     ISearchServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /search`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /search</c>, but is otherwise the
     /// same as <see cref="ISearchService.Query(SearchQueryParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<SearchQueryResponse>> Query(

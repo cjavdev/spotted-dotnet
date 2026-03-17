@@ -39,7 +39,8 @@ public interface IEpisodeService
     /// Check if one or more episodes is already saved in the current Spotify user's
     /// 'Your Episodes' library.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved
+    /// Items](/documentation/web-api/reference/check-library-contains) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<List<bool>> Check(
@@ -50,7 +51,8 @@ public interface IEpisodeService
     /// <summary>
     /// Remove one or more episodes from the current user's library.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from
+    /// Library](/documentation/web-api/reference/remove-library-items) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Remove(
@@ -61,7 +63,8 @@ public interface IEpisodeService
     /// <summary>
     /// Save one or more episodes to the current user's library.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to
+    /// Library](/documentation/web-api/reference/save-library-items) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Save(EpisodeSaveParams parameters, CancellationToken cancellationToken = default);
@@ -81,7 +84,7 @@ public interface IEpisodeServiceWithRawResponse
     IEpisodeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/episodes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/episodes</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.List(EpisodeListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<EpisodeListPage>> List(
@@ -90,7 +93,7 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/episodes/contains`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/episodes/contains</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.Check(EpisodeCheckParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -100,7 +103,7 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /me/episodes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /me/episodes</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.Remove(EpisodeRemoveParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -110,7 +113,7 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/episodes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/episodes</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.Save(EpisodeSaveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

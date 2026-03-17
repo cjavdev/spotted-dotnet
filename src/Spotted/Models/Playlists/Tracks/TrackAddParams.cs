@@ -83,9 +83,9 @@ public record class TrackAddParams : ParamsBase
     /// <summary>
     /// A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids)
     /// to add. For example: `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M",
-    /// "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`<br/>A maximum of 100 items can
-    /// be added in one request. _**Note**: if the `uris` parameter is present in
-    /// the query string, any URIs listed here in the body will be ignored._
+    /// "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`&lt;br/&gt;A maximum of 100 items
+    /// can be added in one request. _**Note**: if the `uris` parameter is present
+    /// in the query string, any URIs listed here in the body will be ignored._
     /// </summary>
     public IReadOnlyList<string>? Uris
     {
@@ -146,7 +146,7 @@ public record class TrackAddParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TrackAddParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,

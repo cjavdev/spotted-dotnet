@@ -40,8 +40,8 @@ public interface IBrowseService
     );
 
     /// <summary>
-    /// Get a list of new album releases featured in Spotify (shown, for example,
-    /// on a Spotify player’s “Browse” tab).
+    /// Get a list of new album releases featured in Spotify (shown, for example, on a
+    /// Spotify player’s “Browse” tab).
     /// </summary>
     [Obsolete("deprecated")]
     Task<BrowseGetNewReleasesResponse> GetNewReleases(
@@ -66,7 +66,7 @@ public interface IBrowseServiceWithRawResponse
     ICategoryServiceWithRawResponse Categories { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /browse/featured-playlists`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /browse/featured-playlists</c>, but is otherwise the
     /// same as <see cref="IBrowseService.GetFeaturedPlaylists(BrowseGetFeaturedPlaylistsParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -76,7 +76,7 @@ public interface IBrowseServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /browse/new-releases`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /browse/new-releases</c>, but is otherwise the
     /// same as <see cref="IBrowseService.GetNewReleases(BrowseGetNewReleasesParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
