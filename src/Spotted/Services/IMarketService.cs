@@ -50,7 +50,7 @@ public interface IMarketServiceWithRawResponse
     IMarketServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /markets`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /markets</c>, but is otherwise the
     /// same as <see cref="IMarketService.List(MarketListParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

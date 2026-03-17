@@ -20,8 +20,8 @@ namespace Spotted.Models.Me.Player;
 public record class PlayerToggleShuffleParams : ParamsBase
 {
     /// <summary>
-    /// **true** : Shuffle user's playback.<br/> **false** : Do not shuffle user's
-    /// playback.
+    /// **true** : Shuffle user's playback.&lt;br/&gt; **false** : Do not shuffle
+    /// user's playback.
     /// </summary>
     public required bool State
     {
@@ -84,7 +84,7 @@ public record class PlayerToggleShuffleParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PlayerToggleShuffleParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

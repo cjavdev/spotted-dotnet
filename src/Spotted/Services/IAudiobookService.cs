@@ -54,8 +54,9 @@ public interface IAudiobookService
     );
 
     /// <summary>
-    /// Get Spotify catalog information about an audiobook's chapters. Audiobooks
-    /// are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
+    /// Get Spotify catalog information about an audiobook's chapters. Audiobooks are
+    /// only available within the US, UK, Canada, Ireland, New Zealand and Australia
+    /// markets.
     /// </summary>
     Task<AudiobookListChaptersPage> ListChapters(
         AudiobookListChaptersParams parameters,
@@ -84,7 +85,7 @@ public interface IAudiobookServiceWithRawResponse
     IAudiobookServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /audiobooks/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /audiobooks/{id}</c>, but is otherwise the
     /// same as <see cref="IAudiobookService.Retrieve(AudiobookRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<AudiobookRetrieveResponse>> Retrieve(
@@ -100,7 +101,7 @@ public interface IAudiobookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /audiobooks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /audiobooks</c>, but is otherwise the
     /// same as <see cref="IAudiobookService.BulkRetrieve(AudiobookBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -110,7 +111,7 @@ public interface IAudiobookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /audiobooks/{id}/chapters`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /audiobooks/{id}/chapters</c>, but is otherwise the
     /// same as <see cref="IAudiobookService.ListChapters(AudiobookListChaptersParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<AudiobookListChaptersPage>> ListChapters(

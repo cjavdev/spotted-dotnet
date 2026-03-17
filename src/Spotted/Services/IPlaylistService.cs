@@ -82,7 +82,7 @@ public interface IPlaylistServiceWithRawResponse
     Playlists::IImageServiceWithRawResponse Images { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /playlists/{playlist_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /playlists/{playlist_id}</c>, but is otherwise the
     /// same as <see cref="IPlaylistService.Retrieve(PlaylistRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PlaylistRetrieveResponse>> Retrieve(
@@ -98,7 +98,7 @@ public interface IPlaylistServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /playlists/{playlist_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /playlists/{playlist_id}</c>, but is otherwise the
     /// same as <see cref="IPlaylistService.Update(PlaylistUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Update(

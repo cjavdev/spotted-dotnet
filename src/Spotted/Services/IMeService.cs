@@ -87,7 +87,7 @@ public interface IMeServiceWithRawResponse
     Me::IPlayerServiceWithRawResponse Player { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me</c>, but is otherwise the
     /// same as <see cref="IMeService.Retrieve(MeRetrieveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<MeRetrieveResponse>> Retrieve(

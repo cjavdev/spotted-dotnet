@@ -57,7 +57,7 @@ public interface ITopServiceWithRawResponse
     ITopServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/top/artists`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/top/artists</c>, but is otherwise the
     /// same as <see cref="ITopService.ListTopArtists(TopListTopArtistsParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TopListTopArtistsPage>> ListTopArtists(
@@ -66,7 +66,7 @@ public interface ITopServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/top/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/top/tracks</c>, but is otherwise the
     /// same as <see cref="ITopService.ListTopTracks(TopListTopTracksParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<TopListTopTracksPage>> ListTopTracks(

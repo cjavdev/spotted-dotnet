@@ -63,7 +63,7 @@ public interface IUserServiceWithRawResponse
     Users::IPlaylistServiceWithRawResponse Playlists { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /users/{user_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /users/{user_id}</c>, but is otherwise the
     /// same as <see cref="IUserService.RetrieveProfile(UserRetrieveProfileParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

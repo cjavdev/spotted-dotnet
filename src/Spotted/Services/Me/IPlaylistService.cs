@@ -49,7 +49,7 @@ public interface IPlaylistServiceWithRawResponse
     IPlaylistServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/playlists`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/playlists</c>, but is otherwise the
     /// same as <see cref="IPlaylistService.List(PlaylistListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<PlaylistListPage>> List(

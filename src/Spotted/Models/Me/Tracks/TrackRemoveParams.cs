@@ -30,7 +30,7 @@ public record class TrackRemoveParams : ParamsBase
 
     /// <summary>
     /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
-    /// For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A
+    /// For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A
     /// maximum of 50 items can be specified in one request. _**Note**: if the `ids`
     /// parameter is present in the query string, any IDs listed here in the body
     /// will be ignored._
@@ -116,7 +116,7 @@ public record class TrackRemoveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TrackRemoveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,

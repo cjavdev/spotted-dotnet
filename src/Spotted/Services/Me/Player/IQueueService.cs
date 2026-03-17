@@ -27,9 +27,9 @@ public interface IQueueService
     IQueueService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Add an item to be played next in the user's current playback queue. This
-    /// API only works for users who have Spotify Premium. The order of execution
-    /// is not guaranteed when you use this API with other Player API endpoints.
+    /// Add an item to be played next in the user's current playback queue. This API
+    /// only works for users who have Spotify Premium. The order of execution is not
+    /// guaranteed when you use this API with other Player API endpoints.
     /// </summary>
     Task Add(QueueAddParams parameters, CancellationToken cancellationToken = default);
 
@@ -56,7 +56,7 @@ public interface IQueueServiceWithRawResponse
     IQueueServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /me/player/queue`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /me/player/queue</c>, but is otherwise the
     /// same as <see cref="IQueueService.Add(QueueAddParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Add(
@@ -65,7 +65,7 @@ public interface IQueueServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/player/queue`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/player/queue</c>, but is otherwise the
     /// same as <see cref="IQueueService.Get(QueueGetParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<QueueGetResponse>> Get(

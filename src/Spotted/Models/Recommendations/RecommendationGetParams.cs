@@ -52,12 +52,12 @@ public record class RecommendationGetParams : ParamsBase
     /// <summary>
     /// An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
     ///   If a country code is specified, only content that is available in that market
-    /// will be returned.<br/>   If a valid user access token is specified in the
-    /// request header, the country associated with   the user account will take
-    /// priority over this parameter.<br/>   _**Note**: If neither market or user
-    /// country are provided, the content is considered unavailable for the client._<br/>
-    ///   Users can view the country that is associated with their account in the
-    /// [account settings](https://www.spotify.com/account/overview/).
+    /// will be returned.&lt;br/&gt;   If a valid user access token is specified in
+    /// the request header, the country associated with   the user account will take
+    /// priority over this parameter.&lt;br/&gt;   _**Note**: If neither market or
+    /// user country are provided, the content is considered unavailable for the
+    /// client._&lt;br/&gt;   Users can view the country that is associated with
+    /// their account in the [account settings](https://www.spotify.com/account/overview/).
     /// </summary>
     public string? Market
     {
@@ -752,8 +752,8 @@ public record class RecommendationGetParams : ParamsBase
     /// <summary>
     /// A comma separated list of [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids)
     /// for seed artists.  Up to 5 seed values may be provided in any combination
-    /// of `seed_artists`, `seed_tracks` and `seed_genres`.<br/> _**Note**: only
-    /// required if `seed_genres` and `seed_tracks` are not set_.
+    /// of `seed_artists`, `seed_tracks` and `seed_genres`.&lt;br/&gt; _**Note**:
+    /// only required if `seed_genres` and `seed_tracks` are not set_.
     /// </summary>
     public string? SeedArtists
     {
@@ -776,7 +776,7 @@ public record class RecommendationGetParams : ParamsBase
     /// <summary>
     /// A comma separated list of any genres in the set of [available genre seeds](/documentation/web-api/reference/get-recommendation-genres).
     /// Up to 5 seed values may be provided in any combination of `seed_artists`,
-    /// `seed_tracks` and `seed_genres`.<br/> _**Note**: only required if `seed_artists`
+    /// `seed_tracks` and `seed_genres`.&lt;br/&gt; _**Note**: only required if `seed_artists`
     /// and `seed_tracks` are not set_.
     /// </summary>
     public string? SeedGenres
@@ -800,8 +800,8 @@ public record class RecommendationGetParams : ParamsBase
     /// <summary>
     /// A comma separated list of [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids)
     /// for a seed track.  Up to 5 seed values may be provided in any combination
-    /// of `seed_artists`, `seed_tracks` and `seed_genres`.<br/> _**Note**: only required
-    /// if `seed_artists` and `seed_genres` are not set_.
+    /// of `seed_artists`, `seed_tracks` and `seed_genres`.&lt;br/&gt; _**Note**:
+    /// only required if `seed_artists` and `seed_genres` are not set_.
     /// </summary>
     public string? SeedTracks
     {
@@ -1180,7 +1180,7 @@ public record class RecommendationGetParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static RecommendationGetParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData

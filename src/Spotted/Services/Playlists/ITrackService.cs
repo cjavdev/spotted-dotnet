@@ -27,17 +27,19 @@ public interface ITrackService
     ITrackService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// **Deprecated:** Use [Update Playlist Items](/documentation/web-api/reference/reorder-or-replace-playlists-items) instead.
+    /// **Deprecated:** Use [Update Playlist
+    /// Items](/documentation/web-api/reference/reorder-or-replace-playlists-items)
+    /// instead.
     ///
     /// <para>Either reorder or replace items in a playlist depending on the request's
-    /// parameters. To reorder items, include `range_start`, `insert_before`, `range_length`
-    /// and `snapshot_id` in the request's body. To replace items, include `uris`
-    /// as either a query parameter or in the request's body. Replacing items in
-    /// a playlist will overwrite its existing items. This operation can be used
-    /// for replacing or clearing items in a playlist. <br/> **Note**: Replace and
-    /// reorder are mutually exclusive operations which share the same endpoint,
-    /// but have different parameters. These operations can't be applied together
-    /// in a single request.</para>
+    /// parameters. To reorder items, include `range_start`, `insert_before`,
+    /// `range_length` and `snapshot_id` in the request's body. To replace items,
+    /// include `uris` as either a query parameter or in the request's body. Replacing
+    /// items in a playlist will overwrite its existing items. This operation can be
+    /// used for replacing or clearing items in a playlist. <br/> **Note**: Replace and
+    /// reorder are mutually exclusive operations which share the same endpoint, but
+    /// have different parameters. These operations can't be applied together in a
+    /// single request. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<TrackUpdateResponse> Update(
@@ -54,9 +56,10 @@ public interface ITrackService
     );
 
     /// <summary>
-    /// **Deprecated:** Use [Get Playlist Items](/documentation/web-api/reference/get-playlists-items) instead.
+    /// **Deprecated:** Use [Get Playlist
+    /// Items](/documentation/web-api/reference/get-playlists-items) instead.
     ///
-    /// <para>Get full details of the items of a playlist owned by a Spotify user.</para>
+    /// <para>Get full details of the items of a playlist owned by a Spotify user. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<TrackListPage> List(
@@ -73,9 +76,10 @@ public interface ITrackService
     );
 
     /// <summary>
-    /// **Deprecated:** Use [Add Items to Playlist](/documentation/web-api/reference/add-items-to-playlist) instead.
+    /// **Deprecated:** Use [Add Items to
+    /// Playlist](/documentation/web-api/reference/add-items-to-playlist) instead.
     ///
-    /// <para>Add one or more items to a user's playlist.</para>
+    /// <para>Add one or more items to a user's playlist. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<TrackAddResponse> Add(
@@ -92,9 +96,10 @@ public interface ITrackService
     );
 
     /// <summary>
-    /// **Deprecated:** Use [Remove Playlist Items](/documentation/web-api/reference/remove-items-playlist) instead.
+    /// **Deprecated:** Use [Remove Playlist
+    /// Items](/documentation/web-api/reference/remove-items-playlist) instead.
     ///
-    /// <para>Remove one or more items from a user's playlist.</para>
+    /// <para>Remove one or more items from a user's playlist. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<TrackRemoveResponse> Remove(
@@ -125,7 +130,7 @@ public interface ITrackServiceWithRawResponse
     ITrackServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /playlists/{playlist_id}/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /playlists/{playlist_id}/tracks</c>, but is otherwise the
     /// same as <see cref="ITrackService.Update(TrackUpdateParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -143,7 +148,7 @@ public interface ITrackServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /playlists/{playlist_id}/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /playlists/{playlist_id}/tracks</c>, but is otherwise the
     /// same as <see cref="ITrackService.List(TrackListParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -161,7 +166,7 @@ public interface ITrackServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /playlists/{playlist_id}/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /playlists/{playlist_id}/tracks</c>, but is otherwise the
     /// same as <see cref="ITrackService.Add(TrackAddParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -179,7 +184,7 @@ public interface ITrackServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /playlists/{playlist_id}/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /playlists/{playlist_id}/tracks</c>, but is otherwise the
     /// same as <see cref="ITrackService.Remove(TrackRemoveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

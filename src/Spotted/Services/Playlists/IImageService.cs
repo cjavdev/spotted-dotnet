@@ -76,7 +76,7 @@ public interface IImageServiceWithRawResponse
     IImageServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /playlists/{playlist_id}/images`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /playlists/{playlist_id}/images</c>, but is otherwise the
     /// same as <see cref="IImageService.Update(ImageUpdateParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse> Update(
@@ -93,7 +93,7 @@ public interface IImageServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /playlists/{playlist_id}/images`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /playlists/{playlist_id}/images</c>, but is otherwise the
     /// same as <see cref="IImageService.List(ImageListParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<List<ImageObject>>> List(

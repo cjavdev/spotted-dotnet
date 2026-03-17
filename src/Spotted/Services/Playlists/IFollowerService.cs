@@ -30,7 +30,8 @@ public interface IFollowerService
     /// <summary>
     /// Check to see if the current user is following a specified playlist.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved Items](/documentation/web-api/reference/check-library-contains) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved
+    /// Items](/documentation/web-api/reference/check-library-contains) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<List<bool>> Check(
@@ -49,7 +50,8 @@ public interface IFollowerService
     /// <summary>
     /// Add the current user as a follower of a playlist.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to
+    /// Library](/documentation/web-api/reference/save-library-items) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Follow(FollowerFollowParams parameters, CancellationToken cancellationToken = default);
@@ -65,7 +67,8 @@ public interface IFollowerService
     /// <summary>
     /// Remove the current user as a follower of a playlist.
     ///
-    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from
+    /// Library](/documentation/web-api/reference/remove-library-items) instead. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task Unfollow(FollowerUnfollowParams parameters, CancellationToken cancellationToken = default);
@@ -93,7 +96,7 @@ public interface IFollowerServiceWithRawResponse
     IFollowerServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /playlists/{playlist_id}/followers/contains`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /playlists/{playlist_id}/followers/contains</c>, but is otherwise the
     /// same as <see cref="IFollowerService.Check(FollowerCheckParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -111,7 +114,7 @@ public interface IFollowerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /playlists/{playlist_id}/followers`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /playlists/{playlist_id}/followers</c>, but is otherwise the
     /// same as <see cref="IFollowerService.Follow(FollowerFollowParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -129,7 +132,7 @@ public interface IFollowerServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /playlists/{playlist_id}/followers`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /playlists/{playlist_id}/followers</c>, but is otherwise the
     /// same as <see cref="IFollowerService.Unfollow(FollowerUnfollowParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

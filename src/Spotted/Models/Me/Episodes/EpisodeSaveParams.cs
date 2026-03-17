@@ -30,9 +30,9 @@ public record class EpisodeSaveParams : ParamsBase
 
     /// <summary>
     /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
-    /// <br/>A maximum of 50 items can be specified in one request. _**Note**: if
-    /// the `ids` parameter is present in the query string, any IDs listed here in
-    /// the body will be ignored._
+    /// &lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**:
+    /// if the `ids` parameter is present in the query string, any IDs listed here
+    /// in the body will be ignored._
     /// </summary>
     public required IReadOnlyList<string> Ids
     {
@@ -110,7 +110,7 @@ public record class EpisodeSaveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static EpisodeSaveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,

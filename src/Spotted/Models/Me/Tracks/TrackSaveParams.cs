@@ -31,7 +31,7 @@ public record class TrackSaveParams : ParamsBase
 
     /// <summary>
     /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
-    /// For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A
+    /// For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A
     /// maximum of 50 items can be specified in one request. _**Note**: if the `timestamped_ids`
     /// is present in the body, any IDs listed in the query parameters (deprecated)
     /// or the `ids` field in the body will be ignored._
@@ -80,10 +80,10 @@ public record class TrackSaveParams : ParamsBase
     /// A JSON array of objects containing track IDs with their corresponding timestamps.
     /// Each object must include a track ID and an `added_at` timestamp. This allows
     /// you to specify when tracks were added to maintain a specific chronological
-    /// order in the user's library.<br/>A maximum of 50 items can be specified in
-    /// one request. _**Note**: if the `timestamped_ids` is present in the body, any
-    /// IDs listed in the query parameters (deprecated) or the `ids` field in the
-    /// body will be ignored._
+    /// order in the user's library.&lt;br/&gt;A maximum of 50 items can be specified
+    /// in one request. _**Note**: if the `timestamped_ids` is present in the body,
+    /// any IDs listed in the query parameters (deprecated) or the `ids` field in
+    /// the body will be ignored._
     /// </summary>
     public IReadOnlyList<TimestampedID>? TimestampedIds
     {
@@ -144,7 +144,7 @@ public record class TrackSaveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TrackSaveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
