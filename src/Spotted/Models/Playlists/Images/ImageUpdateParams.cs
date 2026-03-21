@@ -18,11 +18,7 @@ namespace Spotted.Models.Playlists.Images;
 /// </summary>
 public record class ImageUpdateParams : ParamsBase
 {
-    readonly JsonDictionary _rawBodyData = new();
-    public IReadOnlyDictionary<string, JsonElement> RawBodyData
-    {
-        get { return this._rawBodyData.Freeze(); }
-    }
+    public JsonElement RawBodyData { get; private init; }
 
     public string? PlaylistID { get; init; }
 
@@ -33,10 +29,12 @@ public record class ImageUpdateParams : ParamsBase
     {
         get
         {
-            this._rawBodyData.Freeze();
-            return this._rawBodyData.GetNotNullClass<BinaryContent>("body");
+            return WrappedMultipartJsonSerializer.GetNotNullClass<BinaryContent>(
+                this.RawBodyData,
+                "RawBodyData"
+            );
         }
-        init { this._rawBodyData.Set("body", value); }
+        init { this.RawBodyData = JsonSerializer.SerializeToElement(value); }
     }
 
     public ImageUpdateParams() { }
@@ -48,19 +46,19 @@ public record class ImageUpdateParams : ParamsBase
     {
         this.PlaylistID = imageUpdateParams.PlaylistID;
 
-        this._rawBodyData = new(imageUpdateParams._rawBodyData);
+        this.RawBodyData = imageUpdateParams.RawBodyData;
     }
 #pragma warning restore CS8618
 
     public ImageUpdateParams(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        JsonElement rawBodyData
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
     }
 
 #pragma warning disable CS8618
@@ -68,13 +66,13 @@ public record class ImageUpdateParams : ParamsBase
     ImageUpdateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData,
+        JsonElement rawBodyData,
         string playlistID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
-        this._rawBodyData = new(rawBodyData);
+        this.RawBodyData = rawBodyData;
         this.PlaylistID = playlistID;
     }
 #pragma warning restore CS8618
@@ -83,14 +81,14 @@ public record class ImageUpdateParams : ParamsBase
     public static ImageUpdateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData,
+        JsonElement rawBodyData,
         string playlistID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData),
+            rawBodyData,
             playlistID
         );
     }
@@ -107,7 +105,7 @@ public record class ImageUpdateParams : ParamsBase
                     ["QueryData"] = FriendlyJsonPrinter.PrintValue(
                         JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
                     ),
-                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this.RawBodyData),
                 }
             ),
             ModelBase.ToStringSerializerOptions
@@ -122,7 +120,7 @@ public record class ImageUpdateParams : ParamsBase
         return (this.PlaylistID?.Equals(other.PlaylistID) ?? other.PlaylistID == null)
             && this._rawHeaderData.Equals(other._rawHeaderData)
             && this._rawQueryData.Equals(other._rawQueryData)
-            && this._rawBodyData.Equals(other._rawBodyData);
+            && this.RawBodyData.Equals(other.RawBodyData);
     }
 
     public override Uri Url(ClientOptions options)
