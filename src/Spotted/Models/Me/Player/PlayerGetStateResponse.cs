@@ -910,12 +910,10 @@ sealed class PlayerGetStateResponseItemConverter : JsonConverter<PlayerGetStateR
                     var deserialized = JsonSerializer.Deserialize<TrackObject>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (System::Exception e)
-                    when (e is JsonException || e is SpottedInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -929,12 +927,10 @@ sealed class PlayerGetStateResponseItemConverter : JsonConverter<PlayerGetStateR
                     var deserialized = JsonSerializer.Deserialize<EpisodeObject>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (System::Exception e)
-                    when (e is JsonException || e is SpottedInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
