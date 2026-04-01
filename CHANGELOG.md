@@ -1,5 +1,59 @@
 # Changelog
 
+## 0.8.0 (2026-04-01)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** api update ([fda42ea](https://github.com/cjavdev/spotted-dotnet/commit/fda42ea6304bf9a2d7c69fe19961e0e41c2ccf56))
+* **api:** api update ([78b9943](https://github.com/cjavdev/spotted-dotnet/commit/78b9943f554927f4f0b08af24db8f825291fde2f))
+* **api:** api update ([2eed283](https://github.com/cjavdev/spotted-dotnet/commit/2eed28369becebe038834f30301c5cda526b4687))
+* **api:** api update ([bbbf4d4](https://github.com/cjavdev/spotted-dotnet/commit/bbbf4d4a217eb51d1f700e88578eead359b6601a))
+* **api:** api update ([3a1a558](https://github.com/cjavdev/spotted-dotnet/commit/3a1a558bdc6ff24515a22f0877529a553d246ecc))
+* **api:** api update ([39c1bde](https://github.com/cjavdev/spotted-dotnet/commit/39c1bde04459c5737714cc4f4fb6c03389917468))
+* **client:** add `ToString` and `Equals` methods ([e853b61](https://github.com/cjavdev/spotted-dotnet/commit/e853b61df9e96de62ffd51168167e658408911f7))
+* **client:** add equality and tostring for multipart data ([3d48742](https://github.com/cjavdev/spotted-dotnet/commit/3d487429f1a99c8294f054f6f0ef7011720a4bc3))
+* **client:** enable gzip decompression ([479695f](https://github.com/cjavdev/spotted-dotnet/commit/479695f5ef06be0f9da61c75b1d51e6664216e2d))
+
+
+### Bug Fixes
+
+* **client:** handle path params correctly in `FromRawUnchecked` ([882a673](https://github.com/cjavdev/spotted-dotnet/commit/882a673f9f8ba2e82c1f5cdba00bfd500cf51084))
+* **client:** handle root bodies in requests properly ([6aafae8](https://github.com/cjavdev/spotted-dotnet/commit/6aafae824aa1b0e81a8722fb029bc1c6850ad4b1))
+* **client:** improve behaviour for comma-delimited binary content in multipart requests ([a448675](https://github.com/cjavdev/spotted-dotnet/commit/a44867539a0a669f137cd92f8ae78df500a0c0fa))
+* **client:** improve union equality method ([351fb7a](https://github.com/cjavdev/spotted-dotnet/commit/351fb7ab8e0513be2d11705d3f98da31a9490997))
+* **docs:** make xml syntactically correct ([5742fa4](https://github.com/cjavdev/spotted-dotnet/commit/5742fa4aee0103f6c7601920524bcade90bf4ed9))
+
+
+### Chores
+
+* change visibility of QueryString() and AddDefaultHeaders ([f5f8f11](https://github.com/cjavdev/spotted-dotnet/commit/f5f8f11981b47a3cee60fa464daa5aa1427227d9))
+* **ci:** skip lint on metadata-only changes ([205d572](https://github.com/cjavdev/spotted-dotnet/commit/205d572f0a1abf91e84095046184f5ef5dd48d6e))
+* **client:** update formatting ([f841d56](https://github.com/cjavdev/spotted-dotnet/commit/f841d56b855611fee37de7dbf7b172ee33296a9a))
+* **docs:** add proxy documentation to readme ([f2ad949](https://github.com/cjavdev/spotted-dotnet/commit/f2ad9495c0358f21567a7e196d3780c85cfa2bf3))
+* **docs:** add undocumented parameters to readme ([93ed8f3](https://github.com/cjavdev/spotted-dotnet/commit/93ed8f3891c8683d2dfd01994084e2e1bedcc969))
+* **internal:** ignore stainless-internal artifacts ([e3e4d35](https://github.com/cjavdev/spotted-dotnet/commit/e3e4d353e9a8e73741069b6d23fcfaea00adda5d))
+* **internal:** improve HttpResponse qualification ([83e2e13](https://github.com/cjavdev/spotted-dotnet/commit/83e2e13cbb95e67f3d2c4c0d05896564904f68ef))
+* **internal:** remove mock server code ([882ccd6](https://github.com/cjavdev/spotted-dotnet/commit/882ccd6f014c635d6e234bf5c47e95bf2d29e0ca))
+* **internal:** tweak CI branches ([df941dd](https://github.com/cjavdev/spotted-dotnet/commit/df941dddb192935acf06dae2b0ecad4e3003269a))
+* **internal:** update gitignore ([048a30d](https://github.com/cjavdev/spotted-dotnet/commit/048a30d78f0fb6660257d4174b891fb23edd48aa))
+* send Accept header in more places ([0e94c29](https://github.com/cjavdev/spotted-dotnet/commit/0e94c29296c9192adf8b79af8b4698feb17bf7fa))
+* **tests:** add tests for retry logic ([b1c6110](https://github.com/cjavdev/spotted-dotnet/commit/b1c61108d7d5685a96d43ff4ee35dcdc25af97aa))
+* **test:** update skip reason message ([ffcddc3](https://github.com/cjavdev/spotted-dotnet/commit/ffcddc3f87ffd5d4ff62084de0bbca5920fc7242))
+* update mock server docs ([a132b32](https://github.com/cjavdev/spotted-dotnet/commit/a132b32b0a55264cba326818f0f898c33f0013bf))
+* update placeholder string ([0f0154a](https://github.com/cjavdev/spotted-dotnet/commit/0f0154a7a6713ab346dbb993558fc36da185f574))
+
+
+### Documentation
+
+* remove typo in README.md ([32cac73](https://github.com/cjavdev/spotted-dotnet/commit/32cac737a40bd36480ad6eab1cc863cec8e9afca))
+
+
+### Refactors
+
+* **internal:** default headers ([c959582](https://github.com/cjavdev/spotted-dotnet/commit/c95958241baba34078940edab5e0eb5194537a37))
+
 ## 0.7.0 (2026-01-23)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.6.0...v0.7.0)
