@@ -13,10 +13,13 @@ namespace Spotted.Models.Me.Following;
 /// <summary>
 /// Remove the current user as a follower of one or more artists or other Spotify users.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Remove Items from Library](/documentation/web-api/reference/remove-library-items) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class FollowingUnfollowParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
@@ -112,7 +115,7 @@ public record class FollowingUnfollowParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static FollowingUnfollowParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -128,12 +131,18 @@ public record class FollowingUnfollowParams : ParamsBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-                ["BodyData"] = this._rawBodyData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

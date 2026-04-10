@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services;
 
 public class RecommendationServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Get_Works()
     {
         var recommendation = await this.client.Recommendations.Get(
@@ -14,7 +14,7 @@ public class RecommendationServiceTest : TestBase
         recommendation.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListAvailableGenreSeeds_Works()
     {
         var response = await this.client.Recommendations.ListAvailableGenreSeeds(

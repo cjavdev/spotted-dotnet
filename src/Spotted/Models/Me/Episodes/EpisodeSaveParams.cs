@@ -11,14 +11,15 @@ using Spotted.Core;
 namespace Spotted.Models.Me.Episodes;
 
 /// <summary>
-/// Save one or more episodes to the current user's library.<br/> This API endpoint
-/// is in __beta__ and could change without warning. Please share any feedback that
-/// you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
+/// Save one or more episodes to the current user's library.
+///
+/// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class EpisodeSaveParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
@@ -29,9 +30,9 @@ public record class EpisodeSaveParams : ParamsBase
 
     /// <summary>
     /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
-    /// <br/>A maximum of 50 items can be specified in one request. _**Note**: if
-    /// the `ids` parameter is present in the query string, any IDs listed here in
-    /// the body will be ignored._
+    /// &lt;br/&gt;A maximum of 50 items can be specified in one request. _**Note**:
+    /// if the `ids` parameter is present in the query string, any IDs listed here
+    /// in the body will be ignored._
     /// </summary>
     public required IReadOnlyList<string> Ids
     {
@@ -109,7 +110,7 @@ public record class EpisodeSaveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static EpisodeSaveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -125,12 +126,18 @@ public record class EpisodeSaveParams : ParamsBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-                ["BodyData"] = this._rawBodyData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

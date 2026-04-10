@@ -47,6 +47,7 @@ public sealed class ShowService : IShowService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         ShowCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -59,6 +60,7 @@ public sealed class ShowService : IShowService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Remove(
         ShowRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -68,6 +70,7 @@ public sealed class ShowService : IShowService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Save(
         ShowSaveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -124,6 +127,7 @@ public sealed class ShowServiceWithRawResponse : IShowServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         ShowCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -145,6 +149,7 @@ public sealed class ShowServiceWithRawResponse : IShowServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Remove(
         ShowRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -161,6 +166,7 @@ public sealed class ShowServiceWithRawResponse : IShowServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Save(
         ShowSaveParams? parameters = null,
         CancellationToken cancellationToken = default

@@ -46,6 +46,7 @@ public interface IEpisodeService
     /// <summary>
     /// Get Spotify catalog information for several episodes based on their Spotify IDs.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<EpisodeBulkRetrieveResponse> BulkRetrieve(
         EpisodeBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -66,7 +67,7 @@ public interface IEpisodeServiceWithRawResponse
     IEpisodeServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /episodes/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /episodes/{id}</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.Retrieve(EpisodeRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<EpisodeObject>> Retrieve(
@@ -82,9 +83,10 @@ public interface IEpisodeServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /episodes`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /episodes</c>, but is otherwise the
     /// same as <see cref="IEpisodeService.BulkRetrieve(EpisodeBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<EpisodeBulkRetrieveResponse>> BulkRetrieve(
         EpisodeBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

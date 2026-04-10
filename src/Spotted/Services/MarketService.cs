@@ -34,6 +34,7 @@ public sealed class MarketService : IMarketService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<MarketListResponse> List(
         MarketListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -63,6 +64,7 @@ public sealed class MarketServiceWithRawResponse : IMarketServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<MarketListResponse>> List(
         MarketListParams? parameters = null,
         CancellationToken cancellationToken = default

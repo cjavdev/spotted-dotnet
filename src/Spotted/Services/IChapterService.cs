@@ -27,8 +27,9 @@ public interface IChapterService
     IChapterService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Get Spotify catalog information for a single audiobook chapter. Chapters
-    /// are only available within the US, UK, Canada, Ireland, New Zealand and Australia markets.
+    /// Get Spotify catalog information for a single audiobook chapter. Chapters are
+    /// only available within the US, UK, Canada, Ireland, New Zealand and Australia
+    /// markets.
     /// </summary>
     Task<ChapterRetrieveResponse> Retrieve(
         ChapterRetrieveParams parameters,
@@ -43,10 +44,11 @@ public interface IChapterService
     );
 
     /// <summary>
-    /// Get Spotify catalog information for several audiobook chapters identified
-    /// by their Spotify IDs. Chapters are only available within the US, UK, Canada,
+    /// Get Spotify catalog information for several audiobook chapters identified by
+    /// their Spotify IDs. Chapters are only available within the US, UK, Canada,
     /// Ireland, New Zealand and Australia markets.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ChapterBulkRetrieveResponse> BulkRetrieve(
         ChapterBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -67,7 +69,7 @@ public interface IChapterServiceWithRawResponse
     IChapterServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /chapters/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /chapters/{id}</c>, but is otherwise the
     /// same as <see cref="IChapterService.Retrieve(ChapterRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ChapterRetrieveResponse>> Retrieve(
@@ -83,9 +85,10 @@ public interface IChapterServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /chapters`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /chapters</c>, but is otherwise the
     /// same as <see cref="IChapterService.BulkRetrieve(ChapterBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ChapterBulkRetrieveResponse>> BulkRetrieve(
         ChapterBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

@@ -27,16 +27,21 @@ public interface IPlaylistService
     IPlaylistService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Create a playlist for a Spotify user. (The playlist will be empty until you
-    /// [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each
-    /// user is generally limited to a maximum of 11000 playlists.
+    /// **Deprecated**: Use [Create
+    /// Playlist](/documentation/web-api/reference/create-playlist) instead.
+    ///
+    /// <para>Create a playlist for a Spotify user. (The playlist will be empty until
+    /// you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each
+    /// user is generally limited to a maximum of 11000 playlists. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<PlaylistCreateResponse> Create(
         PlaylistCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Create(PlaylistCreateParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<PlaylistCreateResponse> Create(
         string userID,
         PlaylistCreateParams parameters,
@@ -46,12 +51,14 @@ public interface IPlaylistService
     /// <summary>
     /// Get a list of the playlists owned or followed by a Spotify user.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<PlaylistListPage> List(
         PlaylistListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(PlaylistListParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<PlaylistListPage> List(
         string userID,
         PlaylistListParams? parameters = null,
@@ -73,15 +80,17 @@ public interface IPlaylistServiceWithRawResponse
     IPlaylistServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `post /users/{user_id}/playlists`, but is otherwise the
+    /// Returns a raw HTTP response for <c>post /users/{user_id}/playlists</c>, but is otherwise the
     /// same as <see cref="IPlaylistService.Create(PlaylistCreateParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<PlaylistCreateResponse>> Create(
         PlaylistCreateParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Create(PlaylistCreateParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<PlaylistCreateResponse>> Create(
         string userID,
         PlaylistCreateParams parameters,
@@ -89,15 +98,17 @@ public interface IPlaylistServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /users/{user_id}/playlists`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /users/{user_id}/playlists</c>, but is otherwise the
     /// same as <see cref="IPlaylistService.List(PlaylistListParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<PlaylistListPage>> List(
         PlaylistListParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="List(PlaylistListParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<PlaylistListPage>> List(
         string userID,
         PlaylistListParams? parameters = null,

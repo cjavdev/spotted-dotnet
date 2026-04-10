@@ -29,6 +29,7 @@ public interface IMarketService
     /// <summary>
     /// Get the list of markets where Spotify is available.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<MarketListResponse> List(
         MarketListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -49,9 +50,10 @@ public interface IMarketServiceWithRawResponse
     IMarketServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /markets`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /markets</c>, but is otherwise the
     /// same as <see cref="IMarketService.List(MarketListParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<MarketListResponse>> List(
         MarketListParams? parameters = null,
         CancellationToken cancellationToken = default

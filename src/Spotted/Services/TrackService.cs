@@ -60,6 +60,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<TrackBulkRetrieveResponse> BulkRetrieve(
         TrackBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -134,6 +135,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<TrackBulkRetrieveResponse>> BulkRetrieve(
         TrackBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

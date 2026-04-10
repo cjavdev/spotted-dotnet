@@ -12,14 +12,14 @@ public class ArtistListAlbumsParamsTest : TestBase
         {
             ID = "0TnOYISbd1XYRBk9myaseg",
             IncludeGroups = "single,appears_on",
-            Limit = 10,
+            Limit = 5,
             Market = "ES",
             Offset = 5,
         };
 
         string expectedID = "0TnOYISbd1XYRBk9myaseg";
         string expectedIncludeGroups = "single,appears_on";
-        long expectedLimit = 10;
+        long expectedLimit = 5;
         string expectedMarket = "ES";
         long expectedOffset = 5;
 
@@ -76,7 +76,7 @@ public class ArtistListAlbumsParamsTest : TestBase
         {
             ID = "0TnOYISbd1XYRBk9myaseg",
             IncludeGroups = "single,appears_on",
-            Limit = 10,
+            Limit = 5,
             Market = "ES",
             Offset = 5,
         };
@@ -85,7 +85,7 @@ public class ArtistListAlbumsParamsTest : TestBase
 
         Assert.Equal(
             new Uri(
-                "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?include_groups=single%2cappears_on&limit=10&market=ES&offset=5"
+                "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?include_groups=single%2cappears_on&limit=5&market=ES&offset=5"
             ),
             url
         );
@@ -98,7 +98,7 @@ public class ArtistListAlbumsParamsTest : TestBase
         {
             ID = "0TnOYISbd1XYRBk9myaseg",
             IncludeGroups = "single,appears_on",
-            Limit = 10,
+            Limit = 5,
             Market = "ES",
             Offset = 5,
         };

@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services.Me;
 
 public class AudiobookServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Me.Audiobooks.List(
@@ -14,7 +14,7 @@ public class AudiobookServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Check_Works()
     {
         await this.client.Me.Audiobooks.Check(
@@ -23,7 +23,7 @@ public class AudiobookServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Remove_Works()
     {
         await this.client.Me.Audiobooks.Remove(
@@ -32,7 +32,7 @@ public class AudiobookServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Save_Works()
     {
         await this.client.Me.Audiobooks.Save(

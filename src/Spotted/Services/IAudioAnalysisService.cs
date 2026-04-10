@@ -60,7 +60,7 @@ public interface IAudioAnalysisServiceWithRawResponse
     IAudioAnalysisServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /audio-analysis/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /audio-analysis/{id}</c>, but is otherwise the
     /// same as <see cref="IAudioAnalysisService.Retrieve(AudioAnalysisRetrieveParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

@@ -17,6 +17,7 @@ namespace Spotted.Models.Chapters;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ChapterBulkRetrieveParams : ParamsBase
 {
     /// <summary>
@@ -37,12 +38,12 @@ public record class ChapterBulkRetrieveParams : ParamsBase
     /// <summary>
     /// An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
     ///   If a country code is specified, only content that is available in that market
-    /// will be returned.<br/>   If a valid user access token is specified in the
-    /// request header, the country associated with   the user account will take
-    /// priority over this parameter.<br/>   _**Note**: If neither market or user
-    /// country are provided, the content is considered unavailable for the client._<br/>
-    ///   Users can view the country that is associated with their account in the
-    /// [account settings](https://www.spotify.com/account/overview/).
+    /// will be returned.&lt;br/&gt;   If a valid user access token is specified in
+    /// the request header, the country associated with   the user account will take
+    /// priority over this parameter.&lt;br/&gt;   _**Note**: If neither market or
+    /// user country are provided, the content is considered unavailable for the
+    /// client._&lt;br/&gt;   Users can view the country that is associated with
+    /// their account in the [account settings](https://www.spotify.com/account/overview/).
     /// </summary>
     public string? Market
     {
@@ -91,7 +92,7 @@ public record class ChapterBulkRetrieveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ChapterBulkRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
@@ -105,11 +106,17 @@ public record class ChapterBulkRetrieveParams : ParamsBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

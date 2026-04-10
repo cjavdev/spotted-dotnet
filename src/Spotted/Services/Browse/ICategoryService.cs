@@ -27,15 +27,17 @@ public interface ICategoryService
     ICategoryService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Get a single category used to tag items in Spotify (on, for example, the
-    /// Spotify player’s “Browse” tab).
+    /// Get a single category used to tag items in Spotify (on, for example, the Spotify
+    /// player’s “Browse” tab).
     /// </summary>
+    [Obsolete("deprecated")]
     Task<CategoryRetrieveResponse> Retrieve(
         CategoryRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(CategoryRetrieveParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<CategoryRetrieveResponse> Retrieve(
         string categoryID,
         CategoryRetrieveParams? parameters = null,
@@ -46,6 +48,7 @@ public interface ICategoryService
     /// Get a list of categories used to tag items in Spotify (on, for example, the
     /// Spotify player’s “Browse” tab).
     /// </summary>
+    [Obsolete("deprecated")]
     Task<CategoryListPage> List(
         CategoryListParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -83,15 +86,17 @@ public interface ICategoryServiceWithRawResponse
     ICategoryServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /browse/categories/{category_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /browse/categories/{category_id}</c>, but is otherwise the
     /// same as <see cref="ICategoryService.Retrieve(CategoryRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<CategoryRetrieveResponse>> Retrieve(
         CategoryRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="Retrieve(CategoryRetrieveParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<CategoryRetrieveResponse>> Retrieve(
         string categoryID,
         CategoryRetrieveParams? parameters = null,
@@ -99,16 +104,17 @@ public interface ICategoryServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /browse/categories`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /browse/categories</c>, but is otherwise the
     /// same as <see cref="ICategoryService.List(CategoryListParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<CategoryListPage>> List(
         CategoryListParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /browse/categories/{category_id}/playlists`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /browse/categories/{category_id}/playlists</c>, but is otherwise the
     /// same as <see cref="ICategoryService.GetPlaylists(CategoryGetPlaylistsParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

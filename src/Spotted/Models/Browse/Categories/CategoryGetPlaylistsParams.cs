@@ -88,34 +88,44 @@ public record class CategoryGetPlaylistsParams : ParamsBase
     [SetsRequiredMembers]
     CategoryGetPlaylistsParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
-        FrozenDictionary<string, JsonElement> rawQueryData
+        FrozenDictionary<string, JsonElement> rawQueryData,
+        string categoryID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
+        this.CategoryID = categoryID;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static CategoryGetPlaylistsParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
-        IReadOnlyDictionary<string, JsonElement> rawQueryData
+        IReadOnlyDictionary<string, JsonElement> rawQueryData,
+        string categoryID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
-            FrozenDictionary.ToFrozenDictionary(rawQueryData)
+            FrozenDictionary.ToFrozenDictionary(rawQueryData),
+            categoryID
         );
     }
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["CategoryID"] = this.CategoryID,
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["CategoryID"] = JsonSerializer.SerializeToElement(this.CategoryID),
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

@@ -36,6 +36,7 @@ public sealed class PlaylistService : IPlaylistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<PlaylistCreateResponse> Create(
         PlaylistCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -48,6 +49,7 @@ public sealed class PlaylistService : IPlaylistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<PlaylistCreateResponse> Create(
         string userID,
         PlaylistCreateParams parameters,
@@ -58,6 +60,7 @@ public sealed class PlaylistService : IPlaylistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<PlaylistListPage> List(
         PlaylistListParams parameters,
         CancellationToken cancellationToken = default
@@ -70,6 +73,7 @@ public sealed class PlaylistService : IPlaylistService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<PlaylistListPage> List(
         string userID,
         PlaylistListParams? parameters = null,
@@ -99,6 +103,7 @@ public sealed class PlaylistServiceWithRawResponse : IPlaylistServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<PlaylistCreateResponse>> Create(
         PlaylistCreateParams parameters,
         CancellationToken cancellationToken = default
@@ -132,6 +137,7 @@ public sealed class PlaylistServiceWithRawResponse : IPlaylistServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<PlaylistCreateResponse>> Create(
         string userID,
         PlaylistCreateParams parameters,
@@ -142,6 +148,7 @@ public sealed class PlaylistServiceWithRawResponse : IPlaylistServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<PlaylistListPage>> List(
         PlaylistListParams parameters,
         CancellationToken cancellationToken = default
@@ -175,6 +182,7 @@ public sealed class PlaylistServiceWithRawResponse : IPlaylistServiceWithRawResp
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse<PlaylistListPage>> List(
         string userID,
         PlaylistListParams? parameters = null,

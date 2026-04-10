@@ -12,10 +12,13 @@ namespace Spotted.Models.Playlists.Followers;
 /// <summary>
 /// Add the current user as a follower of a playlist.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class FollowerFollowParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
@@ -79,38 +82,48 @@ public record class FollowerFollowParams : ParamsBase
     FollowerFollowParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        FrozenDictionary<string, JsonElement> rawBodyData,
+        string playlistID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
+        this.PlaylistID = playlistID;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static FollowerFollowParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData,
+        string playlistID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            FrozenDictionary.ToFrozenDictionary(rawBodyData),
+            playlistID
         );
     }
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["PlaylistID"] = this.PlaylistID,
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-                ["BodyData"] = this._rawBodyData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["PlaylistID"] = JsonSerializer.SerializeToElement(this.PlaylistID),
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

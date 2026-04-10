@@ -16,6 +16,7 @@ namespace Spotted.Models.Browse.Categories;
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class CategoryRetrieveParams : ParamsBase
 {
     public string? CategoryID { get; init; }
@@ -23,11 +24,11 @@ public record class CategoryRetrieveParams : ParamsBase
     /// <summary>
     /// The desired language, consisting of an [ISO 639-1](http://en.wikipedia.org/wiki/ISO_639-1)
     /// language code and an [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2),
-    /// joined by an underscore. For example: `es_MX`, meaning &quot;Spanish (Mexico)&quot;.
-    /// Provide this parameter if you want the category strings returned in a particular
-    /// language.<br/> _**Note**: if `locale` is not supplied, or if the specified
-    /// language is not available, the category strings returned will be in the Spotify
-    /// default language (American English)._
+    /// joined by an underscore. For example: `es_MX`, meaning &amp;quot;Spanish
+    /// (Mexico)&amp;quot;. Provide this parameter if you want the category strings
+    /// returned in a particular language.&lt;br/&gt; _**Note**: if `locale` is not
+    /// supplied, or if the specified language is not available, the category strings
+    /// returned will be in the Spotify default language (American English)._
     /// </summary>
     public string? Locale
     {
@@ -71,34 +72,44 @@ public record class CategoryRetrieveParams : ParamsBase
     [SetsRequiredMembers]
     CategoryRetrieveParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
-        FrozenDictionary<string, JsonElement> rawQueryData
+        FrozenDictionary<string, JsonElement> rawQueryData,
+        string categoryID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
+        this.CategoryID = categoryID;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static CategoryRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
-        IReadOnlyDictionary<string, JsonElement> rawQueryData
+        IReadOnlyDictionary<string, JsonElement> rawQueryData,
+        string categoryID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
-            FrozenDictionary.ToFrozenDictionary(rawQueryData)
+            FrozenDictionary.ToFrozenDictionary(rawQueryData),
+            categoryID
         );
     }
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["CategoryID"] = this.CategoryID,
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["CategoryID"] = JsonSerializer.SerializeToElement(this.CategoryID),
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

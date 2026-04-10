@@ -167,6 +167,7 @@ public sealed record class Album : JsonModel
     /// is considered available in a market when at least 1 of its tracks is available
     /// in that market._
     /// </summary>
+    [System::Obsolete("deprecated")]
     public required IReadOnlyList<string> AvailableMarkets
     {
         get
@@ -410,6 +411,7 @@ public sealed record class Album : JsonModel
     /// <summary>
     /// The label associated with the album.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public string? Label
     {
         get
@@ -432,6 +434,7 @@ public sealed record class Album : JsonModel
     /// The popularity of the album. The value will be between 0 and 100, with 100
     /// being the most popular.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public long? Popularity
     {
         get
@@ -554,6 +557,7 @@ public sealed record class Album : JsonModel
         this.Tracks?.Validate();
     }
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Album()
     {
         this.Type = JsonSerializer.SerializeToElement("album");
@@ -561,10 +565,12 @@ public sealed record class Album : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Album(Album album)
         : base(album) { }
 #pragma warning restore CS8618
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Album(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -573,6 +579,7 @@ public sealed record class Album : JsonModel
     }
 
 #pragma warning disable CS8618
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     [SetsRequiredMembers]
     Album(FrozenDictionary<string, JsonElement> rawData)
     {

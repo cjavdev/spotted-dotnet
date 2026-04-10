@@ -321,6 +321,7 @@ public sealed record class Item : JsonModel
     /// is considered available in a market when at least 1 of its tracks is available
     /// in that market._
     /// </summary>
+    [System::Obsolete("deprecated")]
     public required IReadOnlyList<string> AvailableMarkets
     {
         get
@@ -538,6 +539,7 @@ public sealed record class Item : JsonModel
         this.Restrictions?.Validate();
     }
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Item()
     {
         this.Type = JsonSerializer.SerializeToElement("album");
@@ -545,10 +547,12 @@ public sealed record class Item : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Item(Item item)
         : base(item) { }
 #pragma warning restore CS8618
 
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     public Item(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -557,6 +561,7 @@ public sealed record class Item : JsonModel
     }
 
 #pragma warning disable CS8618
+    [System::Obsolete("Required properties are deprecated: available_markets")]
     [SetsRequiredMembers]
     Item(FrozenDictionary<string, JsonElement> rawData)
     {

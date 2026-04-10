@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services.Me;
 
 public class PlayerServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetCurrentlyPlaying_Works()
     {
         var response = await this.client.Me.Player.GetCurrentlyPlaying(
@@ -14,7 +14,7 @@ public class PlayerServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetDevices_Works()
     {
         var response = await this.client.Me.Player.GetDevices(
@@ -24,7 +24,7 @@ public class PlayerServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task GetState_Works()
     {
         var response = await this.client.Me.Player.GetState(
@@ -34,7 +34,7 @@ public class PlayerServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListRecentlyPlayed_Works()
     {
         var page = await this.client.Me.Player.ListRecentlyPlayed(
@@ -44,13 +44,13 @@ public class PlayerServiceTest : TestBase
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task PausePlayback_Works()
     {
         await this.client.Me.Player.PausePlayback(new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task SeekToPosition_Works()
     {
         await this.client.Me.Player.SeekToPosition(
@@ -59,7 +59,7 @@ public class PlayerServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task SetRepeatMode_Works()
     {
         await this.client.Me.Player.SetRepeatMode(
@@ -68,7 +68,7 @@ public class PlayerServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task SetVolume_Works()
     {
         await this.client.Me.Player.SetVolume(
@@ -77,25 +77,25 @@ public class PlayerServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task SkipNext_Works()
     {
         await this.client.Me.Player.SkipNext(new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task SkipPrevious_Works()
     {
         await this.client.Me.Player.SkipPrevious(new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task StartPlayback_Works()
     {
         await this.client.Me.Player.StartPlayback(new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ToggleShuffle_Works()
     {
         await this.client.Me.Player.ToggleShuffle(
@@ -104,7 +104,7 @@ public class PlayerServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Transfer_Works()
     {
         await this.client.Me.Player.Transfer(

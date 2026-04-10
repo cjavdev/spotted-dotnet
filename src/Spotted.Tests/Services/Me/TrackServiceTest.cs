@@ -4,14 +4,14 @@ namespace Spotted.Tests.Services.Me;
 
 public class TrackServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task List_Works()
     {
         var page = await this.client.Me.Tracks.List(new(), TestContext.Current.CancellationToken);
         page.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Check_Works()
     {
         await this.client.Me.Tracks.Check(
@@ -20,13 +20,13 @@ public class TrackServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Remove_Works()
     {
         await this.client.Me.Tracks.Remove(new(), TestContext.Current.CancellationToken);
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Save_Works()
     {
         await this.client.Me.Tracks.Save(

@@ -59,6 +59,7 @@ public sealed class AudiobookService : IAudiobookService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<AudiobookBulkRetrieveResponse> BulkRetrieve(
         AudiobookBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -157,6 +158,7 @@ public sealed class AudiobookServiceWithRawResponse : IAudiobookServiceWithRawRe
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<AudiobookBulkRetrieveResponse>> BulkRetrieve(
         AudiobookBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default

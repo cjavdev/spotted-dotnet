@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -47,5 +48,20 @@ public sealed class ShowListPage(
     }
 
     public override string ToString() =>
-        JsonSerializer.Serialize(this.Items, ModelBase.ToStringSerializerOptions);
+        JsonSerializer.Serialize(
+            FriendlyJsonPrinter.PrintValue(JsonSerializer.SerializeToElement(this.Items)),
+            ModelBase.ToStringSerializerOptions
+        );
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is not ShowListPage other)
+        {
+            return false;
+        }
+
+        return Enumerable.SequenceEqual(this.Items, other.Items);
+    }
+
+    public override int GetHashCode() => 0;
 }

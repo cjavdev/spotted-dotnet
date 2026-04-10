@@ -13,10 +13,13 @@ namespace Spotted.Models.Me.Shows;
 /// <summary>
 /// Save one or more shows to current Spotify user's library.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class ShowSaveParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
@@ -112,7 +115,7 @@ public record class ShowSaveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static ShowSaveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -128,12 +131,18 @@ public record class ShowSaveParams : ParamsBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-                ["BodyData"] = this._rawBodyData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

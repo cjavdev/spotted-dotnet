@@ -46,6 +46,7 @@ public interface IArtistService
     /// <summary>
     /// Get Spotify catalog information for several artists based on their Spotify IDs.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ArtistBulkRetrieveResponse> BulkRetrieve(
         ArtistBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
@@ -67,8 +68,8 @@ public interface IArtistService
     );
 
     /// <summary>
-    /// Get Spotify catalog information about artists similar to a given artist. Similarity
-    /// is based on analysis of the Spotify community's listening history.
+    /// Get Spotify catalog information about artists similar to a given artist.
+    /// Similarity is based on analysis of the Spotify community's listening history.
     /// </summary>
     [Obsolete("deprecated")]
     Task<ArtistListRelatedArtistsResponse> ListRelatedArtists(
@@ -87,12 +88,14 @@ public interface IArtistService
     /// <summary>
     /// Get Spotify catalog information about an artist's top tracks by country.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<ArtistTopTracksResponse> TopTracks(
         ArtistTopTracksParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="TopTracks(ArtistTopTracksParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<ArtistTopTracksResponse> TopTracks(
         string id,
         ArtistTopTracksParams? parameters = null,
@@ -114,7 +117,7 @@ public interface IArtistServiceWithRawResponse
     IArtistServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /artists/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /artists/{id}</c>, but is otherwise the
     /// same as <see cref="IArtistService.Retrieve(ArtistRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ArtistObject>> Retrieve(
@@ -130,16 +133,17 @@ public interface IArtistServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /artists`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /artists</c>, but is otherwise the
     /// same as <see cref="IArtistService.BulkRetrieve(ArtistBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistBulkRetrieveResponse>> BulkRetrieve(
         ArtistBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /artists/{id}/albums`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /artists/{id}/albums</c>, but is otherwise the
     /// same as <see cref="IArtistService.ListAlbums(ArtistListAlbumsParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<ArtistListAlbumsPage>> ListAlbums(
@@ -155,7 +159,7 @@ public interface IArtistServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /artists/{id}/related-artists`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /artists/{id}/related-artists</c>, but is otherwise the
     /// same as <see cref="IArtistService.ListRelatedArtists(ArtistListRelatedArtistsParams, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -173,15 +177,17 @@ public interface IArtistServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /artists/{id}/top-tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /artists/{id}/top-tracks</c>, but is otherwise the
     /// same as <see cref="IArtistService.TopTracks(ArtistTopTracksParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistTopTracksResponse>> TopTracks(
         ArtistTopTracksParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="TopTracks(ArtistTopTracksParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<ArtistTopTracksResponse>> TopTracks(
         string id,
         ArtistTopTracksParams? parameters = null,

@@ -6,7 +6,7 @@ namespace Spotted.Tests.Services.Me;
 
 public class FollowingServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Me.Following.BulkRetrieve(
@@ -16,7 +16,7 @@ public class FollowingServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Check_Works()
     {
         await this.client.Me.Following.Check(
@@ -29,7 +29,7 @@ public class FollowingServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Follow_Works()
     {
         await this.client.Me.Following.Follow(
@@ -38,7 +38,7 @@ public class FollowingServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Unfollow_Works()
     {
         await this.client.Me.Following.Unfollow(new(), TestContext.Current.CancellationToken);

@@ -27,6 +27,12 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Published = true,
                 },
             ],
+            Items = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Name = "name",
             Owner = new()
             {
@@ -65,6 +71,12 @@ public class SimplifiedPlaylistObjectTest : TestBase
                 Published = true,
             },
         ];
+        PlaylistTracksRefObject expectedItems = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         string expectedName = "name";
         Owner expectedOwner = new()
         {
@@ -98,6 +110,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         {
             Assert.Equal(expectedImages[i], model.Images[i]);
         }
+        Assert.Equal(expectedItems, model.Items);
         Assert.Equal(expectedName, model.Name);
         Assert.Equal(expectedOwner, model.Owner);
         Assert.Equal(expectedPublished, model.Published);
@@ -127,6 +140,12 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Published = true,
                 },
             ],
+            Items = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Name = "name",
             Owner = new()
             {
@@ -179,6 +198,12 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Published = true,
                 },
             ],
+            Items = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Name = "name",
             Owner = new()
             {
@@ -224,6 +249,12 @@ public class SimplifiedPlaylistObjectTest : TestBase
                 Published = true,
             },
         ];
+        PlaylistTracksRefObject expectedItems = new()
+        {
+            Href = "href",
+            Published = true,
+            Total = 0,
+        };
         string expectedName = "name";
         Owner expectedOwner = new()
         {
@@ -257,6 +288,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
         {
             Assert.Equal(expectedImages[i], deserialized.Images[i]);
         }
+        Assert.Equal(expectedItems, deserialized.Items);
         Assert.Equal(expectedName, deserialized.Name);
         Assert.Equal(expectedOwner, deserialized.Owner);
         Assert.Equal(expectedPublished, deserialized.Published);
@@ -286,6 +318,12 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Published = true,
                 },
             ],
+            Items = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Name = "name",
             Owner = new()
             {
@@ -329,6 +367,8 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("href"));
         Assert.Null(model.Images);
         Assert.False(model.RawData.ContainsKey("images"));
+        Assert.Null(model.Items);
+        Assert.False(model.RawData.ContainsKey("items"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Owner);
@@ -365,6 +405,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ExternalUrls = null,
             Href = null,
             Images = null,
+            Items = null,
             Name = null,
             Owner = null,
             Published = null,
@@ -386,6 +427,8 @@ public class SimplifiedPlaylistObjectTest : TestBase
         Assert.False(model.RawData.ContainsKey("href"));
         Assert.Null(model.Images);
         Assert.False(model.RawData.ContainsKey("images"));
+        Assert.Null(model.Items);
+        Assert.False(model.RawData.ContainsKey("items"));
         Assert.Null(model.Name);
         Assert.False(model.RawData.ContainsKey("name"));
         Assert.Null(model.Owner);
@@ -414,6 +457,7 @@ public class SimplifiedPlaylistObjectTest : TestBase
             ExternalUrls = null,
             Href = null,
             Images = null,
+            Items = null,
             Name = null,
             Owner = null,
             Published = null,
@@ -446,6 +490,12 @@ public class SimplifiedPlaylistObjectTest : TestBase
                     Published = true,
                 },
             ],
+            Items = new()
+            {
+                Href = "href",
+                Published = true,
+                Total = 0,
+            },
             Name = "name",
             Owner = new()
             {

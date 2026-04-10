@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services.Playlists;
 
 public class FollowerServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Check_Works()
     {
         await this.client.Playlists.Followers.Check(
@@ -14,7 +14,7 @@ public class FollowerServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Follow_Works()
     {
         await this.client.Playlists.Followers.Follow(
@@ -24,7 +24,7 @@ public class FollowerServiceTest : TestBase
         );
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Unfollow_Works()
     {
         await this.client.Playlists.Followers.Unfollow(

@@ -79,6 +79,27 @@ public sealed record class PlaylistTrackObject : JsonModel
     }
 
     /// <summary>
+    /// Information about the track or episode.
+    /// </summary>
+    public Item? Item
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<Item>("item");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("item", value);
+        }
+    }
+
+    /// <summary>
     /// The playlist's public/private status (if it should be added to the user's
     /// profile or not): `true` the playlist will be public, `false` the playlist
     /// will be private, `null` the playlist status is not relevant. For more about
@@ -103,8 +124,9 @@ public sealed record class PlaylistTrackObject : JsonModel
     }
 
     /// <summary>
-    /// Information about the track or episode.
+    /// **Deprecated:** Use `item` instead. Information about the track or episode.
     /// </summary>
+    [System::Obsolete("deprecated")]
     public Track? Track
     {
         get
@@ -129,6 +151,7 @@ public sealed record class PlaylistTrackObject : JsonModel
         _ = this.AddedAt;
         this.AddedBy?.Validate();
         _ = this.IsLocal;
+        this.Item?.Validate();
         _ = this.Published;
         this.Track?.Validate();
     }
@@ -173,6 +196,349 @@ class PlaylistTrackObjectFromRaw : IFromRawJson<PlaylistTrackObject>
 /// <summary>
 /// Information about the track or episode.
 /// </summary>
+[JsonConverter(typeof(ItemConverter))]
+public record class Item : ModelBase
+{
+    public object? Value { get; } = null;
+
+    JsonElement? _element = null;
+
+    public JsonElement Json
+    {
+        get
+        {
+            return this._element ??= JsonSerializer.SerializeToElement(
+                this.Value,
+                ModelBase.SerializerOptions
+            );
+        }
+    }
+
+    public string? ID
+    {
+        get { return Match<string?>(trackObject: (x) => x.ID, episodeObject: (x) => x.ID); }
+    }
+
+    public long? DurationMs
+    {
+        get
+        {
+            return Match<long?>(
+                trackObject: (x) => x.DurationMs,
+                episodeObject: (x) => x.DurationMs
+            );
+        }
+    }
+
+    public bool? Explicit
+    {
+        get
+        {
+            return Match<bool?>(trackObject: (x) => x.Explicit, episodeObject: (x) => x.Explicit);
+        }
+    }
+
+    public ExternalUrlObject? ExternalUrls
+    {
+        get
+        {
+            return Match<ExternalUrlObject?>(
+                trackObject: (x) => x.ExternalUrls,
+                episodeObject: (x) => x.ExternalUrls
+            );
+        }
+    }
+
+    public string? Href
+    {
+        get { return Match<string?>(trackObject: (x) => x.Href, episodeObject: (x) => x.Href); }
+    }
+
+    public bool? IsPlayable
+    {
+        get
+        {
+            return Match<bool?>(
+                trackObject: (x) => x.IsPlayable,
+                episodeObject: (x) => x.IsPlayable
+            );
+        }
+    }
+
+    public string? Name
+    {
+        get { return Match<string?>(trackObject: (x) => x.Name, episodeObject: (x) => x.Name); }
+    }
+
+    public bool? Published
+    {
+        get
+        {
+            return Match<bool?>(trackObject: (x) => x.Published, episodeObject: (x) => x.Published);
+        }
+    }
+
+    public string? Uri
+    {
+        get { return Match<string?>(trackObject: (x) => x.Uri, episodeObject: (x) => x.Uri); }
+    }
+
+    public Item(TrackObject value, JsonElement? element = null)
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public Item(EpisodeObject value, JsonElement? element = null)
+    {
+        this.Value = value;
+        this._element = element;
+    }
+
+    public Item(JsonElement element)
+    {
+        this._element = element;
+    }
+
+    /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="TrackObject"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickTrackObject(out var value)) {
+    ///     // `value` is of type `TrackObject`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickTrackObject([NotNullWhen(true)] out TrackObject? value)
+    {
+        value = this.Value as TrackObject;
+        return value != null;
+    }
+
+    /// <summary>
+    /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
+    /// type <see cref="EpisodeObject"/>.
+    ///
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
+    ///
+    /// <example>
+    /// <code>
+    /// if (instance.TryPickEpisodeObject(out var value)) {
+    ///     // `value` is of type `EpisodeObject`
+    ///     Console.WriteLine(value);
+    /// }
+    /// </code>
+    /// </example>
+    /// </summary>
+    public bool TryPickEpisodeObject([NotNullWhen(true)] out EpisodeObject? value)
+    {
+        value = this.Value as EpisodeObject;
+        return value != null;
+    }
+
+    /// <summary>
+    /// Calls the function parameter corresponding to the variant the instance was constructed with.
+    ///
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
+    /// if you need your function parameters to return something.</para>
+    ///
+    /// <exception cref="SpottedInvalidDataException">
+    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+    /// that doesn't match any variant's expected shape).
+    /// </exception>
+    ///
+    /// <example>
+    /// <code>
+    /// instance.Switch(
+    ///     (TrackObject value) =&gt; {...},
+    ///     (EpisodeObject value) =&gt; {...}
+    /// );
+    /// </code>
+    /// </example>
+    /// </summary>
+    public void Switch(
+        System::Action<TrackObject> trackObject,
+        System::Action<EpisodeObject> episodeObject
+    )
+    {
+        switch (this.Value)
+        {
+            case TrackObject value:
+                trackObject(value);
+                break;
+            case EpisodeObject value:
+                episodeObject(value);
+                break;
+            default:
+                throw new SpottedInvalidDataException("Data did not match any variant of Item");
+        }
+    }
+
+    /// <summary>
+    /// Calls the function parameter corresponding to the variant the instance was constructed with and
+    /// returns its result.
+    ///
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
+    /// if you don't need your function parameters to return a value.</para>
+    ///
+    /// <exception cref="SpottedInvalidDataException">
+    /// Thrown when the instance was constructed with an unknown variant (e.g. deserialized from raw data
+    /// that doesn't match any variant's expected shape).
+    /// </exception>
+    ///
+    /// <example>
+    /// <code>
+    /// var result = instance.Match(
+    ///     (TrackObject value) =&gt; {...},
+    ///     (EpisodeObject value) =&gt; {...}
+    /// );
+    /// </code>
+    /// </example>
+    /// </summary>
+    public T Match<T>(
+        System::Func<TrackObject, T> trackObject,
+        System::Func<EpisodeObject, T> episodeObject
+    )
+    {
+        return this.Value switch
+        {
+            TrackObject value => trackObject(value),
+            EpisodeObject value => episodeObject(value),
+            _ => throw new SpottedInvalidDataException("Data did not match any variant of Item"),
+        };
+    }
+
+    public static implicit operator Item(TrackObject value) => new(value);
+
+    public static implicit operator Item(EpisodeObject value) => new(value);
+
+    /// <summary>
+    /// Validates that the instance was constructed with a known variant and that this variant is valid
+    /// (based on its own <c>Validate</c> method).
+    ///
+    /// <para>This is useful for instances constructed from raw JSON data (e.g. deserialized from an API response).</para>
+    ///
+    /// <exception cref="SpottedInvalidDataException">
+    /// Thrown when the instance does not pass validation.
+    /// </exception>
+    /// </summary>
+    public override void Validate()
+    {
+        if (this.Value == null)
+        {
+            throw new SpottedInvalidDataException("Data did not match any variant of Item");
+        }
+        this.Switch(
+            (trackObject) => trackObject.Validate(),
+            (episodeObject) => episodeObject.Validate()
+        );
+    }
+
+    public virtual bool Equals(Item? other) =>
+        other != null
+        && this.VariantIndex() == other.VariantIndex()
+        && JsonElement.DeepEquals(this.Json, other.Json);
+
+    public override int GetHashCode()
+    {
+        return 0;
+    }
+
+    public override string ToString() =>
+        JsonSerializer.Serialize(
+            FriendlyJsonPrinter.PrintValue(this.Json),
+            ModelBase.ToStringSerializerOptions
+        );
+
+    int VariantIndex()
+    {
+        return this.Value switch
+        {
+            TrackObject _ => 0,
+            EpisodeObject _ => 1,
+            _ => -1,
+        };
+    }
+}
+
+sealed class ItemConverter : JsonConverter<Item>
+{
+    public override Item? Read(
+        ref Utf8JsonReader reader,
+        System::Type typeToConvert,
+        JsonSerializerOptions options
+    )
+    {
+        var element = JsonSerializer.Deserialize<JsonElement>(ref reader, options);
+        string? type;
+        try
+        {
+            type = element.GetProperty("type").GetString();
+        }
+        catch
+        {
+            type = null;
+        }
+
+        switch (type)
+        {
+            case "track":
+            {
+                try
+                {
+                    var deserialized = JsonSerializer.Deserialize<TrackObject>(element, options);
+                    if (deserialized != null)
+                    {
+                        return new(deserialized, element);
+                    }
+                }
+                catch (JsonException)
+                {
+                    // ignore
+                }
+
+                return new(element);
+            }
+            case "episode":
+            {
+                try
+                {
+                    var deserialized = JsonSerializer.Deserialize<EpisodeObject>(element, options);
+                    if (deserialized != null)
+                    {
+                        return new(deserialized, element);
+                    }
+                }
+                catch (JsonException)
+                {
+                    // ignore
+                }
+
+                return new(element);
+            }
+            default:
+            {
+                return new Item(element);
+            }
+        }
+    }
+
+    public override void Write(Utf8JsonWriter writer, Item value, JsonSerializerOptions options)
+    {
+        JsonSerializer.Serialize(writer, value.Json, options);
+    }
+}
+
+/// <summary>
+/// **Deprecated:** Use `item` instead. Information about the track or episode.
+/// </summary>
+[System::Obsolete("deprecated")]
 [JsonConverter(typeof(TrackConverter))]
 public record class Track : ModelBase
 {
@@ -269,7 +635,7 @@ public record class Track : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="TrackObject"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -290,7 +656,7 @@ public record class Track : ModelBase
     /// Returns true and sets the <c>out</c> parameter if the instance was constructed with a variant of
     /// type <see cref="EpisodeObject"/>.
     ///
-    /// <para>Consider using <see cref="Switch"> or <see cref="Match"> if you need to handle every variant.</para>
+    /// <para>Consider using <see cref="Switch"/> or <see cref="Match"/> if you need to handle every variant.</para>
     ///
     /// <example>
     /// <code>
@@ -310,7 +676,7 @@ public record class Track : ModelBase
     /// <summary>
     /// Calls the function parameter corresponding to the variant the instance was constructed with.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Match"/>
     /// if you need your function parameters to return something.</para>
     ///
     /// <exception cref="SpottedInvalidDataException">
@@ -321,8 +687,8 @@ public record class Track : ModelBase
     /// <example>
     /// <code>
     /// instance.Switch(
-    ///     (TrackObject value) => {...},
-    ///     (EpisodeObject value) => {...}
+    ///     (TrackObject value) =&gt; {...},
+    ///     (EpisodeObject value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -349,7 +715,7 @@ public record class Track : ModelBase
     /// Calls the function parameter corresponding to the variant the instance was constructed with and
     /// returns its result.
     ///
-    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch">
+    /// <para>Use the <c>TryPick</c> method(s) if you don't need to handle every variant, or <see cref="Switch"/>
     /// if you don't need your function parameters to return a value.</para>
     ///
     /// <exception cref="SpottedInvalidDataException">
@@ -360,8 +726,8 @@ public record class Track : ModelBase
     /// <example>
     /// <code>
     /// var result = instance.Match(
-    ///     (TrackObject value) => {...},
-    ///     (EpisodeObject value) => {...}
+    ///     (TrackObject value) =&gt; {...},
+    ///     (EpisodeObject value) =&gt; {...}
     /// );
     /// </code>
     /// </example>
@@ -402,10 +768,10 @@ public record class Track : ModelBase
         this.Switch((object_) => object_.Validate(), (episodeObject) => episodeObject.Validate());
     }
 
-    public virtual bool Equals(Track? other)
-    {
-        return other != null && JsonElement.DeepEquals(this.Json, other.Json);
-    }
+    public virtual bool Equals(Track? other) =>
+        other != null
+        && this.VariantIndex() == other.VariantIndex()
+        && JsonElement.DeepEquals(this.Json, other.Json);
 
     public override int GetHashCode()
     {
@@ -413,7 +779,20 @@ public record class Track : ModelBase
     }
 
     public override string ToString() =>
-        JsonSerializer.Serialize(this._element, ModelBase.ToStringSerializerOptions);
+        JsonSerializer.Serialize(
+            FriendlyJsonPrinter.PrintValue(this.Json),
+            ModelBase.ToStringSerializerOptions
+        );
+
+    int VariantIndex()
+    {
+        return this.Value switch
+        {
+            TrackObject _ => 0,
+            EpisodeObject _ => 1,
+            _ => -1,
+        };
+    }
 }
 
 sealed class TrackConverter : JsonConverter<Track>
@@ -444,12 +823,10 @@ sealed class TrackConverter : JsonConverter<Track>
                     var deserialized = JsonSerializer.Deserialize<TrackObject>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (System::Exception e)
-                    when (e is JsonException || e is SpottedInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }
@@ -463,12 +840,10 @@ sealed class TrackConverter : JsonConverter<Track>
                     var deserialized = JsonSerializer.Deserialize<EpisodeObject>(element, options);
                     if (deserialized != null)
                     {
-                        deserialized.Validate();
                         return new(deserialized, element);
                     }
                 }
-                catch (System::Exception e)
-                    when (e is JsonException || e is SpottedInvalidDataException)
+                catch (JsonException)
                 {
                     // ignore
                 }

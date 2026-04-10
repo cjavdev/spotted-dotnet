@@ -30,14 +30,14 @@ public record class SearchQueryParams : ParamsBase
     /// `isrc`, and `genre`. Each field filter only applies to certain result types.</para>
     ///
     /// <para>The `artist` and `year` filters can be used while searching albums,
-    /// artists and tracks. You can filter on a single `year` or a range (e.g. 1955-1960).<br
-    /// /> The `album` filter can be used while searching albums and tracks.<br />
-    /// The `genre` filter can be used while searching artists and tracks.<br /> The
-    /// `isrc` and `track` filters can be used while searching tracks.<br /> The
-    /// `upc`, `tag:new` and `tag:hipster` filters can only be used while searching
-    /// albums. The `tag:new` filter will return albums released in the past two weeks
-    /// and `tag:hipster` can be used to return only albums with the lowest 10% popularity.<br
-    /// /> </para>
+    /// artists and tracks. You can filter on a single `year` or a range (e.g. 1955-1960).&lt;br
+    /// /&gt; The `album` filter can be used while searching albums and tracks.&lt;br
+    /// /&gt; The `genre` filter can be used while searching artists and tracks.&lt;br
+    /// /&gt; The `isrc` and `track` filters can be used while searching tracks.&lt;br
+    /// /&gt; The `upc`, `tag:new` and `tag:hipster` filters can only be used while
+    /// searching albums. The `tag:new` filter will return albums released in the
+    /// past two weeks and `tag:hipster` can be used to return only albums with the
+    /// lowest 10% popularity.&lt;br /&gt; </para>
     /// </summary>
     public required string Q
     {
@@ -51,7 +51,7 @@ public record class SearchQueryParams : ParamsBase
 
     /// <summary>
     /// A comma-separated list of item types to search across. Search results include
-    /// hits from all the specified item types. For example: `q=abacab&type=album,track`
+    /// hits from all the specified item types. For example: `q=abacab&amp;type=album,track`
     /// returns both albums and tracks matching "abacab".
     /// </summary>
     public required IReadOnlyList<ApiEnum<string, global::Spotted.Models.Search.Type>> Type
@@ -121,12 +121,12 @@ public record class SearchQueryParams : ParamsBase
     /// <summary>
     /// An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
     ///   If a country code is specified, only content that is available in that market
-    /// will be returned.<br/>   If a valid user access token is specified in the
-    /// request header, the country associated with   the user account will take
-    /// priority over this parameter.<br/>   _**Note**: If neither market or user
-    /// country are provided, the content is considered unavailable for the client._<br/>
-    ///   Users can view the country that is associated with their account in the
-    /// [account settings](https://www.spotify.com/account/overview/).
+    /// will be returned.&lt;br/&gt;   If a valid user access token is specified in
+    /// the request header, the country associated with   the user account will take
+    /// priority over this parameter.&lt;br/&gt;   _**Note**: If neither market or
+    /// user country are provided, the content is considered unavailable for the
+    /// client._&lt;br/&gt;   Users can view the country that is associated with
+    /// their account in the [account settings](https://www.spotify.com/account/overview/).
     /// </summary>
     public string? Market
     {
@@ -197,7 +197,7 @@ public record class SearchQueryParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static SearchQueryParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
@@ -211,11 +211,17 @@ public record class SearchQueryParams : ParamsBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

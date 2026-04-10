@@ -14,10 +14,13 @@ namespace Spotted.Models.Me.Tracks;
 /// <summary>
 /// Save one or more tracks to the current user's 'Your Music' library.
 ///
+/// <para>**Note:** This endpoint is deprecated. Use [Save Items to Library](/documentation/web-api/reference/save-library-items) instead.</para>
+///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class TrackSaveParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
@@ -28,7 +31,7 @@ public record class TrackSaveParams : ParamsBase
 
     /// <summary>
     /// A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
-    /// For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A
+    /// For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`&lt;br/&gt;A
     /// maximum of 50 items can be specified in one request. _**Note**: if the `timestamped_ids`
     /// is present in the body, any IDs listed in the query parameters (deprecated)
     /// or the `ids` field in the body will be ignored._
@@ -77,10 +80,10 @@ public record class TrackSaveParams : ParamsBase
     /// A JSON array of objects containing track IDs with their corresponding timestamps.
     /// Each object must include a track ID and an `added_at` timestamp. This allows
     /// you to specify when tracks were added to maintain a specific chronological
-    /// order in the user's library.<br/>A maximum of 50 items can be specified in
-    /// one request. _**Note**: if the `timestamped_ids` is present in the body, any
-    /// IDs listed in the query parameters (deprecated) or the `ids` field in the
-    /// body will be ignored._
+    /// order in the user's library.&lt;br/&gt;A maximum of 50 items can be specified
+    /// in one request. _**Note**: if the `timestamped_ids` is present in the body,
+    /// any IDs listed in the query parameters (deprecated) or the `ids` field in
+    /// the body will be ignored._
     /// </summary>
     public IReadOnlyList<TimestampedID>? TimestampedIds
     {
@@ -141,7 +144,7 @@ public record class TrackSaveParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TrackSaveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -157,12 +160,18 @@ public record class TrackSaveParams : ParamsBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-                ["BodyData"] = this._rawBodyData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

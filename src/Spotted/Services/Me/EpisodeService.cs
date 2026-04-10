@@ -47,6 +47,7 @@ public sealed class EpisodeService : IEpisodeService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         EpisodeCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -59,6 +60,7 @@ public sealed class EpisodeService : IEpisodeService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Remove(
         EpisodeRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -68,6 +70,7 @@ public sealed class EpisodeService : IEpisodeService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Save(EpisodeSaveParams parameters, CancellationToken cancellationToken = default)
     {
         return this.WithRawResponse.Save(parameters, cancellationToken);
@@ -121,6 +124,7 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         EpisodeCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -142,6 +146,7 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Remove(
         EpisodeRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -158,6 +163,7 @@ public sealed class EpisodeServiceWithRawResponse : IEpisodeServiceWithRawRespon
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Save(
         EpisodeSaveParams parameters,
         CancellationToken cancellationToken = default

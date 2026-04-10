@@ -108,7 +108,7 @@ using Spotted.Models.Playlists.Images;
 ImageUpdateParams parameters = new()
 {
     PlaylistID = "3cEYpjA9oz9GiPac4AsH4n",
-    Body = Encoding.UTF8.GetBytes("text"),
+    Body = Encoding.UTF8.GetBytes("Example data"),
 };
 
 var image = await client.Playlists.Images.Update(parameters);
@@ -170,8 +170,6 @@ The SDK throws custom unchecked exception types:
 | others | `SpottedUnexpectedStatusCodeException` |
 
 Additionally, all 4xx errors inherit from `Spotted4xxException`.
-
-false
 
 - `SpottedIOException`: I/O networking errors.
 
@@ -284,9 +282,96 @@ var album = await client
 Console.WriteLine(album);
 ```
 
+### Proxies
+
+To route requests through a proxy, configure your client with a custom [`HttpClient`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=net-10.0):
+
+```csharp
+using System.Net;
+using System.Net.Http;
+using Spotted;
+
+var httpClient = new HttpClient
+(
+    new HttpClientHandler
+    {
+        Proxy = new WebProxy("https://example.com:8080")
+    }
+);
+
+SpottedClient client = new() { HttpClient = httpClient };
+```
+
 ## Undocumented API functionality
 
 The SDK is typed for convenient usage of the documented API. However, it also supports working with undocumented or not yet supported parts of the API.
+
+### Parameters
+
+To set undocumented parameters, a constructor exists that accepts dictionaries for additional header, query, and body values. If the method type doesn't support request bodies (e.g. `GET` requests), the constructor will only accept a header and query dictionary.
+
+```csharp
+using System.Collections.Generic;
+using System.Text.Json;
+using Spotted.Models.Albums;
+
+AlbumRetrieveParams parameters = new
+(
+    rawHeaderData: new Dictionary<string, JsonElement>()
+    {
+        { "Custom-Header", JsonSerializer.SerializeToElement(42) }
+    },
+
+    rawQueryData: new Dictionary<string, JsonElement>()
+    {
+        { "custom_query_param", JsonSerializer.SerializeToElement(42) }
+    }
+)
+{
+    // Documented properties can still be added here.
+    // In case of conflict, these parameters take precedence over the custom parameters.
+    ID = "4aawyAB9vmqN3uQ7FjRGTy"
+};
+```
+
+The raw parameters can also be accessed through the `RawHeaderData`, `RawQueryData`, and `RawBodyData` (if available) properties.
+
+This can also be used to set a documented parameter to an undocumented or not yet supported _value_, as long as the parameter is optional. If the parameter is required, omitting its `init` property will result in a compile-time error. To work around this, the `FromRawUnchecked` method can be used:
+
+```csharp
+using System.Collections.Generic;
+using System.Text.Json;
+using Spotted.Models.Albums;
+
+var parameters = AlbumBulkRetrieveParams.FromRawUnchecked
+(
+
+    rawHeaderData: new Dictionary<string, JsonElement>(),
+    rawQueryData: new Dictionary<string, JsonElement>
+    {
+        {
+            "ids",
+            JsonSerializer.SerializeToElement("custom value")
+        }
+    }
+);
+```
+
+### Response properties
+
+To access undocumented response properties, the `RawData` property can be used:
+
+```csharp
+using System.Text.Json;
+
+var response = client.Albums.Retrieve(parameters)
+if (response.RawData.TryGetValue("my_custom_key", out JsonElement value))
+{
+    // Do something with `value`
+}
+```
+
+`RawData` is a `IReadonlyDictionary<string, JsonElement>`. It holds the full data received from the API server.
 
 ### Response validation
 

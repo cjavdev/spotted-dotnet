@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -30,6 +31,7 @@ public sealed record class ShowBase : JsonModel
     /// A list of the countries in which the show can be played, identified by their
     /// [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
     /// </summary>
+    [Obsolete("deprecated")]
     public required IReadOnlyList<string> AvailableMarkets
     {
         get
@@ -214,6 +216,7 @@ public sealed record class ShowBase : JsonModel
     /// <summary>
     /// The publisher of the show.
     /// </summary>
+    [Obsolete("deprecated")]
     public required string Publisher
     {
         get
@@ -320,6 +323,7 @@ public sealed record class ShowBase : JsonModel
         _ = this.Published;
     }
 
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public ShowBase()
     {
         this.Type = JsonSerializer.SerializeToElement("show");
@@ -327,10 +331,12 @@ public sealed record class ShowBase : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public ShowBase(ShowBase showBase)
         : base(showBase) { }
 #pragma warning restore CS8618
 
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public ShowBase(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -339,6 +345,7 @@ public sealed record class ShowBase : JsonModel
     }
 
 #pragma warning disable CS8618
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     [SetsRequiredMembers]
     ShowBase(FrozenDictionary<string, JsonElement> rawData)
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -50,6 +51,7 @@ public sealed record class AudiobookBase : JsonModel
     /// their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
     /// code.
     /// </summary>
+    [Obsolete("deprecated")]
     public required IReadOnlyList<string> AvailableMarkets
     {
         get
@@ -239,6 +241,7 @@ public sealed record class AudiobookBase : JsonModel
     /// <summary>
     /// The publisher of the audiobook.
     /// </summary>
+    [Obsolete("deprecated")]
     public required string Publisher
     {
         get
@@ -374,6 +377,7 @@ public sealed record class AudiobookBase : JsonModel
         _ = this.Published;
     }
 
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public AudiobookBase()
     {
         this.Type = JsonSerializer.SerializeToElement("audiobook");
@@ -381,10 +385,12 @@ public sealed record class AudiobookBase : JsonModel
 
 #pragma warning disable CS8618
     [SetsRequiredMembers]
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public AudiobookBase(AudiobookBase audiobookBase)
         : base(audiobookBase) { }
 #pragma warning restore CS8618
 
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     public AudiobookBase(IReadOnlyDictionary<string, JsonElement> rawData)
     {
         this._rawData = new(rawData);
@@ -393,6 +399,7 @@ public sealed record class AudiobookBase : JsonModel
     }
 
 #pragma warning disable CS8618
+    [Obsolete("Required properties are deprecated: available_markets, publisher")]
     [SetsRequiredMembers]
     AudiobookBase(FrozenDictionary<string, JsonElement> rawData)
     {

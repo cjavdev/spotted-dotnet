@@ -28,12 +28,12 @@ public interface IRecommendationService
 
     /// <summary>
     /// Recommendations are generated based on the available information for a given
-    /// seed entity and matched against similar artists and tracks. If there is sufficient
-    /// information about the provided seeds, a list of tracks will be returned together
-    /// with pool size details.
+    /// seed entity and matched against similar artists and tracks. If there is
+    /// sufficient information about the provided seeds, a list of tracks will be
+    /// returned together with pool size details.
     ///
-    /// <para>For artists and tracks that are very new or obscure there might not
-    /// be enough data to generate a list of tracks.</para>
+    /// <para>For artists and tracks that are very new or obscure there might not be
+    /// enough data to generate a list of tracks. </para>
     /// </summary>
     [Obsolete("deprecated")]
     Task<RecommendationGetResponse> Get(
@@ -42,7 +42,8 @@ public interface IRecommendationService
     );
 
     /// <summary>
-    /// Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).
+    /// Retrieve a list of available genres seed parameter values for
+    /// [recommendations](/documentation/web-api/reference/get-recommendations).
     /// </summary>
     [Obsolete("deprecated")]
     Task<RecommendationListAvailableGenreSeedsResponse> ListAvailableGenreSeeds(
@@ -65,7 +66,7 @@ public interface IRecommendationServiceWithRawResponse
     IRecommendationServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /recommendations`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /recommendations</c>, but is otherwise the
     /// same as <see cref="IRecommendationService.Get(RecommendationGetParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]
@@ -75,7 +76,7 @@ public interface IRecommendationServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /recommendations/available-genre-seeds`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /recommendations/available-genre-seeds</c>, but is otherwise the
     /// same as <see cref="IRecommendationService.ListAvailableGenreSeeds(RecommendationListAvailableGenreSeedsParams?, CancellationToken)"/>.
     /// </summary>
     [Obsolete("deprecated")]

@@ -28,7 +28,8 @@ public interface IAlbumService
     IAlbumService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Get a list of the albums saved in the current Spotify user's 'Your Music' library.
+    /// Get a list of the albums saved in the current Spotify user's 'Your Music'
+    /// library.
     /// </summary>
     Task<AlbumListPage> List(
         AlbumListParams? parameters = null,
@@ -36,9 +37,13 @@ public interface IAlbumService
     );
 
     /// <summary>
-    /// Check if one or more albums is already saved in the current Spotify user's
-    /// 'Your Music' library.
+    /// Check if one or more albums is already saved in the current Spotify user's 'Your
+    /// Music' library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved
+    /// Items](/documentation/web-api/reference/check-library-contains) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<List<bool>> Check(
         AlbumCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -46,7 +51,11 @@ public interface IAlbumService
 
     /// <summary>
     /// Remove one or more albums from the current user's 'Your Music' library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from
+    /// Library](/documentation/web-api/reference/remove-library-items) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Remove(
         AlbumRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -54,7 +63,11 @@ public interface IAlbumService
 
     /// <summary>
     /// Save one or more albums to the current user's 'Your Music' library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to
+    /// Library](/documentation/web-api/reference/save-library-items) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Save(AlbumSaveParams? parameters = null, CancellationToken cancellationToken = default);
 }
 
@@ -72,7 +85,7 @@ public interface IAlbumServiceWithRawResponse
     IAlbumServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/albums`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/albums</c>, but is otherwise the
     /// same as <see cref="IAlbumService.List(AlbumListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<AlbumListPage>> List(
@@ -81,27 +94,30 @@ public interface IAlbumServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/albums/contains`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/albums/contains</c>, but is otherwise the
     /// same as <see cref="IAlbumService.Check(AlbumCheckParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<List<bool>>> Check(
         AlbumCheckParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /me/albums`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /me/albums</c>, but is otherwise the
     /// same as <see cref="IAlbumService.Remove(AlbumRemoveParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Remove(
         AlbumRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/albums`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/albums</c>, but is otherwise the
     /// same as <see cref="IAlbumService.Save(AlbumSaveParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Save(
         AlbumSaveParams? parameters = null,
         CancellationToken cancellationToken = default

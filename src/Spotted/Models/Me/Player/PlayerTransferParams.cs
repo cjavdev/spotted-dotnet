@@ -29,7 +29,7 @@ public record class PlayerTransferParams : ParamsBase
 
     /// <summary>
     /// A JSON array containing the ID of the device on which playback should be
-    /// started/transferred.<br/>For example:`{device_ids:["74ASZWbe4lXaubB36ztrGX"]}`<br/>_**Note**:
+    /// started/transferred.&lt;br/&gt;For example:`{device_ids:["74ASZWbe4lXaubB36ztrGX"]}`&lt;br/&gt;_**Note**:
     /// Although an array is accepted, only a single device_id is currently supported.
     /// Supplying more than one will return `400 Bad Request`_
     /// </summary>
@@ -50,8 +50,8 @@ public record class PlayerTransferParams : ParamsBase
     }
 
     /// <summary>
-    /// **true**: ensure playback happens on new device.<br/>**false** or not provided:
-    /// keep the current playback state.
+    /// **true**: ensure playback happens on new device.&lt;br/&gt;**false** or not
+    /// provided: keep the current playback state.
     /// </summary>
     public bool? Play
     {
@@ -131,7 +131,7 @@ public record class PlayerTransferParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PlayerTransferParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
@@ -147,12 +147,18 @@ public record class PlayerTransferParams : ParamsBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-                ["BodyData"] = this._rawBodyData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

@@ -47,6 +47,7 @@ public sealed class AudiobookService : IAudiobookService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         AudiobookCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -59,6 +60,7 @@ public sealed class AudiobookService : IAudiobookService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Remove(
         AudiobookRemoveParams parameters,
         CancellationToken cancellationToken = default
@@ -68,6 +70,7 @@ public sealed class AudiobookService : IAudiobookService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Save(AudiobookSaveParams parameters, CancellationToken cancellationToken = default)
     {
         return this.WithRawResponse.Save(parameters, cancellationToken);
@@ -121,6 +124,7 @@ public sealed class AudiobookServiceWithRawResponse : IAudiobookServiceWithRawRe
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         AudiobookCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -142,6 +146,7 @@ public sealed class AudiobookServiceWithRawResponse : IAudiobookServiceWithRawRe
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Remove(
         AudiobookRemoveParams parameters,
         CancellationToken cancellationToken = default
@@ -156,6 +161,7 @@ public sealed class AudiobookServiceWithRawResponse : IAudiobookServiceWithRawRe
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Save(
         AudiobookSaveParams parameters,
         CancellationToken cancellationToken = default

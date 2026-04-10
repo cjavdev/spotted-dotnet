@@ -47,6 +47,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<List<bool>> Check(
         TrackCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -59,6 +60,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Remove(
         TrackRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -68,6 +70,7 @@ public sealed class TrackService : ITrackService
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task Save(TrackSaveParams parameters, CancellationToken cancellationToken = default)
     {
         return this.WithRawResponse.Save(parameters, cancellationToken);
@@ -121,6 +124,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public async Task<HttpResponse<List<bool>>> Check(
         TrackCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -142,6 +146,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Remove(
         TrackRemoveParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -158,6 +163,7 @@ public sealed class TrackServiceWithRawResponse : ITrackServiceWithRawResponse
     }
 
     /// <inheritdoc/>
+    [Obsolete("deprecated")]
     public Task<HttpResponse> Save(
         TrackSaveParams parameters,
         CancellationToken cancellationToken = default

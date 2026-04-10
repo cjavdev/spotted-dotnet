@@ -46,34 +46,44 @@ public record class AudioAnalysisRetrieveParams : ParamsBase
     [SetsRequiredMembers]
     AudioAnalysisRetrieveParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
-        FrozenDictionary<string, JsonElement> rawQueryData
+        FrozenDictionary<string, JsonElement> rawQueryData,
+        string id
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
+        this.ID = id;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static AudioAnalysisRetrieveParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
-        IReadOnlyDictionary<string, JsonElement> rawQueryData
+        IReadOnlyDictionary<string, JsonElement> rawQueryData,
+        string id
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
-            FrozenDictionary.ToFrozenDictionary(rawQueryData)
+            FrozenDictionary.ToFrozenDictionary(rawQueryData),
+            id
         );
     }
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["ID"] = this.ID,
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["ID"] = JsonSerializer.SerializeToElement(this.ID),
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

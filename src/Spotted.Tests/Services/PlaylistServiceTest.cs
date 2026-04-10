@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services;
 
 public class PlaylistServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var playlist = await this.client.Playlists.Retrieve(
@@ -15,7 +15,7 @@ public class PlaylistServiceTest : TestBase
         playlist.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Update_Works()
     {
         await this.client.Playlists.Update(

@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services;
 
 public class AudiobookServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var audiobook = await this.client.Audiobooks.Retrieve(
@@ -15,7 +15,7 @@ public class AudiobookServiceTest : TestBase
         audiobook.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.Audiobooks.BulkRetrieve(
@@ -25,7 +25,7 @@ public class AudiobookServiceTest : TestBase
         response.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task ListChapters_Works()
     {
         var page = await this.client.Audiobooks.ListChapters(

@@ -4,7 +4,7 @@ namespace Spotted.Tests.Services;
 
 public class AudioFeatureServiceTest : TestBase
 {
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task Retrieve_Works()
     {
         var audioFeature = await this.client.AudioFeatures.Retrieve(
@@ -15,7 +15,7 @@ public class AudioFeatureServiceTest : TestBase
         audioFeature.Validate();
     }
 
-    [Fact(Skip = "Prism tests are disabled")]
+    [Fact(Skip = "Mock server tests are disabled")]
     public async Task BulkRetrieve_Works()
     {
         var response = await this.client.AudioFeatures.BulkRetrieve(

@@ -10,14 +10,17 @@ using Spotted.Core;
 namespace Spotted.Models.Users.Playlists;
 
 /// <summary>
-/// Create a playlist for a Spotify user. (The playlist will be empty until you [add
-/// tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each user
-/// is generally limited to a maximum of 11000 playlists.
+/// **Deprecated**: Use [Create Playlist](/documentation/web-api/reference/create-playlist) instead.
+///
+/// <para>Create a playlist for a Spotify user. (The playlist will be empty until
+/// you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).) Each
+/// user is generally limited to a maximum of 11000 playlists.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class PlaylistCreateParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
@@ -142,38 +145,48 @@ public record class PlaylistCreateParams : ParamsBase
     PlaylistCreateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        FrozenDictionary<string, JsonElement> rawBodyData,
+        string userID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
+        this.UserID = userID;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PlaylistCreateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData,
+        string userID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            FrozenDictionary.ToFrozenDictionary(rawBodyData),
+            userID
         );
     }
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["UserID"] = this.UserID,
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-                ["BodyData"] = this._rawBodyData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["UserID"] = JsonSerializer.SerializeToElement(this.UserID),
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

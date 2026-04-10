@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -148,6 +149,30 @@ public sealed record class SimplifiedPlaylistObject : JsonModel
     }
 
     /// <summary>
+    /// A collection containing a link ( `href` ) to the Web API endpoint where full
+    /// details of the playlist's items can be retrieved, along with the `total` number
+    /// of items in the playlist. Note, a track object may be `null`. This can happen
+    /// if a track is no longer available.
+    /// </summary>
+    public PlaylistTracksRefObject? Items
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<PlaylistTracksRefObject>("items");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("items", value);
+        }
+    }
+
+    /// <summary>
     /// The name of the playlist.
     /// </summary>
     public string? Name
@@ -236,11 +261,12 @@ public sealed record class SimplifiedPlaylistObject : JsonModel
     }
 
     /// <summary>
-    /// A collection containing a link ( `href` ) to the Web API endpoint where full
-    /// details of the playlist's tracks can be retrieved, along with the `total`
-    /// number of tracks in the playlist. Note, a track object may be `null`. This
-    /// can happen if a track is no longer available.
+    /// **Deprecated:** Use `items` instead. A collection containing a link ( `href`
+    /// ) to the Web API endpoint where full details of the playlist's tracks can
+    /// be retrieved, along with the `total` number of tracks in the playlist. Note,
+    /// a track object may be `null`. This can happen if a track is no longer available.
     /// </summary>
+    [Obsolete("deprecated")]
     public PlaylistTracksRefObject? Tracks
     {
         get
@@ -314,6 +340,7 @@ public sealed record class SimplifiedPlaylistObject : JsonModel
         {
             item.Validate();
         }
+        this.Items?.Validate();
         _ = this.Name;
         this.Owner?.Validate();
         _ = this.Published;

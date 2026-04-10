@@ -42,16 +42,18 @@ public interface IAlbumService
     );
 
     /// <summary>
-    /// Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+    /// Get Spotify catalog information for multiple albums identified by their Spotify
+    /// IDs.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<AlbumBulkRetrieveResponse> BulkRetrieve(
         AlbumBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Get Spotify catalog information about an album’s tracks. Optional parameters
-    /// can be used to limit the number of tracks returned.
+    /// Get Spotify catalog information about an album’s tracks. Optional parameters can
+    /// be used to limit the number of tracks returned.
     /// </summary>
     Task<AlbumListTracksPage> ListTracks(
         AlbumListTracksParams parameters,
@@ -80,7 +82,7 @@ public interface IAlbumServiceWithRawResponse
     IAlbumServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /albums/{id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /albums/{id}</c>, but is otherwise the
     /// same as <see cref="IAlbumService.Retrieve(AlbumRetrieveParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<AlbumRetrieveResponse>> Retrieve(
@@ -96,16 +98,17 @@ public interface IAlbumServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /albums`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /albums</c>, but is otherwise the
     /// same as <see cref="IAlbumService.BulkRetrieve(AlbumBulkRetrieveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<AlbumBulkRetrieveResponse>> BulkRetrieve(
         AlbumBulkRetrieveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /albums/{id}/tracks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /albums/{id}/tracks</c>, but is otherwise the
     /// same as <see cref="IAlbumService.ListTracks(AlbumListTracksParams, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<AlbumListTracksPage>> ListTracks(

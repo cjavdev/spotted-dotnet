@@ -32,12 +32,14 @@ public interface IUserService
     /// <summary>
     /// Get public profile information about a Spotify user.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<UserRetrieveProfileResponse> RetrieveProfile(
         UserRetrieveProfileParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RetrieveProfile(UserRetrieveProfileParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<UserRetrieveProfileResponse> RetrieveProfile(
         string userID,
         UserRetrieveProfileParams? parameters = null,
@@ -61,15 +63,17 @@ public interface IUserServiceWithRawResponse
     Users::IPlaylistServiceWithRawResponse Playlists { get; }
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /users/{user_id}`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /users/{user_id}</c>, but is otherwise the
     /// same as <see cref="IUserService.RetrieveProfile(UserRetrieveProfileParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<UserRetrieveProfileResponse>> RetrieveProfile(
         UserRetrieveProfileParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <inheritdoc cref="RetrieveProfile(UserRetrieveProfileParams, CancellationToken)"/>
+    [Obsolete("deprecated")]
     Task<HttpResponse<UserRetrieveProfileResponse>> RetrieveProfile(
         string userID,
         UserRetrieveProfileParams? parameters = null,

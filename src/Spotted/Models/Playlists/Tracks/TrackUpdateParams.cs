@@ -11,19 +11,22 @@ using Spotted.Core;
 namespace Spotted.Models.Playlists.Tracks;
 
 /// <summary>
-/// Either reorder or replace items in a playlist depending on the request's parameters.
-/// To reorder items, include `range_start`, `insert_before`, `range_length` and `snapshot_id`
-/// in the request's body. To replace items, include `uris` as either a query parameter
-/// or in the request's body. Replacing items in a playlist will overwrite its existing
-/// items. This operation can be used for replacing or clearing items in a playlist.
-/// <br/> **Note**: Replace and reorder are mutually exclusive operations which share
-/// the same endpoint, but have different parameters. These operations can't be applied
-/// together in a single request.
+/// **Deprecated:** Use [Update Playlist Items](/documentation/web-api/reference/reorder-or-replace-playlists-items) instead.
+///
+/// <para>Either reorder or replace items in a playlist depending on the request's
+/// parameters. To reorder items, include `range_start`, `insert_before`, `range_length`
+/// and `snapshot_id` in the request's body. To replace items, include `uris` as
+/// either a query parameter or in the request's body. Replacing items in a playlist
+/// will overwrite its existing items. This operation can be used for replacing or
+/// clearing items in a playlist. &lt;br/&gt; **Note**: Replace and reorder are mutually
+/// exclusive operations which share the same endpoint, but have different parameters.
+/// These operations can't be applied together in a single request.</para>
 ///
 /// <para>NOTE: Do not inherit from this type outside the SDK unless you're okay with
 /// breaking changes in non-major versions. We may add new methods in the future that
 /// cause existing derived classes to break.</para>
 /// </summary>
+[Obsolete("deprecated")]
 public record class TrackUpdateParams : ParamsBase
 {
     readonly JsonDictionary _rawBodyData = new();
@@ -35,12 +38,13 @@ public record class TrackUpdateParams : ParamsBase
     public string? PlaylistID { get; init; }
 
     /// <summary>
-    /// The position where the items should be inserted.<br/>To reorder the items
-    /// to the end of the playlist, simply set _insert_before_ to the position after
-    /// the last item.<br/>Examples:<br/>To reorder the first item to the last position
-    /// in a playlist with 10 items, set _range_start_ to 0, and _insert_before_ to
-    /// 10.<br/>To reorder the last item in a playlist with 10 items to the start
-    /// of the playlist, set _range_start_ to 9, and _insert_before_ to 0.
+    /// The position where the items should be inserted.&lt;br/&gt;To reorder the
+    /// items to the end of the playlist, simply set _insert_before_ to the position
+    /// after the last item.&lt;br/&gt;Examples:&lt;br/&gt;To reorder the first item
+    /// to the last position in a playlist with 10 items, set _range_start_ to 0,
+    /// and _insert_before_ to 10.&lt;br/&gt;To reorder the last item in a playlist
+    /// with 10 items to the start of the playlist, set _range_start_ to 9, and _insert_before_
+    /// to 0.
     /// </summary>
     public long? InsertBefore
     {
@@ -85,11 +89,11 @@ public record class TrackUpdateParams : ParamsBase
     }
 
     /// <summary>
-    /// The amount of items to be reordered. Defaults to 1 if not set.<br/>The range
-    /// of items to be reordered begins from the _range_start_ position, and includes
-    /// the _range_length_ subsequent items.<br/>Example:<br/>To move the items at
-    /// index 9-10 to the start of the playlist, _range_start_ is set to 9, and _range_length_
-    /// is set to 2.
+    /// The amount of items to be reordered. Defaults to 1 if not set.&lt;br/&gt;The
+    /// range of items to be reordered begins from the _range_start_ position, and
+    /// includes the _range_length_ subsequent items.&lt;br/&gt;Example:&lt;br/&gt;To
+    /// move the items at index 9-10 to the start of the playlist, _range_start_ is
+    /// set to 9, and _range_length_ is set to 2.
     /// </summary>
     public long? RangeLength
     {
@@ -201,38 +205,48 @@ public record class TrackUpdateParams : ParamsBase
     TrackUpdateParams(
         FrozenDictionary<string, JsonElement> rawHeaderData,
         FrozenDictionary<string, JsonElement> rawQueryData,
-        FrozenDictionary<string, JsonElement> rawBodyData
+        FrozenDictionary<string, JsonElement> rawBodyData,
+        string playlistID
     )
     {
         this._rawHeaderData = new(rawHeaderData);
         this._rawQueryData = new(rawQueryData);
         this._rawBodyData = new(rawBodyData);
+        this.PlaylistID = playlistID;
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static TrackUpdateParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData,
-        IReadOnlyDictionary<string, JsonElement> rawBodyData
+        IReadOnlyDictionary<string, JsonElement> rawBodyData,
+        string playlistID
     )
     {
         return new(
             FrozenDictionary.ToFrozenDictionary(rawHeaderData),
             FrozenDictionary.ToFrozenDictionary(rawQueryData),
-            FrozenDictionary.ToFrozenDictionary(rawBodyData)
+            FrozenDictionary.ToFrozenDictionary(rawBodyData),
+            playlistID
         );
     }
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["PlaylistID"] = this.PlaylistID,
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-                ["BodyData"] = this._rawBodyData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["PlaylistID"] = JsonSerializer.SerializeToElement(this.PlaylistID),
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                    ["BodyData"] = FriendlyJsonPrinter.PrintValue(this._rawBodyData.Freeze()),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 

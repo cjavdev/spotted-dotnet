@@ -38,20 +38,34 @@ public interface IFollowingService
     /// <summary>
     /// Check to see if the current user is following one or more artists or other
     /// Spotify users.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved
+    /// Items](/documentation/web-api/reference/check-library-contains) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<List<bool>> Check(
         FollowingCheckParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Add the current user as a follower of one or more artists or other Spotify users.
+    /// Add the current user as a follower of one or more artists or other Spotify
+    /// users.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to
+    /// Library](/documentation/web-api/reference/save-library-items) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Follow(FollowingFollowParams parameters, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Remove the current user as a follower of one or more artists or other Spotify users.
+    /// Remove the current user as a follower of one or more artists or other Spotify
+    /// users.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from
+    /// Library](/documentation/web-api/reference/remove-library-items) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Unfollow(
         FollowingUnfollowParams? parameters = null,
         CancellationToken cancellationToken = default
@@ -72,7 +86,7 @@ public interface IFollowingServiceWithRawResponse
     IFollowingServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/following`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/following</c>, but is otherwise the
     /// same as <see cref="IFollowingService.BulkRetrieve(FollowingBulkRetrieveParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<FollowingBulkRetrieveResponse>> BulkRetrieve(
@@ -81,27 +95,30 @@ public interface IFollowingServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/following/contains`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/following/contains</c>, but is otherwise the
     /// same as <see cref="IFollowingService.Check(FollowingCheckParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<List<bool>>> Check(
         FollowingCheckParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/following`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/following</c>, but is otherwise the
     /// same as <see cref="IFollowingService.Follow(FollowingFollowParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Follow(
         FollowingFollowParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /me/following`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /me/following</c>, but is otherwise the
     /// same as <see cref="IFollowingService.Unfollow(FollowingUnfollowParams?, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Unfollow(
         FollowingUnfollowParams? parameters = null,
         CancellationToken cancellationToken = default

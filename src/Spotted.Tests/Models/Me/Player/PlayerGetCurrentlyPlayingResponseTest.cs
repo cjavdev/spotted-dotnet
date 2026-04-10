@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Spotted.Core;
-using Spotted.Models;
 using Spotted.Models.Me.Player;
+using Models = Spotted.Models;
 
 namespace Spotted.Tests.Models.Me.Player;
 
@@ -36,13 +36,13 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
             },
             CurrentlyPlayingType = "currently_playing_type",
             IsPlaying = true,
-            Item = new TrackObject()
+            Item = new Models::TrackObject()
             {
                 ID = "id",
                 Album = new()
                 {
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                    AlbumType = AlbumType.Compilation,
+                    AlbumType = Models::AlbumType.Compilation,
                     Artists =
                     [
                         new()
@@ -52,7 +52,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                             Href = "href",
                             Name = "name",
                             Published = true,
-                            Type = SimplifiedArtistObjectType.Artist,
+                            Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
@@ -72,11 +72,11 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                     ],
                     Name = "name",
                     ReleaseDate = "1981-12",
-                    ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                    ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                     Published = true,
-                    Restrictions = new() { Published = true, Reason = Reason.Market },
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
                 Artists =
                 [
@@ -87,7 +87,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -121,7 +121,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
-                Type = TrackObjectType.Track,
+                Type = Models::TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
@@ -153,13 +153,13 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
         };
         string expectedCurrentlyPlayingType = "currently_playing_type";
         bool expectedIsPlaying = true;
-        Item expectedItem = new TrackObject()
+        Item expectedItem = new Models::TrackObject()
         {
             ID = "id",
             Album = new()
             {
                 ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                AlbumType = AlbumType.Compilation,
+                AlbumType = Models::AlbumType.Compilation,
                 Artists =
                 [
                     new()
@@ -169,7 +169,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -188,11 +188,11 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                 ],
                 Name = "name",
                 ReleaseDate = "1981-12",
-                ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                 Published = true,
-                Restrictions = new() { Published = true, Reason = Reason.Market },
+                Restrictions = new() { Published = true, Reason = Models::Reason.Market },
             },
             Artists =
             [
@@ -203,7 +203,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                     Href = "href",
                     Name = "name",
                     Published = true,
-                    Type = SimplifiedArtistObjectType.Artist,
+                    Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
@@ -237,7 +237,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
             Published = true,
             Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
-            Type = TrackObjectType.Track,
+            Type = Models::TrackObjectType.Track,
             Uri = "uri",
         };
         long expectedProgressMs = 0;
@@ -283,13 +283,13 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
             },
             CurrentlyPlayingType = "currently_playing_type",
             IsPlaying = true,
-            Item = new TrackObject()
+            Item = new Models::TrackObject()
             {
                 ID = "id",
                 Album = new()
                 {
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                    AlbumType = AlbumType.Compilation,
+                    AlbumType = Models::AlbumType.Compilation,
                     Artists =
                     [
                         new()
@@ -299,7 +299,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                             Href = "href",
                             Name = "name",
                             Published = true,
-                            Type = SimplifiedArtistObjectType.Artist,
+                            Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
@@ -319,11 +319,11 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                     ],
                     Name = "name",
                     ReleaseDate = "1981-12",
-                    ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                    ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                     Published = true,
-                    Restrictions = new() { Published = true, Reason = Reason.Market },
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
                 Artists =
                 [
@@ -334,7 +334,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -368,7 +368,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
-                Type = TrackObjectType.Track,
+                Type = Models::TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
@@ -414,13 +414,13 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
             },
             CurrentlyPlayingType = "currently_playing_type",
             IsPlaying = true,
-            Item = new TrackObject()
+            Item = new Models::TrackObject()
             {
                 ID = "id",
                 Album = new()
                 {
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                    AlbumType = AlbumType.Compilation,
+                    AlbumType = Models::AlbumType.Compilation,
                     Artists =
                     [
                         new()
@@ -430,7 +430,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                             Href = "href",
                             Name = "name",
                             Published = true,
-                            Type = SimplifiedArtistObjectType.Artist,
+                            Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
@@ -450,11 +450,11 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                     ],
                     Name = "name",
                     ReleaseDate = "1981-12",
-                    ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                    ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                     Published = true,
-                    Restrictions = new() { Published = true, Reason = Reason.Market },
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
                 Artists =
                 [
@@ -465,7 +465,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -499,7 +499,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
-                Type = TrackObjectType.Track,
+                Type = Models::TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
@@ -538,13 +538,13 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
         };
         string expectedCurrentlyPlayingType = "currently_playing_type";
         bool expectedIsPlaying = true;
-        Item expectedItem = new TrackObject()
+        Item expectedItem = new Models::TrackObject()
         {
             ID = "id",
             Album = new()
             {
                 ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                AlbumType = AlbumType.Compilation,
+                AlbumType = Models::AlbumType.Compilation,
                 Artists =
                 [
                     new()
@@ -554,7 +554,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -573,11 +573,11 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                 ],
                 Name = "name",
                 ReleaseDate = "1981-12",
-                ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                 Published = true,
-                Restrictions = new() { Published = true, Reason = Reason.Market },
+                Restrictions = new() { Published = true, Reason = Models::Reason.Market },
             },
             Artists =
             [
@@ -588,7 +588,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                     Href = "href",
                     Name = "name",
                     Published = true,
-                    Type = SimplifiedArtistObjectType.Artist,
+                    Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
@@ -622,7 +622,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
             Published = true,
             Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
-            Type = TrackObjectType.Track,
+            Type = Models::TrackObjectType.Track,
             Uri = "uri",
         };
         long expectedProgressMs = 0;
@@ -668,13 +668,13 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
             },
             CurrentlyPlayingType = "currently_playing_type",
             IsPlaying = true,
-            Item = new TrackObject()
+            Item = new Models::TrackObject()
             {
                 ID = "id",
                 Album = new()
                 {
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                    AlbumType = AlbumType.Compilation,
+                    AlbumType = Models::AlbumType.Compilation,
                     Artists =
                     [
                         new()
@@ -684,7 +684,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                             Href = "href",
                             Name = "name",
                             Published = true,
-                            Type = SimplifiedArtistObjectType.Artist,
+                            Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
@@ -704,11 +704,11 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                     ],
                     Name = "name",
                     ReleaseDate = "1981-12",
-                    ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                    ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                     Published = true,
-                    Restrictions = new() { Published = true, Reason = Reason.Market },
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
                 Artists =
                 [
@@ -719,7 +719,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -753,7 +753,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
-                Type = TrackObjectType.Track,
+                Type = Models::TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
@@ -877,13 +877,13 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
             },
             CurrentlyPlayingType = "currently_playing_type",
             IsPlaying = true,
-            Item = new TrackObject()
+            Item = new Models::TrackObject()
             {
                 ID = "id",
                 Album = new()
                 {
                     ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                    AlbumType = AlbumType.Compilation,
+                    AlbumType = Models::AlbumType.Compilation,
                     Artists =
                     [
                         new()
@@ -893,7 +893,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                             Href = "href",
                             Name = "name",
                             Published = true,
-                            Type = SimplifiedArtistObjectType.Artist,
+                            Type = Models::SimplifiedArtistObjectType.Artist,
                             Uri = "uri",
                         },
                     ],
@@ -913,11 +913,11 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                     ],
                     Name = "name",
                     ReleaseDate = "1981-12",
-                    ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                    ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                     TotalTracks = 9,
                     Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                     Published = true,
-                    Restrictions = new() { Published = true, Reason = Reason.Market },
+                    Restrictions = new() { Published = true, Reason = Models::Reason.Market },
                 },
                 Artists =
                 [
@@ -928,7 +928,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -962,7 +962,7 @@ public class PlayerGetCurrentlyPlayingResponseTest : TestBase
                 Published = true,
                 Restrictions = new() { Published = true, Reason = "reason" },
                 TrackNumber = 0,
-                Type = TrackObjectType.Track,
+                Type = Models::TrackObjectType.Track,
                 Uri = "uri",
             },
             ProgressMs = 0,
@@ -1247,13 +1247,13 @@ public class ItemTest : TestBase
     [Fact]
     public void TrackObjectValidationWorks()
     {
-        Item value = new TrackObject()
+        Item value = new Models::TrackObject()
         {
             ID = "id",
             Album = new()
             {
                 ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                AlbumType = AlbumType.Compilation,
+                AlbumType = Models::AlbumType.Compilation,
                 Artists =
                 [
                     new()
@@ -1263,7 +1263,7 @@ public class ItemTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -1282,11 +1282,11 @@ public class ItemTest : TestBase
                 ],
                 Name = "name",
                 ReleaseDate = "1981-12",
-                ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                 Published = true,
-                Restrictions = new() { Published = true, Reason = Reason.Market },
+                Restrictions = new() { Published = true, Reason = Models::Reason.Market },
             },
             Artists =
             [
@@ -1297,7 +1297,7 @@ public class ItemTest : TestBase
                     Href = "href",
                     Name = "name",
                     Published = true,
-                    Type = SimplifiedArtistObjectType.Artist,
+                    Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
@@ -1331,7 +1331,7 @@ public class ItemTest : TestBase
             Published = true,
             Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
-            Type = TrackObjectType.Track,
+            Type = Models::TrackObjectType.Track,
             Uri = "uri",
         };
         value.Validate();
@@ -1340,7 +1340,7 @@ public class ItemTest : TestBase
     [Fact]
     public void EpisodeObjectValidationWorks()
     {
-        Item value = new EpisodeObject()
+        Item value = new Models::EpisodeObject()
         {
             ID = "5Xt5DXGzch68nYYamXrNxZ",
             AudioPreviewUrl =
@@ -1368,7 +1368,7 @@ public class ItemTest : TestBase
             Languages = ["fr", "en"],
             Name = "Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\n",
             ReleaseDate = "1981-12-15",
-            ReleaseDatePrecision = ReleaseDatePrecision.Day,
+            ReleaseDatePrecision = Models::ReleaseDatePrecision.Day,
             Show = new()
             {
                 ID = "id",
@@ -1423,13 +1423,13 @@ public class ItemTest : TestBase
     [Fact]
     public void TrackObjectSerializationRoundtripWorks()
     {
-        Item value = new TrackObject()
+        Item value = new Models::TrackObject()
         {
             ID = "id",
             Album = new()
             {
                 ID = "2up3OPMp9Tb4dAKM2erWXQ",
-                AlbumType = AlbumType.Compilation,
+                AlbumType = Models::AlbumType.Compilation,
                 Artists =
                 [
                     new()
@@ -1439,7 +1439,7 @@ public class ItemTest : TestBase
                         Href = "href",
                         Name = "name",
                         Published = true,
-                        Type = SimplifiedArtistObjectType.Artist,
+                        Type = Models::SimplifiedArtistObjectType.Artist,
                         Uri = "uri",
                     },
                 ],
@@ -1458,11 +1458,11 @@ public class ItemTest : TestBase
                 ],
                 Name = "name",
                 ReleaseDate = "1981-12",
-                ReleaseDatePrecision = AlbumReleaseDatePrecision.Year,
+                ReleaseDatePrecision = Models::AlbumReleaseDatePrecision.Year,
                 TotalTracks = 9,
                 Uri = "spotify:album:2up3OPMp9Tb4dAKM2erWXQ",
                 Published = true,
-                Restrictions = new() { Published = true, Reason = Reason.Market },
+                Restrictions = new() { Published = true, Reason = Models::Reason.Market },
             },
             Artists =
             [
@@ -1473,7 +1473,7 @@ public class ItemTest : TestBase
                     Href = "href",
                     Name = "name",
                     Published = true,
-                    Type = SimplifiedArtistObjectType.Artist,
+                    Type = Models::SimplifiedArtistObjectType.Artist,
                     Uri = "uri",
                 },
             ],
@@ -1507,7 +1507,7 @@ public class ItemTest : TestBase
             Published = true,
             Restrictions = new() { Published = true, Reason = "reason" },
             TrackNumber = 0,
-            Type = TrackObjectType.Track,
+            Type = Models::TrackObjectType.Track,
             Uri = "uri",
         };
         string element = JsonSerializer.Serialize(value, ModelBase.SerializerOptions);
@@ -1519,7 +1519,7 @@ public class ItemTest : TestBase
     [Fact]
     public void EpisodeObjectSerializationRoundtripWorks()
     {
-        Item value = new EpisodeObject()
+        Item value = new Models::EpisodeObject()
         {
             ID = "5Xt5DXGzch68nYYamXrNxZ",
             AudioPreviewUrl =
@@ -1547,7 +1547,7 @@ public class ItemTest : TestBase
             Languages = ["fr", "en"],
             Name = "Starting Your Own Podcast: Tips, Tricks, and Advice From Anchor Creators\n",
             ReleaseDate = "1981-12-15",
-            ReleaseDatePrecision = ReleaseDatePrecision.Day,
+            ReleaseDatePrecision = Models::ReleaseDatePrecision.Day,
             Show = new()
             {
                 ID = "id",

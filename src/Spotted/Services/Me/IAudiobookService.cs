@@ -28,7 +28,8 @@ public interface IAudiobookService
     IAudiobookService WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Get a list of the audiobooks saved in the current Spotify user's 'Your Music' library.
+    /// Get a list of the audiobooks saved in the current Spotify user's 'Your Music'
+    /// library.
     /// </summary>
     Task<AudiobookListPage> List(
         AudiobookListParams? parameters = null,
@@ -36,8 +37,13 @@ public interface IAudiobookService
     );
 
     /// <summary>
-    /// Check if one or more audiobooks are already saved in the current Spotify user's library.
+    /// Check if one or more audiobooks are already saved in the current Spotify user's
+    /// library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Check User's Saved
+    /// Items](/documentation/web-api/reference/check-library-contains) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task<List<bool>> Check(
         AudiobookCheckParams parameters,
         CancellationToken cancellationToken = default
@@ -45,12 +51,20 @@ public interface IAudiobookService
 
     /// <summary>
     /// Remove one or more audiobooks from the Spotify user's library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Remove Items from
+    /// Library](/documentation/web-api/reference/remove-library-items) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Remove(AudiobookRemoveParams parameters, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Save one or more audiobooks to the current Spotify user's library.
+    ///
+    /// <para>**Note:** This endpoint is deprecated. Use [Save Items to
+    /// Library](/documentation/web-api/reference/save-library-items) instead. </para>
     /// </summary>
+    [Obsolete("deprecated")]
     Task Save(AudiobookSaveParams parameters, CancellationToken cancellationToken = default);
 }
 
@@ -68,7 +82,7 @@ public interface IAudiobookServiceWithRawResponse
     IAudiobookServiceWithRawResponse WithOptions(Func<ClientOptions, ClientOptions> modifier);
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/audiobooks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/audiobooks</c>, but is otherwise the
     /// same as <see cref="IAudiobookService.List(AudiobookListParams?, CancellationToken)"/>.
     /// </summary>
     Task<HttpResponse<AudiobookListPage>> List(
@@ -77,27 +91,30 @@ public interface IAudiobookServiceWithRawResponse
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `get /me/audiobooks/contains`, but is otherwise the
+    /// Returns a raw HTTP response for <c>get /me/audiobooks/contains</c>, but is otherwise the
     /// same as <see cref="IAudiobookService.Check(AudiobookCheckParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse<List<bool>>> Check(
         AudiobookCheckParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `delete /me/audiobooks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>delete /me/audiobooks</c>, but is otherwise the
     /// same as <see cref="IAudiobookService.Remove(AudiobookRemoveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Remove(
         AudiobookRemoveParams parameters,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Returns a raw HTTP response for `put /me/audiobooks`, but is otherwise the
+    /// Returns a raw HTTP response for <c>put /me/audiobooks</c>, but is otherwise the
     /// same as <see cref="IAudiobookService.Save(AudiobookSaveParams, CancellationToken)"/>.
     /// </summary>
+    [Obsolete("deprecated")]
     Task<HttpResponse> Save(
         AudiobookSaveParams parameters,
         CancellationToken cancellationToken = default

@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Spotted.Exceptions;
@@ -38,6 +39,20 @@ public class HttpResponse : IDisposable
         string name,
         [NotNullWhen(true)] out IEnumerable<string>? values
     ) => RawMessage.Headers.TryGetValues(name, out values);
+
+    public sealed override string ToString() => this.RawMessage.ToString();
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is not HttpResponse other)
+        {
+            return false;
+        }
+
+        return this.RawMessage.Equals(other.RawMessage);
+    }
+
+    public override int GetHashCode() => this.RawMessage.GetHashCode();
 
     public async Task<T> Deserialize<T>(Threading::CancellationToken cancellationToken = default)
     {
@@ -95,7 +110,7 @@ public class HttpResponse : IDisposable
     }
 }
 
-public sealed class HttpResponse<T> : global::Spotted.Core.HttpResponse
+public sealed class HttpResponse<T> : HttpResponse
 {
     readonly Func<Threading::CancellationToken, Task<T>> _deserialize;
 
@@ -106,7 +121,7 @@ public sealed class HttpResponse<T> : global::Spotted.Core.HttpResponse
 
     [SetsRequiredMembers]
     internal HttpResponse(
-        global::Spotted.Core.HttpResponse response,
+        HttpResponse response,
         Func<Threading::CancellationToken, Task<T>> deserialize
     )
         : this(deserialize)
@@ -125,7 +140,7 @@ public sealed class HttpResponse<T> : global::Spotted.Core.HttpResponse
     }
 }
 
-public sealed class StreamingHttpResponse<T> : global::Spotted.Core.HttpResponse
+public sealed class StreamingHttpResponse<T> : HttpResponse
 {
     readonly Func<Threading::CancellationToken, IAsyncEnumerable<T>> _enumerate;
 
@@ -138,7 +153,7 @@ public sealed class StreamingHttpResponse<T> : global::Spotted.Core.HttpResponse
 
     [SetsRequiredMembers]
     internal StreamingHttpResponse(
-        global::Spotted.Core.HttpResponse response,
+        HttpResponse response,
         Func<Threading::CancellationToken, IAsyncEnumerable<T>> enumerate
     )
         : this(enumerate)
@@ -147,12 +162,17 @@ public sealed class StreamingHttpResponse<T> : global::Spotted.Core.HttpResponse
         this.CancellationToken = response.CancellationToken;
     }
 
-    public IAsyncEnumerable<T> Enumerate(Threading::CancellationToken cancellationToken = default)
+    public async IAsyncEnumerable<T> Enumerate(
+        [EnumeratorCancellationAttribute] Threading::CancellationToken cancellationToken = default
+    )
     {
         using var cts = Threading::CancellationTokenSource.CreateLinkedTokenSource(
             this.CancellationToken,
             cancellationToken
         );
-        return this._enumerate(cts.Token);
+        await foreach (var item in this._enumerate(cts.Token))
+        {
+            yield return item;
+        }
     }
 }

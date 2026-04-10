@@ -20,9 +20,9 @@ namespace Spotted.Models.Me.Player;
 public record class PlayerSetRepeatModeParams : ParamsBase
 {
     /// <summary>
-    /// **track**, **context** or **off**.<br/> **track** will repeat the current
-    /// track.<br/> **context** will repeat the current context.<br/> **off** will
-    /// turn repeat off.
+    /// **track**, **context** or **off**.&lt;br/&gt; **track** will repeat the current
+    /// track.&lt;br/&gt; **context** will repeat the current context.&lt;br/&gt;
+    /// **off** will turn repeat off.
     /// </summary>
     public required string State
     {
@@ -85,7 +85,7 @@ public record class PlayerSetRepeatModeParams : ParamsBase
     }
 #pragma warning restore CS8618
 
-    /// <inheritdoc cref="IFromRawJson.FromRawUnchecked"/>
+    /// <inheritdoc cref="IFromRawJson{T}.FromRawUnchecked"/>
     public static PlayerSetRepeatModeParams FromRawUnchecked(
         IReadOnlyDictionary<string, JsonElement> rawHeaderData,
         IReadOnlyDictionary<string, JsonElement> rawQueryData
@@ -99,11 +99,17 @@ public record class PlayerSetRepeatModeParams : ParamsBase
 
     public override string ToString() =>
         JsonSerializer.Serialize(
-            new Dictionary<string, object?>()
-            {
-                ["HeaderData"] = this._rawHeaderData.Freeze(),
-                ["QueryData"] = this._rawQueryData.Freeze(),
-            },
+            FriendlyJsonPrinter.PrintValue(
+                new Dictionary<string, JsonElement>()
+                {
+                    ["HeaderData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawHeaderData.Freeze())
+                    ),
+                    ["QueryData"] = FriendlyJsonPrinter.PrintValue(
+                        JsonSerializer.SerializeToElement(this._rawQueryData.Freeze())
+                    ),
+                }
+            ),
             ModelBase.ToStringSerializerOptions
         );
 
