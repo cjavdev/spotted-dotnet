@@ -22,9 +22,13 @@ public class ArtistListRelatedArtistsParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri("https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/related-artists"),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/related-artists"
+                ),
+                url
+            )
         );
     }
 

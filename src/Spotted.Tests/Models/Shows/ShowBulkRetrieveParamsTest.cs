@@ -59,11 +59,13 @@ public class ShowBulkRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/shows?ids=5CfCWKI5pZ28U0uOzXkDHe%2c5as3aKmN2k11yfDDDSrvaZ&market=ES"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/shows?ids=5CfCWKI5pZ28U0uOzXkDHe%2c5as3aKmN2k11yfDDDSrvaZ&market=ES"
+                ),
+                url
+            )
         );
     }
 

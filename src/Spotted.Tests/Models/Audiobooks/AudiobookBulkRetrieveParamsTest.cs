@@ -59,11 +59,13 @@ public class AudiobookBulkRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/audiobooks?ids=18yVqkdbdRvS24c0Ilj2ci%2c1HGw3J3NxZO1TP1BTtVhpZ%2c7iHfbu1YPACw6oZPAFJtqe&market=ES"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/audiobooks?ids=18yVqkdbdRvS24c0Ilj2ci%2c1HGw3J3NxZO1TP1BTtVhpZ%2c7iHfbu1YPACw6oZPAFJtqe&market=ES"
+                ),
+                url
+            )
         );
     }
 

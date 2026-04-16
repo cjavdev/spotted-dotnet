@@ -56,11 +56,13 @@ public class QueueAddParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/me/player/queue?uri=spotify%3atrack%3a4iV5W9uYEdYUVa79Axb7Rh&device_id=0d1841b0976bae2a3a310dd74c0f3df354899bc8"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/me/player/queue?uri=spotify%3atrack%3a4iV5W9uYEdYUVa79Axb7Rh&device_id=0d1841b0976bae2a3a310dd74c0f3df354899bc8"
+                ),
+                url
+            )
         );
     }
 

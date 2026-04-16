@@ -59,11 +59,13 @@ public class AlbumBulkRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/albums?ids=382ObEPsp2rxGrnsizN5TX%2c1A2GTWGtFfWp7KSQTwWOyo%2c2noRn2Aes5aoNVsU6iWThc&market=ES"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/albums?ids=382ObEPsp2rxGrnsizN5TX%2c1A2GTWGtFfWp7KSQTwWOyo%2c2noRn2Aes5aoNVsU6iWThc&market=ES"
+                ),
+                url
+            )
         );
     }
 

@@ -22,9 +22,11 @@ public class AudioFeatureRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri("https://api.spotify.com/v1/audio-features/11dFghVXANMlKmJXsNCbNl"),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.spotify.com/v1/audio-features/11dFghVXANMlKmJXsNCbNl"),
+                url
+            )
         );
     }
 

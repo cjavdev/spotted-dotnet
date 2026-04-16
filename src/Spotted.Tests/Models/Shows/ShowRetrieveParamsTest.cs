@@ -48,9 +48,11 @@ public class ShowRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri("https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ?market=ES"),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ?market=ES"),
+                url
+            )
         );
     }
 
