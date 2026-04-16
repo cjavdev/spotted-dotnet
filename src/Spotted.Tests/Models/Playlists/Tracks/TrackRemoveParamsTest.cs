@@ -79,9 +79,11 @@ public class TrackRemoveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri("https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks"),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n/tracks"),
+                url
+            )
         );
     }
 

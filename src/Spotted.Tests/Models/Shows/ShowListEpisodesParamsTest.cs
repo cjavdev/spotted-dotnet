@@ -74,11 +74,13 @@ public class ShowListEpisodesParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ/episodes?limit=10&market=ES&offset=5"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ/episodes?limit=10&market=ES&offset=5"
+                ),
+                url
+            )
         );
     }
 

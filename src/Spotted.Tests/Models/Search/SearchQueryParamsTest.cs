@@ -101,11 +101,13 @@ public class SearchQueryParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/search?q=remaster%2520track%3aDoxy%2520artist%3aMiles%2520Davis&type=album&include_external=audio&limit=10&market=ES&offset=5"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/search?q=remaster%2520track%3aDoxy%2520artist%3aMiles%2520Davis&type=album&include_external=audio&limit=10&market=ES&offset=5"
+                ),
+                url
+            )
         );
     }
 

@@ -68,11 +68,13 @@ public class PlayerListRecentlyPlayedParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/me/player/recently-played?after=1484811043508&before=0&limit=10"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/me/player/recently-played?after=1484811043508&before=0&limit=10"
+                ),
+                url
+            )
         );
     }
 
