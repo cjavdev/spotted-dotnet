@@ -14,7 +14,8 @@ public sealed record class MeRetrieveResponse : JsonModel
 {
     /// <summary>
     /// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for
-    /// the user.
+    /// the user. Do not use this field for account linking — use `account_id` instead,
+    /// which is immutable.
     /// </summary>
     public string? ID
     {
@@ -31,6 +32,29 @@ public sealed record class MeRetrieveResponse : JsonModel
             }
 
             this._rawData.Set("id", value);
+        }
+    }
+
+    /// <summary>
+    /// A public, immutable, pseudoanonymous identifier for the user's account. Use
+    /// this field for account linking rather than the `id` field, as it is stable
+    /// and will not change over the lifetime of the account.
+    /// </summary>
+    public string? AccountID
+    {
+        get
+        {
+            this._rawData.Freeze();
+            return this._rawData.GetNullableClass<string>("account_id");
+        }
+        init
+        {
+            if (value == null)
+            {
+                return;
+            }
+
+            this._rawData.Set("account_id", value);
         }
     }
 
@@ -314,6 +338,7 @@ public sealed record class MeRetrieveResponse : JsonModel
     public override void Validate()
     {
         _ = this.ID;
+        _ = this.AccountID;
         _ = this.Country;
         _ = this.DisplayName;
         _ = this.Email;

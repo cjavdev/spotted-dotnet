@@ -14,6 +14,7 @@ public class MeRetrieveResponseTest : TestBase
         var model = new MeRetrieveResponse
         {
             ID = "id",
+            AccountID = "aB3dE5fG7h",
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
@@ -48,6 +49,7 @@ public class MeRetrieveResponseTest : TestBase
         };
 
         string expectedID = "id";
+        string expectedAccountID = "aB3dE5fG7h";
         string expectedCountry = "country";
         string expectedDisplayName = "display_name";
         string expectedEmail = "email";
@@ -81,6 +83,7 @@ public class MeRetrieveResponseTest : TestBase
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, model.ID);
+        Assert.Equal(expectedAccountID, model.AccountID);
         Assert.Equal(expectedCountry, model.Country);
         Assert.Equal(expectedDisplayName, model.DisplayName);
         Assert.Equal(expectedEmail, model.Email);
@@ -106,6 +109,7 @@ public class MeRetrieveResponseTest : TestBase
         var model = new MeRetrieveResponse
         {
             ID = "id",
+            AccountID = "aB3dE5fG7h",
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
@@ -154,6 +158,7 @@ public class MeRetrieveResponseTest : TestBase
         var model = new MeRetrieveResponse
         {
             ID = "id",
+            AccountID = "aB3dE5fG7h",
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
@@ -195,6 +200,7 @@ public class MeRetrieveResponseTest : TestBase
         Assert.NotNull(deserialized);
 
         string expectedID = "id";
+        string expectedAccountID = "aB3dE5fG7h";
         string expectedCountry = "country";
         string expectedDisplayName = "display_name";
         string expectedEmail = "email";
@@ -228,6 +234,7 @@ public class MeRetrieveResponseTest : TestBase
         string expectedUri = "uri";
 
         Assert.Equal(expectedID, deserialized.ID);
+        Assert.Equal(expectedAccountID, deserialized.AccountID);
         Assert.Equal(expectedCountry, deserialized.Country);
         Assert.Equal(expectedDisplayName, deserialized.DisplayName);
         Assert.Equal(expectedEmail, deserialized.Email);
@@ -253,6 +260,7 @@ public class MeRetrieveResponseTest : TestBase
         var model = new MeRetrieveResponse
         {
             ID = "id",
+            AccountID = "aB3dE5fG7h",
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
@@ -296,6 +304,8 @@ public class MeRetrieveResponseTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
+        Assert.Null(model.AccountID);
+        Assert.False(model.RawData.ContainsKey("account_id"));
         Assert.Null(model.Country);
         Assert.False(model.RawData.ContainsKey("country"));
         Assert.Null(model.DisplayName);
@@ -337,6 +347,7 @@ public class MeRetrieveResponseTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
+            AccountID = null,
             Country = null,
             DisplayName = null,
             Email = null,
@@ -353,6 +364,8 @@ public class MeRetrieveResponseTest : TestBase
 
         Assert.Null(model.ID);
         Assert.False(model.RawData.ContainsKey("id"));
+        Assert.Null(model.AccountID);
+        Assert.False(model.RawData.ContainsKey("account_id"));
         Assert.Null(model.Country);
         Assert.False(model.RawData.ContainsKey("country"));
         Assert.Null(model.DisplayName);
@@ -386,6 +399,7 @@ public class MeRetrieveResponseTest : TestBase
         {
             // Null should be interpreted as omitted for these properties
             ID = null,
+            AccountID = null,
             Country = null,
             DisplayName = null,
             Email = null,
@@ -409,6 +423,7 @@ public class MeRetrieveResponseTest : TestBase
         var model = new MeRetrieveResponse
         {
             ID = "id",
+            AccountID = "aB3dE5fG7h",
             Country = "country",
             DisplayName = "display_name",
             Email = "email",
