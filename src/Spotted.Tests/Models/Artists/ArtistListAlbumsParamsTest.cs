@@ -83,11 +83,13 @@ public class ArtistListAlbumsParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?include_groups=single%2cappears_on&limit=5&market=ES&offset=5"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums?include_groups=single%2cappears_on&limit=5&market=ES&offset=5"
+                ),
+                url
+            )
         );
     }
 

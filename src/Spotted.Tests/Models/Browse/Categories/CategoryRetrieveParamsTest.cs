@@ -48,9 +48,11 @@ public class CategoryRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri("https://api.spotify.com/v1/browse/categories/dinner?locale=sv_SE"),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri("https://api.spotify.com/v1/browse/categories/dinner?locale=sv_SE"),
+                url
+            )
         );
     }
 

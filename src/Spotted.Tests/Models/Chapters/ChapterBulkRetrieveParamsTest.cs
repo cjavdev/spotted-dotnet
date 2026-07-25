@@ -59,11 +59,13 @@ public class ChapterBulkRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/chapters?ids=0IsXVP0JmcB2adSE338GkK%2c3ZXb8FKZGU0EHALYX6uCzU%2c0D5wENdkdwbqlrHoaJ9g29&market=ES"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/chapters?ids=0IsXVP0JmcB2adSE338GkK%2c3ZXb8FKZGU0EHALYX6uCzU%2c0D5wENdkdwbqlrHoaJ9g29&market=ES"
+                ),
+                url
+            )
         );
     }
 

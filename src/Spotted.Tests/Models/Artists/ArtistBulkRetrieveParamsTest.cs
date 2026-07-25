@@ -28,11 +28,13 @@ public class ArtistBulkRetrieveParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2c57dN52uHvrHOxijzpIgu3E%2c1vCWHaC5f2uS3yhpwWbIA6"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/artists?ids=2CIMQHirSU0MQqyYHq0eOx%2c57dN52uHvrHOxijzpIgu3E%2c1vCWHaC5f2uS3yhpwWbIA6"
+                ),
+                url
+            )
         );
     }
 

@@ -68,11 +68,13 @@ public class BrowseGetFeaturedPlaylistsParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/browse/featured-playlists?limit=10&locale=sv_SE&offset=5"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/browse/featured-playlists?limit=10&locale=sv_SE&offset=5"
+                ),
+                url
+            )
         );
     }
 

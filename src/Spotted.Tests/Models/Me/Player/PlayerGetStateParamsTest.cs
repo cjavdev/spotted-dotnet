@@ -59,11 +59,13 @@ public class PlayerGetStateParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/me/player?additional_types=additional_types&market=ES"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/me/player?additional_types=additional_types&market=ES"
+                ),
+                url
+            )
         );
     }
 

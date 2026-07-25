@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.9.0 (2026-07-25)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **api:** api update ([c1d42c2](https://github.com/cjavdev/spotted-dotnet/commit/c1d42c2862c51fc43f864f2c03a44cb80df46735))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([3448b8c](https://github.com/cjavdev/spotted-dotnet/commit/3448b8c2f002e79aa0d3c631326eaec24955ab5c))
+* support setting headers via env ([a02c848](https://github.com/cjavdev/spotted-dotnet/commit/a02c848037a3d79360b9eaff548da9e27d7ebd9e))
+
+
+### Bug Fixes
+
+* **client:** tolerate JSON null in required untyped fields and prefer more specific union variants ([8fa9f8e](https://github.com/cjavdev/spotted-dotnet/commit/8fa9f8eb9e375fc654953bdf144fe3697ebcfc7c))
+* **csharp:** resolve ambiguity in parsing query strings ([d8fca9c](https://github.com/cjavdev/spotted-dotnet/commit/d8fca9cbe21985c5dd928b1dac266a9efa9d49d1))
+* **internal:** disable default HttpClient timeout as we have our own ([ccdc01b](https://github.com/cjavdev/spotted-dotnet/commit/ccdc01b9adf1224a7952c3a942e9b71092841f9d))
+* **internal:** resolve build failures ([8f455d6](https://github.com/cjavdev/spotted-dotnet/commit/8f455d69085f03ca02b49506f017e1cdedb37901))
+* **tests:** round-trip urls correctly ([848ff7e](https://github.com/cjavdev/spotted-dotnet/commit/848ff7ef40fabf4bd2f199d04894bf1f658352dc))
+
 ## 0.8.0 (2026-04-01)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/cjavdev/spotted-dotnet/compare/v0.7.0...v0.8.0)

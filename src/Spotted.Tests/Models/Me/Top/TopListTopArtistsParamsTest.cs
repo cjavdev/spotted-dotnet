@@ -68,11 +68,13 @@ public class TopListTopArtistsParamsTest : TestBase
 
         var url = parameters.Url(new() { AccessToken = "My Access Token" });
 
-        Assert.Equal(
-            new Uri(
-                "https://api.spotify.com/v1/me/top/artists?limit=10&offset=5&time_range=medium_term"
-            ),
-            url
+        Assert.True(
+            TestBase.UrisEqual(
+                new Uri(
+                    "https://api.spotify.com/v1/me/top/artists?limit=10&offset=5&time_range=medium_term"
+                ),
+                url
+            )
         );
     }
 
